@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
 
 /* ─── TOKENS ─────────────────────────────────────────────────────────────── */
 :root {
@@ -35,7 +35,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Public Sans', sans-serif;
   font-weight: 400;
   color: var(--text);
   background: var(--off-white);
@@ -47,12 +47,12 @@ a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
 /* ─── TYPOGRAPHY ─────────────────────────────────────────────────────────── */
-h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.2; }
+h1, h2, h3, h4 { font-family: 'Public Sans', sans-serif; line-height: 1.2; }
 .display { font-size: clamp(2.8rem, 6vw, 5.5rem); letter-spacing: -0.02em; }
 .headline { font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: -0.01em; }
-.subhead { font-size: clamp(1.1rem, 2vw, 1.4rem); font-family: 'DM Sans', sans-serif; font-weight: 300; }
+.subhead { font-size: clamp(1.1rem, 2vw, 1.4rem); font-family: 'Public Sans', sans-serif; font-weight: 300; }
 .label {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -77,11 +77,11 @@ p { max-width: 68ch; }
   width: 32px; height: 32px; border-radius: 8px;
   background: var(--olive);
   display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1rem; color: var(--navy-deep); font-weight: 700;
 }
 .nav-logo-text {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1.1rem; color: var(--white); letter-spacing: 0.02em;
 }
 .nav-links {
@@ -189,7 +189,7 @@ p { max-width: 68ch; }
   border-top: 1px solid rgba(255,255,255,.08);
 }
 .hero-stat-num {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 2rem; color: var(--olive); line-height: 1;
 }
 .hero-stat-label {
@@ -217,7 +217,7 @@ p { max-width: 68ch; }
   text-transform: uppercase; color: var(--olive); margin-bottom: 0.4rem;
 }
 .hero-card-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1rem; color: var(--white); margin-bottom: 0.3rem;
 }
 .hero-card-text { font-size: 0.82rem; color: rgba(255,255,255,.4); }
@@ -273,7 +273,7 @@ p { max-width: 68ch; }
   border-color: transparent;
 }
 .part-num {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 3rem; color: var(--gray-200);
   line-height: 1; margin-bottom: 0.75rem;
   transition: color var(--transition);
@@ -288,7 +288,7 @@ p { max-width: 68ch; }
 .part-label.p3 { color: var(--olive-dim); }
 .part-label.p4 { color: var(--amber); }
 .part-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1.2rem; color: var(--navy); margin-bottom: 0.75rem;
 }
 .part-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 100%; }
@@ -335,7 +335,7 @@ p { max-width: 68ch; }
   font-size: 1.1rem; margin-bottom: 1rem;
 }
 .framework-name {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1rem; color: var(--white); margin-bottom: 0.4rem;
 }
 .framework-desc { font-size: 0.8rem; color: rgba(255,255,255,.4); }
@@ -361,7 +361,7 @@ p { max-width: 68ch; }
   background: var(--navy);
 }
 .calc-inputs h3 {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   color: var(--white); font-size: 1.3rem; margin-bottom: 0.4rem;
 }
 .calc-inputs p { font-size: 0.85rem; color: rgba(255,255,255,.5); margin-bottom: 2rem; }
@@ -376,7 +376,7 @@ p { max-width: 68ch; }
   height: 4px; cursor: pointer;
 }
 .field-value {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1.6rem; color: var(--olive); line-height: 1;
   margin-top: 0.3rem;
 }
@@ -385,7 +385,7 @@ p { max-width: 68ch; }
   display: flex; flex-direction: column; justify-content: center;
 }
 .calc-outputs h3 {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   color: var(--navy); font-size: 1.3rem; margin-bottom: 2rem;
 }
 .output-row {
@@ -397,7 +397,7 @@ p { max-width: 68ch; }
 .output-label { font-size: 0.85rem; color: var(--text-muted); }
 .output-pair { display: flex; gap: 1rem; }
 .output-val {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1.1rem; text-align: right;
 }
 .output-val.current { color: var(--gray-500); }
@@ -437,7 +437,7 @@ p { max-width: 68ch; }
 }
 .chapter-section { margin-bottom: 3rem; }
 .chapter-section h2 {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1.6rem; color: var(--navy);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
@@ -487,7 +487,7 @@ p { max-width: 68ch; }
 .q-num {
   width: 32px; height: 32px; border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Serif Display', serif; font-size: 1rem;
+  font-family: 'Public Sans', sans-serif; font-size: 1rem;
   flex-shrink: 0; color: var(--white);
 }
 .q-text { font-size: 0.95rem; font-weight: 500; color: var(--navy); flex: 1; }
@@ -534,7 +534,7 @@ p { max-width: 68ch; }
 .maturity-metrics { display: flex; flex-direction: column; gap: 0.75rem; }
 .maturity-metric { padding: 1rem; background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--gray-200); }
 .maturity-metric-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
-.maturity-metric-val { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+.maturity-metric-val { font-family: 'Public Sans', sans-serif; font-size: 1.3rem; }
 
 /* ─── PIPELINE STAGES ────────────────────────────────────────────────────── */
 .pipeline-stages {
@@ -556,7 +556,7 @@ p { max-width: 68ch; }
 }
 .pipeline-stage:last-child::after { display: none; }
 .pipeline-stage-num {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 2rem; color: rgba(255,255,255,.2); line-height: 1;
   margin-bottom: 0.25rem;
   transition: color var(--transition);
@@ -577,7 +577,7 @@ p { max-width: 68ch; }
 }
 .pipeline-detail.active { display: block; }
 .pipeline-detail h4 {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1.2rem; color: var(--navy); margin-bottom: 0.5rem;
 }
 .pipeline-detail p { font-size: 0.9rem; color: var(--text-muted); }
@@ -637,7 +637,7 @@ p { max-width: 68ch; }
 }
 .blocks-goal-icon { font-size: 1.5rem; }
 .blocks-goal-text { font-size: 0.88rem; color: rgba(255,255,255,.7); }
-.blocks-goal-title { font-family: 'DM Serif Display', serif; color: var(--olive); font-size: 1rem; }
+.blocks-goal-title { font-family: 'Public Sans', sans-serif; color: var(--olive); font-size: 1rem; }
 
 /* ─── IKT CARDS ──────────────────────────────────────────────────────────── */
 .ikt-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
@@ -654,7 +654,7 @@ p { max-width: 68ch; }
 .ikt-card-head.q2 { background: var(--blue); }
 .ikt-card-head.q3 { background: var(--purple); }
 .ikt-card-head.q4 { background: var(--amber); }
-.ikt-q { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--white); }
+.ikt-q { font-family: 'Public Sans', sans-serif; font-size: 1.6rem; color: var(--white); }
 .ikt-q-label { font-size: 0.75rem; color: rgba(255,255,255,.7); margin-top: 0.2rem; }
 .ikt-card-body { padding: 1rem; background: var(--white); border: 1px solid var(--gray-200); border-top: none; border-radius: 0 0 var(--radius-md) var(--radius-md); }
 .ikt-card-body p { font-size: 0.85rem; color: var(--text-muted); max-width: 100%; margin: 0; }
@@ -681,7 +681,7 @@ p { max-width: 68ch; }
   margin-bottom: 3rem;
 }
 .footer-brand-name {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Public Sans', sans-serif;
   font-size: 1.4rem; color: var(--white); margin-bottom: 0.75rem;
 }
 .footer-brand-desc { font-size: 0.85rem; color: rgba(255,255,255,.4); max-width: 30ch; }
