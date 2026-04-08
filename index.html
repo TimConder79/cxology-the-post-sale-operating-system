@@ -19,7 +19,7 @@
   <ul class="nav-links">
     <li><a href="#parts">The Book</a></li>
     <li><a href="#frameworks">Frameworks</a></li>
-    <li><a href="#calculator">ROI Calculator</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
     <li><a href="#plays">Lifecycle Plays</a></li>
   </ul>
   <a href="#parts" class="nav-cta">Read Now →</a>
@@ -43,7 +43,7 @@
       <p class="hero-sub">A complete operating system for making retention predictable, expansion repeatable, and Customer Success a true revenue engine.</p>
       <div class="hero-actions">
         <a href="#parts" class="btn-primary">Explore the Book →</a>
-        <a href="#calculator" class="btn-secondary">↗ Run Your NRR Calc</a>
+        <a href="calculator.html" class="btn-secondary">↗ Run Your NRR Calc</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -75,7 +75,7 @@
         <div class="hero-card-title">AI-Enabled Lifecycle Plays</div>
         <div class="hero-card-text">Eight structured plays covering every customer inflection point at scale.</div>
       </div>
-      <div class="hero-card" onclick="location.href='#calculator'">
+      <div class="hero-card" onclick="location.href='calculator.html'">
         <div class="hero-card-label">Interactive Tool</div>
         <div class="hero-card-title">NRR Impact Calculator</div>
         <div class="hero-card-text">See how avoidable churn affects your revenue trajectory and exit valuation.</div>
@@ -221,75 +221,79 @@
   <div class="section-inner">
     <div class="section-header">
       <div class="section-tag">Interactive Tool</div>
-      <h2 class="headline section-title">NRR Impact Calculator</h2>
-      <p class="section-sub">See the compounding financial difference between avoidable and eliminated churn over 4 years.</p>
+      <h2 class="headline section-title">Retention &amp; Growth ROI Calculator</h2>
+      <p class="section-sub">Six interactive modules showing exactly what avoidable churn costs you — year one, over a decade, and at exit.</p>
     </div>
-    <div class="calc-shell">
-      <div class="calc-inputs">
-        <h3>Your Numbers</h3>
-        <p>Adjust the sliders to model your company's trajectory.</p>
-        <div class="field">
-          <label>Starting ARR</label>
-          <input type="range" id="arr" min="1" max="50" value="8" step="0.5" oninput="calcUpdate()"/>
-          <div class="field-value" id="arr-val">$8M</div>
+    <a href="calculator.html" style="display:block;text-decoration:none">
+      <div style="background:var(--navy);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);transition:transform var(--transition),box-shadow var(--transition)" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(26,46,66,.25)'" onmouseleave="this.style.transform='';this.style.boxShadow='var(--shadow-lg)'">
+        <div style="background:#1A2E42;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)">
+          <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,.35)">Retention &amp; Growth ROI Calculator</div>
+          <div style="display:flex;align-items:center;gap:6px;background:rgba(181,189,0,.12);border:1px solid rgba(181,189,0,.3);border-radius:20px;padding:3px 10px">
+            <div style="width:5px;height:5px;border-radius:50%;background:#B5BD00;animation:calcblink 2.2s ease-in-out infinite"></div>
+            <span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00">Live</span>
+          </div>
         </div>
-        <div class="field">
-          <label>Current NRR (%)</label>
-          <input type="range" id="current-nrr" min="70" max="115" value="90" step="1" oninput="calcUpdate()"/>
-          <div class="field-value" id="cnrr-val">90%</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);margin:1.5rem;border-radius:var(--radius-sm);overflow:hidden">
+          <div style="background:rgba(16,24,32,.6);padding:1.25rem">
+            <div style="font-size:0.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Required CAGR</div>
+            <div style="font-size:1.6rem;font-weight:900;color:#B5BD00;line-height:1">48.3%</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:0.25rem">to hit your revenue goal</div>
+          </div>
+          <div style="background:rgba(16,24,32,.6);padding:1.25rem">
+            <div style="font-size:0.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Year 1 Uplift</div>
+            <div style="font-size:1.6rem;font-weight:900;color:#fff;line-height:1">+$640K</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:0.25rem">120% vs. 90% NRR</div>
+          </div>
+          <div style="background:rgba(16,24,32,.6);padding:1.25rem">
+            <div style="font-size:0.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Valuation Delta</div>
+            <div style="font-size:1.6rem;font-weight:900;color:#fff;line-height:1">+$214M</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:0.25rem">at exit with target NRR</div>
+          </div>
         </div>
-        <div class="field">
-          <label>Target NRR — with CXology (%)</label>
-          <input type="range" id="target-nrr" min="100" max="140" value="120" step="1" oninput="calcUpdate()"/>
-          <div class="field-value" id="tnrr-val">120%</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:0 1.5rem 1rem">
+          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">01</div>
+            <div style="font-size:0.82rem;font-weight:600;color:#fff">Benchmark Comparison</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">Where you stand vs. B2B SaaS</div>
+          </div>
+          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">02</div>
+            <div style="font-size:0.82rem;font-weight:600;color:#fff">Year 1 Growth Rate</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">NRR impact from day one</div>
+          </div>
+          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">03</div>
+            <div style="font-size:0.82rem;font-weight:600;color:#fff">Cost of Churn (CAC)</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">The treadmill in dollars</div>
+          </div>
+          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">04</div>
+            <div style="font-size:0.82rem;font-weight:600;color:#fff">Sales Burden</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">What quota NRR carries for you</div>
+          </div>
+          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">05</div>
+            <div style="font-size:0.82rem;font-weight:600;color:#fff">Multi-Year Trajectory</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">Compounding gap over time</div>
+          </div>
+          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
+            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">06</div>
+            <div style="font-size:0.82rem;font-weight:600;color:#fff">Exit Valuation</div>
+            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">NRR's impact on what you're worth</div>
+          </div>
         </div>
-        <div class="field">
-          <label>Years to Model</label>
-          <input type="range" id="years" min="2" max="6" value="4" step="1" oninput="calcUpdate()"/>
-          <div class="field-value" id="years-val">4 years</div>
+        <div style="margin:0 1.5rem 1.5rem;padding:1rem 1.25rem;background:#B5BD00;border-radius:var(--radius-sm);display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:0.88rem;font-weight:700;color:#101820">Open the Full Calculator →</div>
+            <div style="font-size:0.75rem;color:rgba(16,24,32,.6)">Live sliders · 6 analysis modules · Benchmarks included</div>
+          </div>
+          <div style="font-size:1.4rem;color:#101820">↗</div>
         </div>
       </div>
-      <div class="calc-outputs">
-        <h3>Financial Impact</h3>
-        <div class="output-row">
-          <span class="output-label">ARR after <span id="out-years">4</span> years</span>
-          <div class="output-pair">
-            <div class="output-val current" id="out-arr-current">$36.9M</div>
-            <div class="output-val target" id="out-arr-target">$86.2M</div>
-          </div>
-        </div>
-        <div style="margin:0.75rem 0">
-          <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:4px">Current NRR</div>
-          <div style="background:var(--gray-100);border-radius:4px;overflow:hidden;height:8px">
-            <div class="calc-chart-bar" id="bar-current" style="background:var(--navy-light);width:40%"></div>
-          </div>
-          <div style="font-size:0.72rem;color:var(--text-muted);margin-top:8px;margin-bottom:4px">Target NRR</div>
-          <div style="background:var(--gray-100);border-radius:4px;overflow:hidden;height:8px">
-            <div class="calc-chart-bar" id="bar-target" style="background:var(--teal);width:87%"></div>
-          </div>
-        </div>
-        <div class="output-row">
-          <span class="output-label">Revenue uplift</span>
-          <div class="output-val target" id="out-uplift" style="color:var(--teal)">+$49.3M</div>
-        </div>
-        <div class="output-row">
-          <span class="output-label">Est. exit valuation (10× ARR)</span>
-          <div class="output-pair">
-            <div class="output-val current" id="out-val-current">$369M</div>
-            <div class="output-val target" id="out-val-target">$862M</div>
-          </div>
-        </div>
-        <div class="output-row">
-          <span class="output-label">Valuation delta</span>
-          <div class="output-val target" id="out-val-delta" style="color:var(--teal);font-size:1.3rem">+$493M</div>
-        </div>
-        <div class="calc-note">
-          Avoidable churn is the difference between these two paths. The pipeline doesn't stop at Closed-Won — it starts there.
-        </div>
-      </div>
-    </div>
+    </a>
   </div>
 </section>
+<style>@keyframes calcblink{0%,100%{opacity:1}50%{opacity:.25}}</style>
 
 <!-- LIFECYCLE PLAYS -->
 <section class="section" id="plays">
@@ -306,7 +310,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(197,212,78,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">🎉</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive)">Play 1</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Purchase & Welcome</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Purchase & Welcome</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">Reinforce the buying decision. Set expectations. Launch the relationship before the Kickoff.</div>
       </a>
 
@@ -315,7 +319,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(55,138,221,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">🚀</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--blue)">Play 2</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">The Kickoff</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">The Kickoff</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">Align two companies. Ask the Five Questions. Build momentum heading into onboarding.</div>
       </a>
 
@@ -324,7 +328,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(186,117,23,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">⚙️</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber)">Play 3</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Onboarding</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Onboarding</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">Six motions: Align, Configure, Connect, Verify, Transform, First Use. Escape the Big Bang trap.</div>
       </a>
 
@@ -333,7 +337,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(29,158,117,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">⭐</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal)">Play 4</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">First Value</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">First Value</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">The minimum viable win. Achieve it in two weeks. It is the canary in the coal mine for account health.</div>
       </a>
 
@@ -342,7 +346,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(83,74,183,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">🧱</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--purple)">Play 5</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Value Blocks</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Value Blocks</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">Navigate the messy middle. Lego-style packets. I Do → We Do → You Do delivery.</div>
       </a>
 
@@ -351,7 +355,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(216,90,48,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">💡</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--coral)">Play 6</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Sharing Insights</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Sharing Insights</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">The rudder on the ship. The 5-step formula that makes every Win Report land and expand reach.</div>
       </a>
 
@@ -360,7 +364,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(197,212,78,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">🎯</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive)">Play 7</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Alignment Meeting</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Alignment Meeting</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">Kill the passive QBR. Six-step active realignment. The Five Questions asked again every time.</div>
       </a>
 
@@ -369,7 +373,7 @@
           <div style="width:36px;height:36px;border-radius:8px;background:rgba(29,158,117,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem">🔄</div>
           <div style="font-size:0.68rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal)">Play 8</div>
         </div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Renew & Grow</div>
+        <div style="font-family:'Public Sans',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem">Renew & Grow</div>
         <div style="font-size:0.82rem;color:rgba(255,255,255,.4)">The renewal is never a surprise. License audit, expansion discovery, the obvious conclusion.</div>
       </a>
 
@@ -407,7 +411,7 @@
       <div>
         <div class="footer-col-title">Tools</div>
         <ul class="footer-links">
-          <li><a href="#calculator">NRR Calculator</a></li>
+          <li><a href="calculator.html">NRR Calculator</a></li>
           <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
           <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
         </ul>
@@ -421,43 +425,6 @@
 </footer>
 
 <script>
-// ─── CALCULATOR ────────────────────────────────────────────────────────────
-function fmt(n) {
-  if (n >= 1000) return '$' + (n/1000).toFixed(1) + 'B';
-  if (n >= 1) return '$' + n.toFixed(1) + 'M';
-  return '$' + (n * 1000).toFixed(0) + 'K';
-}
-function calcUpdate() {
-  const arr = parseFloat(document.getElementById('arr').value);
-  const cnrr = parseFloat(document.getElementById('current-nrr').value) / 100;
-  const tnrr = parseFloat(document.getElementById('target-nrr').value) / 100;
-  const years = parseInt(document.getElementById('years').value);
-
-  document.getElementById('arr-val').textContent = fmt(arr);
-  document.getElementById('cnrr-val').textContent = (cnrr * 100).toFixed(0) + '%';
-  document.getElementById('tnrr-val').textContent = (tnrr * 100).toFixed(0) + '%';
-  document.getElementById('years-val').textContent = years + ' years';
-  document.getElementById('out-years').textContent = years;
-
-  const currentArr = arr * Math.pow(cnrr, years);
-  const targetArr  = arr * Math.pow(tnrr, years);
-  const uplift = targetArr - currentArr;
-  const currentVal = currentArr * 10;
-  const targetVal  = targetArr * 10;
-  const valDelta = targetVal - currentVal;
-
-  document.getElementById('out-arr-current').textContent = fmt(currentArr);
-  document.getElementById('out-arr-target').textContent  = fmt(targetArr);
-  document.getElementById('out-uplift').textContent      = '+' + fmt(uplift);
-  document.getElementById('out-val-current').textContent = fmt(currentVal);
-  document.getElementById('out-val-target').textContent  = fmt(targetVal);
-  document.getElementById('out-val-delta').textContent   = '+' + fmt(valDelta);
-
-  const maxArr = arr * Math.pow(1.4, years);
-  document.getElementById('bar-current').style.width = Math.min(98, (currentArr / maxArr) * 98) + '%';
-  document.getElementById('bar-target').style.width  = Math.min(98, (targetArr  / maxArr) * 98) + '%';
-}
-calcUpdate();
 
 // ─── PLAY CARD HOVER ───────────────────────────────────────────────────────
 document.querySelectorAll('.play-card').forEach(card => {

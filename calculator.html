@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CXology — Retention & Growth ROI Calculator</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lime:       #B5BD00;
+  --lime-bg:    #EDEEBF;
+  --slate:      #5B7F95;
+  --navy:       #253746;
+  --bb:         #101820;
+  --slate-faint: rgba(91,127,149,0.13);
+  --white:      #ffffff;
+  --border:     rgba(37,55,70,0.11);
+  --border-md:  rgba(37,55,70,0.2);
+  --font: 'Public Sans', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--lime-bg);color:var(--bb);font-family:var(--font);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ── SITE NAV ── */
+.site-nav{background:#0F1C28;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid rgba(181,189,0,.12)}
+.site-nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.site-nav-mark{width:26px;height:26px;border-radius:6px;background:var(--lime);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#0F1C28}
+.site-nav-name{font-size:14px;font-weight:700;color:#fff;letter-spacing:.01em}
+.site-nav-back{font-size:12px;font-weight:500;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s}
+.site-nav-back:hover{color:var(--lime)}
+
+/* ── HEADER ── */
+.hdr{background:var(--navy);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:sticky;top:52px;z-index:100}
+.logo{display:flex;align-items:center;gap:10px}
+.hdr-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.48);letter-spacing:.03em}
+.live-pill{display:flex;align-items:center;gap:6px;background:rgba(181,189,0,.12);border:1px solid rgba(181,189,0,.3);border-radius:20px;padding:4px 11px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--lime);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:52px 40px 48px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:0;top:0;bottom:0;width:38%;background:repeating-linear-gradient(90deg,transparent,transparent 17px,rgba(181,189,0,.055) 17px,rgba(181,189,0,.055) 18px),repeating-linear-gradient(180deg,transparent,transparent 17px,rgba(181,189,0,.055) 17px,rgba(181,189,0,.055) 18px);pointer-events:none}
+.hero-eye{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--lime);margin-bottom:14px}
+.hero h1{font-size:38px;font-weight:900;line-height:1.08;color:#fff;max-width:560px;margin-bottom:16px}
+.hero h1 .ul{border-bottom:3px solid var(--lime);padding-bottom:2px}
+.hero-desc{font-size:15px;font-weight:300;color:rgba(255,255,255,.55);max-width:500px;line-height:1.7}
+
+/* ── SHELL ── */
+.shell{display:grid;grid-template-columns:296px 1fr}
+
+/* ── SIDEBAR ── */
+.sb{background:var(--navy);border-right:1px solid rgba(255,255,255,.06);padding:28px 22px 40px;position:sticky;top:108px;height:calc(100vh - 108px);overflow-y:auto}
+.sb::-webkit-scrollbar{width:3px}
+.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.sb-sec{margin-bottom:28px}
+.sb-lbl{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ig{margin-bottom:22px}
+.ir{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.il{font-size:13px;font-weight:500;color:rgba(255,255,255,.88)}
+.iv{font-size:14px;font-weight:700;color:var(--lime);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:rgba(255,255,255,.12);border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:#fff;cursor:pointer;border:2px solid var(--lime);transition:box-shadow .15s}
+input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 0 4px rgba(181,189,0,.2)}
+input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;background:#fff;border:2px solid var(--lime);cursor:pointer}
+.presets{display:flex;gap:4px;margin-top:9px}
+.pb{flex:1;padding:5px 2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:4px;font-family:var(--font);font-size:12px;font-weight:500;color:rgba(255,255,255,.45);cursor:pointer;transition:all .12s;text-align:center}
+.pb:hover{color:#fff;border-color:rgba(255,255,255,.22)}
+.pb.active{background:rgba(181,189,0,.1);border-color:rgba(181,189,0,.4);color:var(--lime);font-weight:700}
+.nw{position:relative}
+.nw input[type=number]{width:100%;padding:9px 42px 9px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);border-radius:5px;font-family:var(--font);font-size:14px;font-weight:500;color:#fff;outline:none;transition:border-color .15s}
+.nw input[type=number]:focus{border-color:rgba(181,189,0,.45)}
+.nu{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:11px;font-weight:600;color:rgba(255,255,255,.28);pointer-events:none}
+.adv-btn{display:flex;align-items:center;gap:7px;width:100%;background:none;border:none;border-top:1px solid rgba(255,255,255,.07);padding:12px 0 0;font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;transition:color .15s}
+.adv-btn:hover{color:rgba(255,255,255,.55)}
+.adv-chev{transition:transform .2s;font-size:9px}
+.adv-btn.open .adv-chev{transform:rotate(90deg)}
+.adv-body{overflow:hidden;max-height:0;transition:max-height .3s ease}
+.adv-body.open{max-height:420px}
+
+/* ── CONTENT ── */
+.content{padding:36px 40px 60px;background:var(--lime-bg)}
+
+/* ── STAT STRIP ── */
+.ss{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:32px}
+.sc{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:22px 22px 20px;position:relative;overflow:hidden}
+.sc.accent::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--lime);border-radius:0 0 8px 8px}
+.sc-lbl{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
+.sc-val{font-size:26px;font-weight:900;color:var(--bb);line-height:1;font-variant-numeric:tabular-nums;transition:all .3s}
+.sc-val.em{color:var(--navy)}
+.sc-sub{font-size:12px;font-weight:300;color:var(--slate);margin-top:5px}
+
+/* ── SECTION CARDS ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:28px 28px 24px;margin-bottom:16px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:24px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);background:var(--slate-faint);border-radius:3px;padding:4px 9px;white-space:nowrap;margin-top:2px;flex-shrink:0}
+.card-title{font-size:17px;font-weight:700;color:var(--bb);margin-bottom:5px}
+.card-desc{font-size:14px;font-weight:300;color:var(--slate);max-width:480px;line-height:1.65}
+
+/* ── BAR ROWS ── */
+.bc{display:flex;flex-direction:column;gap:12px}
+.br{display:grid;grid-template-columns:185px 1fr 90px;align-items:center;gap:14px}
+.bl{font-size:13px;font-weight:500;color:var(--slate);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bt{height:26px;background:var(--lime-bg);border-radius:3px;overflow:visible;position:relative}
+.cagr-needle{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--lime);border-radius:1px;transform:translateX(-50%);transition:left .55s cubic-bezier(.4,0,.2,1);z-index:2;pointer-events:none}
+.cagr-needle::after{content:attr(data-label);position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-family:var(--font);font-size:10px;font-weight:700;color:var(--lime);white-space:nowrap;letter-spacing:.03em}
+.bf{height:100%;border-radius:3px;transition:width .55s cubic-bezier(.4,0,.2,1);min-width:3px}
+.bf.c{background:var(--slate)}
+.bf.t{background:var(--navy)}
+.bf.pos{background:#4CAF87}
+.bf.neg{background:#C06B5A}
+.bm{font-size:14px;font-weight:700;color:var(--bb);text-align:right;font-variant-numeric:tabular-nums}
+.bm.em{color:var(--navy)}
+.bm.pos{color:#2D7A5C}
+.bm.neg{color:#A34A3A}
+.leg{display:flex;gap:20px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border);flex-wrap:wrap}
+.li{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:400;color:var(--slate)}
+.ls{width:14px;height:3px;border-radius:2px;flex-shrink:0}
+.ls.c{background:var(--slate)}
+.ls.t{background:var(--navy)}
+.ls.g{background:var(--lime)}
+
+/* ── BENCHMARK BAND ── */
+.bband{margin-top:22px}
+.bband-title{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--slate);margin-bottom:12px}
+.bband-track{position:relative;height:36px;background:var(--lime-bg);border-radius:6px;overflow:visible;margin-bottom:20px}
+.bband-seg{position:absolute;top:0;bottom:0;border-radius:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;letter-spacing:.04em;color:#fff;white-space:nowrap}
+.bband-seg:first-child{border-radius:6px 0 0 6px}
+.bband-seg:last-child{border-radius:0 6px 6px 0}
+.bband-seg.concern{background:#BC204B}
+.bband-seg.average{background:#924E8C}
+.bband-seg.good{background:#00BBDC}
+.bband-seg.great{background:#00B388}
+.bband-needle{position:absolute;top:-8px;bottom:-8px;width:3px;border-radius:2px;transform:translateX(-50%);transition:left .55s cubic-bezier(.4,0,.2,1);z-index:3}
+.bband-needle::before{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;white-space:nowrap;letter-spacing:.02em}
+.bband-needle.needle-c{background:#101820}
+.bband-needle.needle-c::before{content:attr(data-label);color:#101820}
+.bband-needle.needle-t{background:var(--lime)}
+.bband-needle.needle-t::before{content:attr(data-label);color:var(--lime)}
+.bband-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--slate);font-weight:500;margin-top:2px}
+.bband-your{margin-top:10px;font-size:13px;font-weight:600;color:var(--bb);text-align:center}
+.bband-your span{color:var(--lime)}
+
+/* ── STAT FACTS ROW ── */
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:22px}
+.fact{background:var(--white);padding:16px 18px}
+.fact-num{font-size:22px;font-weight:900;color:var(--navy);line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums}
+.fact-txt{font-size:12px;font-weight:300;color:var(--slate);line-height:1.55}
+
+/* ── NEW LOGO OFFSET ── */
+.nlo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
+.nlo-box{border:1px solid var(--border-md);border-radius:6px;padding:18px 20px}
+.nlo-box.hl{background:var(--navy);border-color:var(--navy)}
+.nlo-tag{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);margin-bottom:7px}
+.nlo-box.hl .nlo-tag{color:rgba(255,255,255,.4)}
+.nlo-val{font-size:22px;font-weight:900;color:var(--bb);font-variant-numeric:tabular-nums}
+.nlo-box.hl .nlo-val{color:#fff}
+.nlo-sub{font-size:12px;font-weight:300;color:var(--slate);margin-top:4px}
+.nlo-box.hl .nlo-sub{color:rgba(255,255,255,.38)}
+
+/* ── EXPANSION VS NEW ── */
+.burden-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.burden-box{border-radius:8px;padding:22px 22px 20px;position:relative;overflow:hidden}
+.burden-box.cur{background:var(--lime-bg);border:1px solid var(--border-md)}
+.burden-box.tgt{background:var(--navy)}
+.burden-box-tag{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:14px}
+.burden-box.cur .burden-box-tag{color:var(--slate)}
+.burden-box.tgt .burden-box-tag{color:rgba(255,255,255,.4)}
+.burden-lede{font-size:11px;font-weight:500;margin-bottom:6px}
+.burden-box.cur .burden-lede{color:var(--slate)}
+.burden-box.tgt .burden-lede{color:rgba(255,255,255,.45)}
+.burden-big{font-size:30px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums;margin-bottom:16px}
+.burden-box.cur .burden-big{color:var(--bb)}
+.burden-box.tgt .burden-big{color:#fff}
+.burden-track{height:14px;background:rgba(37,55,70,.1);border-radius:4px;overflow:hidden;margin-bottom:14px;position:relative}
+.burden-box.tgt .burden-track{background:rgba(255,255,255,.1)}
+.burden-fill{height:100%;border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.burden-fill.churn{background:#BC204B}
+.burden-fill.growth-c{background:var(--slate)}
+.burden-fill.growth-t{background:#00B388}
+.burden-breakdown{display:flex;flex-direction:column;gap:6px}
+.burden-line{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.burden-line-label{font-weight:400}
+.burden-line-val{font-weight:700;font-variant-numeric:tabular-nums}
+.burden-box.cur .burden-line-label{color:var(--slate)}
+.burden-box.cur .burden-line-val{color:var(--bb)}
+.burden-box.tgt .burden-line-label{color:rgba(255,255,255,.5)}
+.burden-box.tgt .burden-line-val{color:#fff}
+.burden-line-val.bad{color:#BC204B}
+.burden-line-val.good{color:#00B388}
+.burden-delta{margin-top:14px;background:var(--navy);border-radius:6px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.burden-delta-text{font-size:13px;font-weight:400;color:rgba(255,255,255,.65);line-height:1.5;max-width:360px}
+.burden-delta-text strong{color:#fff;font-weight:700}
+.burden-delta-num{text-align:right}
+.burden-delta-num .bd-val{font-size:28px;font-weight:900;color:var(--lime);font-variant-numeric:tabular-nums;display:block;line-height:1}
+.burden-delta-num .bd-sub{font-size:11px;font-weight:400;color:rgba(255,255,255,.4);margin-top:3px;display:block}
+
+/* ── CHART ── */
+.ch-wrap{height:230px;position:relative}
+
+/* ── VALUATION ── */
+.vg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.vb{border:1px solid var(--border-md);border-radius:6px;padding:18px 20px}
+.vb.tgt{background:var(--navy);border-color:var(--navy)}
+.vb-tag{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);margin-bottom:8px}
+.vb.tgt .vb-tag{color:rgba(255,255,255,.4)}
+.vb-amt{font-size:22px;font-weight:900;color:var(--bb);font-variant-numeric:tabular-nums;margin-bottom:4px}
+.vb.tgt .vb-amt{color:#fff}
+.vb-f{font-size:12px;font-weight:300;color:var(--slate)}
+.vb.tgt .vb-f{color:rgba(255,255,255,.38)}
+
+/* ── OPPORTUNITY ── */
+.opp{background:var(--navy);border-radius:8px;padding:36px;margin-bottom:16px;position:relative;overflow:hidden}
+.opp::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;border:35px solid rgba(181,189,0,.07);pointer-events:none}
+.opp-eye{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--lime);margin-bottom:8px}
+.opp-head{font-size:27px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:28px;max-width:500px}
+.opp-head .key{color:var(--lime)}
+.opp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:6px;overflow:hidden}
+.oc{background:rgba(16,24,32,.5);padding:18px 16px}
+.oc-lbl{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:7px}
+.oc-val{font-size:17px;font-weight:900;color:#fff;font-variant-numeric:tabular-nums}
+
+/* ── SOURCE CALLOUT ── */
+.src{margin-top:16px;padding:14px 18px;background:rgba(37,55,70,.06);border-left:3px solid var(--lime);border-radius:0 6px 6px 0}
+.src p{font-size:12px;font-weight:300;color:var(--slate);line-height:1.65}
+.src p strong{font-weight:600;color:var(--bb)}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:8px 0 20px}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);border-top:3px solid var(--lime);padding:20px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.fn{font-size:12px;font-weight:300;color:rgba(255,255,255,.32);max-width:620px}
+.fb{font-size:14px;font-weight:900;color:rgba(255,255,255,.45);letter-spacing:.04em;white-space:nowrap}
+
+/* ── RESPONSIVE ── */
+@media(max-width:880px){
+  .shell{grid-template-columns:1fr}
+  .sb{position:static;height:auto;top:auto}
+  .hero{padding:32px 20px}
+  .hero h1{font-size:26px}
+  .content{padding:24px 20px 48px}
+  .ss,.facts{grid-template-columns:1fr}
+  .opp-grid,.nlo-grid,.vg,.burden-grid{grid-template-columns:repeat(2,1fr)}
+  .br{grid-template-columns:110px 1fr 70px}
+  .hdr,.footer{padding:0 20px}
+  .footer{padding:16px 20px;flex-direction:column;text-align:center}
+  .site-nav{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="site-nav-logo">
+    <div class="site-nav-mark">C</div>
+    <span class="site-nav-name">CXology</span>
+  </a>
+  <a href="index.html" class="site-nav-back">← Back to the book</a>
+</nav>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="logo">
+    <span class="hdr-sub">Retention &amp; Growth ROI Calculator</span>
+  </div>
+  <div class="live-pill"><div class="live-dot"></div>Live</div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">The Financial Case for Customer Success</div>
+  <h1>Retention isn't a metric.<br>It's <span class="ul">compounding revenue.</span></h1>
+  <p class="hero-desc">A company can grow at 100% CAGR, maintain 90% retention, and still fall short of its potential. Enter your numbers to see exactly what's at stake — year one, over a decade, and at exit.</p>
+</div>
+
+<!-- SHELL -->
+<div class="shell">
+
+<!-- SIDEBAR -->
+<aside class="sb">
+  <div class="sb-sec">
+    <div class="sb-lbl">Revenue</div>
+    <div class="ig">
+      <div class="ir"><span class="il">Current ARR</span><span class="iv" id="d-arr">$2,000,000</span></div>
+      <div class="nw"><input type="number" id="i-arr" value="2000000" min="100000" max="500000000" step="100000"><span class="nu">USD</span></div>
+    </div>
+    <div class="ig">
+      <div class="ir"><span class="il">Revenue Goal</span><span class="iv" id="d-goal">$100,000,000</span></div>
+      <div class="nw"><input type="number" id="i-goal" value="100000000" min="500000" max="2000000000" step="1000000"><span class="nu">USD</span></div>
+    </div>
+  </div>
+
+  <div class="sb-sec">
+    <div class="sb-lbl">Retention</div>
+    <div class="ig">
+      <div class="ir"><span class="il">Current NRR</span><span class="iv" id="d-cnrr">90%</span></div>
+      <input type="range" id="i-cnrr" min="60" max="130" step="1" value="90">
+      <div class="presets">
+        <button class="pb" onclick="qs('i-cnrr','d-cnrr',70,'%',0.01)">70%</button>
+        <button class="pb" onclick="qs('i-cnrr','d-cnrr',80,'%',0.01)">80%</button>
+        <button class="pb active" onclick="qs('i-cnrr','d-cnrr',90,'%',0.01)">90%</button>
+        <button class="pb" onclick="qs('i-cnrr','d-cnrr',100,'%',0.01)">100%</button>
+      </div>
+    </div>
+    <div class="ig">
+      <div class="ir"><span class="il">Target NRR</span><span class="iv" id="d-tnrr">120%</span></div>
+      <input type="range" id="i-tnrr" min="70" max="160" step="1" value="120">
+      <div class="presets">
+        <button class="pb" onclick="qs('i-tnrr','d-tnrr',100,'%',0.01)">100%</button>
+        <button class="pb" onclick="qs('i-tnrr','d-tnrr',110,'%',0.01)">110%</button>
+        <button class="pb active" onclick="qs('i-tnrr','d-tnrr',120,'%',0.01)">120%</button>
+        <button class="pb" onclick="qs('i-tnrr','d-tnrr',130,'%',0.01)">130%</button>
+      </div>
+    </div>
+    <div class="ig">
+      <div class="ir"><span class="il">Years to Model</span><span class="iv" id="d-years">9</span></div>
+      <input type="range" id="i-years" min="3" max="20" step="1" value="9">
+    </div>
+  </div>
+
+  <button class="adv-btn" id="adv-btn" onclick="toggleAdv()">
+    <span class="adv-chev">▶</span> Advanced Inputs
+  </button>
+  <div class="adv-body" id="adv-body">
+    <div class="sb-sec" style="margin-top:18px">
+      <div class="ig">
+        <div class="ir"><span class="il">Valuation Multiple</span><span class="iv" id="d-mult">10×</span></div>
+        <input type="range" id="i-mult" min="2" max="30" step="1" value="10">
+      </div>
+      <div class="ig">
+        <div class="ir"><span class="il">CAC — New Customers</span><span class="iv" id="d-cacn">92%</span></div>
+        <input type="range" id="i-cacn" min="10" max="200" step="1" value="92">
+        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">% of first-year revenue (SaaS avg)</div>
+      </div>
+      <div class="ig">
+        <div class="ir"><span class="il">CAC — Upsells</span><span class="iv" id="d-cacu">15%</span></div>
+        <input type="range" id="i-cacu" min="1" max="50" step="1" value="15">
+      </div>
+      <div class="ig">
+        <div class="ir"><span class="il">Growth Rate Override</span><span class="iv" id="d-grow">Auto</span></div>
+        <input type="range" id="i-grow" min="0" max="100" step="1" value="0">
+        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">0 = derived from ARR goal</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- STAT STRIP -->
+  <div class="ss">
+    <div class="sc accent">
+      <div class="sc-lbl">Required CAGR to Hit Goal</div>
+      <div class="sc-val" id="s-cagr">—</div>
+      <div class="sc-sub">over <span id="s-yrs-a">9</span> years</div>
+    </div>
+    <div class="sc">
+      <div class="sc-lbl">Additional Revenue — Year 1</div>
+      <div class="sc-val em" id="s-yr1">—</div>
+      <div class="sc-sub">target vs. current NRR</div>
+    </div>
+    <div class="sc">
+      <div class="sc-lbl">Cumulative Opportunity (<span id="s-yrs-b">9</span> yrs)</div>
+      <div class="sc-val em" id="s-total">—</div>
+      <div class="sc-sub">additional ARR vs. current path</div>
+    </div>
+  </div>
+
+  <!-- 01 WHERE YOU STAND -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title">Where You Stand Against the Market</div>
+        <div class="card-desc">NRR benchmarks across B2B SaaS have never been more clearly defined. Top-quartile companies exceed 120%. The median sits at 106%. Anything below 100% means your existing base is shrinking — and every new logo you close is partially just filling that hole.</div>
+      </div>
+      <div class="tag">01 · Benchmarks</div>
+    </div>
+    <div class="bband">
+      <div class="bband-title">Your NRR vs. B2B SaaS Benchmarks (2025–2026)</div>
+      <div class="bband-track" id="bband-track" style="margin-bottom:32px">
+        <div class="bband-seg concern" style="left:0%;width:25%">Concerning<br>&lt;80%</div>
+        <div class="bband-seg average" style="left:25%;width:25%">Average<br>80–100%</div>
+        <div class="bband-seg good" style="left:50%;width:25%">Good<br>100–120%</div>
+        <div class="bband-seg great" style="left:75%;width:25%">Best-in-class<br>&gt;120%</div>
+        <div class="bband-needle needle-c" id="needle-c" data-label="" style="left:0%"></div>
+        <div class="bband-needle needle-t" id="needle-t" data-label="" style="left:0%"></div>
+      </div>
+      <div class="bband-labels"><span>60%</span><span>80%</span><span>100%</span><span>120%</span><span>140%</span></div>
+      <div class="bband-your">Current: <span id="band-c-lbl" style="color:var(--bb);font-weight:900">90%</span> &nbsp;→&nbsp; Target: <span id="band-t-lbl">120%</span></div>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="fact-num">2.5×</div><div class="fact-txt">High-NRR companies grow faster than low-NRR counterparts at the same revenue stage</div></div>
+      <div class="fact"><div class="fact-num">83%</div><div class="fact-txt">Higher median growth rate reported by companies in the top NRR quartile vs. the population median</div></div>
+      <div class="fact"><div class="fact-num">106%</div><div class="fact-txt">Median NRR across venture-backed B2B SaaS in 2025. Top quartile: above 120–130%</div></div>
+    </div>
+    <div class="src" style="margin-top:16px">
+      <p><strong>Benchmark sources:</strong> SaaS Capital (2025), ChartMogul Subscription Growth Benchmark (2024), Optifai Pipeline Study (2026), High Alpha 2025 SaaS Benchmarks Report. Enterprise median NRR: 118%. Mid-market: 108%. SMB: 97%.</p>
+    </div>
+  </div>
+
+  <!-- 02 YEAR 1 GROWTH -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title">Year 1 Growth Rate by NRR Scenario</div>
+        <div class="card-desc">Same starting ARR. Same ambition. Retention is the variable that separates the two trajectories from month one. At 90% NRR, 10% of your base leaves every year — that revenue must be replaced before you grow a single dollar.</div>
+      </div>
+      <div class="tag">02 · Year 1</div>
+    </div>
+    <div class="bc" style="margin-top:24px">
+      <div class="br">
+        <div class="bl" id="l-g-c">Current — 90% NRR</div>
+        <div class="bt"><div class="bf c" id="b-g-c" style="width:0%"></div><div class="cagr-needle" id="cagr-g-c" data-label=""></div></div>
+        <div class="bm" id="v-g-c">—</div>
+      </div>
+      <div class="br">
+        <div class="bl" id="l-g-t">Target — 120% NRR</div>
+        <div class="bt"><div class="bf t" id="b-g-t" style="width:0%"></div></div>
+        <div class="bm em" id="v-g-t">—</div>
+      </div>
+    </div>
+    <div class="leg">
+      <div class="li"><div class="ls c"></div>Current NRR scenario</div>
+      <div class="li"><div class="ls t"></div>Target NRR scenario</div>
+      <div class="li"><div class="ls g" style="width:2px;height:14px;border-radius:1px"></div>Required CAGR (<span id="leg-cagr">—</span>)</div>
+    </div>
+  </div>
+
+  <!-- 03 COST OF CHURN -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title">The Cost of Replacing Churned Revenue</div>
+        <div class="card-desc">Churn isn't just lost ARR — it forces you onto a treadmill. Every churned dollar must be replaced with new revenue at CAC that averages 92% of first-year revenue. Expansion from existing customers costs roughly 15%. The math is unambiguous.</div>
+      </div>
+      <div class="tag">03 · CAC</div>
+    </div>
+    <div class="bc">
+      <div class="br">
+        <div class="bl" id="l-c-c">Current — 90% NRR</div>
+        <div class="bt"><div class="bf c" id="b-c-c" style="width:0%"></div></div>
+        <div class="bm" id="v-c-c">—</div>
+      </div>
+      <div class="br">
+        <div class="bl" id="l-c-t">Target — 120% NRR</div>
+        <div class="bt"><div class="bf t" id="b-c-t" style="width:0%"></div></div>
+        <div class="bm em" id="v-c-t">—</div>
+      </div>
+    </div>
+    <div class="leg">
+      <div class="li"><div class="ls c"></div>Higher = more revenue consumed replacing churn</div>
+      <div class="li"><div class="ls t"></div>Lower = growth from existing customers at upsell CAC rate</div>
+    </div>
+    <div class="divider"></div>
+    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:12px">New Logos Needed to Offset Annual Churn</div>
+    <div class="nlo-grid">
+      <div class="nlo-box">
+        <div class="nlo-tag" id="l-nlo-c">Current — 90% NRR</div>
+        <div class="nlo-val" id="v-nlo-c">—</div>
+        <div class="nlo-sub">new logos/yr to stay flat</div>
+      </div>
+      <div class="nlo-box hl">
+        <div class="nlo-tag" id="l-nlo-t">Target — 120% NRR</div>
+        <div class="nlo-val" id="v-nlo-t">—</div>
+        <div class="nlo-sub">new logos/yr to stay flat (expansion covers the rest)</div>
+      </div>
+    </div>
+    <div class="src" style="margin-top:16px">
+      <p>Retaining and expanding an existing customer costs <strong>5× less</strong> than acquiring a new one. At 90% NRR, your sales team is perpetually subsidizing the retention problem. <em>Source: Fullview / SaaS Capital 2025.</em></p>
+    </div>
+  </div>
+
+  <!-- 04 SALES BURDEN -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title">What Your Sales Team Actually Has to Close</div>
+        <div class="card-desc">Your growth target is fixed. What changes with NRR is how much of it your existing base covers — and how much lands on your sales team's quota. Churn inflates that number. Expansion shrinks it. The difference is real pipeline.</div>
+      </div>
+      <div class="tag">04 · Sales Burden</div>
+    </div>
+    <div class="burden-grid">
+      <div class="burden-box cur">
+        <div class="burden-box-tag" id="l-b-c">Current NRR</div>
+        <div class="burden-lede">New ARR sales must close this year</div>
+        <div class="burden-big" id="v-burden-c">—</div>
+        <div class="burden-track">
+          <div class="burden-fill churn" id="b-churn-c" style="width:0%;display:inline-block;vertical-align:top"></div><div class="burden-fill growth-c" id="b-growth-c" style="width:0%;display:inline-block;vertical-align:top"></div>
+        </div>
+        <div class="burden-breakdown">
+          <div class="burden-line"><span class="burden-line-label">Growth target</span><span class="burden-line-val" id="v-growthtgt-c">—</span></div>
+          <div class="burden-line"><span class="burden-line-label">+ Replacing churn</span><span class="burden-line-val bad" id="v-churn-c">—</span></div>
+          <div class="burden-line" style="border-top:1px solid rgba(37,55,70,.15);padding-top:5px;margin-top:2px"><span class="burden-line-label" style="font-weight:600">= Total new logo requirement</span><span class="burden-line-val" style="font-size:13px" id="v-total-c">—</span></div>
+        </div>
+      </div>
+      <div class="burden-box tgt">
+        <div class="burden-box-tag" id="l-b-t">Target NRR</div>
+        <div class="burden-lede">New ARR sales must close this year</div>
+        <div class="burden-big" id="v-burden-t">—</div>
+        <div class="burden-track"><div class="burden-fill growth-t" id="b-growth-t" style="width:0%"></div></div>
+        <div class="burden-breakdown">
+          <div class="burden-line"><span class="burden-line-label">Growth target</span><span class="burden-line-val" id="v-growthtgt-t">—</span></div>
+          <div class="burden-line"><span class="burden-line-label">− Existing base covers</span><span class="burden-line-val good" id="v-expansion-t">—</span></div>
+          <div class="burden-line" style="border-top:1px solid rgba(255,255,255,.12);padding-top:5px;margin-top:2px"><span class="burden-line-label" style="font-weight:600">= Total new logo requirement</span><span class="burden-line-val" style="font-size:13px" id="v-total-t">—</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="burden-delta">
+      <div class="burden-delta-text">At target NRR, your sales team closes <strong id="v-delta-pct">—</strong> less new business to hit the same goal — every single year. That's quota your existing base is carrying for you.</div>
+      <div class="burden-delta-num">
+        <span class="bd-val" id="v-delta-arr">—</span>
+        <span class="bd-sub">less in new ARR required / year</span>
+      </div>
+    </div>
+    <div class="src" style="margin-top:14px">
+      <p>Acquiring a new customer costs <strong>5× more</strong> than expanding an existing one. At scale, top B2B companies generate over <strong>50% of new ARR from upsells</strong>. <em>Source: SaaS Capital / B2B Customer Retention Statistics 2025.</em></p>
+    </div>
+  </div>
+
+  <!-- 05 MULTI-YEAR TRAJECTORY -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title">Revenue Trajectory Over <span id="t-yrs">9</span> Years</div>
+        <div class="card-desc">Compounding works both ways. The NRR gap doesn't grow linearly — it accelerates. The area between these two lines is the cost of inaction.</div>
+      </div>
+      <div class="tag">05 · Trajectory</div>
+    </div>
+    <div class="ch-wrap"><canvas id="lineChart"></canvas></div>
+    <div class="leg" style="margin-top:20px">
+      <div class="li"><div class="ls c"></div>Current NRR trajectory</div>
+      <div class="li"><div class="ls t"></div>Target NRR trajectory</div>
+      <div class="li"><div class="ls g"></div>Revenue gap (your opportunity)</div>
+    </div>
+  </div>
+
+  <!-- 06 VALUATION -->
+  <div class="card">
+    <div class="card-head">
+      <div>
+        <div class="card-title">Estimated Exit Valuation</div>
+        <div class="card-desc">NRR directly moves three valuation levers: ARR, growth rate, and retention quality. Investors know this. A company at 120% NRR can command a 2–3× premium multiple versus the same ARR at 95% NRR.</div>
+      </div>
+      <div class="tag">06 · Valuation</div>
+    </div>
+    <div class="vg">
+      <div class="vb"><div class="vb-tag">Current NRR — Valuation</div><div class="vb-amt" id="v-cur">—</div><div class="vb-f" id="v-cur-f">Multiple × ARR × Growth × NRR</div></div>
+      <div class="vb tgt"><div class="vb-tag">Target NRR — Valuation</div><div class="vb-amt" id="v-tgt">—</div><div class="vb-f" id="v-tgt-f">Multiple × ARR × Growth × NRR</div></div>
+    </div>
+    <div class="bc">
+      <div class="br"><div class="bl" id="l-v-c">Current NRR</div><div class="bt"><div class="bf c" id="b-v-c" style="width:0%"></div></div><div class="bm" id="m-v-c">—</div></div>
+      <div class="br"><div class="bl" id="l-v-t">Target NRR</div><div class="bt"><div class="bf t" id="b-v-t" style="width:0%"></div></div><div class="bm em" id="m-v-t">—</div></div>
+    </div>
+    <div class="src" style="margin-top:16px">
+      <p>Formula: <strong>Multiple × Final ARR × Growth Rate × NRR</strong>. Adjust the multiple in Advanced Inputs for your specific situation. <em>Source: Fullview, SaaS Capital 2025.</em></p>
+    </div>
+  </div>
+
+  <!-- OPPORTUNITY SUMMARY -->
+  <div class="opp">
+    <div class="opp-eye">Opportunity Summary</div>
+    <div class="opp-head">Closing this gap unlocks <span class="key" id="o-yr1">—</span> in additional revenue this year alone.</div>
+    <div class="opp-grid">
+      <div class="oc"><div class="oc-lbl">Additional Revenue / Year</div><div class="oc-val" id="o-rev">—</div></div>
+      <div class="oc"><div class="oc-lbl">Additional Growth Rate</div><div class="oc-val" id="o-gr">—</div></div>
+      <div class="oc"><div class="oc-lbl">Additional ARR Over <span id="o-yrs">9</span> Years</div><div class="oc-val" id="o-arr">—</div></div>
+      <div class="oc"><div class="oc-lbl">Valuation Uplift at Exit</div><div class="oc-val" id="o-val">—</div></div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<footer class="footer">
+  <div class="fn">Valuation = Multiple × Final ARR × Growth Rate × NRR &nbsp;·&nbsp; CAC benchmark: 92% of first-year revenue &nbsp;·&nbsp; Benchmark data: SaaS Capital, ChartMogul, High Alpha, Optifai (2025–2026) &nbsp;·&nbsp; Results are illustrative, not financial projections.</div>
+  <div class="fb">CXology</div>
+</footer>
+
+<script>
+const S={arr:2000000,goal:100000000,cnrr:.9,tnrr:1.2,years:9,multiple:10,cacNew:.92,cacUp:.15,growOverride:0};
+let chart=null,dT;
+function f$(n){const a=Math.abs(n),s=n<0?'-':'';if(a>=1e9)return s+'$'+(a/1e9).toFixed(2)+'B';if(a>=1e6)return s+'$'+(a/1e6).toFixed(2)+'M';if(a>=1e3)return s+'$'+(a/1e3).toFixed(0)+'K';return s+'$'+Math.round(a).toLocaleString()}
+function pct(n,d=1){return(n*100).toFixed(d)+'%'}
+function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
+function setW(id,p){const e=document.getElementById(id);if(e)e.style.width=Math.min(100,Math.max(0,p*100))+'%'}
+function db(fn,ms=80){clearTimeout(dT);dT=setTimeout(fn,ms)}
+function compute(){
+  const{arr,goal,cnrr,tnrr,years,multiple,cacNew,cacUp,growOverride}=S;
+  const cagr=growOverride>0?growOverride/100:Math.pow(goal/arr,1/years)-1;
+  const cmgr=Math.pow(1+cagr,1/12)-1;
+  function mc(nrr){const c=1-nrr;return c>=1?1:1-Math.pow(1-c,1/12)}
+  function sim(start,mc,mg){let a=start;for(let i=0;i<12;i++)a=a*(1-mc)*(1+mg);return a}
+  const mcC=mc(cnrr),mcT=mc(tnrr);
+  const cY1=sim(arr,mcC,cmgr),tY1=sim(arr,mcT,cmgr);
+  const cGR=(cY1-arr)/arr,tGR=(tY1-arr)/arr;
+  function proj(y1,ac){const r=[arr,y1];for(let y=2;y<years;y++)r.push(Math.max(0,r[r.length-1]*(1+cagr)-r[r.length-1]*ac));return r}
+  const cP=proj(cY1,1-cnrr),tP=proj(tY1,1-tnrr);
+  function cacR(y1){const rG=y1-arr,d=rG-(-arr),c=d<0?(-d*cacNew)+((-arr)*cacNew):(d*cacUp)+((-arr)*cacNew);return rG!==0?Math.abs(c/rG):0}
+  const cacC=cacR(cY1),cacT=cacR(tY1);
+  const cF=cP[cP.length-1],tF=tP[tP.length-1];
+  const cV=multiple*cF*Math.abs(cGR)*cnrr,tV=multiple*tF*Math.abs(tGR)*tnrr;
+  const newLogoNeedC=arr*(1-cnrr)/arr,newLogoNeedT=Math.max(0,arr*(1-tnrr))/arr;
+  const growthTarget=arr*cagr,churnDrag=arr*Math.max(0,1-cnrr),expansionLift=arr*Math.max(0,tnrr-1);
+  const newBurdenC=growthTarget+churnDrag,newBurdenT=Math.max(0,growthTarget-expansionLift);
+  const burdenReduction=newBurdenC-newBurdenT,burdenReductionPct=newBurdenC>0?burdenReduction/newBurdenC:0;
+  return{cagr,cY1,tY1,cGR,tGR,cP,tP,cF,tF,cacC,cacT,cV,tV,
+    yr1D:tY1-cY1,totD:tP.reduce((s,v,i)=>s+v-cP[i],0),valD:tV-cV,
+    newLogoNeedC,newLogoNeedT,growthTarget,churnDrag,expansionLift,newBurdenC,newBurdenT,burdenReduction,burdenReductionPct};
+}
+function render(){
+  const r=compute();
+  const cL=`Current — ${pct(S.cnrr,0)} NRR`,tL=`Target — ${pct(S.tnrr,0)} NRR`;
+  set('s-cagr',pct(r.cagr));set('s-yrs-a',S.years);set('s-yrs-b',S.years);
+  set('s-yr1',f$(r.yr1D));set('s-total',f$(r.totD));
+  const bandMin=60,bandMax=140,bandRange=bandMax-bandMin;
+  const posC=(Math.min(99,Math.max(1,(S.cnrr*100-bandMin)/bandRange*100))).toFixed(1)+'%';
+  const posT=(Math.min(99,Math.max(1,(S.tnrr*100-bandMin)/bandRange*100))).toFixed(1)+'%';
+  const nc=document.getElementById('needle-c'),nt=document.getElementById('needle-t');
+  if(nc){nc.style.left=posC;nc.setAttribute('data-label','Current: '+pct(S.cnrr,0));}
+  if(nt){nt.style.left=posT;nt.setAttribute('data-label','Target: '+pct(S.tnrr,0));}
+  set('band-c-lbl',pct(S.cnrr,0));set('band-t-lbl',pct(S.tnrr,0));
+  ['l-g-c','l-c-c','l-v-c'].forEach(id=>set(id,cL));
+  ['l-g-t','l-c-t','l-v-t'].forEach(id=>set(id,tL));
+  set('l-nlo-c',cL);set('l-nlo-t',tL);set('t-yrs',S.years);set('o-yrs',S.years);
+  const mG=Math.max(Math.abs(r.cGR),Math.abs(r.tGR),r.cagr,.001);
+  setW('b-g-c',Math.abs(r.cGR)/mG);setW('b-g-t',Math.abs(r.tGR)/mG);
+  set('v-g-c',pct(r.cGR));set('v-g-t',pct(r.tGR));
+  const cagrPos=Math.min(99,Math.max(1,(r.cagr/mG)*100)).toFixed(1)+'%';
+  const el=document.getElementById('cagr-g-c');
+  if(el){el.style.left=cagrPos;el.setAttribute('data-label','Goal: '+pct(r.cagr));}
+  set('leg-cagr',pct(r.cagr));
+  const mC=Math.max(r.cacC,r.cacT,.001);
+  setW('b-c-c',r.cacC/mC);setW('b-c-t',r.cacT/mC);
+  set('v-c-c',pct(r.cacC,0));set('v-c-t',pct(r.cacT,0));
+  set('v-nlo-c',pct(r.newLogoNeedC,0)+' of ARR');
+  set('v-nlo-t',S.tnrr>=1?'0% (expansion covers churn)':pct(r.newLogoNeedT,0)+' of ARR');
+  set('l-b-c',`Current — ${pct(S.cnrr,0)} NRR`);set('l-b-t',`Target — ${pct(S.tnrr,0)} NRR`);
+  set('v-burden-c',f$(r.newBurdenC));set('v-burden-t',f$(r.newBurdenT));
+  set('v-growthtgt-c',f$(r.growthTarget));set('v-growthtgt-t',f$(r.growthTarget));
+  set('v-churn-c','+'+f$(r.churnDrag));set('v-expansion-t',f$(r.expansionLift));
+  set('v-total-c',f$(r.newBurdenC));set('v-total-t',f$(r.newBurdenT));
+  set('v-delta-arr',f$(r.burdenReduction));set('v-delta-pct',pct(r.burdenReductionPct,0));
+  const maxB=Math.max(r.newBurdenC,r.newBurdenT,1);
+  const ec=document.getElementById('b-churn-c'),eg=document.getElementById('b-growth-c'),et=document.getElementById('b-growth-t');
+  if(ec)ec.style.width=(r.churnDrag/maxB*100).toFixed(1)+'%';
+  if(eg)eg.style.width=(r.growthTarget/maxB*100).toFixed(1)+'%';
+  if(et)et.style.width=(r.newBurdenT/maxB*100).toFixed(1)+'%';
+  renderChart(r);
+  set('v-cur',f$(r.cV));set('v-tgt',f$(r.tV));
+  set('v-cur-f',`${S.multiple}× × ${f$(r.cF)} × ${pct(r.cGR)} × ${pct(S.cnrr,0)}`);
+  set('v-tgt-f',`${S.multiple}× × ${f$(r.tF)} × ${pct(r.tGR)} × ${pct(S.tnrr,0)}`);
+  const mV=Math.max(r.cV,r.tV,1);
+  setW('b-v-c',r.cV/mV);setW('b-v-t',r.tV/mV);set('m-v-c',f$(r.cV));set('m-v-t',f$(r.tV));
+  set('o-yr1',f$(r.yr1D));set('o-rev',f$(r.yr1D));
+  set('o-gr','+'+pct(r.tGR-r.cGR));set('o-arr',f$(r.totD));set('o-val',f$(r.valD));
+}
+function renderChart(r){
+  const labels=r.cP.map((_,i)=>i===0?'Start':`Y${i}`);
+  const gap=r.tP.map((v,i)=>v-r.cP[i]);
+  const ds=[
+    {label:'Current NRR',data:r.cP,borderColor:'#5B7F95',backgroundColor:'rgba(91,127,149,.08)',borderWidth:2,pointRadius:2.5,pointBackgroundColor:'#5B7F95',fill:true,tension:.35},
+    {label:'Target NRR',data:r.tP,borderColor:'#253746',backgroundColor:'rgba(37,55,70,.08)',borderWidth:2,pointRadius:2.5,pointBackgroundColor:'#253746',fill:true,tension:.35},
+    {label:'Revenue Gap',data:gap,borderColor:'#B5BD00',backgroundColor:'transparent',borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false,tension:.35}
+  ];
+  if(chart){chart.data.labels=labels;ds.forEach((d,i)=>{chart.data.datasets[i].data=d.data;});chart.update('none');return}
+  chart=new Chart(document.getElementById('lineChart').getContext('2d'),{
+    type:'line',data:{labels,datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,animation:{duration:360},
+      plugins:{legend:{display:false},tooltip:{backgroundColor:'#253746',titleColor:'rgba(255,255,255,.45)',bodyColor:'#fff',borderColor:'rgba(255,255,255,.1)',borderWidth:1,titleFont:{family:"'Public Sans'",size:10,weight:'700'},bodyFont:{family:"'Public Sans'",size:12,weight:'700'},callbacks:{label:ctx=>` ${ctx.dataset.label}: ${f$(ctx.raw)}`}}},
+      scales:{x:{grid:{color:'rgba(37,55,70,.07)',drawBorder:false},ticks:{color:'#5B7F95',font:{family:"'Public Sans'",size:10,weight:'500'}}},y:{grid:{color:'rgba(37,55,70,.07)',drawBorder:false},ticks:{color:'#5B7F95',font:{family:"'Public Sans'",size:10,weight:'500'},callback:v=>f$(v)}}}}
+  });
+}
+function qs(sId,dId,val,sfx,mult){
+  const el=document.getElementById(sId);el.value=val;el.dispatchEvent(new Event('input'));
+}
+function toggleAdv(){document.getElementById('adv-btn').classList.toggle('open');document.getElementById('adv-body').classList.toggle('open')}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('i-arr').addEventListener('input',e=>{S.arr=parseFloat(e.target.value)||0;set('d-arr','$'+Math.round(S.arr).toLocaleString());db(render,180)});
+  document.getElementById('i-goal').addEventListener('input',e=>{S.goal=parseFloat(e.target.value)||0;set('d-goal','$'+Math.round(S.goal).toLocaleString());db(render,180)});
+  [['i-cnrr','d-cnrr','cnrr',.01,v=>v+'%'],
+   ['i-tnrr','d-tnrr','tnrr',.01,v=>v+'%'],
+   ['i-years','d-years','years',1,v=>String(v)],
+   ['i-mult','d-mult','multiple',1,v=>v+'×'],
+   ['i-cacn','d-cacn','cacNew',.01,v=>v+'%'],
+   ['i-cacu','d-cacu','cacUp',.01,v=>v+'%'],
+   ['i-grow','d-grow','growOverride',1,v=>v===0?'Auto':v+'%']
+  ].forEach(([id,did,key,mult,fmt])=>{
+    document.getElementById(id).addEventListener('input',e=>{
+      const v=parseFloat(e.target.value);S[key]=v*mult;set(did,fmt(v));db(render);
+    });
+  });
+  render();
+});
+</script>
+</body>
+</html>
