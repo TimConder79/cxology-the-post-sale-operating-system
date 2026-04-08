@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Post-Sale Journey Map — CXology</title>
+  <meta name="description" content="Twelve months. Eight rows. The complete CXology post-sale system for predictable retention. By Tim Conder."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+    /* Page-specific additions only — core styles come from style.css */
+
+    /* Reading progress bar — same as chapter.html */
+    .reading-progress {
+      position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+      height: 3px; background: rgba(255,255,255,.06);
+    }
+    .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
+
+    /* ── ARTIFACT SHELL ───────────────────────────────────────────────── */
+    .artifact-shell {
+      background: #0a1520;
+      border-top: 1px solid rgba(197,212,78,.1);
+      border-bottom: 1px solid rgba(197,212,78,.1);
+    }
+    .artifact-topbar {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .artifact-meta { display: flex; align-items: center; gap: 1rem; }
+    .artifact-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,.3);
+    }
+    .artifact-badge {
+      display: flex; align-items: center; gap: 5px;
+      background: rgba(197,212,78,.1); border: 1px solid rgba(197,212,78,.2);
+      border-radius: 100px; padding: 3px 10px;
+    }
+    .artifact-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--olive); animation: ablink 2.2s ease-in-out infinite; }
+    @keyframes ablink { 0%,100%{opacity:1} 50%{opacity:.2} }
+    .artifact-badge span { font-size: 0.65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--olive); }
+    .artifact-actions { display: flex; gap: 0.6rem; }
+    .artifact-btn {
+      font-size: 0.75rem; font-weight: 600; padding: 7px 16px; border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.65); cursor: pointer; transition: all var(--transition);
+      text-decoration: none; display: inline-block;
+    }
+    .artifact-btn:hover { background: rgba(255,255,255,.1); color: var(--white); border-color: rgba(255,255,255,.25); }
+    .artifact-btn.primary { background: rgba(197,212,78,.1); border-color: rgba(197,212,78,.3); color: var(--olive); }
+    .artifact-btn.primary:hover { background: rgba(197,212,78,.18); }
+
+    /* Scroll container */
+    .diagram-scroll { width: 100%; overflow-x: auto; cursor: grab; -webkit-overflow-scrolling: touch; background: #0d1b28; user-select: none; }
+    .diagram-scroll:active { cursor: grabbing; }
+    .diagram-scroll::-webkit-scrollbar { height: 3px; }
+    .diagram-scroll::-webkit-scrollbar-track { background: #0a1520; }
+    .diagram-scroll::-webkit-scrollbar-thumb { background: rgba(197,212,78,.3); border-radius: 2px; }
+    .diagram-scroll-inner { min-width: 1400px; padding: 1.5rem 2rem; }
+    .diagram-scroll-inner img { width: 100%; height: auto; display: block; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,.06); }
+
+    /* Legend */
+    .diagram-legend { display: flex; align-items: center; overflow-x: auto; padding: 0.875rem 2rem; border-top: 1px solid rgba(255,255,255,.05); background: rgba(8,15,22,.9); }
+    .diagram-legend::-webkit-scrollbar { display: none; }
+    .legend-item { display: flex; align-items: center; gap: 7px; padding: 0 1.1rem; border-right: 1px solid rgba(255,255,255,.07); flex-shrink: 0; }
+    .legend-item:first-child { padding-left: 0; }
+    .legend-item:last-child { border-right: none; }
+    .legend-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .legend-text { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,.38); white-space: nowrap; }
+
+    /* ── CHAPTER BODY EXTENSIONS ──────────────────────────────────────── */
+    /* Stage cards (dark) */
+    .stage-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .stage-card { background: var(--navy-deep); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; transition: all var(--transition); }
+    .stage-card:hover { transform: translateY(-3px); border-color: rgba(197,212,78,.2); box-shadow: var(--shadow); }
+    .stage-card-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
+    .stage-card-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .stage-card-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .stage-card-title { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--white); margin-bottom: 0.25rem; }
+    .stage-card-timing { font-size: 0.72rem; color: rgba(255,255,255,.3); margin-bottom: 0.6rem; }
+    .stage-card p { font-size: 0.82rem; color: rgba(255,255,255,.4); line-height: 1.6; margin: 0; max-width: 100%; }
+
+    /* Row breakdown — inside .visual-block (light bg) */
+    .row-breakdown { margin-top: 0.5rem; }
+    .row-item { display: grid; grid-template-columns: 130px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--gray-200); align-items: start; }
+    .row-item:last-child { border-bottom: none; }
+    .row-label-col { padding-top: 2px; }
+    .row-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 5px; }
+    .row-bar { width: 20px; height: 3px; border-radius: 2px; margin-top: 4px; }
+    .row-content h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+    .row-content p { font-size: 0.88rem; color: var(--gray-700); line-height: 1.65; margin: 0; max-width: 100%; }
+
+    /* Impact table */
+    .impact-table-wrap { margin: 1.5rem 0; overflow-x: auto; }
+    .impact-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .impact-table th { text-align: left; padding: 10px 12px; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); border-bottom: 2px solid var(--gray-100); }
+    .impact-table td { padding: 11px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); vertical-align: top; line-height: 1.5; }
+    .impact-table tr:last-child td { border-bottom: none; }
+    .impact-table td:first-child { color: var(--navy); font-weight: 600; }
+    .impact-pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; }
+    .pill-danger { background: rgba(216,90,48,.1); color: var(--coral); }
+    .pill-warn   { background: rgba(186,117,23,.1); color: var(--amber); }
+    .pill-success{ background: var(--teal-pale); color: var(--teal); }
+
+    /* Chapter prev/next — matches chapter.html button layout */
+    .chapter-nav-strip {
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      border-top: 2px solid var(--gray-100); padding-top: 2rem; margin-top: 1rem;
+    }
+    .chapter-nav-btn { display: flex; flex-direction: column; gap: 3px; text-decoration: none; }
+    .chapter-nav-dir { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+    .chapter-nav-title { font-size: 0.9rem; font-weight: 600; color: var(--navy); transition: color var(--transition); }
+    .chapter-nav-btn:hover .chapter-nav-title { color: var(--teal); }
+    .chapter-nav-btn.right { text-align: right; }
+
+    /* Zoom modal */
+    .zoom-modal { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(8,14,20,.97); flex-direction: column; }
+    .zoom-modal.open { display: flex; }
+    .zoom-bar { position: sticky; top: 0; z-index: 2; background: rgba(10,18,26,.98); border-bottom: 1px solid rgba(255,255,255,.07); padding: 0.875rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+    .zoom-bar-info { display: flex; flex-direction: column; gap: 2px; }
+    .zoom-bar-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+    .zoom-bar-hint { font-size: 0.72rem; color: rgba(255,255,255,.2); }
+    .zoom-close { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); color: rgba(255,255,255,.6); padding: 6px 16px; border-radius: var(--radius-sm); font-size: 0.78rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all var(--transition); }
+    .zoom-close:hover { background: rgba(255,255,255,.12); color: var(--white); }
+    .zoom-body { flex: 1; overflow: auto; padding: 2rem; cursor: grab; }
+    .zoom-body:active { cursor: grabbing; }
+    .zoom-body img { width: 2600px; max-width: none; height: auto; display: block; margin: 0 auto; border-radius: var(--radius-sm); }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 640px) {
+      .row-item { grid-template-columns: 1fr; gap: 0.25rem; }
+      .row-label-col { display: flex; align-items: center; gap: 8px; }
+      .row-bar { margin-top: 0; }
+      .chapter-nav-strip { flex-direction: column; align-items: flex-start; }
+      .chapter-nav-btn.right { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV — exact match to frameworks.html and chapter.html -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">CXology</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">The Book</a></li>
+    <li><a href="index.html#frameworks">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="index.html#plays">Lifecycle Plays</a></li>
+  </ul>
+  <a href="index.html" class="nav-cta">← Back to Book</a>
+  <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- CHAPTER HERO — uses .chapter-hero, .chapter-hero-inner, .chapter-num, .headline from style.css -->
+<div class="chapter-hero">
+  <div class="hero-grid"></div>
+  <div class="chapter-hero-inner">
+    <span class="chapter-num">Part II · The Pipeline · Core Framework</span>
+    <h1 class="headline">The Post-Sale Journey Map</h1>
+    <p class="chapter-hero-sub">Twelve months. Eight rows. Every gap where customers are lost — and every lever to prevent it.</p>
+  </div>
+</div>
+
+
+<!-- ARTIFACT -->
+<div class="artifact-shell">
+  <div class="artifact-topbar">
+    <div class="artifact-meta">
+      <span class="artifact-label">CXology · Post-Sale Journey Map · Full System View</span>
+      <div class="artifact-badge">
+        <div class="artifact-badge-dot"></div>
+        <span>Interactive</span>
+      </div>
+    </div>
+    <div class="artifact-actions">
+      <button class="artifact-btn primary" id="btn-zoom">⤢ Full Screen</button>
+      <a class="artifact-btn" href="journey_map.jpg" download="CXology-Post-Sale-Journey-Map.jpg">↓ Download</a>
+    </div>
+  </div>
+
+  <div class="diagram-scroll" id="diagramScroll">
+    <div class="diagram-scroll-inner">
+      <img src="journey_map.jpg" id="diagramImg" draggable="false"
+        alt="CXology Post-Sale Journey Map — 12-month system showing customer thinking, inflection points, service blueprint, loyalty blockers and builders, health signals, and improvement opportunities from purchase through renewal."/>
+    </div>
+  </div>
+
+  <div class="diagram-legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#9fe1cb"></div><span class="legend-text">Journey Stages</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#fac775"></div><span class="legend-text">Customer Thinking</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#85b7eb"></div><span class="legend-text">Service Blueprint</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f0997b"></div><span class="legend-text">Loyalty Blockers</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5dcaa5"></div><span class="legend-text">Loyalty Builders</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#afa9ec"></div><span class="legend-text">Touchpoints</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#97c459"></div><span class="legend-text">Health &amp; Signals</span></div>
+    <div class="legend-item"><div class="legend-dot" style="background:#ef9f27"></div><span class="legend-text">Improvement Opps</span></div>
+  </div>
+</div>
+
+
+<!-- CHAPTER BODY — uses .chapter-body, .chapter-section, .callout, .visual-block from style.css -->
+<div class="chapter-body">
+
+  <div class="chapter-section reveal">
+    <h2>The system behind the relationship</h2>
+    <p>Most post-sale teams operate without a map. They have processes — onboarding checklists, QBR templates, renewal reminders — but no unified view of how a customer moves from "just signed" to "fully adopted, expanded, and renewed." That gap is where retention dies.</p>
+    <p>This artifact is the CXology Post-Sale Journey Map. It documents the entire 12-month customer lifecycle as a system: what the customer is thinking at each stage, where they're most likely to disengage, what your team needs to execute internally, and which signals tell you whether the relationship is healthy or at risk.</p>
+    <div class="callout"><p>Retention is not an outcome you hope for. It is a system you design, execute, and measure.</p></div>
+    <p>Every element on this map reflects how retention actually fails — and what it takes to prevent that failure at scale.</p>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2>Eight rows. One revenue pipeline.</h2>
+    <p>The map reads left to right — Month 1 through Month 12 — and top to bottom across eight functional rows. Each row answers a different question about the customer relationship. Read them together and you see the full picture. Read any single row in isolation and you're managing a symptom, not the system.</p>
+    <div class="visual-block">
+      <div class="visual-block-title">The 8 System Rows</div>
+      <div class="row-breakdown">
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 01</div><div class="row-bar" style="background:#fac775"></div></div>
+          <div class="row-content"><h4>Customer Thinking</h4><p>What is running through the customer's mind at each point. Month 1: "Did I make the right decision?" Month 6: "Is this worth what I'm paying?" Month 12: "Should I renew?" This row drives behavior — if you don't know what it says, you're flying blind.</p></div>
+        </div>
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 02</div><div class="row-bar" style="background:#9fe1cb"></div></div>
+          <div class="row-content"><h4>Customer Inflection Points</h4><p>The eight moments where loyalty is built or broken. These are not random touchpoints — they are predictable forks in the relationship. Miss one and you're recovering from it for months. Hit them with precision and the renewal becomes a formality.</p></div>
+        </div>
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 03</div><div class="row-bar" style="background:#b4b2a9"></div></div>
+          <div class="row-content"><h4>Customer Journey</h4><p>The observable behavioral path — what the customer is doing in the product and with your team at each stage. Adoption curves, usage patterns, escalation moments. This is the data layer that informs everything else.</p></div>
+        </div>
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 04</div><div class="row-bar" style="background:#f0997b"></div></div>
+          <div class="row-content"><h4>Loyalty Blockers</h4><p>The friction points that stop customers from getting value. Misaligned expectations. Poor internal communication. No defined success metric. Dependent teams not adopting. Every blocker on this map is something your team either created or failed to prevent.</p></div>
+        </div>
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 05</div><div class="row-bar" style="background:#afa9ec"></div></div>
+          <div class="row-content"><h4>Customer Touchpoints</h4><p>Every deliberate communication between your team and the customer. Automated emails, kickoff meetings, insights reports, goal block reviews, celebration moments, renewal conversations. The touchpoint layer is where your plays execute.</p></div>
+        </div>
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 06</div><div class="row-bar" style="background:#85b7eb"></div></div>
+          <div class="row-content"><h4>Service Blueprint</h4><p>Internal execution — what your CS team and cross-functional partners are doing behind the scenes. This is the operational layer most companies skip. Without it, your customer experience is only as good as whoever is on shift that day.</p></div>
+        </div>
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 07</div><div class="row-bar" style="background:#5dcaa5"></div></div>
+          <div class="row-content"><h4>Loyalty Builders</h4><p>Specific actions that systematically increase the customer's likelihood of renewing and expanding. Not one-off heroics — repeatable plays any CSM can execute consistently. Builders are what turn a reactive team into a retention engine.</p></div>
+        </div>
+        <div class="row-item">
+          <div class="row-label-col"><div class="row-label">Row 08</div><div class="row-bar" style="background:#97c459"></div></div>
+          <div class="row-content"><h4>Health, Feedback &amp; Signals</h4><p>The measurement layer. Health scores, feedback loops, usage signals, engagement patterns. This is how you know whether the rows above are working — before the renewal conversation reveals the damage.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2>Six stages. Eight critical moments.</h2>
+    <p>The lifecycle is not a flat line — it has distinct stages with different risks, different customer emotions, and different operational requirements. Understanding the shape of the journey tells you where to invest human attention and where automation can carry the load.</p>
+    <div class="stage-grid">
+      <div class="stage-card">
+        <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(197,212,78,.12)">🎉</div><span class="stage-card-num" style="color:var(--olive)">Stage 01</span></div>
+        <div class="stage-card-title">Purchase &amp; Welcome</div>
+        <div class="stage-card-timing">Month 1 · Weeks 1–2</div>
+        <p>Highest emotional stakes. Buyer's remorse risk is real. The customer is validating their decision. Speed, personalization, and a clear path forward are non-negotiable.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(55,138,221,.12)">🚀</div><span class="stage-card-num" style="color:var(--blue)">Stage 02</span></div>
+        <div class="stage-card-title">Kickoff &amp; Onboarding</div>
+        <div class="stage-card-timing">Month 1 · Weeks 2–4</div>
+        <p>Foundation-setting. Every misaligned expectation planted here becomes a retention problem at Month 9. The Kickoff is a strategic alignment meeting, not a product tutorial.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(29,158,117,.12)">⭐</div><span class="stage-card-num" style="color:var(--teal)">Stage 03</span></div>
+        <div class="stage-card-title">First Value</div>
+        <div class="stage-card-timing">Month 2 · Weeks 4–8</div>
+        <p>The inflection that determines whether the relationship has a future. First Value is a specifically scoped win that proves the product delivers. Without it, everything else is hope.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(83,74,183,.12)">🧱</div><span class="stage-card-num" style="color:var(--purple)">Stage 04</span></div>
+        <div class="stage-card-title">Adoption &amp; Expansion</div>
+        <div class="stage-card-timing">Months 3–7</div>
+        <p>The messy middle. This is where most CS teams lose the thread. Value Blocks, Alignment Meetings, and Sharing Insights keep the customer progressing when momentum naturally stalls.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(186,117,23,.12)">🎯</div><span class="stage-card-num" style="color:var(--amber)">Stage 05</span></div>
+        <div class="stage-card-title">Strategic Alignment</div>
+        <div class="stage-card-timing">Months 8–10</div>
+        <p>Where expansion opportunities surface and renewal positioning begins. Teams that skip regular alignment meetings arrive here with no evidence, no champion, and no leverage.</p>
+      </div>
+      <div class="stage-card">
+        <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(216,90,48,.12)">🔄</div><span class="stage-card-num" style="color:var(--coral)">Stage 06</span></div>
+        <div class="stage-card-title">Renewal &amp; Growth</div>
+        <div class="stage-card-timing">Months 11–12</div>
+        <p>If the previous five stages were executed, the renewal is not a conversation — it's a conclusion. If they weren't, this is where you pay for everything that went unaddressed.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2>The gaps between rows</h2>
+    <p>The journey map exposes something most teams would rather not see: the gaps. The spaces between what the customer is experiencing and what the team is doing. Between the blockers that exist and the builders that haven't been deployed. Between the signals that appear in the data and the actions that never get triggered.</p>
+    <div class="impact-table-wrap">
+      <table class="impact-table">
+        <thead><tr><th>Failure Pattern</th><th>Where It Shows Up</th><th>NRR Impact</th></tr></thead>
+        <tbody>
+          <tr><td>No IKT from Sales</td><td>Kickoff is a product demo, not alignment. CSM walks in blind.</td><td><span class="impact-pill pill-danger">High churn risk</span></td></tr>
+          <tr><td>First Value not defined</td><td>Month 3: customer can't articulate what success looks like.</td><td><span class="impact-pill pill-danger">Low adoption</span></td></tr>
+          <tr><td>No Alignment Meetings</td><td>Month 9: customer's business has changed. CS team doesn't know.</td><td><span class="impact-pill pill-danger">Silent churn</span></td></tr>
+          <tr><td>Insights never shared</td><td>Customer can't see ROI. Executive sponsor loses the internal business case.</td><td><span class="impact-pill pill-warn">Expansion loss</span></td></tr>
+          <tr><td>No health measurement</td><td>Red accounts look green. Renewal surprise at Month 11.</td><td><span class="impact-pill pill-danger">Reactive recovery</span></td></tr>
+          <tr><td>Renewal = first close attempt</td><td>Negotiation starts from scratch. No documented value evidence.</td><td><span class="impact-pill pill-warn">Price erosion</span></td></tr>
+          <tr><td>All 8 rows executed</td><td>Renewal is a formality. Expansion is in pipeline. NRR above 110%.</td><td><span class="impact-pill pill-success">NRR target hit</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><p>Most teams treat this map as a customer-facing document. It isn't. The rows the customer never sees — the service blueprint, the loyalty builders, the health signals — are the rows that determine whether the rows they do see deliver any value.</p></div>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2>How to operationalize this</h2>
+    <h3>Step 1 — Audit your current state</h3>
+    <p>Walk every row month by month. For each cell, ask: does this exist in our operation today? If yes, is it systematized — documented, triggered, repeatable — or is it dependent on individual heroics? Mark every cell that relies on a single person instead of a process. That is your risk inventory.</p>
+    <h3>Step 2 — Identify your top three gaps</h3>
+    <p>Where are the largest distances between the Loyalty Blockers row and the Loyalty Builders row at the same point in time? Those gaps are costing you retention now. Prioritize closing them before building anything new.</p>
+    <h3>Step 3 — Map your plays to inflection points</h3>
+    <p>Every play in this framework maps to a specific inflection point on this map. If you don't have a structured play for an inflection point, you're leaving that moment to chance. See <a href="chapter.html?ch=9" style="color:var(--teal)">Part III: The Lifecycle Plays →</a></p>
+    <div class="callout"><p>A play is not a meeting agenda. It is a trigger-based sequence with defined inputs, a structured interaction, a documented output, and a measurable outcome. If your team can't describe the trigger, the action, and the expected result for every inflection point — you don't have a play, you have a habit.</p></div>
+    <h3>Step 4 — Build the measurement layer last</h3>
+    <p>Too many teams start with health scoring and wonder why it doesn't change behavior. Measurement only works when there are defined plays to trigger from that data. Build the plays first. Then build the signals that tell you when to run them. See <a href="frameworks.html#health" style="color:var(--teal)">Health Score Matrix →</a></p>
+    <h3>Step 5 — Segment your execution</h3>
+    <p>Not every customer needs every row at high-touch. The map defines what needs to happen. Your segmentation model determines who executes it — a CSM, an automated sequence, or a hybrid. Right-touch is not cutting corners; it is delivering exactly what the segment requires, efficiently.</p>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2>Tying the map to NRR</h2>
+    <p><strong>Gross Revenue Retention (GRR)</strong> is determined primarily by the left half of the map — Months 1 through 6. If the customer doesn't achieve First Value, doesn't experience a structured Kickoff, and doesn't have a defined success metric, you will not retain the base. GRR below 85% is almost always a Month 1–3 problem.</p>
+    <p><strong>Net Revenue Retention (NRR)</strong> — which includes expansions and upsells — is determined by the right half. Months 7–12, alignment meetings, sharing strategic insights, developing an internal champion who can make the expansion case upward. Companies running NRR above 110% are not running better renewal conversations. They are running better Month 4 through Month 10 operating rhythms.</p>
+    <div class="callout"><p>NRR is not a metric. It's the output of 12 months of systematic execution — visible only at renewal, caused much earlier.</p></div>
+    <p>The journey map makes this causal chain explicit. When you can see the system, you can identify exactly where a customer trajectory is breaking. And when you can identify that, you can intervene before the renewal conversation reveals the damage. That is the point of the map. Not documentation. <strong>Intervention.</strong></p>
+    <p style="margin-top:1.5rem"><a href="calculator.html" style="color:var(--teal);font-weight:600">→ Model your NRR impact in the calculator</a></p>
+  </div>
+
+  <!-- CHAPTER NAV -->
+  <div class="chapter-nav-strip">
+    <a class="chapter-nav-btn" href="chapter.html?ch=8">
+      <span class="chapter-nav-dir">← Previous Chapter</span>
+      <span class="chapter-nav-title">Ch 8: Stage 5 — Net Revenue Close</span>
+    </a>
+    <a class="chapter-nav-btn right" href="chapter.html?ch=9">
+      <span class="chapter-nav-dir">Next Chapter →</span>
+      <span class="chapter-nav-title">Ch 9: The Purchase &amp; Welcome Play</span>
+    </a>
+  </div>
+
+</div><!-- /chapter-body -->
+
+
+<!-- FOOTER — exact match to all pages -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CXology</div>
+        <p class="footer-brand-desc">A Strategic Customer Success Operating System for predictable retention and scalable growth.</p>
+        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
+      </div>
+      <div>
+        <div class="footer-col-title">The Book</div>
+        <ul class="footer-links">
+          <li><a href="index.html#parts">Part I: CS Evolution</a></li>
+          <li><a href="index.html#parts">Part II: The Pipeline</a></li>
+          <li><a href="index.html#plays">Part III: Lifecycle Plays</a></li>
+          <li><a href="index.html#parts">Part IV: Scale &amp; Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Frameworks</div>
+        <ul class="footer-links">
+          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
+          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
+          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
+          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="calculator.html">NRR Calculator</a></li>
+          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
+          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Tim Conder · CXology</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ZOOM MODAL -->
+<div class="zoom-modal" id="zoomModal" role="dialog" aria-modal="true">
+  <div class="zoom-bar">
+    <div class="zoom-bar-info">
+      <div class="zoom-bar-title">CXology Post-Sale Journey Map</div>
+      <div class="zoom-bar-hint">Drag to scroll · all 12 months visible</div>
+    </div>
+    <button class="zoom-close" id="btn-close-zoom">Close ✕</button>
+  </div>
+  <div class="zoom-body" id="zoomBody">
+    <img src="journey_map.jpg" alt="Full-resolution CXology Post-Sale Journey Map"/>
+  </div>
+</div>
+
+
+<script>
+// Reading progress
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progress-bar').style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+});
+
+// Drag-to-scroll on diagram
+const scroll = document.getElementById('diagramScroll');
+let dragging = false, startX, scrollLeft;
+scroll.addEventListener('mousedown', e => { dragging = true; startX = e.pageX - scroll.offsetLeft; scrollLeft = scroll.scrollLeft; scroll.style.cursor = 'grabbing'; });
+document.addEventListener('mouseup', () => { dragging = false; scroll.style.cursor = 'grab'; });
+scroll.addEventListener('mousemove', e => { if (!dragging) return; e.preventDefault(); scroll.scrollLeft = scrollLeft - (e.pageX - scroll.offsetLeft - startX) * 1.4; });
+
+// Zoom modal
+const modal = document.getElementById('zoomModal');
+document.getElementById('btn-zoom').addEventListener('click', () => { modal.classList.add('open'); document.body.style.overflow = 'hidden'; });
+document.getElementById('btn-close-zoom').addEventListener('click', closeZoom);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeZoom(); });
+function closeZoom() { modal.classList.remove('open'); document.body.style.overflow = ''; }
+
+// Drag inside zoom
+const zb = document.getElementById('zoomBody');
+let zd = false, zx, zy, zsl, zst;
+zb.addEventListener('mousedown', e => { zd = true; zx = e.pageX; zy = e.pageY; zsl = zb.scrollLeft; zst = zb.scrollTop; zb.style.cursor = 'grabbing'; });
+document.addEventListener('mouseup', () => { zd = false; zb.style.cursor = 'grab'; });
+zb.addEventListener('mousemove', e => { if (!zd) return; e.preventDefault(); zb.scrollLeft = zsl - (e.pageX - zx) * 1.2; zb.scrollTop = zst - (e.pageY - zy) * 1.2; });
+
+// Mobile nav — matches all pages
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '60px';
+  links.style.left = '0'; links.style.right = '0';
+  links.style.background = 'rgba(15,28,40,0.98)';
+  links.style.padding = '1rem 2rem 2rem';
+  links.style.gap = '1.2rem';
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
