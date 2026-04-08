@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CXology — Chapter</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">CXology</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="index.html#calculator">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.75rem;align-items:center">
+    <button onclick="prevChapter()" style="padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-sm);color:rgba(255,255,255,.6);font-size:0.82rem;cursor:pointer;background:none;transition:all 0.2s" id="btn-prev">← Prev</button>
+    <button onclick="nextChapter()" style="padding:6px 12px;border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-sm);color:rgba(255,255,255,.6);font-size:0.82rem;cursor:pointer;background:none;transition:all 0.2s" id="btn-next">Next →</button>
+  </div>
+</nav>
+
+<div id="chapter-content"></div>
+
+<div style="background:var(--navy-deep);padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.78rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem">Next chapter</div>
+      <div id="next-chapter-title" style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--white)"></div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="prevChapter()" class="btn-secondary" style="font-size:0.85rem;padding:10px 20px">← Previous</button>
+      <button onclick="nextChapter()" class="btn-primary" style="font-size:0.85rem;padding:10px 20px">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const chapters = {
+  1: {
+    part: "Part I: The 2026 Customer Success Evolution",
+    partColor: "#1D9E75",
+    title: "From Churn Insurance to Revenue Engine",
+    tagline: "Why the most expensive thing in SaaS isn't acquiring customers — it's losing them.",
+    sections: [
+      { h: "Diagnosing Avoidable vs. Unavoidable Churn", body: `<p>To understand why Customer Success must evolve into a revenue engine, you must first understand the devastating financial impact of losing a customer. In the SaaS industry, the Customer Acquisition Cost (CAC) consumes an average of <strong>92% of first-year revenue</strong>. If a customer churns at the end of their first year, you didn't just lose a logo—you served that customer at a significant financial loss.</p><p>We must fiercely separate churn into two distinct categories:</p><ul><li><strong>Unavoidable Churn:</strong> Churn over which your company has absolutely no control — a customer going out of business, being acquired, or graduating from your solution. CS cannot and should not be held responsible for unavoidable churn.</li><li><strong>Avoidable Churn:</strong> Churn your company directly contributed to through slow or painful onboarding, poor communication, technical glitches, or a fundamental misalignment between what was sold and what was delivered.</li></ul>` },
+      { h: "The Financial Reality: NRR in Action", callout: "The pipeline doesn't stop at Closed-Won — it starts there.", body: `<p>Consider a SaaS company starting the year with $8.5M in ARR. Over four years, their NRR rate dramatically alters their financial trajectory:</p><ul><li><strong>90% NRR path:</strong> Revenue stalls at approximately $36.9M</li><li><strong>120% NRR path:</strong> Revenue skyrockets to nearly $86.2M in that exact same timeframe</li></ul><p>The exit valuation difference is stark: 90% NRR yields ~$187M at exit. A 110% NRR results in a ~$687M valuation. Avoidable churn makes the difference of hundreds of millions of dollars.</p><p>Use the <a href="index.html#calculator" style="color:var(--teal)">NRR Impact Calculator →</a> to model your own numbers.</p>` },
+      { h: "The CS Maturity Curve", body: `<p>To transform into a revenue engine, CS organizations must evolve along a specific maturity curve:</p><ul><li><strong>Reactive (Putting Out Fires):</strong> Teams are scrambling to meet needs ad hoc. Churn feels like a constant surprise. Expansion is completely off the radar.</li><li><strong>Proactive (Stabilizing the Experience):</strong> Teams initiate engagement and spot early churn risks through health scoring. Interventions are deployed to retain revenue, but expansion remains reactive.</li><li><strong>Strategic (Growth by Design):</strong> Needs are anticipated before they are voiced. Every account follows a defined journey, key inflection points are mapped and leveraged, and expansion is actively managed through pipeline, forecasting, and customer readiness.</li></ul>` },
+      { h: "Customer Success is a Sales Function", callout: "Where the pre-sales team wins the first deal through persuasion, the post-sales team wins the next deal through proof.", body: `<p>The most predictable, capital-efficient growth comes from the customers you already have. This means acknowledging a controversial truth: Customer Success is a sales function.</p><p>When you architect a Strategic Customer Success journey, expansion, renewal, and advocacy stop being commercial events you have to aggressively push for. Instead, they become the natural, obvious result of a well-designed customer experience.</p>` },
+    ]
+  },
+  2: {
+    part: "Part I: The 2026 Customer Success Evolution",
+    partColor: "#1D9E75",
+    title: "Post-Sale Unification",
+    tagline: "You cannot build a revenue engine if your organization's internal gears are grinding against each other.",
+    sections: [
+      { h: "Breaking Down Toxic Silos", body: `<p>Historically, SaaS companies have built their departments in strict silos: Sales, Marketing, Customer Success, Professional Services, and Product. When this natural division turns into toxic isolation, the company loses sight of what matters most — the customer.</p><p>To your customer, these internal divisions do not exist. They simply see one company, and they expect a single, seamless experience. Scaling a revenue engine requires breaking these silos down and aligning around <strong>one operating model, one data spine, and one unified lifecycle</strong> from onboarding through renewal and expansion.</p>` },
+      { h: "The Internal Knowledge Transfer (IKT)", callout: "Asking a customer to repeat themselves is not a trust builder — it immediately makes them question your company's efficiency.", body: `<p>The handoff from Sales to Customer Success is historically one of the most notorious points of friction in the SaaS journey. Organizations that successfully scale have overcome this by rightsizing the process.</p><p>The IKT boils down to four essential questions:</p><ul><li><strong>Why?</strong> Why did the customer purchase? What is the core business problem?</li><li><strong>Who?</strong> Who are they as a company, and who are the key people we need to know?</li><li><strong>What?</strong> What exactly was promised, what did they buy, and what didn't they buy?</li><li><strong>Success?</strong> What does "success" mean for them?</li></ul><p>Explore the <a href="frameworks.html#ikt" style="color:var(--teal)">IKT Framework →</a></p>` },
+      { h: "One Data Spine & Shared KPIs", body: `<p>You cannot scale a revenue engine if your teams are operating with fragmented customer data. Post-sale unification demands a <strong>single data spine</strong> — a single customer record integrating your CRM, CS platform, support desk, and PSA so that contract details, product telemetry, support tickets, and renewal opportunities all live in one place.</p><p>Furthermore, you cannot unify teams if you measure them in opposition to each other. Leadership must implement cross-team collaboration KPIs: <strong>NRR</strong> (shared goal), <strong>Forecast Accuracy</strong> (CS carrying expansion targets), and <strong>Cycle Time Reduction</strong> (from Closed-Won to First Value).</p>` },
+    ]
+  },
+  3: {
+    part: "Part I: The 2026 Customer Success Evolution",
+    partColor: "#1D9E75",
+    title: "The Role Evolution of the CSM",
+    tagline: "From tactical product trainer to strategic business advisor — the most important transition in modern CS.",
+    sections: [
+      { h: "Speaking the Language of ROI", body: `<p>You cannot be a strategic advisor if your knowledge is limited strictly to the features and buttons of your own software. A modern CSM must deeply understand the customer's business case and the unique challenges of their industry.</p><p>When a CSM only talks about feature functionality, they are relegated to speaking with mid-level managers and end-users. However, to secure long-term renewals and expansions, CSMs must be completely comfortable talking ROI with executives. They must understand the customer's overarching goals, how their organization defines success, and what metrics the C-suite cares about most.</p>` },
+      { h: "CS IS a Sales Function", callout: "Where Sales wins the first deal through persuasion, Customer Success wins the next deal through proof.", body: `<p>Perhaps the most significant mindset shift a CSM must make is accepting that Customer Success is, at its core, a sales function. For a long time, CS professionals resisted this label, fearing it meant they had to adopt traditional, high-pressure sales tactics.</p><p>However, selling in the post-sale world looks entirely different. To earn the right to grow the account, the CSM must deliver:</p><ul><li>Proof that you deeply understand the customer's business goals</li><li>Proof that your product delivers real, measurable outcomes</li><li>Proof that partnering deeper makes strategic sense</li></ul>` },
+      { h: "Judgment Over Templates — AI and the CSM", callout: "Use AI to surface recommended next best actions and eliminate administrative busywork. Preserve the CSM's human judgment, empathy, and exception-handling skills for high-value interactions.", body: `<p>In 2026, leveraging Artificial Intelligence is non-negotiable — but the risk of over-automation is equally real. Industry experts warn against using AI to standardize CSMs to the point where everyone is blindly sending the exact same templates and losing their critical thinking skills.</p><p>The guiding principle: AI removes the busywork. The CSM applies the judgment. Neither replaces the other.</p><p>Explore the full <a href="frameworks.html" style="color:var(--teal)">AI Framework →</a></p>` },
+    ]
+  },
+  4: {
+    part: "Part II: Architecting the Post-Sales Pipeline",
+    partColor: "#378ADD",
+    title: "Stage 1 — Identify",
+    tagline: "Every customer has at least one guaranteed opportunity in the Identify stage: the renewal.",
+    sections: [
+      { h: "The Renewal is Pipeline", callout: "Before hunting for complex upsells, remember a foundational rule: every customer has at least one guaranteed opportunity in the Identify stage — the renewal.", body: `<p>The post-sales pipeline is not about aggressively pushing products your customers do not need. It is about staying perfectly aligned with their goals and ensuring they maximize the value of their relationship with your company.</p><p>The renewal is not an administrative event that suddenly appears at the end of a contract. It is a revenue opportunity identified on day one, requiring proactive management and early conversations to build a true partnership mindset.</p>` },
+      { h: "The 5 Universal Customer Needs", body: `<p>As you monitor early product adoption, actively listen for the five universal customer needs that dictate success:</p><ul><li><strong>Skillset:</strong> Do they have the right expertise in-house to execute?</li><li><strong>Knowledge:</strong> Do they fully understand how to maximize the value of your product?</li><li><strong>Time/Cost:</strong> Do they have the actual human bandwidth and resources to implement effectively?</li><li><strong>Competing Demands:</strong> Are there other internal priorities dragging their attention away?</li><li><strong>Ability to Manage Change:</strong> How well can their internal champion drive adoption of new processes?</li></ul><p>When a customer struggles with any of these five needs, it is not a reason to panic — it is an identified opportunity for the post-sales pipeline.</p>` },
+      { h: "First Value Before Expansion", callout: "The official launch of the post-sales pipeline does not begin until the customer achieves First Value.", body: `<p>While the Identify stage is about spotting opportunities early, there is a critical rule you must follow regarding when to act on them. You must never present an expansion recommendation until the customer has achieved their First Value — the moment they feel they have achieved a meaningful win with your product.</p><p>Why? Because you wouldn't want to be sold something new before the product you just purchased has proven its worth.</p>` },
+    ]
+  },
+  5: {
+    part: "Part II: Architecting the Post-Sales Pipeline",
+    partColor: "#378ADD",
+    title: "Stage 2 — Align",
+    tagline: "Alignment is about tying your recommendations to the customer's strategic objectives — not your product roadmap.",
+    sections: [
+      { h: "Goal Facilitation: Navigating the Messy Middle", body: `<p>Once a customer achieves their First Value, they enter what is known as the <strong>messy middle</strong> — the critical time period between their first use of your product and their first renewal. If you are missing from the messy middle, your customers can easily hit a wall, give up, and ultimately churn.</p><p>Goal Facilitation ensures that every recommendation or action you take aligns directly with the customer's long-term vision. A highly effective way to facilitate goals is to break massive objectives down into smaller, bite-sized <strong>Value Blocks</strong>.</p>` },
+      { h: "Sharing Insights: The Rudder on the Ship", body: `<p>Sharing Insights is a simple yet powerful strategy that ensures your recommendations, successes, and lessons learned are actively communicated within the customer's organization. It operates as a critical <strong>change management tool</strong>, helping guide users through the natural human resistance to new technology.</p><p>Every insight you share should follow the 5-Step Formula: <strong>One-liner → Background → Results → Action → Reinforce.</strong></p><p>Explore the <a href="frameworks.html#insights" style="color:var(--teal)">Insights Framework →</a></p>` },
+      { h: "The Alignment Meeting: Killing the Passive QBR", callout: "The days of vague, passive, checkbox-style Quarterly Business Reviews are over.", body: `<p>Replace QBRs with active <strong>Alignment Meetings</strong>. The distinction is intentional: your goal is to end up in a strategically aligned state with your customer. Not to present a slide deck about your own product.</p><p>Alignment Meetings shift the focus from static, company-centric reviews to dynamic, customer-centric discussions that address real-time challenges and strategic goals — anchored by The Five Questions.</p>` },
+    ]
+  },
+  6: {
+    part: "Part II: Architecting the Post-Sales Pipeline",
+    partColor: "#378ADD",
+    title: "Stage 3 — Advocate",
+    tagline: "You cannot close a deal alone. You need an internal champion who can navigate the organization for you.",
+    sections: [
+      { h: "Formal Stakeholder Mapping", body: `<p>To build true Client Intimacy, you cannot rely on an informal approach to managing your customer's organizational chart. You must implement formal <strong>Stakeholder Mapping</strong> to identify key players, understand their level of influence in decision-making, and formulate a targeted growth plan.</p><p>Categorize each stakeholder into a specific communication objective:</p><ul><li><strong>Sponsor:</strong> Fully advocates for your program — put them on stage</li><li><strong>Update:</strong> Supportive and provides intel — keep informed, not overloaded</li><li><strong>Educate:</strong> Lacks understanding — targeted onboarding needed</li><li><strong>Neutralize:</strong> Works against the program — understand the root cause first</li></ul><p>Explore the <a href="frameworks.html#pipeline" style="color:var(--teal)">Stakeholder Matrix →</a></p>` },
+      { h: "Arming the Advocate", callout: "You cannot send your advocate into an internal budget meeting empty-handed.", body: `<p>To help them influence decision-makers and secure buy-in, you must arm them with undeniable proof of value. This is where the Sharing Insights strategy becomes your most powerful pipeline tool.</p><p>When your advocate forwards your impact report to their CFO with a note saying, "Look at the ROI we achieved this quarter," you have effectively outsourced your selling motion to the most persuasive person in the room.</p>` },
+    ]
+  },
+  7: {
+    part: "Part II: Architecting the Post-Sales Pipeline",
+    partColor: "#378ADD",
+    title: "Stage 4 — Intent",
+    tagline: "Formalize commitment and establish a concrete timeline — early.",
+    sections: [
+      { h: "Initiate Early Discussions", callout: "Best practice: Initiate renewal conversations mere days after the kickoff by simply asking the customer when they would like to discuss their renewal.", body: `<p>The biggest mistake Customer Success and Account Management teams make is waiting until the end of a contract cycle to discuss renewals or expansions. To secure intent smoothly, you must proactively begin these conversations early.</p><p>You are not asking for a commitment — you are simply asking the customer when they would like to discuss the renewal. This single act completely disarms the awkwardness of the eventual ask.</p>` },
+      { h: "Understand Constraints and Approval Workflows", body: `<p>Even with a strong business case and an eager advocate, deals stall when the vendor fails to understand how the customer actually buys software. To formalize intent, you must uncover their budget limits, approval processes, and decision timelines as early as possible:</p><ul><li>When does your budget cycle reset?</li><li>Who ultimately needs to sign off on this expansion?</li><li>Are there legal, procurement, or security reviews required?</li></ul>` },
+      { h: "Securing the Verbal Commitment", body: `<p>The ultimate goal of the Intent stage is to obtain a verbal agreement from the customer. This "yes" serves as a crucial milestone — it signals their readiness to proceed and allows both teams to shift their focus directly to finalizing contracts and securing official approvals.</p><p>Once the customer verbally commits, the posture of the relationship shifts. You are no longer proving the value of the expansion; you are simply executing the administrative steps to make it a reality.</p>` },
+    ]
+  },
+  8: {
+    part: "Part II: Architecting the Post-Sales Pipeline",
+    partColor: "#378ADD",
+    title: "Stage 5 — Net Revenue Close",
+    tagline: "Treating the close as a mere transaction is a massive missed opportunity.",
+    sections: [
+      { h: "Closing with Confidence", body: `<p>Before you can celebrate, you must ensure a seamless transition from the customer's verbal intent to the finalized contract. Close with precision, ensuring that all contract terms, pricing adjustments, and success criteria are clearly defined to prevent any last-minute surprises.</p><p>By proactively managing the final workflows and remaining aligned with your internal sales, legal, and finance teams, you eliminate friction and make it incredibly easy for the customer to finalize the agreement.</p>` },
+      { h: "Customer-Centric Celebration", body: `<p>A successful Net Revenue Close should immediately trigger a celebration. This is not about throwing a party for your own revenue gain; it is a <strong>customer-centric celebration</strong> designed to acknowledge the customer's success, highlight their measurable outcomes, and set a highly positive tone for the continued partnership.</p>` },
+      { h: "Turning Wins into Advocacy", callout: "Customer Success is a team sport. For every new logo, renewal, or expansion, a marble is added to a jar. When the jar is full, the entire company celebrates.", body: `<p>The Net Revenue Close is the absolute best time to ask your customer for a favor — a referral, review, or testimonial. The key is to only ask when the customer has just experienced a win. Make the process frictionless:</p><ul><li><strong>Make ONE ask</strong> — not multiple requests at once</li><li><strong>Offer to write a draft</strong> — eliminate the friction of a blank page</li><li><strong>Give a deadline</strong> — give them a specific date for edits</li></ul>` },
+    ]
+  },
+  9: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 1 — The Purchase & Welcome Play",
+    tagline: "The moment a customer says yes, a clock starts ticking. Don't let silence fill the space.",
+    sections: [
+      { h: "The Why: Mitigating Buyer's Remorse", body: `<p>The immediate aftermath of a purchase decision is a vulnerable moment for new customers. Once the excitement of the sales cycle fades, it is entirely natural for customers to experience a moment of buyer's remorse, sitting back and wondering, "Did I make the right decision?"</p><p>A highly orchestrated Purchase & Welcome Play reinforces the customer's purchase decision and launches the relationship for success. It begins the moment the customer makes the decision to purchase — often before the ink is even dry on the contract — and it ends with the official Kickoff meeting.</p>` },
+      { h: "Design & Build: The Three Core Components", body: `<p>When designing your Purchase & Welcome Play, weave in three core components: <strong>Personalization</strong>, <strong>Celebration</strong>, and <strong>Setting Expectations</strong>.</p><ul><li><strong>The Trigger:</strong> Sales updates the opportunity to Closed-Won, triggering an automated internal alert</li><li><strong>Automated Email #1:</strong> An automated welcome email goes out before the contract is even fully processed</li><li><strong>Curated Touchpoint:</strong> The VP of CS assigns a CSM, who records a short personalized video referencing the customer's specific business goals</li><li><strong>Action Step:</strong> The CSM sends the video with an email clearly setting expectations for the Kickoff</li></ul>` },
+      { h: "Best Practices: Execution at Scale", body: `<ul><li><strong>Action must overcome distraction:</strong> Build it so it triggers automatically, every single time — even if your top sales rep hits the lottery and never comes back to work</li><li><strong>Balance customization and consistency:</strong> Use templates to create efficiency, but leave dedicated blanks for CSMs to inject their personality</li><li><strong>Eliminate local copies:</strong> One link to the official version — no local copies on hard drives</li><li><strong>Track and measure:</strong> IKT completion rates, email send times, and time-to-Kickoff</li></ul>` },
+    ]
+  },
+  10: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 2 — The Kickoff Play",
+    tagline: "The Kickoff is not a training seminar. It is your premier opportunity to lay a rock-solid foundation for trust.",
+    sections: [
+      { h: "The Why: One Chance to Make a First Impression", body: `<p>The Kickoff meeting is arguably the single most important touchpoint of the entire customer relationship. After a successful purchase, your customer is eager, but they are also entering the room evaluating your credibility. They are privately asking themselves critical questions: "Do I feel valued? Will this solution actually do what I hope it can do?"</p><p>If you use the Kickoff simply to conduct basic product training, you are wasting a massive strategic opportunity.</p>` },
+      { h: "Design & Build: The Five Questions", callout: "Discipline at the start wins efficiencies later. Taking the rigor to deeply understand your customer's needs and properly manage expectations will pay massive dividends throughout the entire lifecycle.", body: `<p>The meeting must follow a highly structured, repeatable flow. At its center are <strong>The Five Questions</strong> — asked every time, at every Kickoff and every Alignment Meeting thereafter:</p><ol><li>What is the one thing we must get right to make this worth undertaking?</li><li>How does your organization define success?</li><li>What is our role in achieving that success?</li><li>What aspects of the internal culture or environment could put this at risk?</li><li>Assuming we mitigate that risk — what would exceed your wildest dreams?</li></ol><p>Explore them interactively: <a href="frameworks.html#five-questions" style="color:var(--teal)">The Five Questions →</a></p>` },
+      { h: "Phase 3: The Follow-Through", body: `<p>A strategic Kickoff doesn't end when the meeting is over. Immediately following the meeting, send a recap email that summarizes key points of discussion, the identified measures of success, and the specific action items. For every action item, clearly identify who owns it and the relevant due dates. Include the selected First Value goal and the steps required to achieve it.</p>` },
+    ]
+  },
+  11: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 3 — The Onboarding Play",
+    tagline: "86% of customers say they'd be more likely to stay loyal to a business that invests in their onboarding experience.",
+    sections: [
+      { h: "The Why: Escaping the Big Bang Trap", callout: "86% of customers say they would be more likely to stay loyal to a business that invests in their onboarding experience. 80% of users say they have abandoned an app simply because they didn't know how to use it.", body: `<p>A <strong>Big Bang implementation</strong> — pushing the product, its full suite of capabilities, and all users live simultaneously — leads to exceedingly long implementation timeframes, resource bottlenecks, and severe customer fatigue. When the customer finally reaches Go Live, they are exhausted.</p><p>Modern CS teams use a <strong>phased, iterative approach</strong>. By narrowing the focus to achieving a quick win — or First Value — you accelerate time-to-value and align much better with the customer's limited availability.</p>` },
+      { h: "The Six Motions of Onboarding", body: `<p>Every customer must move through six universal motions:</p><ul><li><strong>Motion 1 — Align:</strong> Deepen understanding of their goal. Build the Mutual Success Plan.</li><li><strong>Motion 2 — Configure:</strong> Guide smart decisions. Prioritize only what's needed for First Value.</li><li><strong>Motion 3 — Connect:</strong> Integrate into their tech ecosystem. Product stickiness increases dramatically.</li><li><strong>Motion 4 — Verify:</strong> Test expected inputs vs. actual outputs. Catch errors before they erode trust.</li><li><strong>Motion 5 — Transform:</strong> Story-based training. Change management. Build internal champions.</li><li><strong>Motion 6 — First Use:</strong> Stay close. Observe and give rapid feedback. First Value achieved.</li></ul><p>Explore interactively: <a href="frameworks.html#pipeline" style="color:var(--teal)">The Six Motions →</a></p>` },
+    ]
+  },
+  12: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 4 — The First Value Play",
+    tagline: "First Value is not Go Live. Go Live is your company's win. First Value is the customer's win.",
+    sections: [
+      { h: "The Why: The Heart and The Smart", body: `<p>A primary reason onboarding fails is that companies confuse Go Live with First Value. Go Live is your company's win — it means the software is turned on. First Value, on the other hand, is the moment the customer actually <em>feels</em> they have achieved something meaningful from their purchase.</p><ul><li><strong>The Heart:</strong> The emotional core. When you listen to their needs and guide them to an early accomplishment, they feel seen, heard, and valued.</li><li><strong>The Smart:</strong> The successful adoption of your product. First Value is the psychological catalyst for the iterative loop — it makes them want to come back for more.</li></ul>` },
+      { h: "Design & Build: Rightsizing First Value", body: `<p>The most critical rule is time: <strong>First Value should ideally be achieved within a couple of weeks</strong>. To rightsize First Value, modern teams use a reverse-engineering process:</p><ol><li>Identify the larger objective the customer wants to achieve</li><li>Ask: can they successfully accomplish this within two weeks?</li><li>If yes — that is First Value</li><li>If no — ask: what smaller action must happen first?</li><li>Continue until you land on a win achievable within two weeks</li></ol><p>For example: if a customer bought a community platform to generate 5 warm leads a month, they cannot achieve that in two weeks. But they can optimize their user profile to attract those leads. That becomes First Value.</p><p>Explore the decision flowchart: <a href="frameworks.html#value-blocks" style="color:var(--teal)">Value Blocks Framework →</a></p>` },
+      { h: "First Value as the Canary in the Coal Mine", body: `<p>Tracking whether a customer achieves — or fails to achieve — First Value provides your earliest and most accurate data regarding customer health. If a customer struggles here, it allows you to instantly evaluate their alignment, their Five Customer Needs, and identify what is missing from the relationship. This is your earliest warning signal.</p>` },
+    ]
+  },
+  13: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 5 — The Value Blocks Play",
+    tagline: "If you abandon your customer in the messy middle, their progress will stall, they will get frustrated, and they will ultimately churn.",
+    sections: [
+      { h: "The Why: Bringing Purpose to the Messy Middle", body: `<p>Value Blocks are designed to bring explicit purpose to the messy middle by creating a strategic cadence of tactical accomplishment. They are small, meaningful, discrete steps that add up to a much larger business objective.</p><p>Every time a customer completes a Value Block — whether by solving a problem, overcoming a challenge, or creating a new capability — they build confidence. This confidence makes them more likely to return to the product to try the next block, naturally increasing their sophistication of use over time.</p>` },
+      { h: "Design & Build: The Lego Methodology", body: `<p>The most effective mental model is building a Lego set. Each packet has a clear, simple outcome and an easy path to success. When a customer finishes a packet, they get to pause and appreciate their progress before opening the next one.</p><ul><li><strong>Reverse-Engineer the Objective:</strong> Identify the large goal and break it into smaller interim steps</li><li><strong>The Law of 80/20:</strong> 80% of the time, the block your customer needs is one you have already pre-made</li><li><strong>Create Easy Buttons:</strong> Map blocks to the Five Customer Needs — pre-built templates, done-for-you services, training modules</li><li><strong>I Do → We Do → You Do:</strong> CSM demonstrates, then they do it together, then the customer executes independently</li></ul>` },
+      { h: "Best Practices", body: `<ul><li><strong>Realize new efficiencies:</strong> Standardize the 80% — your team acts as strategic coaches, not tactical doers</li><li><strong>Generate leading health insights:</strong> Value Blocks act as a real-time health metric. A stalled block is an early churn signal</li><li><strong>Celebrate every completion:</strong> Every completed block deserves recognition — an email, a shoutout to their exec team, or a personalized video</li></ul><p>Try it interactively: <a href="frameworks.html#value-blocks" style="color:var(--teal)">Value Blocks Demo →</a></p>` },
+    ]
+  },
+  14: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 6 — The Sharing Insights Play",
+    tagline: "Sharing Insights is the rudder on the ship. It steers your customer toward the value they desire to achieve.",
+    sections: [
+      { h: "The Why: Breaking Through the Noise", body: `<p>In the messy middle of the customer journey, CSMs often experience a frustrating phenomenon: you provide key advice, but it feels like you are talking into a microphone that is turned off. Your customers might be doing the required actions, but they aren't optimizing for the outcome, or worse, they are resisting the change required to fully adopt your solution.</p><p>When executed correctly, a quality insight does four things: <strong>expands your reach</strong> within the organization, <strong>cements shared achievements</strong>, <strong>informs and teaches better practices</strong>, and <strong>sets the stage for growth</strong> by naturally positioning upsells or partner offerings.</p>` },
+      { h: "Design & Build: The 5-Step Formula", body: `<ol><li><strong>Write a one-liner.</strong> Convey the gist immediately to grab the reader's attention.</li><li><strong>Speak to the background.</strong> Bring the reader into the fold with necessary context.</li><li><strong>Speak to the results.</strong> Clearly illustrate the outcomes — good or bad — and show what is possible.</li><li><strong>Clarify the action.</strong> Translate the results into something actionable. The reader must know exactly what to do next.</li><li><strong>Reinforce the insight.</strong> Tell them what you told them by bringing it back to the start.</li></ol><p>See the full formula with example: <a href="frameworks.html#insights" style="color:var(--teal)">Insights Formula →</a></p>` },
+      { h: "Mapping the Triggers", body: `<p>Deploy insights strategically:</p><ul><li><strong>After a Value Block completion:</strong> Send a Win Report celebrating the milestone</li><li><strong>During stalled usage:</strong> Point out a better practice when a customer hits a roadblock</li><li><strong>On an automated cadence:</strong> Every two to four weeks to keep the customer engaged</li></ul>` },
+    ]
+  },
+  15: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 7 — The Alignment Meeting Play",
+    tagline: "Replace the passive QBR with an active Alignment Meeting. The goal is to end up strategically aligned — not to present a slide deck about yourself.",
+    sections: [
+      { h: "The Birthday Party Trap", callout: "A warm personal relationship feels like security, but without structured business alignment, you are the last to know when the customer's priorities have shifted.", body: `<p>A large enterprise email marketing company lost a multi-million dollar contract during a period when the VP felt the relationship was extremely strong — because he had recently attended the customer's child's birthday party. However, because they were not conducting consistent Alignment Meetings, they had entirely missed how the customer's business was changing and evolving.</p><p>A personal relationship cannot replace strategic business alignment.</p>` },
+      { h: "The Six-Step Alignment Meeting Structure", body: `<ol><li><strong>Introductions (5 min):</strong> Focus on any new faces since the last meeting</li><li><strong>Retrace First Value & Value Blocks (10 min):</strong> Celebrate wins. Be honest about roadblocks — it builds trust</li><li><strong>Celebrations & Recognition (5 min):</strong> Reinforce the cycle: goal → success → celebration → next goal</li><li><strong>Customer Business Review (15 min):</strong> Their business, not yours. Uncover new dynamics and expansion signals</li><li><strong>Re-align on The Five Questions (15 min):</strong> Are the answers still the same? Have the most senior person answer last</li><li><strong>Affirm Next Steps (5 min):</strong> Name the key outcome to achieve by the next meeting</li></ol><p>Try it interactively: <a href="frameworks.html#five-questions" style="color:var(--teal)">The Five Questions →</a></p>` },
+      { h: "Scaling to Right-Touch", body: `<p>Not every customer requires a highly tailored 1:1 Alignment Meeting. As you evolve from reactive to strategic, utilize right-touch models:</p><ul><li><strong>Low-Touch:</strong> Shift to 1-to-many engagement — invite a group of customers to an invite-only peer-to-peer learning conversation</li><li><strong>Tech-Touch:</strong> Automate Alignment milestones. A customer triggers a milestone that shoots out a personalized automated video celebrating their progress and suggesting next steps</li></ul>` },
+    ]
+  },
+  16: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Play 8 — The Renew & Grow Play",
+    tagline: "When you have executed the preceding plays flawlessly, the renewal should never be a surprise.",
+    sections: [
+      { h: "The Why: The Obvious Conclusion", callout: "When you have executed the preceding plays flawlessly, the renewal becomes the natural, frictionless conclusion to a year of undeniable value.", body: `<p>A primary reason renewals become awkward or stressful is that companies treat them as isolated administrative events rather than the culmination of a continuous journey. If a Customer Success team goes dark after onboarding and reappears months later to ask for a contract signature, they invite intense scrutiny, justification exercises, and a high risk of churn.</p>` },
+      { h: "The Data-Driven Defense: App Rationalization", body: `<p>Even with perfect relationship execution, the renewal phase carries a distinct, modern threat: the CFO's mandate for SaaS spend optimization. Around a third of organizations are actively consolidating redundant apps, citing optimization of SaaS spend as a top executive concern.</p><p>If your Customer Success team relies solely on warm relationships or anecdotal success stories, your product risks being rationalized out of the budget. Your defense must be entirely <strong>data-driven</strong>.</p>` },
+      { h: "Mapping the Play", body: `<p>This play does not begin at the end of the year — it begins at the very start:</p><ul><li><strong>Days after Kickoff:</strong> Ask the customer when they would like to discuss their renewal. Completely disarms the awkwardness.</li><li><strong>Pre-notification:</strong> License & usage audit — catch underutilization before procurement does</li><li><strong>90-day minimum:</strong> Formal renewal notification, explicitly asking about any concerns</li><li><strong>The Renewal & Alignment Meeting:</strong> Where We've Been → Where We Are → What's Next (the ask)</li><li><strong>Post-close:</strong> Customer celebration, advocacy ask, annual planning session</li></ul>` },
+    ]
+  },
+  17: {
+    part: "Part III: AI-Enabled Lifecycle Plays",
+    partColor: "#C5D44E",
+    title: "Supporting Plays — Key Contact Change & Offboarding",
+    tagline: "Champions leave. Customers churn. When these disruptions occur, you cannot rely on ad-hoc, heroic efforts.",
+    sections: [
+      { h: "Play 1: The Key Contact Change Play", body: `<p>When your primary champion or executive sponsor leaves their role, your account immediately enters a state of high risk. However, a Key Contact Change is often a massive, missed opportunity. When managed correctly, you can engage the new contact seamlessly and turn them into your next powerful advocate.</p><p>Use the <strong>You-We-Me Framework</strong> for the transition meeting:</p><ul><li><strong>YOU — Start with them:</strong> Ask about their perspective, their immediate goals, their concerns</li><li><strong>WE — Connect the partnership:</strong> Relate your product directly to their newly stated goals</li><li><strong>ME — Clarify what you need:</strong> Specify what you need from them to serve them effectively</li></ul>` },
+      { h: "Play 2: The Offboarding Play", callout: "How you conclude the relationship minimizes negative word of mouth — which is critical, as 13% of dissatisfied customers will tell 15 or more people about a negative experience.", body: `<p>The primary objective of offboarding is to ensure you capture valuable learnings so your company can improve, while leaving the door open for future business. Offboarding relies heavily on the <strong>Peak-End Rule</strong> — people judge an experience largely based on how they felt at its peak and at its end.</p><p>The 3-part Offboarding Process:</p><ol><li><strong>The Survey:</strong> A simple, one-question, open-ended survey appearing to come personally from your CEO</li><li><strong>The Meeting:</strong> Come to this meeting with the goal of serving, not selling. Capture insights using five specific questions.</li><li><strong>The Final Thank You:</strong> A gracious final email leaving the door open for future business</li></ol>` },
+    ]
+  },
+  18: {
+    part: "Part IV: Data, Automation & Scale",
+    partColor: "#BA7517",
+    title: "AI in CS: Judgment Over Templates",
+    tagline: "In 2026, AI is not optional. But deployed incorrectly, it can hollow out the value of your entire CS team.",
+    sections: [
+      { h: "The Trap of Standardization", body: `<p>There is a dangerous temptation to use AI to automate absolutely everything. When companies rely on AI to write every email, generate every strategy, and dictate every response, it risks becoming the ultimate anti-innovation. It automates creativity and decision-making, stripping away the human fulfillment that comes from active problem-solving.</p><p>Industry experts are loudly warning against the risk of AI standardizing CSMs. When an entire department relies on the exact same AI-generated templates and automated cadences, CSMs stop thinking critically. They become administrators of an automated system rather than strategic advisors.</p>` },
+      { h: "What AI Should — and Shouldn't — Own", callout: "The guiding principle: Use AI to surface recommended next best actions and eliminate administrative busywork. Preserve the CSM's human judgment, empathy, and exception-handling skills for high-value strategic interactions.", body: `<p><strong>AI Agents Handle:</strong></p><ul><li>Health scoring & predictive churn models</li><li>Next best action surfacing</li><li>Automated playbook motions (email sequences, ticket routing, in-app campaigns)</li><li>24/7 digital-first support</li><li>Admin & data entry automation (meeting notes, CRM updates)</li></ul><p><strong>Human CSMs Own:</strong></p><ul><li>High-value account strategy & executive relationships</li><li>Escalation handling & exceptions</li><li>Alignment Meetings & complex conversations</li><li>Tailoring strategy per account</li></ul>` },
+      { h: "From Assistants to Agentic Workflows", body: `<p>The industry trend for 2026 emphasizes generative AI moving from simple chat assistants to autonomous <strong>agents</strong> executing complex workflows. You should aggressively deploy AI to handle the heavy administrative lifting and scaled tech-touch engagements that drain your team's capacity. Modern CS organizations are utilizing agentic workflows that close the loop from insight to action without requiring manual triage.</p>` },
+    ]
+  },
+  19: {
+    part: "Part IV: Data, Automation & Scale",
+    partColor: "#BA7517",
+    title: "Data Governance and the One Data Spine",
+    tagline: "AI and automation are completely useless if your underlying data is garbage.",
+    sections: [
+      { h: "The Danger of Fragmented Workflows", body: `<p>As companies grow, they typically purchase different tools to solve isolated problems. Sales lives in Salesforce, Support lives in Zendesk, and Customer Success manages onboarding in a massive spreadsheet. When these systems do not talk to each other, you create fragmented workflows. Not everyone has access to the right tools, and critical customer context gets trapped in silos.</p><p>The customer immediately feels the impact of this internal chaos. When data isn't integrated, the customer is forced to repeat their goals, their challenges, and their reason for purchase to every new person they meet. When a customer is forced to repeat themselves, it destroys credibility.</p>` },
+      { h: "Building the One Data Spine", body: `<p>Your <strong>Data Spine</strong> is the designated architecture where all accurate customer data must reside in a single customer record. It means integrating your CRM, CS platform, support desk, and PSA so that fields spanning contract details, product telemetry, support tickets, and renewal opportunities live in one place.</p><ul><li><strong>Centralize the Data:</strong> Ensure the IKT from Sales is deposited directly into the Data Spine</li><li><strong>Democratize Access:</strong> Everyone who needs customer data to do their job can access the unified record</li><li><strong>Eliminate Local Copies:</strong> If the data is not in the Data Spine, it does not exist</li></ul>` },
+      { h: "CRM Hygiene as a Leadership Function", body: `<p>Data configuration is the ultimate opportunity to verify your team's adherence to your playbook. If you have built specific fields in your CRM to capture the answers to the Five Questions during Kickoff, and you see those fields are blank, you immediately know your team is not running the play.</p><p>Implement validation rules, use dropdown menus and standardized fields instead of open text boxes, and treat data hygiene as a non-negotiable leadership function.</p>` },
+    ]
+  },
+  20: {
+    part: "Part IV: Data, Automation & Scale",
+    partColor: "#BA7517",
+    title: "Health Scoring That Actually Works",
+    tagline: "If your health score relies entirely on a massive drop in software usage right before a renewal, you don't have a predictive health score — you have an autopsy report.",
+    sections: [
+      { h: "Focus Exclusively on Avoidable Churn", callout: "The Rule: Your health score must focus exclusively on avoidable churn. By eliminating the noise of unavoidable churn, your score instantly becomes a more accurate reflection of the relationship dynamics you actually control.", body: `<p>The single biggest mistake companies make when building a health score is trying to encapsulate every single variable that has ever caused a customer to leave. This makes the score mathematically bloated and operationally useless.</p><p>You cannot build a predictive health score for a company being acquired. Focus only on what you can influence.</p>` },
+      { h: "Modeling Success — Not Failure", callout: "The best health scores are not built by reverse-engineering failure — they are built by reverse-engineering your healthiest customers.", body: `<p>To build your scoring model, select a sample of your absolute best customers and ask your team: what does a healthy customer actually look like?</p><ul><li><strong>Alignment & Champions:</strong> Do we have alignment across their team with a strong internal champion?</li><li><strong>Skill Sets & Habits:</strong> Do they have the right tactical skills to execute efficiently?</li><li><strong>Engagement:</strong> Are they present and engaged for our meetings? Do they follow through on commitments?</li><li><strong>Advocacy:</strong> Are they a source of referrals, or did they achieve an outcome so impressive it became a case study?</li></ul>` },
+      { h: "The Roll-Out Process", body: `<p>Many health scores fail because teams overcomplicate them and hesitate to launch:</p><ol><li><strong>Design & Prototype:</strong> Test your model on a small sampling of customers</li><li><strong>The Initial Pass:</strong> Execute across your entire customer base, involving your team early</li><li><strong>Review for Insights:</strong> See what broad insights you can glean about your portfolio's overall health</li><li><strong>Validate the Extremes:</strong> Look at your highest green and lowest red accounts — is this an accurate representation of reality?</li><li><strong>Share the Value:</strong> Share insights with Sales, Product, and the C-suite</li></ol><p>Explore the matrix: <a href="frameworks.html#health" style="color:var(--teal)">Health Score Framework →</a></p>` },
+    ]
+  },
+  21: {
+    part: "Part IV: Data, Automation & Scale",
+    partColor: "#BA7517",
+    title: "Cross-Team Collaboration KPIs",
+    tagline: "You cannot unify teams if you measure them in opposition to one another.",
+    sections: [
+      { h: "Moving Beyond Basic NPS", body: `<p>For years, companies relied heavily on Net Promoter Score (NPS) or Customer Satisfaction (CSAT) as their primary cross-company indicators of customer happiness. While these metrics have their place, they are lagging indicators that fail to align the business monetarily. You cannot pay your employees with NPS points.</p><p>To bridge the gap between the C-suite and the CS team, you must speak the language of the business: finance and operational efficiency.</p>` },
+      { h: "The Three Critical Shared KPIs", body: `<ul><li><strong>Net Revenue Retention (NRR):</strong> The percentage of recurring revenue retained from existing customers, including upsells, downgrades, and churn. NRR is the most significant driver of high company valuations. When the entire C-suite shares the NRR goal, retention transforms from a "CS problem" into a whole-company objective.</li><li><strong>Forecast Accuracy:</strong> CS teams must own expansion targets and forecasting with the same rigor that Sales applies to net-new business. When CS can accurately forecast revenue based on health scores and completed Value Blocks, they earn their seat at the strategic table.</li><li><strong>Cycle Time Reduction:</strong> Measuring the speed and efficiency of moving a customer from Closed-Won to First Value. This shared metric forces Sales and CS to collaborate on a seamless IKT.</li></ul>` },
+      { h: "Operationalizing Alignment: Joint Reviews", body: `<p>Establishing shared KPIs is only effective if you actively review them together. Institute recurring joint reviews:</p><ul><li><strong>CS and Sales:</strong> IKT quality, upcoming renewal risks, expansion timing, and recreatable successes</li><li><strong>CS and Product:</strong> Feature utilization trends, product-driven churn risks, roadmap validation using real customer stories</li><li><strong>CS and Marketing:</strong> Win Reports to fuel case studies, referenceable customers, and targeted campaigns</li></ul>` },
+    ]
+  },
+  22: {
+    part: "Part IV: Data, Automation & Scale",
+    partColor: "#BA7517",
+    title: "Proactive Capacity Planning",
+    tagline: "Replace the $2M ARR/CSM rule with Designed Effort and the 65% Availability Rule.",
+    sections: [
+      { h: "Step 1: Map Your Service Blueprint and Designed Effort", body: `<p>You cannot plan capacity without knowing exactly what your team is expected to do. For every service moment (such as a Kickoff or Alignment Meeting), you must calculate the <strong>Designed Effort</strong>:</p><ul><li><strong>Preparation:</strong> Time required to get ready (research, IKT review)</li><li><strong>Execution:</strong> The actual time delivering the meeting or interaction</li><li><strong>Follow-through:</strong> Time spent sending recaps, scheduling next steps, updating the CRM</li></ul>` },
+      { h: "The 65% Target Availability Rule", callout: "Best Practice: Set a Target Availability of 65%. Assuming a standard 40-hour workweek, this equals 26 hours of direct customer time per week (5.2 hours per day). The remaining 35% is deliberately left open to absorb indirect commitments, PTO, holidays, and the unavoidable reactive chaos of SaaS.", body: `<p>The biggest mistake leaders make is assuming that 90% or 100% of a CSM's time is available for direct customer work. This expectation does not allow your team to participate in company events, take PTO, help Sales with product questions, or recover from an illness.</p>` },
+      { h: "Step 4: New Hire Ramp Model", body: `<p>When your model shows that future sales will exceed your team's 65% capacity limit, you must forecast a new hire. Your capacity plan should assume:</p><ul><li>Month 1: 0% of target availability</li><li>Month 2: 50% of target availability</li><li>Month 3+: 100% of target availability</li></ul><p>When your forecast shows Direct Effort exceeding 65% of capacity, that triggers your next hire — not a hunch.</p><p>Try the calculator: <a href="frameworks.html#capacity" style="color:var(--teal)">Capacity Planning Calculator →</a></p>` },
+    ]
+  }
+};
+
+function getChapter() {
+  const params = new URLSearchParams(window.location.search);
+  return parseInt(params.get('ch')) || 1;
+}
+
+function renderChapter(ch) {
+  const data = chapters[ch];
+  if (!data) { document.getElementById('chapter-content').innerHTML = '<div style="padding:8rem 2rem;text-align:center"><h2>Chapter not found</h2><a href="index.html">← Back to home</a></div>'; return; }
+
+  document.title = `CXology — ${data.title}`;
+
+  const sectionsHtml = data.sections.map(s => `
+    <div class="chapter-section">
+      <h2>${s.h}</h2>
+      ${s.callout ? `<div class="callout"><p>${s.callout}</p></div>` : ''}
+      ${s.body}
+    </div>
+  `).join('');
+
+  document.getElementById('chapter-content').innerHTML = `
+    <div class="chapter-hero">
+      <div class="hero-grid"></div>
+      <div class="chapter-hero-inner">
+        <span class="chapter-num" style="color:${data.partColor}">${data.part}</span>
+        <h1 class="headline">${data.title}</h1>
+        <p class="chapter-hero-sub">${data.tagline}</p>
+      </div>
+    </div>
+    <div class="chapter-body">${sectionsHtml}</div>
+  `;
+
+  // Next chapter
+  const nextCh = ch < 22 ? ch + 1 : null;
+  const nextData = nextCh ? chapters[nextCh] : null;
+  document.getElementById('next-chapter-title').textContent = nextData ? `Chapter ${nextCh}: ${nextData.title}` : 'Back to the full book';
+
+  document.getElementById('btn-prev').style.opacity = ch > 1 ? '1' : '0.3';
+  document.getElementById('btn-next').style.opacity = ch < 22 ? '1' : '0.3';
+}
+
+function prevChapter() {
+  const ch = getChapter();
+  if (ch > 1) window.location.href = `chapter.html?ch=${ch - 1}`;
+}
+
+function nextChapter() {
+  const ch = getChapter();
+  if (ch < 22) window.location.href = `chapter.html?ch=${ch + 1}`;
+  else window.location.href = 'index.html';
+}
+
+// Reading progress bar
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+renderChapter(getChapter());
+</script>
+</body>
+</html>
