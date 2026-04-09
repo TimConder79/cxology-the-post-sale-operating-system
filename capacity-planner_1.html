@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CXology — CS Capacity Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+:root{--navy:#1A2E42;--navy-deep:#0F1C28;--navy-mid:#243B52;--navy-light:#2E4A63;--olive:#C5D44E;--olive-dim:#A0AC3A;--olive-pale:#EEF1C8;--teal:#1D9E75;--teal-pale:#D6EBE4;--blue:#378ADD;--amber:#BA7517;--coral:#D85A30;--purple:#534AB7;--white:#FFFFFF;--off-white:#F8F9F2;--gray-100:#F0F2E8;--gray-200:#D8DEB8;--gray-500:#7A8A5A;--gray-700:#404040;--text:#1A2E42;--text-muted:#5A6A40;--radius-sm:6px;--radius-md:12px;--radius-lg:20px;--shadow:0 4px 24px rgba(26,46,66,.12);--shadow-lg:0 12px 48px rgba(26,46,66,.18);--transition:0.22s cubic-bezier(0.4,0,0.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Public Sans',sans-serif;font-weight:400;color:var(--text);background:var(--off-white);line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;border:none;background:none}
+h1,h2,h3,h4{font-family:'Public Sans',sans-serif;line-height:1.2}
+.headline{font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-.01em}
+.label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+p{max-width:68ch}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,28,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(197,212,78,.15);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:32px;height:32px;border-radius:8px;background:var(--olive);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--navy-deep);font-weight:700}
+.nav-logo-text{font-size:1.1rem;color:var(--white);letter-spacing:.02em}
+.nav-back{font-size:.85rem;color:rgba(255,255,255,.5);transition:color var(--transition)}.nav-back:hover{color:var(--olive)}
+body{padding-top:60px}
+.wrap{max-width:960px;margin:0 auto;padding:0 2rem}
+
+.hero{background:var(--navy-deep);padding:80px 2rem 64px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(197,212,78,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(197,212,78,.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.12) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:rgba(197,212,78,.1);border:1px solid rgba(197,212,78,.3);border-radius:100px;margin-bottom:1.5rem}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--olive);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-eyebrow span{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.hero-title{color:var(--white);margin-bottom:1.2rem}.hero-title em{color:var(--olive);font-style:italic}
+.hero-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:300;max-width:60ch}
+
+.section{padding:5rem 2rem}.section-inner{max-width:960px;margin:0 auto}
+.section-dark{background:var(--navy-deep)}.section-alt{background:var(--gray-100)}
+.section-tag{display:inline-block;padding:4px 12px;background:var(--olive-pale);color:var(--olive-dim);border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
+.section-tag.dark{background:rgba(197,212,78,.12);color:var(--olive)}
+.section-title{color:var(--navy);margin-bottom:.75rem}.section-title.white{color:var(--white)}
+.section-sub{color:var(--text-muted);font-size:1rem;font-weight:300;margin-bottom:2.5rem}.section-sub.light{color:rgba(255,255,255,.5)}
+
+.card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:2rem;transition:all var(--transition);margin-bottom:1.25rem}
+.card:hover{box-shadow:var(--shadow)}
+.card-dark{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);padding:1.5rem}
+.card-dark:hover{background:rgba(255,255,255,.07);border-color:rgba(197,212,78,.25)}
+.card-header{margin-bottom:1rem}.card-header h3{font-size:1rem;color:var(--navy);margin-bottom:.25rem}.card-header p{font-size:.82rem;color:var(--text-muted)}
+
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--gray-200);border-radius:var(--radius-md);overflow:hidden;margin-bottom:2rem}
+.stat-cell{background:var(--white);padding:1.5rem 1.25rem;text-align:center}
+.stat-val{font-size:2rem;font-weight:700;line-height:1.1;margin-bottom:.25rem}
+.stat-label{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
+.stat-val.green{color:var(--teal)}.stat-val.orange{color:var(--amber)}.stat-val.red{color:var(--coral)}.stat-val.blue{color:var(--blue)}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem}
+.compare-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:1.5rem;text-align:center}
+.compare-card .big{font-size:2.2rem;font-weight:700;margin:.5rem 0 .25rem}.compare-card .sub{font-size:.78rem;color:var(--text-muted)}
+.compare-card.a{border-top:3px solid var(--teal)}.compare-card.b{border-top:3px solid var(--blue)}
+
+.tbl-wrap{overflow-x:auto;border-radius:var(--radius-md);border:1px solid var(--gray-200);background:var(--white);margin-bottom:2rem}
+.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.tbl th{padding:10px 12px;text-align:center;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--gray-200);background:var(--gray-100)}
+.tbl td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--gray-100)}
+.tbl td:first-child,.tbl th:first-child{text-align:left;padding-left:16px;font-weight:500}
+.c-green{color:var(--teal);background:var(--teal-pale)}.c-orange{color:var(--amber);background:rgba(186,117,23,.08)}.c-red{color:var(--coral);background:rgba(216,90,48,.08)}
+
+.tabs{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:2px solid var(--gray-200)}
+.tab-btn{padding:12px 24px;font-size:.85rem;font-weight:600;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all var(--transition)}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--olive)}.tab-btn:hover{color:var(--navy)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+label{display:block;font-size:.72rem;font-weight:600;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem}
+input[type=number],input[type=text],select{width:100%;padding:10px 14px;background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);color:var(--text);font-family:'Public Sans',sans-serif;font-size:.9rem;transition:border-color var(--transition),box-shadow var(--transition)}
+input:focus,select:focus{outline:none;border-color:var(--olive);box-shadow:0 0 0 3px rgba(197,212,78,.2)}
+.input-group{margin-bottom:14px}
+.input-suffix{position:relative}.input-suffix input{padding-right:44px}.input-suffix .sfx{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:.75rem;color:var(--gray-500);pointer-events:none}
+.input-row{display:grid;gap:12px}.r2{grid-template-columns:1fr 1fr}.r3{grid-template-columns:1fr 1fr 1fr}.r4{grid-template-columns:repeat(4,1fr)}.r6{grid-template-columns:repeat(6,1fr)}
+
+.eg{overflow-x:auto}.eg table{width:100%;border-collapse:collapse;font-size:.8rem}
+.eg th{padding:6px 4px;text-align:center;color:var(--text-muted);font-weight:600;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase}
+.eg td{padding:3px 2px}.eg td:first-child{font-size:.78rem;color:var(--navy);font-weight:600;white-space:nowrap;padding-right:8px}
+.eg input{width:100%;text-align:center;padding:7px 3px;font-size:.8rem}
+
+.chart-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:1.5rem;margin-bottom:1.25rem}
+.chart-card h3{font-size:.85rem;color:var(--navy);margin-bottom:1rem}.chart-area{position:relative;height:280px}
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+
+.insight{padding:1rem 1.25rem;background:var(--white);border-left:4px solid var(--olive);border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:.75rem;font-size:.88rem;color:var(--gray-700);line-height:1.6}
+.insight strong{color:var(--navy);font-weight:600}
+.insight.warn{border-left-color:var(--amber)}.insight.danger{border-left-color:var(--coral)}.insight.blue{border-left-color:var(--blue)}
+
+.j-track{display:flex;position:relative;margin:2rem 0 .5rem}
+.j-track::before{content:'';position:absolute;top:18px;left:0;right:0;height:2px;background:rgba(255,255,255,.15)}
+.j-s{flex:1;text-align:center;cursor:pointer;min-width:100px}
+.j-dot{width:14px;height:14px;border-radius:50%;border:3px solid var(--olive);background:var(--navy-deep);margin:11px auto 10px;position:relative;z-index:1;transition:all .2s}
+.j-s:hover .j-dot,.j-s.active .j-dot{background:var(--olive);box-shadow:0 0 12px rgba(197,212,78,.4)}
+.j-nm{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:2px}.j-ef{font-size:.65rem;color:rgba(255,255,255,.4)}
+.j-det{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);padding:1.5rem;margin-top:1rem;display:none}
+.j-det.active{display:block}
+.j-det h4{font-size:1.1rem;color:var(--olive);margin-bottom:.5rem}
+.j-det p{font-size:.88rem;color:rgba(255,255,255,.6);margin-bottom:.5rem;max-width:100%}.j-det strong{color:rgba(255,255,255,.85)}
+.j-tag{display:inline-block;padding:3px 10px;background:rgba(29,158,117,.15);border-radius:100px;font-size:.68rem;font-weight:600;color:var(--teal);margin:2px 4px 2px 0}
+.j-blk{display:inline-block;padding:3px 10px;background:rgba(186,117,23,.15);border-radius:100px;font-size:.68rem;font-weight:600;color:var(--amber);margin:2px 4px 2px 0}
+
+.hire-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-100)}
+.hire-lbl{min-width:120px;font-size:.82rem;font-weight:500;color:var(--navy)}.hire-role{font-size:.68rem;color:var(--text-muted);display:block}
+.hire-bar{flex:1;height:24px;display:flex;border-radius:var(--radius-sm);overflow:hidden;background:var(--gray-100)}
+.h-seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:600}
+.h-none{background:transparent;color:transparent}
+.h-ramp{background:repeating-linear-gradient(135deg,rgba(186,117,23,.12),rgba(186,117,23,.12) 3px,transparent 3px,transparent 6px);color:var(--amber)}
+.h-full{background:var(--teal-pale);color:var(--teal)}
+
+.footer{background:var(--navy-deep);padding:3rem 2rem 2rem;border-top:1px solid rgba(197,212,78,.1);text-align:center}
+.footer p{font-size:.78rem;color:rgba(255,255,255,.35);max-width:100%}.footer strong{color:rgba(255,255,255,.6)}
+
+@media(max-width:768px){.compare,.chart-grid{grid-template-columns:1fr}.r4,.r3{grid-template-columns:1fr 1fr}.r6{grid-template-columns:repeat(3,1fr)}.stat-row{grid-template-columns:1fr 1fr}.j-track{overflow-x:auto}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="nav-logo"><div class="nav-logo-mark">C</div><span class="nav-logo-text">CXology</span></div><a href="#" class="nav-back">← Back to the book</a></nav>
+
+<section class="hero"><div class="hero-grid"></div><div class="hero-glow"></div><div class="hero-inner">
+  <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span><span>CS Capacity Planner</span></div>
+  <h1 class="hero-title headline">Capacity isn't a guess.<br><em>It's designed from the customer journey.</em></h1>
+  <p class="hero-sub">Most CS leaders ask for headcount without a model. This changes that. Enter your growth forecast, designed effort, and team composition — the math shows exactly when you need to hire and why.</p>
+</div></section>
+
+<section class="section" id="inputs"><div class="section-inner">
+  <span class="section-tag">Configure</span>
+  <h2 class="section-title headline">Model Inputs</h2>
+  <p class="section-sub">Every field recalculates the model live. Start with growth, then tune effort and assumptions.</p>
+  <div class="tabs"><button class="tab-btn active" data-tab="t-growth">Growth</button><button class="tab-btn" data-tab="t-effort">Designed Effort</button><button class="tab-btn" data-tab="t-team">Team & Hiring</button><button class="tab-btn" data-tab="t-assumptions">Assumptions</button></div>
+
+  <div id="t-growth" class="tab-panel active">
+    <div class="card"><div class="card-header"><h3>Forecasted New Customers by Month</h3><p>Align with your sales team's forecast. If mid-year, enter actuals for completed months.</p></div>
+      <div class="eg"><table><thead><tr><th></th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th style="color:var(--teal)">Total</th></tr></thead><tbody>
+        <tr><td>High Touch</td><td><input type="number" id="ht_0" value="3" min="0"></td><td><input type="number" id="ht_1" value="3" min="0"></td><td><input type="number" id="ht_2" value="3" min="0"></td><td><input type="number" id="ht_3" value="4" min="0"></td><td><input type="number" id="ht_4" value="4" min="0"></td><td><input type="number" id="ht_5" value="4" min="0"></td><td><input type="number" id="ht_6" value="6" min="0"></td><td><input type="number" id="ht_7" value="6" min="0"></td><td><input type="number" id="ht_8" value="6" min="0"></td><td><input type="number" id="ht_9" value="4" min="0"></td><td><input type="number" id="ht_10" value="4" min="0"></td><td><input type="number" id="ht_11" value="3" min="0"></td><td id="ht_total" style="font-weight:700;color:var(--teal)">50</td></tr>
+        <tr><td>Low Touch</td><td><input type="number" id="lt_0" value="6" min="0"></td><td><input type="number" id="lt_1" value="6" min="0"></td><td><input type="number" id="lt_2" value="6" min="0"></td><td><input type="number" id="lt_3" value="8" min="0"></td><td><input type="number" id="lt_4" value="8" min="0"></td><td><input type="number" id="lt_5" value="8" min="0"></td><td><input type="number" id="lt_6" value="6" min="0"></td><td><input type="number" id="lt_7" value="6" min="0"></td><td><input type="number" id="lt_8" value="6" min="0"></td><td><input type="number" id="lt_9" value="8" min="0"></td><td><input type="number" id="lt_10" value="8" min="0"></td><td><input type="number" id="lt_11" value="6" min="0"></td><td id="lt_total" style="font-weight:700;color:var(--teal)">82</td></tr>
+      </tbody></table></div></div>
+    <div class="card"><div class="card-header"><h3>Existing Customer Base</h3><p>Current customers and contract values by offering tier.</p></div>
+      <div class="input-row r4"><div class="input-group"><label>Existing High Touch</label><input type="number" id="existing_ht" value="16" min="0"></div><div class="input-group"><label>Existing Low Touch</label><input type="number" id="existing_lt" value="14" min="0"></div><div class="input-group input-suffix"><label>High Touch ACV</label><input type="number" id="acv_ht" value="50000" step="1000"><span class="sfx">USD</span></div><div class="input-group input-suffix"><label>Low Touch ACV</label><input type="number" id="acv_lt" value="18000" step="1000"><span class="sfx">USD</span></div></div></div>
+  </div>
+
+  <div id="t-effort" class="tab-panel">
+    <div class="card"><div class="card-header"><h3>Onboarding — Designed Effort (hrs / customer)</h3><p>Hours per customer per journey month. Includes preparation, execution, and follow-through.</p></div>
+      <div class="eg"><table><thead><tr><th></th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th><th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th></tr></thead><tbody>
+        <tr><td>HT Yr 1</td><td><input type="number" id="ob_ht1_0" value="8.5" step=".5"></td><td><input type="number" id="ob_ht1_1" value="1" step=".5"></td><td><input type="number" id="ob_ht1_2" value="1" step=".5"></td><td><input type="number" id="ob_ht1_3" value="0" step=".5"></td><td><input type="number" id="ob_ht1_4" value="0" step=".5"></td><td><input type="number" id="ob_ht1_5" value="0" step=".5"></td><td><input type="number" id="ob_ht1_6" value="0" step=".5"></td><td><input type="number" id="ob_ht1_7" value="0" step=".5"></td><td><input type="number" id="ob_ht1_8" value="0" step=".5"></td><td><input type="number" id="ob_ht1_9" value="0" step=".5"></td><td><input type="number" id="ob_ht1_10" value="0" step=".5"></td><td><input type="number" id="ob_ht1_11" value="0" step=".5"></td></tr>
+        <tr><td>LT Yr 1</td><td><input type="number" id="ob_lt1_0" value="3" step=".5"></td><td><input type="number" id="ob_lt1_1" value="1" step=".5"></td><td><input type="number" id="ob_lt1_2" value="0.5" step=".5"></td><td><input type="number" id="ob_lt1_3" value="0" step=".5"></td><td><input type="number" id="ob_lt1_4" value="0" step=".5"></td><td><input type="number" id="ob_lt1_5" value="0" step=".5"></td><td><input type="number" id="ob_lt1_6" value="0" step=".5"></td><td><input type="number" id="ob_lt1_7" value="0" step=".5"></td><td><input type="number" id="ob_lt1_8" value="0" step=".5"></td><td><input type="number" id="ob_lt1_9" value="0" step=".5"></td><td><input type="number" id="ob_lt1_10" value="0" step=".5"></td><td><input type="number" id="ob_lt1_11" value="0" step=".5"></td></tr>
+      </tbody></table></div></div>
+    <div class="card"><div class="card-header"><h3>CSM — Designed Effort (hrs / customer)</h3><p>Ongoing service moments: insights, alignment meetings, goal blocks, renewal.</p></div>
+      <div class="eg"><table><thead><tr><th></th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th><th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th></tr></thead><tbody>
+        <tr><td>HT Yr 1</td><td><input type="number" id="csm_ht1_0" value="0" step=".5"></td><td><input type="number" id="csm_ht1_1" value="0" step=".5"></td><td><input type="number" id="csm_ht1_2" value="3.5" step=".5"></td><td><input type="number" id="csm_ht1_3" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_4" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_5" value="3.5" step=".5"></td><td><input type="number" id="csm_ht1_6" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_7" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_8" value="3.5" step=".5"></td><td><input type="number" id="csm_ht1_9" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_10" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_11" value="3" step=".5"></td></tr>
+        <tr><td>HT Yr 2+</td><td><input type="number" id="csm_ht2_0" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_1" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_2" value="3.5" step=".5"></td><td><input type="number" id="csm_ht2_3" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_4" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_5" value="3.5" step=".5"></td><td><input type="number" id="csm_ht2_6" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_7" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_8" value="3.5" step=".5"></td><td><input type="number" id="csm_ht2_9" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_10" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_11" value="3" step=".5"></td></tr>
+        <tr><td>LT Yr 1</td><td><input type="number" id="csm_lt1_0" value="0" step=".5"></td><td><input type="number" id="csm_lt1_1" value="0" step=".5"></td><td><input type="number" id="csm_lt1_2" value="1" step=".5"></td><td><input type="number" id="csm_lt1_3" value="0" step=".5"></td><td><input type="number" id="csm_lt1_4" value="0" step=".5"></td><td><input type="number" id="csm_lt1_5" value="1" step=".5"></td><td><input type="number" id="csm_lt1_6" value="0" step=".5"></td><td><input type="number" id="csm_lt1_7" value="0" step=".5"></td><td><input type="number" id="csm_lt1_8" value="1" step=".5"></td><td><input type="number" id="csm_lt1_9" value="0" step=".5"></td><td><input type="number" id="csm_lt1_10" value="0" step=".5"></td><td><input type="number" id="csm_lt1_11" value="2" step=".5"></td></tr>
+        <tr><td>LT Yr 2+</td><td><input type="number" id="csm_lt2_0" value="0" step=".5"></td><td><input type="number" id="csm_lt2_1" value="0" step=".5"></td><td><input type="number" id="csm_lt2_2" value="1" step=".5"></td><td><input type="number" id="csm_lt2_3" value="0" step=".5"></td><td><input type="number" id="csm_lt2_4" value="0" step=".5"></td><td><input type="number" id="csm_lt2_5" value="1" step=".5"></td><td><input type="number" id="csm_lt2_6" value="0" step=".5"></td><td><input type="number" id="csm_lt2_7" value="0" step=".5"></td><td><input type="number" id="csm_lt2_8" value="1" step=".5"></td><td><input type="number" id="csm_lt2_9" value="0" step=".5"></td><td><input type="number" id="csm_lt2_10" value="0" step=".5"></td><td><input type="number" id="csm_lt2_11" value="2" step=".5"></td></tr>
+      </tbody></table></div></div>
+  </div>
+
+  <div id="t-team" class="tab-panel">
+    <div class="card"><div class="card-header"><h3>Team Members</h3><p>Current team and planned future hires. Start month: 0=Jan, negative=already tenured.</p></div><div id="team-list"></div>
+      <button onclick="addM()" style="margin-top:12px;padding:10px 24px;background:var(--olive);color:var(--navy-deep);border-radius:var(--radius-sm);font-weight:600;font-size:.82rem">+ Add Team Member</button></div>
+    <div class="card"><div class="card-header"><h3>New Hire Onboarding Ramp</h3><p>% of target availability during ramp-up months.</p></div>
+      <div class="input-row r3"><div class="input-group input-suffix"><label>Month 1</label><input type="number" id="ramp_0" value="0" min="0" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Month 2</label><input type="number" id="ramp_1" value="50" min="0" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Month 3</label><input type="number" id="ramp_2" value="100" min="0" max="100"><span class="sfx">%</span></div></div></div>
+  </div>
+
+  <div id="t-assumptions" class="tab-panel">
+    <div class="card" style="margin-bottom:1.25rem"><div class="card-header"><h3>Target Availability</h3><p>% of total hours for direct customer work. Best practice: 65%.</p></div>
+      <div class="input-row r3"><div class="input-group input-suffix"><label>Target Availability</label><input type="number" id="target_avail" value="65" min="10" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Proactive (Designed)</label><input type="number" id="proactive_pct" value="75" min="0" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Reactive</label><input type="number" id="reactive_pct" value="25" disabled style="opacity:.5"><span class="sfx">%</span></div></div></div>
+    <div class="card" style="margin-bottom:1.25rem"><div class="card-header"><h3>Workable Hours by Month</h3><p>Adjusted for federal holidays (2024 defaults).</p></div>
+      <div class="input-row r6"><div class="input-group"><label>Jan</label><input type="number" id="wh_0" value="168"></div><div class="input-group"><label>Feb</label><input type="number" id="wh_1" value="160"></div><div class="input-group"><label>Mar</label><input type="number" id="wh_2" value="168"></div><div class="input-group"><label>Apr</label><input type="number" id="wh_3" value="176"></div><div class="input-group"><label>May</label><input type="number" id="wh_4" value="176"></div><div class="input-group"><label>Jun</label><input type="number" id="wh_5" value="152"></div><div class="input-group"><label>Jul</label><input type="number" id="wh_6" value="176"></div><div class="input-group"><label>Aug</label><input type="number" id="wh_7" value="176"></div><div class="input-group"><label>Sep</label><input type="number" id="wh_8" value="160"></div><div class="input-group"><label>Oct</label><input type="number" id="wh_9" value="176"></div><div class="input-group"><label>Nov</label><input type="number" id="wh_10" value="152"></div><div class="input-group"><label>Dec</label><input type="number" id="wh_11" value="168"></div></div></div>
+    <div class="card"><div class="card-header"><h3>Financial Assumptions</h3><p>For fully-loaded labor cost.</p></div>
+      <div class="input-row r2"><div class="input-group input-suffix"><label>Overhead Rate</label><input type="number" id="overhead_pct" value="20"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Tax & Benefits</label><input type="number" id="tax_benefits_pct" value="24"><span class="sfx">%</span></div></div></div>
+  </div>
+</div></section>
+
+<section class="section section-alt" id="capacity"><div class="section-inner">
+  <span class="section-tag">01 · Capacity</span><h2 class="section-title headline">Where Your Capacity Stands</h2><p class="section-sub">Red = over capacity. Orange = danger zone. Green = headroom.</p>
+  <div class="stat-row" id="summary-stats"></div>
+  <div class="compare" id="compare-cards"></div>
+  <h3 style="font-size:.85rem;color:var(--navy);margin-bottom:.75rem">Combined Capacity — Month by Month</h3>
+  <div class="tbl-wrap"><table class="tbl" id="combined-table"></table></div>
+</div></section>
+
+<section class="section section-dark" id="journey"><div class="section-inner">
+  <span class="section-tag dark">02 · Journey</span><h2 class="section-title white headline">From Inflection Points to Designed Effort</h2><p class="section-sub light">Each stage has inflection points — moments that build or block loyalty. Service moments generate the designed effort that feeds the model.</p>
+  <div class="j-track" id="j-track"></div><div id="j-details"></div>
+</div></section>
+
+<section class="section" id="charts"><div class="section-inner">
+  <span class="section-tag">03 · Visualizations</span><h2 class="section-title headline">Demand vs. Capacity Over Time</h2><p class="section-sub">The gap between the lines is either headroom or a fire.</p>
+  <div class="chart-card"><h3>Combined Demand vs. Available Capacity (hours)</h3><div class="chart-area"><canvas id="chart-combined"></canvas></div></div>
+  <div class="chart-card"><h3>Utilization % by Month</h3><div class="chart-area"><canvas id="chart-util"></canvas></div></div>
+  <div class="chart-grid"><div class="chart-card"><h3>Onboarding</h3><div class="chart-area"><canvas id="chart-ob"></canvas></div></div><div class="chart-card"><h3>CSM</h3><div class="chart-area"><canvas id="chart-csm"></canvas></div></div></div>
+</div></section>
+
+<section class="section section-alt" id="hiring"><div class="section-inner">
+  <span class="section-tag">04 · Hiring</span><h2 class="section-title headline">Hiring Timeline & Ramp Impact</h2><p class="section-sub">New hires don't contribute full capacity on day one. Plan for the ramp or pay for it later.</p>
+  <div class="card"><h3 style="font-size:.85rem;margin-bottom:1rem">Team Productivity by Month</h3><div id="hire-bars"></div></div>
+  <div id="hire-insights" style="margin-top:1rem"></div>
+</div></section>
+
+<section class="section" id="financial"><div class="section-inner">
+  <span class="section-tag">05 · Financial</span><h2 class="section-title headline">Cost of Capacity & Revenue Context</h2><p class="section-sub">Fully-loaded labor cost against supported revenue. Frame headcount as investment, not expense.</p>
+  <div class="stat-row" id="fin-stats"></div>
+  <h3 style="font-size:.85rem;color:var(--navy);margin-bottom:.75rem">Monthly Cost vs. Revenue</h3>
+  <div class="tbl-wrap"><table class="tbl" id="fin-table"></table></div>
+</div></section>
+
+<section class="section section-alt" id="insights"><div class="section-inner">
+  <span class="section-tag">06 · Insights</span><h2 class="section-title headline">What the Model is Telling You</h2><p class="section-sub">Use these to frame your headcount ask internally.</p>
+  <div id="insights-list"></div>
+</div></section>
+
+<section class="section section-dark" id="methodology"><div class="section-inner">
+  <span class="section-tag dark">07 · Methodology</span><h2 class="section-title white headline">How This Model Works</h2>
+  <div class="compare" style="margin-top:2rem">
+    <div class="card-dark" style="padding:2rem"><h3 style="color:var(--olive);margin-bottom:.75rem;font-size:.95rem">From Journey to Numbers</h3>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Customer Journey</strong> → Inflection points define where loyalty is built or blocked.</p>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Service Blueprint</strong> → Maps every planned interaction.</p>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Service Moments</strong> → Specific actions with designed effort: preparation + execution + follow-through.</p>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.55);max-width:100%"><strong style="color:var(--white)">Capacity</strong> → Availability minus demand, adjusted for ramp and reactive load.</p></div>
+    <div class="card-dark" style="padding:2rem"><h3 style="color:var(--olive);margin-bottom:.75rem;font-size:.95rem">Key Assumptions</h3>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Target Availability ≠ 100%.</strong> Indirect and unplanned work consume ~35%.</p>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Planning model, not precision forecast.</strong> The value is directional confidence.</p>
+      <p style="font-size:.88rem;color:rgba(255,255,255,.55);max-width:100%"><strong style="color:var(--white)">Spreadsheet logic translated faithfully.</strong> Growth cohorts cascade demand. OB and CSM distinct. Hire ramp reduces contribution.</p></div>
+  </div>
+</div></section>
+
+<footer class="footer"><p><strong>CS Capacity Planning: The Guide</strong> © 2024 by CXology™ · Results are illustrative, not operational projections.</p></footer>
+
+<script>
+const MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+let T=[{n:'Team Member 1',r:'CSM',s:-12,sal:110000},{n:'Team Member 2',r:'CSM',s:-12,sal:85000},{n:'Team Member 3',r:'Onboarding',s:-12,sal:120000},{n:'Team Member 4',r:'CSM',s:-12,sal:90000},{n:'Team Member 5',r:'CSM',s:3,sal:98000}];
+let CH={};
+const v=id=>(parseFloat(document.getElementById(id)?.value)||0);
+const ar=(p,n)=>Array.from({length:n},(_,i)=>v(p+'_'+i));
+const fm=(n,d=0)=>n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fp=n=>(n*100).toFixed(1)+'%';
+const f$=n=>'$'+fm(n);
+const sc=p=>p>=1?'red':p>=.9?'orange':'green';
+const cc=p=>p>=1?'c-red':p>=.9?'c-orange':'c-green';
+
+document.querySelectorAll('.tab-btn').forEach(b=>{b.onclick=()=>{document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');}});
+
+function renderT(){document.getElementById('team-list').innerHTML=T.map((m,i)=>'<div style="display:flex;gap:8px;align-items:end;margin-bottom:8px;flex-wrap:wrap"><div class="input-group" style="flex:2;min-width:110px"><label>Name</label><input type="text" value="'+m.n+'" onchange="T['+i+'].n=this.value;recalc()"></div><div class="input-group" style="flex:1;min-width:90px"><label>Role</label><select onchange="T['+i+'].r=this.value;recalc()"><option '+(m.r==='CSM'?'selected':'')+'>CSM</option><option '+(m.r==='Onboarding'?'selected':'')+'>Onboarding</option></select></div><div class="input-group" style="width:80px"><label>Start Mo.</label><input type="number" value="'+m.s+'" onchange="T['+i+'].s=+this.value;recalc()"></div><div class="input-group input-suffix" style="width:120px"><label>Salary</label><input type="number" value="'+m.sal+'" step="1000" onchange="T['+i+'].sal=+this.value;recalc()"><span class="sfx">USD</span></div><button onclick="T.splice('+i+',1);renderT();recalc()" style="padding:9px 12px;background:rgba(216,90,48,.1);border:1px solid rgba(216,90,48,.2);color:var(--coral);border-radius:var(--radius-sm);font-size:.75rem;font-weight:600;margin-bottom:14px">✕</button></div>').join('');}
+function addM(){T.push({n:'Team Member '+(T.length+1),r:'CSM',s:6,sal:90000});renderT();recalc();}
+
+const stages=[{name:'Purchase & Welcome',effort:'30 min',mo:'Pre-M1',think:'What happens next? Did I make the right decision?',moments:['Sales handoff','Welcome email #1','Welcome email #2','Automated gift'],blockers:['Lack of clarity on next steps','Significant lead time to kickoff']},{name:'Kickoff',effort:'2 hrs',mo:'M1',think:'Do I feel heard? Do they have their act together?',moments:['Kickoff request email','Kickoff meeting','Post-meeting follow-through','Discuss renewal timing'],blockers:['Misaligned expectations from sales','Customer wants a savior, not a solution']},{name:'Onboarding',effort:'6 hrs',mo:'M1-M3',think:'Where do I start? Can I succeed?',moments:['Align','Configure','Verify','Transform','First Use'],blockers:['No customer resources available','Steep learning curve']},{name:'First Value',effort:'1.5 hrs',mo:'M3-M4',think:'Have I made progress?',moments:['Follow checklist to first value','Celebrate first value','Share insights','Value check-in'],blockers:['Poor internal comms','Dependent team challenges']},{name:'Goal & Alignment',effort:'3.5 hrs/qtr',mo:'M4-M11',think:'Is anyone using this? How do I hit my goals?',moments:['Goal Block: set new goal','Optional training','Share insights (monthly)','Alignment meeting (quarterly)','Monitor usage'],blockers:['Insufficient adoption','No exec visibility','Narrow view of benefits']},{name:'Renew & Grow',effort:'3 hrs',mo:'M11-M12',think:'Should I renew? Is this worth it?',moments:['Renewal conversation','Renewal meeting','Contract steps','CEO celebration'],blockers:["Can't represent value","Difficulty showing ROI"]}];
+function renderJ(){document.getElementById('j-track').innerHTML=stages.map(function(s,i){return'<div class="j-s'+(i===0?' active':'')+'" onclick="showJ('+i+')"><div class="j-dot"></div><div class="j-nm">'+s.name+'</div><div class="j-ef">'+s.effort+' · '+s.mo+'</div></div>';}).join('');document.getElementById('j-details').innerHTML=stages.map(function(s,i){return'<div class="j-det'+(i===0?' active':'')+'" id="jd'+i+'"><h4>'+s.name+'</h4><p><strong>Customer thinking:</strong> "'+s.think+'"</p><p style="margin-top:8px"><strong>Service Moments</strong></p><div style="margin:6px 0 10px">'+s.moments.map(function(m){return'<span class="j-tag">'+m+'</span>';}).join('')+'</div><p><strong>Loyalty Blockers</strong></p><div style="margin:6px 0">'+s.blockers.map(function(b){return'<span class="j-blk">'+b+'</span>';}).join('')+'</div><p style="margin-top:10px;font-size:.75rem;color:rgba(255,255,255,.35)">Designed effort: '+s.effort+' — feeds the effort inputs above.</p></div>';}).join('');}
+function showJ(i){document.querySelectorAll('.j-s').forEach(function(s,j){s.classList.toggle('active',j===i);});document.querySelectorAll('.j-det').forEach(function(d,j){d.classList.toggle('active',j===i);});}
+
+function recalc(){
+  var ht=ar('ht',12),lt=ar('lt',12),eHT=v('existing_ht'),eLT=v('existing_lt'),ta=v('target_avail')/100,pp=v('proactive_pct')/100;
+  document.getElementById('reactive_pct').value=Math.round((1-pp)*100);
+  var wh=ar('wh',12),ramp=ar('ramp',3).map(function(r){return r/100;}),ohP=v('overhead_pct')/100,tbP=v('tax_benefits_pct')/100;
+  document.getElementById('ht_total').textContent=ht.reduce(function(a,b){return a+b;},0);
+  document.getElementById('lt_total').textContent=lt.reduce(function(a,b){return a+b;},0);
+  var obH1=ar('ob_ht1',12),obL1=ar('ob_lt1',12),cH1=ar('csm_ht1',12),cH2=ar('csm_ht2',12),cL1=ar('csm_lt1',12),cL2=ar('csm_lt2',12);
+  var obD=new Float64Array(12),cD=new Float64Array(12);
+  for(var m=0;m<12;m++)for(var j=0;j<12;j++){var c2=m+j;if(c2>=12)break;obD[c2]+=ht[m]*obH1[j]+lt[m]*obL1[j];cD[c2]+=ht[m]*cH1[j]+lt[m]*cL1[j];}
+  for(var m2=0;m2<12;m2++){cD[m2]+=eHT*cH2[m2]+eLT*cL2[m2];}
+  var obA=new Float64Array(12),cA=new Float64Array(12),tA=new Float64Array(12);
+  T.forEach(function(t){for(var m3=0;m3<12;m3++){var me=m3-t.s;if(me<0)continue;var rf=1;if(me<ramp.length)rf=ramp[me];var h=wh[m3]*ta*rf;if(t.r==='Onboarding')obA[m3]+=h;else cA[m3]+=h;tA[m3]+=h;}});
+  var obP=Array.from(obD).map(function(d,i){return obA[i]>0?d/obA[i]:(d>0?9.99:0);});
+  var cP=Array.from(cD).map(function(d,i){return cA[i]>0?d/cA[i]:(d>0?9.99:0);});
+  var tD=Array.from(obD).map(function(d,i){return d+cD[i];});
+  var comP=tD.map(function(d,i){return tA[i]>0?d/tA[i]:(d>0?9.99:0);});
+  var avgU=comP.reduce(function(a,b){return a+b;},0)/12,pk=comP.indexOf(Math.max.apply(null,comP));
+  var eoyC=eHT+eLT+ht.reduce(function(a,b){return a+b;},0)+lt.reduce(function(a,b){return a+b;},0);
+  var overMo=comP.filter(function(p){return p>=1;}).length,csms=T.filter(function(t){return t.r==='CSM'&&t.s<12;}).length;
+
+  document.getElementById('summary-stats').innerHTML='<div class="stat-cell"><div class="stat-val '+sc(avgU)+'">'+fp(avgU)+'</div><div class="stat-label">Avg Utilization</div></div><div class="stat-cell"><div class="stat-val '+sc(comP[pk])+'">'+MO[pk]+'</div><div class="stat-label">Peak Pressure</div></div><div class="stat-cell"><div class="stat-val blue">'+eoyC+'</div><div class="stat-label">EOY Customers</div></div><div class="stat-cell"><div class="stat-val '+(overMo>0?'red':'green')+'">'+overMo+'</div><div class="stat-label">Months Over 100%</div></div>';
+
+  var obAvg=obP.reduce(function(a,b){return a+b;},0)/12,cAvg=cP.reduce(function(a,b){return a+b;},0)/12;
+  document.getElementById('compare-cards').innerHTML='<div class="compare-card a"><div class="sub">Onboarding — Avg Utilization</div><div class="big" style="color:var(--'+sc(obAvg)+')">'+fp(obAvg)+'</div><div class="sub">'+Array.from(obA).filter(function(x){return x>0;}).length+' onboarding resource(s)</div></div><div class="compare-card b"><div class="sub">CSM — Avg Utilization</div><div class="big" style="color:var(--'+sc(cAvg)+')">'+fp(cAvg)+'</div><div class="sub">'+csms+' CSM(s)</div></div>';
+
+  document.getElementById('combined-table').innerHTML='<thead><tr><th></th>'+MO.map(function(m){return'<th>'+m+'</th>';}).join('')+'</tr></thead><tbody><tr><td>Available (hrs)</td>'+Array.from(tA).map(function(h){return'<td>'+fm(h,0)+'</td>';}).join('')+'</tr><tr><td>Demand (hrs)</td>'+tD.map(function(h){return'<td>'+fm(h,0)+'</td>';}).join('')+'</tr><tr><td>% Utilized</td>'+comP.map(function(p){return'<td class="'+cc(p)+'">'+fp(p)+'</td>';}).join('')+'</tr></tbody>';
+
+  var tSal=T.reduce(function(a,t){return a+t.sal;},0),tExp=tSal*(1+ohP+tbP),tWH=wh.reduce(function(a,b){return a+b;},0),lr=tExp/tWH;
+  var acvH=v('acv_ht'),acvL=v('acv_lt'),eRev=eHT*acvH+eLT*acvL,gRev=ht.reduce(function(a,b){return a+b;},0)*acvH+lt.reduce(function(a,b){return a+b;},0)*acvL;
+  document.getElementById('fin-stats').innerHTML='<div class="stat-cell"><div class="stat-val blue">'+f$(tExp)+'</div><div class="stat-label">Total Loaded Cost</div></div><div class="stat-cell"><div class="stat-val green">'+f$(eRev+gRev)+'</div><div class="stat-label">Total ARR Supported</div></div><div class="stat-cell"><div class="stat-val blue">'+f$(lr)+'/hr</div><div class="stat-label">Blended Labor Rate</div></div><div class="stat-cell"><div class="stat-val green">'+((eRev+gRev)/tExp).toFixed(1)+'x</div><div class="stat-label">Revenue / Cost</div></div>';
+
+  var cHT=0,cLT=0,fR=[];
+  for(var m4=0;m4<12;m4++){cHT+=ht[m4];cLT+=lt[m4];fR.push({cost:tD[m4]*lr,rev:(eHT+cHT)*acvH/12+(eLT+cLT)*acvL/12,cust:eHT+eLT+cHT+cLT});}
+  document.getElementById('fin-table').innerHTML='<thead><tr><th></th>'+MO.map(function(m){return'<th>'+m+'</th>';}).join('')+'</tr></thead><tbody><tr><td>Customers</td>'+fR.map(function(r){return'<td>'+r.cust+'</td>';}).join('')+'</tr><tr><td>Revenue</td>'+fR.map(function(r){return'<td>'+f$(r.rev)+'</td>';}).join('')+'</tr><tr><td>Capacity Cost</td>'+fR.map(function(r){return'<td>'+f$(r.cost)+'</td>';}).join('')+'</tr><tr><td>CSM:Cust</td>'+fR.map(function(r){return'<td>1:'+Math.round(r.cust/Math.max(csms,1))+'</td>';}).join('')+'</tr></tbody>';
+
+  document.getElementById('hire-bars').innerHTML=T.map(function(t){var segs=MO.map(function(_,m){var me=m-t.s;if(me<0)return'none';if(me<ramp.length&&ramp[me]<1)return'ramp';return'full';});return'<div class="hire-row"><div class="hire-lbl">'+t.n+'<span class="hire-role">'+t.r+'</span></div><div class="hire-bar">'+segs.map(function(s,i){return'<div class="h-seg h-'+s+'" style="width:'+(100/12)+'%">'+(s!=='none'?MO[i]:'')+'</div>';}).join('')+'</div></div>';}).join('');
+
+  var fh=T.filter(function(t){return t.s>=0&&t.s<12;});
+  document.getElementById('hire-insights').innerHTML=fh.length?fh.map(function(h){var sl=h.s<12?MO[h.s]:'M'+(h.s+1);var fp2=h.s+ramp.length;var fl=fp2<12?MO[fp2]:'M'+(fp2+1);return'<div class="insight blue"><strong>'+h.n+'</strong> ('+h.r+') starts in <strong>'+sl+'</strong>, reaches full productivity in <strong>'+fl+'</strong>. '+ramp.filter(function(r){return r<1;}).length+' months of onboarding drag.</div>';}).join(''):'<div class="insight">No future hires planned. If capacity is constrained, add one in Team & Hiring.</div>';
+
+  upCH(Array.from(tA),tD,comP,Array.from(obA),Array.from(obD),Array.from(cA),Array.from(cD));
+
+  var ins=[];
+  if(overMo>0){var rm=comP.map(function(p,i){return p>=1?MO[i]:null;}).filter(Boolean);ins.push({c:'danger',t:'Your team is over capacity in <strong>'+rm.join(', ')+'</strong>. Without additional resources, this plan depends on heroic effort.'});}
+  if(avgU>.9&&overMo===0)ins.push({c:'warn',t:'Average utilization is <strong>'+fp(avgU)+'</strong> — dangerously close to the limit.'});
+  if(avgU<.6)ins.push({c:'',t:'Average utilization is <strong>'+fp(avgU)+'</strong>. Verify designed effort is fully mapped.'});
+  if(pp<.7)ins.push({c:'warn',t:'Reactive work consumes <strong>'+Math.round((1-pp)*100)+'%</strong> of direct time, crowding out designed service moments.'});
+  if(obP.filter(function(p){return p>=1;}).length>0)ins.push({c:'danger',t:'Onboarding constrained in <strong>'+obP.filter(function(p){return p>=1;}).length+' month(s)</strong>. Risk of delayed kickoffs.'});
+  if(cP.filter(function(p){return p>=1;}).length>0)ins.push({c:'warn',t:'CSM demand exceeds capacity in <strong>'+cP.filter(function(p){return p>=1;}).length+' month(s)</strong>.'});
+  if(fh.length===0&&overMo>0)ins.push({c:'danger',t:'No future hires planned but the model shows capacity gaps.'});
+  fh.forEach(function(h){if(h.s>0&&comP[h.s-1]>=1)ins.push({c:'warn',t:'<strong>'+h.n+'</strong> starts in '+MO[h.s]+', but team is over capacity in '+MO[h.s-1]+'. Consider earlier start.'});});
+  var tRev=fR.reduce(function(a,r){return a+r.rev;},0),tCost=fR.reduce(function(a,r){return a+r.cost;},0);
+  if(tRev>0)ins.push({c:'blue',t:'CS capacity cost = <strong>'+(tCost/tRev*100).toFixed(1)+'%</strong> of supported revenue.'});
+  if(!ins.length)ins.push({c:'',t:'Capacity model looks balanced. Refine designed effort and monitor actuals.'});
+  document.getElementById('insights-list').innerHTML=ins.map(function(i){return'<div class="insight '+i.c+'">'+i.t+'</div>';}).join('');
+}
+
+var cO={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#5A6A40',font:{family:'Public Sans',size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:'#7A8A5A',font:{family:'Public Sans',size:10}},grid:{color:'rgba(216,222,184,.3)'}},y:{ticks:{color:'#7A8A5A',font:{family:'Public Sans',size:10}},grid:{color:'rgba(216,222,184,.3)'}}}};
+function initCH(){
+  var mk=function(id,t,ds,o){return new Chart(document.getElementById(id).getContext('2d'),{type:t,data:{labels:MO,datasets:ds},options:Object.assign({},cO,o||{})});};
+  CH.c=mk('chart-combined','bar',[{label:'Demand',data:[],backgroundColor:'rgba(216,90,48,.55)',borderRadius:4},{label:'Available',data:[],backgroundColor:'rgba(29,158,117,.4)',borderRadius:4}]);
+  CH.u=mk('chart-util','line',[{label:'Utilization %',data:[],borderColor:'#378ADD',backgroundColor:'rgba(55,138,221,.1)',fill:true,tension:.35,pointRadius:4,pointBackgroundColor:'#378ADD'},{label:'100%',data:Array(12).fill(100),borderColor:'rgba(216,90,48,.4)',borderDash:[6,4],pointRadius:0,fill:false}],{scales:{x:cO.scales.x,y:{ticks:cO.scales.y.ticks,grid:cO.scales.y.grid,suggestedMax:150}}});
+  CH.o=mk('chart-ob','bar',[{label:'OB Demand',data:[],backgroundColor:'rgba(186,117,23,.55)',borderRadius:4},{label:'OB Available',data:[],backgroundColor:'rgba(29,158,117,.4)',borderRadius:4}]);
+  CH.s=mk('chart-csm','bar',[{label:'CSM Demand',data:[],backgroundColor:'rgba(55,138,221,.55)',borderRadius:4},{label:'CSM Available',data:[],backgroundColor:'rgba(29,158,117,.4)',borderRadius:4}]);
+}
+function upCH(tA,tD,cP,oA,oD,sA,sD){
+  CH.c.data.datasets[0].data=tD;CH.c.data.datasets[1].data=tA;CH.c.update();
+  CH.u.data.datasets[0].data=cP.map(function(p){return+(p*100).toFixed(1);});CH.u.update();
+  CH.o.data.datasets[0].data=oD;CH.o.data.datasets[1].data=oA;CH.o.update();
+  CH.s.data.datasets[0].data=sD;CH.s.data.datasets[1].data=sA;CH.s.update();
+}
+
+document.addEventListener('DOMContentLoaded',function(){renderT();renderJ();initCH();recalc();document.addEventListener('input',function(e){if(e.target.matches('input[type=number],select'))recalc();});});
+</script>
+</body>
+</html>
