@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CXology — Health Score Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --lime:        #B5BD00;
+  --lime-bg:     #EDEEBF;
+  --lime-faint:  rgba(181,189,0,0.12);
+  --slate:       #5B7F95;
+  --navy:        #253746;
+  --bb:          #101820;
+  --slate-faint: rgba(91,127,149,0.13);
+  --white:       #ffffff;
+  --border:      rgba(37,55,70,0.11);
+  --border-md:   rgba(37,55,70,0.22);
+  --red:         #BC204B;
+  --amber:       #D4890A;
+  --green:       #2E8B5A;
+  --font: 'Public Sans', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--lime-bg);color:var(--bb);font-family:var(--font);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ── HEADER ── */
+.hdr{background:var(--navy);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;position:sticky;top:0;z-index:200}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-wm{font-size:17px;font-weight:900;color:#fff;letter-spacing:.01em}
+.hdr-div{width:1px;height:18px;background:rgba(255,255,255,.17)}
+.hdr-sub{font-size:13px;font-weight:300;color:rgba(255,255,255,.48);letter-spacing:.03em}
+.live-pill{display:flex;align-items:center;gap:6px;background:rgba(181,189,0,.12);border:1px solid rgba(181,189,0,.3);border-radius:20px;padding:4px 11px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--lime);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:44px 40px 40px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;right:0;top:0;bottom:0;width:40%;background:repeating-linear-gradient(90deg,transparent,transparent 17px,rgba(181,189,0,.055) 17px,rgba(181,189,0,.055) 18px),repeating-linear-gradient(180deg,transparent,transparent 17px,rgba(181,189,0,.055) 17px,rgba(181,189,0,.055) 18px);pointer-events:none}
+.hero-eye{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+.hero h1{font-size:34px;font-weight:900;line-height:1.1;color:#fff;max-width:600px;margin-bottom:12px}
+.hero h1 .ul{border-bottom:3px solid var(--lime);padding-bottom:2px}
+.hero-desc{font-size:14px;font-weight:300;color:rgba(255,255,255,.55);max-width:520px;line-height:1.7}
+
+/* ── STEPS NAV ── */
+.steps-nav{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding:0 40px;display:flex;gap:0}
+.step-tab{display:flex;align-items:center;gap:10px;padding:14px 24px 14px 0;margin-right:8px;cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;position:relative}
+.step-tab.active{border-bottom-color:var(--lime)}
+.step-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);flex-shrink:0;transition:all .15s}
+.step-tab.active .step-num{background:var(--lime);border-color:var(--lime);color:var(--navy)}
+.step-tab.done .step-num{background:rgba(181,189,0,.2);border-color:rgba(181,189,0,.4);color:var(--lime)}
+.step-tab.done .step-num::after{content:'✓'}
+.step-tab.done .step-num span{display:none}
+.step-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.02em;transition:color .15s}
+.step-tab.active .step-label,.step-tab.done .step-label{color:rgba(255,255,255,.8)}
+
+/* ── SHELL ── */
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:calc(100vh - 157px)}
+
+/* ── SIDEBAR ── */
+.sb{background:var(--navy);border-right:1px solid rgba(255,255,255,.06);padding:28px 22px 40px;position:sticky;top:157px;height:calc(100vh - 157px);overflow-y:auto}
+.sb::-webkit-scrollbar{width:3px}
+.sb::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.sb-sec{margin-bottom:28px}
+.sb-lbl{font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.07)}
+.sb-text{font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.65}
+.sb-tip{background:rgba(181,189,0,.07);border:1px solid rgba(181,189,0,.2);border-radius:6px;padding:12px 14px;margin-top:14px}
+.sb-tip-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);margin-bottom:6px}
+.sb-tip-text{font-size:12px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.6}
+.sb-criteria-list{display:flex;flex-direction:column;gap:6px}
+.sb-crit{display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:5px}
+.sb-crit-num{font-size:10px;font-weight:700;color:var(--lime);width:14px;flex-shrink:0}
+.sb-crit-name{font-size:12px;font-weight:500;color:rgba(255,255,255,.7);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sb-crit-wt{font-size:11px;font-weight:700;color:var(--lime);flex-shrink:0}
+.sb-progress{margin-top:6px}
+.sp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.sp-lbl{font-size:11px;color:rgba(255,255,255,.45)}
+.sp-val{font-size:12px;font-weight:700;color:var(--lime)}
+.sp-bar{height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.sp-fill{height:100%;background:var(--lime);border-radius:2px;transition:width .4s}
+.sp-fill.warn{background:#D4890A}
+.sp-fill.ok{background:#2E8B5A}
+
+/* ── CONTENT ── */
+.content{padding:36px 40px 60px;background:var(--lime-bg)}
+
+/* ── CARDS ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:28px;margin-bottom:16px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}
+.tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);background:var(--slate-faint);border-radius:3px;padding:4px 9px;white-space:nowrap;flex-shrink:0}
+.tag.lime{color:#7A8000;background:rgba(181,189,0,.12)}
+.card-title{font-size:17px;font-weight:700;color:var(--bb);margin-bottom:5px}
+.card-desc{font-size:13px;font-weight:300;color:var(--slate);line-height:1.65;max-width:560px}
+
+/* ── STEP 1: CRITERIA INPUTS ── */
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.q-item{background:var(--slate-faint);border-radius:6px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+.q-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);flex-shrink:0;margin-top:7px}
+.q-text{font-size:13px;font-weight:400;color:var(--slate);line-height:1.5}
+.criteria-grid{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.crit-row{display:grid;grid-template-columns:32px 1fr auto;align-items:center;gap:10px}
+.crit-num-badge{width:28px;height:28px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--lime);flex-shrink:0}
+.crit-input{width:100%;padding:10px 14px;border:1px solid var(--border-md);border-radius:5px;font-family:var(--font);font-size:14px;font-weight:500;color:var(--bb);outline:none;transition:border-color .15s;background:#fff}
+.crit-input:focus{border-color:var(--lime)}
+.crit-input::placeholder{color:#aaa;font-weight:300}
+.crit-type-sel{padding:10px 12px;border:1px solid var(--border-md);border-radius:5px;font-family:var(--font);font-size:12px;font-weight:600;color:var(--slate);background:#fff;outline:none;cursor:pointer;transition:border-color .15s}
+.crit-type-sel:focus{border-color:var(--lime)}
+.add-crit-btn{display:flex;align-items:center;gap:7px;background:none;border:1px dashed var(--border-md);border-radius:5px;padding:10px 16px;font-family:var(--font);font-size:13px;font-weight:600;color:var(--slate);cursor:pointer;transition:all .15s;width:100%}
+.add-crit-btn:hover{border-color:var(--lime);color:var(--navy)}
+
+/* ── STEP 2 ── */
+.eval-table{width:100%;border-collapse:collapse}
+.eval-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);padding:0 0 10px;border-bottom:1px solid var(--border)}
+.eval-table td{padding:10px 0;border-bottom:1px solid var(--border);vertical-align:top}
+.eval-table tr:last-child td{border-bottom:none}
+.eval-crit-label{font-size:13px;font-weight:600;color:var(--bb);display:flex;align-items:center;gap:8px}
+.eval-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--navy);font-size:10px;font-weight:700;color:var(--lime);flex-shrink:0}
+.eval-type-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px}
+.eval-type-tag.traditional{background:rgba(91,127,149,.15);color:var(--slate)}
+.eval-type-tag.growth{background:rgba(181,189,0,.15);color:#7A8000}
+.eval-textarea{width:100%;padding:9px 12px;border:1px solid var(--border-md);border-radius:5px;font-family:var(--font);font-size:13px;color:var(--bb);outline:none;resize:vertical;min-height:64px;transition:border-color .15s;background:#fff}
+.eval-textarea:focus{border-color:var(--lime)}
+.eval-textarea::placeholder{color:#aaa;font-weight:300}
+.eval-col-1{width:200px;padding-right:16px!important}
+.eval-col-2{padding-right:12px!important}
+.eval-col-3{}
+
+/* ── STEP 3 ── */
+.def-table{width:100%;border-collapse:collapse}
+.def-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate);padding:0 0 10px;border-bottom:1px solid var(--border)}
+.def-table td{padding:10px 0;border-bottom:1px solid var(--border);vertical-align:top}
+.def-table tr:last-child td{border-bottom:none}
+.score-band-mini{display:flex;gap:4px;margin-top:6px}
+.smini{flex:1;height:4px;border-radius:2px}
+.smini.r{background:#BC204B}
+.smini.a{background:#D4890A}
+.smini.g{background:#2E8B5A}
+
+/* ── STEP 4 ── */
+.weight-strip{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.w-chip{display:flex;flex-direction:column;gap:4px;background:var(--white);border:1px solid var(--border);border-radius:6px;padding:10px 12px;min-width:120px;flex:1}
+.w-chip-name{font-size:11px;font-weight:600;color:var(--slate);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.w-chip-input{width:100%;padding:6px 8px;border:1px solid var(--border-md);border-radius:4px;font-family:var(--font);font-size:14px;font-weight:700;color:var(--bb);text-align:center;outline:none;transition:border-color .15s}
+.w-chip-input:focus{border-color:var(--lime)}
+.w-total{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:6px;background:var(--navy);margin-bottom:20px}
+.w-total-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.55)}
+.w-total-val{font-size:16px;font-weight:900;color:var(--lime);margin-left:auto}
+.w-total-status{font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px}
+.w-total-status.ok{background:rgba(46,139,90,.2);color:#4CAF87}
+.w-total-status.warn{background:rgba(212,137,10,.2);color:#D4890A}
+
+/* Customer controls */
+.customer-controls{display:flex;gap:10px;margin-bottom:16px;align-items:center;flex-wrap:wrap}
+.ctrl-btn{display:flex;align-items:center;gap:6px;padding:9px 16px;border-radius:5px;font-family:var(--font);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;border:none}
+.ctrl-btn.primary{background:var(--navy);color:#fff}
+.ctrl-btn.primary:hover{background:#1a2835}
+.ctrl-btn.secondary{background:var(--white);color:var(--slate);border:1px solid var(--border-md)}
+.ctrl-btn.secondary:hover{border-color:var(--navy);color:var(--bb)}
+.ctrl-btn.lime{background:var(--lime);color:var(--navy)}
+.ctrl-btn.lime:hover{background:#9da500}
+.upload-hint{font-size:12px;color:var(--slate);font-weight:300}
+#csv-upload{display:none}
+
+/* Score table */
+.score-table-wrap{overflow-x:auto;margin-bottom:20px}
+.score-table{width:100%;border-collapse:collapse;min-width:600px}
+.score-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);padding:8px 10px;border-bottom:2px solid var(--border-md);white-space:nowrap}
+.score-table th.crit-th{text-align:center}
+.score-table th.result-th{text-align:center;color:var(--navy)}
+.score-table td{padding:6px 8px;border-bottom:1px solid var(--border);vertical-align:middle}
+.score-table tr:last-child td{border-bottom:none}
+.score-table tr:hover td{background:rgba(91,127,149,.04)}
+.cust-name-input{width:100%;padding:6px 10px;border:1px solid transparent;border-radius:4px;font-family:var(--font);font-size:13px;font-weight:600;color:var(--bb);background:transparent;outline:none;transition:all .15s}
+.cust-name-input:focus{border-color:var(--lime);background:#fff}
+.score-input{width:54px;padding:6px 6px;border:1px solid var(--border-md);border-radius:4px;font-family:var(--font);font-size:13px;font-weight:700;color:var(--bb);text-align:center;outline:none;transition:all .15s}
+.score-input:focus{border-color:var(--lime);box-shadow:0 0 0 3px rgba(181,189,0,.1)}
+.score-input::-webkit-inner-spin-button,.score-input::-webkit-outer-spin-button{opacity:1}
+.avg-cell{text-align:center;font-size:14px;font-weight:700;color:var(--slate)}
+.wscore-cell{text-align:center}
+.health-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:12px;font-size:12px;font-weight:700}
+.health-badge.green{background:rgba(46,139,90,.12);color:#2E8B5A;border:1px solid rgba(46,139,90,.25)}
+.health-badge.amber{background:rgba(212,137,10,.12);color:#D4890A;border:1px solid rgba(212,137,10,.25)}
+.health-badge.red{background:rgba(188,32,75,.12);color:#BC204B;border:1px solid rgba(188,32,75,.25)}
+.health-dot{width:6px;height:6px;border-radius:50%}
+.health-dot.green{background:#2E8B5A}
+.health-dot.amber{background:#D4890A}
+.health-dot.red{background:#BC204B}
+.del-btn{background:none;border:none;cursor:pointer;color:#ddd;font-size:16px;padding:4px;transition:color .15s;line-height:1}
+.del-btn:hover{color:var(--red)}
+
+/* Dashboard */
+.dashboard{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.dash-card{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center;position:relative;overflow:hidden}
+.dash-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.dash-card.green::after{background:#2E8B5A}
+.dash-card.amber::after{background:#D4890A}
+.dash-card.red::after{background:#BC204B}
+.dash-num{font-size:32px;font-weight:900;line-height:1;margin-bottom:4px}
+.dash-card.green .dash-num{color:#2E8B5A}
+.dash-card.amber .dash-num{color:#D4890A}
+.dash-card.red .dash-num{color:#BC204B}
+.dash-label{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate)}
+
+/* Chart */
+.chart-wrap{position:relative;height:280px;margin-top:12px}
+
+/* Score distribution bar */
+.score-dist{display:flex;height:28px;border-radius:5px;overflow:hidden;margin-top:8px}
+.dist-seg{transition:width .4s;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.dist-seg.green{background:#2E8B5A}
+.dist-seg.amber{background:#D4890A}
+.dist-seg.red{background:#BC204B}
+
+/* NAV BUTTONS */
+.nav-btns{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:24px;border-top:1px solid var(--border)}
+.nav-btn{display:flex;align-items:center;gap:8px;padding:12px 24px;border-radius:5px;font-family:var(--font);font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .15s}
+.nav-btn.back{background:var(--white);color:var(--slate);border:1px solid var(--border-md)}
+.nav-btn.back:hover{border-color:var(--navy);color:var(--bb)}
+.nav-btn.next{background:var(--navy);color:#fff}
+.nav-btn.next:hover{background:#1a2835}
+.nav-btn.finish{background:var(--lime);color:var(--navy)}
+.nav-btn.finish:hover{background:#9da500}
+
+/* Alerts */
+.alert{padding:12px 16px;border-radius:6px;font-size:13px;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start}
+.alert.warn{background:rgba(212,137,10,.1);border:1px solid rgba(212,137,10,.3);color:#8A5800}
+.alert.info{background:rgba(91,127,149,.1);border:1px solid rgba(91,127,149,.2);color:var(--slate)}
+.alert-icon{flex-shrink:0;font-size:15px}
+
+/* Section badges */
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(181,189,0,.1);border:1px solid rgba(181,189,0,.25);border-radius:4px;padding:5px 10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7A8000;margin-bottom:16px}
+
+/* Tooltip */
+[title]{cursor:help}
+
+/* Upload zone */
+.upload-zone{border:2px dashed var(--border-md);border-radius:8px;padding:24px;text-align:center;cursor:pointer;transition:all .15s}
+.upload-zone:hover{border-color:var(--lime);background:rgba(181,189,0,.03)}
+.upload-zone-icon{font-size:28px;margin-bottom:8px}
+.upload-zone-text{font-size:14px;font-weight:600;color:var(--slate);margin-bottom:4px}
+.upload-zone-sub{font-size:12px;color:#aaa}
+
+/* Step panels */
+.step-panel{display:none}
+.step-panel.active{display:block}
+
+/* Responsive */
+@media(max-width:768px){
+  .shell{grid-template-columns:1fr}
+  .sb{display:none}
+  .hdr{padding:0 20px}
+  .hero{padding:30px 20px}
+  .content{padding:24px 20px 40px}
+  .steps-nav{padding:0 20px;overflow-x:auto}
+  .dashboard{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="logo">
+    <span class="logo-wm">CXology</span>
+    <div class="hdr-div"></div>
+    <span class="hdr-sub">Health Score Builder</span>
+  </div>
+  <div class="live-pill"><div class="live-dot"></div>Live Scoring</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eye">Skill Building · Health Scoring</div>
+  <h1>Build Your <span class="ul">Health Score</span></h1>
+  <div class="hero-desc">A four-step system to design, weight, and activate a health scoring model built around your specific customer base — not generic best guesses.</div>
+</div>
+
+<!-- STEP TABS -->
+<div class="steps-nav">
+  <div class="step-tab active" onclick="goTo(1)" id="tab-1">
+    <div class="step-num"><span>1</span></div>
+    <div class="step-label">Identify Criteria</div>
+  </div>
+  <div class="step-tab" onclick="goTo(2)" id="tab-2">
+    <div class="step-num"><span>2</span></div>
+    <div class="step-label">Evaluate Criteria</div>
+  </div>
+  <div class="step-tab" onclick="goTo(3)" id="tab-3">
+    <div class="step-num"><span>3</span></div>
+    <div class="step-label">Define Criteria</div>
+  </div>
+  <div class="step-tab" onclick="goTo(4)" id="tab-4">
+    <div class="step-num"><span>4</span></div>
+    <div class="step-label">Score Customers</div>
+  </div>
+</div>
+
+<!-- SHELL -->
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <div class="sb">
+    <div class="sb-sec" id="sb-guide">
+      <div class="sb-lbl">Step Guide</div>
+      <div class="sb-text" id="sb-guide-text">Start by identifying what makes your healthiest customers different from those who churn.</div>
+      <div class="sb-tip">
+        <div class="sb-tip-lbl">Best Practice</div>
+        <div class="sb-tip-text" id="sb-tip-text">Focus on your healthiest customers — not what caused churn. Identify what works, then replicate it.</div>
+      </div>
+    </div>
+    <div class="sb-sec" id="sb-criteria-summary" style="display:none">
+      <div class="sb-lbl">Your Criteria</div>
+      <div class="sb-criteria-list" id="sb-crit-list"></div>
+    </div>
+    <div class="sb-sec" id="sb-weight-summary" style="display:none">
+      <div class="sb-lbl">Weight Total</div>
+      <div class="sb-progress">
+        <div class="sp-row">
+          <span class="sp-lbl">Allocated</span>
+          <span class="sp-val" id="sb-wt-val">0%</span>
+        </div>
+        <div class="sp-bar"><div class="sp-fill" id="sb-wt-bar" style="width:0%"></div></div>
+        <div style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.4)" id="sb-wt-msg">Weights must total 100%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- STEP 1: IDENTIFY -->
+    <div class="step-panel active" id="panel-1">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Step 1 — Identify Your Health Score Criteria</div>
+            <div class="card-desc">Start by thinking about your healthiest customers. What do they have in common? Use the questions below to guide your team discussion, then enter up to 6 criteria.</div>
+          </div>
+          <div class="tag">Step 1 of 4</div>
+        </div>
+
+        <div class="q-grid">
+          <div class="q-item"><div class="q-dot"></div><div class="q-text">What does a healthy customer look like?</div></div>
+          <div class="q-item"><div class="q-dot"></div><div class="q-text">How do they act and engage?</div></div>
+          <div class="q-item"><div class="q-dot"></div><div class="q-text">How do they utilize the technology?</div></div>
+          <div class="q-item"><div class="q-dot"></div><div class="q-text">How quickly do they progress through the lifecycle?</div></div>
+          <div class="q-item"><div class="q-dot"></div><div class="q-text">Are they engaged with your company beyond the product?</div></div>
+          <div class="q-item"><div class="q-dot"></div><div class="q-text">What tells you a renewal is at risk vs. secure?</div></div>
+        </div>
+
+        <div style="margin-bottom:10px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--slate)">Your Criteria</span>
+          <span style="font-size:12px;color:#aaa;margin-left:8px">(3–6 recommended)</span>
+        </div>
+        <div class="criteria-grid" id="criteria-grid"></div>
+        <button class="add-crit-btn" id="add-crit-btn" onclick="addCriteria()" style="margin-top:10px">
+          <span style="font-size:18px;line-height:1">+</span> Add Criteria
+        </button>
+
+        <div class="alert info" style="margin-top:20px">
+          <span class="alert-icon">💡</span>
+          <span>Use a mix of <strong>Traditional</strong> (usage, NPS, support cases) and <strong>Growth-Oriented</strong> (engagement, lifecycle progress, relationship reach) criteria for the most complete picture.</span>
+        </div>
+      </div>
+      <div class="nav-btns">
+        <div></div>
+        <button class="nav-btn next" onclick="goTo(2)">Evaluate Criteria →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: EVALUATE -->
+    <div class="step-panel" id="panel-2">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Step 2 — Evaluate Your Criteria</div>
+            <div class="card-desc">For each criteria, answer two questions: what will you learn from it, and when/how will you collect the data? This ensures every criteria is actionable before you commit.</div>
+          </div>
+          <div class="tag">Step 2 of 4</div>
+        </div>
+        <table class="eval-table" id="eval-table">
+          <thead>
+            <tr>
+              <th class="eval-col-1">Criteria</th>
+              <th class="eval-col-2">What do we expect to learn? What can we do with that knowledge?</th>
+              <th class="eval-col-3">When will we measure and how will we collect the data?</th>
+            </tr>
+          </thead>
+          <tbody id="eval-tbody"></tbody>
+        </table>
+      </div>
+      <div class="nav-btns">
+        <button class="nav-btn back" onclick="goTo(1)">← Back</button>
+        <button class="nav-btn next" onclick="goTo(3)">Define Criteria →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: DEFINE -->
+    <div class="step-panel" id="panel-3">
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Step 3 — Define Your Criteria</div>
+            <div class="card-desc">Give your team the context they need to score consistently. Write a brief description and define what a low vs. high score looks like for each criteria.</div>
+          </div>
+          <div class="tag">Step 3 of 4</div>
+        </div>
+
+        <div class="alert info" style="margin-bottom:16px">
+          <span class="alert-icon">📝</span>
+          <div>
+            <strong>Score range: 1–10</strong> (1 = lowest health signal, 10 = highest). Define the extremes so your team scores consistently.
+            <div style="margin-top:6px;font-size:12px">Examples: <em>Quantitative — "Less than 5 logins/week vs. Daily active use" · Qualitative — "Minimally engaged vs. Responsive and inquisitive" · Temporal — "Monthly check-ins vs. Weekly proactive outreach"</em></div>
+          </div>
+        </div>
+
+        <table class="def-table" id="def-table">
+          <thead>
+            <tr>
+              <th style="width:180px;padding-right:16px!important">Criteria</th>
+              <th style="padding-right:12px!important">Description <span style="font-weight:300;color:#aaa;text-transform:none;letter-spacing:0">(2–4 sentences)</span></th>
+              <th style="width:180px;padding-right:12px!important">Low Score (1–3)</th>
+              <th style="width:180px">High Score (8–10)</th>
+            </tr>
+          </thead>
+          <tbody id="def-tbody"></tbody>
+        </table>
+      </div>
+      <div class="nav-btns">
+        <button class="nav-btn back" onclick="goTo(2)">← Back</button>
+        <button class="nav-btn next" onclick="goTo(4)">Score Customers →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: SCORE -->
+    <div class="step-panel" id="panel-4">
+
+      <!-- Dashboard -->
+      <div class="dashboard" id="dashboard">
+        <div class="dash-card green">
+          <div class="dash-num" id="d-healthy">—</div>
+          <div class="dash-label">🟢 Healthy</div>
+        </div>
+        <div class="dash-card amber">
+          <div class="dash-num" id="d-at-risk">—</div>
+          <div class="dash-label">🟡 At Risk</div>
+        </div>
+        <div class="dash-card red">
+          <div class="dash-num" id="d-critical">—</div>
+          <div class="dash-label">🔴 Critical</div>
+        </div>
+      </div>
+
+      <!-- Weight Setup -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Criteria Weights</div>
+            <div class="card-desc">Assign a weight to each criteria. Weights must total 100%. Higher weight = more influence on the final score. Weight based on correlation to churn or retention in your data.</div>
+          </div>
+          <div class="tag lime">Step 4 of 4</div>
+        </div>
+        <div class="weight-strip" id="weight-strip"></div>
+        <div class="w-total">
+          <span class="w-total-label">Total Weight</span>
+          <span class="w-total-val" id="w-total-val">0%</span>
+          <span class="w-total-status warn" id="w-total-status">Needs 100%</span>
+        </div>
+      </div>
+
+      <!-- Customer Scoring -->
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Customer Scores</div>
+            <div class="card-desc">Score each customer 1–10 per criteria. The weighted health score and tier (Healthy / At Risk / Critical) update in real time.</div>
+          </div>
+        </div>
+
+        <div class="customer-controls">
+          <button class="ctrl-btn primary" onclick="addCustomer()">+ Add Customer</button>
+          <button class="ctrl-btn secondary" onclick="document.getElementById('csv-upload').click()">⬆ Upload CSV</button>
+          <button class="ctrl-btn secondary" onclick="downloadTemplate()">⬇ CSV Template</button>
+          <button class="ctrl-btn secondary" onclick="exportResults()">⬇ Export Results</button>
+          <input type="file" id="csv-upload" accept=".csv" onchange="handleCSV(event)">
+          <span class="upload-hint">CSV format: Customer Name, Criteria 1, Criteria 2, ...</span>
+        </div>
+
+        <div class="score-table-wrap">
+          <table class="score-table">
+            <thead>
+              <tr id="score-thead">
+                <th style="width:160px">Customer</th>
+                <!-- criteria cols injected -->
+                <th class="result-th" style="width:80px">Avg</th>
+                <th class="result-th" style="width:120px">Weighted Score</th>
+                <th class="result-th" style="width:100px">Health</th>
+                <th style="width:36px"></th>
+              </tr>
+            </thead>
+            <tbody id="score-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Score distribution -->
+        <div style="margin-top:8px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:6px">Score Distribution</div>
+          <div class="score-dist" id="score-dist">
+            <div class="dist-seg red" id="dist-red" style="width:33%">—</div>
+            <div class="dist-seg amber" id="dist-amber" style="width:34%">—</div>
+            <div class="dist-seg green" id="dist-green" style="width:33%">—</div>
+          </div>
+          <div style="display:flex;gap:20px;margin-top:6px">
+            <span style="font-size:11px;color:var(--slate)">🔴 Critical: 1–4</span>
+            <span style="font-size:11px;color:var(--slate)">🟡 At Risk: 4–7</span>
+            <span style="font-size:11px;color:var(--slate)">🟢 Healthy: 7–10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Customer Health Distribution</div>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="healthChart"></canvas>
+        </div>
+      </div>
+
+      <div class="nav-btns">
+        <button class="nav-btn back" onclick="goTo(3)">← Back</button>
+        <button class="nav-btn finish" onclick="exportResults()">⬇ Export Health Scores</button>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /shell -->
+
+<script>
+// ── STATE ──
+const state = {
+  step: 1,
+  criteria: [],   // {name, type, evalLearn, evalMeasure, defDesc, defLow, defHigh, weight}
+  customers: []   // {name, scores:[]}
+};
+
+let healthChart = null;
+
+// ── SIDEBAR GUIDE CONTENT ──
+const guideContent = {
+  1: {
+    text: 'Think about your healthiest customers — not what caused churn. What do they have in common? Focus on 3–6 signals you can actually track.',
+    tip: 'Use a mix of Traditional (usage, NPS) and Growth-Oriented (engagement, lifecycle) criteria. Traditional alone often misses early warning signs.'
+  },
+  2: {
+    text: 'Each criteria needs a clear purpose and a collection method. If you can\'t answer both questions, the criteria may not be ready for your first iteration.',
+    tip: 'If data collection requires a "special" process, it won\'t get done when resources are stretched. Build collection into normal operations.'
+  },
+  3: {
+    text: 'Clear definitions enable consistent scoring across your team. Without them, scores become subjective and lose their predictive value.',
+    tip: 'You don\'t need perfect definitions — just enough to run your first scoring cycle. Refine over time with real data.'
+  },
+  4: {
+    text: 'Weight criteria based on correlation to outcomes in your customer base. Higher weight = stronger predictor of health or churn.',
+    tip: 'Score your 10 most strategic accounts first. Review the lowest-scoring to validate — do they feel right? Use that feedback to refine weights.'
+  }
+};
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', () => {
+  // Seed 4 default criteria slots
+  addCriteria('Product Usage / Adoption', 'traditional');
+  addCriteria('Customer Engagement', 'traditional');
+  addCriteria('Lifecycle Progression', 'growth');
+  addCriteria('Relationship Reach', 'growth');
+  renderSidebarCriteria();
+});
+
+// ── NAVIGATION ──
+function goTo(step) {
+  if (step > state.step) syncData();
+  state.step = step;
+  document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + step).classList.add('active');
+  document.querySelectorAll('.step-tab').forEach((t, i) => {
+    t.classList.remove('active');
+    if (i + 1 < step) t.classList.add('done');
+    else if (i + 1 === step) t.classList.add('active');
+    else t.classList.remove('done');
+  });
+  updateSidebar(step);
+  if (step === 2) renderEvalTable();
+  if (step === 3) renderDefTable();
+  if (step === 4) renderScoreStep();
+  window.scrollTo(0, 0);
+}
+
+function updateSidebar(step) {
+  document.getElementById('sb-guide-text').textContent = guideContent[step].text;
+  document.getElementById('sb-tip-text').textContent = guideContent[step].tip;
+  document.getElementById('sb-criteria-summary').style.display = step >= 2 ? 'block' : 'none';
+  document.getElementById('sb-weight-summary').style.display = step === 4 ? 'block' : 'none';
+  renderSidebarCriteria();
+}
+
+// ── SYNC DATA FROM DOM ──
+function syncData() {
+  // Step 1 — criteria names/types
+  document.querySelectorAll('.crit-row').forEach((row, i) => {
+    const name = row.querySelector('.crit-input')?.value?.trim();
+    const type = row.querySelector('.crit-type-sel')?.value;
+    if (name && state.criteria[i]) {
+      state.criteria[i].name = name;
+      state.criteria[i].type = type;
+    }
+  });
+  // Step 2 — eval fields
+  document.querySelectorAll('.eval-learn').forEach((el, i) => {
+    if (state.criteria[i]) state.criteria[i].evalLearn = el.value;
+  });
+  document.querySelectorAll('.eval-measure').forEach((el, i) => {
+    if (state.criteria[i]) state.criteria[i].evalMeasure = el.value;
+  });
+  // Step 3 — def fields
+  document.querySelectorAll('.def-desc').forEach((el, i) => {
+    if (state.criteria[i]) state.criteria[i].defDesc = el.value;
+  });
+  document.querySelectorAll('.def-low').forEach((el, i) => {
+    if (state.criteria[i]) state.criteria[i].defLow = el.value;
+  });
+  document.querySelectorAll('.def-high').forEach((el, i) => {
+    if (state.criteria[i]) state.criteria[i].defHigh = el.value;
+  });
+  // Step 4 — weights & scores
+  document.querySelectorAll('.w-input').forEach((el, i) => {
+    if (state.criteria[i]) state.criteria[i].weight = parseFloat(el.value) || 0;
+  });
+  document.querySelectorAll('.customer-row').forEach((row, ci) => {
+    const name = row.querySelector('.cust-name-input')?.value?.trim();
+    if (state.customers[ci]) {
+      if (name) state.customers[ci].name = name;
+      row.querySelectorAll('.score-input').forEach((inp, si) => {
+        state.customers[ci].scores[si] = parseFloat(inp.value) || 0;
+      });
+    }
+  });
+}
+
+// ── STEP 1: CRITERIA ──
+function addCriteria(name = '', type = 'traditional') {
+  if (state.criteria.length >= 6) return;
+  state.criteria.push({ name, type, evalLearn: '', evalMeasure: '', defDesc: '', defLow: '', defHigh: '', weight: 0 });
+  renderCriteriaGrid();
+  if (state.criteria.length >= 6) document.getElementById('add-crit-btn').style.display = 'none';
+}
+
+function removeCriteria(i) {
+  state.criteria.splice(i, 1);
+  renderCriteriaGrid();
+  document.getElementById('add-crit-btn').style.display = '';
+}
+
+function renderCriteriaGrid() {
+  const grid = document.getElementById('criteria-grid');
+  grid.innerHTML = state.criteria.map((c, i) => `
+    <div class="crit-row" data-i="${i}">
+      <div class="crit-num-badge">${i+1}</div>
+      <input class="crit-input" type="text" value="${escHtml(c.name)}" placeholder="Enter criteria name (e.g., Product Usage, Executive Engagement)" oninput="state.criteria[${i}].name=this.value;renderSidebarCriteria()">
+      <select class="crit-type-sel" onchange="state.criteria[${i}].type=this.value">
+        <option value="traditional" ${c.type==='traditional'?'selected':''}>Traditional</option>
+        <option value="growth" ${c.type==='growth'?'selected':''}>Growth-Oriented</option>
+      </select>
+      ${state.criteria.length > 1 ? `<button class="del-btn" onclick="removeCriteria(${i})" title="Remove criteria">×</button>` : ''}
+    </div>
+  `).join('');
+  renderSidebarCriteria();
+}
+
+function renderSidebarCriteria() {
+  const list = document.getElementById('sb-crit-list');
+  if (!list) return;
+  list.innerHTML = state.criteria.filter(c => c.name).map((c, i) => `
+    <div class="sb-crit">
+      <span class="sb-crit-num">${i+1}</span>
+      <span class="sb-crit-name">${escHtml(c.name)}</span>
+      ${c.weight ? `<span class="sb-crit-wt">${c.weight}%</span>` : ''}
+    </div>
+  `).join('') || '<div style="font-size:12px;color:rgba(255,255,255,.3)">No criteria yet</div>';
+}
+
+// ── STEP 2: EVALUATE ──
+function renderEvalTable() {
+  syncData();
+  const tbody = document.getElementById('eval-tbody');
+  tbody.innerHTML = activeCriteria().map((c, i) => `
+    <tr>
+      <td class="eval-col-1" style="padding-top:14px!important">
+        <div class="eval-crit-label">
+          <span class="eval-badge">${i+1}</span>
+          ${escHtml(c.name)}
+        </div>
+        <span class="eval-type-tag ${c.type}">${c.type === 'traditional' ? 'Traditional' : 'Growth'}</span>
+      </td>
+      <td class="eval-col-2" style="padding-top:14px!important">
+        <textarea class="eval-textarea eval-learn" placeholder="What will this metric tell us? How does it help us prioritize action?" rows="3">${escHtml(c.evalLearn)}</textarea>
+      </td>
+      <td class="eval-col-3" style="padding-top:14px!important">
+        <textarea class="eval-textarea eval-measure" placeholder="When do we score? Who collects the data? Is this automated or manual?" rows="3">${escHtml(c.evalMeasure)}</textarea>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// ── STEP 3: DEFINE ──
+function renderDefTable() {
+  syncData();
+  const tbody = document.getElementById('def-tbody');
+  tbody.innerHTML = activeCriteria().map((c, i) => `
+    <tr>
+      <td style="padding-top:14px!important;padding-right:16px!important;vertical-align:top">
+        <div class="eval-crit-label" style="flex-direction:column;align-items:flex-start;gap:4px">
+          <div style="display:flex;align-items:center;gap:6px">
+            <span class="eval-badge">${i+1}</span>
+            <span style="font-size:13px;font-weight:600;color:var(--bb)">${escHtml(c.name)}</span>
+          </div>
+          <span class="eval-type-tag ${c.type}" style="margin-left:0">${c.type === 'traditional' ? 'Traditional' : 'Growth'}</span>
+        </div>
+        <div class="score-band-mini" style="margin-top:10px">
+          <div class="smini r"></div><div class="smini a"></div><div class="smini g"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:2px">
+          <span style="font-size:10px;color:#BC204B;font-weight:700">1</span>
+          <span style="font-size:10px;color:#2E8B5A;font-weight:700">10</span>
+        </div>
+      </td>
+      <td style="padding-top:14px!important;padding-right:12px!important;vertical-align:top">
+        <textarea class="eval-textarea def-desc" placeholder="What is this criteria measuring? What should the scorer be looking for?" rows="4">${escHtml(c.defDesc)}</textarea>
+      </td>
+      <td style="padding-top:14px!important;padding-right:12px!important;vertical-align:top">
+        <textarea class="eval-textarea def-low" placeholder="Low health signal example..." rows="4" style="border-color:rgba(188,32,75,.25)">${escHtml(c.defLow)}</textarea>
+      </td>
+      <td style="padding-top:14px!important;vertical-align:top">
+        <textarea class="eval-textarea def-high" placeholder="High health signal example..." rows="4" style="border-color:rgba(46,139,90,.25)">${escHtml(c.defHigh)}</textarea>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// ── STEP 4: SCORE ──
+function renderScoreStep() {
+  syncData();
+  const ac = activeCriteria();
+
+  // Ensure default weights
+  let totalW = ac.reduce((s, c) => s + (c.weight||0), 0);
+  if (totalW === 0) {
+    const even = Math.floor(100 / ac.length);
+    ac.forEach((c, i) => {
+      c.weight = (i === ac.length - 1) ? 100 - even * (ac.length - 1) : even;
+    });
+    // sync back
+    state.criteria.filter(c=>c.name).forEach((c,i)=>{ if(ac[i]) c.weight = ac[i].weight; });
+  }
+
+  // Ensure customers have correct score array length
+  state.customers.forEach(cu => {
+    while (cu.scores.length < ac.length) cu.scores.push(0);
+    cu.scores = cu.scores.slice(0, ac.length);
+  });
+
+  renderWeightStrip(ac);
+  renderScoreHeaders(ac);
+  renderCustomerRows();
+  updateDashboard();
+}
+
+function renderWeightStrip(ac) {
+  const strip = document.getElementById('weight-strip');
+  strip.innerHTML = ac.map((c, i) => `
+    <div class="w-chip">
+      <div class="w-chip-name" title="${escHtml(c.name)}">${escHtml(c.name)}</div>
+      <div style="display:flex;align-items:center;gap:4px">
+        <input class="w-chip-input w-input" type="number" min="0" max="100" step="5" value="${c.weight}" oninput="onWeightChange(${i}, this.value)">
+        <span style="font-size:12px;font-weight:700;color:var(--slate)">%</span>
+      </div>
+    </div>
+  `).join('');
+  updateWeightTotal();
+}
+
+function onWeightChange(idx, val) {
+  const ac = activeCriteria();
+  if (ac[idx]) ac[idx].weight = parseFloat(val) || 0;
+  // sync back
+  let j = 0;
+  state.criteria.forEach(c => { if (c.name) { if (j === idx) c.weight = parseFloat(val)||0; j++; } });
+  updateWeightTotal();
+  renderCustomerRows();
+  updateDashboard();
+}
+
+function updateWeightTotal() {
+  const total = activeCriteria().reduce((s, c) => s + (c.weight||0), 0);
+  const el = document.getElementById('w-total-val');
+  const st = document.getElementById('w-total-status');
+  const sb = document.getElementById('sb-wt-val');
+  const sbBar = document.getElementById('sb-wt-bar');
+  const sbMsg = document.getElementById('sb-wt-msg');
+  if(el) el.textContent = total + '%';
+  if(sb) sb.textContent = total + '%';
+  const pct = Math.min(100, total);
+  if(sbBar){ sbBar.style.width = pct + '%'; sbBar.className = 'sp-fill' + (total===100?' ok':total>100?' warn':''); }
+  if(st){ st.textContent = total===100 ? '✓ Ready' : total>100 ? 'Over 100%' : 'Needs 100%'; st.className = 'w-total-status ' + (total===100?'ok':'warn'); }
+  if(sbMsg){ sbMsg.textContent = total===100 ? '✓ Weights are set correctly' : 'Weights must total 100%'; }
+}
+
+function renderScoreHeaders(ac) {
+  const tr = document.getElementById('score-thead');
+  // Remove old crit headers
+  const existingCritTh = tr.querySelectorAll('.crit-th');
+  existingCritTh.forEach(th => th.remove());
+  const firstTh = tr.querySelector('th');
+  ac.forEach(c => {
+    const th = document.createElement('th');
+    th.className = 'crit-th';
+    th.style.width = '72px';
+    th.title = c.name;
+    th.textContent = c.name.length > 12 ? c.name.substring(0,12) + '…' : c.name;
+    tr.insertBefore(th, tr.children[1]);
+  });
+}
+
+function renderCustomerRows() {
+  const ac = activeCriteria();
+  const tbody = document.getElementById('score-tbody');
+  tbody.innerHTML = state.customers.map((cu, ci) => `
+    <tr class="customer-row" data-ci="${ci}">
+      <td><input class="cust-name-input" type="text" value="${escHtml(cu.name)}" placeholder="Customer name" oninput="state.customers[${ci}].name=this.value;updateDashboard()"></td>
+      ${ac.map((c, si) => `
+        <td style="text-align:center">
+          <input class="score-input" type="number" min="1" max="10" step="1" value="${cu.scores[si]||''}" placeholder="—" oninput="onScoreChange(${ci},${si},this.value)">
+        </td>
+      `).join('')}
+      <td class="avg-cell" id="avg-${ci}">${calcAvg(cu.scores)}</td>
+      <td class="wscore-cell" id="wscore-${ci}">${calcWeighted(cu.scores, ac)}</td>
+      <td id="health-${ci}">${healthBadge(calcWeightedVal(cu.scores, ac))}</td>
+      <td><button class="del-btn" onclick="deleteCustomer(${ci})">×</button></td>
+    </tr>
+  `).join('');
+}
+
+function onScoreChange(ci, si, val) {
+  state.customers[ci].scores[si] = Math.min(10, Math.max(1, parseFloat(val)||0));
+  const ac = activeCriteria();
+  const cu = state.customers[ci];
+  const avg = document.getElementById('avg-'+ci);
+  const ws = document.getElementById('wscore-'+ci);
+  const h = document.getElementById('health-'+ci);
+  if(avg) avg.textContent = calcAvg(cu.scores);
+  if(ws) ws.textContent = calcWeighted(cu.scores, ac);
+  if(h) h.innerHTML = healthBadge(calcWeightedVal(cu.scores, ac));
+  updateDashboard();
+}
+
+function calcAvg(scores) {
+  const valid = scores.filter(s => s > 0);
+  if (!valid.length) return '—';
+  return (valid.reduce((a,b)=>a+b,0)/valid.length).toFixed(1);
+}
+
+function calcWeightedVal(scores, ac) {
+  if (!ac) ac = activeCriteria();
+  const totalW = ac.reduce((s,c)=>s+(c.weight||0),0);
+  if (!totalW) return 0;
+  let sum = 0;
+  ac.forEach((c,i) => { sum += (scores[i]||0) * (c.weight||0); });
+  return sum / totalW;
+}
+
+function calcWeighted(scores, ac) {
+  const v = calcWeightedVal(scores, ac);
+  if (!v) return '—';
+  return v.toFixed(2);
+}
+
+function healthBadge(val) {
+  if (!val) return '<span style="color:#ccc;font-size:13px">—</span>';
+  const cls = val >= 7 ? 'green' : val >= 4 ? 'amber' : 'red';
+  const lbl = val >= 7 ? '🟢 Healthy' : val >= 4 ? '🟡 At Risk' : '🔴 Critical';
+  return `<div class="health-badge ${cls}">${lbl}</div>`;
+}
+
+function addCustomer() {
+  const ac = activeCriteria();
+  state.customers.push({ name: 'Customer ' + (state.customers.length + 1), scores: new Array(ac.length).fill(0) });
+  renderCustomerRows();
+  updateDashboard();
+}
+
+function deleteCustomer(ci) {
+  state.customers.splice(ci, 1);
+  renderCustomerRows();
+  updateDashboard();
+}
+
+function updateDashboard() {
+  const ac = activeCriteria();
+  let healthy=0, atRisk=0, critical=0;
+  const scored = state.customers.filter(cu => cu.scores.some(s=>s>0));
+  scored.forEach(cu => {
+    const v = calcWeightedVal(cu.scores, ac);
+    if (v >= 7) healthy++;
+    else if (v >= 4) atRisk++;
+    else if (v > 0) critical++;
+  });
+  document.getElementById('d-healthy').textContent = healthy || '—';
+  document.getElementById('d-at-risk').textContent = atRisk || '—';
+  document.getElementById('d-critical').textContent = critical || '—';
+
+  // Distribution bar
+  const total = healthy + atRisk + critical;
+  if (total > 0) {
+    const rPct = (critical/total*100).toFixed(1)+'%';
+    const aPct = (atRisk/total*100).toFixed(1)+'%';
+    const gPct = (healthy/total*100).toFixed(1)+'%';
+    document.getElementById('dist-red').style.width = rPct;
+    document.getElementById('dist-red').textContent = critical || '';
+    document.getElementById('dist-amber').style.width = aPct;
+    document.getElementById('dist-amber').textContent = atRisk || '';
+    document.getElementById('dist-green').style.width = gPct;
+    document.getElementById('dist-green').textContent = healthy || '';
+  }
+
+  renderChart(ac);
+}
+
+function renderChart(ac) {
+  const ctx = document.getElementById('healthChart');
+  if (!ctx) return;
+  const scored = state.customers.filter(cu => cu.scores.some(s=>s>0) && cu.name);
+  const labels = scored.map(cu => cu.name);
+  const data = scored.map(cu => calcWeightedVal(cu.scores, ac).toFixed(2));
+  const colors = data.map(v => v >= 7 ? 'rgba(46,139,90,0.75)' : v >= 4 ? 'rgba(212,137,10,0.75)' : 'rgba(188,32,75,0.75)');
+
+  if (healthChart) {
+    healthChart.data.labels = labels;
+    healthChart.data.datasets[0].data = data;
+    healthChart.data.datasets[0].backgroundColor = colors;
+    healthChart.update('none');
+    return;
+  }
+  healthChart = new Chart(ctx.getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Weighted Health Score',
+        data,
+        backgroundColor: colors,
+        borderRadius: 4,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#253746',
+          titleColor: 'rgba(255,255,255,.5)',
+          bodyColor: '#fff',
+          callbacks: {
+            afterBody: (items) => {
+              const v = parseFloat(items[0].raw);
+              return v >= 7 ? '🟢 Healthy' : v >= 4 ? '🟡 At Risk' : '🔴 Critical';
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(37,55,70,.07)' },
+          ticks: { color: '#5B7F95', font: { family: "'Public Sans'", size: 11 } }
+        },
+        y: {
+          min: 0, max: 10,
+          grid: { color: 'rgba(37,55,70,.07)' },
+          ticks: { color: '#5B7F95', font: { family: "'Public Sans'", size: 11 } },
+          annotations: {
+            line1: { type: 'line', yMin: 4, yMax: 4, borderColor: 'rgba(212,137,10,.4)', borderWidth: 1, borderDash: [4,4] },
+            line2: { type: 'line', yMin: 7, yMax: 7, borderColor: 'rgba(46,139,90,.4)', borderWidth: 1, borderDash: [4,4] }
+          }
+        }
+      }
+    }
+  });
+
+  // Draw threshold lines manually on chart
+  Chart.register({
+    id: 'thresholdLines',
+    afterDraw(chart) {
+      const { ctx, chartArea, scales } = chart;
+      if (!chartArea) return;
+      [4, 7].forEach(val => {
+        const y = scales.y.getPixelForValue(val);
+        ctx.save();
+        ctx.beginPath();
+        ctx.setLineDash([5,5]);
+        ctx.strokeStyle = val === 4 ? 'rgba(212,137,10,0.5)' : 'rgba(46,139,90,0.5)';
+        ctx.lineWidth = 1;
+        ctx.moveTo(chartArea.left, y);
+        ctx.lineTo(chartArea.right, y);
+        ctx.stroke();
+        ctx.restore();
+      });
+    }
+  });
+}
+
+// ── CSV ──
+function handleCSV(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const lines = e.target.result.split('\n').filter(l => l.trim());
+    const ac = activeCriteria();
+    // Skip header row if present
+    const start = lines[0].toLowerCase().includes('customer') ? 1 : 0;
+    lines.slice(start).forEach(line => {
+      const cols = line.split(',').map(c => c.trim().replace(/^"|"$/g,''));
+      if (!cols[0]) return;
+      const scores = cols.slice(1).map(v => {
+        const n = parseFloat(v);
+        return isNaN(n) ? 0 : Math.min(10, Math.max(1, n));
+      });
+      while (scores.length < ac.length) scores.push(0);
+      state.customers.push({ name: cols[0], scores: scores.slice(0, ac.length) });
+    });
+    renderCustomerRows();
+    updateDashboard();
+  };
+  reader.readAsText(file);
+  event.target.value = '';
+}
+
+function downloadTemplate() {
+  const ac = activeCriteria();
+  const header = ['Customer Name', ...ac.map(c => c.name)].join(',');
+  const rows = ['Customer 1','Customer 2','Customer 3'].map(n => [n, ...ac.map(()=>'')].join(','));
+  const csv = [header, ...rows].join('\n');
+  downloadFile('health-score-template.csv', csv, 'text/csv');
+}
+
+function exportResults() {
+  syncData();
+  const ac = activeCriteria();
+  const header = ['Customer Name', ...ac.map(c => c.name + ' (1-10)'), 'Avg Score', 'Weighted Score', 'Health Tier'].join(',');
+  const rows = state.customers.map(cu => {
+    const avg = cu.scores.filter(s=>s>0).length ? (cu.scores.reduce((a,b)=>a+b,0)/cu.scores.filter(s=>s>0).length).toFixed(2) : '';
+    const ws = calcWeightedVal(cu.scores, ac).toFixed(2);
+    const tier = ws >= 7 ? 'Healthy' : ws >= 4 ? 'At Risk' : ws > 0 ? 'Critical' : '';
+    return [cu.name, ...cu.scores, avg, ws, tier].join(',');
+  });
+  const weightRow = ['WEIGHTS', ...ac.map(c=>c.weight+'%'), '', '', ''].join(',');
+  const csv = [header, weightRow, ...rows].join('\n');
+  downloadFile('health-scores-export.csv', csv, 'text/csv');
+}
+
+function downloadFile(name, content, type) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], {type}));
+  a.download = name;
+  a.click();
+}
+
+// ── HELPERS ──
+function activeCriteria() {
+  return state.criteria.filter(c => c.name && c.name.trim());
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
