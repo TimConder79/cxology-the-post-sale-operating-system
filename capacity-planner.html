@@ -1,330 +1,697 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CXology — CS Capacity Planner</title>
-<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
 <style>
-:root{--navy:#1A2E42;--navy-deep:#0F1C28;--navy-mid:#243B52;--navy-light:#2E4A63;--olive:#C5D44E;--olive-dim:#A0AC3A;--olive-pale:#EEF1C8;--teal:#1D9E75;--teal-pale:#D6EBE4;--blue:#378ADD;--amber:#BA7517;--coral:#D85A30;--purple:#534AB7;--white:#FFFFFF;--off-white:#F8F9F2;--gray-100:#F0F2E8;--gray-200:#D8DEB8;--gray-500:#7A8A5A;--gray-700:#404040;--text:#1A2E42;--text-muted:#5A6A40;--radius-sm:6px;--radius-md:12px;--radius-lg:20px;--shadow:0 4px 24px rgba(26,46,66,.12);--shadow-lg:0 12px 48px rgba(26,46,66,.18);--transition:0.22s cubic-bezier(0.4,0,0.2,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Public Sans',sans-serif;font-weight:400;color:var(--text);background:var(--off-white);line-height:1.65;overflow-x:hidden}
-img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;border:none;background:none}
-h1,h2,h3,h4{font-family:'Public Sans',sans-serif;line-height:1.2}
-.headline{font-size:clamp(1.8rem,3.5vw,2.8rem);letter-spacing:-.01em}
-.label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-p{max-width:68ch}
-
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,28,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(197,212,78,.15);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:10px}
-.nav-logo-mark{width:32px;height:32px;border-radius:8px;background:var(--olive);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--navy-deep);font-weight:700}
-.nav-logo-text{font-size:1.1rem;color:var(--white);letter-spacing:.02em}
-.nav-back{font-size:.85rem;color:rgba(255,255,255,.5);transition:color var(--transition)}.nav-back:hover{color:var(--olive)}
-body{padding-top:60px}
-.wrap{max-width:960px;margin:0 auto;padding:0 2rem}
-
-.hero{background:var(--navy-deep);padding:80px 2rem 64px;position:relative;overflow:hidden}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(197,212,78,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(197,212,78,.04) 1px,transparent 1px);background-size:60px 60px}
-.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,158,117,.12) 0%,transparent 70%);top:-100px;right:-100px;pointer-events:none}
-.hero-inner{max-width:960px;margin:0 auto;position:relative;z-index:1}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:5px 14px;background:rgba(197,212,78,.1);border:1px solid rgba(197,212,78,.3);border-radius:100px;margin-bottom:1.5rem}
-.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--olive);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero-eyebrow span{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
-.hero-title{color:var(--white);margin-bottom:1.2rem}.hero-title em{color:var(--olive);font-style:italic}
-.hero-sub{color:rgba(255,255,255,.55);font-size:1.05rem;font-weight:300;max-width:60ch}
-
-.section{padding:5rem 2rem}.section-inner{max-width:960px;margin:0 auto}
-.section-dark{background:var(--navy-deep)}.section-alt{background:var(--gray-100)}
-.section-tag{display:inline-block;padding:4px 12px;background:var(--olive-pale);color:var(--olive-dim);border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem}
-.section-tag.dark{background:rgba(197,212,78,.12);color:var(--olive)}
-.section-title{color:var(--navy);margin-bottom:.75rem}.section-title.white{color:var(--white)}
-.section-sub{color:var(--text-muted);font-size:1rem;font-weight:300;margin-bottom:2.5rem}.section-sub.light{color:rgba(255,255,255,.5)}
-
-.card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:2rem;transition:all var(--transition);margin-bottom:1.25rem}
-.card:hover{box-shadow:var(--shadow)}
-.card-dark{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);padding:1.5rem}
-.card-dark:hover{background:rgba(255,255,255,.07);border-color:rgba(197,212,78,.25)}
-.card-header{margin-bottom:1rem}.card-header h3{font-size:1rem;color:var(--navy);margin-bottom:.25rem}.card-header p{font-size:.82rem;color:var(--text-muted)}
-
-.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--gray-200);border-radius:var(--radius-md);overflow:hidden;margin-bottom:2rem}
-.stat-cell{background:var(--white);padding:1.5rem 1.25rem;text-align:center}
-.stat-val{font-size:2rem;font-weight:700;line-height:1.1;margin-bottom:.25rem}
-.stat-label{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted)}
-.stat-val.green{color:var(--teal)}.stat-val.orange{color:var(--amber)}.stat-val.red{color:var(--coral)}.stat-val.blue{color:var(--blue)}
-
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem}
-.compare-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:1.5rem;text-align:center}
-.compare-card .big{font-size:2.2rem;font-weight:700;margin:.5rem 0 .25rem}.compare-card .sub{font-size:.78rem;color:var(--text-muted)}
-.compare-card.a{border-top:3px solid var(--teal)}.compare-card.b{border-top:3px solid var(--blue)}
-
-.tbl-wrap{overflow-x:auto;border-radius:var(--radius-md);border:1px solid var(--gray-200);background:var(--white);margin-bottom:2rem}
-.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
-.tbl th{padding:10px 12px;text-align:center;font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--gray-200);background:var(--gray-100)}
-.tbl td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--gray-100)}
-.tbl td:first-child,.tbl th:first-child{text-align:left;padding-left:16px;font-weight:500}
-.c-green{color:var(--teal);background:var(--teal-pale)}.c-orange{color:var(--amber);background:rgba(186,117,23,.08)}.c-red{color:var(--coral);background:rgba(216,90,48,.08)}
-
-.tabs{display:flex;gap:0;margin-bottom:1.5rem;border-bottom:2px solid var(--gray-200)}
-.tab-btn{padding:12px 24px;font-size:.85rem;font-weight:600;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all var(--transition)}
-.tab-btn.active{color:var(--navy);border-bottom-color:var(--olive)}.tab-btn:hover{color:var(--navy)}
-.tab-panel{display:none}.tab-panel.active{display:block}
-
-label{display:block;font-size:.72rem;font-weight:600;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:.4rem}
-input[type=number],input[type=text],select{width:100%;padding:10px 14px;background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);color:var(--text);font-family:'Public Sans',sans-serif;font-size:.9rem;transition:border-color var(--transition),box-shadow var(--transition)}
-input:focus,select:focus{outline:none;border-color:var(--olive);box-shadow:0 0 0 3px rgba(197,212,78,.2)}
-.input-group{margin-bottom:14px}
-.input-suffix{position:relative}.input-suffix input{padding-right:44px}.input-suffix .sfx{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:.75rem;color:var(--gray-500);pointer-events:none}
-.input-row{display:grid;gap:12px}.r2{grid-template-columns:1fr 1fr}.r3{grid-template-columns:1fr 1fr 1fr}.r4{grid-template-columns:repeat(4,1fr)}.r6{grid-template-columns:repeat(6,1fr)}
-
-.eg{overflow-x:auto}.eg table{width:100%;border-collapse:collapse;font-size:.8rem}
-.eg th{padding:6px 4px;text-align:center;color:var(--text-muted);font-weight:600;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase}
-.eg td{padding:3px 2px}.eg td:first-child{font-size:.78rem;color:var(--navy);font-weight:600;white-space:nowrap;padding-right:8px}
-.eg input{width:100%;text-align:center;padding:7px 3px;font-size:.8rem}
-
-.chart-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:1.5rem;margin-bottom:1.25rem}
-.chart-card h3{font-size:.85rem;color:var(--navy);margin-bottom:1rem}.chart-area{position:relative;height:280px}
-.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-
-.insight{padding:1rem 1.25rem;background:var(--white);border-left:4px solid var(--olive);border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:.75rem;font-size:.88rem;color:var(--gray-700);line-height:1.6}
-.insight strong{color:var(--navy);font-weight:600}
-.insight.warn{border-left-color:var(--amber)}.insight.danger{border-left-color:var(--coral)}.insight.blue{border-left-color:var(--blue)}
-
-.j-track{display:flex;position:relative;margin:2rem 0 .5rem}
-.j-track::before{content:'';position:absolute;top:18px;left:0;right:0;height:2px;background:rgba(255,255,255,.15)}
-.j-s{flex:1;text-align:center;cursor:pointer;min-width:100px}
-.j-dot{width:14px;height:14px;border-radius:50%;border:3px solid var(--olive);background:var(--navy-deep);margin:11px auto 10px;position:relative;z-index:1;transition:all .2s}
-.j-s:hover .j-dot,.j-s.active .j-dot{background:var(--olive);box-shadow:0 0 12px rgba(197,212,78,.4)}
-.j-nm{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:2px}.j-ef{font-size:.65rem;color:rgba(255,255,255,.4)}
-.j-det{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);padding:1.5rem;margin-top:1rem;display:none}
-.j-det.active{display:block}
-.j-det h4{font-size:1.1rem;color:var(--olive);margin-bottom:.5rem}
-.j-det p{font-size:.88rem;color:rgba(255,255,255,.6);margin-bottom:.5rem;max-width:100%}.j-det strong{color:rgba(255,255,255,.85)}
-.j-tag{display:inline-block;padding:3px 10px;background:rgba(29,158,117,.15);border-radius:100px;font-size:.68rem;font-weight:600;color:var(--teal);margin:2px 4px 2px 0}
-.j-blk{display:inline-block;padding:3px 10px;background:rgba(186,117,23,.15);border-radius:100px;font-size:.68rem;font-weight:600;color:var(--amber);margin:2px 4px 2px 0}
-
-.hire-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--gray-100)}
-.hire-lbl{min-width:120px;font-size:.82rem;font-weight:500;color:var(--navy)}.hire-role{font-size:.68rem;color:var(--text-muted);display:block}
-.hire-bar{flex:1;height:24px;display:flex;border-radius:var(--radius-sm);overflow:hidden;background:var(--gray-100)}
-.h-seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:600}
-.h-none{background:transparent;color:transparent}
-.h-ramp{background:repeating-linear-gradient(135deg,rgba(186,117,23,.12),rgba(186,117,23,.12) 3px,transparent 3px,transparent 6px);color:var(--amber)}
-.h-full{background:var(--teal-pale);color:var(--teal)}
-
-.footer{background:var(--navy-deep);padding:3rem 2rem 2rem;border-top:1px solid rgba(197,212,78,.1);text-align:center}
-.footer p{font-size:.78rem;color:rgba(255,255,255,.35);max-width:100%}.footer strong{color:rgba(255,255,255,.6)}
-
-@media(max-width:768px){.compare,.chart-grid{grid-template-columns:1fr}.r4,.r3{grid-template-columns:1fr 1fr}.r6{grid-template-columns:repeat(3,1fr)}.stat-row{grid-template-columns:1fr 1fr}.j-track{overflow-x:auto}}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'Public Sans',system-ui,sans-serif;background:#F8F9F2;color:#1A2E42;line-height:1.65;overflow-x:hidden}
+input[type=number]::-webkit-inner-spin-button{opacity:1}
+input[type=number]{-moz-appearance:textfield}
+select{-webkit-appearance:auto;appearance:auto}
+@media print{.no-print{display:none!important}.print-only{display:block!important}}
+#loading-screen{display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:12px;color:#5A6A40;font-size:14px}
+#loading-screen .spin{width:32px;height:32px;border:3px solid #D8DEB8;border-top-color:#C5D44E;border-radius:50%;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+#err-box{display:none;padding:40px;text-align:center;color:#E53935;font-size:14px;max-width:600px;margin:40px auto}
+.chart-tip{position:absolute;background:#1A2E42;color:#fff;font-size:11px;padding:4px 8px;border-radius:4px;pointer-events:none;white-space:nowrap;z-index:10;transform:translate(-50%,-100%);margin-top:-8px}
+summary::-webkit-details-marker{display:none}
+summary{list-style:none}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="nav-logo"><div class="nav-logo-mark">C</div><span class="nav-logo-text">CXology</span></div><a href="#" class="nav-back">← Back to the book</a></nav>
+<div id="loading-screen"><div class="spin"></div><span>Loading…</span></div>
+<div id="err-box"></div>
+<div id="root"></div>
 
-<section class="hero"><div class="hero-grid"></div><div class="hero-glow"></div><div class="hero-inner">
-  <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span><span>CS Capacity Planner</span></div>
-  <h1 class="hero-title headline">Capacity isn't a guess.<br><em>It's designed from the customer journey.</em></h1>
-  <p class="hero-sub">Most CS leaders ask for headcount without a model. This changes that. Enter your growth forecast, designed effort, and team composition — the math shows exactly when you need to hire and why.</p>
-</div></section>
-
-<section class="section" id="inputs"><div class="section-inner">
-  <span class="section-tag">Configure</span>
-  <h2 class="section-title headline">Model Inputs</h2>
-  <p class="section-sub">Every field recalculates the model live. Start with growth, then tune effort and assumptions.</p>
-  <div class="tabs"><button class="tab-btn active" data-tab="t-growth">Growth</button><button class="tab-btn" data-tab="t-effort">Designed Effort</button><button class="tab-btn" data-tab="t-team">Team & Hiring</button><button class="tab-btn" data-tab="t-assumptions">Assumptions</button></div>
-
-  <div id="t-growth" class="tab-panel active">
-    <div class="card"><div class="card-header"><h3>Forecasted New Customers by Month</h3><p>Align with your sales team's forecast. If mid-year, enter actuals for completed months.</p></div>
-      <div class="eg"><table><thead><tr><th></th><th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th><th>May</th><th>Jun</th><th>Jul</th><th>Aug</th><th>Sep</th><th>Oct</th><th>Nov</th><th>Dec</th><th style="color:var(--teal)">Total</th></tr></thead><tbody>
-        <tr><td>High Touch</td><td><input type="number" id="ht_0" value="3" min="0"></td><td><input type="number" id="ht_1" value="3" min="0"></td><td><input type="number" id="ht_2" value="3" min="0"></td><td><input type="number" id="ht_3" value="4" min="0"></td><td><input type="number" id="ht_4" value="4" min="0"></td><td><input type="number" id="ht_5" value="4" min="0"></td><td><input type="number" id="ht_6" value="6" min="0"></td><td><input type="number" id="ht_7" value="6" min="0"></td><td><input type="number" id="ht_8" value="6" min="0"></td><td><input type="number" id="ht_9" value="4" min="0"></td><td><input type="number" id="ht_10" value="4" min="0"></td><td><input type="number" id="ht_11" value="3" min="0"></td><td id="ht_total" style="font-weight:700;color:var(--teal)">50</td></tr>
-        <tr><td>Low Touch</td><td><input type="number" id="lt_0" value="6" min="0"></td><td><input type="number" id="lt_1" value="6" min="0"></td><td><input type="number" id="lt_2" value="6" min="0"></td><td><input type="number" id="lt_3" value="8" min="0"></td><td><input type="number" id="lt_4" value="8" min="0"></td><td><input type="number" id="lt_5" value="8" min="0"></td><td><input type="number" id="lt_6" value="6" min="0"></td><td><input type="number" id="lt_7" value="6" min="0"></td><td><input type="number" id="lt_8" value="6" min="0"></td><td><input type="number" id="lt_9" value="8" min="0"></td><td><input type="number" id="lt_10" value="8" min="0"></td><td><input type="number" id="lt_11" value="6" min="0"></td><td id="lt_total" style="font-weight:700;color:var(--teal)">82</td></tr>
-      </tbody></table></div></div>
-    <div class="card"><div class="card-header"><h3>Existing Customer Base</h3><p>Current customers and contract values by offering tier.</p></div>
-      <div class="input-row r4"><div class="input-group"><label>Existing High Touch</label><input type="number" id="existing_ht" value="16" min="0"></div><div class="input-group"><label>Existing Low Touch</label><input type="number" id="existing_lt" value="14" min="0"></div><div class="input-group input-suffix"><label>High Touch ACV</label><input type="number" id="acv_ht" value="50000" step="1000"><span class="sfx">USD</span></div><div class="input-group input-suffix"><label>Low Touch ACV</label><input type="number" id="acv_lt" value="18000" step="1000"><span class="sfx">USD</span></div></div></div>
-  </div>
-
-  <div id="t-effort" class="tab-panel">
-    <div class="card"><div class="card-header"><h3>Onboarding — Designed Effort (hrs / customer)</h3><p>Hours per customer per journey month. Includes preparation, execution, and follow-through.</p></div>
-      <div class="eg"><table><thead><tr><th></th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th><th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th></tr></thead><tbody>
-        <tr><td>HT Yr 1</td><td><input type="number" id="ob_ht1_0" value="8.5" step=".5"></td><td><input type="number" id="ob_ht1_1" value="1" step=".5"></td><td><input type="number" id="ob_ht1_2" value="1" step=".5"></td><td><input type="number" id="ob_ht1_3" value="0" step=".5"></td><td><input type="number" id="ob_ht1_4" value="0" step=".5"></td><td><input type="number" id="ob_ht1_5" value="0" step=".5"></td><td><input type="number" id="ob_ht1_6" value="0" step=".5"></td><td><input type="number" id="ob_ht1_7" value="0" step=".5"></td><td><input type="number" id="ob_ht1_8" value="0" step=".5"></td><td><input type="number" id="ob_ht1_9" value="0" step=".5"></td><td><input type="number" id="ob_ht1_10" value="0" step=".5"></td><td><input type="number" id="ob_ht1_11" value="0" step=".5"></td></tr>
-        <tr><td>LT Yr 1</td><td><input type="number" id="ob_lt1_0" value="3" step=".5"></td><td><input type="number" id="ob_lt1_1" value="1" step=".5"></td><td><input type="number" id="ob_lt1_2" value="0.5" step=".5"></td><td><input type="number" id="ob_lt1_3" value="0" step=".5"></td><td><input type="number" id="ob_lt1_4" value="0" step=".5"></td><td><input type="number" id="ob_lt1_5" value="0" step=".5"></td><td><input type="number" id="ob_lt1_6" value="0" step=".5"></td><td><input type="number" id="ob_lt1_7" value="0" step=".5"></td><td><input type="number" id="ob_lt1_8" value="0" step=".5"></td><td><input type="number" id="ob_lt1_9" value="0" step=".5"></td><td><input type="number" id="ob_lt1_10" value="0" step=".5"></td><td><input type="number" id="ob_lt1_11" value="0" step=".5"></td></tr>
-      </tbody></table></div></div>
-    <div class="card"><div class="card-header"><h3>CSM — Designed Effort (hrs / customer)</h3><p>Ongoing service moments: insights, alignment meetings, goal blocks, renewal.</p></div>
-      <div class="eg"><table><thead><tr><th></th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>M6</th><th>M7</th><th>M8</th><th>M9</th><th>M10</th><th>M11</th><th>M12</th></tr></thead><tbody>
-        <tr><td>HT Yr 1</td><td><input type="number" id="csm_ht1_0" value="0" step=".5"></td><td><input type="number" id="csm_ht1_1" value="0" step=".5"></td><td><input type="number" id="csm_ht1_2" value="3.5" step=".5"></td><td><input type="number" id="csm_ht1_3" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_4" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_5" value="3.5" step=".5"></td><td><input type="number" id="csm_ht1_6" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_7" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_8" value="3.5" step=".5"></td><td><input type="number" id="csm_ht1_9" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_10" value="0.5" step=".5"></td><td><input type="number" id="csm_ht1_11" value="3" step=".5"></td></tr>
-        <tr><td>HT Yr 2+</td><td><input type="number" id="csm_ht2_0" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_1" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_2" value="3.5" step=".5"></td><td><input type="number" id="csm_ht2_3" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_4" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_5" value="3.5" step=".5"></td><td><input type="number" id="csm_ht2_6" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_7" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_8" value="3.5" step=".5"></td><td><input type="number" id="csm_ht2_9" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_10" value="0.5" step=".5"></td><td><input type="number" id="csm_ht2_11" value="3" step=".5"></td></tr>
-        <tr><td>LT Yr 1</td><td><input type="number" id="csm_lt1_0" value="0" step=".5"></td><td><input type="number" id="csm_lt1_1" value="0" step=".5"></td><td><input type="number" id="csm_lt1_2" value="1" step=".5"></td><td><input type="number" id="csm_lt1_3" value="0" step=".5"></td><td><input type="number" id="csm_lt1_4" value="0" step=".5"></td><td><input type="number" id="csm_lt1_5" value="1" step=".5"></td><td><input type="number" id="csm_lt1_6" value="0" step=".5"></td><td><input type="number" id="csm_lt1_7" value="0" step=".5"></td><td><input type="number" id="csm_lt1_8" value="1" step=".5"></td><td><input type="number" id="csm_lt1_9" value="0" step=".5"></td><td><input type="number" id="csm_lt1_10" value="0" step=".5"></td><td><input type="number" id="csm_lt1_11" value="2" step=".5"></td></tr>
-        <tr><td>LT Yr 2+</td><td><input type="number" id="csm_lt2_0" value="0" step=".5"></td><td><input type="number" id="csm_lt2_1" value="0" step=".5"></td><td><input type="number" id="csm_lt2_2" value="1" step=".5"></td><td><input type="number" id="csm_lt2_3" value="0" step=".5"></td><td><input type="number" id="csm_lt2_4" value="0" step=".5"></td><td><input type="number" id="csm_lt2_5" value="1" step=".5"></td><td><input type="number" id="csm_lt2_6" value="0" step=".5"></td><td><input type="number" id="csm_lt2_7" value="0" step=".5"></td><td><input type="number" id="csm_lt2_8" value="1" step=".5"></td><td><input type="number" id="csm_lt2_9" value="0" step=".5"></td><td><input type="number" id="csm_lt2_10" value="0" step=".5"></td><td><input type="number" id="csm_lt2_11" value="2" step=".5"></td></tr>
-      </tbody></table></div></div>
-  </div>
-
-  <div id="t-team" class="tab-panel">
-    <div class="card"><div class="card-header"><h3>Team Members</h3><p>Current team and planned future hires. Start month: 0=Jan, negative=already tenured.</p></div><div id="team-list"></div>
-      <button onclick="addM()" style="margin-top:12px;padding:10px 24px;background:var(--olive);color:var(--navy-deep);border-radius:var(--radius-sm);font-weight:600;font-size:.82rem">+ Add Team Member</button></div>
-    <div class="card"><div class="card-header"><h3>New Hire Onboarding Ramp</h3><p>% of target availability during ramp-up months.</p></div>
-      <div class="input-row r3"><div class="input-group input-suffix"><label>Month 1</label><input type="number" id="ramp_0" value="0" min="0" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Month 2</label><input type="number" id="ramp_1" value="50" min="0" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Month 3</label><input type="number" id="ramp_2" value="100" min="0" max="100"><span class="sfx">%</span></div></div></div>
-  </div>
-
-  <div id="t-assumptions" class="tab-panel">
-    <div class="card" style="margin-bottom:1.25rem"><div class="card-header"><h3>Target Availability</h3><p>% of total hours for direct customer work. Best practice: 65%.</p></div>
-      <div class="input-row r3"><div class="input-group input-suffix"><label>Target Availability</label><input type="number" id="target_avail" value="65" min="10" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Proactive (Designed)</label><input type="number" id="proactive_pct" value="75" min="0" max="100"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Reactive</label><input type="number" id="reactive_pct" value="25" disabled style="opacity:.5"><span class="sfx">%</span></div></div></div>
-    <div class="card" style="margin-bottom:1.25rem"><div class="card-header"><h3>Workable Hours by Month</h3><p>Adjusted for federal holidays (2024 defaults).</p></div>
-      <div class="input-row r6"><div class="input-group"><label>Jan</label><input type="number" id="wh_0" value="168"></div><div class="input-group"><label>Feb</label><input type="number" id="wh_1" value="160"></div><div class="input-group"><label>Mar</label><input type="number" id="wh_2" value="168"></div><div class="input-group"><label>Apr</label><input type="number" id="wh_3" value="176"></div><div class="input-group"><label>May</label><input type="number" id="wh_4" value="176"></div><div class="input-group"><label>Jun</label><input type="number" id="wh_5" value="152"></div><div class="input-group"><label>Jul</label><input type="number" id="wh_6" value="176"></div><div class="input-group"><label>Aug</label><input type="number" id="wh_7" value="176"></div><div class="input-group"><label>Sep</label><input type="number" id="wh_8" value="160"></div><div class="input-group"><label>Oct</label><input type="number" id="wh_9" value="176"></div><div class="input-group"><label>Nov</label><input type="number" id="wh_10" value="152"></div><div class="input-group"><label>Dec</label><input type="number" id="wh_11" value="168"></div></div></div>
-    <div class="card"><div class="card-header"><h3>Financial Assumptions</h3><p>For fully-loaded labor cost.</p></div>
-      <div class="input-row r2"><div class="input-group input-suffix"><label>Overhead Rate</label><input type="number" id="overhead_pct" value="20"><span class="sfx">%</span></div><div class="input-group input-suffix"><label>Tax & Benefits</label><input type="number" id="tax_benefits_pct" value="24"><span class="sfx">%</span></div></div></div>
-  </div>
-</div></section>
-
-<section class="section section-alt" id="capacity"><div class="section-inner">
-  <span class="section-tag">01 · Capacity</span><h2 class="section-title headline">Where Your Capacity Stands</h2><p class="section-sub">Red = over capacity. Orange = danger zone. Green = headroom.</p>
-  <div class="stat-row" id="summary-stats"></div>
-  <div class="compare" id="compare-cards"></div>
-  <h3 style="font-size:.85rem;color:var(--navy);margin-bottom:.75rem">Combined Capacity — Month by Month</h3>
-  <div class="tbl-wrap"><table class="tbl" id="combined-table"></table></div>
-</div></section>
-
-<section class="section section-dark" id="journey"><div class="section-inner">
-  <span class="section-tag dark">02 · Journey</span><h2 class="section-title white headline">From Inflection Points to Designed Effort</h2><p class="section-sub light">Each stage has inflection points — moments that build or block loyalty. Service moments generate the designed effort that feeds the model.</p>
-  <div class="j-track" id="j-track"></div><div id="j-details"></div>
-</div></section>
-
-<section class="section" id="charts"><div class="section-inner">
-  <span class="section-tag">03 · Visualizations</span><h2 class="section-title headline">Demand vs. Capacity Over Time</h2><p class="section-sub">The gap between the lines is either headroom or a fire.</p>
-  <div class="chart-card"><h3>Combined Demand vs. Available Capacity (hours)</h3><div class="chart-area"><canvas id="chart-combined"></canvas></div></div>
-  <div class="chart-card"><h3>Utilization % by Month</h3><div class="chart-area"><canvas id="chart-util"></canvas></div></div>
-  <div class="chart-grid"><div class="chart-card"><h3>Onboarding</h3><div class="chart-area"><canvas id="chart-ob"></canvas></div></div><div class="chart-card"><h3>CSM</h3><div class="chart-area"><canvas id="chart-csm"></canvas></div></div></div>
-</div></section>
-
-<section class="section section-alt" id="hiring"><div class="section-inner">
-  <span class="section-tag">04 · Hiring</span><h2 class="section-title headline">Hiring Timeline & Ramp Impact</h2><p class="section-sub">New hires don't contribute full capacity on day one. Plan for the ramp or pay for it later.</p>
-  <div class="card"><h3 style="font-size:.85rem;margin-bottom:1rem">Team Productivity by Month</h3><div id="hire-bars"></div></div>
-  <div id="hire-insights" style="margin-top:1rem"></div>
-</div></section>
-
-<section class="section" id="financial"><div class="section-inner">
-  <span class="section-tag">05 · Financial</span><h2 class="section-title headline">Cost of Capacity & Revenue Context</h2><p class="section-sub">Fully-loaded labor cost against supported revenue. Frame headcount as investment, not expense.</p>
-  <div class="stat-row" id="fin-stats"></div>
-  <h3 style="font-size:.85rem;color:var(--navy);margin-bottom:.75rem">Monthly Cost vs. Revenue</h3>
-  <div class="tbl-wrap"><table class="tbl" id="fin-table"></table></div>
-</div></section>
-
-<section class="section section-alt" id="insights"><div class="section-inner">
-  <span class="section-tag">06 · Insights</span><h2 class="section-title headline">What the Model is Telling You</h2><p class="section-sub">Use these to frame your headcount ask internally.</p>
-  <div id="insights-list"></div>
-</div></section>
-
-<section class="section section-dark" id="methodology"><div class="section-inner">
-  <span class="section-tag dark">07 · Methodology</span><h2 class="section-title white headline">How This Model Works</h2>
-  <div class="compare" style="margin-top:2rem">
-    <div class="card-dark" style="padding:2rem"><h3 style="color:var(--olive);margin-bottom:.75rem;font-size:.95rem">From Journey to Numbers</h3>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Customer Journey</strong> → Inflection points define where loyalty is built or blocked.</p>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Service Blueprint</strong> → Maps every planned interaction.</p>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Service Moments</strong> → Specific actions with designed effort: preparation + execution + follow-through.</p>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.55);max-width:100%"><strong style="color:var(--white)">Capacity</strong> → Availability minus demand, adjusted for ramp and reactive load.</p></div>
-    <div class="card-dark" style="padding:2rem"><h3 style="color:var(--olive);margin-bottom:.75rem;font-size:.95rem">Key Assumptions</h3>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Target Availability ≠ 100%.</strong> Indirect and unplanned work consume ~35%.</p>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:.5rem;max-width:100%"><strong style="color:var(--white)">Planning model, not precision forecast.</strong> The value is directional confidence.</p>
-      <p style="font-size:.88rem;color:rgba(255,255,255,.55);max-width:100%"><strong style="color:var(--white)">Spreadsheet logic translated faithfully.</strong> Growth cohorts cascade demand. OB and CSM distinct. Hire ramp reduces contribution.</p></div>
-  </div>
-</div></section>
-
-<footer class="footer"><p><strong>CS Capacity Planning: The Guide</strong> © 2024 by CXology™ · Results are illustrative, not operational projections.</p></footer>
+<script crossorigin src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.24.7/babel.min.js"></script>
 
 <script>
-const MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-let T=[{n:'Team Member 1',r:'CSM',s:-12,sal:110000},{n:'Team Member 2',r:'CSM',s:-12,sal:85000},{n:'Team Member 3',r:'Onboarding',s:-12,sal:120000},{n:'Team Member 4',r:'CSM',s:-12,sal:90000},{n:'Team Member 5',r:'CSM',s:3,sal:98000}];
-let CH={};
-const v=id=>(parseFloat(document.getElementById(id)?.value)||0);
-const ar=(p,n)=>Array.from({length:n},(_,i)=>v(p+'_'+i));
-const fm=(n,d=0)=>n.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
-const fp=n=>(n*100).toFixed(1)+'%';
-const f$=n=>'$'+fm(n);
-const sc=p=>p>=1?'red':p>=.9?'orange':'green';
-const cc=p=>p>=1?'c-red':p>=.9?'c-orange':'c-green';
+window.onerror=function(msg,src,line){
+  document.getElementById('loading-screen').style.display='none';
+  var el=document.getElementById('err-box');el.style.display='block';
+  el.innerHTML='<h2>Error</h2><pre style="text-align:left;background:#f5f5f5;padding:16px;border-radius:8px;overflow:auto;font-size:12px">'+msg+'\nLine: '+line+'</pre>';
+};
+</script>
 
-document.querySelectorAll('.tab-btn').forEach(b=>{b.onclick=()=>{document.querySelectorAll('.tab-btn').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active');}});
+<script type="text/babel">
+document.getElementById('loading-screen').style.display='none';
+const {useState,useMemo,useRef}=React;
 
-function renderT(){document.getElementById('team-list').innerHTML=T.map((m,i)=>'<div style="display:flex;gap:8px;align-items:end;margin-bottom:8px;flex-wrap:wrap"><div class="input-group" style="flex:2;min-width:110px"><label>Name</label><input type="text" value="'+m.n+'" onchange="T['+i+'].n=this.value;recalc()"></div><div class="input-group" style="flex:1;min-width:90px"><label>Role</label><select onchange="T['+i+'].r=this.value;recalc()"><option '+(m.r==='CSM'?'selected':'')+'>CSM</option><option '+(m.r==='Onboarding'?'selected':'')+'>Onboarding</option></select></div><div class="input-group" style="width:80px"><label>Start Mo.</label><input type="number" value="'+m.s+'" onchange="T['+i+'].s=+this.value;recalc()"></div><div class="input-group input-suffix" style="width:120px"><label>Salary</label><input type="number" value="'+m.sal+'" step="1000" onchange="T['+i+'].sal=+this.value;recalc()"><span class="sfx">USD</span></div><button onclick="T.splice('+i+',1);renderT();recalc()" style="padding:9px 12px;background:rgba(216,90,48,.1);border:1px solid rgba(216,90,48,.2);color:var(--coral);border-radius:var(--radius-sm);font-size:.75rem;font-weight:600;margin-bottom:14px">✕</button></div>').join('');}
-function addM(){T.push({n:'Team Member '+(T.length+1),r:'CSM',s:6,sal:90000});renderT();recalc();}
+const MO=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const WH=[168,160,168,176,176,152,176,176,160,176,152,168];
+const JC=Array.from({length:12},(_,i)=>"M"+(i+1));
+const sum=a=>a.reduce((s,v)=>s+(v||0),0);
+const fmt=(n)=>Math.round(n).toLocaleString();
+const fp=n=>(n*100).toFixed(0)+"%";
+const fu=n=>"$"+Math.round(n).toLocaleString();
+const C={nv:"#1A2E42",nd:"#0F1C28",ol:"#C5D44E",od:"#A0AC3A",op:"#EEF1C8",tl:"#1D9E75",tp:"#D6EBE4",bl:"#378ADD",am:"#BA7517",co:"#D85A30",pu:"#534AB7",wh:"#FFF",g1:"#F0F2E8",g2:"#D8DEB8",g5:"#7A8A5A",g7:"#404040",tm:"#5A6A40",rd:"#E53935",or:"#FB8C00",gn:"#43A047"};
 
-const stages=[{name:'Purchase & Welcome',effort:'30 min',mo:'Pre-M1',think:'What happens next? Did I make the right decision?',moments:['Sales handoff','Welcome email #1','Welcome email #2','Automated gift'],blockers:['Lack of clarity on next steps','Significant lead time to kickoff']},{name:'Kickoff',effort:'2 hrs',mo:'M1',think:'Do I feel heard? Do they have their act together?',moments:['Kickoff request email','Kickoff meeting','Post-meeting follow-through','Discuss renewal timing'],blockers:['Misaligned expectations from sales','Customer wants a savior, not a solution']},{name:'Onboarding',effort:'6 hrs',mo:'M1-M3',think:'Where do I start? Can I succeed?',moments:['Align','Configure','Verify','Transform','First Use'],blockers:['No customer resources available','Steep learning curve']},{name:'First Value',effort:'1.5 hrs',mo:'M3-M4',think:'Have I made progress?',moments:['Follow checklist to first value','Celebrate first value','Share insights','Value check-in'],blockers:['Poor internal comms','Dependent team challenges']},{name:'Goal & Alignment',effort:'3.5 hrs/qtr',mo:'M4-M11',think:'Is anyone using this? How do I hit my goals?',moments:['Goal Block: set new goal','Optional training','Share insights (monthly)','Alignment meeting (quarterly)','Monitor usage'],blockers:['Insufficient adoption','No exec visibility','Narrow view of benefits']},{name:'Renew & Grow',effort:'3 hrs',mo:'M11-M12',think:'Should I renew? Is this worth it?',moments:['Renewal conversation','Renewal meeting','Contract steps','CEO celebration'],blockers:["Can't represent value","Difficulty showing ROI"]}];
-function renderJ(){document.getElementById('j-track').innerHTML=stages.map(function(s,i){return'<div class="j-s'+(i===0?' active':'')+'" onclick="showJ('+i+')"><div class="j-dot"></div><div class="j-nm">'+s.name+'</div><div class="j-ef">'+s.effort+' · '+s.mo+'</div></div>';}).join('');document.getElementById('j-details').innerHTML=stages.map(function(s,i){return'<div class="j-det'+(i===0?' active':'')+'" id="jd'+i+'"><h4>'+s.name+'</h4><p><strong>Customer thinking:</strong> "'+s.think+'"</p><p style="margin-top:8px"><strong>Service Moments</strong></p><div style="margin:6px 0 10px">'+s.moments.map(function(m){return'<span class="j-tag">'+m+'</span>';}).join('')+'</div><p><strong>Loyalty Blockers</strong></p><div style="margin:6px 0">'+s.blockers.map(function(b){return'<span class="j-blk">'+b+'</span>';}).join('')+'</div><p style="margin-top:10px;font-size:.75rem;color:rgba(255,255,255,.35)">Designed effort: '+s.effort+' — feeds the effort inputs above.</p></div>';}).join('');}
-function showJ(i){document.querySelectorAll('.j-s').forEach(function(s,j){s.classList.toggle('active',j===i);});document.querySelectorAll('.j-det').forEach(function(d,j){d.classList.toggle('active',j===i);});}
-
-function recalc(){
-  var ht=ar('ht',12),lt=ar('lt',12),eHT=v('existing_ht'),eLT=v('existing_lt'),ta=v('target_avail')/100,pp=v('proactive_pct')/100;
-  document.getElementById('reactive_pct').value=Math.round((1-pp)*100);
-  var wh=ar('wh',12),ramp=ar('ramp',3).map(function(r){return r/100;}),ohP=v('overhead_pct')/100,tbP=v('tax_benefits_pct')/100;
-  document.getElementById('ht_total').textContent=ht.reduce(function(a,b){return a+b;},0);
-  document.getElementById('lt_total').textContent=lt.reduce(function(a,b){return a+b;},0);
-  var obH1=ar('ob_ht1',12),obL1=ar('ob_lt1',12),cH1=ar('csm_ht1',12),cH2=ar('csm_ht2',12),cL1=ar('csm_lt1',12),cL2=ar('csm_lt2',12);
-  var obD=new Float64Array(12),cD=new Float64Array(12);
-  for(var m=0;m<12;m++)for(var j=0;j<12;j++){var c2=m+j;if(c2>=12)break;obD[c2]+=ht[m]*obH1[j]+lt[m]*obL1[j];cD[c2]+=ht[m]*cH1[j]+lt[m]*cL1[j];}
-  for(var m2=0;m2<12;m2++){cD[m2]+=eHT*cH2[m2]+eLT*cL2[m2];}
-  var obA=new Float64Array(12),cA=new Float64Array(12),tA=new Float64Array(12);
-  T.forEach(function(t){for(var m3=0;m3<12;m3++){var me=m3-t.s;if(me<0)continue;var rf=1;if(me<ramp.length)rf=ramp[me];var h=wh[m3]*ta*rf;if(t.r==='Onboarding')obA[m3]+=h;else cA[m3]+=h;tA[m3]+=h;}});
-  var obP=Array.from(obD).map(function(d,i){return obA[i]>0?d/obA[i]:(d>0?9.99:0);});
-  var cP=Array.from(cD).map(function(d,i){return cA[i]>0?d/cA[i]:(d>0?9.99:0);});
-  var tD=Array.from(obD).map(function(d,i){return d+cD[i];});
-  var comP=tD.map(function(d,i){return tA[i]>0?d/tA[i]:(d>0?9.99:0);});
-  var avgU=comP.reduce(function(a,b){return a+b;},0)/12,pk=comP.indexOf(Math.max.apply(null,comP));
-  var eoyC=eHT+eLT+ht.reduce(function(a,b){return a+b;},0)+lt.reduce(function(a,b){return a+b;},0);
-  var overMo=comP.filter(function(p){return p>=1;}).length,csms=T.filter(function(t){return t.r==='CSM'&&t.s<12;}).length;
-
-  document.getElementById('summary-stats').innerHTML='<div class="stat-cell"><div class="stat-val '+sc(avgU)+'">'+fp(avgU)+'</div><div class="stat-label">Avg Utilization</div></div><div class="stat-cell"><div class="stat-val '+sc(comP[pk])+'">'+MO[pk]+'</div><div class="stat-label">Peak Pressure</div></div><div class="stat-cell"><div class="stat-val blue">'+eoyC+'</div><div class="stat-label">EOY Customers</div></div><div class="stat-cell"><div class="stat-val '+(overMo>0?'red':'green')+'">'+overMo+'</div><div class="stat-label">Months Over 100%</div></div>';
-
-  var obAvg=obP.reduce(function(a,b){return a+b;},0)/12,cAvg=cP.reduce(function(a,b){return a+b;},0)/12;
-  document.getElementById('compare-cards').innerHTML='<div class="compare-card a"><div class="sub">Onboarding — Avg Utilization</div><div class="big" style="color:var(--'+sc(obAvg)+')">'+fp(obAvg)+'</div><div class="sub">'+Array.from(obA).filter(function(x){return x>0;}).length+' onboarding resource(s)</div></div><div class="compare-card b"><div class="sub">CSM — Avg Utilization</div><div class="big" style="color:var(--'+sc(cAvg)+')">'+fp(cAvg)+'</div><div class="sub">'+csms+' CSM(s)</div></div>';
-
-  document.getElementById('combined-table').innerHTML='<thead><tr><th></th>'+MO.map(function(m){return'<th>'+m+'</th>';}).join('')+'</tr></thead><tbody><tr><td>Available (hrs)</td>'+Array.from(tA).map(function(h){return'<td>'+fm(h,0)+'</td>';}).join('')+'</tr><tr><td>Demand (hrs)</td>'+tD.map(function(h){return'<td>'+fm(h,0)+'</td>';}).join('')+'</tr><tr><td>% Utilized</td>'+comP.map(function(p){return'<td class="'+cc(p)+'">'+fp(p)+'</td>';}).join('')+'</tr></tbody>';
-
-  var tSal=T.reduce(function(a,t){return a+t.sal;},0),tExp=tSal*(1+ohP+tbP),tWH=wh.reduce(function(a,b){return a+b;},0),lr=tExp/tWH;
-  var acvH=v('acv_ht'),acvL=v('acv_lt'),eRev=eHT*acvH+eLT*acvL,gRev=ht.reduce(function(a,b){return a+b;},0)*acvH+lt.reduce(function(a,b){return a+b;},0)*acvL;
-  document.getElementById('fin-stats').innerHTML='<div class="stat-cell"><div class="stat-val blue">'+f$(tExp)+'</div><div class="stat-label">Total Loaded Cost</div></div><div class="stat-cell"><div class="stat-val green">'+f$(eRev+gRev)+'</div><div class="stat-label">Total ARR Supported</div></div><div class="stat-cell"><div class="stat-val blue">'+f$(lr)+'/hr</div><div class="stat-label">Blended Labor Rate</div></div><div class="stat-cell"><div class="stat-val green">'+((eRev+gRev)/tExp).toFixed(1)+'x</div><div class="stat-label">Revenue / Cost</div></div>';
-
-  var cHT=0,cLT=0,fR=[];
-  for(var m4=0;m4<12;m4++){cHT+=ht[m4];cLT+=lt[m4];fR.push({cost:tD[m4]*lr,rev:(eHT+cHT)*acvH/12+(eLT+cLT)*acvL/12,cust:eHT+eLT+cHT+cLT});}
-  document.getElementById('fin-table').innerHTML='<thead><tr><th></th>'+MO.map(function(m){return'<th>'+m+'</th>';}).join('')+'</tr></thead><tbody><tr><td>Customers</td>'+fR.map(function(r){return'<td>'+r.cust+'</td>';}).join('')+'</tr><tr><td>Revenue</td>'+fR.map(function(r){return'<td>'+f$(r.rev)+'</td>';}).join('')+'</tr><tr><td>Capacity Cost</td>'+fR.map(function(r){return'<td>'+f$(r.cost)+'</td>';}).join('')+'</tr><tr><td>CSM:Cust</td>'+fR.map(function(r){return'<td>1:'+Math.round(r.cust/Math.max(csms,1))+'</td>';}).join('')+'</tr></tbody>';
-
-  document.getElementById('hire-bars').innerHTML=T.map(function(t){var segs=MO.map(function(_,m){var me=m-t.s;if(me<0)return'none';if(me<ramp.length&&ramp[me]<1)return'ramp';return'full';});return'<div class="hire-row"><div class="hire-lbl">'+t.n+'<span class="hire-role">'+t.r+'</span></div><div class="hire-bar">'+segs.map(function(s,i){return'<div class="h-seg h-'+s+'" style="width:'+(100/12)+'%">'+(s!=='none'?MO[i]:'')+'</div>';}).join('')+'</div></div>';}).join('');
-
-  var fh=T.filter(function(t){return t.s>=0&&t.s<12;});
-  document.getElementById('hire-insights').innerHTML=fh.length?fh.map(function(h){var sl=h.s<12?MO[h.s]:'M'+(h.s+1);var fp2=h.s+ramp.length;var fl=fp2<12?MO[fp2]:'M'+(fp2+1);return'<div class="insight blue"><strong>'+h.n+'</strong> ('+h.r+') starts in <strong>'+sl+'</strong>, reaches full productivity in <strong>'+fl+'</strong>. '+ramp.filter(function(r){return r<1;}).length+' months of onboarding drag.</div>';}).join(''):'<div class="insight">No future hires planned. If capacity is constrained, add one in Team & Hiring.</div>';
-
-  upCH(Array.from(tA),tD,comP,Array.from(obA),Array.from(obD),Array.from(cA),Array.from(cD));
-
-  var ins=[];
-  if(overMo>0){var rm=comP.map(function(p,i){return p>=1?MO[i]:null;}).filter(Boolean);ins.push({c:'danger',t:'Your team is over capacity in <strong>'+rm.join(', ')+'</strong>. Without additional resources, this plan depends on heroic effort.'});}
-  if(avgU>.9&&overMo===0)ins.push({c:'warn',t:'Average utilization is <strong>'+fp(avgU)+'</strong> — dangerously close to the limit.'});
-  if(avgU<.6)ins.push({c:'',t:'Average utilization is <strong>'+fp(avgU)+'</strong>. Verify designed effort is fully mapped.'});
-  if(pp<.7)ins.push({c:'warn',t:'Reactive work consumes <strong>'+Math.round((1-pp)*100)+'%</strong> of direct time, crowding out designed service moments.'});
-  if(obP.filter(function(p){return p>=1;}).length>0)ins.push({c:'danger',t:'Onboarding constrained in <strong>'+obP.filter(function(p){return p>=1;}).length+' month(s)</strong>. Risk of delayed kickoffs.'});
-  if(cP.filter(function(p){return p>=1;}).length>0)ins.push({c:'warn',t:'CSM demand exceeds capacity in <strong>'+cP.filter(function(p){return p>=1;}).length+' month(s)</strong>.'});
-  if(fh.length===0&&overMo>0)ins.push({c:'danger',t:'No future hires planned but the model shows capacity gaps.'});
-  fh.forEach(function(h){if(h.s>0&&comP[h.s-1]>=1)ins.push({c:'warn',t:'<strong>'+h.n+'</strong> starts in '+MO[h.s]+', but team is over capacity in '+MO[h.s-1]+'. Consider earlier start.'});});
-  var tRev=fR.reduce(function(a,r){return a+r.rev;},0),tCost=fR.reduce(function(a,r){return a+r.cost;},0);
-  if(tRev>0)ins.push({c:'blue',t:'CS capacity cost = <strong>'+(tCost/tRev*100).toFixed(1)+'%</strong> of supported revenue.'});
-  if(!ins.length)ins.push({c:'',t:'Capacity model looks balanced. Refine designed effort and monitor actuals.'});
-  document.getElementById('insights-list').innerHTML=ins.map(function(i){return'<div class="insight '+i.c+'">'+i.t+'</div>';}).join('');
+/* ── MODEL ── */
+function run(p){
+  const gH=p.gH.map(v=>Math.round(v*p.gM)),gL=p.gL.map(v=>Math.round(v*p.gM));
+  const effortMix=p.effortMix||{oH:1,oL:1,c1H:1,c1L:1,c2H:1,c2L:1};
+  const oD=Array(12).fill(0),cD=Array(12).fill(0);
+  for(let s=0;s<12;s++)for(let j=0;j<12;j++){
+    const c=s+j;if(c>=12)break;
+    oD[c]+=(gH[s]*(p.oH[j]*effortMix.oH)+gL[s]*(p.oL[j]*effortMix.oL));
+    cD[c]+=(gH[s]*(p.c1H[j]*effortMix.c1H)+gL[s]*(p.c1L[j]*effortMix.c1L));
+  }
+  for(let c=0;c<12;c++)cD[c]+=(p.eH*(p.c2H[c]*effortMix.c2H)+p.eL*(p.c2L[c]*effortMix.c2L));
+  const tD=oD.map((v,i)=>v+cD[i]),oS=Array(12).fill(0),cS=Array(12).fill(0);
+  p.tm.forEach(m=>{
+    for(let mo=0;mo<12;mo++){
+      const j=mo-m.s;if(j<0)continue;
+      let r=1;if(j<p.rp.length)r=p.rp[j]/100;
+      const h=p.wh[mo]*(p.ta/100)*r;
+      if(m.r==="Onboarding")oS[mo]+=h;else cS[mo]+=h;
+    }
+  });
+  const tS=oS.map((v,i)=>v+cS[i]),oES=oS.map(v=>v*(p.pp/100)),cES=cS.map(v=>v*(p.pp/100)),eS=tS.map(v=>v*(p.pp/100)),rH=tS.map(v=>v*(p.rr/100));
+  const ut=tD.map((d,i)=>eS[i]>0?d/eS[i]:0),hd=eS.map((s,i)=>s-tD[i]);
+  const rs=ut.map(u=>u>=1?"red":u>=.9?"orange":"green");
+  const fr=rs.indexOf("red"),pk=Math.max(...ut),pm=ut.indexOf(pk);
+  const ts=p.tm.filter(m=>m.s<12).length,gap=sum(tD)-sum(eS);
+  const ac=sum(p.wh)*(p.ta/100)*(p.pp/100),hn=gap>0?Math.ceil(gap/ac):0;
+  const oSh=sum(oD.map((d,i)=>Math.max(0,d-oES[i])));
+  const cSh=sum(cD.map((d,i)=>Math.max(0,d-cES[i])));
+  const rT=sum(rH);let pc="growth volume";
+  if(oSh>cSh&&oSh>rT)pc="onboarding load";else if(cSh>oSh&&cSh>rT)pc="ongoing CSM load";else if(rT>oSh&&rT>cSh)pc="reactive drag";
+  const fl=p.sa*(1+p.oh/100+p.tb/100);
+  return{oD,cD,tD,oS,cS,oES,cES,eS,rH,ut,hd,rs,fr,rc:rs.filter(r=>r==="red").length,oc:rs.filter(r=>r==="orange").length,gc:rs.filter(r=>r==="green").length,pk,pm,ts,hn,hm:fr>=0?Math.max(0,fr-3):-1,pc,oSh,cSh,rT,fl,tc:ts*fl,ah:hn*fl,sr:(p.eH+sum(gH))*p.hA+(p.eL+sum(gL))*p.lA,ro:gap*.8<=0,gap};
 }
 
-var cO={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#5A6A40',font:{family:'Public Sans',size:11},boxWidth:12,padding:16}}},scales:{x:{ticks:{color:'#7A8A5A',font:{family:'Public Sans',size:10}},grid:{color:'rgba(216,222,184,.3)'}},y:{ticks:{color:'#7A8A5A',font:{family:'Public Sans',size:10}},grid:{color:'rgba(216,222,184,.3)'}}}};
-function initCH(){
-  var mk=function(id,t,ds,o){return new Chart(document.getElementById(id).getContext('2d'),{type:t,data:{labels:MO,datasets:ds},options:Object.assign({},cO,o||{})});};
-  CH.c=mk('chart-combined','bar',[{label:'Demand',data:[],backgroundColor:'rgba(216,90,48,.55)',borderRadius:4},{label:'Available',data:[],backgroundColor:'rgba(29,158,117,.4)',borderRadius:4}]);
-  CH.u=mk('chart-util','line',[{label:'Utilization %',data:[],borderColor:'#378ADD',backgroundColor:'rgba(55,138,221,.1)',fill:true,tension:.35,pointRadius:4,pointBackgroundColor:'#378ADD'},{label:'100%',data:Array(12).fill(100),borderColor:'rgba(216,90,48,.4)',borderDash:[6,4],pointRadius:0,fill:false}],{scales:{x:cO.scales.x,y:{ticks:cO.scales.y.ticks,grid:cO.scales.y.grid,suggestedMax:150}}});
-  CH.o=mk('chart-ob','bar',[{label:'OB Demand',data:[],backgroundColor:'rgba(186,117,23,.55)',borderRadius:4},{label:'OB Available',data:[],backgroundColor:'rgba(29,158,117,.4)',borderRadius:4}]);
-  CH.s=mk('chart-csm','bar',[{label:'CSM Demand',data:[],backgroundColor:'rgba(55,138,221,.55)',borderRadius:4},{label:'CSM Available',data:[],backgroundColor:'rgba(29,158,117,.4)',borderRadius:4}]);
-}
-function upCH(tA,tD,cP,oA,oD,sA,sD){
-  CH.c.data.datasets[0].data=tD;CH.c.data.datasets[1].data=tA;CH.c.update();
-  CH.u.data.datasets[0].data=cP.map(function(p){return+(p*100).toFixed(1);});CH.u.update();
-  CH.o.data.datasets[0].data=oD;CH.o.data.datasets[1].data=oA;CH.o.update();
-  CH.s.data.datasets[0].data=sD;CH.s.data.datasets[1].data=sA;CH.s.update();
+const STAGES=[
+  {k:"purchase",l:"Purchase & Welcome",c:"#1D9E75",e:"30 min",mo:"Pre-M1",t:"What's going to happen next? Did I make the right decision?",m:["Sales handoff","Welcome email #1 (brand & vision)","Welcome email #2 (what to expect)","Automated gift"],bl:["Lack of clarity on next steps","Long lead time to kickoff"],bu:["Set expectations in 2nd email","Track kickoff date in CSA"]},
+  {k:"kickoff",l:"Kickoff",c:"#378ADD",e:"2 hrs",mo:"M1",t:"Do I feel heard? Do they have their act together?",m:["Kickoff request email + CSM video","Kickoff meeting (Five Questions)","Post-meeting follow-through","Discuss renewal timing"],bl:["Misaligned expectations from sales","Customer wants a savior, not a solution"],bu:["Include sales in kickoff","Escalation path for unclear rationale"]},
+  {k:"onboarding",l:"Onboarding",c:"#534AB7",e:"6 hrs",mo:"M1–M3",t:"Where do I start? Can I succeed?",m:["Align → Configure → Verify → Transform → First Use","Steps to first value email","1st value check-in + celebration"],bl:["No customer resources available","Steep learning curve"],bu:["Strategic partners for bandwidth","Core → advanced feature path"]},
+  {k:"firstValue",l:"First Value",c:"#C5D44E",e:"1 hr",mo:"M3–M4",t:"Have I made progress?",m:["Monitor usage & performance","Communicate first insights","Celebrate wins"],bl:["Poor internal communication","Dependent team challenges"],bu:["Internal launch kit","Escalate to exec champion"]},
+  {k:"alignment",l:"Alignment Meetings",c:"#7B61C9",e:"3.5 hrs/qtr",mo:"M4–M10",t:"Are we still aligned on goals, progress, and what comes next?",m:["Schedule alignment meeting","Send agenda and deck","Hold alignment meeting","Follow-through on actions and lessons learned"],bl:["Lack of executive visibility","No shared view of progress","Goals are stale or undefined"],bu:["Structured executive dialogue","Shared priorities and accountability","Earlier identification of risk and growth"]},
+  {k:"ongoing",l:"Value Block & Insights",c:"#BA7517",e:"30 min–2 hrs",mo:"M4–M11",t:"What else can I do to get more value from this relationship?",m:["Monthly insights","Value Block: new goal → train → achieve → celebrate","Share stalled or aged goal insights","Activate next-value opportunities"],bl:["Can't translate insight to action","Narrow tech view","No exec champion"],bu:["Gamify solutions","Strategic partnership roadmap","Automated leadership insights"]},
+  {k:"renew",l:"Renew & Grow",c:"#D85A30",e:"3 hrs",mo:"M11–M12",t:"Should I renew? Can this replace other tools?",m:["Renewal conversation with exec champion","Renewal meeting","Contract steps","CEO celebration"],bl:["Can't articulate value","Cost vs. DIY unclear"],bu:["ROI results with Sales/Marketing","Goals + outcomes documentation"]},
+];
+
+/* ── SVG CHARTS ── */
+function BarChart({data,bars,height=200,yMax:ymProp}){
+  const W=Math.max(600,data.length*60);const H=height;const pad={t:20,r:20,b:30,l:50};
+  const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+  const ym=ymProp||Math.max(...data.flatMap(d=>bars.map(b=>d[b.key]||0)))*1.15||100;
+  const bw=cw/data.length;const barW=bw*0.6/bars.length;
+  const [tip,setTip]=useState(null);
+  const yTicks=Array.from({length:5},(_,i)=>Math.round(ym*i/4));
+  return<div style={{position:"relative",overflowX:"auto"}}>
+    {tip&&<div className="chart-tip" style={{left:tip.x,top:tip.y}}>{tip.text}</div>}
+    <svg width={W} height={H} style={{display:"block"}}>
+      {yTicks.map(v=><g key={v}><line x1={pad.l} x2={W-pad.r} y1={pad.t+ch*(1-v/ym)} y2={pad.t+ch*(1-v/ym)} stroke={C.g2} strokeDasharray="3 3"/><text x={pad.l-6} y={pad.t+ch*(1-v/ym)+4} textAnchor="end" fontSize={10} fill={C.g5}>{v}</text></g>)}
+      {data.map((d,i)=>{const x=pad.l+i*bw;return<g key={i}>
+        <text x={x+bw/2} y={H-8} textAnchor="middle" fontSize={10} fill={C.g5}>{d.label}</text>
+        {bars.map((b,bi)=>{const val=d[b.key]||0;const bh=ch*val/ym;const bx=x+(bw-barW*bars.length)/2+bi*barW;
+          const fill=typeof b.fill==="function"?b.fill(d):b.fill;
+          return<rect key={bi} x={bx} y={pad.t+ch-bh} width={barW-1} height={Math.max(0,bh)} rx={2} fill={fill}
+            onMouseEnter={e=>setTip({x:e.clientX,y:bx+barW/2,text:b.name+": "+Math.round(val)})}
+            onMouseLeave={()=>setTip(null)} style={{cursor:"pointer"}}/>;
+        })}
+      </g>;})}
+    </svg>
+  </div>;
 }
 
-document.addEventListener('DOMContentLoaded',function(){renderT();renderJ();initCH();recalc();document.addEventListener('input',function(e){if(e.target.matches('input[type=number],select'))recalc();});});
+function LineChart({data,lines,height=260,refLines=[]}){
+  const W=Math.max(600,data.length*60);const H=height;const pad={t:20,r:20,b:30,l:50};
+  const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+  const allVals=data.flatMap(d=>lines.map(l=>d[l.key]||0));
+  const ym=Math.max(...allVals)*1.15||100;
+  const yTicks=Array.from({length:5},(_,i)=>Math.round(ym*i/4));
+  const [tip,setTip]=useState(null);
+  const px=(i)=>pad.l+i*(cw/(data.length-1||1));
+  const py=(v)=>pad.t+ch*(1-v/ym);
+  return<div style={{position:"relative",overflowX:"auto"}}>
+    {tip&&<div className="chart-tip" style={{left:tip.x,top:tip.y}}>{tip.text}</div>}
+    <svg width={W} height={H} style={{display:"block"}}>
+      {yTicks.map(v=><g key={v}><line x1={pad.l} x2={W-pad.r} y1={py(v)} y2={py(v)} stroke={C.g2} strokeDasharray="3 3"/><text x={pad.l-6} y={py(v)+4} textAnchor="end" fontSize={10} fill={C.g5}>{v}</text></g>)}
+      {refLines.map((rl,i)=><line key={i} x1={pad.l} x2={W-pad.r} y1={py(rl.y)} y2={py(rl.y)} stroke={rl.color} strokeDasharray="4 4" strokeWidth={1}/>)}
+      {data.map((d,i)=><text key={i} x={px(i)} y={H-8} textAnchor="middle" fontSize={10} fill={C.g5}>{d.label}</text>)}
+      {lines.map((l,li)=>{
+        const pts=data.map((d,i)=>`${px(i)},${py(d[l.key]||0)}`).join(" ");
+        return<g key={li}>
+          {l.area&&<polygon points={`${px(0)},${py(0)} ${pts} ${px(data.length-1)},${py(0)}`} fill={l.area} opacity={0.3}/>}
+          <polyline points={pts} fill="none" stroke={l.color} strokeWidth={l.width||2}/>
+          {data.map((d,i)=><circle key={i} cx={px(i)} cy={py(d[l.key]||0)} r={3} fill={l.color}
+            onMouseEnter={e=>setTip({x:e.clientX,y:py(d[l.key])-10,text:l.name+": "+Math.round(d[l.key])})}
+            onMouseLeave={()=>setTip(null)} style={{cursor:"pointer"}}/>)}
+        </g>;
+      })}
+    </svg>
+    <div style={{display:"flex",gap:16,justifyContent:"center",marginTop:8}}>
+      {lines.map((l,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:4,fontSize:11,color:C.g7}}>
+        <div style={{width:12,height:3,background:l.color,borderRadius:2}}/>{l.name}
+      </div>)}
+    </div>
+  </div>;
+}
+
+function StackedBarChart({data,bars,height=200}){
+  const W=Math.max(600,data.length*60);const H=height;const pad={t:20,r:20,b:30,l:50};
+  const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+  const ym=Math.max(...data.map(d=>bars.reduce((s,b)=>s+(d[b.key]||0),0)))*1.15||100;
+  const bw=cw/data.length;const barW=bw*0.6;
+  const yTicks=Array.from({length:5},(_,i)=>Math.round(ym*i/4));
+  return<div style={{overflowX:"auto"}}>
+    <svg width={W} height={H} style={{display:"block"}}>
+      {yTicks.map(v=><g key={v}><line x1={pad.l} x2={W-pad.r} y1={pad.t+ch*(1-v/ym)} y2={pad.t+ch*(1-v/ym)} stroke={C.g2} strokeDasharray="3 3"/><text x={pad.l-6} y={pad.t+ch*(1-v/ym)+4} textAnchor="end" fontSize={10} fill={C.g5}>{v}</text></g>)}
+      {data.map((d,i)=>{const x=pad.l+i*bw;let cum=0;return<g key={i}>
+        <text x={x+bw/2} y={H-8} textAnchor="middle" fontSize={10} fill={C.g5}>{d.label}</text>
+        {bars.map((b,bi)=>{const val=d[b.key]||0;const bh=ch*val/ym;const by=pad.t+ch-ch*cum/ym-bh;cum+=val;
+          return<rect key={bi} x={x+(bw-barW)/2} y={by} width={barW} height={Math.max(0,bh)} fill={b.fill} rx={bi===bars.length-1?2:0}/>;
+        })}
+      </g>;})}
+    </svg>
+    <div style={{display:"flex",gap:16,justifyContent:"center",marginTop:8}}>
+      {bars.map((b,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:4,fontSize:11,color:C.g7}}>
+        <div style={{width:10,height:10,background:b.fill,borderRadius:2}}/>{b.name}
+      </div>)}
+    </div>
+  </div>;
+}
+
+/* ── SMALL COMPONENTS ── */
+const sL={fontSize:11,fontWeight:600,color:C.tm,letterSpacing:".06em",textTransform:"uppercase",marginBottom:4,display:"block"};
+const sI={width:"100%",padding:"8px 10px",border:"1px solid "+C.g2,borderRadius:6,fontSize:13,fontFamily:"inherit",background:C.wh,outline:"none"};
+const sIs={width:56,padding:"6px 8px",border:"1px solid "+C.g2,borderRadius:4,fontSize:12,fontFamily:"inherit",textAlign:"center",background:C.wh};
+const sCd={background:C.wh,border:"1px solid "+C.g2,borderRadius:12,padding:20,marginBottom:12};
+const sB={padding:"10px 20px",borderRadius:6,fontSize:13,fontWeight:600,cursor:"pointer",border:"none",transition:"all .2s"};
+const sTh={padding:"8px 6px",textAlign:"left",fontWeight:600,fontSize:11,color:C.tm,borderBottom:"2px solid "+C.g2,textTransform:"uppercase",letterSpacing:".04em"};
+const sTd={padding:"6px",borderBottom:"1px solid "+C.g1,fontSize:12};
+const sTn={padding:"6px",borderBottom:"1px solid "+C.g1,fontSize:12,textAlign:"right",fontVariantNumeric:"tabular-nums"};
+const sSec={padding:"32px 24px",maxWidth:1200,margin:"0 auto"};
+const sTag={display:"inline-block",padding:"3px 10px",borderRadius:100,fontSize:11,fontWeight:600,letterSpacing:".1em",textTransform:"uppercase",marginBottom:8};
+const sTitle={fontSize:"clamp(1.2rem,2.5vw,1.6rem)",fontWeight:700,color:C.nv,marginBottom:4,lineHeight:1.25};
+const sSub={color:C.tm,fontSize:14,fontWeight:300,marginBottom:24};
+
+function NG({label,values,onChange,cols}){const c=cols||MO;return<div style={{marginBottom:16}}>{label&&<div style={{...sL,marginBottom:6}}>{label}</div>}<div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{values.map((v,i)=><div key={i} style={{flex:"1 0 54px",minWidth:48}}><div style={{fontSize:10,color:C.g5,textAlign:"center",marginBottom:2}}>{c[i]}</div><input type="number" value={v} onChange={e=>{const a=[...values];a[i]=+e.target.value||0;onChange(a);}} style={{...sIs,width:"100%"}}/></div>)}</div></div>;}
+function Bd({s:st}){const m={red:{b:"#FFEBEE",c:C.rd,t:"Over"},orange:{b:"#FFF3E0",c:C.or,t:"Warning"},green:{b:"#E8F5E9",c:C.gn,t:"OK"}};const v=m[st]||m.green;return<span style={{display:"inline-block",padding:"2px 8px",borderRadius:4,fontSize:11,fontWeight:600,background:v.b,color:v.c}}>{v.t}</span>;}
+function Ac({title,children,o}){const[open,setO]=useState(!!o);return<div style={{borderBottom:"1px solid "+C.g2,marginBottom:4}}><div style={{cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"10px 0"}} onClick={()=>setO(!open)}><span style={{fontSize:13,fontWeight:600,color:C.nv}}>{title}</span><span style={{fontSize:16,color:C.g5,transform:open?"rotate(180deg)":"none",transition:".2s"}}>▾</span></div>{open&&<div style={{paddingBottom:16}}>{children}</div>}</div>;}
+
+function StepHeader({step,title,desc,open,onToggle,color}){return <button onClick={onToggle} style={{width:"100%",background:"none",border:"none",padding:0,cursor:"pointer",textAlign:"left"}}>
+  <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:12}}>
+    <div>
+      <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Step {step}</div>
+      <h3 style={{fontSize:18,fontWeight:700,color:C.nv,marginBottom:4}}>{title}</h3>
+      <p style={{fontSize:13,color:C.tm,marginBottom:0}}>{desc}</p>
+    </div>
+    <div style={{flexShrink:0,width:28,height:28,borderRadius:999,background:open?color:C.g1,color:open?C.wh:C.tm,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,fontWeight:700,transform:open?"rotate(180deg)":"rotate(0deg)",transition:"all .2s ease"}}>⌃</div>
+  </div>
+</button>;}
+
+function GuideBox({title,children,tone="neutral"}){
+  const toneMap={
+    neutral:{bg:C.g1,bd:C.g2,hd:C.nv,ic:C.od},
+    success:{bg:C.tp,bd:"#B6D8CC",hd:C.tl,ic:C.tl},
+    warning:{bg:"#FFF8E1",bd:"#F5D27A",hd:C.am,ic:C.am}
+  };
+  const t=toneMap[tone]||toneMap.neutral;
+  return <div style={{marginTop:12,padding:"14px 16px",borderRadius:10,background:t.bg,border:"1px solid "+t.bd}}>
+    <div style={{fontSize:11,fontWeight:700,color:t.ic,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>{title}</div>
+    <div style={{fontSize:12,color:C.g7,lineHeight:1.65}}>{children}</div>
+  </div>;
+}
+
+/* ── MAIN ── */
+function App(){
+  const [sc,setSc]=useState("base"),[openStep,setOpenStep]=useState("forecast-growth"),[guidedMode,setGuidedMode]=useState(true),[financialOpen,setFinancialOpen]=useState(false);
+  const plannerStepRefs=useRef({});
+  const [gH,sgH]=useState([3,3,3,4,4,4,6,4,4,5,5,5]),[gL,sgL]=useState([6,6,6,8,8,8,6,6,6,8,8,6]);
+  const [eH,seH]=useState(126),[eL,seL]=useState(124);
+  const [oH,soH]=useState([8.5,1,1,0,0,0,0,0,0,0,0,0]),[oL,soL]=useState([3,1,.5,0,0,0,0,0,0,0,0,0]);
+  const [c1H,sc1H]=useState([0,0,3.5,.5,.5,3.5,.5,.5,3.5,.5,.5,3.5]),[c1L,sc1L]=useState([0,0,1,0,0,1,0,0,1,0,0,1]);
+  const [c2H,sc2H]=useState([.5,.5,3.5,.5,.5,3.5,.5,.5,3.5,.5,.5,3.5]),[c2L,sc2L]=useState([0,0,1,0,0,1,0,0,1,0,0,1]);
+  const [tm,sTm]=useState([{n:"CSM 1",r:"CSM",s:-24},{n:"CSM 2",r:"CSM",s:-18},{n:"OB Spec",r:"Onboarding",s:-12},{n:"CSM 3",r:"CSM",s:-6},{n:"CSM 4",r:"CSM",s:-3},{n:"New CSM",r:"CSM",s:5}]);
+  const [rp,sRp]=useState([25,50,75]),[ta,sTa]=useState(65),[pp,sPp]=useState(70),[rr,sRr]=useState(30);
+  const [wh,sWh]=useState(WH),[oh,sOh]=useState(20),[tb,sTb]=useState(24),[sa,sSa]=useState(100600),[hA,sHA]=useState(50000),[lA,sLA]=useState(18000);
+  const [ej,sEj]=useState("onboarding");
+
+  const SCS={
+    base:{l:"Base Plan"},
+    conservative:{l:"Conservative Hiring"},
+    upside:{l:"Growth Upside (+30%)"},
+    redesign:{l:"Service Redesign"}
+  };
+  const scenarioConfig=useMemo(()=>{
+    if(sc==="conservative"){
+      return{
+        gH:gH,
+        gL:gL,
+        tm:tm.map(m=>m.n==="New CSM"||/^New /.test(m.n)?{...m,s:m.s+2}:m),
+        rp:rp.map((v,i)=>i===0?Math.min(v,10):i===1?Math.min(v,35):Math.min(v,65))
+      };
+    }
+    if(sc==="upside"){
+      return{
+        gH:gH.map(v=>Math.round(v*1.3)),
+        gL:gL.map(v=>Math.round(v*1.25)),
+        tm:tm,
+        rp:rp
+      };
+    }
+    if(sc==="redesign"){
+      return{
+        gH:gH,
+        gL:gL,
+        tm:tm,
+        rp:rp,
+        effortMix:{oH:.82,oL:.82,c1H:.9,c1L:.9,c2H:.95,c2L:.95}
+      };
+    }
+    return{gH,gL,tm,rp};
+  },[sc,gH,gL,tm,rp]);
+  const M=useMemo(()=>run({
+    gH:scenarioConfig.gH,eH,
+    gL:scenarioConfig.gL,eL,
+    oH,oL,c1H,c1L,c2H,c2L,
+    tm:scenarioConfig.tm.map(m=>({r:m.r,s:m.s})),
+    rp:scenarioConfig.rp,ta,pp,rr,wh,oh,tb,sa,hA,lA,
+    gM:1,eM:1,effortMix:scenarioConfig.effortMix
+  }),[scenarioConfig,eH,eL,oH,oL,c1H,c1L,c2H,c2L,ta,pp,rr,wh,oh,tb,sa,hA,lA]);
+
+  const cd=MO.map((m,i)=>({label:m,demand:Math.round(M.tD[i]),supply:Math.round(M.eS[i]),obSupply:Math.round(M.oES[i]),csmSupply:Math.round(M.cES[i]),obDemand:Math.round(M.oD[i]),csmDemand:Math.round(M.cD[i]),utilization:Math.round(M.ut[i]*100),headroom:Math.round(M.hd[i]),reactiveHrs:Math.round(M.rH[i])}));
+
+  const talks=useMemo(()=>{
+    const p=[];
+    if(M.hn>0)p.push("Need "+M.hn+" additional resource"+(M.hn>1?"s":"")+" to stay below 100%. Primary constraint: "+M.pc+".");
+    else p.push("Current staffing sufficient for planned growth. Monitor if growth accelerates.");
+    if(M.fr>=0)p.push("Capacity exceeds 100% in "+MO[M.fr]+". Start recruiting "+(M.hm>=0?"by "+MO[M.hm]:"immediately")+" to ramp in time.");
+    if(rr>25)p.push(rr+"% of time is reactive — "+fmt(M.rT)+" hrs/year. A 10-point reduction recovers ~"+fmt(M.rT*.33)+" hrs.");
+    if(M.pk>.95)p.push("Peak utilization: "+fp(M.pk)+" in "+MO[M.pm]+". Team in heroic-effort territory.");
+    if(M.ro)p.push("20% effort reduction via service redesign could offset an additional hire.");
+    p.push("Most at-risk: "+(M.oSh>M.cSh?"onboarding (kickoff, configure, first use)":"CSM (alignment, goal blocks, insights)")+". Challenge effort & availability assumptions.");
+    return p;
+  },[M,rr]);
+
+  const sumCards=[
+    {l:"Headcount Needed",v:M.hn>0?"+"+M.hn:"0",c:M.hn>0?C.co:C.tl,b:M.hn>0?"#FBE9E7":C.tp},
+    {l:"First Month Over",v:M.fr>=0?MO[M.fr]:"None",c:M.fr>=0?C.rd:C.tl,b:M.fr>=0?"#FFEBEE":C.tp},
+    {l:"Peak Utilization",v:fp(M.pk),c:M.pk>=1?C.rd:M.pk>=.9?C.or:C.tl,b:M.pk>=1?"#FFEBEE":M.pk>=.9?"#FFF3E0":C.tp},
+    {l:"Hire By",v:M.hm>=0?MO[M.hm]:"N/A",c:M.hm>=0?C.am:C.g5,b:M.hm>=0?"#FFF3E0":C.g1},
+    {l:"Primary Constraint",v:M.pc,c:C.nv,b:C.op},
+    {l:"Redesign Offsets?",v:M.ro?"Yes":"No",c:M.ro?C.tl:C.co,b:M.ro?C.tp:"#FBE9E7"},
+  ];
+
+
+  const actionNow=M.hn>0?`Hire ${M.hn} ${M.hn>1?"resources":"resource"} by ${M.hm>=0?MO[M.hm]:"now"} to avoid ${M.fr>=0?MO[M.fr]:"future"} capacity pressure.`:"No immediate hire required. Use this cycle to validate effort assumptions and reduce reactive drag.";
+  const fixLever=M.pc==="onboarding load"?"Reduce kickoff / onboarding effort, automate first-value steps, or add onboarding capacity.":M.pc==="ongoing CSM load"?"Tighten alignment / insights cadence, simplify recurring service moments, or add CSM capacity.":"Reduce reactive work through better designed moments, guardrails, and clearer escalation paths.";
+  const scenarioDelta=useMemo(()=>{const base=run({gH,eH,gL,eL,oH,oL,c1H,c1L,c2H,c2L,tm:tm.map(m=>({r:m.r,s:m.s})),rp,ta,pp,rr,wh,oh,tb,sa,hA,lA,gM:1,eM:1});return{headcount:M.hn-base.hn,peak:M.pk-base.pk,firstMonth:(M.fr===base.fr?0:1)};},[M,gH,eH,gL,eL,oH,oL,c1H,c1L,c2H,c2L,tm,rp,ta,pp,rr,wh,oh,tb,sa,hA,lA]);
+
+  return <div>
+    {/* NAV */}
+    <nav className="no-print" style={{background:"rgba(15,28,40,.95)",backdropFilter:"blur(12px)",borderBottom:"1px solid rgba(197,212,78,.15)",padding:"0 24px",height:56,display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:100}}>
+      <div style={{display:"flex",alignItems:"center",gap:10}}><div style={{width:28,height:28,borderRadius:6,background:C.ol,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:C.nd}}>C</div><span style={{color:C.wh,fontSize:14}}>CXology — CS Capacity Planner</span></div>
+      <button onClick={()=>window.print()} style={{...sB,background:C.ol,color:C.nd,padding:"6px 16px",fontSize:12}}>⎙ Print</button>
+    </nav>
+
+    {/* HERO */}
+    <header style={{background:C.nd,padding:"48px 24px 40px",position:"relative",overflow:"hidden"}}>
+      <div style={{position:"absolute",inset:0,backgroundImage:"linear-gradient(rgba(197,212,78,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(197,212,78,.04) 1px,transparent 1px)",backgroundSize:"60px 60px"}}/>
+      <div style={{maxWidth:1200,margin:"0 auto",position:"relative",zIndex:1}}>
+        <div style={{display:"inline-flex",alignItems:"center",gap:8,padding:"4px 12px",background:"rgba(197,212,78,.1)",border:"1px solid rgba(197,212,78,.3)",borderRadius:100,marginBottom:12}}><div style={{width:6,height:6,borderRadius:"50%",background:C.ol}}/><span style={{fontSize:11,fontWeight:600,letterSpacing:".1em",textTransform:"uppercase",color:C.ol}}>Capacity Planning Tool</span></div>
+        <h1 style={{color:C.wh,fontSize:"clamp(1.6rem,3.5vw,2.4rem)",fontWeight:700,lineHeight:1.2,marginBottom:8}}>Capacity isn't a guess. <em style={{color:C.ol,fontStyle:"italic"}}>It's designed from the customer journey.</em></h1>
+        <p style={{color:"rgba(255,255,255,.5)",fontSize:14,fontWeight:300,maxWidth:"56ch"}}>Enter growth, designed effort, and team composition. The model shows when you need to hire and why.</p>
+      </div>
+    </header>
+
+
+    {/* WHY */}
+    <div style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>Tell the Story of What It Takes</div>
+      <h2 style={sTitle}>Tell the story of what it takes</h2>
+      <p style={sSub}>This model is meant to help Customer Success defend resourcing, reduce heroic effort, and involve peers in design decisions — not just calculate hours.</p>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+        <div style={sCd}>
+          <div style={{fontSize:12,fontWeight:700,color:C.co,marginBottom:8,textTransform:"uppercase",letterSpacing:".06em"}}>Without capacity planning</div>
+          {["Annual budget requests get reduced to nothing","Heroic effort becomes normal","Hiring decisions are late and rushed","You can feel the constraint, but not explain the why"].map((x,i)=><div key={i} style={{display:"flex",gap:8,marginBottom:8,fontSize:13,color:C.g7}}><span style={{color:C.co}}>•</span><span>{x}</span></div>)}
+        </div>
+        <div style={sCd}>
+          <div style={{fontSize:12,fontWeight:700,color:C.tl,marginBottom:8,textTransform:"uppercase",letterSpacing:".06em"}}>With capacity planning</div>
+          {["Headcount requests get easier over time","The team gets a path out of heroic effort","Managers have a clearer operating narrative","Leadership can challenge assumptions instead of poking holes"].map((x,i)=><div key={i} style={{display:"flex",gap:8,marginBottom:8,fontSize:13,color:C.g7}}><span style={{color:C.tl}}>•</span><span>{x}</span></div>)}
+        </div>
+      </div>
+    </div>
+
+    {/* TYPES OF EFFORT */}
+    <div style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>Where Capacity Goes</div>
+      <h2 style={sTitle}>Where capacity goes</h2>
+      <p style={sSub}>Capacity only makes sense when it reflects reality. Customer-facing time has to coexist with internal commitments, context switching, and the messy work that keeps the function moving, which is why target availability should be treated as a deliberate assumption rather than a default.</p>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:12}}>
+        {[{t:"Direct effort",c:C.bl,d:"Work that directly contributes to customer success. This includes both designed proactive work and reactive support."},{t:"Indirect effort",c:C.am,d:"Planned internal work such as meetings, training, planning, feedback loops, and professional development."},{t:"Unplanned effort",c:C.co,d:"Avoidable friction and interruptions such as ad hoc requests, rework, equipment issues, and unnecessary coordination."}].map((x,i)=><div key={i} style={sCd}><div style={{fontSize:12,fontWeight:700,color:x.c,textTransform:"uppercase",letterSpacing:".08em",marginBottom:8}}>{x.t}</div><div style={{fontSize:13,color:C.g7,lineHeight:1.6}}>{x.d}</div></div>)}
+      </div>
+      <div style={{marginTop:12,padding:"14px 16px",background:C.g1,borderRadius:10,fontSize:13,color:C.g7}}>A practical benchmark is often around <strong style={{color:C.nv}}>65% target availability</strong>. That leaves room for internal commitments, innovation, context switching, PTO, and surprise work instead of pretending every hour can be customer-facing.</div>
+      {guidedMode&&<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:12,marginTop:12}}>
+        <GuideBox title="Capacity changes over time" tone="neutral">Capacity is not a flat monthly number. Holidays, PTO, recurring meetings, one-off internal asks, and the normal switching cost of real work all change how much customer-facing time is truly available. That is why the planner uses monthly workable hours and why availability deserves real thought instead of a guess.</GuideBox>
+        <GuideBox title="Why 100% breaks" tone="warning">When leaders assume 90 to 100 percent customer-facing availability, they usually ignore the work Customer Success does to support Sales, Marketing, Product, leadership, and the team itself. The model becomes more credible when it acknowledges that indirect and unplanned work are real, not signs of poor discipline.</GuideBox>
+      </div>}
+    </div>
+
+    {/* JOURNEY */}
+    <div style={{background:C.nd,padding:"40px 24px"}}>
+      <div style={{maxWidth:1200,margin:"0 auto"}}>
+        <div style={{...sTag,background:"rgba(197,212,78,.12)",color:C.ol}}>Inflection Points → Designed Effort</div>
+        <h2 style={{...sTitle,color:C.wh,marginBottom:4}}>Inflection Points → Designed Effort</h2>
+        <p style={{color:"rgba(255,255,255,.45)",fontSize:14,fontWeight:300,marginBottom:24}}>The customer journey is where the model begins. Each stage represents a moment that can either build loyalty or erode it, and the effort tied to those moments becomes the foundation of your capacity plan.</p>
+        {guidedMode&&<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:12,marginBottom:18}}>
+          <div style={{padding:"14px 16px",borderRadius:10,background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.12)"}}>
+            <div style={{fontSize:11,fontWeight:700,color:C.ol,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Start with reality</div>
+            <div style={{fontSize:12,color:"rgba(255,255,255,.78)",lineHeight:1.65}}>Before you design the ideal model, inventory what the team actually does today. List current activities, map them to service moments, and only then decide what should stay, change, automate, or disappear.</div>
+          </div>
+          <div style={{padding:"14px 16px",borderRadius:10,background:"rgba(255,255,255,.06)",border:"1px solid rgba(255,255,255,.12)"}}>
+            <div style={{fontSize:11,fontWeight:700,color:C.ol,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Map work to months</div>
+            <div style={{fontSize:12,color:"rgba(255,255,255,.78)",lineHeight:1.65}}>Use the customer journey to place work across the lifecycle. Early months tend to carry kickoff, onboarding, and first value. Mid-cycle shifts toward alignment, insights, and goal attainment. Later months prepare renewal and growth.</div>
+          </div>
+        </div>}
+        <div style={{display:"flex",gap:0,marginBottom:16,borderRadius:8,overflow:"hidden"}}>
+          {STAGES.map((st,i)=><button key={st.k} onClick={()=>sEj(ej===st.k?null:st.k)} style={{flex:1,padding:"12px 6px",background:ej===st.k?st.c:"rgba(255,255,255,.06)",border:"none",cursor:"pointer",transition:"all .2s",borderRight:i<STAGES.length-1?"1px solid rgba(255,255,255,.1)":"none"}}>
+            <div style={{fontSize:9,fontWeight:600,color:ej===st.k?"#fff":"rgba(255,255,255,.4)",textTransform:"uppercase",letterSpacing:".06em"}}>{st.l}</div>
+            <div style={{fontSize:15,fontWeight:700,color:ej===st.k?"#fff":st.c,marginTop:2}}>{st.e}</div>
+            <div style={{fontSize:10,color:ej===st.k?"rgba(255,255,255,.7)":"rgba(255,255,255,.25)",marginTop:2}}>{st.mo}</div>
+          </button>)}
+        </div>
+        {ej&&(()=>{const st=STAGES.find(x=>x.k===ej);return<div style={{background:"rgba(255,255,255,.04)",border:"2px solid "+st.c,borderRadius:12,padding:20}}>
+          <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:24}}>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:st.c,textTransform:"uppercase",letterSpacing:".08em",marginBottom:6}}>Customer thinking</div>
+              <p style={{color:"rgba(255,255,255,.7)",fontSize:13,fontStyle:"italic",marginBottom:16}}>"{st.t}"</p>
+              <div style={{fontSize:11,fontWeight:600,color:st.c,textTransform:"uppercase",letterSpacing:".08em",marginBottom:6}}>Service Moments</div>
+              {st.m.map((m,i)=><div key={i} style={{display:"flex",gap:8,marginBottom:6}}><div style={{width:6,height:6,borderRadius:"50%",background:st.c,marginTop:5,flexShrink:0}}/><span style={{fontSize:12,color:"rgba(255,255,255,.6)"}}>{m}</span></div>)}
+            </div>
+            <div>
+              <div style={{fontSize:11,fontWeight:600,color:C.co,textTransform:"uppercase",letterSpacing:".08em",marginBottom:6}}>Blockers</div>
+              {st.bl.map((b,i)=><div key={i} style={{fontSize:12,color:"rgba(255,255,255,.5)",marginBottom:4,paddingLeft:12,borderLeft:"2px solid "+C.co}}>{b}</div>)}
+              <div style={{fontSize:11,fontWeight:600,color:C.tl,textTransform:"uppercase",letterSpacing:".08em",marginBottom:6,marginTop:16}}>Builders</div>
+              {st.bu.map((b,i)=><div key={i} style={{fontSize:12,color:"rgba(255,255,255,.5)",marginBottom:4,paddingLeft:12,borderLeft:"2px solid "+C.tl}}>{b}</div>)}
+            </div>
+          </div>
+          <div style={{marginTop:16,padding:"10px 14px",background:"rgba(197,212,78,.08)",borderRadius:6}}>
+            <span style={{fontSize:11,color:C.ol,fontWeight:600}}>↳ {st.e}</span>
+            <span style={{fontSize:11,color:"rgba(255,255,255,.35)",marginLeft:12}}>→ feeds {["purchase","kickoff","onboarding","firstValue"].includes(st.k)?"Onboarding":"CSM"} demand as designed effort (prep + execution + follow-through)</span>
+          </div>
+        </div>;})()}
+      </div>
+    </div>
+
+    {/* SCENARIOS */}
+    <div className="no-print" style={{...sSec,paddingTop:0,paddingBottom:16}}>
+      <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:8}}>{Object.entries(SCS).map(([k,v])=><button key={k} onClick={()=>setSc(k)} style={{...sB,padding:"8px 16px",fontSize:12,background:sc===k?C.nv:"transparent",color:sc===k?C.wh:C.nv,border:"1px solid "+(sc===k?C.nv:C.g2)}}>{v.l}</button>)}</div><div style={{fontSize:12,color:C.tm}}>Selected scenario impact vs base: <strong style={{color:C.nv}}>{scenarioDelta.headcount>0?`+${scenarioDelta.headcount}`:scenarioDelta.headcount} headcount</strong>, <strong style={{color:C.nv}}>{(scenarioDelta.peak*100).toFixed(0)} pts peak utilization</strong>.</div>
+    </div>
+
+    {/* HOW IT WORKS */}
+    <div className="no-print" style={{...sSec,paddingTop:0,paddingBottom:8}}>
+      <div style={{...sTag,background:C.op,color:C.od}}>Five-Step Planning</div>
+      <h2 style={sTitle}>Five-step planning</h2>
+      <p style={{fontSize:13,color:C.tm,marginBottom:12}}>Use the five steps the way you would build a real plan in practice: start with demand, ground it in the current customer base, define the work, then test whether the team can actually deliver it. Each section below expands so the process feels guided instead of overwhelming.</p>
+      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,marginBottom:14,flexWrap:"wrap"}}>
+        <div style={{fontSize:12,color:C.tm}}>Turn on guided mode to show practical coaching directly inside each planning step.</div>
+        <button onClick={()=>setGuidedMode(!guidedMode)} style={{...sB,background:guidedMode?C.nv:C.wh,color:guidedMode?C.wh:C.nv,border:"1px solid "+(guidedMode?C.nv:C.g2),padding:"8px 14px",fontSize:12}}>{guidedMode?"Guided Mode: On":"Guided Mode: Off"}</button>
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:10}}>
+        {[
+          {id:"forecast-growth",n:"01",t:"Forecast Growth",d:"Model planned high-touch and low-touch logo adds."},
+          {id:"current-customers",n:"02",t:"Add Current Customers",d:"Bring in the existing customer base that already consumes capacity."},
+          {id:"designed-effort",n:"03",t:"Define Designed Effort",d:"Translate service moments into prep, execution, and follow-through effort."},
+          {id:"team-capacity",n:"04",t:"Model Team Capacity",d:"Layer in current staff, future hires, and ramp assumptions."},
+          {id:"reactive-proactive",n:"05",t:"Adjust Reactive vs Proactive",d:"Show how reactive work crowds out designed customer work."}
+        ].map((x)=><button key={x.id} onClick={()=>{setOpenStep(x.id); const el=document.getElementById(x.id); if(el) el.scrollIntoView({behavior:"smooth",block:"start"});}} style={{background:openStep===x.id?C.nv:C.wh,border:"1px solid "+(openStep===x.id?C.nv:C.g2),borderRadius:10,padding:16,cursor:"pointer",textAlign:"left",boxShadow:openStep===x.id?"0 8px 24px rgba(26,46,66,.16)":"none",transform:openStep===x.id?"translateY(-2px)":"none",transition:"all .2s ease"}}>
+          <div style={{fontSize:11,fontWeight:700,color:openStep===x.id?C.ol:C.od,letterSpacing:".08em",textTransform:"uppercase"}}>{x.n}</div>
+          <div style={{fontSize:15,fontWeight:700,color:openStep===x.id?C.wh:C.nv,margin:"4px 0"}}>{x.t}</div>
+          <div style={{fontSize:12,color:openStep===x.id?"rgba(255,255,255,.7)":C.tm,lineHeight:1.5}}>{x.d}</div>
+        </button>)}
+      </div>
+    </div>
+
+    {/* INPUTS */}
+    <div className="no-print" style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>Model Inputs</div>
+      <h2 style={sTitle}>Model Inputs</h2>
+      <p style={sSub}>The planning flow below matches the five steps above. Click a step tile to jump here, and as you scroll these sections the active step updates automatically.</p>
+      <div style={{marginBottom:14,padding:"14px 16px",borderRadius:10,background:C.wh,border:"1px solid "+C.g2}}>
+        <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Before you start</div>
+        <div style={{fontSize:13,color:C.g7,lineHeight:1.65}}>This section translates your customer experience into numbers. The goal is not perfect precision on the first pass. It is to build a model that is clear enough to explain, practical enough to use, and grounded enough to trust. Start with reasonable assumptions, then improve the model as you learn more about how the team actually operates.</div>
+      </div>
+      <div style={{marginBottom:14,padding:"14px 16px",borderRadius:10,background:C.op,border:"1px solid "+C.g2}}>
+        <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Now let's turn this into a model</div>
+        <div style={{fontSize:13,color:C.g7,lineHeight:1.65}}>You have already mapped the moments that matter in the customer journey. The next step is to turn those moments into effort, distribute that effort over time, and compare it to the capacity your team can actually provide. This is where the framework becomes operational.</div>
+      </div>
+      {guidedMode&&<div style={{marginBottom:14,padding:"12px 14px",borderRadius:10,background:C.op,border:"1px solid "+C.g2,fontSize:13,color:C.g7}}>Guided mode is on. Each step includes lightweight coaching pulled from the guide so the planner stays succinct but still teaches the user how to build the plan well.</div>}
+
+            <div id="forecast-growth" ref={el=>plannerStepRefs.current["forecast-growth"]=el} style={{...sCd,border:openStep==="forecast-growth"?"2px solid "+C.nv:"1px solid "+C.g2,boxShadow:openStep==="forecast-growth"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
+        <StepHeader step="1" title="Forecast Growth" desc="Model planned growth by month. This is where future demand begins." open={openStep==="forecast-growth"} onToggle={()=>setOpenStep(openStep==="forecast-growth"?null:"forecast-growth")} color={C.nv} />
+        {openStep==="forecast-growth"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>Future demand starts here. Growth does not just increase customer count; it creates a rolling wave of onboarding and ongoing service work that compounds across the year. Even a directional forecast is more useful than pretending growth will spread itself evenly.</div>
+        <NG label="High Touch — New / Month" values={gH} onChange={sgH}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Use directional numbers if you do not have a perfect sales forecast yet. A reasonable estimate is more helpful than leaving growth blank.</div>
+        <NG label="Low Touch — New / Month" values={gL} onChange={sgL}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-8}}>Think in logo adds by month, not annual totals. The timing of growth matters because it creates waves of onboarding demand later.</div>
+        </div>}
+      </div>
+
+            <div id="current-customers" ref={el=>plannerStepRefs.current["current-customers"]=el} style={{...sCd,border:openStep==="current-customers"?"2px solid "+C.bl:"1px solid "+C.g2,boxShadow:openStep==="current-customers"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
+        <StepHeader step="2" title="Add Current Customers" desc="Bring in the customer base that already consumes capacity today." open={openStep==="current-customers"} onToggle={()=>setOpenStep(openStep==="current-customers"?null:"current-customers")} color={C.bl} />
+        {openStep==="current-customers"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>Current customers are easy to overlook because they are already in motion, but they are often where most of the real demand lives. Bringing them into the model keeps the plan grounded in the work the team is already carrying before a single new logo is added.</div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label style={sL}>Existing HT</label><input type="number" value={eH} onChange={e=>seH(+e.target.value||0)} style={sI}/><div style={{fontSize:12,color:C.tm,marginTop:6}}>Customers already in motion still consume real capacity. Count the customers the team is truly supporting today.</div></div><div><label style={sL}>Existing LT</label><input type="number" value={eL} onChange={e=>seL(+e.target.value||0)} style={sI}/><div style={{fontSize:12,color:C.tm,marginTop:6}}>This becomes the baseline load the team carries before future growth is layered on top.</div></div></div>
+        <Ac title="How cohorts cascade"><p style={{fontSize:12,color:C.tm,lineHeight:1.6}}>Each month's new customers cascade demand forward through journey months. Onboarding concentrates in early lifecycle months. Existing customers use the year-two-and-beyond pattern.</p></Ac>
+        {guidedMode&&<GuideBox title="Use original start dates" tone="neutral">Use the original contractual start date whenever possible. That is what lets the planner determine where a customer sits in the lifecycle and whether they should follow year-one effort or the steadier year-two-and-beyond pattern. If you use the wrong date, the model may look precise while quietly misclassifying demand.</GuideBox>}
+        </div>}
+      </div>
+
+            <div id="designed-effort" ref={el=>plannerStepRefs.current["designed-effort"]=el} style={{...sCd,border:openStep==="designed-effort"?"2px solid "+C.pu:"1px solid "+C.g2,boxShadow:openStep==="designed-effort"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
+        <StepHeader step="3" title="Define Designed Effort" desc="Translate service moments into effort across the lifecycle. Effort should include prep, execution, and follow-through." open={openStep==="designed-effort"} onToggle={()=>setOpenStep(openStep==="designed-effort"?null:"designed-effort")} color={C.pu} />
+        {openStep==="designed-effort"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>Designed effort is the heart of the model because it turns a service philosophy into actual work. The point is not to measure every minute with perfect precision. It is to define the repeatable effort required to deliver the experience you want customers to have, then see whether the team you have can sustain it.</div>
+        {guidedMode&&<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:12,marginBottom:12}}>
+          <GuideBox title="Start with current activities" tone="neutral">Most teams make this harder than it needs to be by trying to design the perfect future state too early. Start with the work the team actually performs today: every kickoff, follow-up, alignment meeting, insight email, escalation, and internal task that supports the customer. Once reality is visible, you can decide what should stay, what should change, and what should disappear.</GuideBox>
+          <GuideBox title="Ignore outliers" tone="warning">Estimate for the experience you are trying to deliver consistently, not for the handful of customers who consume an unusual amount of time. Outliers make the model feel safer in the moment, but they usually inflate effort, weaken the story, and make the resulting plan harder to defend. Build the baseline around the norm, then manage the exceptions as exceptions.</GuideBox>
+        </div>}
+        <div style={{marginBottom:14,padding:"12px 14px",borderRadius:10,background:C.wh,border:"1px solid "+C.g2,fontSize:13,color:C.g7,lineHeight:1.65}}>This is the point where the model becomes tangible. Instead of talking about work in general terms, assign time to the parts of the experience that customers actually move through month by month. Start with what feels reasonable and refine later.</div>
+        <h4 style={{fontSize:14,fontWeight:600,color:C.nv,marginBottom:12}}>Onboarding (hrs/customer)</h4>
+        <NG label="HT Year 1" values={oH} onChange={soH} cols={JC}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Heavier-touch onboarding usually carries more preparation and follow-through. If unsure, begin with the conversations that feel hardest to deliver consistently.</div>
+        <NG label="LT Year 1" values={oL} onChange={soL} cols={JC}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Lower-touch does not mean no effort. Keep the moments that matter, then remove or automate what does not truly help the customer progress.</div>
+        {guidedMode&&<GuideBox title="Place work where customers feel it" tone="success">The timing of effort should follow the customer journey, not the structure of your org chart. Early months are often heavier because they carry kickoff, onboarding decisions, and the push to first value. As customers mature, the work should shift toward alignment, insight delivery, goal attainment, and renewal or growth preparation. When effort is placed where the customer actually feels it, the model becomes easier to explain and easier to believe.</GuideBox>}
+        <h4 style={{fontSize:14,fontWeight:600,color:C.nv,marginBottom:12,marginTop:20}}>CSM (hrs/customer)</h4>
+        <NG label="HT Yr1" values={c1H} onChange={sc1H} cols={JC}/>
+        <NG label="HT Yr2+" values={c2H} onChange={sc2H} cols={JC}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Year two and beyond should usually be lighter than year one because kickoff and onboarding are gone, but it should still reflect alignment, insight sharing, and renewal preparation.</div>
+        <NG label="LT Yr1" values={c1L} onChange={sc1L} cols={JC}/>
+        <NG label="LT Yr2+" values={c2L} onChange={sc2L} cols={JC}/>
+        </div>}
+      </div>
+
+            <div id="team-capacity" ref={el=>plannerStepRefs.current["team-capacity"]=el} style={{...sCd,border:openStep==="team-capacity"?"2px solid "+C.ol:"1px solid "+C.g2,boxShadow:openStep==="team-capacity"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
+        <StepHeader step="4" title="Model Team Capacity" desc="Layer in current resources, future hires, and onboarding ramp to see when capacity actually arrives." open={openStep==="team-capacity"} onToggle={()=>setOpenStep(openStep==="team-capacity"?null:"team-capacity")} color={C.ol} />
+        {openStep==="team-capacity"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>This step converts a hiring conversation into a timing conversation. The question is not only how many people you need, but when they need to start, how quickly they will ramp, and whether the current team can carry the load until then without slipping into unsustainable effort.</div>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}><h4 style={{fontSize:14,fontWeight:600,color:C.nv}}>Team</h4><button onClick={()=>sTm([...tm,{n:"New "+(tm.length+1),r:"CSM",s:6}])} style={{...sB,background:C.ol,color:C.nd,padding:"6px 14px",fontSize:12}}>+ Add</button></div>
+        {tm.map((m,i)=><div key={i} style={{display:"flex",gap:8,marginBottom:8,alignItems:"center"}}><input value={m.n} onChange={e=>{const t=[...tm];t[i]={...t[i],n:e.target.value};sTm(t);}} style={{...sI,flex:2}}/><select value={m.r} onChange={e=>{const t=[...tm];t[i]={...t[i],r:e.target.value};sTm(t);}} style={{...sI,flex:1}}><option>CSM</option><option>Onboarding</option></select><input type="number" value={m.s} onChange={e=>{const t=[...tm];t[i]={...t[i],s:+e.target.value};sTm(t);}} style={{...sIs,width:64}}/><button onClick={()=>sTm(tm.filter((_,j)=>j!==i))} style={{fontSize:16,color:C.co,background:"none",border:"none",cursor:"pointer"}}>✕</button></div>)}
+        <div style={{fontSize:11,color:C.tm,marginTop:4}}>Start: 0 = Jan, −12 = tenured, 6 = future hire in July.</div>
+        <div style={{fontSize:12,color:C.tm,marginTop:8}}>Model the team you have, then add the team you think you will need. This helps you see the difference between current capacity and planned capacity instead of blending them together.</div>
+        {guidedMode&&<GuideBox title="Hiring is not instant capacity" tone="warning">A hire request does not create immediate capacity. Recruiting, interviews, offers, notice periods, onboarding, and coaching all happen before a new person can contribute at full strength. The value of the model is that it gives you time to act early, rather than waiting until the team is already overloaded and the new hire walks into chaos.</GuideBox>}
+        <h4 style={{fontSize:14,fontWeight:600,color:C.nv,marginTop:20,marginBottom:8}}>Hire Ramp</h4>
+        <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>{rp.map((v,i)=><div key={i}><label style={sL}>Mo {i+1}</label><input type="number" value={v} onChange={e=>{const r=[...rp];r[i]=+e.target.value||0;sRp(r);}} style={sIs}/><span style={{fontSize:11,color:C.tm}}> %</span></div>)}</div>
+        <div style={{fontSize:12,color:C.tm,marginTop:8}}>Use conservative ramp assumptions at first. It is better to be slightly cautious about new-hire productivity than to assume instant relief and miss your hiring window.</div>
+        </div>}
+      </div>
+
+      <div id="reactive-proactive" ref={el=>plannerStepRefs.current["reactive-proactive"]=el} style={{...sCd,border:openStep==="reactive-proactive"?"2px solid "+C.co:"1px solid "+C.g2,boxShadow:openStep==="reactive-proactive"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
+        <StepHeader step="5" title="Adjust Reactive vs Proactive Work" desc="Reactive work crowds out designed customer work. Balance the mix and set the availability assumptions that power the model." open={openStep==="reactive-proactive"} onToggle={()=>setOpenStep(openStep==="reactive-proactive"?null:"reactive-proactive")} color={C.co} />
+        {openStep==="reactive-proactive"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>Reactive work is where many capacity plans quietly fail. If too much of the team's time is being consumed by interruptions, escalations, and ad hoc support, the designed work never actually happens, which means the customer experience and the plan drift apart.</div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}><div><label style={sL}>Target Avail %</label><input type="number" value={ta} onChange={e=>sTa(+e.target.value||0)} style={sI}/></div><div><label style={sL}>Designed proactive work %</label><input type="number" value={pp} onChange={e=>{const v=Math.max(0,Math.min(100,+e.target.value||0));sPp(v);sRr(100-v);}} style={sI}/></div><div><label style={sL}>Reactive work %</label><input type="number" value={rr} onChange={e=>{const v=Math.max(0,Math.min(100,+e.target.value||0));sRr(v);sPp(100-v);}} style={sI}/></div></div>
+        <div style={{marginTop:10,padding:"10px 12px",borderRadius:8,background:C.g1,fontSize:12,color:C.tm}}>Reactive work reduces designed service capacity. As designed service moments mature, reactive load should fall over time. Current mix: <strong style={{color:C.nv}}>{pp}% proactive</strong> / <strong style={{color:C.nv}}>{rr}% reactive</strong>.</div>
+        {guidedMode&&<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:12}}>
+          <GuideBox title="Reactive is a design outcome" tone="success">Reactive work should not be treated as a permanent tax. In many teams it is a symptom of weak or inconsistent design: customers do not know what comes next, internal expectations are fuzzy, and important questions surface at random. As service moments become clearer and more dependable, more of that work moves into planned interactions and capacity becomes easier to control.</GuideBox>
+          <GuideBox title="Use workable hours, not flat monthly averages" tone="neutral">A flat 160-hour assumption hides useful information. Some months naturally have more workable time than others, which means they can absorb a little more demand or create room for improvement work. Modeling capacity month by month gives you a truer picture of when pressure is building and when you have breathing room.</GuideBox>
+        </div>}
+        <details style={{marginTop:12,border:"1px solid "+C.g2,borderRadius:10,background:C.wh}}>
+          <summary style={{cursor:"pointer",padding:"12px 14px",fontSize:13,fontWeight:600,color:C.nv,listStyle:"none"}}>Advanced assumptions: workable hours by month</summary>
+          <div style={{padding:"0 14px 14px"}}>
+            <div style={{fontSize:12,color:C.tm,marginBottom:10}}>Keep the default month-by-month hours unless you have a better internal calendar. This is an advanced setting that helps the model reflect holidays and uneven working months.</div>
+            <NG label="Workable Hrs / Month" values={wh} onChange={sWh}/>
+          </div>
+        </details>
+        </div>}
+      </div>
+
+      <div style={sCd}>
+        <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Financial assumptions</div>
+        <button onClick={()=>setFinancialOpen(!financialOpen)} style={{width:"100%",background:"none",border:"none",padding:0,cursor:"pointer",textAlign:"left"}}>
+          <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:12}}>
+            <div>
+              <h3 style={{fontSize:18,fontWeight:700,color:C.nv,marginBottom:4}}>Cost & revenue inputs</h3>
+              <p style={{fontSize:13,color:C.tm,marginBottom:0}}>These do not change the planning flow above, but they frame the output in business terms. Collapse this section when you want the planner to stay focused on operational inputs.</p>
+            </div>
+            <div style={{flexShrink:0,width:28,height:28,borderRadius:999,background:financialOpen?C.ol:C.g1,color:financialOpen?C.wh:C.tm,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,fontWeight:700,transform:financialOpen?"rotate(180deg)":"rotate(0deg)",transition:"all .2s ease"}}>⌃</div>
+          </div>
+        </button>
+        {financialOpen&&<div style={{marginTop:16}}>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12}}><div><label style={sL}>Avg Salary</label><input type="number" value={sa} onChange={e=>sSa(+e.target.value||0)} style={sI}/></div><div><label style={sL}>Overhead %</label><input type="number" value={oh} onChange={e=>sOh(+e.target.value||0)} style={sI}/></div><div><label style={sL}>Tax+Ben %</label><input type="number" value={tb} onChange={e=>sTb(+e.target.value||0)} style={sI}/></div><div><label style={sL}>HT ACV</label><input type="number" value={hA} onChange={e=>sHA(+e.target.value||0)} style={sI}/></div></div><div style={{marginTop:8}}><label style={sL}>LT ACV</label><input type="number" value={lA} onChange={e=>sLA(+e.target.value||0)} style={{...sI,maxWidth:200}}/></div>
+        </div>}
+      </div>
+    </div>
+
+    {/* TALKING POINTS */}
+    <div style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>Executive Talking Points</div>
+      <h2 style={sTitle}>Executive Talking Points</h2>
+      <p style={sSub}>Use this section to translate the model into a leadership conversation. The goal is not to restate the math. It is to make the operating problem, the business risk, and the recommended action easy to understand.</p>
+
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:12,marginBottom:12}}>
+        <div style={sCd}>
+          <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>What to say first</div>
+          <div style={{fontSize:13,color:C.g7,lineHeight:1.6}}>
+            Start with the constraint in plain language: where capacity breaks, what is driving it, and what decision needs to be made. Keep the opening statement short enough that an executive can understand it in one pass.
+          </div>
+        </div>
+        <div style={sCd}>
+          <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>How to frame the ask</div>
+          <div style={{fontSize:13,color:C.g7,lineHeight:1.6}}>
+            Frame the recommendation as a tradeoff, not a complaint. Explain the cost of waiting, the operational impact on customers and the team, and the best alternative lever if leadership wants to avoid an immediate hire.
+          </div>
+        </div>
+      </div>
+
+      <div style={sCd}>
+        <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:10}}>Suggested narrative</div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:10,marginBottom:12}}>
+          <div style={{padding:"12px 14px",borderRadius:10,background:C.g1,border:"1px solid "+C.g2}}>
+            <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>What is happening</div>
+            <div style={{fontSize:13,color:C.g7,lineHeight:1.55}}>
+              {M.fr>=0?`Capacity moves beyond a sustainable level in ${MO[M.fr]}, with peak utilization reaching ${fp(M.pk)} in ${MO[M.pm]}.`:`Current staffing supports the modeled plan, but the margin for error is still visible in the utilization trend.`}
+            </div>
+          </div>
+
+          <div style={{padding:"12px 14px",borderRadius:10,background:C.g1,border:"1px solid "+C.g2}}>
+            <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Why it is happening</div>
+            <div style={{fontSize:13,color:C.g7,lineHeight:1.55}}>
+              {`The primary driver is ${M.pc}, which means the current service design and growth pattern are creating more demand than the team can absorb with its effective capacity.`}
+            </div>
+          </div>
+
+          <div style={{padding:"12px 14px",borderRadius:10,background:C.g1,border:"1px solid "+C.g2}}>
+            <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>What we should do</div>
+            <div style={{fontSize:13,color:C.g7,lineHeight:1.55}}>
+              {M.hn>0?`Plan to add ${M.hn} ${M.hn>1?"resources":"resource"} by ${M.hm>=0?MO[M.hm]:"now"} so the team can absorb demand before service quality, onboarding speed, or consistency begins to degrade.`:`Use the current planning window to validate service moments, reduce reactive drag, and improve the design before growth accelerates again.`}
+            </div>
+          </div>
+
+          <div style={{padding:"12px 14px",borderRadius:10,background:C.g1,border:"1px solid "+C.g2}}>
+            <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>If we do nothing</div>
+            <div style={{fontSize:13,color:C.g7,lineHeight:1.55}}>
+              {M.fr>=0?`The likely outcome is more heroic effort, slower execution of designed service moments, and greater risk to customer experience during the months under pressure.`:`The risk is lower right now, but failing to refine the model leaves the team exposed if actual growth lands above forecast.`}
+            </div>
+          </div>
+        </div>
+
+        <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:8}}>Supporting points from the model</div>
+        {talks.map((pt,i)=><div key={i} style={{display:"flex",gap:12,marginBottom:12,alignItems:"flex-start"}}>
+          <div style={{width:24,height:24,borderRadius:6,background:C.nv,color:C.ol,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,flexShrink:0}}>{i+1}</div>
+          <p style={{fontSize:13,color:C.g7,lineHeight:1.6}}>{pt}</p>
+        </div>)}
+      </div>
+    </div>
+
+    {/* CHARTS */}
+    <div style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>Demand vs. Supply</div>
+      <h2 style={sTitle}>Demand vs. Supply</h2>
+      <p style={sSub}>This is where the model becomes visible. Demand reflects the work required to deliver the customer experience you designed, while supply reflects the capacity your team can realistically contribute after availability, reactivity, and ramp are taken into account.</p>
+      <div style={{...sCd,padding:16}}>
+        <div style={{fontSize:12,fontWeight:600,color:C.nv,marginBottom:12}}>Demand vs. Effective Supply (hours)</div>
+        <LineChart data={cd} lines={[{key:"supply",name:"Effective Supply",color:C.tl,area:C.tp,width:2},{key:"demand",name:"Total Demand",color:C.co,width:2.5}]} height={260}/>
+      </div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}>
+        <div style={sCd}>
+          <div style={{fontSize:12,fontWeight:600,color:C.nv,marginBottom:12}}>Utilization %</div>
+          <BarChart data={cd} bars={[{key:"utilization",name:"Utilization",fill:d=>d.utilization>=100?C.rd:d.utilization>=90?C.or:C.tl}]} yMax={150} refLines={[{y:100,color:C.rd},{y:90,color:C.or}]}/>
+        </div>
+        <div style={sCd}>
+          <div style={{fontSize:12,fontWeight:600,color:C.nv,marginBottom:12}}>OB vs CSM Demand</div>
+          <StackedBarChart data={cd} bars={[{key:"obDemand",name:"Onboarding",fill:C.pu},{key:"csmDemand",name:"CSM",fill:C.bl}]}/>
+        </div>
+      </div>
+    </div>
+
+    {/* FINANCIAL */}
+    <div style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>Cost + Revenue Context</div>
+      <h2 style={sTitle}>Cost & Revenue Context</h2>
+      <p style={sSub}>Capacity is not just an operational problem. It is a financial decision, which means the model should help translate team design into labor cost, supported revenue, and the cost of waiting too long to act.</p>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:12}}>
+        {[{l:"Fully Loaded / Resource",v:fu(M.fl),c:C.nv},{l:"Team Cost (annual)",v:fu(M.tc),c:C.nv},{l:"Add'l Hire Cost",v:M.hn>0?fu(M.ah):"—",c:M.hn>0?C.co:C.g5},{l:"Supported Revenue",v:fu(M.sr),c:C.tl},{l:"Revenue / Team Member",v:M.ts>0?fu(Math.round(M.sr/M.ts)):"—",c:C.nv},{l:"Reactive Hrs/Yr",v:fmt(sum(M.rH))+"h",c:C.am}].map((c,i)=><div key={i} style={{borderRadius:10,padding:"16px 20px",textAlign:"center",background:C.wh,border:"1px solid "+C.g2}}><div style={{fontSize:20,fontWeight:700,color:c.c}}>{c.v}</div><div style={{fontSize:11,fontWeight:500,marginTop:4,color:C.tm}}>{c.l}</div></div>)}
+      </div>
+    </div>
+
+    {/* REFINE */}
+    <div style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>How to Make the Plan Better</div>
+      <h2 style={sTitle}>How to make the plan better</h2>
+      <p style={sSub}>The first draft is the start. The next job is to validate, refine, and maintain it.</p>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:12}}>
+        {[
+          {t:"Validate service moments",d:"Track whether key moments are actually being delivered and hold the team accountable to the design."},
+          {t:"Identify bottlenecks",d:"Look for discomfort, bad time estimates, handoff friction, and distractions that block downstream moments."},
+          {t:"Reduce excess effort",d:"Cut over-preparation, duplicate roles, or inconsistent execution that customers do not value."},
+          {t:"Explore automation",d:"Use templates, checklists, and system support to reduce manual effort and free up direct capacity."},
+          {t:"Maintain with actuals",d:"Refresh growth, customer data, and employee start dates so the plan stays useful in leadership meetings."}
+        ].map((x,i)=><div key={i} style={sCd}><div style={{fontSize:13,fontWeight:700,color:C.nv,marginBottom:6}}>{x.t}</div><div style={{fontSize:12,color:C.tm,lineHeight:1.6}}>{x.d}</div></div>)}
+      </div>
+    </div>
+
+    {/* METHODOLOGY */}
+    <div style={sSec}>
+      <div style={{...sTag,background:C.op,color:C.od}}>How This Works</div>
+      <h2 style={sTitle}>How This Works</h2>
+      <p style={sSub}>This section explains the logic behind the planner so the numbers feel interpretable, not magical. The model is directional and strategic on purpose: it should help you make better decisions, not pretend it can forecast every variable perfectly.</p>
+      <div style={sCd}>
+        <Ac title="Journey → Numbers" o={true}><p style={{fontSize:12,color:C.tm,lineHeight:1.7}}><strong>Journey</strong> → Inflection points.<br/><strong>Blueprint</strong> → Planned interactions.<br/><strong>Service Moments</strong> → Prep + execution + follow-through.<br/><strong>Capacity</strong> → Availability − demand, adjusted for ramp & reactive.</p></Ac>
+        <Ac title="Key Assumptions"><p style={{fontSize:12,color:C.tm,lineHeight:1.7}}>• Target Availability ≠ 100% — ~35% indirect/unplanned.<br/>• Planning model, not precision forecast.<br/>• All assumptions editable.<br/>• Outputs depend on effort accuracy.<br/>• Reactive load & ramp compound.</p></Ac>
+        <Ac title="What makes the plan easier to build"><p style={{fontSize:12,color:C.tm,lineHeight:1.7}}>Start from the current state, not the ideal state. Inventory the team’s actual service moments, ignore outliers when estimating, place work across months based on the journey, and remember that good design should reduce reactive load over time.</p></Ac>
+        <Ac title="Spreadsheet Logic"><p style={{fontSize:12,color:C.tm,lineHeight:1.7}}>Growth cohorts cascade month-by-month. OB & CSM separate. Existing use Y2+ patterns. Each member: hours × availability × proactive % × ramp. Utilization = demand ÷ effective supply.</p></Ac>
+      </div>
+    </div>
+
+    {/* DETAIL TABLE */}
+    <div style={sSec}>
+      <details style={{...sCd,padding:0,overflow:"hidden"}}>
+        <summary style={{listStyle:"none",cursor:"pointer",padding:"18px 20px",display:"flex",alignItems:"center",justifyContent:"space-between",userSelect:"none",background:C.wh}}>
+          <div>
+            <div style={{...sTag,background:C.op,color:C.od,marginBottom:6}}>Supporting Detail</div>
+            <div style={{fontSize:20,fontWeight:700,color:C.nv,lineHeight:1.25}}>Month-by-Month Detail</div>
+            <div style={{fontSize:13,color:C.tm,marginTop:4}}>Demand, supply, utilization, headroom, and risk by month.</div>
+          </div>
+          <div style={{fontSize:12,fontWeight:700,color:C.nv,whiteSpace:"nowrap"}}>Expand table ▾</div>
+        </summary>
+        <div style={{padding:"0 20px 20px"}}>
+          <div style={{height:1,background:C.g2,marginBottom:16}}/>
+          <div style={{overflowX:"auto"}}>
+            <table style={{width:"100%",borderCollapse:"collapse",fontSize:12}}>
+              <thead><tr><th style={sTh}>Mo</th><th style={{...sTh,textAlign:"right"}}>OB Dem</th><th style={{...sTh,textAlign:"right"}}>OB Sup</th><th style={{...sTh,textAlign:"right"}}>CSM Dem</th><th style={{...sTh,textAlign:"right"}}>CSM Sup</th><th style={{...sTh,textAlign:"right"}}>Demand</th><th style={{...sTh,textAlign:"right"}}>Supply</th><th style={{...sTh,textAlign:"right"}}>{M.gap>0?"Shortfall / Headroom":"Headroom / Shortfall"}</th><th style={{...sTh,textAlign:"right"}}>Reactive</th><th style={{...sTh,textAlign:"right"}}>Util</th><th style={{...sTh,textAlign:"center"}}>Status</th></tr></thead>
+              <tbody>{cd.map((r,i)=><tr key={i} style={{background:M.rs[i]==="red"?"#FFEBEE":M.rs[i]==="orange"?"#FFF8E1":"transparent"}}><td style={{...sTd,fontWeight:600}}>{r.label}</td><td style={sTn}>{fmt(r.obDemand)}</td><td style={sTn}>{fmt(r.obSupply)}</td><td style={sTn}>{fmt(r.csmDemand)}</td><td style={sTn}>{fmt(r.csmSupply)}</td><td style={{...sTn,fontWeight:600}}>{fmt(r.demand)}</td><td style={sTn}>{fmt(r.supply)}</td><td style={{...sTn,color:r.headroom<0?C.rd:C.tl}}>{r.headroom<0?fmt(Math.abs(r.headroom))+"h short":fmt(r.headroom)+"h headroom"}</td><td style={sTn}>{fmt(r.reactiveHrs)}</td><td style={{...sTn,fontWeight:600,color:r.utilization>=100?C.rd:r.utilization>=90?C.or:C.tl}}>{r.utilization}%</td><td style={{...sTd,textAlign:"center"}}><Bd s={M.rs[i]}/></td></tr>)}</tbody>
+              <tfoot><tr style={{fontWeight:700,borderTop:"2px solid "+C.nv}}><td style={sTd}>Total</td><td style={sTn}>{fmt(sum(M.oD))}</td><td style={sTn}>{fmt(sum(M.oES))}</td><td style={sTn}>{fmt(sum(M.cD))}</td><td style={sTn}>{fmt(sum(M.cES))}</td><td style={sTn}>{fmt(sum(M.tD))}</td><td style={sTn}>{fmt(sum(M.eS))}</td><td style={{...sTn,color:M.gap>0?C.rd:C.tl}}>{M.gap>0?fmt(M.gap)+"h short":fmt(Math.abs(M.gap))+"h headroom"}</td><td style={sTn}>{fmt(sum(M.rH))}</td><td style={sTn}>{sum(M.eS)>0?fp(sum(M.tD)/sum(M.eS)):"-"}</td><td style={sTd}/></tr></tfoot>
+            </table>
+          </div>
+          <div style={{display:"flex",gap:12,marginTop:10,fontSize:11,color:C.tm,flexWrap:"wrap"}}><span>🟢 {M.gc} OK</span><span>🟠 {M.oc} warning</span><span>🔴 {M.rc} over</span><span>Use this table as supporting evidence after you’ve framed the decision.</span></div>
+        </div>
+      </details>
+    </div>
+
+    <div style={{...sSec,display:"none"}} className="print-only"><div style={{border:"1px solid "+C.g2,borderRadius:12,padding:20,background:C.wh}}><div style={{fontSize:18,fontWeight:700,color:C.nv,marginBottom:8}}>Print Summary</div><div style={{fontSize:13,color:C.g7,marginBottom:8}}>{actionNow}</div><div style={{fontSize:12,color:C.tm,marginBottom:10}}>Primary driver: {M.pc}. First month over capacity: {M.fr>=0?MO[M.fr]:"None"}.</div><div style={{fontSize:12,color:C.g7,lineHeight:1.6}}>Assumptions: {ta}% target availability, {pp}% proactive designed work, {rr}% reactive work, ramp = {rp.join(" / ")}.</div><div style={{marginTop:12}}>{talks.slice(0,3).map((t,i)=><div key={i} style={{fontSize:12,color:C.g7,marginBottom:6}}>• {t}</div>)}</div></div></div>
+    <footer style={{background:C.nd,padding:24,borderTop:"1px solid rgba(197,212,78,.1)",textAlign:"center"}}>
+      <p style={{fontSize:12,color:"rgba(255,255,255,.25)"}}><span style={{color:C.ol}}>CS Capacity Planning: The Guide</span> © 2024 by CXology™ · Illustrative, not operational projections.</p>
+    </footer>
+  </div>;
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 </script>
 </body>
 </html>
