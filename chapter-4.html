@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 4: Stage 1 — Identify — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-3.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-5.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link active" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 4</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 1 — Identify</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Every customer has at least one guaranteed opportunity in the Identify stage: the renewal.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>The post-sales pipeline is not about aggressively pushing products your customers do not need; it is about staying perfectly aligned with their goals and ensuring they maximize the value of their relationship with your company. The first stage of this pipeline is <strong>Identify</strong>, which focuses on uncovering potential offerings, upgrades, or expansion opportunities that align with the customer’s original purchase intent and long-term aspirations.</p>
+
+<p>Before hunting for complex upsells or cross-sells, it is critical to remember a foundational rule of the post-sales pipeline: <strong>every customer has at least one guaranteed opportunity in the Identify stage—the renewal.</strong> Retention is your absolute first priority, especially when it comes to eliminating avoidable first-year churn. The renewal is not an administrative event that suddenly appears at the end of a contract; it is a revenue opportunity identified on day one, requiring proactive management and early conversations to build a true partnership mindset.</p>
+
+<p>Identifying growth opportunities is not a one-time event—it is a continuous discovery process that begins during the sales cycle and carries through onboarding and early engagement. By executing this stage correctly, you create a solid foundation for meaningful engagement where your recommendations feel like natural, strategic solutions rather than forced sales pitches.</p>
+
+<p><strong>Capturing Early Insights: The Handoff</strong> The identification process actually begins before the post-sale team even meets the customer. During a successful pre-sales cycle, the sales team often uncovers a wealth of information, including customer needs and interests that go far beyond the scope of the initial purchase.</p>
+
+<p>Perhaps the customer expressed interest in an advanced analytics add-on but didn't have the budget for it in Q1. Perhaps they mentioned a different department that might eventually need licenses. If these details have a high likelihood of future relevance, they must be passed to the Customer Success team during the Internal Knowledge Transfer (IKT) and formally documented as future opportunities in your CRM. This ensures your team stays proactive, guiding customers toward long-term value by tracking not just what they bought today, but what they will need tomorrow.</p>
+
+<p><strong>Clarifying Goals During the Kickoff</strong> To identify future growth, you must have absolute clarity on the customer's current baseline. The Strategic Kickoff is your premier opportunity to deepen your understanding of the customer’s reasons for purchase.</p>
+
+<p>During this meeting, modern CS teams ask targeted questions to get the customer's strategic objectives on the record. Specifically, you must uncover:</p>
+
+<ul>
+<li><em>Why did they buy?</em></li>
+</ul>
+
+<ul>
+<li><em>What does success look like?</em></li>
+</ul>
+
+<ul>
+<li><em>Who are the key stakeholders involved?</em></li>
+</ul>
+
+<p>As you dig deeper into their reason for purchase during the kickoff, you will frequently uncover new growth opportunities right away—or, at the very least, gather the necessary context to build a much stronger, more persuasive business case for future expansion.</p>
+
+<p><strong>Spotting Opportunities During Onboarding</strong> As your customer moves into Onboarding, they transition from the theory of the sales cycle into the reality of implementation. This phase is notorious for highlighting gaps in the customer's operations, providing you with incredible opportunities to offer the right support to ensure their long-term success.</p>
+
+<p>As you monitor their early product adoption, you must actively listen for the <strong>Five Universal Customer Needs</strong> that dictate success:</p>
+
+<ul>
+<li><strong>Skillset:</strong> Do they have the right expertise in-house to execute?</li>
+</ul>
+
+<ul>
+<li><strong>Knowledge:</strong> Do they fully understand how to maximize the value of your product or make decisions with imperfect data?</li>
+</ul>
+
+<ul>
+<li><strong>Time/Cost:</strong> Do they have the actual human bandwidth and resources to implement effectively?</li>
+</ul>
+
+<ul>
+<li><strong>Competing Demands:</strong> Are there other internal priorities dragging their attention away from adoption?</li>
+</ul>
+
+<ul>
+<li><strong>Ability to Manage Change:</strong> How well can their internal champion drive the adoption of new processes across their company?</li>
+</ul>
+
+<p>When a customer struggles with any of these five needs, it is not a reason to panic; it is an identified opportunity for the post-sales pipeline. To bridge these gaps, CS teams can seamlessly position premium support tiers, value-added "done-for-you" services, or strategic partner solutions to ensure the customer realizes the full value of their investment.</p>
+
+<p><strong>The Golden Rule: First Value Before Expansion</strong> While the <em>Identify</em> stage is about spotting these opportunities early and documenting them in your CRM or CS automation tool, there is a critical rule you must follow regarding when to act on them.</p>
+
+<p>The official launch of the post-sale pipeline does not begin until the customer achieves <strong>First Value</strong>. First Value is the moment the customer feels they have achieved a meaningful win with your product. As a best practice, you must never present an expansion recommendation until the customer has achieved this First Value, unless they explicitly request it.</p>
+
+<p>Why? Because you wouldn't want to be sold something new before the product you just purchased has proven its worth. Ensuring the customer sees early, tangible progress reinforces their initial buying decision and earns you the absolute right to have an expansion conversation.</p>
+
+<p>By effectively executing the Identify stage—recognizing the renewal as your first priority, gathering sales intel, asking the right questions in kickoff, listening for the 5 Customer Needs, and waiting for First Value—you build a highly visible, highly qualified post-sales pipeline that is primed for the next stage: <em>Align</em>.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 5: Stage 2 — Align</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-3.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-5.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

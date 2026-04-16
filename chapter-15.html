@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 15: Play 7 — The Alignment Meeting Play — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-14.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-16.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link active" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 15</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 7 — The Alignment Meeting Play</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Replace the passive QBR with an active Alignment Meeting. The goal is to end up strategically aligned — not to present about yourself.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>In the previous chapters, we navigated the "messy middle" by breaking massive objectives into manageable <strong>Goal Blocks</strong> and keeping the customer on track through the <strong>Sharing Insights</strong> play. But as your customer continuously achieves these incremental wins, you must periodically zoom out to ensure that the work you are doing today still aligns with their overarching business goals.</p>
+
+<p>This brings us to the next critical inflection point in the post-sales pipeline: <strong>The Alignment Meeting</strong>.</p>
+
+<p>For years, the SaaS industry has relied on the standard "Quarterly Business Review" (QBR) or "Executive Business Review" (EBR). But let’s be honest—the term "business review" is vague, passive, and often misunderstood by both the customer and the Customer Success team. Because the purpose is unclear, CSMs often avoid scheduling them, or worse, they turn the meeting into a vendor-centric "show-and-tell" that wastes the customer’s time.</p>
+
+<p>At CXology, we replace the passive QBR with an active <strong>Alignment Meeting</strong> (often referred to as a Realignment). The term is specific and active: your goal is to end up in a strategically aligned state with your customer.</p>
+
+<h3>1. The Why: Avoiding the Birthday Party Trap</h3>
+
+<p>To understand why continuous alignment is critical to maximizing Net Revenue Retention (NRR), consider this story from a large enterprise email marketing solution based in the Midwest.</p>
+
+<p>This company had a massive, resource-heavy approach to QBRs. Preparing for a single QBR took a Director, a Senior Account Manager, and sometimes a VP up to nine hours of combined prep work, followed by a six-hour on-site presentation. Because the process was so incredibly heavy, very few customers actually received a QBR.</p>
+
+<p>During this time, they lost a multi-million dollar contract. When doing the loss analysis, they found that the team—specifically the VP—felt the relationship was extremely strong because he had recently attended the customer's child's birthday party. However, because they were not conducting consistent Alignment meetings, they had entirely missed how the customer's business was changing and evolving. They lost the deal because a personal relationship cannot replace strategic business alignment.</p>
+
+<p>If you fail to build loyalty through continuous alignment, your customer's business goals will change, and you will be left out of the loop.</p>
+
+<p><strong>Loyalty Builders </strong><strong>&</strong><strong> Blockers During Alignment</strong></p>
+
+<p>Before designing your meeting, you must recognize the specific forces working for and against you during this inflection point:</p>
+
+<ul>
+<li><strong>Loyalty Blockers:</strong> The customer is using what they purchased, but not in a way that sets them up for their desired outcome. There might be insufficient adoption inside their company, or your solution lacks executive visibility and a high-impact champion.</li>
+</ul>
+
+<ul>
+<li><strong>Loyalty Builders:</strong> You can overcome these blockers by proactively recommending new <strong>Goal Blocks</strong> to drive more value. Share real-world examples of success so customers can extrapolate how to overcome their own adoption struggles, and use these meetings to create your best possible baseline to measure future growth.</li>
+</ul>
+
+
+<h3>2. Design & Build: The Alignment Meeting Structure</h3>
+
+<p>An Alignment Meeting is not a heroic effort; it is built on the solid foundation you established during the Kickoff. In fact, the Kickoff is to <strong>First Value</strong> what <strong>Goal Blocks</strong> are to Alignment.</p>
+
+<p>When you sit down for the meeting, the customer should be doing most of the talking. Here is the exact, six-step meeting progression to ensure you run a highly strategic, value-driven conversation:</p>
+
+<p><strong>Step 1: Introductions</strong> Always begin with introductions, specifically focusing on any new players that have joined the group since the last meeting. This eliminates the awkwardness of not knowing who is in the room and is a critical way to make newly attending executives feel welcome.</p>
+
+<p><strong>Step 2: Retrace First Value </strong><strong>&</strong><strong> Goal Blocks</strong> Share the work that has been done since the last anchor meeting to create total transparency. Review the customer's accomplishments, broken down step-by-step for each completed <strong>Goal Block</strong>, and detail any <strong>Goal Blocks</strong> that are currently in progress. If there were shortcomings or roadblocks, do not hide them! Open communication about missteps, paired with recommendations to fix them, builds tremendous trust.</p>
+
+<p><strong>Step 3: Celebrations </strong><strong>&</strong><strong> Recognition</strong> Do not skip recognition. When you recognize accomplishments, you emphasize the cycle of goal-setting to success to celebration, which becomes a predictable pattern. Contextualize why these specific accomplishments are helping the customer reach the key goals they articulated during the Kickoff.</p>
+
+<p><strong>Step 4: Customer Business Review</strong> The key here is the focus on your <em>customer’s</em> business. This is not a meeting about you. Uncover any new dynamics, key players, or internal initiatives on the customer side. Listen closely for opportunities to upsell or cross-sell by better serving these newly revealed needs.</p>
+
+<p><strong>Step 5: Re-Align on The Five Questions</strong> <strong>The Five Questions</strong> are the secret sauce for customer confidence and consistent execution. Go back through the questions you asked at Kickoff and find out: <em>Are these answers still the same? And if not, what has changed?</em></p>
+
+<ul>
+<li>What is the one thing we must get right to make this worth undertaking?</li>
+</ul>
+
+<ul>
+<li>How does your organization define success?</li>
+</ul>
+
+<ul>
+<li>What is our role in achieving that success?</li>
+</ul>
+
+<ul>
+<li>What aspects of the internal culture or external environment could put this effort at risk to fail?</li>
+</ul>
+
+<ul>
+<li>Assuming we mitigate that risk, what would exceed your wildest dreams?</li>
+</ul>
+
+<p><em>Best Practice:</em> Ask each question individually and have each participant answer. Always have the most senior person in the room answer <em>last</em> so that junior team members feel the freedom to share their genuine perspectives.</p>
+
+
+<p><strong>Step 6: Affirm Next Steps</strong> Conclude the meeting by naming a key outcome the customer wants to achieve by the next Alignment Meeting. This will naturally translate into their next series of <strong>Goal Blocks</strong>.</p>
+
+
+<h3>3. Best Practices: Scale, Tech-Touch, and Executive Engagement</h3>
+
+<p><strong>Executive-Level Engagement</strong> One of the stealthy, awesome features of Alignment Meetings is that they are the perfect opportunity for executive-level engagement. Because the agenda is highly strategic, completely focused on the customer's business, and relies on <strong>The Five Questions</strong>, it is a meeting executives actually <em>want</em> to attend.</p>
+
+<p><strong>Not a Justification Exercise</strong> An Alignment Meeting is a healthy cycle of engagement; it is not a justification exercise. You are not there to defend your existence or justify your software's cost—you are there to align on the path to success.</p>
+
+<p><strong>Scaling Alignment to </strong><strong>"</strong><strong>Right-Touch</strong><strong>"</strong> Not every customer requires a highly tailored, 1:1 Alignment Meeting. As you evolve from reactive to strategic, you must utilize "right-touch" models:</p>
+
+<ul>
+<li><strong>Low-Touch:</strong> Shift to 1-to-many personal engagement. Invite a group of customers to an invite-only peer-to-peer learning conversation or a working session.</li>
+</ul>
+
+<ul>
+<li><strong>Tech-Touch:</strong> Automate Alignment milestones using your technology. You might have a customer trigger a milestone that shoots out an automated video celebrating their progress and suggesting next steps.</li>
+</ul>
+
+<p>If you use Tech-Touch, you must make sure your data is perfectly clean. There is nothing that breaks customer trust faster than getting an email that seems personal but has a blank or incorrect data field. No matter what tier of service you are delivering, always bring the conversation back to the customer's path to success.</p>
+
+<h3>4. The Follow-Through: Making the "Ask"</h3>
+
+<p>An Alignment Meeting doesn't end when the call drops. Your team must rigorously follow through by sending a recap email, updating internal databases with the new answers to <strong>The Five Questions</strong>, and reconfirming the next steps.</p>
+
+<p>Crucially, the Alignment Meeting follow-through is the ideal time to advocate for your own company's growth. When a customer has experienced a documented win during the meeting, you must make a frictionless request for a referral, a review, or a testimonial.</p>
+
+<p><strong>How to make the ask:</strong></p>
+
+<ul>
+<li>Make ONE clear ask (do not ask for a referral <em>and</em> a review at the same time).</li>
+</ul>
+
+<ul>
+<li>Make it "stupid easy" for them to say yes by offering to write the draft on their behalf.</li>
+</ul>
+
+<ul>
+<li>If they say yes, ask them a couple of simple questions to gather the right information (or pull it directly from your Alignment Meeting notes).</li>
+</ul>
+
+<ul>
+<li>Write the draft, send it to them for editing, and give them a specific date you need the edits by.</li>
+</ul>
+
+
+<p><em>With your customer deeply aligned, their goals clearly defined, and internal champions secured, the renewal is no longer a looming question mark—it is a logical conclusion. Let’s turn to <strong></em><em>Chapter 16: The Renew </strong><strong></em><em>&</strong><strong></em><em> Grow Play</strong></em><em>, to explore how to seamlessly transition this alignment into closed-won expansion revenue.</em></p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 16: Play 8 — The Renew & Grow Play</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-14.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-16.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

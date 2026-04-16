@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 9: Play 1 — The Purchase & Welcome Play — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-8.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-10.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link active" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 9</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 1 — The Purchase & Welcome Play</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">The moment a customer says yes, a clock starts ticking. Don't let silence fill the space.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>The moment a customer says "yes" to your product, a clock starts ticking. The transition from a prospect evaluating a solution to a new customer preparing for implementation is a critical juncture in the relationship. This is where your post-sale pipeline officially begins, and it starts with the Purchase & Welcome Play.</p>
+
+<h3>1. The Why: Mitigating Buyer’s Remorse and Building Loyalty</h3>
+
+<p>The immediate aftermath of a purchase decision is a vulnerable moment for new customers. Once the excitement of the sales cycle fades, it is entirely natural for customers to experience a moment of buyer’s remorse, sitting back and wondering, “Did I make the right decision?”.</p>
+
+<p>A highly orchestrated Purchase & Welcome Play reinforces the customer's purchase decision and launches the relationship for success. It operates between two distinct "bookends": it begins the moment the customer makes the decision to purchase—often before the ink is even dry on the contract or money changes hands—and it ends with the official Kickoff meeting.</p>
+
+<p>Because inflection points (moments that either build or block loyalty) often happen when you are not actively engaging with your customer, the Welcome phase is critical. If you leave the customer in silence while you handle internal administrative tasks, you are allowing them to fill in the blanks with their own anxiety. A well-designed play proactively eliminates loyalty blockers—such as a lack of clarity on what happens next or a significant lead time before kickoff—and replaces them with loyalty builders that educate the customer and clearly communicate roles and next steps.</p>
+
+<h3>2. Design & Build: Mapping the Play</h3>
+
+<p>When designing your Purchase & Welcome Play, there are three core components you must weave into the customer experience: Personalization, Celebration, and Setting Expectations.</p>
+
+<p><strong>The Internal Knowledge Transfer (IKT)</strong> Before you can personalize the customer's experience, you must master the internal handoff. As we established in Chapter 2, Lincoln Murphy famously stated that customers hate nothing more than having to answer the same questions they just spent months explaining to Sales.</p>
+
+<p>To build a smooth IKT into your play, your Sales team must answer just four key questions before the CS team takes over:</p>
+
+<ul>
+<li><strong>Why?</strong> Why did they purchase?</li>
+</ul>
+
+<ul>
+<li><strong>Who?</strong> Who are they as a company, and who are the key people we need to know?</li>
+</ul>
+
+<ul>
+<li><strong>What?</strong> What was promised, what was sold, and what <em>wasn't</em> sold?</li>
+</ul>
+
+<ul>
+<li><strong>Success?</strong> What does success mean for them?. Capturing this in a "Single Source of Truth" (like your CRM) ensures your CS team walks into the relationship looking like informed, strategic partners.</li>
+</ul>
+
+<p><strong>Automated and Curated Touchpoints</strong> To design the flow of this play, modern teams map out specific triggers and actions. For example:</p>
+
+<ul>
+<li><strong>The Trigger:</strong> Sales updates the opportunity to "Closed-Won," triggering an automated internal alert.</li>
+</ul>
+
+<ul>
+<li><strong>Automated Email #1:</strong> Even before the contract is fully processed, an automated email goes to the customer expressing enthusiasm for the partnership.</li>
+</ul>
+
+<ul>
+<li><strong>Curated Touchpoint:</strong> The VP of CS assigns a CSM, who reviews the IKT data and records a short, personalized 20-30 second video welcoming the customer by name and referencing their specific business goals.</li>
+</ul>
+
+<ul>
+<li><strong>Action Step:</strong> The CSM sends the video along with an email clearly setting expectations for the upcoming Kickoff meeting.</li>
+</ul>
+
+<p><strong>The Psychology of Celebration</strong> Celebration is a critical step in the Welcome Play. Robert Cialdini, author of <em>Influence: The Psychology of Persuasion</em>, notes that humans are wired with a psychological trigger: when someone gives you something, you feel an obligation to repay it in kind. By sending a welcome celebration—whether it’s a physical gift, a customized video, or a thoughtful digital resource—you anchor a tiny bit of positive obligation that makes it psychologically harder for the customer to second-guess their buying decision.</p>
+
+<p>Don't forget internal celebration, either! Ringing a sales gong or adding a marble to a "new customer jar" boosts company culture and reminds the entire organization that they are part of the winning customer experience.</p>
+
+<h3>3. Best Practices: Execution at Scale</h3>
+
+<p>To make sure this play doesn't collapse under its own weight, you must implement strict best practices.</p>
+
+<ul>
+<li><strong>Action Must Overcome Distraction:</strong> You need an automated, immediate trigger to launch this play. You must "stupid-proof" the first step so that it occurs every single time, even if your top sales rep hits the lottery and never comes back to work.</li>
+</ul>
+
+<ul>
+<li><strong>Balance Customization and Consistency:</strong> Personalization is great, but it takes time. You must find the "Goldilocks balance"—not too big, not too small—where your team builds true relationships without getting bogged down in administrative tasks. Use templates to create efficiency and eliminate excuses, but leave dedicated blanks within those templates for CSMs to inject their own personality and relationship-building details.</li>
+</ul>
+
+<ul>
+<li><strong>Eliminate Local Copies:</strong> Have one link to the official version of your email templates and play documents. Eliminate local copies saved on individual hard drives so that if leadership updates the play, the whole team immediately uses the current version.</li>
+</ul>
+
+<ul>
+<li><strong>Track and Measure:</strong> Decide what metrics matter for this play. Best practices include tracking IKT completion rates, whether non-automated emails are sent within a specific number of hours, and the total time elapsed between the purchase and the Kickoff meeting.</li>
+</ul>
+
+<p>By launching your Welcome Play with intention, you replace post-sale anxiety with immediate trust, perfectly teeing up the next crucial inflection point.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 10: Play 2 — The Kickoff Play</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-8.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-10.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

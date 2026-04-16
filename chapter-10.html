@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 10: Play 2 — The Kickoff Play — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-9.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-11.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link active" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 10</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 2 — The Kickoff Play</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">The Kickoff is not a training seminar. It is your premier opportunity to lay a rock-solid foundation for trust.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>If the Purchase & Welcome Play is about reinforcing the relationship, the Kickoff Play is where the actual work begins. However, this is also where many organizations make a critical, deal-threatening mistake: they treat the Kickoff as a product training session.</p>
+
+<p>Dumping feature functionality onto a new customer before establishing strategic alignment creates a longer, unnecessarily complex onboarding experience. The Kickoff is not a training seminar; it is your premier opportunity to align two companies and lay a rock-solid foundation for trust.</p>
+
+<h3>1. The Why: Laying the Foundation for Trust</h3>
+
+<p>The Kickoff meeting is arguably the single most important touchpoint of the entire customer relationship. After a successful purchase, your customer is eager, but they are also entering the room evaluating your credibility. They are privately asking themselves critical questions: "Do I feel valued, and will this solution actually do what I hope it can do?".</p>
+
+<p>If you use the Kickoff simply to conduct basic product training, you are wasting a massive strategic opportunity. The Kickoff is not a training session; it is your chance to lay a rock-solid foundation for trust, manage expectations, and build enthusiasm and momentum heading into onboarding.</p>
+
+<p>If you fail to build loyalty here, you risk misaligned expectations, customers who want to abandon best practices to "do it their way," and ultimately, churn. To get this right, you must execute a highly structured, intentional meeting flow.</p>
+
+<p>Based on the meticulously designed plays of top-tier post-sale teams, here is the exact, step-by-step agenda and meeting flow we recommend for a Strategic Kickoff.</p>
+
+<h3>2. Design & Build: Mapping the Play</h3>
+
+<p>A successful Kickoff Play is broken down into three distinct phases: Preparation, The Meeting, and The Follow-Through.</p>
+
+<p><strong>Phase 1: Preparation</strong> The preparation is, in many ways, the most important part of the Kickoff. The more your team knows before walking into the room, the stronger the impression they will make.</p>
+
+<ul>
+<li><strong>Research </strong><strong>&</strong><strong> Review:</strong> Review the Internal Knowledge Transfer (IKT) and the contract to understand exactly what was sold. Research the customer's website to understand their mission and their target audience.</li>
+</ul>
+
+<ul>
+<li><strong>The Invitation:</strong> Send meeting invitations along with a clear agenda. Sending the agenda in advance explicitly says to the customer, "These people have their act together," which is an immediate trust builder.</li>
+</ul>
+
+<p><strong>Phase 2: The Meeting Flow and The Five Questions</strong> The meeting itself must follow a highly structured, repeatable flow: Introductions, the Five Questions, the Customer's Journey, Setting Expectations, First Value, and Defined Next Steps.</p>
+
+<p>Before you even begin the meeting, you must have completed your internal preparation—reviewing the contract, researching the client, and coordinating with Sales through the Internal Knowledge Transfer (IKT). Once you are in the room (or on the Zoom call), you will guide the customer through these eight specific steps:</p>
+
+<p><strong>1. Introductions</strong> This may seem simple, but it is frequently rushed or skipped entirely. Do not skip this step! You really only get one good chance to find out exactly who everyone is, what their specific role is, and how they might support the project. This is it. When everyone understands who is in the room upfront, establishing roles and responsibilities later in the meeting flows much more smoothly.</p>
+
+<p><strong>2. Subscription Review</strong> Provide a simple, clear review of exactly what was purchased. This step is critical to ensure everyone is clear on the scope of work, especially because the person who bought the software and the person leading the project on a daily basis are often two different people. You will frequently have people in the Kickoff who were not part of the sales process, so this lays a shared foundation for moving forward.</p>
+
+<p><strong>3. Measures of Success </strong><strong>&</strong><strong> The </strong><strong>"</strong><strong>Five Questions</strong><strong>"</strong> Do not ask the customer to repeat everything they just told Sales. Instead, start with what you already know based on your research and the sales team handoff. Proving that you already understand their business builds immense credibility.</p>
+
+<p>Once you have demonstrated your knowledge, open the floor for discussion using <strong>The Five Questions</strong>. These battle-tested questions are your secret sauce for clarifying their strategy and extracting the specific goals and measures of success that weren't captured previously:</p>
+
+<ul>
+<li>What is the one thing we must get right to make this worth undertaking?</li>
+</ul>
+
+<ul>
+<li>How does your organization define success?</li>
+</ul>
+
+<ul>
+<li>What is our role in achieving that success?</li>
+</ul>
+
+<ul>
+<li>What aspects of the internal culture or external environment could put this effort at risk to fail?</li>
+</ul>
+
+<ul>
+<li>Assuming we mitigate that risk, what would exceed your wildest dreams?</li>
+</ul>
+
+<p><em>Pro Tip:</em> Have each participant answer, but always have the most senior executive answer <em>last</em> so junior team members feel free to share their genuine perspectives without just deferring to the boss.</p>
+
+<p><strong>4. 1st Year Overview</strong> Provide a high-level visual overview so your customer has a clear understanding of what happens over the coming year. This review talks about your overall process, the basic flow, and the general timeline. Note that this is <strong>NOT</strong> the time where you get names and dates assigned to specific tasks. The goal here is simply to demonstrate your expertise and reinforce customer trust by showing them you have a proven path.</p>
+
+<p><strong>5. Shared Expectations </strong><strong>&</strong><strong> Executive Engagement</strong> Review the shared roles and responsibilities so it is abundantly clear to the customer what is their responsibility versus what is yours. For key customer roles, it is entirely appropriate to put specific names in boxes during this meeting. Confirm <em>all</em> team members who will participate in the project—including the executive sponsors—and get their contact information.</p>
+
+<p>Crucially, this is the moment to <strong>manage expectations for executive participation</strong>. State your company's process for sharing wins with executives so they can see the results your platform delivers. Formally share the invitation for their executive sponsor to participate in future Realignment Meetings so the expectation is built into the process from the very beginning.</p>
+
+<p><strong>6. Feature Prioritization</strong> Instead of overwhelming the customer with a firehose of features, open a focused discussion inviting their input into where they start and what they do next. This helps manage customers who might not be technically adept or who feel overwhelmed by a significant learning curve.</p>
+
+<p><strong>7. The Path to First Value</strong> Introduce the concept of First Value and explain how it fits into your process. Remember, First Value is the first moment a customer feels they have achieved something meaningful, and it is defined by the customer. Ask the customer what they would like to achieve first, but act as a strategic coach based on their broader needs. Your goal is to help them narrow the scope of this first objective so it fits into a highly achievable, two-week window.</p>
+
+<p><strong>8. What’s Next</strong> Wrap up the meeting by setting firm expectations. Let the customer know exactly what you will be sending them in your follow-through email after the meeting. Make sure everyone is crystal clear on when the next meeting will be, what the agenda for that meeting will include, and what needs to be prepared in advance.</p>
+
+<p><strong>Phase 3: The Follow-Through</strong> A strategic Kickoff doesn't end when the meeting is over. Nailing the follow-through is your team's time to shine and build further confidence. Following the meeting, immediately send a recap email that summarizes the key points of discussion, the identified measures of success, and the specific action items.</p>
+
+<p>For every action item, clearly identify who owns it and the relevant due dates. You must also include the selected First Value goal and the steps required to achieve it so everyone remains perfectly aligned on that crucial first objective.</p>
+
+<p>By executing this precise, eight-step meeting flow and backing it up with rigorous follow-through, you transition the Kickoff from a chaotic software tutorial into a highly strategic business alignment session. You establish authority, define success, and leave the customer feeling confident that their investment is in the right hands.</p>
+
+<h3>3. Best Practices: Execution at Scale</h3>
+
+<p>To ensure your team runs the Kickoff Play flawlessly, implement these core best practices:</p>
+
+<ul>
+<li><strong>Discipline at the start wins efficiencies later:</strong> Taking the rigor to deeply understand your customer's needs and properly manage expectations during the Kickoff will pay massive dividends throughout the entire lifecycle.</li>
+</ul>
+
+<ul>
+<li><strong>Customized Conversation, Not a Customized Deck:</strong> You do not want your CSMs spending hours tweaking presentation slides. Prioritize your team's time on researching the customer and prepping for a customized <em>conversation</em>. The deck itself should be a standardized, single-source-of-truth template.</li>
+</ul>
+
+<ul>
+<li><strong>Capture the Data:</strong> Gathering customer information is useless if it lives in a CSM's notebook. Configure your CRM or Customer Success tool to make it incredibly easy to capture the answers to the Five Questions. If you see blank fields in your CRM, you immediately know your team is not adhering to the play.</li>
+</ul>
+
+<ul>
+<li><strong>Track and Measure:</strong> To ensure continuous improvement, measure the metrics that matter. Track the time elapsed between the purchase and the Kickoff, and measure whether the follow-through emails are sent within your required SLA (e.g., 24 hours post-meeting).</li>
+</ul>
+
+<p>By successfully running the Kickoff Play, you shift the relationship from theory to action, perfectly teeing up the customer for rapid success in the next critical phase.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 11: Play 3 — The Onboarding Play</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-9.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-11.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

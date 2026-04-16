@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 11: Play 3 — The Onboarding Play — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-10.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-12.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link active" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 11</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 3 — The Onboarding Play</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">86% of customers say they'd be more likely to stay loyal to a business that invests in their onboarding experience.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>Following a successful Kickoff, the customer is officially handed the keys and the real work begins. However, onboarding is where many relationships go off the rails. It is incredibly easy for teams to view onboarding merely as product training, overwhelming the customer with a firehose of features and configurations.</p>
+
+<p>To build a scalable revenue engine, onboarding must be a highly structured play designed to build trust, mitigate risks, and figure out exactly what the customer is missing to ensure their long-term success.</p>
+
+<h3>1. The Why: Escaping the "Big Bang" Trap</h3>
+
+<p>The primary loyalty blocker we see during onboarding is the "Big Bang" implementation. A Big Bang approach is when a company tries to push the product, its full suite of capabilities, and all the users live simultaneously at a single point in time.</p>
+
+<p>In the pursuit of perfection, companies try to do too much at the start, leading to missed customer commitments, complex requirements, and a focus on technology rather than the actual business solution. This results in exceedingly long implementation timeframes, resource bottlenecks for your team, and severe customer fatigue. When the customer finally reaches "Go Live," they are exhausted</p>
+
+<p>Throwing all features at a user at once causes fatigue, but solving one specific problem at a time naturally creates the desire in the customer to come back and learn the next feature, organically driving adoption without overwhelming them. To combat this, modern CS teams use a phased, iterative approach. An iterative implementation takes place over multiple cycles, with each cycle ending with a new or refined capability. By narrowing the focus to achieving a quick win—or First Value—you accelerate time-to-value, reduce the amount the customer has to learn all at once, and align much better with their limited availability.</p>
+
+<p>The stakes are incredibly high: 86% of customers say they would be more likely to stay loyal to a business that invests in their onboarding experience, while 80% of users say they have abandoned an app simply because they didn't know how to use it.</p>
+
+<h3>2. Design & Build: The Six Motions of Onboarding</h3>
+
+<p>Because every software is unique, the specific technical steps of your onboarding will vary. However, the <em>motions</em> every customer must go through are universal. When mapping your Onboarding Play, you must design specific actions, objectives, and outcomes for these Six Motions:</p>
+
+<p><strong>Motion 1: Align</strong></p>
+
+<ul>
+<li><strong>The Objective:</strong> Further your understanding of what the customer is trying to accomplish so you can guide their configuration efforts toward First Value.</li>
+</ul>
+
+<ul>
+<li><strong>The Strategy:</strong> While you started business alignment in the Kickoff, here you must go deeper. If your software is part of a larger business objective, you must know how your tool fits into that bigger picture. This is where you establish a Mutual Success Plan—jointly owned outcomes and milestones shared seamlessly between your internal departments and the customer, ensuring everyone is driving toward the exact same definition of success.</li>
+</ul>
+
+<ul>
+<li><strong>Best Practices:</strong></li>
+</ul>
+
+<ul>
+<li>Identify risks, mitigate them, and look for future growth opportunities.</li>
+</ul>
+
+<ul>
+<li>Equip your team with business-savviness training so they know exactly what questions to ask and how to effectively use the responses.</li>
+</ul>
+
+<ul>
+<li><strong>Desired Outcome:</strong> Your team demonstrates they are actively listening, and the customer trusts the relevant guidance provided.</li>
+</ul>
+
+<p><strong>Motion 2: Configure</strong></p>
+
+<ul>
+<li><strong>The Objective:</strong> Ready your product for use by guiding the customer through smart, confident decision-making.</li>
+</ul>
+
+<ul>
+<li><strong>The Strategy:</strong> Configuration is all about decisions. You must teach your customers how to build their solution, not just how to click buttons. To avoid configuration fatigue, prioritize only the setup required to reach First Value as defined in your Mutual Success Plan..</li>
+</ul>
+
+<ul>
+<li><strong>Best Practices:</strong></li>
+</ul>
+
+<ul>
+<li>Provide "recipe cards" or Lego-like instructions for common use cases. Don't make customers invent the wheel from scratch.</li>
+</ul>
+
+<ul>
+<li>Be transparent about which configuration decisions are permanent or difficult to change later.</li>
+</ul>
+
+<ul>
+<li><strong>Desired Outcome:</strong> Customers make a series of good decisions and experience success without feeling overwhelmed.</li>
+</ul>
+
+<p><strong>Motion 3: Connect</strong></p>
+
+<ul>
+<li><strong>The Objective:</strong> Amplify the value your solution delivers by successfully integrating it into a larger technological ecosystem.</li>
+</ul>
+
+<ul>
+<li><strong>The Strategy:</strong> When you become part of a more extensive system, your product becomes significantly stickier. However, integrations often present challenges with security, data quality, and timing.</li>
+</ul>
+
+<ul>
+<li><strong>Best Practices:</strong></li>
+</ul>
+
+<ul>
+<li>Do not leave customers alone to navigate their internal IT departments. Provide sufficient documentation and supporting resources for their technical teams.</li>
+</ul>
+
+<ul>
+<li>Establish clear internal escalation paths so your CS team can quickly get technical assistance when integrations get hairy.</li>
+</ul>
+
+<ul>
+<li><strong>Desired Outcome:</strong> Connecting to other systems is a smooth, positive, and fully validated experience.</li>
+</ul>
+
+<p><strong>Motion 4: Verify</strong></p>
+
+<ul>
+<li><strong>The Objective:</strong> Catch small errors before they turn into big problems that erode customer trust.</li>
+</ul>
+
+<ul>
+<li><strong>The Strategy:</strong> It is easy to deprioritize testing, but if you don't verify, you are guaranteed to be surprised. You must test expected inputs versus actual outputs to ensure the solution is working before handing it over.</li>
+</ul>
+
+<ul>
+<li><strong>Best Practices:</strong></li>
+</ul>
+
+<ul>
+<li>Create a strict script or checklist for your team to follow to ensure nothing falls through the cracks.</li>
+</ul>
+
+<ul>
+<li>Use peer reviews as a control strategy to hold the team accountable.</li>
+</ul>
+
+<ul>
+<li><strong>Desired Outcome:</strong> To the absolute best of your ability, you ensure that First Use will be a flawless, positive experience.</li>
+</ul>
+
+<p><strong>Motion 5: Transform</strong></p>
+
+<ul>
+<li><strong>The Objective:</strong> Prepare the customer's end-users for their first use and successfully initiate the change management process.</li>
+</ul>
+
+<ul>
+<li><strong>The Strategy:</strong> Transform is more than just training. This is often the first time end-users become involved, and learning requires opening oneself to new ideas and complexities. You must create an open dialogue to address concerns while reinforcing the positive outcomes the software will bring.</li>
+</ul>
+
+<ul>
+<li><strong>Best Practices:</strong></li>
+</ul>
+
+<ul>
+<li><strong>Story-Based Training:</strong> Abandon the boring checklist of features. Teach the solution by telling a relevant story about a day in the life of the end-user (who, what, how, and why).</li>
+</ul>
+
+<ul>
+<li><strong>Do Actual Work:</strong> Have users complete actual tasks during training and set clear "what by when" goals.</li>
+</ul>
+
+<ul>
+<li><strong>Empower Ambassadors:</strong> Multiply your impact by identifying customer champions. Clearly define their roles, responsibilities, and the timeframe for their support.</li>
+</ul>
+
+<ul>
+<li><strong>Desired Outcome:</strong> End-users have a solid understanding of the solution and are fully on board with the change.</li>
+</ul>
+
+<p><strong>Motion 6: First Use</strong></p>
+
+<ul>
+<li><strong>The Objective:</strong> Ensure the customer experiences immediate success on day one and begins developing excellent habits.</li>
+</ul>
+
+<ul>
+<li><strong>The Strategy:</strong> The customer finally takes the wheel. During this pivotal motion, a poor experience can severely damage confidence and trust. Your team must stay incredibly close, observing actions and providing rapid feedback to prevent failure.</li>
+</ul>
+
+<ul>
+<li><strong>Best Practices:</strong></li>
+</ul>
+
+<ul>
+<li><strong>Proactive Monitoring:</strong> Do not wait for a support ticket. Look into the product to see what they actually accomplished that day.</li>
+</ul>
+
+<ul>
+<li><strong>Quick Responses:</strong> Ensure your team has the dedicated availability to respond instantly to questions during this critical window.</li>
+</ul>
+
+<ul>
+<li><strong>Desired Outcome:</strong> Users experience undeniable success on day one, resulting in high levels of product adoption right from the start.</li>
+</ul>
+
+<h3>3. Best Practices: Execution at Scale</h3>
+
+<p>To ensure your Onboarding Play succeeds across all customer segments, you must keep right-sizing top of mind.</p>
+
+<p>Not all motions require heavy human lifting. Solutions with narrow use cases can automate significant portions of these motions, while complex platform solutions will require more detailed human process and formality.</p>
+
+<p>For example, you can automate the "Align" and "Configure" motions using in-app questionnaires (e.g., <em>"<strong>What will you make today?</strong>"</em> and <em>"<strong>Which describes your business?</strong>"</em>) to instantly tailor the user's experience based on their selections without a CSM ever getting on a call.</p>
+
+<p>By breaking onboarding down into these six iterative motions, you prevent customer fatigue, drastically reduce the time-to-value, and rapidly accelerate their path to the next critical milestone: <em>First Value</em>.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 12: Play 4 — The First Value Play</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-10.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-12.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

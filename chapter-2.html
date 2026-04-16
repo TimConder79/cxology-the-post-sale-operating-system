@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 2: Post-Sale Unification — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-1.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-3.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link active" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.75rem">Part I: The 2026 CS Evolution</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 2</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Post-Sale Unification</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">You cannot build a revenue engine if your organization's internal gears are grinding against each other.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>In Chapter 1, we established that the most profitable path forward is transforming Customer Success into a strategic revenue engine. However, you cannot build a revenue engine if your organization's internal gears are grinding against each other.</p>
+
+<p>Historically, SaaS companies have built their departments in strict silos, separating the key players: Sales, Marketing, Customer Success (which typically includes support), Professional Services, and Product. When this natural division turns into toxic isolation, the company loses sight of what matters most: the customer. To your customer, these internal divisions do not exist. They do not see a Marketing campaign, a Sales team, a CS team, or a Product engineering group—they simply see one company, and they expect a single, seamless experience.</p>
+
+<p>Scaling a revenue engine requires breaking down these silos. Modern post-sale unification centers on aligning customer success, support, professional services, and sales around one operating model, one data spine, and one unified lifecycle from onboarding through renewal and expansion.</p>
+
+<p>Bridging the Gap: Overcoming the Internal Knowledge Transfer (IKT) Friction The handoff from Sales to Customer Success is historically one of the most notorious points of friction in the SaaS journey. Today, many teams are still faced with this chaotic transition, struggling to find a balance. They either swing too far in one direction by demanding sales reps fill out encyclopedic intake forms—which are inevitably ignored—or they swing too far the other way, asking for no information at all and leaving the CS team completely blind.</p>
+
+<p>When CS walks into a kickoff meeting blind, they are forced to ask the customer to repeat everything they just spent months explaining to the sales and marketing teams. As Lincoln Murphy famously said, "One of the things that customers hate more than anything else is having to answer the same question after the sales deal is done". Asking a customer to repeat themselves is not a trust builder; it immediately makes them question your company's efficiency and starts the relationship at a deficit.</p>
+
+<p>However, organizations that successfully scale have overcome this friction by rightsizing the process. They realize that the Internal Knowledge Transfer (IKT) does not need to be a massive bureaucratic hurdle. Instead, an incredibly efficient approach boils down to capturing just four essential questions:</p>
+
+<ul>
+<li>Why? Why did the customer purchase? (What is the core business problem they are trying to solve?)</li>
+</ul>
+
+<ul>
+<li>Who? Who are they as a company, and who are the key people inside that company that the post-sale team needs to get to know?</li>
+</ul>
+
+<ul>
+<li>What? What exactly was promised, what did they buy, and more importantly, what didn't they buy?</li>
+</ul>
+
+<ul>
+<li>Success? What does "success" mean for them?</li>
+</ul>
+
+<p>By focusing strictly on these four questions, organizations create an efficient approach that gives the CS team everything they need to start the relationship strong. This shared knowledge also creates a vital feedback loop for Marketing and Product to understand exactly why customers are buying and succeeding.</p>
+
+<p>Beyond the Handoff: RACI, Mutual Success Plans, and Integrated Motions While the IKT is a critical first step, true unification extends far beyond the initial sales handover. To avoid the trap of simply "throwing accounts over the wall" from one department to the next, organizations must define explicit ownership across the entire customer journey.</p>
+
+<p>This requires establishing a clear RACI (Responsible, Accountable, Consulted, Informed) model for every key lifecycle moment. Leadership must define exactly who leads value discovery, who orchestrates onboarding, who handles reactive support, and who is responsible for renewal negotiations and expansion discovery.</p>
+
+<p>Unification also demands integrated support and success motions. Support interactions can no longer exist in a vacuum; routine support tickets should automatically trigger proactive CS outreach when friction is detected, and CS strategy should directly inform support priorities. To anchor this cross-functional effort, unified teams utilize Mutual Success Plans—jointly owned outcomes and milestones shared seamlessly between your internal departments and the customer, ensuring everyone is driving toward the exact same definition of success.</p>
+
+<p>Automating the Friction Away Unification also requires streamlining the administrative burdens that bog down your teams. In both sales and post-sale operations, automation is now heavily used to remove friction. By automating routine workflows—such as data entry, standard approvals, basic quoting, and intelligent ticket routing that pushes issues to the right owner without manual triage—you preserve your team's most valuable asset: their time. These digital models use automation to handle the logistical busywork, ensuring that the human effort of your CSMs is preserved strictly for high-value, strategic customer interactions.</p>
+
+<p>One Data Spine and Shared KPIs You cannot scale a revenue engine if your teams are operating with fragmented customer data. In the past, poor data hygiene was a massive risk: Sales lived in the CRM, Marketing in their automation tool, Support in the helpdesk, and CS tracked health scores in isolated spreadsheets.</p>
+
+<p>Today, post-sale unification demands a single data spine. This means designing a single customer record with fields spanning contract details, organizational hierarchy, product telemetry, support tickets, NPS/CSAT, and renewal opportunities all in one place. Integrating your CRM, CS platform, support desk, and professional services automation (PSA) around this single record ensures that everyone across the company who needs customer data has full, uninterrupted visibility.</p>
+
+<p>Furthermore, you cannot unify teams if you measure them in opposition to one another. To foster true post-sale unification, leadership must implement Cross-Team Collaboration KPIs across all key players:</p>
+
+<ul>
+<li>Forecast Accuracy: CS and Sales working together to confidently predict both net-new revenue and expansion revenue.</li>
+</ul>
+
+<ul>
+<li>Cycle Time Reduction: Measuring how efficiently a customer moves from a marketing lead to closed-won to achieving their first real value.</li>
+</ul>
+
+<ul>
+<li>Net Revenue Retention (NRR): A shared company-wide goal that aligns the entire Go-To-Market and Product strategy around long-term customer profitability.</li>
+</ul>
+
+<p>Cross-Functional Governance and Operational Rhythms To sustain this unified operating model, organizations must implement cross-functional governance. This involves creating joint councils or "pods" consisting of Sales, CS, Support, Product, and Professional Services to collaboratively review top accounts, mitigate risks, and share roadmap feedback.</p>
+
+<p>This governance is maintained through strict operational rhythms. Silos are permanently broken when teams engage in weekly risk reviews, monthly expansion pipeline reviews, and quarterly lifecycle experience reviews based on the shared data spine.</p>
+
+<p>Embedding CS into Revenue Operations (RevOps) Historically, "breaking down silos" meant little more than having Sales and Customer Success share a Slack channel, occasionally inviting Marketing or Product. However, modern post-sale unification requires formally embedding Customer Success directly into Revenue Operations (RevOps), aligning it structurally with the rest of the revenue engine.</p>
+
+<p>When CS is governed by RevOps rather than operating on an island, organizations report a much tighter alignment with expansion and renewal goals. RevOps provides the unified data infrastructure needed to link CS activity directly to C-suite financial metrics like NRR, expansion ARR, and cost-to-serve. This structural shift forces the entire organization to treat Customer Success not as an administrative support desk, but as a core driver of recurring revenue alongside Sales, Marketing, and Product.</p>
+
+<p>When you break down silos, establish one data spine, enforce cross-functional governance, and align your entire organization around shared goals, you permanently cure the chaos of the post-sale experience.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 3: The Role Evolution of the CSM</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-1.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-3.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

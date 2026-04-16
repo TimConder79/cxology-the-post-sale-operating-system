@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 8: Stage 5 — Net Revenue Close — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-7.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-9.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link active" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 8</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 5 — Net Revenue Close</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Treating the close as a mere transaction is a massive missed opportunity.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>You have successfully navigated the post-sales pipeline. You identified the opportunity, built a bulletproof business case rooted in the customer’s strategic goals, empowered an internal champion to advocate on your behalf, and secured the formal intent to move forward. Now, you reach the culmination of this journey.</p>
+
+<p>The fifth and final stage of the post-sales pipeline is the <strong>Net Revenue Close</strong>.</p>
+
+<p>It is easy to view this stage as a purely administrative event—a moment to simply collect signatures and process an invoice. But treating the close as a mere transaction is a massive missed opportunity. Closing a renewal or expansion is a milestone that reinforces the customer’s trust in your solution. It is the perfect moment to celebrate achievements, capture powerful advocacy, and build momentum for the next phase of your partnership.</p>
+
+<p><strong>Closing with Confidence and Precision</strong> Before you can celebrate, you must ensure a seamless transition from the customer's verbal intent to the finalized contract. You must close with precision, ensuring that all contract terms, pricing adjustments, and success criteria are clearly defined to prevent any last-minute surprises.</p>
+
+<p>By proactively managing the final workflows and remaining aligned with your internal sales, legal, and finance teams, you eliminate friction and make it incredibly easy for the customer to finalize the agreement. Once the ink is dry, the posture of the relationship shifts from execution to celebration.</p>
+
+<p><strong>Customer-Centric Celebration</strong> A successful Net Revenue Close should immediately trigger a celebration. This is not about throwing a party for your own revenue gain; it is a customer-centric celebration designed to acknowledge the customer's success, highlight their measurable outcomes, and set a highly positive tone for the continued partnership.</p>
+
+<p>This celebration reinforces their buying decision and makes them feel valued. Whether you send a highly personalized executive video, an upbeat "Win Report," or a thoughtful customer gift, you must let your brand personality shine. By showcasing the specific outcomes and ROI they achieved to get to this renewal or upgrade, you remind them exactly why they chose to partner with you in the first place.</p>
+
+<p><strong>Internal Celebration: The </strong><strong>"</strong><strong>Marble Jar</strong><strong>"</strong> While you celebrate with the customer, you must also celebrate internally. Recognizing the cross-functional teamwork that led to the win boosts morale and reinforces the broader company-wide impact of Net Revenue Retention (NRR).</p>
+
+<p>Customer Success is a team sport, and it boosts company culture when employees across all departments believe that they are in on the win. Successful organizations ritualize these moments. For example, some teams implement a "Marble Jar"—for every new logo, renewal, or expansion, a marble is added to a jar. When the jar is full, the entire company celebrates with an outing or event. By sharing the story of the close and capturing the lessons learned, you build momentum for repeatable, scalable success across your entire organization.</p>
+
+<p><strong>Turning Wins into Advocacy</strong> The Net Revenue Close is the absolute best time to ask your customer for a favor. Why? Because the key to securing a great review, referral, or testimonial is to <em>only ask when the customer has just experienced a win</em>. You have just guided them through a successful expansion and celebrated their outcomes; they are primed to be advocates.</p>
+
+<p>To turn this win into advocacy, you must make it completely frictionless for them to help you:</p>
+
+<ul>
+<li><strong>Make ONE ask:</strong> Be clear about what you are requesting. Do not ask for a referral, a review, <em>and</em> a testimonial all at once. Decide which is the most beneficial to you and easiest for the customer.</li>
+</ul>
+
+<ul>
+<li><strong>Offer to write a draft:</strong> People are busy. To eliminate the friction of a blank page, offer to write a draft of the testimonial or review that they can simply edit and approve.</li>
+</ul>
+
+<ul>
+<li><strong>Give a deadline:</strong> When you ask them for edits, give them a specific date you want the edits returned by, and politely remind them as needed.</li>
+</ul>
+
+<p>When you seamlessly transition from a closed-won expansion into securing a powerful case study or a hot referral, your post-sales pipeline officially begins fueling your pre-sales pipeline.</p>
+
+<p><strong>The Cycle Continues</strong> A successful Net Revenue Close is not the end of the journey—it is the beginning of the next phase of partnership and growth.</p>
+
+<p>By successfully executing the five stages of the post-sales pipeline—<em>Identify, Align, Advocate, Intent, and Net Revenue Close</em>—you have proven that growth does not happen by accident. It happens by design. With the new contract signed and the wins celebrated, the cycle resets. You return to the <em>Align</em> stage, ready to establish the next set of goals, drive further adoption, and continue the predictable, profitable engine of Strategic Customer Success.</p>
+
+<p>You are absolutely right! We got so excited about the new 3-part structure that we skipped right over the introduction to Part III.</p>
+
+<p>Here is the introduction and overview for <strong>Part III</strong>, designed to bridge the gap between the <em>theory</em> of the pipeline we built in Part II and the <em>tactical execution</em> we are diving into now.</p>
+
+<h2>Part III: AI-Enabled Lifecycle Plays (Right-Touch at Scale)</h2>
+
+<p><strong>Introduction: From Architecture to Execution</strong></p>
+
+<p>In Part II, we architected the post-sales pipeline. You now understand the five stages of growth—Identify, Align, Advocate, Intent, and Net Revenue Close—and why expansion must be the natural result of a carefully designed customer journey. You have the blueprint. Now, it is time to build the engine.</p>
+
+<p>The greatest strategy in the world will fail if your team cannot execute it consistently. Relying on "heroic efforts" from your best Customer Success Managers is not a scalable business model; it is a symptom of operational chaos. To drive predictable Net Revenue Retention (NRR) in 2026, you must transition from relying on individual heroics to relying on structured, repeatable systems.</p>
+
+<p><strong>The Power of Plays and Inflection Points</strong></p>
+
+<p>In the world of Strategic Customer Success, we execute our strategy using Plays. A play is a cross-functional guide for your team to follow, ensuring they deliver an exceptional, consistent customer experience repeatedly.</p>
+
+<p>At the heart of Strategic Customer Success lies an understanding of pivotal Key Inflection Points. An inflection point is a critical moment where the customer's trajectory can either flourish or falter, presenting a turning point to either build or block customer loyalty. The culmination of missed expectations at these junctures often triggers the domino effect, culminating in churn.</p>
+
+<p>There are eight core inflection points in the customer journey:</p>
+
+<ul>
+<li><strong>Purchase Moment:</strong> The genesis of the journey, where expectations are set.</li>
+</ul>
+
+<ul>
+<li><strong>First Meeting:</strong> Forging the initial rapport, which lays the foundation for long-term trust.</li>
+</ul>
+
+<ul>
+<li><strong>Onboarding Decisions:</strong> Guiding customers through the early stages effectively.</li>
+</ul>
+
+<ul>
+<li><strong>Early Success: </strong>Setting the stage for quick value attainment and customer satisfaction.</li>
+</ul>
+
+<ul>
+<li><strong>Goal Attainment:</strong> Guiding customers toward realizing their objectives.</li>
+</ul>
+
+<ul>
+<li><strong>Habit Transformation:</strong> Aiding in the transition towards impactful behavioral shifts.</li>
+</ul>
+
+<ul>
+<li><strong>Ongoing Alignment:</strong> Sustaining alignment through continuous evolution.</li>
+</ul>
+
+<ul>
+<li><strong>Renewal and Growth Decision</strong>: Shaping the crucial renewal and expansion decisions.</li>
+</ul>
+
+<p>It is vital to recognize that these moments often happen when you are not actively engaging with your customer. By centering your customer success strategy around these inflection points, and deploying structured plays at these exact moments, you proactively guide the customer rather than waiting for them to stumble.</p>
+
+<p><strong>Right-Touch Engagement at Scale</strong> Delivering these plays across hundreds or thousands of customers requires a shift from "high-touch for everyone" to a <strong>"</strong><strong>right-touch</strong><strong>"</strong> model. This is where modern AI and automation become your greatest competitive advantages.</p>
+
+<p>In this section, we will explore how to use digital CS, segment-based engagement, and automated triggers to execute these plays flawlessly. The goal of AI is not to turn your CSMs into robots or to send generic, tone-deaf emails. The goal is to use AI and automation to eliminate administrative busywork, thereby preserving your team's essential human judgment, empathy, and strategic thinking for the moments that truly matter. We will show you how to make tech-touch feel deeply personal.</p>
+
+<p><strong>The 3-Part Playbook Structure</strong> To make this section as actionable as possible, we have abandoned theoretical fluff. The following chapters act as a literal playbook. Every single play we cover will follow the exact same three-part framework so you can instantly design and deploy it within your own company:</p>
+
+<ul>
+<li><strong>The Why:</strong> We will uncover the strategic reasoning behind the play, exploring the specific "Loyalty Builders" and "Loyalty Blockers" your customers experience during this inflection point.</li>
+</ul>
+
+<ul>
+<li><strong>Design </strong><strong>&</strong><strong> Build:</strong> We will provide the tactical blueprint for mapping the play, assigning clear roles (who does what), and identifying where automation should take the wheel.</li>
+</ul>
+
+<ul>
+<li><strong>Best Practices:</strong> We will share expert insights, common pitfalls to avoid, and the exact metrics you need to track to ensure the play is succeeding.</li>
+</ul>
+
+<p><strong>The Plays Ahead</strong> We will cover the eight definitive plays that make up the Strategic Customer Success lifecycle:</p>
+
+<ul>
+<li><strong>Chapter 9: The Purchase </strong><strong>&</strong><strong> Welcome Play</strong></li>
+</ul>
+
+<ul>
+<li><strong>Chapter 10: The Kickoff Play</strong></li>
+</ul>
+
+<ul>
+<li><strong>Chapter 11: The Onboarding Play</strong></li>
+</ul>
+
+<ul>
+<li><strong>Chapter 12: The First Value Play</strong></li>
+</ul>
+
+<ul>
+<li><strong>Chapter 13: The Value Blocks Play</strong></li>
+</ul>
+
+<ul>
+<li><strong>Chapter 14: The Sharing Insights Play</strong></li>
+</ul>
+
+<ul>
+<li><strong>Chapter 15: The Alignment Meeting Play</strong></li>
+</ul>
+
+<ul>
+<li><strong>Chapter 16: The Renew </strong><strong>&</strong><strong> Grow Play</strong></li>
+</ul>
+
+<p>If you are ready to stop putting out fires and start running a highly profitable, highly automated revenue engine, let’s turn the page and run the very first play.</p>
+
+<p>Here is <strong>Chapter 9: The Purchase </strong><strong>&</strong><strong> Welcome Play</strong>, structured around the new three-part framework: The Why, Design & Build, and Best Practices.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 9: Play 1 — The Purchase & Welcome Play</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-7.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-9.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

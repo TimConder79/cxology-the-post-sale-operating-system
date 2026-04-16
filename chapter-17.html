@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 17: Supporting Plays — Key Contact Change & Offboarding — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-16.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-18.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link active" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 17</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Supporting Plays — Key Contact Change & Offboarding</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Champions leave. Customers churn. When these disruptions occur, you cannot rely on ad-hoc heroic efforts.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>The eight lifecycle plays we have covered so far outline the ideal path to customer growth and retention. However, the reality of Customer Success is that the journey rarely goes perfectly according to plan. The "messy middle" is full of unpredictable variables. Champions leave for new jobs, and despite your best efforts, some customers will inevitably decide to cancel.</p>
+
+<p>When these disruptions occur, you cannot rely on ad-hoc, heroic efforts. You must have standardized supporting processes in place so that your team views the customer experience as a predictable, whole-company endeavor. The two most critical supporting plays you must deploy are the <strong>Key Contact Change Play</strong> and the <strong>Offboarding Play</strong>.</p>
+
+<h3>Play 1: The Key Contact Change Play</h3>
+
+<p>When your primary champion or executive sponsor leaves their role, your account immediately enters a state of high risk. However, a Key Contact Change is often a massive, missed opportunity. When managed correctly, you can engage the new contact seamlessly, manage their expectations, and turn them into your next powerful advocate for long-term loyalty.</p>
+
+<h3><strong>1. The Why: Protecting the Relationship</strong></h3>
+
+<p>Your previous champion held all the institutional knowledge of why your product was purchased, the value it provided, and the trust you had built. The new contact is stepping into a role with their own priorities, and if you do not proactively define the narrative, they may view your software as an unnecessary expense. A structured play ensures you act quickly to establish rapport and align your solution with <em>their</em> new goals.</p>
+
+<h3><strong>2. Design </strong><strong>&</strong><strong> Build: The </strong><strong>"</strong><strong>You - We - Me</strong><strong>"</strong><strong> Framework</strong></h3>
+
+<p>To execute this play, modern CS teams rely on a highly structured transition meeting guided by the <strong>"</strong><strong>You - We - Me</strong><strong>"</strong> framework.</p>
+
+<ul>
+<li><strong>Preparation:</strong> Before the meeting, research the new point of contact on LinkedIn and connect with a personalized note. Review the customer's recent usage and performance, and send a tailored agenda to the new contact to build early relationship momentum.</li>
+</ul>
+
+<ul>
+<li><strong>The Meeting (You):</strong> Start entirely focused on them. Ask about their perspective on the new job they are stepping into, their successes and challenges, and the important milestones they need to hit.</li>
+</ul>
+
+<ul>
+<li><strong>The Meeting (We):</strong> Next, discuss your product, process, and company as it relates directly to what the person just shared. Relate your partnership directly back to their newly stated goals and challenges.</li>
+</ul>
+
+<ul>
+<li><strong>The Meeting (Me):</strong> Finally, specify what <em>you</em> need from the new key account person in order to serve them effectively. This might include product basics, expectations, deliverables they need to send you, and clear next steps.</li>
+</ul>
+
+<h3><strong>3. Best Practices: Execution at Scale</strong></h3>
+
+<ul>
+<li><strong>Follow-Through is Critical:</strong> After the meeting, send a recap email thanking them for their time, reviewing what you heard about their most important goals, and clarifying any "to-do" items. Most importantly, follow up on your commitments in the exact timeframe you promised.</li>
+</ul>
+
+<ul>
+<li><strong>Focus on Their Success First:</strong> By starting the conversation focused on <em>their</em> career success rather than immediately defending <em>your</em> software, you build instant credibility and trust.</li>
+</ul>
+
+<h3>Play 2: The Offboarding Play</h3>
+
+<p>By the time you are ready to offboard a customer, there is only a small chance they will reconsider their decision. However, the primary objective of offboarding is to ensure you capture valuable learnings so your company can improve, while leaving the door open for future business.</p>
+
+<h3><strong>1. The Why: The Peak-End Rule and Negative Word of Mouth</strong></h3>
+
+<p>When an account churns, it falls into one of two categories: unavoidable churn (churn over which your company has absolutely no control, like shutting down or being acquired) or avoidable churn (churn your company directly contributed to, such as poor communication or misalignment). We track both, but we are particularly interested in avoidable churn so we can learn and improve.</p>
+
+<p>Offboarding relies heavily on the <strong>Peak-End Rule</strong>, a cognitive bias showing that people judge an experience largely based on how they felt at its peak and at its end. How you conclude the relationship minimizes negative word of mouth (which is critical, as 13% of dissatisfied customers will tell 15 or more people about a negative experience) and sets the stage for them to potentially become a customer again in the future.</p>
+
+<h3><strong>2. Design </strong><strong>&</strong><strong> Build: The 3-Part Offboarding Process</strong></h3>
+
+<p>An effective offboarding play consists of a survey, a meeting, and a final thank you.</p>
+
+<ul>
+<li><strong>The Survey:</strong> Send a simple, one-question, open-ended survey to the key account owner. To add weight to the request, this email should appear as a personal outreach coming directly from your CEO.</li>
+</ul>
+
+<ul>
+<li><strong>The Meeting (Serve, Don't Sell):</strong> Outreach from CS or Sales to schedule a brief 15-minute meeting. Come to this meeting with the goal of serving, not selling, as they will be defensive against a sales pitch. Use these five specific meeting questions to capture insights:</li>
+</ul>
+
+<ul>
+<li>What did you initially sign up for?</li>
+</ul>
+
+<ul>
+<li>What problem were you originally trying to solve?</li>
+</ul>
+
+<ul>
+<li>How do you plan to solve for that problem now?</li>
+</ul>
+
+<ul>
+<li>What is the biggest benefit you experienced when using our product?</li>
+</ul>
+
+<ul>
+<li>What would it take for you to reconsider?</li>
+</ul>
+
+<ul>
+<li><strong>The Final Thank You:</strong> If they do not reconsider, button up their account and send a gracious final thank you email, letting them know they are always welcome to come back.</li>
+</ul>
+
+<h3><strong>3. Best Practices: Execution at Scale</strong></h3>
+
+<ul>
+<li><strong>Involve Leadership:</strong> Involving empowered leadership, including the CEO, in offboarding leaves a lasting positive impression and allows for immediate action if a customer <em>does</em> reconsider during the meeting.</li>
+</ul>
+
+<ul>
+<li><strong>Capture the Data:</strong> Run a report on their usage metrics at the time of cancellation (including total session time, login activity, and features used) and combine it with their survey responses in a dedicated churn tracking system.</li>
+</ul>
+
+<ul>
+<li><strong>Continuous Learning:</strong> Summarize the insights and provide them to leadership, but be mindful not to over-rotate on churn. There is a distinct difference between losing a customer due to a poor experience and simply completing the job the customer needed from you.</li>
+</ul>
+
+<p>By implementing these supporting plays, you ensure that even when the customer journey goes off script, your team handles it with the same strategic rigor, empathy, and professionalism that drives your core post-sales pipeline.</p>
+
+<p>You are completely right, great catch! Because we expanded Part III to include Sharing Insights, Alignment Meetings, Renew & Grow, and the Supporting Plays (Key Contact Change and Offboarding), Part III officially ended with Chapter 17.</p>
+
+<p>That means Part IV will indeed start with Chapter 18. Here is the corrected introduction and outline for the final section of the book:</p>
+
+<h2>Part IV: Data, Automation, and Operationalizing at Scale</h2>
+
+<p><strong>Introduction: Sustaining the Engine</strong></p>
+
+<p>In Part II, we architected the five stages of the post-sales pipeline. In Part III, we built the tactical playbook, giving your team the exact, step-by-step plays needed to successfully navigate the customer through their most critical inflection points. You now have a strategy, and you have the tactics.</p>
+
+<p>But executing these plays flawlessly for ten customers is vastly different than executing them for a thousand.</p>
+
+<p>As your company grows, relying on the sheer willpower and "heroic efforts" of your Customer Success Managers to save accounts is a recipe for team burnout and unpredictable revenue. True Strategic Customer Success requires more than just good intentions and a solid playbook; it requires an operational engine capable of sustaining that playbook at scale. You must transition from recreating individual successes to running standard, measurable, and optimized processes.</p>
+
+<p><strong>Moving Beyond </strong><strong>"</strong><strong>Doing Whatever It Takes</strong><strong>"</strong> For too long, Customer Success has operated under the mantra of "doing whatever it takes" to make the customer happy. While admirable, this mindset creates chaos. It forces teams to operate reactively, over-rotating on the squeaky wheels while silently losing the customers who simply fade away.</p>
+
+<p>To win retention at scale, you must deliberately choose how to deploy your limited resources with a focus on ROI. This means quantifying the exact effort required to build a retainable relationship and using that data to drive strategic business decisions.</p>
+
+<p><strong>The Power of AI, Data, and Capacity</strong> In this final section of the book, we shift our focus from customer-facing tactics to your internal operational systems. We will explore how to build the infrastructure necessary to run your plays efficiently across your entire portfolio.</p>
+
+<p>This requires mastering three critical operational levers:</p>
+
+<ul>
+<li><strong>Artificial Intelligence:</strong> Using AI to automate administrative workflows and surface predictive insights, thereby removing busywork and preserving your team's essential human judgment for complex problem-solving.</li>
+</ul>
+
+<ul>
+<li><strong>Predictive Data:</strong> Establishing rigorous data governance and redefining health scores so that they actually predict reality, allowing you to intervene long before a churn notification arrives.</li>
+</ul>
+
+<ul>
+<li><strong>Quantified Capacity:</strong> Abandoning archaic, made-up benchmarks like the "\$2M ARR per CSM" rule. Instead, we will show you how to accurately calculate the cost and capacity required to deliver your plays, enabling you to forecast headcount in line with your company's growth.</li>
+</ul>
+
+
+<p><strong>The Chapters Ahead</strong> To complete your Strategic Customer Success transformation, we will cover the five operational pillars required to scale:</p>
+
+<ul>
+<li><strong>Chapter 18: AI in CS: Judgment Over Templates.</strong> How to deploy AI to automate workflows and data entry while preserving critical human judgment.</li>
+</ul>
+
+<ul>
+<li><strong>Chapter 19: Data Governance and Integrated Workflows.</strong> Why poor data hygiene is your biggest risk, and how to build reliable systems that reflect reality.</li>
+</ul>
+
+<ul>
+<li><strong>Chapter 20: Health Scoring That Actually Works.</strong> Moving away from bloated metrics to focus on "avoidable churn" and modeling the behaviors of your healthiest customers.</li>
+</ul>
+
+<ul>
+<li><strong>Chapter 21: Cross-Team Collaboration KPIs.</strong> Aligning the C-suite, Sales, and CS through shared metrics like forecast accuracy and Net Revenue Retention (NRR).</li>
+</ul>
+
+<ul>
+<li><strong>Chapter 22: Proactive Capacity Planning.</strong> How to quantify the direct, indirect, and unplanned effort of your team to sustainably scale without burnout.</li>
+</ul>
+
+<p>If you are ready to bring order to the post-sale chaos and build a highly predictable, data-driven revenue machine, let’s dive into <strong>Chapter 18: AI in CS: Judgment Over Templates</strong>.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 18: AI in CS: Judgment Over Templates</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-16.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-18.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>

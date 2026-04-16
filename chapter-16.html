@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ch 16: Play 8 — The Renew & Grow Play — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-15.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-17.html'">Next →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link active" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 16</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 8 — The Renew & Grow Play</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">When you have executed the preceding plays flawlessly, the renewal should never be a surprise.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+    <p>You have guided your customer through their first year. You successfully navigated the welcome, established strategic goals during the kickoff, rapidly delivered their First Value, and actively steered them through the "messy middle" using Value Blocks, shared insights, and Alignment Meetings. Now, it is time for the final, defining play of the lifecycle: The Renew & Grow Play.</p>
+
+<p>When you have executed the preceding plays flawlessly, the renewal should never be a surprise. Instead, it becomes the natural, frictionless conclusion to a year of undeniable value.</p>
+
+<h3>1. The Why: The Obvious Conclusion</h3>
+
+<p>A primary reason renewals become awkward or stressful is that companies treat them as isolated administrative events rather than the culmination of a continuous journey. If a Customer Success team "goes dark" after onboarding and reappears months later to ask for a contract signature, they invite intense scrutiny, justification exercises, and a high risk of churn.</p>
+
+<p>The Renew & Grow Play actively eliminates these loyalty blockers. It is designed to proactively surface any hidden concerns, seamlessly tie the renewal to the customer’s long-term business goals, and capitalize on the momentum of their recent wins to position upsells and expansions. By managing this inflection point strategically, you eliminate last-minute negotiation friction and reinforce to the customer that staying with your company is the safest, most profitable choice they can make.</p>
+
+<p><strong>The Data-Driven Defense: Navigating App Rationalization</strong> Even with perfect relationship execution, the renewal phase carries a distinct, modern threat: the CFO's mandate for SaaS spend optimization. Around a third of organizations are actively consolidating redundant apps, citing the optimization of SaaS spend as a top executive concern. There is immense pressure from the C-suite to justify every single software subscription with clear, undeniable value.</p>
+
+<p>If your Customer Success team relies solely on warm relationships or anecdotal success stories, your product risks being rationalized out of the budget. To survive this era of vendor consolidation, your defense must be entirely data-driven, leveraging unified views of licenses, product usage, and cost-to-serve metrics.</p>
+
+<h3>2. Design & Build: Mapping the Play</h3>
+
+<p>To design a flawless Renew & Grow Play, your team must map out distinct phases. Crucially, this play does not begin at the end of the year—it begins at the very start of the relationship.</p>
+
+<p><strong>Phase 1: Setting the Terms (Days After Kickoff)</strong> The biggest mistake Customer Success and Account Management teams make is waiting until the end of a contract cycle to discuss renewals. While 90 days out is often treated as the standard notification period, <strong>this is actually the bare minimum</strong>.</p>
+
+<p>Best practice is to initiate renewal conversations mere <em>days after the kickoff</em>. At this early stage, you are not asking for a commitment; you are simply asking the customer <em>when</em> they would like to discuss the renewal. It might be at the 90-day mark, at the 6-month mark, or you may decide together to discuss it monthly throughout the contract. The point of this early conversation is to completely disarm the awkwardness of the renewal ask and allow the customer to define the terms of the relationship.</p>
+
+<p><strong>Phase 2: The License </strong><strong>&</strong><strong> Usage Audit (Pre-Notification)</strong> Before the customer's chosen timeline approaches, operations teams must provide CS with unified views of licenses and usage. CSMs must audit this data proactively:</p>
+
+<ul>
+<li><strong>License Utilization Audits:</strong> If they are paying for 100 seats but only actively using 60, do not wait for their procurement team to notice. Proactively build a rapid-adoption plan or strategically downsell to build massive trust.</li>
+</ul>
+
+<ul>
+<li><strong>Targeted Expansion via Product Usage:</strong> Use real-time product analytics within your CRM to track engagement. If a customer is exceeding usage limits or deeply utilizing high-value features, you can flip a defensive renewal into a targeted, highly compelling upsell.</li>
+</ul>
+
+<ul>
+<li><strong>Proactive App Consolidation:</strong> Look closely at the customer's workflows to see if your platform can absorb the functionality of redundant tools they are paying for, positioning yourself as a strategic cost-saver.</li>
+</ul>
+
+<p><strong>Phase 3: The Renewal Notification (The 90-Day Minimum)</strong> Depending on the timeline the customer defined in Phase 1, it is time to formally initiate the process. If they deferred until the end of the cycle, remember that <strong>90 days prior to the renewal date is the absolute bare minimum</strong>.</p>
+
+<p>Send an automated or curated notification sharing the timeframe until renewal, but more importantly, explicitly ask the customer if there are any concerns your team should be prepared to discuss. If concerns or upsell indicators are raised, you instantly know what needs to be escalated or coordinated internally before the formal meeting.</p>
+
+<p><strong>Phase 4: The Renewal </strong><strong>&</strong><strong> Alignment Meeting</strong> Rather than having separate meetings for business reviews and contract renewals, modern teams combine them into a single, powerful Renewal & Alignment Meeting. This meeting follows a distinct three-part flow:</p>
+
+<ul>
+<li><strong>Where We’ve Been:</strong> Retrace their First Value and completed Value Blocks. Use visuals to reinforce the ROI and celebrate what they have achieved this year.</li>
+</ul>
+
+<ul>
+<li><strong>Where We Are:</strong> Reaffirm the Five Questions. Review any changes to their business and identify their next massive goal for the upcoming year.</li>
+</ul>
+
+<ul>
+<li><strong>What’s Next (The Ask):</strong> You pivot from strategy to commitment. Explicitly ask for the renewal, address any concerns raised in the prior notifications, and clarify exact next steps.</li>
+</ul>
+
+<p><strong>Phase 5: The Contract Handoff</strong> At the end of the meeting, the customer's response will take one of three paths: Renewal, Upsell, or Churn.</p>
+
+<ul>
+<li><strong>If Renewing:</strong> Send the follow-up email, schedule an Annual Planning meeting (to map out their next year's Value Blocks), and share the draft renewal agreement.</li>
+</ul>
+
+<ul>
+<li><strong>If Upselling:</strong> If the customer indicates an expansion, seamlessly hand the contract steps back to Sales while continuing to manage the relationship.</li>
+</ul>
+
+<ul>
+<li><strong>If Churning:</strong> If the customer decides to leave, initiate your Offboarding Play to capture feedback and leave on a positive note leveraging the "Peak-End Rule".</li>
+</ul>
+
+<h3>3. Best Practices: Coordination, Objections, and Celebration</h3>
+
+<p>To master the Renew & Grow Play and maximize your Net Revenue Retention (NRR), rely on these core best practices:</p>
+
+<ul>
+<li><strong>Coordinate with Sales Early:</strong> If early notifications or an Alignment Meeting uncovers a major expansion opportunity, bring your Sales counterpart into the Renewal & Alignment Meeting. Sales can lead the commercial portion of the conversation while CS focuses on the value delivery, creating a highly unified front.</li>
+</ul>
+
+<ul>
+<li><strong>Mitigate Roadblocks Proactively:</strong> Do not let deals stall in procurement. Use this play to map out the customer’s internal approval workflows, identify whose signature is required, and anticipate legal reviews early so you can close with precision.</li>
+</ul>
+
+<ul>
+<li><strong>Internal Celebration: Storytelling and Process Recognition:</strong> When the contract is officially "Closed-Won," you must celebrate internally, as recognizing cross-functional teamwork boosts morale and reinforces the broader company-wide impact of Net Revenue Retention (NRR). Instead of a physical token, ritualize the sharing of customer "Win Reports" during internal team meetings. Sharing the story of the close allows team members who never interact directly with customers—like product or engineering—to see the positive impact of their work, while also giving Sales and Marketing valuable material to quickly turn into hot case studies. Additionally, use this moment to publicly acknowledge the "how" behind the win. Celebrate the specific individuals and cross-functional teams who contributed to the success by streamlining processes, reducing waste, and enhancing overall productivity, which reinforces a whole-company culture of continuous improvement.</li>
+</ul>
+
+<ul>
+<li><strong>Make the Ask for Advocacy:</strong> Once the ink is dry and the customer is riding high on the celebration of their successful year, execute your final move. Make the frictionless request for a referral, a review, or a case study.</li>
+</ul>
+
+<p>By successfully executing the Renew & Grow Play, the customer journey does not end—it resets. You capture the revenue, celebrate the shared success, and loop right back into the Engagement cycle, ready to set new goals and drive even deeper value in the year ahead.</p>
+
+<p>#</p>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 17: Supporting Plays — Key Contact Change & Offboarding</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-15.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-17.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// Post-process callouts
+document.querySelectorAll('.chapter-body p').forEach(p => {
+  const t = p.textContent.trim();
+  const calloutPhrases = [
+    "The pipeline doesn't stop",
+    "Customer Success is a sales function",
+    "Judgment Over Templates",
+    "autopsy report",
+    "Birthday Party Trap",
+    "doing whatever it takes",
+    "65%",
+    "canary in the coal mine",
+  ];
+  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
+    const div = document.createElement('div');
+    div.className = 'callout';
+    div.innerHTML = '<p>' + p.innerHTML + '</p>';
+    p.replaceWith(div);
+  }
+});
+</script>
+</body>
+</html>
