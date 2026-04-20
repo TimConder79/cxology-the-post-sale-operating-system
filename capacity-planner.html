@@ -20,6 +20,9 @@ select{-webkit-appearance:auto;appearance:auto}
 .chart-tip{position:absolute;background:#1A2E42;color:#fff;font-size:11px;padding:4px 8px;border-radius:4px;pointer-events:none;white-space:nowrap;z-index:10;transform:translate(-50%,-100%);margin-top:-8px}
 summary::-webkit-details-marker{display:none}
 summary{list-style:none}
+input[type=number]:focus,input[type=text]:focus,select:focus{outline:none;border-color:#1A2E42 !important;box-shadow:0 0 0 3px rgba(26,46,66,.08) !important;}
+input[type=number]:hover,select:hover{border-color:#7A8A5A;}
+.step-row:hover{background:rgba(248,249,242,.8);}
 </style>
 </head>
 <body>
@@ -181,8 +184,8 @@ function StackedBarChart({data,bars,height=200}){
 
 /* ── SMALL COMPONENTS ── */
 const sL={fontSize:11,fontWeight:600,color:C.tm,letterSpacing:".06em",textTransform:"uppercase",marginBottom:4,display:"block"};
-const sI={width:"100%",padding:"8px 10px",border:"1px solid "+C.g2,borderRadius:6,fontSize:13,fontFamily:"inherit",background:C.wh,outline:"none"};
-const sIs={width:56,padding:"6px 8px",border:"1px solid "+C.g2,borderRadius:4,fontSize:12,fontFamily:"inherit",textAlign:"center",background:C.wh};
+const sI={width:"100%",padding:"9px 12px",border:"1px solid "+C.g2,borderRadius:7,fontSize:13,fontFamily:"inherit",background:C.wh,outline:"none",transition:"border-color .15s,box-shadow .15s",lineHeight:1.4};
+const sIs={width:56,padding:"7px 6px",border:"1px solid "+C.g2,borderRadius:5,fontSize:12,fontFamily:"inherit",textAlign:"center",background:C.wh,outline:"none",transition:"all .15s"};
 const sCd={background:C.wh,border:"1px solid "+C.g2,borderRadius:12,padding:20,marginBottom:12};
 const sB={padding:"10px 20px",borderRadius:6,fontSize:13,fontWeight:600,cursor:"pointer",border:"none",transition:"all .2s"};
 const sTh={padding:"8px 6px",textAlign:"left",fontWeight:600,fontSize:11,color:C.tm,borderBottom:"2px solid "+C.g2,textTransform:"uppercase",letterSpacing:".04em"};
@@ -193,7 +196,27 @@ const sTag={display:"inline-block",padding:"3px 10px",borderRadius:100,fontSize:
 const sTitle={fontSize:"clamp(1.2rem,2.5vw,1.6rem)",fontWeight:700,color:C.nv,marginBottom:4,lineHeight:1.25};
 const sSub={color:C.tm,fontSize:14,fontWeight:300,marginBottom:24};
 
-function NG({label,values,onChange,cols}){const c=cols||MO;return<div style={{marginBottom:16}}>{label&&<div style={{...sL,marginBottom:6}}>{label}</div>}<div style={{display:"flex",gap:4,flexWrap:"wrap"}}>{values.map((v,i)=><div key={i} style={{flex:"1 0 54px",minWidth:48}}><div style={{fontSize:10,color:C.g5,textAlign:"center",marginBottom:2}}>{c[i]}</div><input type="number" value={v} onChange={e=>{const a=[...values];a[i]=+e.target.value||0;onChange(a);}} style={{...sIs,width:"100%"}}/></div>)}</div></div>;}
+function NG({label,values,onChange,cols,accent}){
+  const c=cols||MO;
+  const ac=accent||C.nv;
+  return<div style={{marginBottom:20}}>
+    {label&&<div style={{...sL,marginBottom:8,display:"flex",alignItems:"center",gap:6}}>
+      <span style={{display:"inline-block",width:3,height:12,borderRadius:2,background:ac,flexShrink:0}}/>
+      {label}
+    </div>}
+    <div style={{background:C.g1,borderRadius:8,padding:"10px 10px 8px",border:"1px solid "+C.g2}}>
+      <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
+        {values.map((v,i)=><div key={i} style={{flex:"1 0 54px",minWidth:48}}>
+          <div style={{fontSize:10,fontWeight:600,color:C.g5,textAlign:"center",marginBottom:4,letterSpacing:".04em"}}>{c[i]}</div>
+          <input type="number" value={v} onChange={e=>{const a=[...values];a[i]=+e.target.value||0;onChange(a);}}
+            style={{...sIs,width:"100%",borderColor:v>0?ac+"66":C.g2,background:v>0?"#fff":C.wh,
+              boxShadow:v>0?"0 0 0 1px "+ac+"33":"none",transition:"all .15s ease"}}
+          />
+        </div>)}
+      </div>
+    </div>
+  </div>;
+}
 function Bd({s:st}){const m={red:{b:"#FFEBEE",c:C.rd,t:"Over"},orange:{b:"#FFF3E0",c:C.or,t:"Warning"},green:{b:"#E8F5E9",c:C.gn,t:"OK"}};const v=m[st]||m.green;return<span style={{display:"inline-block",padding:"2px 8px",borderRadius:4,fontSize:11,fontWeight:600,background:v.b,color:v.c}}>{v.t}</span>;}
 function Ac({title,children,o}){const[open,setO]=useState(!!o);return<div style={{borderBottom:"1px solid "+C.g2,marginBottom:4}}><div style={{cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"10px 0"}} onClick={()=>setO(!open)}><span style={{fontSize:13,fontWeight:600,color:C.nv}}>{title}</span><span style={{fontSize:16,color:C.g5,transform:open?"rotate(180deg)":"none",transition:".2s"}}>▾</span></div>{open&&<div style={{paddingBottom:16}}>{children}</div>}</div>;}
 
@@ -449,10 +472,10 @@ function App(){
             <div id="forecast-growth" ref={el=>plannerStepRefs.current["forecast-growth"]=el} style={{...sCd,border:openStep==="forecast-growth"?"2px solid "+C.nv:"1px solid "+C.g2,boxShadow:openStep==="forecast-growth"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
         <StepHeader step="1" title="Forecast Growth" desc="Model planned growth by month. This is where future demand begins." open={openStep==="forecast-growth"} onToggle={()=>setOpenStep(openStep==="forecast-growth"?null:"forecast-growth")} color={C.nv} />
         {openStep==="forecast-growth"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>Future demand starts here. Growth does not just increase customer count; it creates a rolling wave of onboarding and ongoing service work that compounds across the year. Even a directional forecast is more useful than pretending growth will spread itself evenly.</div>
-        <NG label="High Touch — New / Month" values={gH} onChange={sgH}/>
-        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Use directional numbers if you do not have a perfect sales forecast yet. A reasonable estimate is more helpful than leaving growth blank.</div>
-        <NG label="Low Touch — New / Month" values={gL} onChange={sgL}/>
-        <div style={{fontSize:12,color:C.tm,marginTop:-8}}>Think in logo adds by month, not annual totals. The timing of growth matters because it creates waves of onboarding demand later.</div>
+        <NG label="High Touch — New / Month" values={gH} onChange={sgH} accent={C.nv}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-10,marginBottom:14,paddingLeft:9,borderLeft:"2px solid "+C.g2}}>Use directional numbers if you do not have a perfect sales forecast yet. A reasonable estimate is more helpful than leaving growth blank.</div>
+        <NG label="Low Touch — New / Month" values={gL} onChange={sgL} accent={C.bl}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-10,paddingLeft:9,borderLeft:"2px solid "+C.g2}}>Think in logo adds by month, not annual totals. The timing of growth matters because it creates waves of onboarding demand later.</div>
         </div>}
       </div>
 
@@ -473,18 +496,49 @@ function App(){
           <GuideBox title="Ignore outliers" tone="warning">Estimate for the experience you are trying to deliver consistently, not for the handful of customers who consume an unusual amount of time. Outliers make the model feel safer in the moment, but they usually inflate effort, weaken the story, and make the resulting plan harder to defend. Build the baseline around the norm, then manage the exceptions as exceptions.</GuideBox>
         </div>}
         <div style={{marginBottom:14,padding:"12px 14px",borderRadius:10,background:C.wh,border:"1px solid "+C.g2,fontSize:13,color:C.g7,lineHeight:1.65}}>This is the point where the model becomes tangible. Instead of talking about work in general terms, assign time to the parts of the experience that customers actually move through month by month. Start with what feels reasonable and refine later.</div>
-        <h4 style={{fontSize:14,fontWeight:600,color:C.nv,marginBottom:12}}>Onboarding (hrs/customer)</h4>
-        <NG label="HT Year 1" values={oH} onChange={soH} cols={JC}/>
-        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Heavier-touch onboarding usually carries more preparation and follow-through. If unsure, begin with the conversations that feel hardest to deliver consistently.</div>
-        <NG label="LT Year 1" values={oL} onChange={soL} cols={JC}/>
-        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Lower-touch does not mean no effort. Keep the moments that matter, then remove or automate what does not truly help the customer progress.</div>
+
+        {/* Onboarding panel */}
+        <div style={{marginBottom:16,borderRadius:10,border:"1px solid "+C.pu+"55",overflow:"hidden"}}>
+          <div style={{background:"linear-gradient(135deg,"+C.pu+"18,"+C.pu+"0a)",borderBottom:"1px solid "+C.pu+"30",padding:"12px 16px",display:"flex",alignItems:"center",gap:10}}>
+            <div style={{width:8,height:8,borderRadius:"50%",background:C.pu,flexShrink:0}}/>
+            <div>
+              <div style={{fontSize:13,fontWeight:700,color:C.pu}}>Onboarding Effort</div>
+              <div style={{fontSize:11,color:C.tm,marginTop:1}}>Hours per customer · M1–M12 of lifecycle</div>
+            </div>
+          </div>
+          <div style={{padding:"16px 16px 8px"}}>
+            <NG label="High Touch — Year 1" values={oH} onChange={soH} cols={JC} accent={C.pu}/>
+            <div style={{fontSize:12,color:C.tm,marginTop:-10,marginBottom:14,paddingLeft:9,borderLeft:"2px solid "+C.g2}}>Heavier-touch onboarding usually carries more preparation and follow-through. If unsure, begin with the conversations that feel hardest to deliver consistently.</div>
+            <NG label="Low Touch — Year 1" values={oL} onChange={soL} cols={JC} accent={C.pu}/>
+            <div style={{fontSize:12,color:C.tm,marginTop:-10,marginBottom:8,paddingLeft:9,borderLeft:"2px solid "+C.g2}}>Lower-touch does not mean no effort. Keep the moments that matter, then remove or automate what does not truly help the customer progress.</div>
+          </div>
+        </div>
+
         {guidedMode&&<GuideBox title="Place work where customers feel it" tone="success">The timing of effort should follow the customer journey, not the structure of your org chart. Early months are often heavier because they carry kickoff, onboarding decisions, and the push to first value. As customers mature, the work should shift toward alignment, insight delivery, goal attainment, and renewal or growth preparation. When effort is placed where the customer actually feels it, the model becomes easier to explain and easier to believe.</GuideBox>}
-        <h4 style={{fontSize:14,fontWeight:600,color:C.nv,marginBottom:12,marginTop:20}}>CSM (hrs/customer)</h4>
-        <NG label="HT Yr1" values={c1H} onChange={sc1H} cols={JC}/>
-        <NG label="HT Yr2+" values={c2H} onChange={sc2H} cols={JC}/>
-        <div style={{fontSize:12,color:C.tm,marginTop:-8,marginBottom:10}}>Year two and beyond should usually be lighter than year one because kickoff and onboarding are gone, but it should still reflect alignment, insight sharing, and renewal preparation.</div>
-        <NG label="LT Yr1" values={c1L} onChange={sc1L} cols={JC}/>
-        <NG label="LT Yr2+" values={c2L} onChange={sc2L} cols={JC}/>
+
+        {/* CSM panel */}
+        <div style={{marginTop:16,borderRadius:10,border:"1px solid "+C.bl+"55",overflow:"hidden"}}>
+          <div style={{background:"linear-gradient(135deg,"+C.bl+"18,"+C.bl+"0a)",borderBottom:"1px solid "+C.bl+"30",padding:"12px 16px",display:"flex",alignItems:"center",gap:10}}>
+            <div style={{width:8,height:8,borderRadius:"50%",background:C.bl,flexShrink:0}}/>
+            <div>
+              <div style={{fontSize:13,fontWeight:700,color:C.bl}}>CSM Effort</div>
+              <div style={{fontSize:11,color:C.tm,marginTop:1}}>Hours per customer · M1–M12 of lifecycle</div>
+            </div>
+          </div>
+          <div style={{padding:"16px 16px 8px"}}>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:16,marginBottom:4}}>
+              <div>
+                <NG label="High Touch — Year 1" values={c1H} onChange={sc1H} cols={JC} accent={C.bl}/>
+                <NG label="High Touch — Year 2+" values={c2H} onChange={sc2H} cols={JC} accent={C.bl}/>
+              </div>
+              <div>
+                <NG label="Low Touch — Year 1" values={c1L} onChange={sc1L} cols={JC} accent={C.bl}/>
+                <NG label="Low Touch — Year 2+" values={c2L} onChange={sc2L} cols={JC} accent={C.bl}/>
+              </div>
+            </div>
+            <div style={{fontSize:12,color:C.tm,marginBottom:12,paddingLeft:9,borderLeft:"2px solid "+C.g2}}>Year two and beyond should usually be lighter than year one because kickoff and onboarding are gone, but it should still reflect alignment, insight sharing, and renewal preparation.</div>
+          </div>
+        </div>
         </div>}
       </div>
 
@@ -492,8 +546,41 @@ function App(){
         <StepHeader step="4" title="Model Team Capacity" desc="Layer in current resources, future hires, and onboarding ramp to see when capacity actually arrives." open={openStep==="team-capacity"} onToggle={()=>setOpenStep(openStep==="team-capacity"?null:"team-capacity")} color={C.ol} />
         {openStep==="team-capacity"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>This step converts a hiring conversation into a timing conversation. The question is not only how many people you need, but when they need to start, how quickly they will ramp, and whether the current team can carry the load until then without slipping into unsustainable effort.</div>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}><h4 style={{fontSize:14,fontWeight:600,color:C.nv}}>Team</h4><button onClick={()=>sTm([...tm,{n:"New "+(tm.length+1),r:"CSM",s:6}])} style={{...sB,background:C.ol,color:C.nd,padding:"6px 14px",fontSize:12}}>+ Add</button></div>
-        {tm.map((m,i)=><div key={i} style={{display:"flex",gap:8,marginBottom:8,alignItems:"center"}}><input value={m.n} onChange={e=>{const t=[...tm];t[i]={...t[i],n:e.target.value};sTm(t);}} style={{...sI,flex:2}}/><select value={m.r} onChange={e=>{const t=[...tm];t[i]={...t[i],r:e.target.value};sTm(t);}} style={{...sI,flex:1}}><option>CSM</option><option>Onboarding</option></select><input type="number" value={m.s} onChange={e=>{const t=[...tm];t[i]={...t[i],s:+e.target.value};sTm(t);}} style={{...sIs,width:64}}/><button onClick={()=>sTm(tm.filter((_,j)=>j!==i))} style={{fontSize:16,color:C.co,background:"none",border:"none",cursor:"pointer"}}>✕</button></div>)}
-        <div style={{fontSize:11,color:C.tm,marginTop:4}}>Start: 0 = Jan, −12 = tenured, 6 = future hire in July.</div>
+        <div style={{borderRadius:8,border:"1px solid "+C.g2,overflow:"hidden",marginBottom:10}}>
+          <div style={{display:"grid",gridTemplateColumns:"2fr 1.2fr 80px 36px",gap:0,padding:"6px 12px 6px 14px",background:C.g1,borderBottom:"1px solid "+C.g2}}>
+            {["Name","Role","Start Mo",""].map((h,i)=><div key={i} style={{fontSize:10,fontWeight:600,color:C.tm,letterSpacing:".06em",textTransform:"uppercase"}}>{h}</div>)}
+          </div>
+          {tm.map((m,i)=>{
+            const isOB=m.r==="Onboarding";
+            const isFuture=m.s>0;
+            return<div key={i} style={{display:"grid",gridTemplateColumns:"2fr 1.2fr 80px 36px",gap:0,padding:"8px 12px 8px 14px",borderBottom:i<tm.length-1?"1px solid "+C.g1:"none",alignItems:"center",background:isFuture?"rgba(197,212,78,.03)":C.wh,transition:"background .15s"}}>
+              <input value={m.n} onChange={e=>{const t=[...tm];t[i]={...t[i],n:e.target.value};sTm(t);}}
+                style={{...sI,fontSize:13,padding:"6px 10px",borderColor:"transparent",background:"transparent",boxShadow:"none"}}
+                onFocus={e=>e.target.style.borderColor=C.g2}
+                onBlur={e=>e.target.style.borderColor="transparent"}
+              />
+              <div style={{paddingRight:8}}>
+                <select value={m.r} onChange={e=>{const t=[...tm];t[i]={...t[i],r:e.target.value};sTm(t);}}
+                  style={{...sI,padding:"5px 8px",fontSize:12,background:isOB?C.pu+"18":C.bl+"12",borderColor:isOB?C.pu+"55":C.bl+"44",color:isOB?C.pu:C.bl,fontWeight:600,cursor:"pointer"}}>
+                  <option>CSM</option><option>Onboarding</option>
+                </select>
+              </div>
+              <div style={{display:"flex",alignItems:"center",gap:4}}>
+                <input type="number" value={m.s} onChange={e=>{const t=[...tm];t[i]={...t[i],s:+e.target.value};sTm(t);}}
+                  style={{...sIs,width:54,borderColor:isFuture?C.ol+"88":C.g2,background:isFuture?"rgba(197,212,78,.08)":C.wh,fontWeight:isFuture?600:400}}
+                />
+              </div>
+              <button onClick={()=>sTm(tm.filter((_,j)=>j!==i))} style={{fontSize:14,color:C.g5,background:"none",border:"none",cursor:"pointer",padding:"4px",borderRadius:4,display:"flex",alignItems:"center",justifyContent:"center",transition:"color .15s"}} onMouseEnter={e=>e.target.style.color=C.co} onMouseLeave={e=>e.target.style.color=C.g5}>✕</button>
+            </div>;
+          })}
+        </div>
+        <div style={{display:"flex",gap:12,fontSize:11,color:C.tm,marginBottom:8,flexWrap:"wrap",alignItems:"center"}}>
+          <span style={{display:"flex",alignItems:"center",gap:4}}><span style={{display:"inline-block",width:8,height:8,borderRadius:2,background:C.bl+"66"}}/>CSM</span>
+          <span style={{display:"flex",alignItems:"center",gap:4}}><span style={{display:"inline-block",width:8,height:8,borderRadius:2,background:C.pu+"66"}}/>Onboarding</span>
+          <span style={{display:"flex",alignItems:"center",gap:4}}><span style={{display:"inline-block",width:8,height:8,borderRadius:2,background:C.ol+"88"}}/>Future hire</span>
+          <span style={{color:C.g2}}>·</span>
+          <span>Start month: 0 = Jan, −12 = tenured, 6 = future hire in July</span>
+        </div>
         <div style={{fontSize:12,color:C.tm,marginTop:8}}>Model the team you have, then add the team you think you will need. This helps you see the difference between current capacity and planned capacity instead of blending them together.</div>
         {guidedMode&&<GuideBox title="Hiring is not instant capacity" tone="warning">A hire request does not create immediate capacity. Recruiting, interviews, offers, notice periods, onboarding, and coaching all happen before a new person can contribute at full strength. The value of the model is that it gives you time to act early, rather than waiting until the team is already overloaded and the new hire walks into chaos.</GuideBox>}
         <h4 style={{fontSize:14,fontWeight:600,color:C.nv,marginTop:20,marginBottom:8}}>Hire Ramp</h4>
@@ -505,8 +592,41 @@ function App(){
       <div id="reactive-proactive" ref={el=>plannerStepRefs.current["reactive-proactive"]=el} style={{...sCd,border:openStep==="reactive-proactive"?"2px solid "+C.co:"1px solid "+C.g2,boxShadow:openStep==="reactive-proactive"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
         <StepHeader step="5" title="Adjust Reactive vs Proactive Work" desc="Reactive work crowds out designed customer work. Balance the mix and set the availability assumptions that power the model." open={openStep==="reactive-proactive"} onToggle={()=>setOpenStep(openStep==="reactive-proactive"?null:"reactive-proactive")} color={C.co} />
         {openStep==="reactive-proactive"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>Reactive work is where many capacity plans quietly fail. If too much of the team's time is being consumed by interruptions, escalations, and ad hoc support, the designed work never actually happens, which means the customer experience and the plan drift apart.</div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}><div><label style={sL}>Target Avail %</label><input type="number" value={ta} onChange={e=>sTa(+e.target.value||0)} style={sI}/></div><div><label style={sL}>Designed proactive work %</label><input type="number" value={pp} onChange={e=>{const v=Math.max(0,Math.min(100,+e.target.value||0));sPp(v);sRr(100-v);}} style={sI}/></div><div><label style={sL}>Reactive work %</label><input type="number" value={rr} onChange={e=>{const v=Math.max(0,Math.min(100,+e.target.value||0));sRr(v);sPp(100-v);}} style={sI}/></div></div>
-        <div style={{marginTop:10,padding:"10px 12px",borderRadius:8,background:C.g1,fontSize:12,color:C.tm}}>Reactive work reduces designed service capacity. As designed service moments mature, reactive load should fall over time. Current mix: <strong style={{color:C.nv}}>{pp}% proactive</strong> / <strong style={{color:C.nv}}>{rr}% reactive</strong>.</div>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:12}}>
+          <div>
+            <label style={sL}>Target Availability %</label>
+            <div style={{position:"relative"}}>
+              <input type="number" value={ta} onChange={e=>sTa(+e.target.value||0)} style={{...sI,paddingRight:32}}/>
+              <span style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",fontSize:13,color:C.tm,pointerEvents:"none"}}>%</span>
+            </div>
+            <div style={{fontSize:11,color:C.tm,marginTop:5}}>Customer-facing time as % of total hours</div>
+          </div>
+          <div>
+            <label style={sL}>Designed Proactive %</label>
+            <div style={{position:"relative"}}>
+              <input type="number" value={pp} onChange={e=>{const v=Math.max(0,Math.min(100,+e.target.value||0));sPp(v);sRr(100-v);}} style={{...sI,paddingRight:32,borderColor:C.tl+"66"}}/>
+              <span style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",fontSize:13,color:C.tl,pointerEvents:"none"}}>%</span>
+            </div>
+            <div style={{fontSize:11,color:C.tl,marginTop:5,fontWeight:500}}>Planned service moments</div>
+          </div>
+          <div>
+            <label style={sL}>Reactive Work %</label>
+            <div style={{position:"relative"}}>
+              <input type="number" value={rr} onChange={e=>{const v=Math.max(0,Math.min(100,+e.target.value||0));sRr(v);sPp(100-v);}} style={{...sI,paddingRight:32,borderColor:rr>30?C.co+"88":C.g2}}/>
+              <span style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",fontSize:13,color:rr>30?C.co:C.tm,pointerEvents:"none"}}>%</span>
+            </div>
+            <div style={{fontSize:11,color:rr>30?C.co:C.tm,marginTop:5,fontWeight:rr>30?600:400}}>{rr>30?"High reactive drag — worth reducing":"Interruptions, escalations, unplanned asks"}</div>
+          </div>
+        </div>
+        {/* Live mix bar */}
+        <div style={{marginTop:14,borderRadius:8,overflow:"hidden",height:8,background:C.g2,display:"flex"}}>
+          <div style={{width:pp+"%",background:C.tl,transition:"width .3s ease"}}/>
+          <div style={{width:rr+"%",background:rr>30?C.co:C.am,transition:"width .3s ease"}}/>
+        </div>
+        <div style={{display:"flex",gap:16,marginTop:6,fontSize:11,color:C.tm,flexWrap:"wrap"}}>
+          <span style={{display:"flex",alignItems:"center",gap:4}}><span style={{width:8,height:8,borderRadius:2,background:C.tl,display:"inline-block"}}/><strong style={{color:C.tl}}>{pp}%</strong> proactive</span>
+          <span style={{display:"flex",alignItems:"center",gap:4}}><span style={{width:8,height:8,borderRadius:2,background:rr>30?C.co:C.am,display:"inline-block"}}/><strong style={{color:rr>30?C.co:C.am}}>{rr}%</strong> reactive</span>
+        </div>
         {guidedMode&&<div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:12}}>
           <GuideBox title="Reactive is a design outcome" tone="success">Reactive work should not be treated as a permanent tax. In many teams it is a symptom of weak or inconsistent design: customers do not know what comes next, internal expectations are fuzzy, and important questions surface at random. As service moments become clearer and more dependable, more of that work moves into planned interactions and capacity becomes easier to control.</GuideBox>
           <GuideBox title="Use workable hours, not flat monthly averages" tone="neutral">A flat 160-hour assumption hides useful information. Some months naturally have more workable time than others, which means they can absorb a little more demand or create room for improvement work. Modeling capacity month by month gives you a truer picture of when pressure is building and when you have breathing room.</GuideBox>
@@ -521,19 +641,43 @@ function App(){
         </div>}
       </div>
 
-      <div style={sCd}>
-        <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:6}}>Financial assumptions</div>
+      <div style={{...sCd,border:"1px solid "+C.g2}}>
         <button onClick={()=>setFinancialOpen(!financialOpen)} style={{width:"100%",background:"none",border:"none",padding:0,cursor:"pointer",textAlign:"left"}}>
-          <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",gap:12}}>
-            <div>
-              <h3 style={{fontSize:18,fontWeight:700,color:C.nv,marginBottom:4}}>Cost & revenue inputs</h3>
-              <p style={{fontSize:13,color:C.tm,marginBottom:0}}>These do not change the planning flow above, but they frame the output in business terms. Collapse this section when you want the planner to stay focused on operational inputs.</p>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12}}>
+            <div style={{display:"flex",alignItems:"center",gap:10}}>
+              <div style={{width:6,height:6,borderRadius:"50%",background:financialOpen?C.od:C.g2,transition:"background .2s",flexShrink:0}}/>
+              <div>
+                <div style={{fontSize:11,fontWeight:700,color:C.od,letterSpacing:".08em",textTransform:"uppercase",marginBottom:2}}>Financial Assumptions</div>
+                <h3 style={{fontSize:16,fontWeight:700,color:C.nv}}>Cost & Revenue Inputs</h3>
+              </div>
             </div>
-            <div style={{flexShrink:0,width:28,height:28,borderRadius:999,background:financialOpen?C.ol:C.g1,color:financialOpen?C.wh:C.tm,display:"flex",alignItems:"center",justifyContent:"center",fontSize:16,fontWeight:700,transform:financialOpen?"rotate(180deg)":"rotate(0deg)",transition:"all .2s ease"}}>⌃</div>
+            <div style={{display:"flex",alignItems:"center",gap:8}}>
+              <span style={{fontSize:11,color:C.tm}}>{financialOpen?"Collapse":"Expand"}</span>
+              <div style={{flexShrink:0,width:26,height:26,borderRadius:999,background:financialOpen?C.ol:C.g1,color:financialOpen?C.nd:C.tm,display:"flex",alignItems:"center",justifyContent:"center",fontSize:14,fontWeight:700,transform:financialOpen?"rotate(180deg)":"rotate(0deg)",transition:"all .2s ease"}}>⌃</div>
+            </div>
           </div>
+          {!financialOpen&&<p style={{fontSize:12,color:C.tm,marginTop:6,marginLeft:16}}>These do not change the capacity math, but they translate headcount decisions into labor cost and supported revenue.</p>}
         </button>
         {financialOpen&&<div style={{marginTop:16}}>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:12}}><div><label style={sL}>Avg Salary</label><input type="number" value={sa} onChange={e=>sSa(+e.target.value||0)} style={sI}/></div><div><label style={sL}>Overhead %</label><input type="number" value={oh} onChange={e=>sOh(+e.target.value||0)} style={sI}/></div><div><label style={sL}>Tax+Ben %</label><input type="number" value={tb} onChange={e=>sTb(+e.target.value||0)} style={sI}/></div><div><label style={sL}>HT ACV</label><input type="number" value={hA} onChange={e=>sHA(+e.target.value||0)} style={sI}/></div></div><div style={{marginTop:8}}><label style={sL}>LT ACV</label><input type="number" value={lA} onChange={e=>sLA(+e.target.value||0)} style={{...sI,maxWidth:200}}/></div>
+          <p style={{fontSize:13,color:C.tm,marginBottom:16,lineHeight:1.6}}>These do not change the planning flow above, but they frame the output in business terms. Collapse this section when you want the planner to stay focused on operational inputs.</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:12}}>
+            {[
+              {l:"Avg Base Salary",v:sa,s:sSa,pre:"$",hint:"Annual base"},
+              {l:"Overhead %",v:oh,s:sOh,suf:"%",hint:"Facilities, tools, mgmt"},
+              {l:"Tax + Benefits %",v:tb,s:sTb,suf:"%",hint:"Employer burden"},
+              {l:"High-Touch ACV",v:hA,s:sHA,pre:"$",hint:"Annual contract value"},
+              {l:"Low-Touch ACV",v:lA,s:sLA,pre:"$",hint:"Annual contract value"}
+            ].map((f,i)=><div key={i}>
+              <label style={sL}>{f.l}</label>
+              <div style={{position:"relative",display:"flex",alignItems:"center"}}>
+                {f.pre&&<span style={{position:"absolute",left:10,fontSize:13,color:C.tm,pointerEvents:"none",zIndex:1}}>{f.pre}</span>}
+                <input type="number" value={f.v} onChange={e=>f.s(+e.target.value||0)}
+                  style={{...sI,paddingLeft:f.pre?"26px":"12px",paddingRight:f.suf?"28px":"12px"}}/>
+                {f.suf&&<span style={{position:"absolute",right:10,fontSize:13,color:C.tm,pointerEvents:"none"}}>{f.suf}</span>}
+              </div>
+              <div style={{fontSize:11,color:C.g5,marginTop:4}}>{f.hint}</div>
+            </div>)}
+          </div>
         </div>}
       </div>
     </div>
