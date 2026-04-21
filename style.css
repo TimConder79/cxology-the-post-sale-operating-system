@@ -258,6 +258,8 @@ p { max-width: 68ch; }
   padding: 2rem;
   transition: all var(--transition);
   position: relative; overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .part-card::before {
   content: '';
@@ -292,7 +294,55 @@ p { max-width: 68ch; }
   font-size: 1.2rem; color: var(--navy); margin-bottom: 0.75rem;
 }
 .part-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 100%; }
+.part-overview {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: var(--off-white);
+  border: 1px solid var(--gray-100);
+}
+.part-card.p1 .part-overview { background: rgba(29,158,117,.06); border-color: rgba(29,158,117,.14); }
+.part-card.p2 .part-overview { background: rgba(55,138,221,.06); border-color: rgba(55,138,221,.14); }
+.part-card.p3 .part-overview { background: rgba(197,212,78,.11); border-color: rgba(197,212,78,.22); }
+.part-card.p4 .part-overview { background: rgba(186,117,23,.07); border-color: rgba(186,117,23,.14); }
+.part-overview-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy-light);
+  margin-bottom: 0.6rem;
+}
+.part-overview-text {
+  font-size: 0.84rem;
+  line-height: 1.72;
+  color: var(--gray-700);
+}
+.part-overview-text + .part-overview-text { margin-top: 0.7rem; }
+.part-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1.35rem;
+}
+.part-theme {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background: var(--gray-100);
+  color: var(--navy);
+}
+.part-card.p1 .part-theme { background: rgba(29,158,117,.12); color: #137453; }
+.part-card.p2 .part-theme { background: rgba(55,138,221,.12); color: #236ab0; }
+.part-card.p3 .part-theme { background: rgba(197,212,78,.2); color: #5e6d11; }
+.part-card.p4 .part-theme { background: rgba(186,117,23,.12); color: #8f5c16; }
 .chapter-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.chapter-list { margin-top: auto; }
 .chapter-list li a {
   display: flex; align-items: center; gap: 8px;
   font-size: 0.82rem; color: var(--gray-700);

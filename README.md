@@ -81,3 +81,7 @@ https://TimConder79.github.io/cxology-the-post-sale-operating-system/
 ---
 
 Built by Tim Conder · CXology · 2026
+
+## Working With Codex
+
+For a fast prompt template and examples for editing pages in this repo, see [WORKING-WITH-CODEX.md](/Users/timconder/Documents/Codex/2026-04-20-i-woud-like-to-get-you/WORKING-WITH-CODEX.md).
