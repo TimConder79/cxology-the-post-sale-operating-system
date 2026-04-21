@@ -421,29 +421,6 @@ p { max-width: 68ch; }
   outline-offset: 4px;
   border-radius: var(--radius-sm);
 }
-.part-themes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
-  margin: 0 0 1.35rem;
-}
-.part-theme {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 0.35rem 0.7rem;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  background: var(--gray-100);
-  color: var(--navy);
-  border: 1px solid transparent;
-}
-.part-card.p1 .part-theme { background: rgba(29,158,117,.08); border-color: rgba(29,158,117,.16); color: #137453; }
-.part-card.p2 .part-theme { background: rgba(55,138,221,.08); border-color: rgba(55,138,221,.16); color: #236ab0; }
-.part-card.p3 .part-theme { background: rgba(197,212,78,.14); border-color: rgba(197,212,78,.22); color: #5e6d11; }
-.part-card.p4 .part-theme { background: rgba(186,117,23,.08); border-color: rgba(186,117,23,.16); color: #8f5c16; }
 .chapter-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
 .chapter-list { margin-top: auto; }
 .chapter-list li a {
