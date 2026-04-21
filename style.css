@@ -348,6 +348,20 @@ p { max-width: 68ch; }
 .part-card.p2 .part-overview::after { background: radial-gradient(circle, rgba(55,138,221,.16), rgba(55,138,221,0)); }
 .part-card.p3 .part-overview::after { background: radial-gradient(circle, rgba(197,212,78,.26), rgba(197,212,78,0)); }
 .part-card.p4 .part-overview::after { background: radial-gradient(circle, rgba(186,117,23,.18), rgba(186,117,23,0)); }
+.part-overview-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  z-index: 1;
+}
 .part-overview-title {
   display: inline-flex;
   align-items: center;
@@ -365,6 +379,31 @@ p { max-width: 68ch; }
   position: relative;
   z-index: 1;
 }
+.part-overview-icon {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(10, 36, 64, 0.08);
+  color: var(--navy);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: transform var(--transition), background var(--transition);
+}
+.part-overview-toggle[aria-expanded="true"] .part-overview-icon {
+  transform: rotate(45deg);
+  background: rgba(255,255,255,.95);
+}
+.part-overview-body {
+  margin-top: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
 .part-overview-text {
   font-size: 0.84rem;
   line-height: 1.72;
@@ -373,6 +412,15 @@ p { max-width: 68ch; }
   z-index: 1;
 }
 .part-overview-text + .part-overview-text { margin-top: 0.7rem; }
+.part-overview-toggle:hover .part-overview-title,
+.part-overview-toggle:focus-visible .part-overview-title {
+  background: rgba(255,255,255,.92);
+}
+.part-overview-toggle:focus-visible {
+  outline: 2px solid rgba(26,46,66,.24);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
 .part-themes {
   display: flex;
   flex-wrap: wrap;
