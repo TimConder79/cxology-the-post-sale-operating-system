@@ -9,7 +9,7 @@ import { useApp } from '@/context/AppContext'
 import { buildAccountWorkspacePath, getWorkspaceRecommendation } from '@/lib/accountRouting'
 import { deriveExecutionGaps, SEVERITY_ORDER } from '@/lib/executionGaps'
 import type { ExecutionGap, GapSeverity, GapType } from '@/lib/executionGaps'
-import { formatCurrency, STAGE_LABELS, cn } from '@/lib/utils'
+import { formatCurrency, STAGE_LABELS, daysSince, cn } from '@/lib/utils'
 import type {
   AccountView, Opportunity, OpportunityType, NextBestAction, MilestoneId, MilestoneStatus,
   TimelineMilestone, AccountTimeline,
@@ -181,7 +181,9 @@ function TodayPriorities({ gaps, opportunitiesByAccount, workspaceHrefByAccountI
   )
 }
 
-function GapCard({ gap, accountOpps, workspaceHref }: { gap: ExecutionGap; accountOpps: Opportunity[]; workspaceHref: string }) {
+function GapCard({ gap, accountOpps, workspaceHref, hasActivityWithoutProgress }: {
+  gap: ExecutionGap; accountOpps: Opportunity[]; workspaceHref: string; hasActivityWithoutProgress?: boolean
+}) {
   const sev = SEV[gap.severity]
   return (
     <div className="relative bg-white rounded-xl border border-slate-200 pl-5 pr-4 py-4 hover:shadow-md transition-all duration-150 group">
@@ -194,6 +196,9 @@ function GapCard({ gap, accountOpps, workspaceHref }: { gap: ExecutionGap; accou
           </div>
           <p className="text-[13px] font-semibold text-slate-900 leading-snug mb-1.5 group-hover:text-brand-700 transition-colors">{gap.actionLabel}</p>
           <p className="text-[11px] text-slate-400 leading-relaxed">{gap.context}</p>
+          {hasActivityWithoutProgress && (
+            <p className="text-[10px] font-semibold text-amber-600 mt-1.5">Active · not advancing</p>
+          )}
           {accountOpps.length > 0 && (
             <div className="flex flex-wrap gap-1.5 mt-2.5">
               {accountOpps.map(opp => (
@@ -217,8 +222,9 @@ function GapCard({ gap, accountOpps, workspaceHref }: { gap: ExecutionGap; accou
   )
 }
 
-function GapSection({ def, gaps, opportunitiesByAccount, workspaceHrefByAccountId }: {
-  def: SectionDef; gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>; workspaceHrefByAccountId: Record<string, string>
+function GapSection({ def, gaps, opportunitiesByAccount, workspaceHrefByAccountId, activityWithoutProgressIds }: {
+  def: SectionDef; gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>
+  workspaceHrefByAccountId: Record<string, string>; activityWithoutProgressIds: Set<string>
 }) {
   if (gaps.length === 0) return null
   const { Icon } = def
@@ -244,6 +250,7 @@ function GapSection({ def, gaps, opportunitiesByAccount, workspaceHrefByAccountI
             gap={gap}
             accountOpps={(opportunitiesByAccount[gap.accountId] ?? []).filter(o => GAP_TO_OPP_TYPES[gap.gapType].includes(o.type))}
             workspaceHref={workspaceHrefByAccountId[gap.accountId] ?? `/accounts/${gap.accountId}`}
+            hasActivityWithoutProgress={activityWithoutProgressIds.has(gap.accountId)}
           />
         ))}
       </div>
@@ -569,6 +576,21 @@ export function InflectionPointsView() {
     (s, t) => s + t.milestones.filter(m => m.status === 'overdue').length, 0
   )
 
+  // Accounts where play activity is happening but progression hasn't moved
+  const activityWithoutProgressIds = new Set(
+    accounts
+      .filter(a => a.progressionStatus === 'stalled' || a.progressionStatus === 'at_risk')
+      .filter(a => {
+        const acctRuns = playRuns.filter(r => r.accountId === a.id)
+        const hasActiveRun = acctRuns.some(r => r.status === 'in_progress')
+        const hasRecentCompleted = acctRuns.some(r =>
+          r.status === 'completed' && r.completedAt !== null && daysSince(r.completedAt) <= 30
+        )
+        return hasActiveRun || hasRecentCompleted
+      })
+      .map(a => a.id)
+  )
+
   return (
     <div className="flex flex-col h-full">
 
@@ -670,6 +692,7 @@ export function InflectionPointsView() {
                       gaps={gaps.filter(g => (def.types as string[]).includes(g.gapType))}
                       opportunitiesByAccount={opportunitiesByAccount}
                       workspaceHrefByAccountId={workspaceHrefByAccountId}
+                      activityWithoutProgressIds={activityWithoutProgressIds}
                     />
                   ))}
                 </>

@@ -138,6 +138,29 @@ function OppCard({ opp, workspaceHref }: { opp: Opportunity; workspaceHref: stri
   )
 }
 
+// ─── NRR helpers ─────────────────────────────────────────────────────────────
+
+function retentionProb(status: ProgressionStatus, confidence: ConfidenceLevel): number {
+  if (status === 'advancing') return confidence === 'high' ? 0.97 : confidence === 'medium' ? 0.90 : 0.78
+  if (status === 'stalled')   return confidence === 'high' ? 0.82 : confidence === 'medium' ? 0.68 : 0.52
+  return confidence === 'high' ? 0.60 : confidence === 'medium' ? 0.45 : 0.28
+}
+
+function expansionProb(status: ProgressionStatus, confidence: ConfidenceLevel): number {
+  if (status === 'advancing') return confidence === 'high' ? 0.80 : confidence === 'medium' ? 0.60 : 0.40
+  if (status === 'stalled')   return confidence === 'high' ? 0.48 : confidence === 'medium' ? 0.32 : 0.18
+  return confidence === 'high' ? 0.22 : confidence === 'medium' ? 0.12 : 0.05
+}
+
+function computeNRR(opps: Opportunity[]): number | null {
+  const renewalBase = opps.filter(o => o.type === 'renewal').reduce((s, o) => s + o.estimatedValue, 0)
+  if (renewalBase === 0) return null
+  const projected =
+    opps.filter(o => o.type === 'renewal').reduce((s, o) => s + o.estimatedValue * retentionProb(o.progressionStatus, o.confidence), 0) +
+    opps.filter(o => o.type !== 'renewal').reduce((s, o) => s + o.estimatedValue * expansionProb(o.progressionStatus, o.confidence), 0)
+  return Math.round((projected / renewalBase) * 100)
+}
+
 // ─── Main view ────────────────────────────────────────────────────────────────
 
 export function PipelineView() {
@@ -159,6 +182,7 @@ export function PipelineView() {
   const advancingCt  = opportunities.filter(o => o.progressionStatus === 'advancing').length
   const stalledCt    = opportunities.filter(o => o.progressionStatus === 'stalled').length
   const atRiskCt     = opportunities.filter(o => o.progressionStatus === 'at_risk').length
+  const nrr          = computeNRR(opportunities)
 
   return (
     <div className="flex flex-col h-full">
@@ -196,6 +220,15 @@ export function PipelineView() {
             <div className="text-right">
               <div className="text-[10px] font-medium text-red-400 uppercase tracking-wide">At-Risk ARR</div>
               <div className="text-[16px] font-bold text-red-600 leading-none mt-0.5">{formatCurrency(atRiskValue)}</div>
+            </div>
+          )}
+          {nrr !== null && (
+            <div className="text-right border-l border-slate-100 pl-5">
+              <div className="text-[10px] font-medium text-slate-400 uppercase tracking-wide">NRR Trajectory</div>
+              <div className={cn(
+                'text-[16px] font-bold leading-none mt-0.5',
+                nrr >= 100 ? 'text-emerald-600' : nrr >= 80 ? 'text-amber-600' : 'text-red-600'
+              )}>~{nrr}%</div>
             </div>
           )}
         </div>

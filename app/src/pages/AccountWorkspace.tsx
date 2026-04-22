@@ -321,6 +321,63 @@ export function AccountWorkspace() {
                 </div>
               </div>
 
+              {/* Executive Alignment */}
+              {(() => {
+                const exec        = account.stakeholderMaps.find(sm => sm.influence === 'decision_maker')
+                const execContact = exec ? contacts.find(c => c.id === exec.contactId) : null
+                const lastContact = exec?.lastContactDate ? daysSince(exec.lastContactDate) : null
+                const isDormant   = !exec || exec.coverageStatus === 'dormant' || exec.coverageStatus === 'not_contacted'
+                const isUrgent    = lastContact !== null && lastContact > 45
+
+                return (
+                  <Section id="executive-alignment" title="Executive Alignment">
+                    {!exec || !execContact ? (
+                      <div className="flex items-start gap-2.5 p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <AlertCircle size={13} className="text-red-400 flex-shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-[12px] font-semibold text-red-700">No decision maker mapped</p>
+                          <p className="text-[11px] text-red-500 mt-0.5 leading-relaxed">Renewal decisions require executive engagement. Map a decision maker in the stakeholder section.</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={cn(
+                        'rounded-lg p-3.5 border',
+                        isDormant || isUrgent ? 'border-amber-200 bg-amber-50' : 'border-emerald-100 bg-emerald-50'
+                      )}>
+                        <div className="flex items-start gap-3">
+                          <div className={cn(
+                            'w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0',
+                            isDormant || isUrgent ? 'bg-amber-100' : 'bg-emerald-100'
+                          )}>
+                            <User size={13} className={isDormant || isUrgent ? 'text-amber-600' : 'text-emerald-600'} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-[13px] font-semibold text-slate-900 leading-none">{execContact.name}</p>
+                            <p className="text-[11px] text-slate-500 mt-0.5">{execContact.title}</p>
+                            <div className="flex items-center gap-2 mt-2 flex-wrap">
+                              <span className={cn('text-[10px] font-medium px-1.5 py-0.5 rounded ring-1', COVERAGE[exec.coverageStatus].color)}>
+                                <span className={cn('w-1.5 h-1.5 rounded-full inline-block mr-1', COVERAGE[exec.coverageStatus].dot)} />
+                                {COVERAGE[exec.coverageStatus].label}
+                              </span>
+                              {lastContact !== null && (
+                                <span className={cn('text-[10px]', isUrgent ? 'font-semibold text-amber-600' : 'text-slate-400')}>
+                                  {isUrgent ? `${lastContact}d since contact — re-engage` : `Last contact ${lastContact}d ago`}
+                                </span>
+                              )}
+                            </div>
+                            {isDormant && (
+                              <p className="text-[11px] text-amber-700 mt-2 leading-snug">
+                                Executive not engaged. Renewal decisions require decision-maker alignment before the window closes.
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </Section>
+                )
+              })()}
+
               {/* Stakeholder Map */}
               <Section id="stakeholders" title="Stakeholder Map">
                 <div className="space-y-2.5">
