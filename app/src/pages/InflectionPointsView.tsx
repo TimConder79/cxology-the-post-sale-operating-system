@@ -1,113 +1,124 @@
+import { useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { Activity, Zap, Calendar, TrendingUp, Users, AlertTriangle, ChevronRight, ArrowUpRight, Flame } from 'lucide-react'
+import {
+  Activity, Zap, Calendar, TrendingUp, Users, AlertTriangle,
+  ChevronRight, ArrowUpRight, Flame, Check, Clock, X, Minus,
+} from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
 import { deriveExecutionGaps, SEVERITY_ORDER } from '@/lib/executionGaps'
 import type { ExecutionGap, GapSeverity, GapType } from '@/lib/executionGaps'
-import { formatCurrency, cn } from '@/lib/utils'
-import type { Opportunity, OpportunityType } from '@/types'
+import { formatCurrency, STAGE_LABELS, cn } from '@/lib/utils'
+import type {
+  Opportunity, OpportunityType, MilestoneId, MilestoneStatus,
+  TimelineMilestone, AccountTimeline,
+} from '@/types'
 
 // ─── Severity config ──────────────────────────────────────────────────────────
 
 const SEV: Record<GapSeverity, {
-  label: string
-  sub: string
-  accent: string
-  badge: string
-  agePill: string
-  dot: string
-  impactChip: string
+  label: string; sub: string; accent: string; badge: string; agePill: string; dot: string; impactChip: string
 }> = {
-  high: {
-    label:      'High',
-    sub:        'Blocking progression',
-    accent:     'bg-red-500',
-    badge:      'text-red-700 bg-red-50 ring-red-200',
-    agePill:    'text-red-700 bg-red-50 ring-red-200',
-    dot:        'bg-red-500',
-    impactChip: 'text-red-700 bg-red-50 ring-red-200',
+  high:   { label: 'High',   sub: 'Blocking progression', accent: 'bg-red-500',   badge: 'text-red-700 bg-red-50 ring-red-200',     agePill: 'text-red-700 bg-red-50 ring-red-200',     dot: 'bg-red-500',   impactChip: 'text-red-700 bg-red-50 ring-red-200' },
+  medium: { label: 'Medium', sub: 'Slowing progression',  accent: 'bg-amber-400', badge: 'text-amber-700 bg-amber-50 ring-amber-200', agePill: 'text-amber-700 bg-amber-50 ring-amber-200', dot: 'bg-amber-400', impactChip: 'text-amber-700 bg-amber-50 ring-amber-200' },
+  low:    { label: 'Low',    sub: 'Optimization',         accent: 'bg-slate-300', badge: 'text-slate-600 bg-slate-50 ring-slate-200', agePill: 'text-slate-500 bg-slate-50 ring-slate-200', dot: 'bg-slate-300', impactChip: 'text-slate-600 bg-slate-50 ring-slate-200' },
+}
+
+const OPP_LABEL: Record<OpportunityType, string> = { renewal: 'Renewal', expansion: 'Expansion', upsell: 'Upsell' }
+
+// ─── Milestone metadata ───────────────────────────────────────────────────────
+
+interface MilestoneMeta {
+  label: string
+  shortLabel: string
+  whyItMatters: string
+  overdueAction: string
+  inProgressAction: string
+}
+
+const MILESTONE_META: Record<MilestoneId, MilestoneMeta> = {
+  purchase_moment: {
+    label: 'Purchase Moment', shortLabel: 'Purchase',
+    whyItMatters: 'The commercial relationship begins here. Expectations documented at this point define success for the entire customer journey.',
+    overdueAction: 'Run Kickoff Play immediately — establish goals, stakeholders, and success criteria before another day passes.',
+    inProgressAction: 'Confirm that success criteria, stakeholders, and a kickoff date are documented before proceeding.',
   },
-  medium: {
-    label:      'Medium',
-    sub:        'Slowing progression',
-    accent:     'bg-amber-400',
-    badge:      'text-amber-700 bg-amber-50 ring-amber-200',
-    agePill:    'text-amber-700 bg-amber-50 ring-amber-200',
-    dot:        'bg-amber-400',
-    impactChip: 'text-amber-700 bg-amber-50 ring-amber-200',
+  first_meeting: {
+    label: 'First Meeting', shortLabel: 'First Mtg',
+    whyItMatters: 'The first structured meeting sets the relationship tone. Customers who experience delayed first meetings have significantly higher early-stage churn rates.',
+    overdueAction: 'Schedule Kickoff immediately — every additional day of delay increases abandonment risk.',
+    inProgressAction: 'Confirm the kickoff date is locked and the primary champion is committed to attend.',
   },
-  low: {
-    label:      'Low',
-    sub:        'Optimization',
-    accent:     'bg-slate-300',
-    badge:      'text-slate-600 bg-slate-50 ring-slate-200',
-    agePill:    'text-slate-500 bg-slate-50 ring-slate-200',
-    dot:        'bg-slate-300',
-    impactChip: 'text-slate-600 bg-slate-50 ring-slate-200',
+  onboarding_decisions: {
+    label: 'Onboarding Decisions', shortLabel: 'Onboarding',
+    whyItMatters: 'Configuration and setup decisions made here determine adoption success. Delays cascade through every downstream milestone and compress the time to value.',
+    overdueAction: 'Run Kickoff Play — re-establish configuration priorities and assign owners with hard due dates.',
+    inProgressAction: 'Confirm all setup decisions have an assigned owner and a due date. No open items without owners.',
+  },
+  early_success: {
+    label: 'Early Success', shortLabel: 'Early Win',
+    whyItMatters: 'Customers must experience measurable value before Day 30. Early Success is the single strongest predictor of renewal. Accounts that miss it rarely recover quietly.',
+    overdueAction: 'Run First Value Play — redefine scope if necessary to get the customer to one concrete, measurable win within 7 days.',
+    inProgressAction: 'Confirm the customer can articulate a specific, measurable outcome achieved since going live.',
+  },
+  goal_attainment: {
+    label: 'Goal Attainment', shortLabel: 'Goals',
+    whyItMatters: 'Customers who cannot demonstrate progress toward stated goals at Day 90 see the product as a cost, not an investment. This directly undermines renewal confidence.',
+    overdueAction: 'Run Alignment Meeting — document measurable progress with the champion and update success criteria before any renewal conversation begins.',
+    inProgressAction: 'Ensure goal progress is documented and the executive sponsor has been briefed on current status.',
+  },
+  habit_transformation: {
+    label: 'Habit Transformation', shortLabel: 'Habit',
+    whyItMatters: 'By Day 120, the product should be embedded in daily workflow. Habit formation is what makes renewals automatic — not a negotiation.',
+    overdueAction: 'Run Alignment Meeting — identify workflow blockers preventing daily adoption and assign remediation owners.',
+    inProgressAction: 'Confirm adoption data shows consistent usage patterns across the primary team.',
+  },
+  ongoing_alignment: {
+    label: 'Ongoing Alignment', shortLabel: 'Alignment',
+    whyItMatters: 'Regular alignment ensures goal drift is caught before it becomes churn risk. Skipping this stage leaves renewals to chance and the relationship unmanaged.',
+    overdueAction: 'Schedule and run Alignment Meeting immediately — do not let another week pass without structured review.',
+    inProgressAction: 'Prepare an AI-generated brief before the meeting so all signals are visible going in.',
+  },
+  renewal_growth_decision: {
+    label: 'Renewal & Growth Decision', shortLabel: 'Renewal',
+    whyItMatters: 'This milestone determines whether the customer renews, expands, or churns. It requires deliberate preparation — not a last-minute conversation.',
+    overdueAction: 'Initiate Renew & Grow play immediately — engage the decision maker and confirm renewal intent before the window closes.',
+    inProgressAction: 'Confirm Renew & Grow play is active, decision maker is engaged, and commercial terms are visible to both sides.',
   },
 }
 
-const OPP_LABEL: Record<OpportunityType, string> = {
-  renewal:   'Renewal',
-  expansion: 'Expansion',
-  upsell:    'Upsell',
-}
+const MILESTONE_ORDER: MilestoneId[] = [
+  'purchase_moment', 'first_meeting', 'onboarding_decisions', 'early_success',
+  'goal_attainment', 'habit_transformation', 'ongoing_alignment', 'renewal_growth_decision',
+]
 
 // ─── Section definitions ──────────────────────────────────────────────────────
 
-interface SectionDef {
-  types: GapType[]
-  label: string
-  why: string
-  Icon: LucideIcon
-}
+interface SectionDef { types: GapType[]; label: string; why: string; Icon: LucideIcon }
 
 const SECTIONS: SectionDef[] = [
-  {
-    types: ['first_value_overdue'],
-    label: 'First Value',
-    why: 'First Value is the inflection point that converts a purchase into a partnership. Accounts that miss it rarely renew — they just go quiet.',
-    Icon: Zap,
-  },
-  {
-    types: ['alignment_meeting_overdue', 'alignment_meeting_approaching'],
-    label: 'Alignment Meetings',
-    why: 'Structured alignment is the cadence that keeps customer goals visible. When it slips, goal drift happens invisibly — and by the time you notice, the relationship has already weakened.',
-    Icon: Calendar,
-  },
-  {
-    types: ['goal_progress_stalled'],
-    label: 'Goal Progression',
-    why: 'Customers who cannot articulate progress toward their goals do not see value. Without documented evidence of advancement, renewal becomes a negotiation instead of a celebration.',
-    Icon: TrendingUp,
-  },
-  {
-    types: ['stakeholder_gap'],
-    label: 'Stakeholder Coverage',
-    why: 'Renewal decisions are made by executives you have not spoken to yet. Every dormant decision maker is a blocker waiting to happen.',
-    Icon: Users,
-  },
-  {
-    types: ['renewal_risk'],
-    label: 'Renewal Readiness',
-    why: 'Renewals do not close themselves. Without an active commercial play, the window narrows silently — and recovery becomes harder the closer you get.',
-    Icon: AlertTriangle,
-  },
+  { types: ['first_value_overdue'], label: 'First Value', Icon: Zap,
+    why: 'First Value is the inflection point that converts a purchase into a partnership. Accounts that miss it rarely renew — they just go quiet.' },
+  { types: ['alignment_meeting_overdue', 'alignment_meeting_approaching'], label: 'Alignment Meetings', Icon: Calendar,
+    why: 'Structured alignment is the cadence that keeps customer goals visible. When it slips, goal drift happens invisibly — and by the time you notice, the relationship has already weakened.' },
+  { types: ['goal_progress_stalled'], label: 'Goal Progression', Icon: TrendingUp,
+    why: 'Customers who cannot articulate progress toward their goals do not see value. Without documented evidence of advancement, renewal becomes a negotiation instead of a celebration.' },
+  { types: ['stakeholder_gap'], label: 'Stakeholder Coverage', Icon: Users,
+    why: 'Renewal decisions are made by executives you have not spoken to yet. Every dormant decision maker is a blocker waiting to happen.' },
+  { types: ['renewal_risk'], label: 'Renewal Readiness', Icon: AlertTriangle,
+    why: 'Renewals do not close themselves. Without an active commercial play, the window narrows silently — and recovery becomes harder the closer you get.' },
 ]
 
-// ─── Today's Priorities ───────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
+// PRIORITY VIEW COMPONENTS
+// ═══════════════════════════════════════════════════════════════
 
-function TodayPriorities({
-  gaps,
-  opportunitiesByAccount,
-}: {
-  gaps: ExecutionGap[]
-  opportunitiesByAccount: Record<string, Opportunity[]>
+function TodayPriorities({ gaps, opportunitiesByAccount }: {
+  gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>
 }) {
   const high = gaps.filter(g => g.severity === 'high')
   const med  = gaps.filter(g => g.severity === 'medium')
   const priorities = [...high, ...med.slice(0, Math.max(0, 5 - high.length))].slice(0, 5)
-
   if (priorities.length === 0) return null
 
   return (
@@ -121,50 +132,29 @@ function TodayPriorities({
           </span>
         )}
       </div>
-
       <div className="divide-y divide-slate-50">
         {priorities.map((gap, i) => {
           const sev      = SEV[gap.severity]
           const acctOpps = opportunitiesByAccount[gap.accountId] ?? []
           const hasPlay  = !!gap.linkedPlayRunId
-          const href     = hasPlay
-            ? `/accounts/${gap.accountId}/plays/${gap.linkedPlayRunId}`
-            : `/accounts/${gap.accountId}`
-
+          const href     = hasPlay ? `/accounts/${gap.accountId}/plays/${gap.linkedPlayRunId}` : `/accounts/${gap.accountId}`
           return (
-            <div key={gap.id} className="flex items-start gap-3 px-5 py-3.5 group">
-              {/* Priority number */}
-              <span className="w-5 h-5 rounded-full bg-slate-100 text-[10px] font-bold text-slate-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                {i + 1}
-              </span>
-
-              {/* Severity dot */}
+            <div key={gap.id} className="flex items-start gap-3 px-5 py-3.5">
+              <span className="w-5 h-5 rounded-full bg-slate-100 text-[10px] font-bold text-slate-400 flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
               <div className={cn('w-1.5 h-1.5 rounded-full flex-shrink-0 mt-[5px]', sev.dot)} />
-
-              {/* Content */}
               <div className="flex-1 min-w-0">
-                <p className="text-[12px] font-semibold text-slate-900 leading-snug mb-1.5">
-                  {gap.actionLabel}
-                </p>
+                <p className="text-[12px] font-semibold text-slate-900 leading-snug mb-1.5">{gap.actionLabel}</p>
                 {acctOpps.length > 0 && (
                   <div className="flex flex-wrap gap-1.5">
                     {acctOpps.map(opp => (
-                      <span key={opp.id} className={cn(
-                        'text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1',
-                        sev.impactChip,
-                      )}>
+                      <span key={opp.id} className={cn('text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1', sev.impactChip)}>
                         {OPP_LABEL[opp.type]} · {formatCurrency(opp.estimatedValue)}
                       </span>
                     ))}
                   </div>
                 )}
               </div>
-
-              {/* CTA */}
-              <Link
-                to={href}
-                className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors flex-shrink-0 mt-0.5"
-              >
+              <Link to={href} className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors flex-shrink-0 mt-0.5">
                 {hasPlay ? 'Open Play' : 'View Account'}
                 <ChevronRight size={11} />
               </Link>
@@ -176,86 +166,44 @@ function TodayPriorities({
   )
 }
 
-// ─── Gap card ─────────────────────────────────────────────────────────────────
-
 function GapCard({ gap, accountOpps }: { gap: ExecutionGap; accountOpps: Opportunity[] }) {
-  const sev     = SEV[gap.severity]
+  const sev = SEV[gap.severity]
   const hasPlay = !!gap.linkedPlayRunId
-
   return (
     <div className="relative bg-white rounded-xl border border-slate-200 pl-5 pr-4 py-4 hover:shadow-md transition-all duration-150 group">
-      {/* Severity accent bar */}
       <div className={cn('absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl', sev.accent)} />
-
       <div className="flex items-start justify-between gap-4">
         <div className="flex-1 min-w-0">
-
-          {/* Severity badge */}
           <div className="flex items-center gap-2 mb-2">
-            <span className={cn(
-              'inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded ring-1 flex-shrink-0',
-              sev.badge,
-            )}>
-              {sev.label}
-            </span>
+            <span className={cn('inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded ring-1 flex-shrink-0', sev.badge)}>{sev.label}</span>
             <span className="text-[10px] text-slate-400">{sev.sub}</span>
           </div>
-
-          {/* Action label */}
-          <p className="text-[13px] font-semibold text-slate-900 leading-snug mb-1.5 group-hover:text-brand-700 transition-colors">
-            {gap.actionLabel}
-          </p>
-
-          {/* Context */}
+          <p className="text-[13px] font-semibold text-slate-900 leading-snug mb-1.5 group-hover:text-brand-700 transition-colors">{gap.actionLabel}</p>
           <p className="text-[11px] text-slate-400 leading-relaxed">{gap.context}</p>
-
-          {/* Revenue at stake */}
           {accountOpps.length > 0 && (
             <div className="flex flex-wrap gap-1.5 mt-2.5">
               {accountOpps.map(opp => (
-                <span key={opp.id} className={cn(
-                  'text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1',
-                  sev.impactChip,
-                )}>
+                <span key={opp.id} className={cn('text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1', sev.impactChip)}>
                   {OPP_LABEL[opp.type]} · {formatCurrency(opp.estimatedValue)}
                 </span>
               ))}
             </div>
           )}
-
         </div>
-
-        {/* Right column: age + CTAs */}
         <div className="flex flex-col items-end gap-2.5 flex-shrink-0">
           {gap.ageDays > 0 && (
-            <span className={cn(
-              'text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1 tabular-nums',
-              sev.agePill,
-            )}>
-              {gap.ageDays}d
-            </span>
+            <span className={cn('text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1 tabular-nums', sev.agePill)}>{gap.ageDays}d</span>
           )}
           <div className="flex items-center gap-1.5">
             {hasPlay && (
-              <Link
-                to={`/accounts/${gap.accountId}/plays/${gap.linkedPlayRunId}`}
-                className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors"
-              >
-                Open Play
-                <ChevronRight size={11} />
+              <Link to={`/accounts/${gap.accountId}/plays/${gap.linkedPlayRunId}`} className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
+                Open Play<ChevronRight size={11} />
               </Link>
             )}
-            <Link
-              to={`/accounts/${gap.accountId}`}
-              className={cn(
-                'flex items-center gap-1 text-[11px] font-medium px-2.5 py-1.5 rounded-lg transition-colors',
-                hasPlay
-                  ? 'text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100'
-                  : 'text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 font-semibold',
-              )}
-            >
-              View Account
-              <ArrowUpRight size={11} />
+            <Link to={`/accounts/${gap.accountId}`} className={cn('flex items-center gap-1 text-[11px] font-medium px-2.5 py-1.5 rounded-lg transition-colors',
+              hasPlay ? 'text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100' : 'text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 font-semibold'
+            )}>
+              View Account<ArrowUpRight size={11} />
             </Link>
           </div>
         </div>
@@ -264,23 +212,12 @@ function GapCard({ gap, accountOpps }: { gap: ExecutionGap; accountOpps: Opportu
   )
 }
 
-// ─── Section ──────────────────────────────────────────────────────────────────
-
-function Section({
-  def,
-  gaps,
-  opportunitiesByAccount,
-}: {
-  def: SectionDef
-  gaps: ExecutionGap[]
-  opportunitiesByAccount: Record<string, Opportunity[]>
+function GapSection({ def, gaps, opportunitiesByAccount }: {
+  def: SectionDef; gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>
 }) {
   if (gaps.length === 0) return null
   const { Icon } = def
-  const sorted = [...gaps].sort(
-    (a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity] || b.ageDays - a.ageDays
-  )
-
+  const sorted = [...gaps].sort((a, b) => SEVERITY_ORDER[a.severity] - SEVERITY_ORDER[b.severity] || b.ageDays - a.ageDays)
   return (
     <div className="mb-10">
       <div className="flex items-start gap-3 mb-4">
@@ -290,50 +227,299 @@ function Section({
         <div>
           <div className="flex items-center gap-2 mb-1">
             <h2 className="text-[13px] font-semibold text-slate-900">{def.label}</h2>
-            <span className="text-[10px] font-medium text-slate-400 tabular-nums">
-              {sorted.length} issue{sorted.length !== 1 ? 's' : ''}
-            </span>
+            <span className="text-[10px] font-medium text-slate-400 tabular-nums">{sorted.length} issue{sorted.length !== 1 ? 's' : ''}</span>
           </div>
           <p className="text-[12px] text-slate-400 leading-relaxed max-w-xl">{def.why}</p>
         </div>
       </div>
-
       <div className="space-y-2 ml-10">
-        {sorted.map(gap => (
-          <GapCard
-            key={gap.id}
-            gap={gap}
-            accountOpps={opportunitiesByAccount[gap.accountId] ?? []}
-          />
-        ))}
+        {sorted.map(gap => <GapCard key={gap.id} gap={gap} accountOpps={opportunitiesByAccount[gap.accountId] ?? []} />)}
       </div>
     </div>
   )
 }
 
-// ─── Main view ────────────────────────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════
+// TIMELINE VIEW COMPONENTS
+// ═══════════════════════════════════════════════════════════════
+
+const STATUS_NODE: Record<MilestoneStatus, {
+  bg: string; ring: string; icon: LucideIcon; iconColor: string
+}> = {
+  completed:   { bg: 'bg-emerald-500', ring: 'ring-emerald-200', icon: Check,  iconColor: 'text-white' },
+  in_progress: { bg: 'bg-brand-500',   ring: 'ring-brand-200',   icon: Clock,  iconColor: 'text-white' },
+  overdue:     { bg: 'bg-red-500',     ring: 'ring-red-200',     icon: X,      iconColor: 'text-white' },
+  not_started: { bg: 'bg-slate-200',   ring: 'ring-slate-200',   icon: Minus,  iconColor: 'text-slate-400' },
+}
+
+function lineColor(m: TimelineMilestone): string {
+  if (m.status === 'completed')   return 'bg-emerald-200'
+  if (m.status === 'overdue')     return 'bg-red-200'
+  if (m.status === 'in_progress') return 'bg-brand-200'
+  return 'bg-slate-150'
+}
+
+function MilestoneNode({
+  milestone, isSelected, onClick,
+}: {
+  milestone: TimelineMilestone; isSelected: boolean; onClick: () => void
+}) {
+  const cfg = STATUS_NODE[milestone.status]
+  const Icon = cfg.icon
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        'w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-150',
+        cfg.bg,
+        isSelected ? 'ring-2 ring-offset-2 ' + cfg.ring : 'hover:ring-2 hover:ring-offset-1 ' + cfg.ring,
+        milestone.status === 'in_progress' && 'ring-2 ' + cfg.ring,
+      )}
+    >
+      <Icon size={12} className={cfg.iconColor} />
+    </button>
+  )
+}
+
+function MilestoneDetail({
+  milestone, accountId, onClose,
+}: {
+  milestone: TimelineMilestone; accountId: string; accountName: string; onClose: () => void
+}) {
+  const meta    = MILESTONE_META[milestone.id]
+  const needsAction = milestone.status === 'overdue' || milestone.status === 'in_progress'
+
+  const statusLabel: Record<MilestoneStatus, string> = {
+    completed: 'Completed', in_progress: 'In Progress', overdue: 'Overdue', not_started: 'Not Started',
+  }
+  const statusStyle: Record<MilestoneStatus, string> = {
+    completed:   'text-emerald-700 bg-emerald-50 ring-emerald-200',
+    in_progress: 'text-brand-700 bg-brand-50 ring-brand-200',
+    overdue:     'text-red-700 bg-red-50 ring-red-200',
+    not_started: 'text-slate-600 bg-slate-50 ring-slate-200',
+  }
+
+  return (
+    <div className="mt-1 mb-2 ml-[212px] bg-slate-50 rounded-xl border border-slate-200 p-4">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1 min-w-0">
+          {/* Header */}
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[13px] font-semibold text-slate-900">{meta.label}</span>
+            <span className={cn('text-[10px] font-bold px-1.5 py-0.5 rounded ring-1', statusStyle[milestone.status])}>
+              {statusLabel[milestone.status]}
+            </span>
+          </div>
+
+          {/* Timing */}
+          <div className="flex items-center gap-4 text-[11px] text-slate-400 mb-3">
+            <span>Expected: <span className="font-medium text-slate-600">Day {milestone.expectedDay}</span></span>
+            {milestone.actualDay && <span>Completed: <span className="font-medium text-slate-600">Day {milestone.actualDay}</span></span>}
+            {milestone.status === 'overdue' && milestone.delayDays && (
+              <span className="font-semibold text-red-600">{milestone.delayDays}d overdue</span>
+            )}
+            {milestone.actualDay && milestone.actualDay > milestone.expectedDay && (
+              <span className="text-amber-600">{milestone.actualDay - milestone.expectedDay}d behind target</span>
+            )}
+          </div>
+
+          {/* Why it matters */}
+          <p className="text-[12px] text-slate-500 leading-relaxed mb-3">{meta.whyItMatters}</p>
+
+          {/* Recommended action */}
+          {needsAction && (
+            <div className="bg-white rounded-lg border border-slate-200 px-3 py-2.5 mb-2.5">
+              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-1">Recommended action</p>
+              <p className="text-[12px] font-semibold text-slate-800 leading-snug">
+                {milestone.status === 'overdue' ? meta.overdueAction : meta.inProgressAction}
+              </p>
+            </div>
+          )}
+
+          {/* Notes */}
+          {milestone.notes && (
+            <p className="text-[11px] text-slate-400 italic leading-relaxed">{milestone.notes}</p>
+          )}
+        </div>
+
+        {/* CTAs */}
+        <div className="flex flex-col items-end gap-2 flex-shrink-0">
+          <button onClick={onClose} className="text-[11px] text-slate-300 hover:text-slate-500 transition-colors px-1">✕</button>
+          {milestone.linkedPlayRunId ? (
+            <Link to={`/accounts/${accountId}/plays/${milestone.linkedPlayRunId}`}
+              className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
+              Open Play<ChevronRight size={11} />
+            </Link>
+          ) : milestone.linkedPlayTemplateId ? (
+            <Link to={`/accounts/${accountId}`}
+              className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
+              Start Play<ChevronRight size={11} />
+            </Link>
+          ) : null}
+          <Link to={`/accounts/${accountId}`}
+            className="flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 px-2.5 py-1.5 rounded-lg transition-colors">
+            View Account<ArrowUpRight size={11} />
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function TimelineContent({ accountTimelines }: { accountTimelines: AccountTimeline[] }) {
+  const { accounts } = useApp()
+  const [selectedKey, setSelectedKey] = useState<string | null>(null)
+
+  const toggle = (accountId: string, milestoneId: MilestoneId) => {
+    const key = `${accountId}/${milestoneId}`
+    setSelectedKey(prev => prev === key ? null : key)
+  }
+
+  return (
+    <div className="px-8 py-6 overflow-x-auto">
+      {/* Column headers */}
+      <div className="flex items-end mb-1 ml-[212px]">
+        {MILESTONE_ORDER.map((id, i) => {
+          const meta = MILESTONE_META[id]
+          return (
+            <Fragment key={id}>
+              {i > 0 && <div className="w-9 flex-shrink-0" />}
+              <div className="w-7 flex-shrink-0 flex flex-col items-center gap-0.5">
+                <span className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide leading-none text-center whitespace-nowrap"
+                  style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', height: 56 }}>
+                  {meta.shortLabel}
+                </span>
+              </div>
+            </Fragment>
+          )
+        })}
+      </div>
+
+      {/* Separator */}
+      <div className="ml-[200px] h-px bg-slate-100 mb-2" />
+
+      {/* Account rows */}
+      {accounts.map(account => {
+        const timeline = accountTimelines.find(t => t.accountId === account.id)
+        if (!timeline) return null
+
+        const milestones = MILESTONE_ORDER.map(id =>
+          timeline.milestones.find(m => m.id === id)!
+        ).filter(Boolean)
+
+        const overdueCount = milestones.filter(m => m.status === 'overdue').length
+        const selectedMilestoneId = selectedKey?.startsWith(account.id + '/')
+          ? selectedKey.split('/')[1] as MilestoneId
+          : null
+
+        return (
+          <div key={account.id} className="mb-0.5">
+            <div className={cn(
+              'flex items-center py-3 rounded-lg transition-colors',
+              selectedMilestoneId ? 'bg-slate-50' : 'hover:bg-slate-50/60'
+            )}>
+              {/* Account info */}
+              <div className="w-[200px] flex-shrink-0 pr-3">
+                <p className="text-[13px] font-semibold text-slate-900 truncate leading-none mb-1">{account.name}</p>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10px] text-slate-400">{STAGE_LABELS[account.stage]}</span>
+                  {overdueCount > 0 && (
+                    <span className="text-[9px] font-bold text-red-600 bg-red-50 ring-1 ring-red-200 px-1 py-0.5 rounded tabular-nums">
+                      {overdueCount} overdue
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Separator */}
+              <div className="w-px h-8 bg-slate-100 mr-3 flex-shrink-0" />
+
+              {/* Timeline nodes */}
+              <div className="flex items-center">
+                {milestones.map((milestone, i) => (
+                  <Fragment key={milestone.id}>
+                    {i > 0 && (
+                      <div className={cn('w-9 h-0.5 flex-shrink-0', lineColor(milestones[i - 1]))} />
+                    )}
+                    <MilestoneNode
+                      milestone={milestone}
+                      isSelected={selectedKey === `${account.id}/${milestone.id}`}
+                      onClick={() => toggle(account.id, milestone.id)}
+                    />
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+
+            {/* Inline milestone detail */}
+            {selectedMilestoneId && (() => {
+              const ms = milestones.find(m => m.id === selectedMilestoneId)
+              return ms ? (
+                <MilestoneDetail
+                  milestone={ms}
+                  accountId={account.id}
+                  accountName={account.name}
+                  onClose={() => setSelectedKey(null)}
+                />
+              ) : null
+            })()}
+          </div>
+        )
+      })}
+
+      {/* Legend */}
+      <div className="flex items-center gap-5 mt-6 ml-[212px]">
+        {(['completed', 'in_progress', 'overdue', 'not_started'] as MilestoneStatus[]).map(s => {
+          const cfg = STATUS_NODE[s]
+          const Icon = cfg.icon
+          const labels: Record<MilestoneStatus, string> = {
+            completed: 'Completed', in_progress: 'In Progress', overdue: 'Overdue', not_started: 'Not Started'
+          }
+          return (
+            <div key={s} className="flex items-center gap-1.5">
+              <div className={cn('w-4 h-4 rounded-full flex items-center justify-center', cfg.bg)}>
+                <Icon size={9} className={cfg.iconColor} />
+              </div>
+              <span className="text-[10px] text-slate-400">{labels[s]}</span>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MAIN VIEW
+// ═══════════════════════════════════════════════════════════════
 
 export function InflectionPointsView() {
-  const { accounts, inflectionPoints, stakeholderMaps, contacts, playRuns, opportunities } = useApp()
+  const [activeTab, setActiveTab] = useState<'priority' | 'timeline'>('priority')
+  const {
+    accounts, inflectionPoints, stakeholderMaps, contacts, playRuns,
+    opportunities, accountTimelines,
+  } = useApp()
 
-  const gaps       = deriveExecutionGaps(accounts, inflectionPoints, stakeholderMaps, contacts, playRuns)
-  const highGaps   = gaps.filter(g => g.severity === 'high')
-  const mediumGaps = gaps.filter(g => g.severity === 'medium')
-  const lowGaps    = gaps.filter(g => g.severity === 'low')
-  const accountsHit = new Set(gaps.map(g => g.accountId)).size
+  const gaps         = deriveExecutionGaps(accounts, inflectionPoints, stakeholderMaps, contacts, playRuns)
+  const highGaps     = gaps.filter(g => g.severity === 'high')
+  const mediumGaps   = gaps.filter(g => g.severity === 'medium')
+  const lowGaps      = gaps.filter(g => g.severity === 'low')
+  const accountsHit  = new Set(gaps.map(g => g.accountId)).size
 
-  // Revenue at stake: sum of opportunity values for accounts with high-severity gaps
   const highAccountIds = new Set(highGaps.map(g => g.accountId))
-  const valueAtRisk = opportunities
+  const valueAtRisk    = opportunities
     .filter(o => highAccountIds.has(o.accountId))
     .reduce((s, o) => s + o.estimatedValue, 0)
 
-  // Build accountId → opportunities lookup for passing to cards
   const opportunitiesByAccount = opportunities.reduce<Record<string, Opportunity[]>>((acc, o) => {
     if (!acc[o.accountId]) acc[o.accountId] = []
     acc[o.accountId].push(o)
     return acc
   }, {})
+
+  const overdueTotal = accountTimelines.reduce(
+    (s, t) => s + t.milestones.filter(m => m.status === 'overdue').length, 0
+  )
 
   return (
     <div className="flex flex-col h-full">
@@ -342,7 +528,9 @@ export function InflectionPointsView() {
       <div className="flex-shrink-0 px-8 h-[60px] flex items-center justify-between border-b border-slate-100 bg-white">
         <div>
           <h1 className="text-[15px] font-semibold text-slate-900">Inflection Points</h1>
-          <p className="text-[12px] text-slate-400 mt-0.5">Where execution is breaking down</p>
+          <p className="text-[12px] text-slate-400 mt-0.5">
+            {activeTab === 'priority' ? 'Where execution is breaking down' : 'Customer progression through the designed journey'}
+          </p>
         </div>
 
         <div className="flex items-center gap-5">
@@ -373,44 +561,71 @@ export function InflectionPointsView() {
         </div>
       </div>
 
-      {/* Subheader */}
-      <div className="flex-shrink-0 px-8 py-2.5 border-b border-slate-100 bg-white">
-        <p className="text-[11px] text-slate-400 flex items-center gap-1.5">
+      {/* Tab bar */}
+      <div className="flex-shrink-0 border-b border-slate-100 bg-white flex items-center">
+        <button
+          onClick={() => setActiveTab('priority')}
+          className={cn(
+            'px-5 h-[42px] text-[12px] font-medium border-b-2 transition-colors',
+            activeTab === 'priority'
+              ? 'border-brand-600 text-brand-700'
+              : 'border-transparent text-slate-400 hover:text-slate-700',
+          )}
+        >
+          Priority
+        </button>
+        <button
+          onClick={() => setActiveTab('timeline')}
+          className={cn(
+            'px-5 h-[42px] text-[12px] font-medium border-b-2 transition-colors',
+            activeTab === 'timeline'
+              ? 'border-brand-600 text-brand-700'
+              : 'border-transparent text-slate-400 hover:text-slate-700',
+          )}
+        >
+          Timeline
+        </button>
+        <div className="flex-1" />
+        <div className="px-5 flex items-center gap-1.5 text-[11px] text-slate-400">
           <Activity size={11} />
-          {gaps.length > 0
-            ? `${gaps.length} action${gaps.length !== 1 ? 's' : ''} across ${accountsHit} account${accountsHit !== 1 ? 's' : ''} — sorted by severity and age`
-            : 'All inflection points on track'}
-        </p>
+          {activeTab === 'priority'
+            ? (gaps.length > 0
+                ? `${gaps.length} action${gaps.length !== 1 ? 's' : ''} across ${accountsHit} account${accountsHit !== 1 ? 's' : ''}`
+                : 'All inflection points on track')
+            : `${accounts.length} accounts · ${overdueTotal} milestone${overdueTotal !== 1 ? 's' : ''} overdue`
+          }
+        </div>
       </div>
 
       {/* Content */}
       <div className="flex-1 overflow-auto">
-        <div className="max-w-3xl mx-auto px-8 py-7">
-
-          {gaps.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-24 text-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-50 ring-1 ring-emerald-200 flex items-center justify-center mb-4">
-                <Activity size={20} className="text-emerald-500" />
+        {activeTab === 'priority' ? (
+          <div className="max-w-3xl mx-auto px-8 py-7">
+            {gaps.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-24 text-center">
+                <div className="w-12 h-12 rounded-full bg-emerald-50 ring-1 ring-emerald-200 flex items-center justify-center mb-4">
+                  <Activity size={20} className="text-emerald-500" />
+                </div>
+                <p className="text-[14px] font-semibold text-slate-700 mb-1">Execution on track</p>
+                <p className="text-[12px] text-slate-400">No gaps detected. All inflection points are progressing.</p>
               </div>
-              <p className="text-[14px] font-semibold text-slate-700 mb-1">Execution on track</p>
-              <p className="text-[12px] text-slate-400">No gaps detected. All inflection points are progressing.</p>
-            </div>
-          ) : (
-            <>
-              <TodayPriorities gaps={gaps} opportunitiesByAccount={opportunitiesByAccount} />
-
-              {SECTIONS.map(def => (
-                <Section
-                  key={def.label}
-                  def={def}
-                  gaps={gaps.filter(g => (def.types as string[]).includes(g.gapType))}
-                  opportunitiesByAccount={opportunitiesByAccount}
-                />
-              ))}
-            </>
-          )}
-
-        </div>
+            ) : (
+              <>
+                <TodayPriorities gaps={gaps} opportunitiesByAccount={opportunitiesByAccount} />
+                {SECTIONS.map(def => (
+                  <GapSection
+                    key={def.label}
+                    def={def}
+                    gaps={gaps.filter(g => (def.types as string[]).includes(g.gapType))}
+                    opportunitiesByAccount={opportunitiesByAccount}
+                  />
+                ))}
+              </>
+            )}
+          </div>
+        ) : (
+          <TimelineContent accountTimelines={accountTimelines} />
+        )}
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from 'react'
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
-  PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity,
+  PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
   PipelineStage, PlayTemplate, AccountView,
 } from '@/types'
 import {
@@ -14,6 +14,7 @@ import {
   meetingBriefs as seedMeetingBriefs,
   nextBestActions as seedNextBestActions,
   opportunities as seedOpportunities,
+  accountTimelines as seedAccountTimelines,
   pipelineStages,
   playTemplates,
 } from '@/data/seedData'
@@ -29,6 +30,7 @@ interface AppState {
   meetingOutputs: MeetingOutput[]
   nextBestActions: NextBestAction[]
   opportunities: Opportunity[]
+  accountTimelines: AccountTimeline[]
 }
 
 interface AppContextValue extends AppState {
@@ -63,6 +65,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     meetingOutputs: [],
     nextBestActions: seedNextBestActions,
     opportunities: seedOpportunities,
+    accountTimelines: seedAccountTimelines,
   })
 
   const getAccountView = (accountId: string): AccountView | null => {

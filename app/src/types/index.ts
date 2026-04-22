@@ -264,6 +264,37 @@ export interface Account {
   createdAt: string
 }
 
+// ─── Core: Account Timeline ──────────────────────────────────────────────────
+
+export type MilestoneId =
+  | 'purchase_moment'
+  | 'first_meeting'
+  | 'onboarding_decisions'
+  | 'early_success'
+  | 'goal_attainment'
+  | 'habit_transformation'
+  | 'ongoing_alignment'
+  | 'renewal_growth_decision'
+
+export type MilestoneStatus = 'completed' | 'in_progress' | 'overdue' | 'not_started'
+
+export interface TimelineMilestone {
+  id: MilestoneId
+  status: MilestoneStatus
+  expectedDay: number
+  actualDay: number | null
+  delayDays: number | null
+  notes: string | null
+  linkedPlayTemplateId: string | null
+  linkedPlayRunId: string | null
+}
+
+export interface AccountTimeline {
+  accountId: string
+  year: number
+  milestones: TimelineMilestone[]
+}
+
 // ─── View helpers (derived / composed) ───────────────────────────────────────
 
 export interface AccountView extends Account {

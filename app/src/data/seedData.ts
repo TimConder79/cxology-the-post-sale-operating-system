@@ -1,6 +1,7 @@
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, NextBestAction, PipelineStage, PlayTemplate, Opportunity,
+  AccountTimeline, TimelineMilestone,
 } from '@/types'
 
 // ─── Reference: Pipeline Stages ──────────────────────────────────────────────
@@ -609,5 +610,102 @@ export const nextBestActions: NextBestAction[] = [
     priority: 'medium', source: 'rule', status: 'active',
     linkedPlayTemplateId: 'tmpl-alignment-meeting', linkedInflectionPointId: 'ip-016', linkedStakeholderMapId: null,
     createdAt: '2026-04-21T08:00:00Z', completedAt: null, triggeredByOutputId: null,
+  },
+]
+
+// ─── Account Timelines ────────────────────────────────────────────────────────
+
+function m(
+  id: TimelineMilestone['id'],
+  status: TimelineMilestone['status'],
+  expectedDay: number,
+  actualDay: number | null,
+  delayDays: number | null,
+  notes: string | null,
+  linkedPlayTemplateId: string | null,
+  linkedPlayRunId: string | null,
+): TimelineMilestone {
+  return { id, status, expectedDay, actualDay, delayDays, notes, linkedPlayTemplateId, linkedPlayRunId }
+}
+
+export const accountTimelines: AccountTimeline[] = [
+  // ── Meridian Health Systems (acc-001, ~142d, advocate, advancing) ─────────
+  {
+    accountId: 'acc-001',
+    year: 1,
+    milestones: [
+      m('purchase_moment',         'completed',   1,   1,   null, 'IKT handoff completed. Goals and stakeholders documented.',                          'tmpl-kickoff',           null),
+      m('first_meeting',           'completed',   7,   14,  7,    'Kickoff delayed 7 days due to executive scheduling conflict.',                        'tmpl-kickoff',           'run-001'),
+      m('onboarding_decisions',    'completed',   14,  28,  14,   'Configuration scope expanded during onboarding — extended by 2 weeks.',              'tmpl-kickoff',           'run-002'),
+      m('early_success',           'completed',   30,  71,  41,   'First Value achieved on reporting automation milestone. 41 days behind target.',      'tmpl-kickoff',           'run-003'),
+      m('goal_attainment',         'in_progress', 90,  null, null,'Goal reviews underway. Champion confirmed progress on 2 of 3 success criteria.',     'tmpl-alignment-meeting', 'run-004'),
+      m('habit_transformation',    'not_started', 120, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('ongoing_alignment',       'not_started', 180, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('renewal_growth_decision', 'not_started', 275, null, null, null,                                                                                  'tmpl-renew-grow',        null),
+    ],
+  },
+
+  // ── Apex Logistics Group (acc-002, ~102d, align, at_risk) ────────────────
+  {
+    accountId: 'acc-002',
+    year: 1,
+    milestones: [
+      m('purchase_moment',         'completed',   1,   1,   null, 'Deal closed. IKT handoff initiated.',                                                 'tmpl-kickoff',           null),
+      m('first_meeting',           'completed',   7,   18,  11,   'Kickoff delayed 11 days. Champion availability was the primary blocker.',             'tmpl-kickoff',           'run-006'),
+      m('onboarding_decisions',    'overdue',     14,  null, 88,  'Configuration never completed. Kickoff output not actioned. 88 days without progress.', 'tmpl-kickoff',         null),
+      m('early_success',           'overdue',     30,  null, 36,  'First Value not achieved. Customer has not experienced measurable value.',             'tmpl-kickoff',           null),
+      m('goal_attainment',         'not_started', 90,  null, null,'Cannot progress until Early Success is achieved.',                                    'tmpl-alignment-meeting', null),
+      m('habit_transformation',    'not_started', 120, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('ongoing_alignment',       'not_started', 180, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('renewal_growth_decision', 'not_started', 275, null, null, null,                                                                                  'tmpl-renew-grow',        null),
+    ],
+  },
+
+  // ── Vantage Financial (acc-003, ~233d, intent, advancing, renewal 41d) ───
+  {
+    accountId: 'acc-003',
+    year: 1,
+    milestones: [
+      m('purchase_moment',         'completed',   1,   1,   null, 'Clean handoff. Executive sponsor introduced on Day 1.',                               'tmpl-kickoff',           null),
+      m('first_meeting',           'completed',   7,   7,   null, 'Kickoff on time. Five questions completed.',                                           'tmpl-kickoff',           null),
+      m('onboarding_decisions',    'completed',   14,  12,  null, 'All configuration decisions made 2 days ahead of schedule.',                           'tmpl-kickoff',           null),
+      m('early_success',           'completed',   30,  65,  35,   'First Value delayed 35 days due to data migration dependency. Achieved Day 65.',       'tmpl-kickoff',           'run-007'),
+      m('goal_attainment',         'completed',   90,  98,  8,    'Goal review confirmed. All 3 success criteria progressing. CFO briefed.',              'tmpl-alignment-meeting', null),
+      m('habit_transformation',    'completed',   120, 128, 8,    'Adoption metrics confirmed across core team. Usage embedded in weekly workflow.',      'tmpl-alignment-meeting', null),
+      m('ongoing_alignment',       'completed',   180, 190, 10,   'Alignment Meeting completed. Executive sponsor re-engaged for renewal conversation.',  'tmpl-alignment-meeting', 'run-008'),
+      m('renewal_growth_decision', 'in_progress', 275, null, null,'Renew & Grow play active. Renewal intent confirmed. Expansion scope under discussion.', 'tmpl-renew-grow',       'run-009'),
+    ],
+  },
+
+  // ── Thornwood Media (acc-004, ~107d, identify, at_risk, renewal 23d) ─────
+  {
+    accountId: 'acc-004',
+    year: 1,
+    milestones: [
+      m('purchase_moment',         'completed',   1,   1,   null, 'Deal closed. Handoff documentation incomplete.',                                       'tmpl-kickoff',           null),
+      m('first_meeting',           'completed',   7,   21,  14,   'Kickoff delayed 14 days. Executive not available at deal close.',                      'tmpl-kickoff',           null),
+      m('onboarding_decisions',    'overdue',     14,  null, 93,  'No configuration completed. Account stuck in kickoff phase for 93 days.',              'tmpl-kickoff',           null),
+      m('early_success',           'overdue',     30,  null, 77,  'First Value not achieved. Customer at critical churn risk. 77 days overdue.',          'tmpl-kickoff',           null),
+      m('goal_attainment',         'overdue',     90,  null, 17,  'Cannot advance without Early Success. Goal framework never established.',              'tmpl-alignment-meeting', null),
+      m('habit_transformation',    'not_started', 120, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('ongoing_alignment',       'not_started', 180, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('renewal_growth_decision', 'in_progress', 40,  null, 67,  'Renewal in 23 days. No commercial play active. Immediate escalation required.',       'tmpl-renew-grow',        null),
+    ],
+  },
+
+  // ── ClearPath Analytics (acc-005, ~80d, align, advancing) ────────────────
+  {
+    accountId: 'acc-005',
+    year: 1,
+    milestones: [
+      m('purchase_moment',         'completed',   1,   1,   null, 'Handoff complete. Success criteria documented at close.',                              'tmpl-kickoff',           null),
+      m('first_meeting',           'completed',   7,   7,   null, 'Kickoff on schedule. Champion confirmed.',                                             'tmpl-kickoff',           null),
+      m('onboarding_decisions',    'completed',   14,  15,  1,    'Configuration decisions finalized 1 day behind schedule.',                             'tmpl-kickoff',           null),
+      m('early_success',           'completed',   30,  63,  33,   'First Value achieved April 5th — 33 days behind target. Champion confirmed the win.',  'tmpl-kickoff',           null),
+      m('goal_attainment',         'in_progress', 90,  null, null,'Goal progress tracking initiated. Alignment Meeting scheduled in 19 days.',            'tmpl-alignment-meeting', 'run-010'),
+      m('habit_transformation',    'not_started', 120, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('ongoing_alignment',       'not_started', 180, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
+      m('renewal_growth_decision', 'not_started', 275, null, null, null,                                                                                  'tmpl-renew-grow',        null),
+    ],
   },
 ]
