@@ -1,11 +1,11 @@
-import { useNavigate, Link } from 'react-router-dom'
-import { TrendingUp, TrendingDown, Minus, ArrowRight, ChevronRight, AlertCircle } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { TrendingUp, TrendingDown, Minus, ArrowRight, AlertCircle } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
 import { buildAccountWorkspacePath, getWorkspaceRecommendation } from '@/lib/accountRouting'
 import {
   STAGE_ORDER, STAGE_LABELS, formatCurrency, daysUntil, cn,
 } from '@/lib/utils'
-import type { AccountView, PipelineStageId, Opportunity, NextBestAction, ProgressionStatus, MovementTrend, OpportunityType, ConfidenceLevel } from '@/types'
+import type { AccountView, PipelineStageId, Opportunity, ProgressionStatus, MovementTrend, OpportunityType, ConfidenceLevel } from '@/types'
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
@@ -138,35 +138,10 @@ function OppCard({ opp, workspaceHref }: { opp: Opportunity; workspaceHref: stri
   )
 }
 
-// ─── NBA item ─────────────────────────────────────────────────────────────────
-
-function NBAItem({ nba, accountName, workspaceHref }: { nba: NextBestAction; accountName: string; workspaceHref: string }) {
-  const dotColor =
-    nba.priority === 'high'   ? 'bg-red-500'   :
-    nba.priority === 'medium' ? 'bg-amber-400' :
-                                'bg-slate-300'
-
-  return (
-    <Link
-      to={workspaceHref}
-      className="flex items-start gap-2.5 px-4 py-3 hover:bg-slate-50 transition-colors group border-b border-slate-50"
-    >
-      <div className={cn('w-1.5 h-1.5 rounded-full mt-[5px] flex-shrink-0', dotColor)} />
-      <div className="flex-1 min-w-0">
-        <p className="text-[12px] font-medium text-slate-800 leading-snug group-hover:text-brand-700 transition-colors line-clamp-2">
-          {nba.label}
-        </p>
-        <p className="text-[10px] text-slate-400 mt-0.5 truncate">{accountName}</p>
-      </div>
-      <ChevronRight size={11} className="text-slate-300 group-hover:text-brand-400 mt-1 flex-shrink-0 transition-colors" />
-    </Link>
-  )
-}
-
 // ─── Main view ────────────────────────────────────────────────────────────────
 
 export function PipelineView() {
-  const { opportunities, accounts, nextBestActions, getAccountView } = useApp()
+  const { opportunities, accounts, getAccountView } = useApp()
 
   const accountViewsById = accounts.reduce<Record<string, AccountView>>((acc, account) => {
     const view = getAccountView(account.id)
@@ -184,11 +159,6 @@ export function PipelineView() {
   const advancingCt  = opportunities.filter(o => o.progressionStatus === 'advancing').length
   const stalledCt    = opportunities.filter(o => o.progressionStatus === 'stalled').length
   const atRiskCt     = opportunities.filter(o => o.progressionStatus === 'at_risk').length
-
-  const activeNBAs = nextBestActions
-    .filter(n => n.status === 'active')
-    .sort((a, b) => ({ high: 0, medium: 1, low: 2 }[a.priority] ?? 2) - ({ high: 0, medium: 1, low: 2 }[b.priority] ?? 2))
-    .slice(0, 7)
 
   return (
     <div className="flex flex-col h-full">
@@ -287,49 +257,7 @@ export function PipelineView() {
           </div>
         </div>
 
-        {/* NBA Sidebar */}
-        <div className="w-[260px] flex-shrink-0 border-l border-slate-100 bg-white flex flex-col overflow-hidden">
-          <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
-            <span className="text-[12px] font-semibold text-slate-900">Next Best Actions</span>
-            {activeNBAs.length > 0 && (
-              <span className="text-[10px] font-semibold text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded tabular-nums">
-                {activeNBAs.length}
-              </span>
-            )}
-          </div>
-          <div className="flex-1 overflow-auto">
-            {activeNBAs.length === 0 ? (
-              <div className="px-4 py-8 text-center">
-                <p className="text-[12px] text-slate-400">No active actions</p>
-              </div>
-            ) : (
-              activeNBAs.map(nba => {
-                const acct = accounts.find(a => a.id === nba.accountId)
-                const accountView = accountViewsById[nba.accountId]
-                const workspaceHref = accountView
-                  ? buildAccountWorkspacePath(nba.accountId, getWorkspaceRecommendation(accountView, 'pipeline'))
-                  : `/accounts/${nba.accountId}`
-                return (
-                  <NBAItem
-                    key={nba.id}
-                    nba={nba}
-                    accountName={acct?.name ?? nba.accountId}
-                    workspaceHref={workspaceHref}
-                  />
-                )
-              })
-            )}
-          </div>
-          <div className="px-4 py-3 border-t border-slate-100">
-            <Link
-              to="/inflection-points"
-              className="flex items-center justify-between text-[11px] font-medium text-brand-600 hover:text-brand-800 transition-colors"
-            >
-              View all execution gaps
-              <ChevronRight size={11} />
-            </Link>
-          </div>
-        </div>
+
 
       </div>
     </div>

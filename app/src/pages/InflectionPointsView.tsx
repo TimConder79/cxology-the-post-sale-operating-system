@@ -11,7 +11,7 @@ import { deriveExecutionGaps, SEVERITY_ORDER } from '@/lib/executionGaps'
 import type { ExecutionGap, GapSeverity, GapType } from '@/lib/executionGaps'
 import { formatCurrency, STAGE_LABELS, cn } from '@/lib/utils'
 import type {
-  AccountView, Opportunity, OpportunityType, MilestoneId, MilestoneStatus,
+  AccountView, Opportunity, OpportunityType, NextBestAction, MilestoneId, MilestoneStatus,
   TimelineMilestone, AccountTimeline,
 } from '@/types'
 
@@ -494,6 +494,30 @@ function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accou
   )
 }
 
+// ─── NBA item ─────────────────────────────────────────────────────────────────
+
+function NBAItem({ nba, accountName, workspaceHref }: { nba: NextBestAction; accountName: string; workspaceHref: string }) {
+  const dotColor =
+    nba.priority === 'high'   ? 'bg-red-500'   :
+    nba.priority === 'medium' ? 'bg-amber-400' :
+                                'bg-slate-300'
+  return (
+    <Link
+      to={workspaceHref}
+      className="flex items-start gap-2.5 px-4 py-3 hover:bg-slate-50 transition-colors group border-b border-slate-50"
+    >
+      <div className={cn('w-1.5 h-1.5 rounded-full mt-[5px] flex-shrink-0', dotColor)} />
+      <div className="flex-1 min-w-0">
+        <p className="text-[12px] font-medium text-slate-800 leading-snug group-hover:text-brand-700 transition-colors line-clamp-2">
+          {nba.label}
+        </p>
+        <p className="text-[10px] text-slate-400 mt-0.5 truncate">{accountName}</p>
+      </div>
+      <ChevronRight size={11} className="text-slate-300 group-hover:text-brand-400 mt-1 flex-shrink-0 transition-colors" />
+    </Link>
+  )
+}
+
 // ═══════════════════════════════════════════════════════════════
 // MAIN VIEW
 // ═══════════════════════════════════════════════════════════════
@@ -502,8 +526,13 @@ export function InflectionPointsView() {
   const [activeTab, setActiveTab] = useState<'priority' | 'timeline'>('priority')
   const {
     accounts, inflectionPoints, stakeholderMaps, contacts, playRuns,
-    opportunities, accountTimelines, getAccountView,
+    opportunities, accountTimelines, nextBestActions, getAccountView,
   } = useApp()
+
+  const activeNBAs = nextBestActions
+    .filter(n => n.status === 'active')
+    .sort((a, b) => ({ high: 0, medium: 1, low: 2 }[a.priority] ?? 2) - ({ high: 0, medium: 1, low: 2 }[b.priority] ?? 2))
+    .slice(0, 10)
 
   const gaps         = deriveExecutionGaps(accounts, inflectionPoints, stakeholderMaps, contacts, playRuns)
   const highGaps     = gaps.filter(g => g.severity === 'high')
@@ -616,36 +645,73 @@ export function InflectionPointsView() {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="flex-1 overflow-auto">
-        {activeTab === 'priority' ? (
-          <div className="max-w-3xl mx-auto px-8 py-7">
-            {gaps.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="w-12 h-12 rounded-full bg-emerald-50 ring-1 ring-emerald-200 flex items-center justify-center mb-4">
-                  <Activity size={20} className="text-emerald-500" />
+      {/* Body */}
+      <div className="flex-1 flex overflow-hidden">
+
+        {/* Content */}
+        <div className="flex-1 overflow-auto">
+          {activeTab === 'priority' ? (
+            <div className="max-w-3xl mx-auto px-8 py-7">
+              {gaps.length === 0 ? (
+                <div className="flex flex-col items-center justify-center py-24 text-center">
+                  <div className="w-12 h-12 rounded-full bg-emerald-50 ring-1 ring-emerald-200 flex items-center justify-center mb-4">
+                    <Activity size={20} className="text-emerald-500" />
+                  </div>
+                  <p className="text-[14px] font-semibold text-slate-700 mb-1">Execution on track</p>
+                  <p className="text-[12px] text-slate-400">No gaps detected. All inflection points are progressing.</p>
                 </div>
-                <p className="text-[14px] font-semibold text-slate-700 mb-1">Execution on track</p>
-                <p className="text-[12px] text-slate-400">No gaps detected. All inflection points are progressing.</p>
-              </div>
-            ) : (
-              <>
-                <TodayPriorities gaps={gaps} opportunitiesByAccount={opportunitiesByAccount} workspaceHrefByAccountId={workspaceHrefByAccountId} />
-                {SECTIONS.map(def => (
-                  <GapSection
-                    key={def.label}
-                    def={def}
-                    gaps={gaps.filter(g => (def.types as string[]).includes(g.gapType))}
-                    opportunitiesByAccount={opportunitiesByAccount}
-                    workspaceHrefByAccountId={workspaceHrefByAccountId}
-                  />
-                ))}
-              </>
+              ) : (
+                <>
+                  <TodayPriorities gaps={gaps} opportunitiesByAccount={opportunitiesByAccount} workspaceHrefByAccountId={workspaceHrefByAccountId} />
+                  {SECTIONS.map(def => (
+                    <GapSection
+                      key={def.label}
+                      def={def}
+                      gaps={gaps.filter(g => (def.types as string[]).includes(g.gapType))}
+                      opportunitiesByAccount={opportunitiesByAccount}
+                      workspaceHrefByAccountId={workspaceHrefByAccountId}
+                    />
+                  ))}
+                </>
+              )}
+            </div>
+          ) : (
+            <TimelineContent accountTimelines={accountTimelines} workspaceHrefByAccountId={workspaceHrefByAccountId} />
+          )}
+        </div>
+
+        {/* Next Best Actions sidebar */}
+        <div className="w-[260px] flex-shrink-0 border-l border-slate-100 bg-white flex flex-col overflow-hidden">
+          <div className="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+            <span className="text-[12px] font-semibold text-slate-900">Next Best Actions</span>
+            {activeNBAs.length > 0 && (
+              <span className="text-[10px] font-semibold text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded tabular-nums">
+                {activeNBAs.length}
+              </span>
             )}
           </div>
-        ) : (
-          <TimelineContent accountTimelines={accountTimelines} workspaceHrefByAccountId={workspaceHrefByAccountId} />
-        )}
+          <div className="flex-1 overflow-auto">
+            {activeNBAs.length === 0 ? (
+              <div className="px-4 py-8 text-center">
+                <p className="text-[12px] text-slate-400">No active actions</p>
+              </div>
+            ) : (
+              activeNBAs.map(nba => {
+                const acct = accounts.find(a => a.id === nba.accountId)
+                const workspaceHref = workspaceHrefByAccountId[nba.accountId] ?? `/accounts/${nba.accountId}`
+                return (
+                  <NBAItem
+                    key={nba.id}
+                    nba={nba}
+                    accountName={acct?.name ?? nba.accountId}
+                    workspaceHref={workspaceHref}
+                  />
+                )
+              })
+            )}
+          </div>
+        </div>
+
       </div>
     </div>
   )
