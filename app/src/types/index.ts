@@ -38,6 +38,8 @@ export interface Opportunity {
   movement: MovementTrend
   closeDate: string | null
   executionRisks: ExecutionRisk[]
+  createdAt: string
+  lastUpdatedAt: string
 }
 
 export type PlayType =

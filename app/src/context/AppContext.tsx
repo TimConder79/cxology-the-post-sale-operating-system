@@ -2,7 +2,7 @@ import { createContext, useContext, useState, type ReactNode } from 'react'
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
-  PipelineStage, PlayTemplate, AccountView,
+  PipelineStage, PlayTemplate, AccountView, ConfidenceLevel,
 } from '@/types'
 import {
   accounts as seedAccounts,
@@ -178,6 +178,34 @@ export function AppProvider({ children }: { children: ReactNode }) {
         return output.customerAdvanced ? { ...a, progressionStatus: 'advancing' as const } : a
       })
 
+      // 6. Update opportunity confidence when execution issues are resolved
+      // alignment_meeting completed + customer advanced → boost expansion/upsell confidence
+      // Any advancement → incrementally improve renewal confidence from low
+      const upgrade = (c: ConfidenceLevel): ConfidenceLevel =>
+        c === 'low' ? 'medium' : c === 'medium' ? 'high' : 'high'
+
+      const updatedOpportunities = s.opportunities.map(opp => {
+        if (opp.accountId !== run.accountId) return opp
+        if (!output.customerAdvanced) return opp
+
+        if (run.type === 'alignment_meeting') {
+          if (opp.type === 'expansion' || opp.type === 'upsell') {
+            return { ...opp, confidence: upgrade(opp.confidence), lastUpdatedAt: now }
+          }
+          if (opp.type === 'renewal' && opp.confidence === 'low') {
+            return { ...opp, confidence: 'medium' as ConfidenceLevel, lastUpdatedAt: now }
+          }
+        }
+
+        if (run.type === 'first_value' || run.type === 'kickoff') {
+          if (opp.type === 'renewal' && opp.confidence === 'low') {
+            return { ...opp, confidence: 'medium' as ConfidenceLevel, lastUpdatedAt: now }
+          }
+        }
+
+        return opp
+      })
+
       return {
         ...s,
         accounts: updatedAccounts,
@@ -186,6 +214,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         stageConfidences: updatedConfidences,
         nextBestActions: updatedNBAs,
         meetingOutputs: [...s.meetingOutputs, newOutput],
+        opportunities: updatedOpportunities,
       }
     })
   }

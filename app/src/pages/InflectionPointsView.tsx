@@ -27,6 +27,20 @@ const SEV: Record<GapSeverity, {
 
 const OPP_LABEL: Record<OpportunityType, string> = { renewal: 'Renewal', expansion: 'Expansion', upsell: 'Upsell' }
 
+// Which opportunity types are directly affected by each gap type
+const GAP_TO_OPP_TYPES: Record<GapType, OpportunityType[]> = {
+  first_value_overdue:           ['renewal'],
+  alignment_meeting_overdue:     ['expansion', 'upsell', 'renewal'],
+  alignment_meeting_approaching: ['expansion', 'upsell'],
+  goal_progress_stalled:         ['renewal'],
+  stakeholder_gap:               ['renewal', 'expansion'],
+  renewal_risk:                  ['renewal'],
+}
+
+function impactLabel(severity: GapSeverity): string {
+  return severity === 'high' ? 'blocked' : 'at risk'
+}
+
 // ─── Milestone metadata ───────────────────────────────────────────────────────
 
 interface MilestoneMeta {
@@ -135,9 +149,10 @@ function TodayPriorities({ gaps, opportunitiesByAccount, workspaceHrefByAccountI
       </div>
       <div className="divide-y divide-slate-50">
         {priorities.map((gap, i) => {
-          const sev      = SEV[gap.severity]
-          const acctOpps = opportunitiesByAccount[gap.accountId] ?? []
-          const href     = workspaceHrefByAccountId[gap.accountId] ?? `/accounts/${gap.accountId}`
+          const sev           = SEV[gap.severity]
+          const relevantTypes = GAP_TO_OPP_TYPES[gap.gapType]
+          const acctOpps      = (opportunitiesByAccount[gap.accountId] ?? []).filter(o => relevantTypes.includes(o.type))
+          const href          = workspaceHrefByAccountId[gap.accountId] ?? `/accounts/${gap.accountId}`
           return (
             <div key={gap.id} className="flex items-start gap-3 px-5 py-3.5">
               <span className="w-5 h-5 rounded-full bg-slate-100 text-[10px] font-bold text-slate-400 flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
@@ -148,7 +163,7 @@ function TodayPriorities({ gaps, opportunitiesByAccount, workspaceHrefByAccountI
                   <div className="flex flex-wrap gap-1.5">
                     {acctOpps.map(opp => (
                       <span key={opp.id} className={cn('text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1', sev.impactChip)}>
-                        {OPP_LABEL[opp.type]} · {formatCurrency(opp.estimatedValue)}
+                        {formatCurrency(opp.estimatedValue)} {OPP_LABEL[opp.type].toLowerCase()} {impactLabel(gap.severity)}
                       </span>
                     ))}
                   </div>
@@ -183,7 +198,7 @@ function GapCard({ gap, accountOpps, workspaceHref }: { gap: ExecutionGap; accou
             <div className="flex flex-wrap gap-1.5 mt-2.5">
               {accountOpps.map(opp => (
                 <span key={opp.id} className={cn('text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1', sev.impactChip)}>
-                  {OPP_LABEL[opp.type]} · {formatCurrency(opp.estimatedValue)}
+                  {formatCurrency(opp.estimatedValue)} {OPP_LABEL[opp.type].toLowerCase()} {impactLabel(gap.severity)}
                 </span>
               ))}
             </div>
@@ -227,7 +242,7 @@ function GapSection({ def, gaps, opportunitiesByAccount, workspaceHrefByAccountI
           <GapCard
             key={gap.id}
             gap={gap}
-            accountOpps={opportunitiesByAccount[gap.accountId] ?? []}
+            accountOpps={(opportunitiesByAccount[gap.accountId] ?? []).filter(o => GAP_TO_OPP_TYPES[gap.gapType].includes(o.type))}
             workspaceHref={workspaceHrefByAccountId[gap.accountId] ?? `/accounts/${gap.accountId}`}
           />
         ))}

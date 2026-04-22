@@ -465,16 +465,16 @@ export const opportunities: Opportunity[] = [
     type: 'renewal', stage: 'advocate',
     estimatedValue: 180000, confidence: 'medium',
     daysInStage: 18, progressionStatus: 'advancing', movement: 'improving',
-    closeDate: '2026-09-15',
-    executionRisks: [],
+    closeDate: '2026-09-15', executionRisks: [],
+    createdAt: '2025-12-01T00:00:00Z', lastUpdatedAt: '2026-04-21T09:00:00Z',
   },
   {
     id: 'opp-002', accountId: 'acc-001', accountName: 'Meridian Health Systems',
     type: 'expansion', stage: 'identify',
     estimatedValue: 45000, confidence: 'high',
     daysInStage: 7, progressionStatus: 'advancing', movement: 'flat',
-    closeDate: null,
-    executionRisks: [],
+    closeDate: null, executionRisks: [],
+    createdAt: '2026-03-15T00:00:00Z', lastUpdatedAt: '2026-04-21T09:00:00Z',
   },
   // ── Apex Logistics Group ─────────────────────────────────────────────────────
   {
@@ -487,6 +487,7 @@ export const opportunities: Opportunity[] = [
       { type: 'first_value_not_achieved', severity: 'blocking', label: 'First Value not achieved' },
       { type: 'decision_maker_dormant',   severity: 'blocking', label: 'COO dark — 78d no contact' },
     ],
+    createdAt: '2026-01-10T00:00:00Z', lastUpdatedAt: '2026-04-20T08:00:00Z',
   },
   // ── Vantage Financial ────────────────────────────────────────────────────────
   {
@@ -494,16 +495,16 @@ export const opportunities: Opportunity[] = [
     type: 'renewal', stage: 'intent',
     estimatedValue: 240000, confidence: 'high',
     daysInStage: 12, progressionStatus: 'advancing', movement: 'improving',
-    closeDate: '2026-06-01',
-    executionRisks: [],
+    closeDate: '2026-06-01', executionRisks: [],
+    createdAt: '2025-09-01T00:00:00Z', lastUpdatedAt: '2026-04-21T09:00:00Z',
   },
   {
     id: 'opp-005', accountId: 'acc-003', accountName: 'Vantage Financial',
     type: 'expansion', stage: 'advocate',
     estimatedValue: 72000, confidence: 'medium',
     daysInStage: 21, progressionStatus: 'advancing', movement: 'flat',
-    closeDate: null,
-    executionRisks: [],
+    closeDate: null, executionRisks: [],
+    createdAt: '2026-01-15T00:00:00Z', lastUpdatedAt: '2026-04-15T09:00:00Z',
   },
   // ── Thornwood Media ──────────────────────────────────────────────────────────
   {
@@ -517,6 +518,7 @@ export const opportunities: Opportunity[] = [
       { type: 'no_executive_stakeholder',  severity: 'blocking', label: 'No executive stakeholder' },
       { type: 'renewal_window_closing',    severity: 'blocking', label: 'Renewal in 23d — window closing' },
     ],
+    createdAt: '2026-01-05T00:00:00Z', lastUpdatedAt: '2026-04-20T08:00:00Z',
   },
   // ── ClearPath Analytics ──────────────────────────────────────────────────────
   {
@@ -528,14 +530,15 @@ export const opportunities: Opportunity[] = [
     executionRisks: [
       { type: 'missing_alignment_meeting', severity: 'warning', label: 'Alignment Meeting due in 19d' },
     ],
+    createdAt: '2026-02-01T00:00:00Z', lastUpdatedAt: '2026-04-21T09:00:00Z',
   },
   {
     id: 'opp-008', accountId: 'acc-005', accountName: 'ClearPath Analytics',
     type: 'upsell', stage: 'identify',
     estimatedValue: 28000, confidence: 'medium',
     daysInStage: 9, progressionStatus: 'stalled', movement: 'flat',
-    closeDate: null,
-    executionRisks: [],
+    closeDate: null, executionRisks: [],
+    createdAt: '2026-03-20T00:00:00Z', lastUpdatedAt: '2026-04-21T09:00:00Z',
   },
 ]
 
