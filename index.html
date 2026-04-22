@@ -28,10 +28,10 @@
 <!-- ABOUT TIM -->
 <section class="section" id="about" style="background:var(--navy-deep);border-top:1px solid rgba(255,255,255,.05)">
   <div class="section-inner">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1100px;margin:0 auto">
+    <div class="about-layout" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1100px;margin:0 auto">
 
       <!-- Left: Photo + credentials -->
-      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;align-self:start">
+      <div class="about-profile" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;align-self:start">
         <div style="position:relative">
           <div style="width:220px;height:220px;border-radius:50%;overflow:hidden;border:3px solid rgba(197,212,78,.3);box-shadow:0 0 0 8px rgba(197,212,78,.06),0 20px 60px rgba(0,0,0,.4)">
             <img src="Tim_Conder_Headshot.jpg" alt="Tim Conder" style="width:100%;height:100%;object-fit:cover;object-position:center top"/>
@@ -73,30 +73,33 @@
       </div>
 
       <!-- Right: Bio text -->
-      <div>
+      <div class="about-copy">
         <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--olive);margin-bottom:1rem">About Tim</div>
         <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--white);line-height:1.2;margin-bottom:1.5rem">I build systems that make retention predictable and growth repeatable.</h2>
 
-        <div style="display:flex;flex-direction:column;gap:1rem">
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">Over the last 20 years, I have worked at the intersection of Customer Success, Product, and Operations, beginning as a software engineer and gradually moving into leadership roles responsible for revenue-critical customer relationships, global teams, and post-sale transformation. Across that journey, one idea kept becoming clearer: the best companies do not treat retention as something to monitor after the fact. They design for it from the start.</p>
+        <div class="about-copy-body" style="display:flex;flex-direction:column;gap:1rem">
+          <p class="about-copy-paragraph">Over the last 20 years, I have worked at the intersection of Customer Success, Product, and Operations, beginning as a software engineer and gradually moving into leadership roles responsible for revenue-critical customer relationships, global teams, and post-sale transformation. Across that journey, one idea kept becoming clearer: the best companies do not treat retention as something to monitor after the fact. They design for it from the start.</p>
 
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">That belief was shaped most deeply during my time at Aprimo, where I led a global services organization supporting roughly 65% of a $100M revenue base. Over six consecutive years, we achieved 100% logo retention while maintaining strong growth and margins. What stayed with me was not just the result, but the question underneath it. Why did it work so consistently there, and why do so few organizations have a reliable way to reproduce that kind of outcome?</p>
+          <p class="about-copy-paragraph">That belief was shaped most deeply during my time at Aprimo, where I led a global services organization supporting roughly 65% of a $100M revenue base. Over six consecutive years, we achieved 100% logo retention while maintaining strong growth and margins. What stayed with me was not just the result, but the question underneath it. Why did it work so consistently there, and why do so few organizations have a reliable way to reproduce that kind of outcome?</p>
 
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">That question sent me on a longer journey. Since Aprimo, I have worked to better understand what actually makes post-sale performance repeatable across different companies, stages, industries, and pricing models. The conclusion I kept coming back to was that most organizations expect retention and expansion without giving post-sale the same structural rigor they give sales. They have good people, strong intentions, and useful tools, but not a true operating system. Execution varies by individual. Progress is hard to see. Expansion happens too late or not at all. Too much depends on heroics, and not enough is designed to scale.</p>
+          <p class="about-copy-paragraph">That question sent me on a longer journey. Since Aprimo, I have worked to better understand what actually makes post-sale performance repeatable across different companies, stages, industries, and pricing models. The conclusion I kept coming back to was that most organizations expect retention and expansion without giving post-sale the same structural rigor they give sales. They have good people, strong intentions, and useful tools, but not a true operating system. Execution varies by individual. Progress is hard to see. Expansion happens too late or not at all. Too much depends on heroics, and not enough is designed to scale.</p>
 
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">CXology was my effort to codify a better way. It became a way to translate years of operating experience into a structured model for post-sale execution: one that connects strategy to daily work, defines the moments that matter most, and creates a more consistent path from purchase to realized value, renewal, and growth. At the center of that model is the post-sale pipeline: <span style="color:rgba(255,255,255,.85);font-weight:500">Identify, Align, Advocate, Intent, and Net Revenue Close.</span></p>
+          <div class="about-pipeline-callout">
+            <div class="about-pipeline-label">Core Model</div>
+            <p class="about-copy-paragraph">CXology was my effort to codify a better way. It became a way to translate years of operating experience into a structured model for post-sale execution: one that connects strategy to daily work, defines the moments that matter most, and creates a more consistent path from purchase to realized value, renewal, and growth. At the center of that model is the post-sale pipeline: <span style="color:rgba(255,255,255,.88);font-weight:600">Identify, Align, Advocate, Intent, and Net Revenue Close.</span></p>
+          </div>
 
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">That pipeline is not meant to mimic pre-sales. It exists to solve a similar problem in a different context. Sales has pipeline because pipeline creates visibility, discipline, accountability, and continuous improvement. Post-sale needs its own equivalent. Not because customers should be "sold" in the traditional sense, but because expansion, renewal, and advocacy become far more predictable when value is being built intentionally, stakeholder alignment is visible, and progress is managed as a system rather than left to individual style.</p>
+          <p class="about-copy-paragraph">That pipeline is not meant to mimic pre-sales. It exists to solve a similar problem in a different context. Sales has pipeline because pipeline creates visibility, discipline, accountability, and continuous improvement. Post-sale needs its own equivalent. Not because customers should be "sold" in the traditional sense, but because expansion, renewal, and advocacy become far more predictable when value is being built intentionally, stakeholder alignment is visible, and progress is managed as a system rather than left to individual style.</p>
 
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">But the pipeline alone is not enough. The real work happens through integrated plays executed at the right moments across the lifecycle: the moments where trust is built or lost, where value becomes tangible or stalls, and where momentum either compounds or begins to fade. That is the larger idea behind this site. It is not just a book, and it is not just a collection of frameworks. It is a working expression of the system I have been building, testing, and refining: a post-sale operating system designed to help companies make retention more predictable, growth more repeatable, and Customer Success more accountable to revenue.</p>
+          <p class="about-copy-paragraph">But the pipeline alone is not enough. The real work happens through integrated plays executed at the right moments across the lifecycle: the moments where trust is built or lost, where value becomes tangible or stalls, and where momentum either compounds or begins to fade. That is the larger idea behind this site. It is not just a book, and it is not just a collection of frameworks. It is a working expression of the system I have been building, testing, and refining: a post-sale operating system designed to help companies make retention more predictable, growth more repeatable, and Customer Success more accountable to revenue.</p>
 
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">More recently, I made the decision to move from building CXology independently toward bringing this work into a full-time leadership role. The opportunity I am most interested in is not simply advising from the outside. It is embedding these ideas inside a company where they can shape how teams work, how customers experience value, and how revenue is retained and expanded over time.</p>
+          <p class="about-copy-paragraph">More recently, I made the decision to move from building CXology independently toward bringing this work into a full-time leadership role. The opportunity I am most interested in is not simply advising from the outside. It is embedding these ideas inside a company where they can shape how teams work, how customers experience value, and how revenue is retained and expanded over time.</p>
 
-          <p style="font-size:0.92rem;color:rgba(255,255,255,.6);line-height:1.75">I bring a proven record of leading customer-facing and operational teams, translating strategy into repeatable execution, and building systems that help companies move beyond reactive account management toward a more disciplined, scalable post-sale model. I am particularly interested in VP or Head of Customer Success and Customer Operations roles in growth-stage B2B SaaS and healthtech companies, especially where there is real ambition to make post-sale a strategic lever for growth rather than a function that simply supports it.</p>
+          <p class="about-copy-paragraph">I bring a proven record of leading customer-facing and operational teams, translating strategy into repeatable execution, and building systems that help companies move beyond reactive account management toward a more disciplined, scalable post-sale model. I am particularly interested in VP or Head of Customer Success and Customer Operations roles in growth-stage B2B SaaS and healthtech companies, especially where there is real ambition to make post-sale a strategic lever for growth rather than a function that simply supports it.</p>
         </div>
 
         <!-- Seeking -->
-        <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.2);border-radius:var(--radius-sm);display:flex;align-items:center;gap:1rem">
+        <div class="about-seeking" style="margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.2);border-radius:var(--radius-sm);display:flex;align-items:center;gap:1rem">
           <div style="font-size:1.4rem">🎯</div>
           <div>
             <div style="font-size:0.78rem;font-weight:700;color:var(--teal);margin-bottom:0.2rem">Currently Seeking</div>
@@ -109,6 +112,57 @@
   </div>
 </section>
 <style>
+  #about {
+    position: relative;
+    overflow: hidden;
+  }
+  #about::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(197,212,78,.08), transparent 28%),
+      radial-gradient(circle at 88% 82%, rgba(29,158,117,.08), transparent 26%);
+    pointer-events: none;
+  }
+  .about-layout {
+    position: relative;
+    z-index: 1;
+  }
+  .about-copy {
+    max-width: 640px;
+  }
+  .about-copy-body {
+    padding: 1.5rem 1.75rem;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(8px);
+  }
+  .about-copy-paragraph {
+    max-width: none;
+    font-size: 0.98rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,.72);
+  }
+  .about-pipeline-callout {
+    padding: 1rem 1.1rem;
+    background: rgba(197,212,78,.08);
+    border: 1px solid rgba(197,212,78,.18);
+    border-left: 3px solid var(--olive);
+    border-radius: 10px;
+  }
+  .about-pipeline-label {
+    margin-bottom: 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--olive);
+  }
+  .about-seeking {
+    align-items: flex-start !important;
+  }
 @media (max-width: 768px) {
   #about .section-inner > div {
     grid-template-columns: 1fr !important;
@@ -116,6 +170,17 @@
   }
   #about .section-inner > div > div:first-child {
     order: 1;
+  }
+  .about-copy-body {
+    padding: 1.15rem;
+  }
+  .about-copy-paragraph {
+    font-size: 0.94rem;
+    line-height: 1.8;
+  }
+  .about-profile > div:first-child > div:first-child {
+    width: 180px !important;
+    height: 180px !important;
   }
 }
 </style>
