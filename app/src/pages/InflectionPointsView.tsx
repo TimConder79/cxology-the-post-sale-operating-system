@@ -279,9 +279,9 @@ function MilestoneNode({
 }
 
 function MilestoneDetail({
-  milestone, accountId, workspaceHref, onClose,
+  milestone, workspaceHref, onClose,
 }: {
-  milestone: TimelineMilestone; accountId: string; accountName: string; workspaceHref: string; onClose: () => void
+  milestone: TimelineMilestone; accountName: string; workspaceHref: string; onClose: () => void
 }) {
   const meta    = MILESTONE_META[milestone.id]
   const needsAction = milestone.status === 'overdue' || milestone.status === 'in_progress'
@@ -447,7 +447,6 @@ function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accou
               return ms ? (
                 <MilestoneDetail
                   milestone={ms}
-                  accountId={account.id}
                   accountName={account.name}
                   workspaceHref={workspaceHrefByAccountId[account.id] ?? `/accounts/${account.id}`}
                   onClose={() => setSelectedKey(null)}
