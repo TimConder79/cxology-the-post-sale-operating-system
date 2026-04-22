@@ -6,11 +6,12 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
+import { buildAccountWorkspacePath, getWorkspaceRecommendation } from '@/lib/accountRouting'
 import { deriveExecutionGaps, SEVERITY_ORDER } from '@/lib/executionGaps'
 import type { ExecutionGap, GapSeverity, GapType } from '@/lib/executionGaps'
 import { formatCurrency, STAGE_LABELS, cn } from '@/lib/utils'
 import type {
-  Opportunity, OpportunityType, MilestoneId, MilestoneStatus,
+  AccountView, Opportunity, OpportunityType, MilestoneId, MilestoneStatus,
   TimelineMilestone, AccountTimeline,
 } from '@/types'
 
@@ -113,8 +114,8 @@ const SECTIONS: SectionDef[] = [
 // PRIORITY VIEW COMPONENTS
 // ═══════════════════════════════════════════════════════════════
 
-function TodayPriorities({ gaps, opportunitiesByAccount }: {
-  gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>
+function TodayPriorities({ gaps, opportunitiesByAccount, workspaceHrefByAccountId }: {
+  gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>; workspaceHrefByAccountId: Record<string, string>
 }) {
   const high = gaps.filter(g => g.severity === 'high')
   const med  = gaps.filter(g => g.severity === 'medium')
@@ -136,8 +137,7 @@ function TodayPriorities({ gaps, opportunitiesByAccount }: {
         {priorities.map((gap, i) => {
           const sev      = SEV[gap.severity]
           const acctOpps = opportunitiesByAccount[gap.accountId] ?? []
-          const hasPlay  = !!gap.linkedPlayRunId
-          const href     = hasPlay ? `/accounts/${gap.accountId}/plays/${gap.linkedPlayRunId}` : `/accounts/${gap.accountId}`
+          const href     = workspaceHrefByAccountId[gap.accountId] ?? `/accounts/${gap.accountId}`
           return (
             <div key={gap.id} className="flex items-start gap-3 px-5 py-3.5">
               <span className="w-5 h-5 rounded-full bg-slate-100 text-[10px] font-bold text-slate-400 flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
@@ -155,7 +155,7 @@ function TodayPriorities({ gaps, opportunitiesByAccount }: {
                 )}
               </div>
               <Link to={href} className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors flex-shrink-0 mt-0.5">
-                {hasPlay ? 'Open Play' : 'View Account'}
+                Open Workspace
                 <ChevronRight size={11} />
               </Link>
             </div>
@@ -166,9 +166,8 @@ function TodayPriorities({ gaps, opportunitiesByAccount }: {
   )
 }
 
-function GapCard({ gap, accountOpps }: { gap: ExecutionGap; accountOpps: Opportunity[] }) {
+function GapCard({ gap, accountOpps, workspaceHref }: { gap: ExecutionGap; accountOpps: Opportunity[]; workspaceHref: string }) {
   const sev = SEV[gap.severity]
-  const hasPlay = !!gap.linkedPlayRunId
   return (
     <div className="relative bg-white rounded-xl border border-slate-200 pl-5 pr-4 py-4 hover:shadow-md transition-all duration-150 group">
       <div className={cn('absolute left-0 top-0 bottom-0 w-[3px] rounded-l-xl', sev.accent)} />
@@ -194,26 +193,17 @@ function GapCard({ gap, accountOpps }: { gap: ExecutionGap; accountOpps: Opportu
           {gap.ageDays > 0 && (
             <span className={cn('text-[10px] font-semibold px-1.5 py-0.5 rounded ring-1 tabular-nums', sev.agePill)}>{gap.ageDays}d</span>
           )}
-          <div className="flex items-center gap-1.5">
-            {hasPlay && (
-              <Link to={`/accounts/${gap.accountId}/plays/${gap.linkedPlayRunId}`} className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
-                Open Play<ChevronRight size={11} />
-              </Link>
-            )}
-            <Link to={`/accounts/${gap.accountId}`} className={cn('flex items-center gap-1 text-[11px] font-medium px-2.5 py-1.5 rounded-lg transition-colors',
-              hasPlay ? 'text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100' : 'text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 font-semibold'
-            )}>
-              View Account<ArrowUpRight size={11} />
-            </Link>
-          </div>
+          <Link to={workspaceHref} className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
+            Open Workspace<ArrowUpRight size={11} />
+          </Link>
         </div>
       </div>
     </div>
   )
 }
 
-function GapSection({ def, gaps, opportunitiesByAccount }: {
-  def: SectionDef; gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>
+function GapSection({ def, gaps, opportunitiesByAccount, workspaceHrefByAccountId }: {
+  def: SectionDef; gaps: ExecutionGap[]; opportunitiesByAccount: Record<string, Opportunity[]>; workspaceHrefByAccountId: Record<string, string>
 }) {
   if (gaps.length === 0) return null
   const { Icon } = def
@@ -233,7 +223,14 @@ function GapSection({ def, gaps, opportunitiesByAccount }: {
         </div>
       </div>
       <div className="space-y-2 ml-10">
-        {sorted.map(gap => <GapCard key={gap.id} gap={gap} accountOpps={opportunitiesByAccount[gap.accountId] ?? []} />)}
+        {sorted.map(gap => (
+          <GapCard
+            key={gap.id}
+            gap={gap}
+            accountOpps={opportunitiesByAccount[gap.accountId] ?? []}
+            workspaceHref={workspaceHrefByAccountId[gap.accountId] ?? `/accounts/${gap.accountId}`}
+          />
+        ))}
       </div>
     </div>
   )
@@ -282,9 +279,9 @@ function MilestoneNode({
 }
 
 function MilestoneDetail({
-  milestone, accountId, onClose,
+  milestone, accountId, workspaceHref, onClose,
 }: {
-  milestone: TimelineMilestone; accountId: string; accountName: string; onClose: () => void
+  milestone: TimelineMilestone; accountId: string; accountName: string; workspaceHref: string; onClose: () => void
 }) {
   const meta    = MILESTONE_META[milestone.id]
   const needsAction = milestone.status === 'overdue' || milestone.status === 'in_progress'
@@ -345,18 +342,11 @@ function MilestoneDetail({
         {/* CTAs */}
         <div className="flex flex-col items-end gap-2 flex-shrink-0">
           <button onClick={onClose} className="text-[11px] text-slate-300 hover:text-slate-500 transition-colors px-1">✕</button>
-          {milestone.linkedPlayRunId ? (
-            <Link to={`/accounts/${accountId}/plays/${milestone.linkedPlayRunId}`}
-              className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
-              Open Play<ChevronRight size={11} />
-            </Link>
-          ) : milestone.linkedPlayTemplateId ? (
-            <Link to={`/accounts/${accountId}`}
-              className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
-              Start Play<ChevronRight size={11} />
-            </Link>
-          ) : null}
-          <Link to={`/accounts/${accountId}`}
+          <Link to={workspaceHref}
+            className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
+            Open Workspace<ChevronRight size={11} />
+          </Link>
+          <Link to={workspaceHref}
             className="flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 px-2.5 py-1.5 rounded-lg transition-colors">
             View Account<ArrowUpRight size={11} />
           </Link>
@@ -366,7 +356,7 @@ function MilestoneDetail({
   )
 }
 
-function TimelineContent({ accountTimelines }: { accountTimelines: AccountTimeline[] }) {
+function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accountTimelines: AccountTimeline[]; workspaceHrefByAccountId: Record<string, string> }) {
   const { accounts } = useApp()
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
 
@@ -459,6 +449,7 @@ function TimelineContent({ accountTimelines }: { accountTimelines: AccountTimeli
                   milestone={ms}
                   accountId={account.id}
                   accountName={account.name}
+                  workspaceHref={workspaceHrefByAccountId[account.id] ?? `/accounts/${account.id}`}
                   onClose={() => setSelectedKey(null)}
                 />
               ) : null
@@ -497,7 +488,7 @@ export function InflectionPointsView() {
   const [activeTab, setActiveTab] = useState<'priority' | 'timeline'>('priority')
   const {
     accounts, inflectionPoints, stakeholderMaps, contacts, playRuns,
-    opportunities, accountTimelines,
+    opportunities, accountTimelines, getAccountView,
   } = useApp()
 
   const gaps         = deriveExecutionGaps(accounts, inflectionPoints, stakeholderMaps, contacts, playRuns)
@@ -514,6 +505,20 @@ export function InflectionPointsView() {
   const opportunitiesByAccount = opportunities.reduce<Record<string, Opportunity[]>>((acc, o) => {
     if (!acc[o.accountId]) acc[o.accountId] = []
     acc[o.accountId].push(o)
+    return acc
+  }, {})
+
+  const accountViewsById = accounts.reduce<Record<string, AccountView>>((acc, account) => {
+    const view = getAccountView(account.id)
+    if (view) acc[account.id] = view
+    return acc
+  }, {})
+
+  const workspaceHrefByAccountId = accounts.reduce<Record<string, string>>((acc, account) => {
+    const view = accountViewsById[account.id]
+    acc[account.id] = view
+      ? buildAccountWorkspacePath(account.id, getWorkspaceRecommendation(view, 'inflection-points'))
+      : `/accounts/${account.id}`
     return acc
   }, {})
 
@@ -611,20 +616,21 @@ export function InflectionPointsView() {
               </div>
             ) : (
               <>
-                <TodayPriorities gaps={gaps} opportunitiesByAccount={opportunitiesByAccount} />
+                <TodayPriorities gaps={gaps} opportunitiesByAccount={opportunitiesByAccount} workspaceHrefByAccountId={workspaceHrefByAccountId} />
                 {SECTIONS.map(def => (
                   <GapSection
                     key={def.label}
                     def={def}
                     gaps={gaps.filter(g => (def.types as string[]).includes(g.gapType))}
                     opportunitiesByAccount={opportunitiesByAccount}
+                    workspaceHrefByAccountId={workspaceHrefByAccountId}
                   />
                 ))}
               </>
             )}
           </div>
         ) : (
-          <TimelineContent accountTimelines={accountTimelines} />
+          <TimelineContent accountTimelines={accountTimelines} workspaceHrefByAccountId={workspaceHrefByAccountId} />
         )}
       </div>
     </div>

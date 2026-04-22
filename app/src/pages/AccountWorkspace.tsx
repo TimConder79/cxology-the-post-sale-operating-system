@@ -1,11 +1,12 @@
-import { useParams, useNavigate, Link } from 'react-router-dom'
-import type { ReactNode } from 'react'
+import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom'
+import { useEffect, type ReactNode } from 'react'
 import {
   ChevronLeft, CheckCircle2, Circle, AlertCircle, Clock,
   ArrowRight, User, Zap, TrendingUp, AlertTriangle,
   Calendar, ChevronRight,
 } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
+import { getWorkspaceRecommendation } from '@/lib/accountRouting'
 import {
   STAGE_ORDER, STAGE_LABELS, PROGRESSION, IP_STATUS, INFLUENCE, COVERAGE,
   PLAY_RUN_STATUS, SIGNAL_STATUS,
@@ -21,9 +22,9 @@ function IPIcon({ status }: { status: InflectionPointStatus }) {
   return <Circle size={size} className="text-slate-200 flex-shrink-0" />
 }
 
-function Section({ title, children, className }: { title: string; children: ReactNode; className?: string }) {
+function Section({ id, title, children, className }: { id?: string; title: string; children: ReactNode; className?: string }) {
   return (
-    <div className={cn('bg-white rounded-xl border border-slate-200', className)}>
+    <div id={id} className={cn('bg-white rounded-xl border border-slate-200 scroll-mt-6', className)}>
       <div className="px-5 py-4 border-b border-slate-100">
         <h2 className="text-[12px] font-semibold text-slate-500 uppercase tracking-widest">{title}</h2>
       </div>
@@ -35,10 +36,15 @@ function Section({ title, children, className }: { title: string; children: Reac
 export function AccountWorkspace() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const { getAccountView, contacts } = useApp()
 
   const account = getAccountView(id!)
   if (!account) return <div className="p-8 text-slate-500">Account not found.</div>
+
+  const source = searchParams.get('source') === 'inflection-points' ? 'inflection-points' : 'pipeline'
+  const focus = searchParams.get('focus')
+  const recommendation = getWorkspaceRecommendation(account, source)
 
   const stageIndex = STAGE_ORDER.indexOf(account.stage)
   const renewal    = daysUntil(account.renewalDate)
@@ -47,18 +53,42 @@ export function AccountWorkspace() {
   const activeRun  = account.playRuns.find(r => r.status === 'in_progress')
   const otherRuns  = account.playRuns.filter(r => r.id !== activeRun?.id)
 
+  useEffect(() => {
+    if (!focus) return
+
+    const section = document.getElementById(focus)
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [focus])
+
   return (
     <div className="flex flex-col h-full">
       {/* Top bar */}
       <div className="flex-shrink-0 px-8 h-[60px] flex items-center justify-between border-b border-slate-100 bg-white">
         <button
-          onClick={() => navigate('/pipeline')}
+          onClick={() => navigate(source === 'inflection-points' ? '/inflection-points' : '/pipeline')}
           className="flex items-center gap-1.5 text-[12px] text-slate-400 hover:text-slate-700 transition-colors"
         >
           <ChevronLeft size={14} />
-          Pipeline
+          {source === 'inflection-points' ? 'Inflection Points' : 'Pipeline'}
         </button>
         <div className="flex items-center gap-3">
+          <button
+            onClick={() => {
+              if (recommendation.targetRunId) {
+                navigate(`/accounts/${account.id}/plays/${recommendation.targetRunId}`)
+                return
+              }
+
+              const targetId = recommendation.focus === 'pipeline' ? 'pipeline' : recommendation.focus
+              document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 hover:bg-brand-700 text-white text-[12px] font-semibold px-3 py-2 transition-colors"
+          >
+            {recommendation.ctaLabel}
+            <ChevronRight size={13} />
+          </button>
           <span className={cn(
             'inline-flex items-center gap-1.5 text-[11px] font-medium px-2.5 py-1 rounded-full ring-1',
             PROGRESSION[account.progressionStatus].badge
@@ -89,7 +119,7 @@ export function AccountWorkspace() {
           </div>
 
           {/* Stage pipeline */}
-          <div className="bg-white rounded-xl border border-slate-200 p-5 mb-5">
+          <div id="pipeline" className="bg-white rounded-xl border border-slate-200 p-5 mb-5 scroll-mt-6">
             <div className="flex items-center justify-between mb-4">
               <div className="text-[12px] font-semibold text-slate-500 uppercase tracking-widest">Pipeline Stage</div>
               <div className="flex items-center gap-2 text-[11px] text-slate-400">
@@ -167,7 +197,7 @@ export function AccountWorkspace() {
             <div className="space-y-5">
 
               {/* Inflection Points */}
-              <Section title="Inflection Points">
+              <Section id="inflection-points" title="Inflection Points">
                 <div className="space-y-3">
                   {account.inflectionPoints.map((ip, i) => (
                     <div key={ip.id} className="flex items-start gap-3">
@@ -198,7 +228,7 @@ export function AccountWorkspace() {
               </Section>
 
               {/* Plays */}
-              <Section title="Plays">
+              <Section id="plays" title="Plays">
                 <div className="space-y-2">
                   {/* Active play — prominent */}
                   {activeRun && (
@@ -262,7 +292,7 @@ export function AccountWorkspace() {
             <div className="space-y-5">
 
               {/* Next Best Actions */}
-              <div className="bg-white rounded-xl border border-slate-200">
+              <div id="next-best-actions" className="bg-white rounded-xl border border-slate-200 scroll-mt-6">
                 <div className="px-5 py-4 border-b border-slate-100 flex items-center gap-2">
                   <Zap size={13} className="text-brand-500 fill-brand-100" />
                   <h2 className="text-[12px] font-semibold text-slate-500 uppercase tracking-widest">Next Best Actions</h2>
@@ -292,7 +322,7 @@ export function AccountWorkspace() {
               </div>
 
               {/* Stakeholder Map */}
-              <Section title="Stakeholder Map">
+              <Section id="stakeholders" title="Stakeholder Map">
                 <div className="space-y-2.5">
                   {account.stakeholderMaps.map(sm => {
                     const contact = contacts.find(c => c.id === sm.contactId)

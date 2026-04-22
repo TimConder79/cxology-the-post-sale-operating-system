@@ -1,10 +1,11 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { TrendingUp, TrendingDown, Minus, ArrowRight, ChevronRight, AlertCircle } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
+import { buildAccountWorkspacePath, getWorkspaceRecommendation } from '@/lib/accountRouting'
 import {
   STAGE_ORDER, STAGE_LABELS, formatCurrency, daysUntil, cn,
 } from '@/lib/utils'
-import type { PipelineStageId, Opportunity, NextBestAction, ProgressionStatus, MovementTrend, OpportunityType, ConfidenceLevel } from '@/types'
+import type { AccountView, PipelineStageId, Opportunity, NextBestAction, ProgressionStatus, MovementTrend, OpportunityType, ConfidenceLevel } from '@/types'
 
 // ─── Config ───────────────────────────────────────────────────────────────────
 
@@ -44,7 +45,7 @@ function MovementIcon({ movement, status }: { movement: MovementTrend; status: P
 
 // ─── Opportunity card ─────────────────────────────────────────────────────────
 
-function OppCard({ opp }: { opp: Opportunity }) {
+function OppCard({ opp, workspaceHref }: { opp: Opportunity; workspaceHref: string }) {
   const navigate  = useNavigate()
   const typeConf  = OPP_TYPE[opp.type]
   const confConf  = CONFIDENCE[opp.confidence]
@@ -56,7 +57,7 @@ function OppCard({ opp }: { opp: Opportunity }) {
 
   return (
     <button
-      onClick={() => navigate(`/accounts/${opp.accountId}`)}
+      onClick={() => navigate(workspaceHref)}
       className={cn(
         'w-full text-left bg-white rounded-xl border transition-all group',
         'hover:shadow-md hover:-translate-y-0.5 duration-150',
@@ -139,19 +140,15 @@ function OppCard({ opp }: { opp: Opportunity }) {
 
 // ─── NBA item ─────────────────────────────────────────────────────────────────
 
-function NBAItem({ nba, playRunId, accountName }: { nba: NextBestAction; playRunId: string | null; accountName: string }) {
+function NBAItem({ nba, accountName, workspaceHref }: { nba: NextBestAction; accountName: string; workspaceHref: string }) {
   const dotColor =
     nba.priority === 'high'   ? 'bg-red-500'   :
     nba.priority === 'medium' ? 'bg-amber-400' :
                                 'bg-slate-300'
 
-  const href = playRunId
-    ? `/accounts/${nba.accountId}/plays/${playRunId}`
-    : `/accounts/${nba.accountId}`
-
   return (
     <Link
-      to={href}
+      to={workspaceHref}
       className="flex items-start gap-2.5 px-4 py-3 hover:bg-slate-50 transition-colors group border-b border-slate-50"
     >
       <div className={cn('w-1.5 h-1.5 rounded-full mt-[5px] flex-shrink-0', dotColor)} />
@@ -169,7 +166,13 @@ function NBAItem({ nba, playRunId, accountName }: { nba: NextBestAction; playRun
 // ─── Main view ────────────────────────────────────────────────────────────────
 
 export function PipelineView() {
-  const { opportunities, accounts, nextBestActions, playRuns } = useApp()
+  const { opportunities, accounts, nextBestActions, getAccountView } = useApp()
+
+  const accountViewsById = accounts.reduce<Record<string, AccountView>>((acc, account) => {
+    const view = getAccountView(account.id)
+    if (view) acc[account.id] = view
+    return acc
+  }, {})
 
   const byStage = STAGE_ORDER.reduce<Record<PipelineStageId, Opportunity[]>>(
     (acc, s) => { acc[s] = opportunities.filter(o => o.stage === s); return acc },
@@ -263,7 +266,13 @@ export function PipelineView() {
                           <span className="text-[12px] text-slate-300">No opportunities</span>
                         </div>
                       )}
-                      {stageOpps.map(opp => <OppCard key={opp.id} opp={opp} />)}
+                      {stageOpps.map(opp => {
+                        const accountView = accountViewsById[opp.accountId]
+                        const workspaceHref = accountView
+                          ? buildAccountWorkspacePath(opp.accountId, getWorkspaceRecommendation(accountView, 'pipeline'))
+                          : `/accounts/${opp.accountId}`
+                        return <OppCard key={opp.id} opp={opp} workspaceHref={workspaceHref} />
+                      })}
                     </div>
                   </div>
 
@@ -295,18 +304,17 @@ export function PipelineView() {
               </div>
             ) : (
               activeNBAs.map(nba => {
-                const run  = playRuns.find(
-                  r => r.accountId === nba.accountId &&
-                       r.playTemplateId === nba.linkedPlayTemplateId &&
-                       r.status === 'in_progress'
-                )
                 const acct = accounts.find(a => a.id === nba.accountId)
+                const accountView = accountViewsById[nba.accountId]
+                const workspaceHref = accountView
+                  ? buildAccountWorkspacePath(nba.accountId, getWorkspaceRecommendation(accountView, 'pipeline'))
+                  : `/accounts/${nba.accountId}`
                 return (
                   <NBAItem
                     key={nba.id}
                     nba={nba}
-                    playRunId={run?.id ?? null}
                     accountName={acct?.name ?? nba.accountId}
+                    workspaceHref={workspaceHref}
                   />
                 )
               })
