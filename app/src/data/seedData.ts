@@ -1,6 +1,6 @@
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
-  PlayRun, MeetingBrief, NextBestAction, PipelineStage, PlayTemplate,
+  PlayRun, MeetingBrief, NextBestAction, PipelineStage, PlayTemplate, Opportunity,
 } from '@/types'
 
 // ─── Reference: Pipeline Stages ──────────────────────────────────────────────
@@ -455,11 +455,96 @@ export const stageConfidences: StageConfidence[] = [
 
 // ─── Next Best Actions ────────────────────────────────────────────────────────
 
+// ─── Opportunities ────────────────────────────────────────────────────────────
+
+export const opportunities: Opportunity[] = [
+  // ── Meridian Health Systems ──────────────────────────────────────────────────
+  {
+    id: 'opp-001', accountId: 'acc-001', accountName: 'Meridian Health Systems',
+    type: 'renewal', stage: 'advocate',
+    estimatedValue: 180000, confidence: 'medium',
+    daysInStage: 18, progressionStatus: 'advancing', movement: 'improving',
+    closeDate: '2026-09-15',
+    executionRisks: [],
+  },
+  {
+    id: 'opp-002', accountId: 'acc-001', accountName: 'Meridian Health Systems',
+    type: 'expansion', stage: 'identify',
+    estimatedValue: 45000, confidence: 'high',
+    daysInStage: 7, progressionStatus: 'advancing', movement: 'flat',
+    closeDate: null,
+    executionRisks: [],
+  },
+  // ── Apex Logistics Group ─────────────────────────────────────────────────────
+  {
+    id: 'opp-003', accountId: 'acc-002', accountName: 'Apex Logistics Group',
+    type: 'renewal', stage: 'align',
+    estimatedValue: 95000, confidence: 'low',
+    daysInStage: 34, progressionStatus: 'at_risk', movement: 'declining',
+    closeDate: '2026-07-01',
+    executionRisks: [
+      { type: 'first_value_not_achieved', severity: 'blocking', label: 'First Value not achieved' },
+      { type: 'decision_maker_dormant',   severity: 'blocking', label: 'COO dark — 78d no contact' },
+    ],
+  },
+  // ── Vantage Financial ────────────────────────────────────────────────────────
+  {
+    id: 'opp-004', accountId: 'acc-003', accountName: 'Vantage Financial',
+    type: 'renewal', stage: 'intent',
+    estimatedValue: 240000, confidence: 'high',
+    daysInStage: 12, progressionStatus: 'advancing', movement: 'improving',
+    closeDate: '2026-06-01',
+    executionRisks: [],
+  },
+  {
+    id: 'opp-005', accountId: 'acc-003', accountName: 'Vantage Financial',
+    type: 'expansion', stage: 'advocate',
+    estimatedValue: 72000, confidence: 'medium',
+    daysInStage: 21, progressionStatus: 'advancing', movement: 'flat',
+    closeDate: null,
+    executionRisks: [],
+  },
+  // ── Thornwood Media ──────────────────────────────────────────────────────────
+  {
+    id: 'opp-006', accountId: 'acc-004', accountName: 'Thornwood Media',
+    type: 'renewal', stage: 'align',
+    estimatedValue: 48000, confidence: 'low',
+    daysInStage: 62, progressionStatus: 'at_risk', movement: 'declining',
+    closeDate: '2026-05-15',
+    executionRisks: [
+      { type: 'first_value_not_achieved',  severity: 'blocking', label: 'First Value not achieved' },
+      { type: 'no_executive_stakeholder',  severity: 'blocking', label: 'No executive stakeholder' },
+      { type: 'renewal_window_closing',    severity: 'blocking', label: 'Renewal in 23d — window closing' },
+    ],
+  },
+  // ── ClearPath Analytics ──────────────────────────────────────────────────────
+  {
+    id: 'opp-007', accountId: 'acc-005', accountName: 'ClearPath Analytics',
+    type: 'renewal', stage: 'align',
+    estimatedValue: 132000, confidence: 'medium',
+    daysInStage: 9, progressionStatus: 'advancing', movement: 'improving',
+    closeDate: '2026-11-01',
+    executionRisks: [
+      { type: 'missing_alignment_meeting', severity: 'warning', label: 'Alignment Meeting due in 19d' },
+    ],
+  },
+  {
+    id: 'opp-008', accountId: 'acc-005', accountName: 'ClearPath Analytics',
+    type: 'upsell', stage: 'identify',
+    estimatedValue: 28000, confidence: 'medium',
+    daysInStage: 9, progressionStatus: 'stalled', movement: 'flat',
+    closeDate: null,
+    executionRisks: [],
+  },
+]
+
+// ─── Next Best Actions ────────────────────────────────────────────────────────
+
 export const nextBestActions: NextBestAction[] = [
   // Meridian
   {
     id: 'nba-001', accountId: 'acc-001',
-    label: 'Run Alignment Meeting — due in 7 days',
+    label: 'Run Alignment Meeting — Meridian Renewal',
     reason: 'Last alignment was 30 days ago. Goal progress needs review before end of quarter. Stage confidence requires this to advance.',
     priority: 'high', source: 'rule', status: 'active',
     linkedPlayTemplateId: 'tmpl-alignment-meeting', linkedInflectionPointId: 'ip-002', linkedStakeholderMapId: null,
@@ -467,7 +552,7 @@ export const nextBestActions: NextBestAction[] = [
   },
   {
     id: 'nba-002', accountId: 'acc-001',
-    label: 'Introduce CFO to executive sponsor before renewal',
+    label: 'Introduce CFO — required for Meridian Renewal close',
     reason: 'Renewal requires finance sign-off. No contact established with CFO David Ko. Renewal is in 147 days.',
     priority: 'high', source: 'rule', status: 'active',
     linkedPlayTemplateId: null, linkedInflectionPointId: null, linkedStakeholderMapId: 'sm-003',
@@ -484,7 +569,7 @@ export const nextBestActions: NextBestAction[] = [
   // Apex
   {
     id: 'nba-004', accountId: 'acc-002',
-    label: 'First Value is 36 days overdue — escalate internally',
+    label: 'First Value overdue — Apex Renewal at risk',
     reason: 'Customer has not achieved First Value. Risk of churn is elevated. Renewal in 71 days.',
     priority: 'high', source: 'rule', status: 'active',
     linkedPlayTemplateId: null, linkedInflectionPointId: 'ip-006', linkedStakeholderMapId: null,
@@ -492,7 +577,7 @@ export const nextBestActions: NextBestAction[] = [
   },
   {
     id: 'nba-005', accountId: 'acc-002',
-    label: 'Re-engage COO — last contact was 78 days ago',
+    label: 'Re-engage COO — Apex Renewal stalling',
     reason: 'Decision maker has gone dark. Renewal is in 71 days. Non-renewal risk is high.',
     priority: 'high', source: 'rule', status: 'active',
     linkedPlayTemplateId: null, linkedInflectionPointId: null, linkedStakeholderMapId: 'sm-005',
@@ -501,7 +586,7 @@ export const nextBestActions: NextBestAction[] = [
   // Vantage
   {
     id: 'nba-006', accountId: 'acc-003',
-    label: 'Advance Renew & Grow play — renewal in 41 days',
+    label: 'Advance Renew & Grow — Vantage Renewal in 41d',
     reason: 'Account is at Intent stage with 88% confidence. Begin license audit and expansion discovery.',
     priority: 'high', source: 'rule', status: 'active',
     linkedPlayTemplateId: 'tmpl-renew-grow', linkedInflectionPointId: null, linkedStakeholderMapId: null,
@@ -510,7 +595,7 @@ export const nextBestActions: NextBestAction[] = [
   // Thornwood
   {
     id: 'nba-007', accountId: 'acc-004',
-    label: 'Immediate escalation required — renewal in 24 days',
+    label: 'CRITICAL: Thornwood Renewal closes in 23d',
     reason: 'First Value not achieved. Onboarding overdue. Decision maker dormant. Non-renewal risk is critical.',
     priority: 'high', source: 'rule', status: 'active',
     linkedPlayTemplateId: null, linkedInflectionPointId: 'ip-013', linkedStakeholderMapId: 'sm-010',

@@ -9,6 +9,37 @@ export type PipelineStageId =
 
 export type ProgressionStatus = 'advancing' | 'stalled' | 'at_risk'
 
+export type OpportunityType = 'renewal' | 'expansion' | 'upsell'
+export type ConfidenceLevel = 'high' | 'medium' | 'low'
+export type MovementTrend = 'improving' | 'declining' | 'flat'
+export type ExecutionRiskType =
+  | 'first_value_not_achieved'
+  | 'missing_alignment_meeting'
+  | 'no_executive_stakeholder'
+  | 'renewal_window_closing'
+  | 'decision_maker_dormant'
+
+export interface ExecutionRisk {
+  type: ExecutionRiskType
+  severity: 'blocking' | 'warning'
+  label: string
+}
+
+export interface Opportunity {
+  id: string
+  accountId: string
+  accountName: string
+  type: OpportunityType
+  stage: PipelineStageId
+  estimatedValue: number
+  confidence: ConfidenceLevel
+  daysInStage: number
+  progressionStatus: ProgressionStatus
+  movement: MovementTrend
+  closeDate: string | null
+  executionRisks: ExecutionRisk[]
+}
+
 export type PlayType =
   | 'purchase_welcome'
   | 'kickoff'
