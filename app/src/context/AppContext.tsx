@@ -2,7 +2,7 @@ import { createContext, useContext, useState, type ReactNode } from 'react'
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
-  PipelineStage, PlayTemplate, AccountView, ConfidenceLevel,
+  PipelineStage, PlayTemplate, AccountView, ConfidenceLevel, OutcomeEvidence,
 } from '@/types'
 import {
   accounts as seedAccounts,
@@ -15,6 +15,7 @@ import {
   nextBestActions as seedNextBestActions,
   opportunities as seedOpportunities,
   accountTimelines as seedAccountTimelines,
+  outcomeEvidence as seedOutcomeEvidence,
   pipelineStages,
   playTemplates,
 } from '@/data/seedData'
@@ -31,6 +32,7 @@ interface AppState {
   nextBestActions: NextBestAction[]
   opportunities: Opportunity[]
   accountTimelines: AccountTimeline[]
+  outcomeEvidence: OutcomeEvidence[]
 }
 
 interface AppContextValue extends AppState {
@@ -66,6 +68,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     nextBestActions: seedNextBestActions,
     opportunities: seedOpportunities,
     accountTimelines: seedAccountTimelines,
+    outcomeEvidence: seedOutcomeEvidence,
   })
 
   const getAccountView = (accountId: string): AccountView | null => {
@@ -80,6 +83,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       stakeholderMaps: state.stakeholderMaps.filter(sm => sm.accountId === accountId),
       contacts: state.contacts.filter(c => c.accountId === accountId),
       nextBestActions: state.nextBestActions.filter(nba => nba.accountId === accountId && nba.status === 'active'),
+      outcomeEvidence: state.outcomeEvidence.filter(ev => ev.accountId === accountId),
     }
   }
 
@@ -206,6 +210,20 @@ export function AppProvider({ children }: { children: ReactNode }) {
         return opp
       })
 
+      // 7. Capture outcome evidence when customer advanced
+      const updatedEvidence = [...s.outcomeEvidence]
+      if (output.customerAdvanced && output.goalUpdates.trim()) {
+        updatedEvidence.push({
+          id: `ev-${Date.now()}`,
+          accountId: run.accountId,
+          goalTargeted: `${run.label} objectives`,
+          outcomeAchieved: output.goalUpdates,
+          businessImpact: output.progressionNotes || 'Customer confirmed advancement.',
+          capturedAt: now,
+          capturedByRunId: runId,
+        })
+      }
+
       return {
         ...s,
         accounts: updatedAccounts,
@@ -215,6 +233,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         nextBestActions: updatedNBAs,
         meetingOutputs: [...s.meetingOutputs, newOutput],
         opportunities: updatedOpportunities,
+        outcomeEvidence: updatedEvidence,
       }
     })
   }

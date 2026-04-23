@@ -297,6 +297,18 @@ export interface AccountTimeline {
   milestones: TimelineMilestone[]
 }
 
+// ─── Core: Outcome Evidence ──────────────────────────────────────────────────
+
+export interface OutcomeEvidence {
+  id: string
+  accountId: string
+  goalTargeted: string
+  outcomeAchieved: string
+  businessImpact: string
+  capturedAt: string
+  capturedByRunId: string | null
+}
+
 // ─── View helpers (derived / composed) ───────────────────────────────────────
 
 export interface AccountView extends Account {
@@ -306,4 +318,5 @@ export interface AccountView extends Account {
   stakeholderMaps: StakeholderMap[]
   contacts: Contact[]
   nextBestActions: NextBestAction[]
+  outcomeEvidence: OutcomeEvidence[]
 }

@@ -3,7 +3,7 @@ import { useEffect, type ReactNode } from 'react'
 import {
   ChevronLeft, CheckCircle2, Circle, AlertCircle, Clock,
   ArrowRight, User, Zap, TrendingUp, AlertTriangle,
-  Calendar, ChevronRight,
+  Calendar, ChevronRight, Award,
 } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
 import { getWorkspaceRecommendation } from '@/lib/accountRouting'
@@ -226,6 +226,42 @@ export function AccountWorkspace() {
                   ))}
                 </div>
               </Section>
+
+              {/* Outcome Evidence */}
+              <div id="outcome-evidence" className="bg-white rounded-xl border border-slate-200 scroll-mt-6">
+                <div className="px-5 py-4 border-b border-slate-100 flex items-center gap-2">
+                  <Award size={13} className="text-emerald-500" />
+                  <h2 className="text-[12px] font-semibold text-slate-500 uppercase tracking-widest">Outcome Evidence</h2>
+                  {account.outcomeEvidence.length > 0 && (
+                    <span className="ml-auto text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded tabular-nums">
+                      {account.outcomeEvidence.length} outcome{account.outcomeEvidence.length !== 1 ? 's' : ''}
+                    </span>
+                  )}
+                </div>
+                <div className="p-5">
+                  {account.outcomeEvidence.length === 0 ? (
+                    <p className="text-[12px] text-slate-400 leading-relaxed">
+                      No outcomes documented yet. Evidence is captured automatically when plays complete with customer advancement.
+                    </p>
+                  ) : (
+                    <div className="space-y-4">
+                      {[...account.outcomeEvidence].sort((a, b) => b.capturedAt.localeCompare(a.capturedAt)).map((ev, i, arr) => (
+                        <div key={ev.id} className="relative pl-5">
+                          <div className="absolute left-0 top-1.5 w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0" />
+                          {i < arr.length - 1 && (
+                            <div className="absolute left-[3px] top-4 bottom-[-12px] w-px bg-slate-100" />
+                          )}
+                          <p className="text-[10px] font-medium text-slate-400 mb-0.5 uppercase tracking-wide">
+                            {formatDateShort(ev.capturedAt)} · {ev.goalTargeted}
+                          </p>
+                          <p className="text-[13px] font-semibold text-slate-800 leading-snug mb-1">{ev.outcomeAchieved}</p>
+                          <p className="text-[11px] text-slate-500 leading-relaxed">{ev.businessImpact}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
 
               {/* Plays */}
               <Section id="plays" title="Plays">

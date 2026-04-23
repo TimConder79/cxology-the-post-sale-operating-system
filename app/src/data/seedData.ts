@@ -1,7 +1,7 @@
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, NextBestAction, PipelineStage, PlayTemplate, Opportunity,
-  AccountTimeline, TimelineMilestone,
+  AccountTimeline, TimelineMilestone, OutcomeEvidence,
 } from '@/types'
 
 // ─── Reference: Pipeline Stages ──────────────────────────────────────────────
@@ -710,5 +710,48 @@ export const accountTimelines: AccountTimeline[] = [
       m('ongoing_alignment',       'not_started', 180, null, null, null,                                                                                  'tmpl-alignment-meeting', null),
       m('renewal_growth_decision', 'not_started', 275, null, null, null,                                                                                  'tmpl-renew-grow',        null),
     ],
+  },
+]
+
+// ─── Outcome Evidence ─────────────────────────────────────────────────────────
+
+export const outcomeEvidence: OutcomeEvidence[] = [
+  // Meridian Health Systems — strong evidence base (advocate stage, advancing)
+  {
+    id: 'ev-001', accountId: 'acc-001',
+    goalTargeted: 'Reduce clinical reporting turnaround time',
+    outcomeAchieved: 'Monthly reporting cycle cut from 5 days to under 8 hours.',
+    businessImpact: 'Finance and operations leadership now have same-day visibility. Estimated 160 staff-hours reclaimed per quarter.',
+    capturedAt: '2026-01-28T00:00:00Z', capturedByRunId: null,
+  },
+  {
+    id: 'ev-002', accountId: 'acc-001',
+    goalTargeted: 'Standardise cross-department compliance tracking',
+    outcomeAchieved: 'Four departments migrated to unified compliance dashboard. Audit preparation time reduced by 60%.',
+    businessImpact: 'Last external audit completed in 2 days vs. 9 days previously. VP Operations cited this as a direct renewal driver.',
+    capturedAt: '2026-03-12T00:00:00Z', capturedByRunId: null,
+  },
+  // Vantage Financial — two strong outcomes (intent stage, high confidence)
+  {
+    id: 'ev-003', accountId: 'acc-003',
+    goalTargeted: 'Automate regulatory reporting across three jurisdictions',
+    outcomeAchieved: 'Cross-jurisdiction reporting fully automated. Zero manual reconciliation for Q1 filings.',
+    businessImpact: 'Compliance team of 6 reallocated from reporting to analysis work. CFO confirmed this as a board-level win.',
+    capturedAt: '2026-02-14T00:00:00Z', capturedByRunId: null,
+  },
+  {
+    id: 'ev-004', accountId: 'acc-003',
+    goalTargeted: 'Real-time visibility into portfolio risk exposure',
+    outcomeAchieved: 'Risk dashboard live with sub-60-second data latency. Executive team reviewing daily.',
+    businessImpact: 'Two risk events identified and mitigated before escalation during Q1. Estimated exposure avoided: $1.2M.',
+    capturedAt: '2026-04-03T00:00:00Z', capturedByRunId: null,
+  },
+  // ClearPath Analytics — early win captured
+  {
+    id: 'ev-005', accountId: 'acc-005',
+    goalTargeted: 'Unify analytics workflows across three regional teams',
+    outcomeAchieved: 'All three regional teams operating from a shared workspace. Cross-team data requests eliminated.',
+    businessImpact: 'Regional sync meetings reduced from weekly to bi-weekly. Estimated 8 hours/week saved across leadership.',
+    capturedAt: '2026-04-05T00:00:00Z', capturedByRunId: 'run-010',
   },
 ]

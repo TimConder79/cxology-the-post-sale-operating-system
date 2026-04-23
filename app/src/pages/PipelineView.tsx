@@ -161,6 +161,20 @@ function computeNRR(opps: Opportunity[]): number | null {
   return Math.round((projected / renewalBase) * 100)
 }
 
+function computeProjectedARR(opps: Opportunity[]): number {
+  return (
+    opps.filter(o => o.type === 'renewal').reduce((s, o) => s + o.estimatedValue * retentionProb(o.progressionStatus, o.confidence), 0) +
+    opps.filter(o => o.type !== 'renewal').reduce((s, o) => s + o.estimatedValue * expansionProb(o.progressionStatus, o.confidence), 0)
+  )
+}
+
+function computeRecoveryARR(opps: Opportunity[]): number {
+  const adjusted = opps.map(o =>
+    o.progressionStatus === 'at_risk' ? { ...o, progressionStatus: 'stalled' as ProgressionStatus } : o
+  )
+  return computeProjectedARR(adjusted)
+}
+
 // ─── Main view ────────────────────────────────────────────────────────────────
 
 export function PipelineView() {
@@ -182,7 +196,12 @@ export function PipelineView() {
   const advancingCt  = opportunities.filter(o => o.progressionStatus === 'advancing').length
   const stalledCt    = opportunities.filter(o => o.progressionStatus === 'stalled').length
   const atRiskCt     = opportunities.filter(o => o.progressionStatus === 'at_risk').length
-  const nrr          = computeNRR(opportunities)
+  const nrr           = computeNRR(opportunities)
+  const renewalBase   = opportunities.filter(o => o.type === 'renewal').reduce((s, o) => s + o.estimatedValue, 0)
+  const projectedARR  = computeProjectedARR(opportunities)
+  const recoveryARR   = computeRecoveryARR(opportunities)
+  const recoveryDelta = Math.round(recoveryARR - projectedARR)
+  const recoveryNRR   = renewalBase > 0 ? Math.round((recoveryARR / renewalBase) * 100) : null
 
   return (
     <div className="flex flex-col h-full">
@@ -290,7 +309,51 @@ export function PipelineView() {
           </div>
         </div>
 
+        {/* NRR Impact panel */}
+        {nrr !== null && renewalBase > 0 && (
+          <div className="w-[240px] flex-shrink-0 border-l border-slate-100 bg-white flex flex-col overflow-auto p-5 gap-5">
 
+            <div>
+              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-3">NRR Impact Model</p>
+              <div className="text-[11px] text-slate-400 mb-1.5">Renewal base</div>
+              <div className="text-[15px] font-bold text-slate-800 tabular-nums">{formatCurrency(renewalBase)}</div>
+            </div>
+
+            <div className="border-t border-slate-100 pt-4">
+              <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-3">Current trajectory</div>
+              <div className="flex items-baseline justify-between mb-1">
+                <span className="text-[11px] text-slate-500">NRR</span>
+                <span className={cn(
+                  'text-[15px] font-bold tabular-nums',
+                  nrr >= 100 ? 'text-emerald-600' : nrr >= 80 ? 'text-amber-600' : 'text-red-600'
+                )}>~{nrr}%</span>
+              </div>
+              <div className="flex items-baseline justify-between">
+                <span className="text-[11px] text-slate-500">12-mo ARR</span>
+                <span className="text-[13px] font-semibold text-slate-700 tabular-nums">{formatCurrency(Math.round(projectedARR))}</span>
+              </div>
+            </div>
+
+            {recoveryDelta > 0 && recoveryNRR !== null && (
+              <div className="border-t border-slate-100 pt-4">
+                <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-3">If at-risk recovered</div>
+                <div className="flex items-baseline justify-between mb-1">
+                  <span className="text-[11px] text-slate-500">NRR</span>
+                  <span className="text-[15px] font-bold text-emerald-600 tabular-nums">~{recoveryNRR}%</span>
+                </div>
+                <div className="flex items-baseline justify-between mb-3">
+                  <span className="text-[11px] text-slate-500">12-mo ARR</span>
+                  <span className="text-[13px] font-semibold text-slate-700 tabular-nums">{formatCurrency(Math.round(recoveryARR))}</span>
+                </div>
+                <div className="bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2">
+                  <div className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wide mb-0.5">Recovery opportunity</div>
+                  <div className="text-[15px] font-bold text-emerald-700 tabular-nums">+{formatCurrency(recoveryDelta)}</div>
+                </div>
+              </div>
+            )}
+
+          </div>
+        )}
 
       </div>
     </div>
