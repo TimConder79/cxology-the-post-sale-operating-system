@@ -39,14 +39,50 @@
     }
     .chapter-body strong { color: var(--navy); }
     .chapter-body em { font-style: italic; color: var(--text-muted); }
-    .callout {
+    .truth {
       background: var(--navy);
       border-left: 4px solid var(--olive);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       padding: 1.2rem 1.5rem;
       margin: 1.75rem 0;
     }
-    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .truth p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .truth-label {
+      display:block;
+      color: var(--olive);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .chapter-figure {
+      margin: 0 auto 2.5rem;
+      max-width: 980px;
+      padding: 0 2rem;
+    }
+    .chapter-figure-frame {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      box-shadow: 0 12px 32px rgba(16,24,40,.08);
+      overflow: hidden;
+    }
+    .chapter-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .chapter-figure figcaption {
+      padding: 0.9rem 1.1rem 1rem;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+      background: var(--off-white);
+      border-top: 1px solid var(--gray-100);
+    }
+
     .chapter-nav-btn {
       padding: 8px 18px;
       border: 1px solid var(--gray-200);
@@ -174,70 +210,52 @@
       <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
       <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 5</div>
       <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 2 — Align</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Alignment is about tying your recommendations to the customer's strategic objectives — not your product roadmap.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Alignment is what keeps progress connected to purpose after First Value, when the structure fades and execution starts to drift.</p>
     </div>
   </div>
+  <figure class="chapter-figure">
+    <div class="chapter-figure-frame">
+      <img src="post-sale-pipeline.webp" alt="Post-sales pipeline diagram showing Align between Identify and Advocate, connected to Goal Facilitation, Share Insights, and Renew & Grow."/>
+      <figcaption>Align sits at the center of the post-sales motion. In the pipeline visual, it follows Identify and leads into Advocate, while the customer journey below shows how alignment is sustained through goal facilitation, shared insights, and ongoing progress after First Value.</figcaption>
+    </div>
+  </figure>
+
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>The second stage of the post-sales pipeline is <strong>Align</strong>. Alignment is about tying your recommendations to the customer’s short-term priorities and long-term strategic objectives. Without this critical step, any attempt at an upgrade or expansion will feel like a transactional sales push rather than a valuable, strategic recommendation.</p>
 
-<p>Customers do not buy more software simply because they can—they buy because they see a direct, undeniable path to value. To build a business case that resonates, you must continuously clarify their goals, document them for total team visibility, and tie every feature or service you present directly back to their business outcomes.</p>
+    <p>If Identify is about seeing opportunity, Align is about what happens next—when that opportunity fails to turn into progress. Because that is where most customer relationships begin to break down. Not at the point of purchase. Not even during onboarding. But in the stretch that follows, when the initial momentum fades and the responsibility for success shifts fully to the customer. This is the part of the journey that is hardest to see and easiest to underestimate. From the outside, everything appears stable. The customer is live. They have achieved their first meaningful outcome. The implementation is complete. There are no obvious issues. But underneath that surface, something begins to change. The structure that carried them to First Value disappears.</p>
 
-<p>To execute the Align stage successfully and ensure you are building a compelling business case for expansion, modern CS teams rely on three interconnected motions: Goal Facilitation, Sharing Insights, and the Alignment Meeting.</p>
+    <p>During onboarding, progress is guided. There is a plan. There are milestones. There is a clear sense of what comes next. Every interaction is anchored to movement, and that movement creates confidence. After First Value, that structure is gone. What replaces it is far less defined. The customer is expected to take what they have learned and apply it within the complexity of their own business. Competing priorities begin to pull at their attention. Internal constraints—time, resources, alignment—start to shape what is actually possible. What once felt straightforward begins to slow. And when progress slows, something more important begins to fade with it. Clarity.</p>
 
-<p><strong>Goal Facilitation: Navigating the </strong><strong>"</strong><strong>Messy Middle</strong><strong>"</strong> Once a customer achieves their First Value, they enter what is known as the "messy middle". This is the critical time period between their first use of your product and their first renewal, where true relationships are built and ultimate outcomes are decided. If you are missing from the messy middle, your customers can easily hit a wall, give up, and ultimately churn.</p>
+    <div class="truth"><p><span class="truth-label">Truth</span>The most dangerous part of the customer journey is not onboarding. It is what happens after First Value, when momentum fades and structure disappears.</p></div>
 
-<p>To prevent this, you must practice Goal Facilitation. Goal Facilitation ensures that every recommendation or action you take aligns directly with the customer’s long-term vision. By staying actively involved, monitoring progress, and identifying gaps, you help customers overcome obstacles and accelerate their path to success.</p>
+    <p>This is the moment where most teams step back. They assume the customer is now capable of driving forward independently. They shift into a reactive posture—available when needed, but no longer actively shaping the path. On the surface, this feels reasonable. The product is working. The customer has seen value. The relationship is stable. But this is where alignment begins to drift. Because without continued effort, the connection between what the customer is doing and what they are trying to achieve starts to weaken. The work continues, but the meaning behind it becomes less visible.</p>
 
-<p>A highly effective way to facilitate goals is to break massive objectives down into smaller, bite-sized "Value Blocks," much like building a Lego set. Each Goal Block acts like a single Lego packet with clear, distinct steps and a simple path to success. By completing one small Goal Block at a time, the customer maintains a cadence of progress and never feels overwhelmed.</p>
+    <p>This is the core problem Align is solving. Not a lack of opportunity, but a loss of direction. Because when direction is unclear, everything else becomes harder. Progress becomes inconsistent. Outcomes become difficult to measure. Value becomes harder to communicate. And when the time comes to revisit the relationship—whether for renewal or expansion—the conversation feels disconnected from the work that has been done. Not because the value is not there. But because it has not been continuously tied to something that matters.</p>
 
-<p><strong>Sharing Insights: The Rudder on the Ship</strong> As customers work through their goals, you must ensure their progress is recognized. Sharing Insights is a simple yet powerful strategy that ensures your recommendations, successes, and lessons learned are actively communicated within the customer’s organization,.</p>
+    <p>Alignment, at its core, is the discipline of maintaining that connection. It is not something you establish once and return to later. It is something that must be reinforced as the customer’s reality evolves. Because their reality will evolve. Priorities will shift. New stakeholders will emerge. What once felt urgent may become secondary. What once seemed sufficient may no longer be enough. If your understanding of their goals remains static while their business changes, alignment breaks—even if nothing else does.</p>
 
-<p>Think of Sharing Insights as the rudder on a ship—you use it to steer your customer toward the value they desire to achieve. By sharing insights proactively, you build organizational awareness, establish proof points for future advocacy, and create internal momentum for future expansions.</p>
+    <p>The only way to prevent that break is to stay engaged in how progress is actually happening. Not at a surface level, but at the level where execution meets constraint. Because this is where the signals live. A stalled initiative is not just a delay. It is a sign that something is missing. A partially realized outcome is not just incomplete. It reveals where additional support may be required. A team that struggles to maintain momentum is not disengaged. It is navigating competing demands that have not been fully addressed. These are not problems to be worked around. They are the clearest indicators of where alignment needs to be strengthened.</p>
 
-<p>To ensure your insights do not land flat, modern CS teams use a highly digestible, five-step formula:</p>
+    <div class="truth"><p><span class="truth-label">Truth</span>Alignment is not a meeting. It is the discipline of keeping progress connected to what the customer is actually trying to achieve.</p></div>
 
-<ul>
-<li><strong>Write a one-liner:</strong> Convey the gist of the insight to grab the reader's attention,.</li>
-</ul>
+    <p>What changes at this point in the relationship is not the goal, but the way the goal must be pursued. Large objectives that once felt achievable begin to feel distant. Without structure, they lose momentum. Without momentum, they lose priority. The role of alignment is to restore that momentum. Not by redefining what success looks like, but by making progress visible again. By breaking the path forward into smaller, more immediate steps, the customer regains a sense of movement. What once felt abstract becomes tangible. What once felt overwhelming becomes manageable. And most importantly, progress becomes something they can see.</p>
 
-<ul>
-<li><strong>Speak to the background:</strong> Bring them into the fold so the insight makes sense to the uninitiated,.</li>
-</ul>
+    <p>That visibility is what keeps alignment intact. Because progress, when it is visible, reinforces belief. It reminds the customer why they started. It validates the decisions they have made. And it creates the confidence needed to continue moving forward. But visibility alone is not enough. It must be shared.</p>
 
-<ul>
-<li><strong>Speak to the results:</strong> Clearly illustrate the outcomes (good or bad) and show what is possible,.</li>
-</ul>
+    <p>Inside any organization, the people directly involved in execution are rarely the only ones who influence outcomes. There are stakeholders who are not in the room. Leaders who are not part of the day-to-day. Teams that are affected indirectly, but whose support is critical. If progress is not reaching them, alignment is incomplete. This is where most relationships stall—not because the work is not happening, but because the impact of that work is not understood beyond a small group.</p>
 
-<ul>
-<li><strong>Clarify the action:</strong> Translate the results into something actionable so the reader knows exactly what to do next,.</li>
-</ul>
+    <p>When progress is consistently communicated in a way that connects activity to outcome, something shifts. What was once isolated becomes visible across the organization. What was once assumed becomes understood. And what was once questioned becomes supported. The conversation begins to change. Instead of asking whether the solution is valuable, the organization begins to explore how that value can be extended.</p>
 
-<ul>
-<li><strong>Reinforce the insight:</strong> Tell them what you told them by bringing it back to the start,.</li>
-</ul>
+    <div class="truth"><p><span class="truth-label">Truth</span>If the conversation only reports activity, alignment is already slipping. The job is not to review the relationship. The job is to realign it.</p></div>
 
+    <p>At that point, the nature of engagement evolves. Conversations move beyond updates and into reflection. Not just what has happened, but what it means. Not just what has been completed, but what should come next. These moments require intention. They require space to step back from execution and reconnect with purpose. And this is where the traditional structure of periodic business reviews falls short. Because in most cases, those conversations are designed to report, not to realign. They look backward instead of forward. They focus on activity instead of meaning. And too often, they center the company rather than the customer.</p>
 
-<p><strong>The Alignment Meeting: Killing the </strong><strong>Passive</strong><strong> QBR</strong> The final component of the Align stage is formalizing your partnership. The days of vague, passive, checkbox-style Quarterly Business Reviews (QBRs) are over. Often, companies go into traditional QBRs and spend the entire time talking about themselves—their new features, their roadmap, and their company.</p>
+    <p>True alignment requires a different kind of conversation. One that returns to the original reason the customer made the decision to begin with, and tests whether that reason still holds. One that surfaces how their priorities have shifted, where progress has been made, and where it has stalled. And one that connects all of it to what should happen next.</p>
 
-<p>To scale growth, these must be replaced with active <strong>Alignment Meetings</strong>. Alignment Meetings shift the focus from static, company-centric reviews to dynamic, customer-centric discussions that address real-time challenges and strategic goals.</p>
+    <p>When that level of alignment is in place, something important changes. The relationship no longer revolves around the product. It revolves around outcomes. Every recommendation is grounded in something the customer has already experienced, already validated, or is actively working toward. There is no gap between what is being suggested and what is needed. At that point, the conversation moves forward naturally. Not because it has been pushed. But because it makes sense.</p>
 
-<p>During an Alignment Meeting, your objective is to:</p>
+    <p>And that is the signal that alignment is working. Not agreement. Momentum. A shared understanding of where things are going, and a clear path to get there. Because once that exists, the relationship no longer depends solely on you to carry it forward. It begins to move through the customer.</p>
 
-<ul>
-<li><strong>Review past activity and wins:</strong> Contextualize their accomplishments and celebrate the Value Blocks they have completed.</li>
-</ul>
-
-<ul>
-<li><strong>Reaffirm the Five Questions:</strong> Go back through the exact questions asked during the Kickoff to find out if their answers are still the same, or if their business dynamics have changed.</li>
-</ul>
-
-<ul>
-<li><strong>Drive Expansion Conversations:</strong> Look beyond the immediate renewal to identify new opportunities, exploring additional use cases or adjacent teams that could benefit from your solution.</li>
-</ul>
-
-<p>When you proactively facilitate their goals, share insights that prove your value, and hold structured Alignment Meetings, you cement your role as a strategic partner. This continuous alignment makes the decision to renew or expand a logical, frictionless next step.</p>
-
-<p>#</p>
   </div>
 </div>
 
