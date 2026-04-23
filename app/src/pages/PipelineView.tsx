@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TrendingUp, TrendingDown, Minus, ArrowRight, AlertCircle } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
@@ -45,7 +46,10 @@ function MovementIcon({ movement, status }: { movement: MovementTrend; status: P
 
 // ─── Opportunity card ─────────────────────────────────────────────────────────
 
-function OppCard({ opp, workspaceHref }: { opp: Opportunity; workspaceHref: string }) {
+function OppCard({ opp, workspaceHref, onDragStart, onDragEnd, isDragging }: {
+  opp: Opportunity; workspaceHref: string
+  onDragStart: () => void; onDragEnd: () => void; isDragging: boolean
+}) {
   const navigate  = useNavigate()
   const typeConf  = OPP_TYPE[opp.type]
   const confConf  = CONFIDENCE[opp.confidence]
@@ -57,10 +61,14 @@ function OppCard({ opp, workspaceHref }: { opp: Opportunity; workspaceHref: stri
 
   return (
     <button
+      draggable
+      onDragStart={(e) => { e.dataTransfer.setData('oppId', opp.id); e.dataTransfer.effectAllowed = 'move'; onDragStart() }}
+      onDragEnd={onDragEnd}
       onClick={() => navigate(workspaceHref)}
       className={cn(
-        'w-full text-left bg-white rounded-xl border transition-all group',
-        'hover:shadow-md hover:-translate-y-0.5 duration-150',
+        'w-full text-left bg-white rounded-xl border transition-all group cursor-grab active:cursor-grabbing',
+        isDragging ? 'opacity-40 scale-95' : 'hover:shadow-md hover:-translate-y-0.5',
+        'duration-150',
         isAtRisk && blocking.length > 0
           ? 'border-red-200 hover:border-red-300'
           : opp.progressionStatus === 'stalled'
@@ -178,7 +186,9 @@ function computeRecoveryARR(opps: Opportunity[]): number {
 // ─── Main view ────────────────────────────────────────────────────────────────
 
 export function PipelineView() {
-  const { opportunities, accounts, getAccountView } = useApp()
+  const { opportunities, accounts, getAccountView, moveOpportunityStage } = useApp()
+  const [draggedOppId, setDraggedOppId] = useState<string | null>(null)
+  const [dragOverStage, setDragOverStage] = useState<PipelineStageId | null>(null)
 
   const accountViewsById = accounts.reduce<Record<string, AccountView>>((acc, account) => {
     const view = getAccountView(account.id)
@@ -265,11 +275,32 @@ export function PipelineView() {
 
               return (
                 <div key={stage} className="flex items-start gap-4">
-                  <div className="w-[220px]">
+                  <div
+                    className={cn(
+                      'w-[220px] rounded-xl transition-colors duration-150',
+                      dragOverStage === stage && draggedOppId !== null
+                        ? 'bg-brand-50 ring-2 ring-brand-300 ring-inset'
+                        : 'bg-transparent',
+                    )}
+                    onDragOver={(e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; setDragOverStage(stage) }}
+                    onDragLeave={(e) => {
+                      if (!e.currentTarget.contains(e.relatedTarget as Node)) setDragOverStage(null)
+                    }}
+                    onDrop={(e) => {
+                      e.preventDefault()
+                      const oppId = e.dataTransfer.getData('oppId')
+                      if (oppId) moveOpportunityStage(oppId, stage)
+                      setDragOverStage(null)
+                      setDraggedOppId(null)
+                    }}
+                  >
                     {/* Stage header */}
                     <div className="mb-3 px-1">
                       <div className="flex items-center justify-between mb-0.5">
-                        <span className="text-[13px] font-semibold text-slate-800">{STAGE_LABELS[stage]}</span>
+                        <span className={cn(
+                          'text-[13px] font-semibold transition-colors',
+                          dragOverStage === stage && draggedOppId !== null ? 'text-brand-700' : 'text-slate-800'
+                        )}>{STAGE_LABELS[stage]}</span>
                         <span className="text-[11px] font-medium text-slate-400 tabular-nums">
                           {stageOpps.length}
                         </span>
@@ -282,10 +313,20 @@ export function PipelineView() {
                     </div>
 
                     {/* Opportunity cards */}
-                    <div className="space-y-2">
+                    <div className="space-y-2 p-1">
                       {stageOpps.length === 0 && (
-                        <div className="border border-dashed border-slate-200 rounded-xl p-5 text-center">
-                          <span className="text-[12px] text-slate-300">No opportunities</span>
+                        <div className={cn(
+                          'border border-dashed rounded-xl p-5 text-center transition-colors',
+                          dragOverStage === stage && draggedOppId !== null
+                            ? 'border-brand-300 bg-brand-50'
+                            : 'border-slate-200',
+                        )}>
+                          <span className={cn(
+                            'text-[12px] transition-colors',
+                            dragOverStage === stage && draggedOppId !== null ? 'text-brand-400' : 'text-slate-300'
+                          )}>
+                            {dragOverStage === stage && draggedOppId !== null ? 'Drop here' : 'No opportunities'}
+                          </span>
                         </div>
                       )}
                       {stageOpps.map(opp => {
@@ -293,8 +334,23 @@ export function PipelineView() {
                         const workspaceHref = accountView
                           ? buildAccountWorkspacePath(opp.accountId, getWorkspaceRecommendation(accountView, 'pipeline'))
                           : `/accounts/${opp.accountId}`
-                        return <OppCard key={opp.id} opp={opp} workspaceHref={workspaceHref} />
+                        return (
+                          <OppCard
+                            key={opp.id}
+                            opp={opp}
+                            workspaceHref={workspaceHref}
+                            isDragging={draggedOppId === opp.id}
+                            onDragStart={() => setDraggedOppId(opp.id)}
+                            onDragEnd={() => { setDraggedOppId(null); setDragOverStage(null) }}
+                          />
+                        )
                       })}
+                      {/* Drop indicator at bottom of non-empty columns */}
+                      {stageOpps.length > 0 && dragOverStage === stage && draggedOppId !== null && (
+                        <div className="border-2 border-dashed border-brand-300 rounded-xl p-3 text-center">
+                          <span className="text-[11px] text-brand-400 font-medium">Drop here</span>
+                        </div>
+                      )}
                     </div>
                   </div>
 

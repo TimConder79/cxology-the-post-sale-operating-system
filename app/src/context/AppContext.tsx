@@ -2,7 +2,7 @@ import { createContext, useContext, useState, type ReactNode } from 'react'
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
-  PipelineStage, PlayTemplate, AccountView, ConfidenceLevel, OutcomeEvidence,
+  PipelineStage, PlayTemplate, AccountView, ConfidenceLevel, OutcomeEvidence, PipelineStageId,
 } from '@/types'
 import {
   accounts as seedAccounts,
@@ -51,6 +51,7 @@ interface AppContextValue extends AppState {
   // Mutations
   advancePlayStep: (runId: string, step: 1 | 2 | 3 | 4) => void
   completePlay: (runId: string, output: Omit<MeetingOutput, 'id' | 'playRunId' | 'accountId' | 'capturedAt'>) => void
+  moveOpportunityStage: (oppId: string, newStage: PipelineStageId) => void
 }
 
 const AppContext = createContext<AppContextValue | null>(null)
@@ -238,6 +239,17 @@ export function AppProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  const moveOpportunityStage = (oppId: string, newStage: PipelineStageId) => {
+    setState(s => ({
+      ...s,
+      opportunities: s.opportunities.map(o =>
+        o.id === oppId
+          ? { ...o, stage: newStage, daysInStage: 0, lastUpdatedAt: new Date().toISOString() }
+          : o
+      ),
+    }))
+  }
+
   return (
     <AppContext.Provider value={{
       ...state,
@@ -251,6 +263,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       getActivePlayRun,
       advancePlayStep,
       completePlay,
+      moveOpportunityStage,
     }}>
       {children}
     </AppContext.Provider>
