@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ch 8: Stage 5 — Net Revenue Close — The Post-Sale Operating System</title>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ch 8: Stage 5 — Net Revenue Close — The Post-Sale Operating System</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
     .chapter-body h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -102,250 +103,199 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
-  </style>
+  
+
+    .insight-block, .field-note {
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      margin: 1.8rem 0;
+      border: 1px solid rgba(26,46,66,.10);
+      box-shadow: 0 10px 30px rgba(26,46,66,.06);
+    }
+    .insight-block {
+      background: linear-gradient(135deg, rgba(26,46,66,.96), rgba(36,59,82,.96));
+      border-left: 4px solid var(--olive);
+    }
+    .insight-block.closing {
+      margin-top: 2.25rem;
+    }
+    .field-note {
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(238,241,200,.45));
+      border-left: 4px solid var(--blue);
+    }
+    .insight-label, .field-note-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .insight-label { color: var(--olive); }
+    .field-note-label { color: var(--navy-light); }
+    .insight-block p, .field-note p {
+      max-width: 100%;
+      margin: 0;
+      line-height: 1.7;
+    }
+    .insight-block p {
+      color: rgba(255,255,255,.88);
+      font-style: italic;
+    }
+    .field-note p { color: var(--gray-700); }
+</style>
 </head>
 <body>
-
 <div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
-
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px">
-      <div class="nav-logo-mark">C</div>
-      <span class="nav-logo-text">The Post-Sale Operating System</span>
-    </a>
-  </div>
-  <ul class="nav-links">
-    <li><a href="index.html#parts">All Chapters</a></li>
-    <li><a href="frameworks.html">Frameworks</a></li>
-    <li><a href="calculator.html">ROI Calculator</a></li>
-  </ul>
-  <div style="display:flex;gap:0.6rem;align-items:center">
-    <button class="chapter-nav-btn" onclick="window.location.href='chapter-7.html'">← Prev</button>
-    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-9.html'">Next →</button>
-  </div>
+<div class="nav-logo">
+<a href="index.html" style="display:flex;align-items:center;gap:10px">
+<div class="nav-logo-mark">C</div>
+<span class="nav-logo-text">The Post-Sale Operating System</span>
+</a>
+</div>
+<ul class="nav-links">
+<li><a href="index.html#parts">All Chapters</a></li>
+<li><a href="frameworks.html">Frameworks</a></li>
+<li><a href="calculator.html">ROI Calculator</a></li>
+</ul>
+<div style="display:flex;gap:0.6rem;align-items:center">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-7.html'">← Prev</button>
+<button class="chapter-nav-btn primary" onclick="window.location.href='chapter-9.html'">Next →</button>
+</div>
 </nav>
-
 <!-- TOC BUTTON -->
 <button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
-
 <!-- TOC OVERLAY -->
 <div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
-
 <!-- TOC DRAWER -->
 <div class="toc-drawer" id="toc-drawer">
-  <div class="toc-title">Table of Contents</div>
-  <div class="toc-part">Introduction</div>
-  <a href="index.html" class="toc-link">Overview & The Book</a>
-  <div class="toc-part">Part I · The 2026 CS Evolution</div>
-  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
-  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
-  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
-  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
-  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
-  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
-  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
-  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
-  <a href="chapter-8.html" class="toc-link active" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
-  <div class="toc-part">Part III · Lifecycle Plays</div>
-  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
-  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
-  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
-  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
-  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
-  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
-  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
-  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
-  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
-  <div class="toc-part">Part IV · Data, Automation & Scale</div>
-  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
-  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
-  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
-  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
-  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+<div class="toc-title">Table of Contents</div>
+<div class="toc-part">Introduction</div>
+<a class="toc-link" href="index.html">Overview &amp; The Book</a>
+<div class="toc-part">Part I · The 2026 CS Evolution</div>
+<a class="toc-link" data-ch="1" href="chapter-1.html">Ch 1: From Churn Insurance to Revenue Engine</a>
+<a class="toc-link" data-ch="2" href="chapter-2.html">Ch 2: Post-Sale Unification</a>
+<a class="toc-link" data-ch="3" href="chapter-3.html">Ch 3: The Role Evolution of the CSM</a>
+<div class="toc-part">Part II · The Post-Sales Pipeline</div>
+<a class="toc-link" data-ch="4" href="chapter-4.html">Ch 4: Stage 1 — Identify</a>
+<a class="toc-link" data-ch="5" href="chapter-5.html">Ch 5: Stage 2 — Align</a>
+<a class="toc-link" data-ch="6" href="chapter-6.html">Ch 6: Stage 3 — Advocate</a>
+<a class="toc-link" data-ch="7" href="chapter-7.html">Ch 7: Stage 4 — Intent</a>
+<a class="toc-link active" data-ch="8" href="chapter-8.html">Ch 8: Stage 5 — Net Revenue Close</a>
+<div class="toc-part">Part III · Lifecycle Plays</div>
+<a class="toc-link" data-ch="9" href="chapter-9.html">Ch 9: Purchase &amp; Welcome Play</a>
+<a class="toc-link" data-ch="10" href="chapter-10.html">Ch 10: The Kickoff Play</a>
+<a class="toc-link" data-ch="11" href="chapter-11.html">Ch 11: The Onboarding Play</a>
+<a class="toc-link" data-ch="12" href="chapter-12.html">Ch 12: The First Value Play</a>
+<a class="toc-link" data-ch="13" href="chapter-13.html">Ch 13: The Value Blocks Play</a>
+<a class="toc-link" data-ch="14" href="chapter-14.html">Ch 14: The Sharing Insights Play</a>
+<a class="toc-link" data-ch="15" href="chapter-15.html">Ch 15: The Alignment Meeting Play</a>
+<a class="toc-link" data-ch="16" href="chapter-16.html">Ch 16: The Renew &amp; Grow Play</a>
+<a class="toc-link" data-ch="17" href="chapter-17.html">Ch 17: Supporting Plays</a>
+<div class="toc-part">Part IV · Data, Automation &amp; Scale</div>
+<a class="toc-link" data-ch="18" href="chapter-18.html">Ch 18: AI in CS — Judgment Over Templates</a>
+<a class="toc-link" data-ch="19" href="chapter-19.html">Ch 19: Data Governance &amp; One Data Spine</a>
+<a class="toc-link" data-ch="20" href="chapter-20.html">Ch 20: Health Scoring That Actually Works</a>
+<a class="toc-link" data-ch="21" href="chapter-21.html">Ch 21: Cross-Team Collaboration KPIs</a>
+<a class="toc-link" data-ch="22" href="chapter-22.html">Ch 22: Proactive Capacity Planning</a>
 </div>
-
 <!-- CHAPTER CONTENT -->
 <div id="chapter-content">
-  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
-    <div class="hero-grid"></div>
-    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
-      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
-      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 8</div>
-      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 5 — Net Revenue Close</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Treating the close as a mere transaction is a massive missed opportunity.</p>
-    </div>
-  </div>
-  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>You have successfully navigated the post-sales pipeline. You identified the opportunity, built a bulletproof business case rooted in the customer’s strategic goals, empowered an internal champion to advocate on your behalf, and secured the formal intent to move forward. Now, you reach the culmination of this journey.</p>
-
-<p>The fifth and final stage of the post-sales pipeline is the <strong>Net Revenue Close</strong>.</p>
-
-<p>It is easy to view this stage as a purely administrative event—a moment to simply collect signatures and process an invoice. But treating the close as a mere transaction is a massive missed opportunity. Closing a renewal or expansion is a milestone that reinforces the customer’s trust in your solution. It is the perfect moment to celebrate achievements, capture powerful advocacy, and build momentum for the next phase of your partnership.</p>
-
-<p><strong>Closing with Confidence and Precision</strong> Before you can celebrate, you must ensure a seamless transition from the customer's verbal intent to the finalized contract. You must close with precision, ensuring that all contract terms, pricing adjustments, and success criteria are clearly defined to prevent any last-minute surprises.</p>
-
-<p>By proactively managing the final workflows and remaining aligned with your internal sales, legal, and finance teams, you eliminate friction and make it incredibly easy for the customer to finalize the agreement. Once the ink is dry, the posture of the relationship shifts from execution to celebration.</p>
-
-<p><strong>Customer-Centric Celebration</strong> A successful Net Revenue Close should immediately trigger a celebration. This is not about throwing a party for your own revenue gain; it is a customer-centric celebration designed to acknowledge the customer's success, highlight their measurable outcomes, and set a highly positive tone for the continued partnership.</p>
-
-<p>This celebration reinforces their buying decision and makes them feel valued. Whether you send a highly personalized executive video, an upbeat "Win Report," or a thoughtful customer gift, you must let your brand personality shine. By showcasing the specific outcomes and ROI they achieved to get to this renewal or upgrade, you remind them exactly why they chose to partner with you in the first place.</p>
-
-<p><strong>Internal Celebration: The </strong><strong>"</strong><strong>Marble Jar</strong><strong>"</strong> While you celebrate with the customer, you must also celebrate internally. Recognizing the cross-functional teamwork that led to the win boosts morale and reinforces the broader company-wide impact of Net Revenue Retention (NRR).</p>
-
-<p>Customer Success is a team sport, and it boosts company culture when employees across all departments believe that they are in on the win. Successful organizations ritualize these moments. For example, some teams implement a "Marble Jar"—for every new logo, renewal, or expansion, a marble is added to a jar. When the jar is full, the entire company celebrates with an outing or event. By sharing the story of the close and capturing the lessons learned, you build momentum for repeatable, scalable success across your entire organization.</p>
-
-<p><strong>Turning Wins into Advocacy</strong> The Net Revenue Close is the absolute best time to ask your customer for a favor. Why? Because the key to securing a great review, referral, or testimonial is to <em>only ask when the customer has just experienced a win</em>. You have just guided them through a successful expansion and celebrated their outcomes; they are primed to be advocates.</p>
-
-<p>To turn this win into advocacy, you must make it completely frictionless for them to help you:</p>
-
-<ul>
-<li><strong>Make ONE ask:</strong> Be clear about what you are requesting. Do not ask for a referral, a review, <em>and</em> a testimonial all at once. Decide which is the most beneficial to you and easiest for the customer.</li>
-</ul>
-
-<ul>
-<li><strong>Offer to write a draft:</strong> People are busy. To eliminate the friction of a blank page, offer to write a draft of the testimonial or review that they can simply edit and approve.</li>
-</ul>
-
-<ul>
-<li><strong>Give a deadline:</strong> When you ask them for edits, give them a specific date you want the edits returned by, and politely remind them as needed.</li>
-</ul>
-
-<p>When you seamlessly transition from a closed-won expansion into securing a powerful case study or a hot referral, your post-sales pipeline officially begins fueling your pre-sales pipeline.</p>
-
-<p><strong>The Cycle Continues</strong> A successful Net Revenue Close is not the end of the journey—it is the beginning of the next phase of partnership and growth.</p>
-
-<p>By successfully executing the five stages of the post-sales pipeline—<em>Identify, Align, Advocate, Intent, and Net Revenue Close</em>—you have proven that growth does not happen by accident. It happens by design. With the new contract signed and the wins celebrated, the cycle resets. You return to the <em>Align</em> stage, ready to establish the next set of goals, drive further adoption, and continue the predictable, profitable engine of Strategic Customer Success.</p>
-
-<p>You are absolutely right! We got so excited about the new 3-part structure that we skipped right over the introduction to Part III.</p>
-
-<p>Here is the introduction and overview for <strong>Part III</strong>, designed to bridge the gap between the <em>theory</em> of the pipeline we built in Part II and the <em>tactical execution</em> we are diving into now.</p>
-
-<h2>Part III: AI-Enabled Lifecycle Plays (Right-Touch at Scale)</h2>
-
-<p><strong>Introduction: From Architecture to Execution</strong></p>
-
-<p>In Part II, we architected the post-sales pipeline. You now understand the five stages of growth—Identify, Align, Advocate, Intent, and Net Revenue Close—and why expansion must be the natural result of a carefully designed customer journey. You have the blueprint. Now, it is time to build the engine.</p>
-
-<p>The greatest strategy in the world will fail if your team cannot execute it consistently. Relying on "heroic efforts" from your best Customer Success Managers is not a scalable business model; it is a symptom of operational chaos. To drive predictable Net Revenue Retention (NRR) in 2026, you must transition from relying on individual heroics to relying on structured, repeatable systems.</p>
-
-<p><strong>The Power of Plays and Inflection Points</strong></p>
-
-<p>In the world of Strategic Customer Success, we execute our strategy using Plays. A play is a cross-functional guide for your team to follow, ensuring they deliver an exceptional, consistent customer experience repeatedly.</p>
-
-<p>At the heart of Strategic Customer Success lies an understanding of pivotal Key Inflection Points. An inflection point is a critical moment where the customer's trajectory can either flourish or falter, presenting a turning point to either build or block customer loyalty. The culmination of missed expectations at these junctures often triggers the domino effect, culminating in churn.</p>
-
-<p>There are eight core inflection points in the customer journey:</p>
-
-<ul>
-<li><strong>Purchase Moment:</strong> The genesis of the journey, where expectations are set.</li>
-</ul>
-
-<ul>
-<li><strong>First Meeting:</strong> Forging the initial rapport, which lays the foundation for long-term trust.</li>
-</ul>
-
-<ul>
-<li><strong>Onboarding Decisions:</strong> Guiding customers through the early stages effectively.</li>
-</ul>
-
-<ul>
-<li><strong>Early Success: </strong>Setting the stage for quick value attainment and customer satisfaction.</li>
-</ul>
-
-<ul>
-<li><strong>Goal Attainment:</strong> Guiding customers toward realizing their objectives.</li>
-</ul>
-
-<ul>
-<li><strong>Habit Transformation:</strong> Aiding in the transition towards impactful behavioral shifts.</li>
-</ul>
-
-<ul>
-<li><strong>Ongoing Alignment:</strong> Sustaining alignment through continuous evolution.</li>
-</ul>
-
-<ul>
-<li><strong>Renewal and Growth Decision</strong>: Shaping the crucial renewal and expansion decisions.</li>
-</ul>
-
-<p>It is vital to recognize that these moments often happen when you are not actively engaging with your customer. By centering your customer success strategy around these inflection points, and deploying structured plays at these exact moments, you proactively guide the customer rather than waiting for them to stumble.</p>
-
-<p><strong>Right-Touch Engagement at Scale</strong> Delivering these plays across hundreds or thousands of customers requires a shift from "high-touch for everyone" to a <strong>"</strong><strong>right-touch</strong><strong>"</strong> model. This is where modern AI and automation become your greatest competitive advantages.</p>
-
-<p>In this section, we will explore how to use digital CS, segment-based engagement, and automated triggers to execute these plays flawlessly. The goal of AI is not to turn your CSMs into robots or to send generic, tone-deaf emails. The goal is to use AI and automation to eliminate administrative busywork, thereby preserving your team's essential human judgment, empathy, and strategic thinking for the moments that truly matter. We will show you how to make tech-touch feel deeply personal.</p>
-
-<p><strong>The 3-Part Playbook Structure</strong> To make this section as actionable as possible, we have abandoned theoretical fluff. The following chapters act as a literal playbook. Every single play we cover will follow the exact same three-part framework so you can instantly design and deploy it within your own company:</p>
-
-<ul>
-<li><strong>The Why:</strong> We will uncover the strategic reasoning behind the play, exploring the specific "Loyalty Builders" and "Loyalty Blockers" your customers experience during this inflection point.</li>
-</ul>
-
-<ul>
-<li><strong>Design </strong><strong>&</strong><strong> Build:</strong> We will provide the tactical blueprint for mapping the play, assigning clear roles (who does what), and identifying where automation should take the wheel.</li>
-</ul>
-
-<ul>
-<li><strong>Best Practices:</strong> We will share expert insights, common pitfalls to avoid, and the exact metrics you need to track to ensure the play is succeeding.</li>
-</ul>
-
-<p><strong>The Plays Ahead</strong> We will cover the eight definitive plays that make up the Strategic Customer Success lifecycle:</p>
-
-<ul>
-<li><strong>Chapter 9: The Purchase </strong><strong>&</strong><strong> Welcome Play</strong></li>
-</ul>
-
-<ul>
-<li><strong>Chapter 10: The Kickoff Play</strong></li>
-</ul>
-
-<ul>
-<li><strong>Chapter 11: The Onboarding Play</strong></li>
-</ul>
-
-<ul>
-<li><strong>Chapter 12: The First Value Play</strong></li>
-</ul>
-
-<ul>
-<li><strong>Chapter 13: The Value Blocks Play</strong></li>
-</ul>
-
-<ul>
-<li><strong>Chapter 14: The Sharing Insights Play</strong></li>
-</ul>
-
-<ul>
-<li><strong>Chapter 15: The Alignment Meeting Play</strong></li>
-</ul>
-
-<ul>
-<li><strong>Chapter 16: The Renew </strong><strong>&</strong><strong> Grow Play</strong></li>
-</ul>
-
-<p>If you are ready to stop putting out fires and start running a highly profitable, highly automated revenue engine, let’s turn the page and run the very first play.</p>
-
-<p>Here is <strong>Chapter 9: The Purchase </strong><strong>&</strong><strong> Welcome Play</strong>, structured around the new three-part framework: The Why, Design & Build, and Best Practices.</p>
-
-<p>#</p>
-  </div>
+<div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+<div class="hero-grid"></div>
+<div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
+<div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 8</div>
+<h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 5 — Net Revenue Close</h1>
+<p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Net Revenue Close is not the end of the pipeline. It is the moment where the win is secured, the value story is amplified, and the next cycle of growth begins.</p>
 </div>
-
+</div>
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+<p>By the time the post-sale pipeline reaches Net Revenue Close, the customer should not feel like they are being persuaded into a decision. The decision should already make sense.</p>
+<p>The opportunity was identified because it connected to something the customer cared about. It was aligned to their goals, strengthened through shared understanding, carried forward by an internal advocate, and converted into intent through a clear path of commitment. At this point, the work is no longer about creating belief from scratch. The work is about protecting the momentum that has already been built and turning it into a clean, confident close.</p>
+<p>That distinction matters because too many teams treat the close as the finish line. They see the signed renewal, expansion, or upgrade as the moment the work is complete. The contract is routed, the invoice is processed, the forecast is updated, and the account team moves on to the next target.</p>
+<p>That is a narrow view of the close. It captures the revenue, but it wastes the moment.</p>
+<div class="insight-block">
+<div class="insight-label">Core Idea</div>
+<p>Net Revenue Close is not where the relationship ends. It is where the customer’s decision is reinforced, the value story is captured, and the next growth cycle begins.</p>
+</div>
+<p>The fifth stage of the post-sale pipeline is called Net Revenue Close because it represents more than a completed transaction. It is the moment where retention, expansion, trust, advocacy, and future pipeline all intersect. A strong close does not simply confirm that the customer agreed to continue. It confirms that the customer sees enough value to keep investing.</p>
+<p>That is why this stage deserves the same operating discipline as every stage before it. The close should be precise, customer-centered, internally visible, and intentionally connected to what comes next. If the team treats it as paperwork, the relationship loses energy. If the team treats it as a meaningful milestone, the relationship gains momentum.</p>
+<h2>Closing with Confidence and Precision</h2>
+<p>Before the close can become a celebration, it has to be executed cleanly. This is the part of the process that may feel administrative, but it is still part of the customer experience. Contracting, pricing, approvals, procurement, legal review, security requirements, and internal handoffs all shape how the customer feels about the partnership at the exact moment they are choosing to invest again.</p>
+<p>A sloppy close can damage trust that took months or years to build. The customer may have already decided to move forward, but confusion around terms, timing, pricing, scope, or success criteria can create unnecessary friction. Worse, it can make the customer wonder whether the experience after signing will be as disorganized as the experience of getting the agreement completed.</p>
+<p>This is why precision matters. The team should know what has been agreed to, what has changed, who owns each remaining step, and what the customer needs in order to finalize the decision. Sales, Customer Success, legal, finance, and operations should not appear to the customer as separate departments with separate agendas. They should feel like one coordinated system helping the customer complete a decision that is already aligned to their goals.</p>
+<div class="field-note">
+<div class="field-note-label">Field Test</div>
+<p>If the customer has said yes but the next steps are unclear, the opportunity is not closed. It is exposed.</p>
+</div>
+<p>Net Revenue Close is where the promise made during Intent is tested. In the previous stage, the customer moved from interest to commitment. Now the company has to show that it can convert that commitment into action without creating drag. The better the team manages this moment, the more confidence the customer has in the next phase of the partnership.</p>
+<p>That confidence is not accidental. It comes from clarity. The customer should know what they are signing, why they are signing it, what outcomes the agreement supports, and what happens next. Internally, the team should know how the close affects the account plan, the success plan, the delivery model, the forecast, and the next set of customer goals.</p>
+<p>When the close is handled well, the customer does not feel pushed through a commercial process. They feel guided through a decision they already believe in.</p>
+<h2>The Close Should Reinforce the Customer’s Decision</h2>
+<p>Once the agreement is finalized, the next mistake is moving on too quickly. A renewal or expansion is not just a win for the vendor. It is also a decision by the customer to continue investing money, time, attention, and organizational trust in the partnership. That decision should be acknowledged.</p>
+<p>This does not mean the team needs to manufacture celebration or turn every renewal into a marketing event. It means the team should pause long enough to reinforce what the customer accomplished and why the decision matters. The close is a powerful moment to remind the customer of the progress they have made, the outcomes they have achieved, and the future they are choosing to build.</p>
+<p>Customer-centric celebration is different from vendor-centric celebration. Vendor-centric celebration says, “We closed the deal.” Customer-centric celebration says, “You made progress, your team created value, and this next step builds on that momentum.”</p>
+<p>That difference changes the tone completely.</p>
+<div class="insight-block">
+<div class="insight-label">Operating Principle</div>
+<p>The close should make the customer feel more confident about their decision, not more aware that they were part of your forecast.</p>
+</div>
+<p>A thoughtful close might include a personalized note from the executive sponsor, a short summary of progress made, a simple win report, or a message that recognizes the customer team’s effort. The format matters less than the intent. The point is to connect the commercial decision back to value achievement.</p>
+<p>This is especially important in expansion. When the customer increases their investment, they are not only buying more. They are signaling that the relationship has earned the right to grow. That signal should be honored. It should also be documented, because the reasons behind the expansion become the starting point for the next phase of alignment.</p>
+<p>If the customer expanded because they achieved early operational improvement, that becomes part of the next success plan. If they renewed because the partnership reduced risk, that should inform the next set of goals. If they added a new team because an internal advocate carried the story successfully, that should shape the stakeholder plan going forward. The close is not just a conclusion. It is a source of intelligence.</p>
+<h2>Internal Celebration Creates Organizational Memory</h2>
+<p>The close should also be celebrated internally, but not simply as a revenue event. The real value of internal celebration is that it creates organizational memory around what worked.</p>
+<p>Customer Success is a team sport. A strong renewal or expansion is rarely the result of one person doing one impressive thing at the end of the process. It is usually the result of many smaller actions compounding over time. Sales set expectations well. Implementation created early confidence. Product delivered something that mattered. Support resolved issues quickly. Customer Success maintained alignment. Finance and legal helped remove friction. An executive sponsor showed up at the right moment. An advocate inside the customer carried the value story forward.</p>
+<p>If the company only celebrates the signed agreement, it misses the operating lesson. If it celebrates the story behind the agreement, it reinforces the behaviors that made the outcome possible.</p>
+<p>This is why rituals matter. They make retention and expansion visible across the company. They help employees outside the account team see how their work contributes to Net Revenue Retention. They also help the organization learn what creates repeatable growth. A simple win story shared internally can do more than boost morale. It can teach the company how value was created, how risk was managed, and how the customer’s trust was earned.</p>
+<div class="field-note">
+<div class="field-note-label">Practical Question</div>
+<p>When a renewal or expansion closes, does your company only know the amount, or does it understand why the customer chose to keep investing?</p>
+</div>
+<p>The “marble jar” idea is useful because it makes the accumulation of customer wins tangible. Whether the ritual is a jar, a win report, a company meeting, or a shared story, the principle is the same. Net Revenue Retention should not be invisible. If retention and expansion are major drivers of growth, then the moments that create them should be part of the company’s operating culture.</p>
+<p>Internal celebration also prevents Customer Success from being seen as a function that quietly absorbs complexity in the background. When the story of a close is shared well, it shows how post-sale work contributes to company growth. It connects customer outcomes to revenue outcomes. It makes the operating system visible.</p>
+<h2>Turning the Win into Advocacy</h2>
+<p>The best time to ask for advocacy is when the customer has just experienced a win. Not when the marketing team needs a case study. Not when sales needs a reference. Not six months later when the emotion of the moment has faded. The right time is when the customer has just made a confident decision to continue or expand the relationship because the value is clear.</p>
+<p>This does not mean every close should immediately turn into a public testimonial. The ask has to be appropriate to the relationship, the customer’s policies, and the level of value achieved. But the principle holds: advocacy should be invited when the customer’s own success is fresh.</p>
+<p>The mistake many teams make is asking for too much at once. They ask for a review, a reference, a testimonial, a case study, a webinar, and a referral as if the customer’s goodwill is an unlimited resource. That turns a moment of momentum into a burden. A better approach is to make one clear ask that fits the customer and creates as little friction as possible.</p>
+<p>If the customer is willing to provide a quote, make the draft easy to review. If they are open to a reference, clarify the type of prospect and the expected time commitment. If they are comfortable with an internal story but not a public one, capture it for enablement or executive reporting. If they are willing to introduce another team, make that introduction simple and connected to the value already achieved.</p>
+<div class="insight-block">
+<div class="insight-label">Momentum Shift</div>
+<p>The close becomes a growth engine when the customer’s success story starts creating trust beyond the original account.</p>
+</div>
+<p>This is where the post-sale pipeline begins to feed the pre-sale pipeline. A strong Net Revenue Close can produce references, reviews, case studies, referrals, executive relationships, and new internal opportunities. But those outcomes do not happen reliably when advocacy is treated as an afterthought. They happen when the team intentionally captures the story while the win is still meaningful.</p>
+<p>The strongest customer stories are not generic praise. They are specific. They explain the original challenge, the path taken, the value achieved, and the reason the customer chose to continue investing. That same structure strengthens external advocacy and internal learning. It gives Sales a better story. It gives Customer Success a clearer pattern to repeat. It gives leadership evidence that the operating system is producing the outcomes it was designed to create.</p>
+<h2>The Cycle Continues</h2>
+<p>Net Revenue Close is the final stage of the pipeline, but it is not the end of the relationship. In a healthy post-sale operating system, the close immediately creates the conditions for the next cycle of alignment, value, advocacy, and growth.</p>
+<p>This is where many teams lose momentum. They celebrate the signature, update the systems, and then allow the account to drift until the next renewal or expansion opportunity appears. That creates a stop-start customer experience. The customer feels intense attention during the commercial moment and then less structure afterward.</p>
+<p>A better approach is to treat the close as the beginning of the next success motion. The agreement should feed directly into the next set of goals. The reasons for renewal or expansion should inform the next Alignment Meeting. New stakeholders should be brought into the relationship intentionally. Any commitments made during the buying process should be translated into execution. The value story that supported the close should become the foundation for the next value story.</p>
+<p>In that sense, the pipeline does not reset to zero. It advances. Identify becomes sharper because the team understands the customer better. Align becomes stronger because the next goals are based on proven progress. Advocate becomes easier because trust has been reinforced. Intent becomes more natural because the customer has already experienced the system working. Net Revenue Close becomes less of a heroic push and more of a predictable outcome.</p>
+<div class="insight-block">
+<div class="insight-label">Chapter Takeaway</div>
+<p>The best close does more than secure revenue. It reinforces trust, captures the value story, creates advocacy, and sets the next cycle of growth in motion.</p>
+</div>
+<h2>Closing Part II</h2>
+<p>The five stages of the post-sale pipeline—Identify, Align, Advocate, Intent, and Net Revenue Close—are designed to make retention and expansion less dependent on timing, personality, and heroic effort. They give post-sale teams a shared language for growth. They create visibility into where opportunities are forming, where belief is strengthening, where internal momentum exists, and where commercial commitment is ready to become real.</p>
+<p>But a pipeline alone is not enough. A pipeline shows how growth progresses. It does not, by itself, ensure that the customer experiences the right moments in the right way. For that, the operating system needs plays.</p>
+<p>Part III moves from architecture to execution. The next chapters focus on the lifecycle plays that create the conditions for the pipeline to work in the first place: Purchase and Welcome, Kickoff, Onboarding, First Value, Value Blocks and Insights, Alignment Meetings, and Renew and Grow. These plays are where the theory becomes practical. They are how teams create relevance, deliver value, build trust, and guide customers through the inflection points that determine whether the relationship grows stronger or begins to weaken.</p>
+<p>If Part II defined the growth path, Part III shows how to run it.</p>
+</div>
+</div>
 <!-- BOTTOM NAV -->
 <div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
-  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
-    <div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
-      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 9: Play 1 — The Purchase & Welcome Play</div>
-    </div>
-    <div style="display:flex;gap:0.75rem">
-      <button onclick="window.location.href='chapter-7.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
-      <button onclick="window.location.href='chapter-9.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
-    </div>
-  </div>
+<div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+<div>
+<div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+<div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 9: Play 1 — The Purchase &amp; Welcome Play</div>
 </div>
-
+<div style="display:flex;gap:0.75rem">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-7.html'" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+<button onclick="window.location.href='chapter-9.html'" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s">Next Chapter →</button>
+</div>
+</div>
+</div>
 <script>
 function toggleToc() {
   document.getElementById('toc-drawer').classList.toggle('open');
