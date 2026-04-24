@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ch 6: Stage 3 — Advocate — The Post-Sale Operating System</title>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ch 6: Stage 3 — Advocate — The Post-Sale Operating System</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
     .chapter-body h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -47,6 +48,44 @@
       margin: 1.75rem 0;
     }
     .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+
+    .insight-block, .field-note {
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      margin: 1.8rem 0;
+      border: 1px solid rgba(26,46,66,.10);
+      box-shadow: 0 10px 30px rgba(26,46,66,.06);
+    }
+    .insight-block {
+      background: linear-gradient(135deg, rgba(26,46,66,.96), rgba(36,59,82,.96));
+      border-left: 4px solid var(--olive);
+    }
+    .insight-block.closing {
+      margin-top: 2.25rem;
+    }
+    .field-note {
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(238,241,200,.45));
+      border-left: 4px solid var(--blue);
+    }
+    .insight-label, .field-note-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .insight-label { color: var(--olive); }
+    .field-note-label { color: var(--navy-light); }
+    .insight-block p, .field-note p {
+      max-width: 100%;
+      margin: 0;
+      line-height: 1.7;
+    }
+    .insight-block p {
+      color: rgba(255,255,255,.88);
+      font-style: italic;
+    }
+    .field-note p { color: var(--gray-700); }
     .chapter-nav-btn {
       padding: 8px 18px;
       border: 1px solid var(--gray-200);
@@ -105,137 +144,168 @@
   </style>
 </head>
 <body>
-
 <div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
-
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px">
-      <div class="nav-logo-mark">C</div>
-      <span class="nav-logo-text">The Post-Sale Operating System</span>
-    </a>
-  </div>
-  <ul class="nav-links">
-    <li><a href="index.html#parts">All Chapters</a></li>
-    <li><a href="frameworks.html">Frameworks</a></li>
-    <li><a href="calculator.html">ROI Calculator</a></li>
-  </ul>
-  <div style="display:flex;gap:0.6rem;align-items:center">
-    <button class="chapter-nav-btn" onclick="window.location.href='chapter-5.html'">← Prev</button>
-    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-7.html'">Next →</button>
-  </div>
+<div class="nav-logo">
+<a href="index.html" style="display:flex;align-items:center;gap:10px">
+<div class="nav-logo-mark">C</div>
+<span class="nav-logo-text">The Post-Sale Operating System</span>
+</a>
+</div>
+<ul class="nav-links">
+<li><a href="index.html#parts">All Chapters</a></li>
+<li><a href="frameworks.html">Frameworks</a></li>
+<li><a href="calculator.html">ROI Calculator</a></li>
+</ul>
+<div style="display:flex;gap:0.6rem;align-items:center">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-5.html'">← Prev</button>
+<button class="chapter-nav-btn primary" onclick="window.location.href='chapter-7.html'">Next →</button>
+</div>
 </nav>
-
 <!-- TOC BUTTON -->
 <button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
-
 <!-- TOC OVERLAY -->
 <div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
-
 <!-- TOC DRAWER -->
 <div class="toc-drawer" id="toc-drawer">
-  <div class="toc-title">Table of Contents</div>
-  <div class="toc-part">Introduction</div>
-  <a href="index.html" class="toc-link">Overview & The Book</a>
-  <div class="toc-part">Part I · The 2026 CS Evolution</div>
-  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
-  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
-  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
-  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
-  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
-  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
-  <a href="chapter-6.html" class="toc-link active" data-ch="6">Ch 6: Stage 3 — Advocate</a>
-  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
-  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
-  <div class="toc-part">Part III · Lifecycle Plays</div>
-  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
-  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
-  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
-  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
-  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
-  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
-  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
-  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
-  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
-  <div class="toc-part">Part IV · Data, Automation & Scale</div>
-  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
-  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
-  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
-  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
-  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+<div class="toc-title">Table of Contents</div>
+<div class="toc-part">Introduction</div>
+<a class="toc-link" href="index.html">Overview &amp; The Book</a>
+<div class="toc-part">Part I · The 2026 CS Evolution</div>
+<a class="toc-link" data-ch="1" href="chapter-1.html">Ch 1: From Churn Insurance to Revenue Engine</a>
+<a class="toc-link" data-ch="2" href="chapter-2.html">Ch 2: Post-Sale Unification</a>
+<a class="toc-link" data-ch="3" href="chapter-3.html">Ch 3: The Role Evolution of the CSM</a>
+<div class="toc-part">Part II · The Post-Sales Pipeline</div>
+<a class="toc-link" data-ch="4" href="chapter-4.html">Ch 4: Stage 1 — Identify</a>
+<a class="toc-link" data-ch="5" href="chapter-5.html">Ch 5: Stage 2 — Align</a>
+<a class="toc-link active" data-ch="6" href="chapter-6.html">Ch 6: Stage 3 — Advocate</a>
+<a class="toc-link" data-ch="7" href="chapter-7.html">Ch 7: Stage 4 — Intent</a>
+<a class="toc-link" data-ch="8" href="chapter-8.html">Ch 8: Stage 5 — Net Revenue Close</a>
+<div class="toc-part">Part III · Lifecycle Plays</div>
+<a class="toc-link" data-ch="9" href="chapter-9.html">Ch 9: Purchase &amp; Welcome Play</a>
+<a class="toc-link" data-ch="10" href="chapter-10.html">Ch 10: The Kickoff Play</a>
+<a class="toc-link" data-ch="11" href="chapter-11.html">Ch 11: The Onboarding Play</a>
+<a class="toc-link" data-ch="12" href="chapter-12.html">Ch 12: The First Value Play</a>
+<a class="toc-link" data-ch="13" href="chapter-13.html">Ch 13: The Value Blocks Play</a>
+<a class="toc-link" data-ch="14" href="chapter-14.html">Ch 14: The Sharing Insights Play</a>
+<a class="toc-link" data-ch="15" href="chapter-15.html">Ch 15: The Alignment Meeting Play</a>
+<a class="toc-link" data-ch="16" href="chapter-16.html">Ch 16: The Renew &amp; Grow Play</a>
+<a class="toc-link" data-ch="17" href="chapter-17.html">Ch 17: Supporting Plays</a>
+<div class="toc-part">Part IV · Data, Automation &amp; Scale</div>
+<a class="toc-link" data-ch="18" href="chapter-18.html">Ch 18: AI in CS — Judgment Over Templates</a>
+<a class="toc-link" data-ch="19" href="chapter-19.html">Ch 19: Data Governance &amp; One Data Spine</a>
+<a class="toc-link" data-ch="20" href="chapter-20.html">Ch 20: Health Scoring That Actually Works</a>
+<a class="toc-link" data-ch="21" href="chapter-21.html">Ch 21: Cross-Team Collaboration KPIs</a>
+<a class="toc-link" data-ch="22" href="chapter-22.html">Ch 22: Proactive Capacity Planning</a>
 </div>
-
 <!-- CHAPTER CONTENT -->
 <div id="chapter-content">
-  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
-    <div class="hero-grid"></div>
-    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
-      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
-      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 6</div>
-      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 3 — Advocate</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">You cannot close a deal alone. You need an internal champion who can navigate the organization for you.</p>
-    </div>
-  </div>
-  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>Even with the most compelling business case and a track record of perfect alignment, a Customer Success Manager cannot force an expansion or renewal across the finish line alone. The third stage of the post-sales pipeline is Advocate. To drive internal support, secure consensus, and build momentum for growth, you must intentionally map, engage, and empower internal champions.</p>
-
-<p>Advocacy is built on trust and alignment, transforming your primary point of contact from a passive user of your product into a true champion for your solution. Without strong advocates, internal roadblocks can delay—or completely stall—an otherwise great expansion opportunity.</p>
-
-<p><strong>Formal Stakeholder Mapping</strong> To build true Client Intimacy, you cannot rely on an informal approach to managing your customer's organizational chart. You must implement formal Stakeholder Mapping to identify key players, understand their level of influence in decision-making, and formulate a targeted growth plan.</p>
-
-<p>Begin by categorizing individual client stakeholders into specific roles, such as <strong>Steering Committee Member, Assists with Issues, Influencer, or Approves Renewal</strong>.</p>
-
-<p>Next, you must define your relationship position by assessing their attitude toward your company, assigning a strict communication objective to each:</p>
-
-<ul>
-<li><strong>Sponsor:</strong> A stakeholder who fully advocates for our program.</li>
-</ul>
-
-<ul>
-<li><strong>Update:</strong> A supporter who can provide us with valuable information.</li>
-</ul>
-
-<ul>
-<li><strong>Educate:</strong> A stakeholder who lacks understanding and cannot yet be a supporter.</li>
-</ul>
-
-<ul>
-<li><strong>Neutralize:</strong> A detractor who works against the program.</li>
-</ul>
-
-<p>As you map these stakeholders, take the time to analyze their personal styles and motivations—such as their need to excel, take action, analyze data, or drive consensus—so you can adjust your messaging and communication details accordingly.</p>
-
-<p><strong>Scripting the Communication Event Plan</strong> Once your stakeholders are mapped, you must define the details of your upcoming communication events. Think of this like an offensive coordinator in American football. In football, the first 15 to 20 plays are "scripted" to create rhythm within the offense, identify how the defense will react to different formations, and fine-tune the game plan.</p>
-
-<p>Likewise, <strong>CSMs must deliberately script a Communication Event Plan for each key stakeholder over a multi-week timeline</strong>. By deliberately planning out your communication cadence, you ensure that <strong>each meeting with key stakeholders adds value and advances the relationship</strong>. You must define the specific goal of each event, the content needed to achieve that outcome, and who will deliver the story in a way that creates a desire for the stakeholder to take action.</p>
-
-<p><strong>Arming the Advocate: Proof Points and Insights</strong> You cannot send your advocate into an internal budget meeting empty-handed. To help them influence decision-makers and secure buy-in, you must arm them with undeniable proof of value.</p>
-
-<p>This is where the strategy of Sharing Insights becomes your most powerful pipeline tool. You must actively equip advocates with tailored data, success stories, and measurable outcomes to demonstrate the ongoing value of your solution. When your advocate forwards your impact report to their CFO with a note saying, "Look at the ROI we achieved this quarter," you have effectively outsourced your selling motion to the most persuasive person in the room.</p>
-
-<p><strong>Leveraging the Alignment Meeting</strong> Your structured Alignment Meetings are the ideal venue to put your scripted communication plan into action and put your advocate center stage. Use these sessions to validate the business case, address any lingering objections, and secure broader internal buy-in.</p>
-
-<p>These meetings provide an opportunity to engage advocates directly in front of their executive team, using their insights and influence to further align your solutions with the company's broader business goals. By reinforcing their role during these high-stakes touchpoints, you turn them into active participants in driving the success of the partnership.</p>
-
-<p>#</p>
-  </div>
+<div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+<div class="hero-grid"></div>
+<div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
+<div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 6</div>
+<h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 3 — Advocate</h1>
+<p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Advocate is where alignment becomes internal momentum—and where the customer becomes capable of carrying the value story without you in the room.</p>
 </div>
-
+</div>
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+<p>Advocate is the first stage in the post-sale pipeline where the opportunity must progress without you in the room.</p>
+<p>Up to this point, the work has been mostly visible. In Identify, you made opportunity easier to see. You paid attention to the customer’s reason for purchase, the gaps that surfaced during onboarding, the constraints that slowed progress, and the future needs that were already beginning to take shape. In Align, you connected those opportunities back to what the customer was trying to accomplish. You kept progress tied to purpose. You made the business case feel relevant instead of opportunistic.</p>
+<p>But alignment alone does not move an organization. A customer may agree with the logic. They may see the value. They may even believe the recommendation is the right next step. And still, nothing happens. The decision has to travel through the customer’s business. It has to survive budget scrutiny, competing priorities, internal politics, executive skepticism, procurement processes, and the quiet resistance that appears whenever people are asked to change or spend more.</p>
+<p>This is where many post-sale opportunities stall. Not because the recommendation is weak, and not because the value is unclear. They stall because the business case has no internal carrier. It lives with the CSM, the account manager, or one friendly contact who likes the product but does not have the influence, credibility, or confidence to move the organization forward.</p>
+<div class="insight-block">
+<div class="insight-label">Core Idea</div>
+<p>Advocate is where the business case leaves your control. If it cannot be carried by someone inside the customer’s organization, it is not yet ready to become intent.</p>
+</div>
+<p>This is why Advocate is not simply about having a champion. That language is too casual for the work required. A champion is often treated as a friendly contact, someone who likes you, takes your calls, and says positive things about the relationship. That may be helpful, but it is not enough. A true advocate can translate your value into the customer’s language, connect it to the right priorities, and influence the people whose support is required for the relationship to grow.</p>
+<p>The difference matters because post-sale growth is rarely decided by one person. Even when a primary contact owns the relationship, the renewal or expansion is shaped by others. Finance wants to know whether the investment is justified. A department leader wants to know whether the work supports their goals. An executive wants to know whether the solution matters enough to keep funding. A new stakeholder may wonder why the company bought the product in the first place. If those people only hear the story from you, the conversation still feels like selling. If they hear it from someone they trust internally, the conversation begins to feel like progress.</p>
+<p>That is the role of advocacy. It turns alignment into organizational momentum.</p>
+<h2>Advocacy Has to Be Designed</h2>
+<p>Advocacy rarely appears by accident. It is created through repeated moments of clarity, usefulness, and trust. A stakeholder becomes an advocate when they can connect your work to a business outcome they care about, when they have enough proof to defend the investment, and when they see personal or organizational benefit in helping the partnership move forward.</p>
+<p>That means the CSM’s job is not to wait for a champion to emerge. The job is to design the conditions that allow advocacy to form. This starts with the same three pillars that support the entire post-sale pipeline: relevance, value achievement, and trust. Relevance gives the advocate a reason to speak. The recommendation is not generic; it connects to what the customer already cares about. Value achievement gives the advocate evidence. They are not arguing from belief alone; they can point to progress, outcomes, and proof. Trust gives the advocate credibility. They are not merely passing along your message; they are putting their own reputation behind the idea that continuing, expanding, or deepening the partnership is the right move.</p>
+<p>When any of those pillars is missing, advocacy weakens. If the recommendation is not relevant, the advocate has no reason to create urgency. If value has not been achieved or clearly communicated, the advocate has no evidence. If trust has not been built, the advocate will not risk political capital on your behalf. Advocate therefore depends on the quality of the work that came before it. You cannot manufacture advocacy at the end of the process. You have to earn it through the way the relationship has been managed from the beginning.</p>
+<div class="insight-block">
+<div class="insight-label">Operating Principle</div>
+<p>A friendly contact is not the same as an advocate. An advocate has enough trust, context, and proof to move the conversation when you are not present.</p>
+</div>
+<p>This is where stakeholder mapping becomes more than an account planning exercise. In too many organizations, stakeholder maps are created because someone said they should be. Names are placed into a grid. Titles are captured. Influence is guessed at. Then the document sits untouched until renewal risk appears. That kind of mapping does not create advocacy because it is disconnected from the actual path the opportunity must travel.</p>
+<h2>From Contact Management to Influence Mapping</h2>
+<p>A useful stakeholder map answers a much sharper question: who must believe this for the relationship to move forward?</p>
+<p>That question changes the work. It forces the team to understand not only who is involved, but what each person needs to believe, what they already understand, where they may resist, and how the advocate can help the message reach them. Some stakeholders need to be educated because they do not yet understand the value. Some need to be updated because they are supportive but distant from the day-to-day work. Some need to be neutralized because they carry objections that could slow or block the decision. A few may become sponsors because they see the connection between the solution and the outcomes the business needs.</p>
+<p>The point is not to label people for the sake of a framework. The point is to make the internal terrain visible. Every customer organization has a decision path, even when that path is informal. Every opportunity has people who can accelerate it, people who can ignore it, and people who can stop it. Advocate is the stage where that path has to be understood deliberately, because the next stage, Intent, depends on it.</p>
+<div class="field-note">
+<div class="field-note-label">Field Test</div>
+<p>If your main contact left tomorrow, would the customer still understand the value you have created, the progress you are making, and the reason to keep investing? If the answer is no, the account is not as healthy as it looks.</p>
+</div>
+<p>The practical work begins by separating role from relationship. A stakeholder might sit on the steering committee, help resolve issues, influence adoption, approve renewal, own a budget, or shape executive perception. Those roles tell you how the person participates in the account. But role alone does not tell you whether that stakeholder helps or hurts the partnership.</p>
+<p>The next layer is relationship position. Some stakeholders are true sponsors. They understand the business case, believe in the work, and are willing to advocate for the program. Others are supporters who can provide useful information but are not ready to carry the message. Some need education because they do not yet understand the value or their connection to it. Others may need to be neutralized because they are skeptical, frustrated, politically opposed, or simply unconvinced that the partnership deserves more investment.</p>
+<p>This is not a labeling exercise. It is a communication strategy. A sponsor needs to be equipped. A supporter needs to be developed. An uninformed stakeholder needs context. A detractor needs to be understood before they can be addressed. When the team is honest about where each person stands, it can stop sending the same generic update to everyone and begin shaping communication around the specific belief that must change.</p>
+<p>That is why Advocate is tightly connected to Client Intimacy. Client Intimacy is not just knowing the customer’s company. It is understanding the people inside the company well enough to know what motivates them, what frustrates them, what kind of evidence they trust, and what kind of story they are willing to repeat. Some stakeholders respond to progress against strategic goals. Others need operational detail. Some want proof that risk is being reduced. Others care most about speed, visibility, control, cost, or internal reputation. Advocacy grows when the message fits the person receiving it.</p>
+<h2>The Communication Plan Is the Playbook</h2>
+<p>Once the team understands the stakeholder landscape, the next step is to script the communication plan. This does not mean turning the CSM into a robot or forcing every conversation into a rigid template. It means being intentional about the sequence of communication events that will move the account forward.</p>
+<p>A helpful way to think about this is the opening script in football. Coaches often script the first set of plays not because they expect the entire game to follow the script, but because the script creates rhythm and reveals how the defense responds. The same idea applies here. The CSM should know which stakeholders need to be engaged, what each conversation is meant to accomplish, what proof or insight is required, and who is best positioned to deliver the message.</p>
+<div class="insight-block">
+<div class="insight-label">Pipeline Discipline</div>
+<p>Advocacy is not built through more meetings. It is built through better-sequenced conversations that move the right people toward shared belief.</p>
+</div>
+<p>Without this discipline, communication becomes reactive. The CSM sends updates when there is news, schedules meetings when there is a problem, and waits for the renewal process to reveal who else needs to be involved. By then, the team is usually late. The customer’s internal narrative has already formed, and the CSM is trying to influence a decision that is already in motion.</p>
+<p>With a communication plan, the team works ahead of the decision. It uses each interaction to create value, surface risk, build consensus, and prepare advocates to tell the story internally. A stakeholder meeting is no longer a check-in. It has a purpose. It might validate the original business case, share progress against a specific outcome, address a known objection, educate a new leader, or give a sponsor the language they need to explain why continued investment matters.</p>
+<p>When this is done well, the advocate is not surprised by the next step. They have been part of the logic all along. They understand why the recommendation makes sense, who needs to hear it, what evidence will matter, and how it supports their own goals inside the organization.</p>
+<div class="insight-block">
+<div class="insight-label">Line in the Sand</div>
+<p>If the advocate cannot explain the business case in their own words, the opportunity is still dependent on you.</p>
+</div>
+<h2>Arming the Advocate</h2>
+<p>The most important mistake to avoid in this stage is assuming that an advocate can advocate without material. Even a strong internal champion needs proof. They need concise evidence of value. They need a clear explanation of progress. They need language that connects the partnership to the priorities their leaders already care about. They need something stronger than enthusiasm.</p>
+<p>This is where Sharing Insights becomes a pipeline tool, not just a customer engagement activity. An insight is useful because it gives the advocate something to carry. It might show adoption progress, quantify an operational improvement, connect usage to a business outcome, highlight risk that has been reduced, or show a new opportunity the customer can pursue. The best insights do not simply report what happened. They help the customer see why it matters.</p>
+<p>Without shared insights, value stays trapped in the day-to-day relationship. The people closest to the work may know progress has been made, but others do not. The advocate may feel positive about the partnership, but they lack proof. Leaders may hear that things are going well, but they do not see how the work connects to business outcomes. In that environment, even a satisfied customer can struggle to defend the renewal or make the case for expansion.</p>
+<p>Shared insights solve that problem by giving the advocate language and evidence. They can point to measurable outcomes, lessons learned, adoption progress, stakeholder feedback, avoided risk, operational improvement, or a clearer path toward the customer’s original goal. The insight does not need to be complicated. It needs to be useful. It needs to connect the work being done to something the customer cares about. And it needs to be packaged in a way that can move internally without losing its meaning.</p>
+<p>This is the practical difference between reporting and advocacy. Reporting tells the customer what happened. Advocacy equips the customer to explain why it matters.</p>
+<div class="field-note">
+<div class="field-note-label">Practical Question</div>
+<p>What have you given your advocate that they could use, without editing, to explain the value of the partnership to their boss, their finance team, or a new executive sponsor?</p>
+</div>
+<h2>Goal Facilitation Keeps Advocacy Grounded</h2>
+<p>Goal facilitation plays a similar role. If Align keeps progress connected to purpose, goal facilitation keeps the customer moving toward the outcomes that justify the relationship. It prevents the partnership from becoming passive. The CSM is not waiting for the customer to ask for help or for a risk signal to appear. They are staying involved enough to see where progress is accelerating, where it is slowing, and where additional support may be needed.</p>
+<p>That ongoing involvement strengthens advocacy because it gives the advocate a stronger story to tell. The story is no longer limited to product usage or satisfaction. It becomes a story about progress against a meaningful business goal. It shows that the relationship has a direction, that obstacles are being addressed, and that the vendor is acting like a partner rather than a supplier.</p>
+<p>Goal facilitation also protects the advocate from being left alone with a stale business case. As goals evolve, priorities shift, and new stakeholders enter the conversation, the advocate needs updated context. Continued involvement gives them a current story, not an old one. It allows the CSM to keep connecting the work to the customer’s evolving priorities, which is what makes advocacy durable.</p>
+<h2>Alignment Meetings Put Advocacy in Motion</h2>
+<p>The Alignment Meeting is one of the strongest venues for the Advocate stage because it creates a structured moment to bring the right people together around the same story. This is where the CSM can validate the business case, connect progress to executive priorities, surface objections, and give the internal advocate a visible role in the conversation.</p>
+<p>The mistake is to make the vendor the center of every meeting. In the Advocate stage, the customer’s voice matters more. The strongest alignment conversations create space for the advocate to describe what has changed, where the organization is seeing value, and what still needs to happen next. When a champion speaks in front of peers and executives, their credibility does work that no vendor presentation can do on its own.</p>
+<p>This also protects the account from dependency on a single relationship. Each Alignment Meeting should expand shared understanding. It should make the value story less fragile by distributing it across more stakeholders. It should reveal who is supportive, who is uncertain, and who needs additional context. Over time, these meetings create the internal consensus required for renewal and growth.</p>
+<p>This is especially important because advocates are not only useful after a deal is already forming. They help shape whether an opportunity becomes real in the first place. They can identify who else needs to be involved. They can explain internal timing. They can surface objections before they harden. They can tell you whether the recommendation fits the current business climate or whether the story needs to be adjusted. In the best cases, they do more than support the opportunity. They help design the path for it to move forward.</p>
+<div class="insight-block">
+<div class="insight-label">Momentum Shift</div>
+<p>Advocacy is working when the customer begins advancing the case internally before you ask them to.</p>
+</div>
+<h2>The Outcome of Advocate</h2>
+<p>By the end of the Advocate stage, the team should be able to see more than satisfaction. It should be able to see internal support taking shape. The right stakeholders have been identified. Their influence and relationship position are understood. Communication has been sequenced around the beliefs that need to be built. Advocates have been armed with proof, insight, and language. Alignment Meetings are being used to create shared conviction rather than simply review activity.</p>
+<p>That is when the account is ready to move toward Intent. Intent is not just a customer saying they are open to a conversation. It is the result of enough internal belief forming around the value of the partnership and the next logical investment. Advocate is the bridge between alignment and commercial motion. It turns value into a story the customer can carry, and it turns a single relationship into organizational momentum.</p>
+<p>That does not mean the next step will always be easy. Budget may still be constrained. Procurement may still take time. Legal may still slow things down. An executive may still need to be convinced. But those are different problems than the absence of advocacy. Once advocacy exists, the opportunity has an internal force working in its favor. There is someone inside the customer’s organization who understands the business case, believes in the value, and can help navigate the path toward commitment.</p>
+<p>Without that person, you are still selling from the outside. With that person, the relationship begins to move from within.</p>
+<p>This is why Advocate is such a critical stage in the post-sale operating system. It transforms the relationship from something managed by the vendor into something supported by the customer’s own organization. It turns proof into influence. It turns alignment into motion. And it creates the conditions for Intent to be more than a hopeful forecast category.</p>
+<p>When Advocate is weak, opportunities depend on persuasion. When Advocate is strong, opportunities depend on momentum. That difference is what separates reactive account management from a post-sale pipeline that can actually drive predictable retention and growth.</p>
+<div class="insight-block closing">
+<div class="insight-label">Chapter Takeaway</div>
+<p>The Advocate stage is where the CSM stops hoping the customer will sell the value internally and starts designing the conditions that make internal advocacy possible.</p>
+</div>
+</div>
+</div>
 <!-- BOTTOM NAV -->
 <div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
-  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
-    <div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
-      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 7: Stage 4 — Intent</div>
-    </div>
-    <div style="display:flex;gap:0.75rem">
-      <button onclick="window.location.href='chapter-5.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
-      <button onclick="window.location.href='chapter-7.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
-    </div>
-  </div>
+<div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+<div>
+<div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+<div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 7: Stage 4 — Intent</div>
 </div>
-
+<div style="display:flex;gap:0.75rem">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-5.html'" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+<button onclick="window.location.href='chapter-7.html'" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s">Next Chapter →</button>
+</div>
+</div>
+</div>
 <script>
 function toggleToc() {
   document.getElementById('toc-drawer').classList.toggle('open');
@@ -248,26 +318,6 @@ window.addEventListener('scroll', () => {
   document.getElementById('progress-bar').style.width = pct + '%';
 });
 
-// Post-process callouts
-document.querySelectorAll('.chapter-body p').forEach(p => {
-  const t = p.textContent.trim();
-  const calloutPhrases = [
-    "The pipeline doesn't stop",
-    "Customer Success is a sales function",
-    "Judgment Over Templates",
-    "autopsy report",
-    "Birthday Party Trap",
-    "doing whatever it takes",
-    "65%",
-    "canary in the coal mine",
-  ];
-  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
-    const div = document.createElement('div');
-    div.className = 'callout';
-    div.innerHTML = '<p>' + p.innerHTML + '</p>';
-    p.replaceWith(div);
-  }
-});
 </script>
 </body>
 </html>
