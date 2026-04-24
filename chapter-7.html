@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ch 7: Stage 4 — Intent — The Post-Sale Operating System</title>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ch 7: Stage 4 — Intent — The Post-Sale Operating System</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
     .chapter-body h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -102,140 +103,210 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
-  </style>
+  
+
+    .insight-block, .field-note {
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
+      margin: 1.8rem 0;
+      border: 1px solid rgba(26,46,66,.10);
+      box-shadow: 0 10px 30px rgba(26,46,66,.06);
+    }
+    .insight-block {
+      background: linear-gradient(135deg, rgba(26,46,66,.96), rgba(36,59,82,.96));
+      border-left: 4px solid var(--olive);
+    }
+    .insight-block.closing { margin-top: 2.25rem; }
+    .field-note {
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(238,241,200,.45));
+      border-left: 4px solid var(--blue);
+    }
+    .insight-label, .field-note-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .insight-label { color: var(--olive); }
+    .field-note-label { color: var(--navy-light); }
+    .insight-block p, .field-note p {
+      max-width: 100%;
+      margin: 0;
+      line-height: 1.7;
+    }
+    .insight-block p {
+      color: rgba(255,255,255,.88);
+      font-style: italic;
+    }
+    .field-note p { color: var(--gray-700); }
+</style>
 </head>
 <body>
-
 <div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
-
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px">
-      <div class="nav-logo-mark">C</div>
-      <span class="nav-logo-text">The Post-Sale Operating System</span>
-    </a>
-  </div>
-  <ul class="nav-links">
-    <li><a href="index.html#parts">All Chapters</a></li>
-    <li><a href="frameworks.html">Frameworks</a></li>
-    <li><a href="calculator.html">ROI Calculator</a></li>
-  </ul>
-  <div style="display:flex;gap:0.6rem;align-items:center">
-    <button class="chapter-nav-btn" onclick="window.location.href='chapter-6.html'">← Prev</button>
-    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-8.html'">Next →</button>
-  </div>
+<div class="nav-logo">
+<a href="index.html" style="display:flex;align-items:center;gap:10px">
+<div class="nav-logo-mark">C</div>
+<span class="nav-logo-text">The Post-Sale Operating System</span>
+</a>
+</div>
+<ul class="nav-links">
+<li><a href="index.html#parts">All Chapters</a></li>
+<li><a href="frameworks.html">Frameworks</a></li>
+<li><a href="calculator.html">ROI Calculator</a></li>
+</ul>
+<div style="display:flex;gap:0.6rem;align-items:center">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-6.html'">← Prev</button>
+<button class="chapter-nav-btn primary" onclick="window.location.href='chapter-8.html'">Next →</button>
+</div>
 </nav>
-
 <!-- TOC BUTTON -->
 <button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
-
 <!-- TOC OVERLAY -->
 <div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
-
 <!-- TOC DRAWER -->
 <div class="toc-drawer" id="toc-drawer">
-  <div class="toc-title">Table of Contents</div>
-  <div class="toc-part">Introduction</div>
-  <a href="index.html" class="toc-link">Overview & The Book</a>
-  <div class="toc-part">Part I · The 2026 CS Evolution</div>
-  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
-  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
-  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
-  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
-  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
-  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
-  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
-  <a href="chapter-7.html" class="toc-link active" data-ch="7">Ch 7: Stage 4 — Intent</a>
-  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
-  <div class="toc-part">Part III · Lifecycle Plays</div>
-  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
-  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
-  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
-  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
-  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
-  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
-  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
-  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
-  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
-  <div class="toc-part">Part IV · Data, Automation & Scale</div>
-  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
-  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
-  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
-  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
-  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+<div class="toc-title">Table of Contents</div>
+<div class="toc-part">Introduction</div>
+<a class="toc-link" href="index.html">Overview &amp; The Book</a>
+<div class="toc-part">Part I · The 2026 CS Evolution</div>
+<a class="toc-link" data-ch="1" href="chapter-1.html">Ch 1: From Churn Insurance to Revenue Engine</a>
+<a class="toc-link" data-ch="2" href="chapter-2.html">Ch 2: Post-Sale Unification</a>
+<a class="toc-link" data-ch="3" href="chapter-3.html">Ch 3: The Role Evolution of the CSM</a>
+<div class="toc-part">Part II · The Post-Sales Pipeline</div>
+<a class="toc-link" data-ch="4" href="chapter-4.html">Ch 4: Stage 1 — Identify</a>
+<a class="toc-link" data-ch="5" href="chapter-5.html">Ch 5: Stage 2 — Align</a>
+<a class="toc-link" data-ch="6" href="chapter-6.html">Ch 6: Stage 3 — Advocate</a>
+<a class="toc-link active" data-ch="7" href="chapter-7.html">Ch 7: Stage 4 — Intent</a>
+<a class="toc-link" data-ch="8" href="chapter-8.html">Ch 8: Stage 5 — Net Revenue Close</a>
+<div class="toc-part">Part III · Lifecycle Plays</div>
+<a class="toc-link" data-ch="9" href="chapter-9.html">Ch 9: Purchase &amp; Welcome Play</a>
+<a class="toc-link" data-ch="10" href="chapter-10.html">Ch 10: The Kickoff Play</a>
+<a class="toc-link" data-ch="11" href="chapter-11.html">Ch 11: The Onboarding Play</a>
+<a class="toc-link" data-ch="12" href="chapter-12.html">Ch 12: The First Value Play</a>
+<a class="toc-link" data-ch="13" href="chapter-13.html">Ch 13: The Value Blocks Play</a>
+<a class="toc-link" data-ch="14" href="chapter-14.html">Ch 14: The Sharing Insights Play</a>
+<a class="toc-link" data-ch="15" href="chapter-15.html">Ch 15: The Alignment Meeting Play</a>
+<a class="toc-link" data-ch="16" href="chapter-16.html">Ch 16: The Renew &amp; Grow Play</a>
+<a class="toc-link" data-ch="17" href="chapter-17.html">Ch 17: Supporting Plays</a>
+<div class="toc-part">Part IV · Data, Automation &amp; Scale</div>
+<a class="toc-link" data-ch="18" href="chapter-18.html">Ch 18: AI in CS — Judgment Over Templates</a>
+<a class="toc-link" data-ch="19" href="chapter-19.html">Ch 19: Data Governance &amp; One Data Spine</a>
+<a class="toc-link" data-ch="20" href="chapter-20.html">Ch 20: Health Scoring That Actually Works</a>
+<a class="toc-link" data-ch="21" href="chapter-21.html">Ch 21: Cross-Team Collaboration KPIs</a>
+<a class="toc-link" data-ch="22" href="chapter-22.html">Ch 22: Proactive Capacity Planning</a>
 </div>
-
 <!-- CHAPTER CONTENT -->
 <div id="chapter-content">
-  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
-    <div class="hero-grid"></div>
-    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
-      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
-      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 7</div>
-      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 4 — Intent</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Formalize commitment and establish a concrete timeline — early.</p>
-    </div>
-  </div>
-  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>In the previous stages of the post-sales pipeline, you identified a growth opportunity, aligned it with the customer’s strategic goals, and empowered an internal champion to advocate for the solution. Now, you arrive at the critical pivot point: transitioning from theoretical interest to formal commitment.</p>
-
-<p>The fourth stage of the post-sales pipeline is <strong>Intent</strong>. This stage is entirely focused on securing the customer’s commitment to move forward and establishing a concrete timeline for upgrading or renewing. Ensuring alignment on timing, approvals, and budget processes prevents last-minute surprises and delayed deals. When properly executed, formalizing intent feels like a natural next step—not a forced sales push—because the customer clearly sees the expansion as an investment in their own success.</p>
-
-<p><strong>Initiate Early Discussions</strong> The biggest mistake Customer Success and Account Management teams make is waiting until the end of a contract cycle to discuss renewals or expansions. To secure intent smoothly, you must proactively begin these conversations early.</p>
-
-<p>As a best practice, you should initiate renewal conversations mere days after the kickoff by simply asking the customer when they would like to discuss their renewal. Renewals are usually much more awkward for the vendor than they are for the customer, and raising this topic right away breaks the tension and completely disarms the awkwardness of the eventual ask. By bringing up the renewal or expansion well in advance, you build a true partnership mindset and prevent last-minute obstacles from derailing the process. Your structured Alignment Meetings provide the perfect venue to keep these discussions focused, transparent, and customer-centric. During these meetings, you can map out the timeline, gain alignment on the decision-making process, and address potential roadblocks before they arise</p>
-
-<p><strong>Understand Constraints and Approval Workflows</strong> Even with a strong business case and an eager advocate, deals stall when the vendor fails to understand how the customer actually buys software. To formalize intent, you must uncover their budget limits, approval processes, and decision timelines as early as possible.</p>
-
-<p>You must ask the logistical questions:</p>
-
-<ul>
-<li><em>When does your budget cycle reset?</em></li>
-</ul>
-
-<ul>
-<li><em>Who ultimately needs to sign off on this expansion?</em></li>
-</ul>
-
-<ul>
-<li><em>Are there legal, procurement, or security reviews required before we can finalize?</em></li>
-</ul>
-
-<p>By anticipating these constraints and understanding their internal workflows, you ensure a smooth path forward and eliminate the friction that often delays closed-won revenue.</p>
-
-<p><strong>Leveraging Advocacy for Urgency</strong> You don't have to navigate these internal workflows alone. This is where the work you did in Stage 3 pays off. You must rely on your internal advocates to drive urgency, build consensus, and navigate the maze of internal decision-makers to ensure alignment.</p>
-
-<p>Because your champion knows the internal politics and priorities of their organization better than you ever could, they can guide you around potential landmines. They can tell you exactly whose approval is a formality and whose approval requires a detailed ROI presentation. By leveraging their influence, you strengthen urgency and consensus-building efforts.</p>
-
-<p><strong>Securing the Verbal Commitment</strong> The ultimate goal of the Intent stage is to obtain a verbal agreement from the customer. This verbal "yes" serves as a crucial milestone; it signals their readiness to proceed and allows both teams to shift their focus directly to finalizing contracts and securing official approvals.</p>
-
-<p>Once the customer verbally commits, the posture of the relationship shifts. You are no longer proving the value of the expansion; you are simply executing the administrative steps to make it a reality.</p>
-
-<p><strong>When to Engage Sales</strong> While the Customer Success Manager (CSM) is the primary driver of value and relationship management, they do not have to be an expert in complex contract negotiations. A key practice during the Intent stage is knowing when to involve the Sales team.</p>
-
-<p>For straightforward renewals or standard license additions, the CS team can often manage the process end-to-end. However, you should seamlessly loop Sales back into the conversation when dealing with intricate deal management, budget reallocations, or complex negotiations that require specialized expertise. Sales and CS should work together as a unified front to support the advocate in presenting the final business case.</p>
-
-<p>By proactively initiating discussions, mapping the customer's buying process, leveraging your champion, and knowing when to bring in Sales, you smoothly guide the opportunity to the finish line.</p>
-
-<p>#</p>
-  </div>
+<div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+<div class="hero-grid"></div>
+<div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.75rem">Part II: The Post-Sales Pipeline</div>
+<div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 7</div>
+<h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Stage 4 — Intent</h1>
+<p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Intent is where internal momentum becomes a committed path forward—timing, approvals, urgency, and ownership made visible before the close.</p>
 </div>
-
+</div>
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+<p>Intent is the stage where the post-sale pipeline stops relying on belief and starts requiring movement.</p>
+<p>In Chapter 6, Advocate was about creating internal momentum. The business case could no longer live only with the vendor. It had to be carried by someone inside the customer’s organization who understood the value, trusted the relationship, and had enough credibility to move the conversation when you were not in the room. That work matters because it changes the nature of the opportunity. The recommendation is no longer just something the CSM is proposing. It is becoming something the customer’s organization is beginning to organize around.</p>
+<p>Intent is what happens next. It is the point where that internal momentum becomes visible enough to manage. The customer may not have signed anything yet. Legal may not have reviewed the order form. Procurement may not have opened a ticket. Finance may still need to approve the budget. But the posture of the relationship has changed. The conversation is no longer only about whether the recommendation makes sense. It is beginning to shift toward how the customer will move forward.</p>
+<p>That distinction is important. Many teams confuse interest with intent. A customer can be interested and still do nothing. They can agree with the value and still delay. They can like the idea, appreciate the business case, and even tell you it is a priority, while the opportunity quietly loses momentum inside their organization. Intent is stronger than interest because it introduces a path. It connects the customer’s belief to timing, process, ownership, and action.</p>
+<div class="insight-block">
+<div class="insight-label">Core Idea</div>
+<p>Intent is not the moment a customer says the idea makes sense. Intent is the moment the customer begins organizing around how to make it happen.</p>
+</div>
+<p>This is why Intent has to be treated as a distinct stage in the post-sale pipeline. It is not the close. It is not the contract. It is not the celebration. It is the bridge between advocacy and execution. If Advocate creates internal support, Intent converts that support into a committed path forward. It makes the opportunity real enough to forecast, coordinate, and protect.</p>
+<h2>Intent Has to Be Surfaced Early</h2>
+<p>The biggest mistake Customer Success and Account Management teams make is waiting too long to talk about renewal or expansion mechanics. They wait until the contract is close to expiring. They wait until the customer asks about next steps. They wait until the account team needs a forecast update. By then, the opportunity may still be alive, but the timeline is no longer in the team’s control.</p>
+<p>This delay often comes from good intentions. Teams do not want to seem pushy. They do not want to introduce commercial conversation too early. They worry that talking about renewal or expansion before enough value has been delivered will damage trust. Those instincts are not wrong, but they are incomplete. There is a difference between pushing for a sale and helping the customer prepare for a decision.</p>
+<p>Renewal should not be an awkward surprise near the end of the contract. It should be part of the relationship from the beginning. In many cases, the simplest way to remove the awkwardness is to name it early. Shortly after kickoff, or once the customer has clarity on the journey ahead, the CSM can ask when it would be useful to discuss renewal planning. That question does not pressure the customer. It normalizes the fact that the partnership has a future path, and that both sides should understand how decisions will be made before urgency appears.</p>
+<p>This is especially important because renewals are often more awkward for the vendor than they are for the customer. Customers know contracts renew. They know budgets need to be planned. They know approvals take time. What creates friction is not the existence of a commercial conversation. What creates friction is when the conversation arrives late, disconnected from value, and wrapped in vendor urgency.</p>
+<div class="field-note">
+<div class="field-note-label">Field Test</div>
+<p>If renewal timing only becomes visible when the vendor needs a signature, the process is already reactive. Intent should be surfaced while there is still time to guide the path.</p>
+</div>
+<p>Early intent conversations are not about asking the customer to buy more before they have realized value. They are about understanding the customer’s decision environment. When does budget planning happen? How far in advance do they need to prepare? Who becomes involved when the conversation shifts from usage and outcomes to investment and approval? What internal events could affect timing? These questions make the relationship more strategic because they show that the team is thinking beyond the next meeting.</p>
+<p>This is where Alignment Meetings become especially useful. A well-run Alignment Meeting gives the team a natural venue to keep commercial readiness connected to customer value. The conversation can remain customer-centered while still surfacing the realities that will determine whether the next step happens smoothly. The CSM is not forcing a sales motion. They are helping the customer connect progress, priorities, timing, and internal process.</p>
+<h2>The Buying Process Is Part of the Opportunity</h2>
+<p>Even with a strong business case and a strong advocate, opportunities stall when the account team does not understand how the customer actually buys.</p>
+<p>This is one of the most common breakdowns in post-sale growth. The team invests heavily in value creation, relationship management, and business case development, but treats the customer’s approval process as an administrative detail to be handled at the end. That is a mistake. The buying process is not separate from the opportunity. It is part of the opportunity. If the team does not understand it, they do not yet understand what it will take to win.</p>
+<p>Every customer has a decision system. Sometimes it is formal and well documented. Sometimes it is informal, political, and learned only through experience. Either way, that system determines how intent becomes action. Budget cycles matter. Procurement rules matter. Legal timelines matter. Security reviews matter. Executive approvals matter. So do internal planning rhythms, competing projects, leadership changes, and the credibility of the person carrying the recommendation forward.</p>
+<p>When these realities are discovered late, they become blockers. When they are discovered early, they become design constraints. The difference is enormous. A late procurement requirement feels like friction. An early procurement requirement becomes part of the timeline. A surprise executive approval feels like risk. A known executive approval becomes part of the communication plan. A budget cycle discovered after the customer is ready to move forward creates delay. A budget cycle understood months in advance creates a path.</p>
+<div class="insight-block">
+<div class="insight-label">Pipeline Discipline</div>
+<p>A post-sale opportunity is not real until you understand how the customer can actually approve it.</p>
+</div>
+<p>This requires asking direct questions, but those questions should not feel transactional. They should feel like responsible partnership. The CSM does not need to interrogate the customer. They need to understand how to help the customer avoid surprises. Questions about timing, approval, budget ownership, procurement, legal review, security requirements, and executive sponsorship are not just sales questions. They are success questions because they determine whether the customer can continue receiving value without disruption.</p>
+<p>The tone matters. Asking, “Who needs to sign this?” can feel like a vendor chasing a deal. Asking, “As we think about the next phase, who typically needs to be involved so we can make sure they have the right context early?” feels different. The substance may be similar, but the posture is not. One is focused on the vendor’s close. The other is focused on the customer’s path.</p>
+<p>Intent becomes stronger as the path becomes clearer. The team should be able to describe not only what the customer wants to do, but how the customer will do it. Who owns the budget? Who approves the purchase? Who influences the decision? What sequence needs to happen? What could delay it? What evidence is still missing? What internal conversation does the advocate need to have next? Without those answers, the opportunity may be promising, but it is not yet well managed.</p>
+<h2>Advocacy Creates Urgency</h2>
+<p>Intent depends heavily on the work of the Advocate stage. The CSM can ask good questions, map the process, and keep the conversation moving, but the customer’s internal advocate is often the person who turns interest into urgency.</p>
+<p>This is because urgency rarely comes from the vendor. Vendor urgency is easy to discount. It sounds like forecast pressure, end-of-quarter timing, or account management. Customer urgency is different. It comes from internal priorities, business deadlines, operational pain, executive commitments, or a clear opportunity to create value. The advocate understands those dynamics in a way the vendor never fully can.</p>
+<p>A strong advocate can tell the team what is really happening inside the customer’s organization. They can explain whether a budget approval is likely to be straightforward or politically sensitive. They can identify which stakeholder needs a short value summary and which stakeholder needs deeper financial justification. They can warn the team when timing is bad, when language needs to change, or when an internal objection is gaining traction. They can also create urgency by connecting the recommendation to something the organization already cares about.</p>
+<p>This is why Advocate and Intent are so tightly linked. Advocacy gives the opportunity internal credibility. Intent gives that credibility a path. Without advocacy, the vendor often pushes from the outside. With advocacy, the customer begins to pull from the inside.</p>
+<div class="field-note">
+<div class="field-note-label">Practical Question</div>
+<p>Is your advocate helping you understand the customer’s buying path, or are they only confirming that they like the recommendation?</p>
+</div>
+<p>That question is worth asking because it separates weak advocacy from strong advocacy. A weak advocate provides encouragement. A strong advocate provides direction. They help the team understand who needs to be involved, what needs to happen next, what could get in the way, and how to frame the recommendation so it lands inside the organization.</p>
+<p>When advocacy is working, the customer begins to guide the process. They introduce the right people. They suggest the right timing. They ask for the right materials. They tell you what the CFO will care about, what procurement will require, and what their executive sponsor needs to see. That is a different stage of the relationship. The team is no longer trying to create motion from the outside. It is helping the customer organize motion from within.</p>
+<h2>Verbal Commitment Is a Milestone, Not the Finish Line</h2>
+<p>The traditional way to describe Intent is to say that the team needs to secure a verbal commitment. That is true, but it can also be misleading. A verbal yes matters because it signals that the customer is ready to move forward. It gives the team permission to shift from building the case to executing the path. But a verbal commitment is only useful when it is connected to the mechanics required to complete the decision.</p>
+<p>A customer can say yes and still fail to act. They can intend to renew and still miss a deadline. They can support an expansion and still lose budget to another initiative. They can verbally agree and then slow down when legal, procurement, or finance enters the process. The verbal commitment is not the close. It is the moment when the team should become even more precise.</p>
+<p>Once the customer says yes, the relationship posture changes. The team is no longer primarily proving the value of the recommendation. It is helping the customer complete the decision they have already chosen to pursue. That shift should create clarity. What are the next steps? Who owns each one? What documents are required? What approvals are still open? What timing has to be protected? What communication does the advocate need from the team? What internal risks remain unresolved?</p>
+<div class="insight-block">
+<div class="insight-label">Line in the Sand</div>
+<p>A verbal yes without a path is not intent. It is optimism.</p>
+</div>
+<p>This is also where the team has to be honest about forecast quality. A customer saying positive things is not the same as a customer moving through a buying process. Intent should be visible in behavior. The customer introduces procurement. The advocate schedules the executive conversation. Budget ownership becomes clear. Legal review is discussed. The timeline is confirmed. Stakeholders begin acting as if the decision is expected, not theoretical.</p>
+<p>Those signals matter because they show that the opportunity has crossed from preference into motion. The customer is not just saying the partnership is valuable. They are investing time and internal coordination into making the next step happen. That is the difference between a hopeful renewal and a managed renewal. It is the difference between expansion interest and expansion intent.</p>
+<h2>Sales and Customer Success Have to Move as One System</h2>
+<p>As Intent becomes real, the work often becomes more complex. Pricing, packaging, contract structure, terms, negotiations, budget reallocations, and procurement requirements may all enter the conversation. This is where Customer Success and Sales need to operate as one system rather than two separate motions.</p>
+<p>The CSM is often closest to the customer’s goals, relationships, adoption patterns, risks, and value story. That context is essential. It is what keeps the commercial motion grounded in the customer’s actual reason for continuing or expanding. But the CSM should not be expected to handle every commercial detail alone. Complex negotiations require deal discipline. Contract structure requires experience. Pricing strategy requires coordination. Procurement and legal workflows often require a level of execution support that sits closer to Sales, Revenue, Finance, or Operations.</p>
+<p>The mistake is treating Sales involvement as a handoff. A handoff can make the customer feel like the relationship has shifted from partnership to transaction. It can also cause internal context to get lost. The better model is a coordinated motion. Customer Success maintains the thread of value and trust. Sales helps structure the path to agreement. Both teams support the advocate. Both teams understand the business case. Both teams know what the customer is trying to accomplish.</p>
+<p>When this works well, the customer does not experience an abrupt transition. They experience continuity. The people involved may expand, but the story does not change. The expansion or renewal remains tied to the same goals, same evidence, same outcomes, and same partnership logic that have been built throughout the pipeline.</p>
+<div class="field-note">
+<div class="field-note-label">Field Test</div>
+<p>If Sales enters the conversation and the customer feels like the story has changed, the internal operating model is broken.</p>
+</div>
+<p>This is one of the reasons the post-sale pipeline matters. It gives Sales and Customer Success a shared language for opportunity progression. Identify shows where opportunity came from. Align shows why it matters. Advocate shows who can carry the story internally. Intent shows how the customer plans to move. Net Revenue Close then becomes the execution of a decision that has been built deliberately, not a scramble at the end of the term.</p>
+<h2>Intent Protects Momentum</h2>
+<p>The real purpose of Intent is to protect momentum. By the time a customer reaches this stage, the team has already invested significant effort in understanding goals, delivering value, building alignment, developing advocacy, and shaping the business case. Without a clear path to commitment, that momentum can still fade.</p>
+<p>Momentum fades when next steps are vague. It fades when the customer is interested but no one owns the process. It fades when internal stakeholders are supportive but not coordinated. It fades when budget timing is assumed rather than confirmed. It fades when an advocate is willing but not equipped. It fades when the vendor mistakes friendliness for readiness.</p>
+<p>Intent prevents that drift by making the path explicit. It gives the account team a way to see whether the opportunity is truly moving. It gives the customer a way to understand what needs to happen next. It gives the advocate a way to keep internal stakeholders aligned. It gives Sales and Customer Success a shared view of where support is needed. And it gives leadership a more credible basis for forecasting renewal and expansion.</p>
+<div class="insight-block">
+<div class="insight-label">Momentum Shift</div>
+<p>Intent is working when the conversation changes from “Does this make sense?” to “What needs to happen for us to move forward?”</p>
+</div>
+<p>That shift is subtle, but it is powerful. It changes the energy of the account. The team is no longer pushing a recommendation into the customer. The customer is beginning to organize around the recommendation. The next step becomes less about persuasion and more about coordination.</p>
+<p>This does not eliminate risk. A deal can still slow down. Priorities can still change. Budget can still disappear. But when Intent is managed well, those risks surface earlier and more clearly. The team can respond before the opportunity becomes fragile. The advocate can help navigate internal complexity. The customer can make decisions with better information. The vendor can support the path rather than chase the signature.</p>
+<h2>From Intent to Net Revenue Close</h2>
+<p>When Intent is strong, the final stage of the pipeline becomes cleaner. Net Revenue Close is no longer a desperate push to finish paperwork. It becomes the execution of a decision that has already been earned, supported, and organized.</p>
+<p>That is the goal of this stage. Not to pressure the customer. Not to manufacture urgency. Not to turn Customer Success into a quota-chasing function that damages trust. The goal is to make commitment visible early enough that it can be supported well.</p>
+<p>Intent gives structure to the customer’s willingness to move forward. It connects the advocate’s internal momentum to the actual buying path. It transforms a verbal yes into a coordinated plan. It helps the team understand whether the opportunity is real, what still needs to happen, and where the relationship needs support before the close.</p>
+<p>Most importantly, Intent keeps the post-sale pipeline honest. A customer who is interested but not moving is not in Intent. A customer who likes the team but cannot explain the approval path is not in Intent. A customer who agrees with the business case but has no timeline, owner, or next step is not in Intent. Intent requires motion.</p>
+<div class="insight-block closing">
+<div class="insight-label">Chapter Takeaway</div>
+<p>Intent is where internal momentum becomes a managed path to commitment. It is not the close, but without it, the close depends too much on hope.</p>
+</div>
+</div>
+</div>
 <!-- BOTTOM NAV -->
 <div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
-  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
-    <div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
-      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 8: Stage 5 — Net Revenue Close</div>
-    </div>
-    <div style="display:flex;gap:0.75rem">
-      <button onclick="window.location.href='chapter-6.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
-      <button onclick="window.location.href='chapter-8.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
-    </div>
-  </div>
+<div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+<div>
+<div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+<div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 8: Stage 5 — Net Revenue Close</div>
 </div>
-
+<div style="display:flex;gap:0.75rem">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-6.html'" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+<button onclick="window.location.href='chapter-8.html'" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s">Next Chapter →</button>
+</div>
+</div>
+</div>
 <script>
 function toggleToc() {
   document.getElementById('toc-drawer').classList.toggle('open');
@@ -246,27 +317,6 @@ window.addEventListener('scroll', () => {
   const total = document.documentElement.scrollHeight - window.innerHeight;
   const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
   document.getElementById('progress-bar').style.width = pct + '%';
-});
-
-// Post-process callouts
-document.querySelectorAll('.chapter-body p').forEach(p => {
-  const t = p.textContent.trim();
-  const calloutPhrases = [
-    "The pipeline doesn't stop",
-    "Customer Success is a sales function",
-    "Judgment Over Templates",
-    "autopsy report",
-    "Birthday Party Trap",
-    "doing whatever it takes",
-    "65%",
-    "canary in the coal mine",
-  ];
-  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
-    const div = document.createElement('div');
-    div.className = 'callout';
-    div.innerHTML = '<p>' + p.innerHTML + '</p>';
-    p.replaceWith(div);
-  }
 });
 </script>
 </body>
