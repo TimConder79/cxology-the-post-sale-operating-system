@@ -102,6 +102,110 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
+
+    .play-map {
+      margin: 2rem 0;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+    .play-map-header {
+      background: var(--navy-deep);
+      color: var(--white);
+      padding: 1.25rem 1.5rem;
+    }
+    .play-map-header h3 {
+      color: var(--white);
+      margin: 0 0 0.25rem;
+      font-size: 1rem;
+    }
+    .play-map-header p {
+      color: rgba(255,255,255,.62);
+      margin: 0;
+      max-width: 100%;
+      font-size: 0.9rem;
+    }
+    .play-steps {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0;
+    }
+    .play-step {
+      padding: 1.1rem 1rem;
+      border-right: 1px solid var(--gray-100);
+      min-height: 170px;
+      position: relative;
+    }
+    .play-step:last-child { border-right: none; }
+    .play-step-number {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: var(--olive);
+      color: var(--navy-deep);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .play-step h4 {
+      color: var(--navy);
+      font-size: 0.88rem;
+      line-height: 1.35;
+      margin: 0 0 0.45rem;
+    }
+    .play-step p {
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--gray-700);
+      margin: 0;
+    }
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .asset-card {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      padding: 1.15rem 1.25rem;
+      background: var(--off-white);
+    }
+    .asset-card h3 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+    .asset-card p {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+    }
+    .prompt-box {
+      border: 1px solid var(--gray-200);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.1rem 1.25rem;
+      margin: 1rem 0 1.4rem;
+      background: var(--white);
+    }
+    .prompt-box p {
+      margin-bottom: 0;
+      max-width: 100%;
+      font-size: 0.91rem;
+    }
+    @media (max-width: 900px) {
+      .play-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .play-step { border-bottom: 1px solid var(--gray-100); }
+      .asset-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .play-steps { grid-template-columns: 1fr; }
+      .play-step { border-right: none; }
+    }
   </style>
 </head>
 <body>
@@ -256,7 +360,137 @@
 
 <p>By launching your Welcome Play with intention, you replace post-sale anxiety with immediate trust, perfectly teeing up the next crucial inflection point.</p>
 
-<p>#</p>
+
+<h2>From Philosophy to Execution</h2>
+
+<p>Up to this point, the Purchase & Welcome Play has been framed as a customer experience principle. It exists because the moment immediately after purchase is fragile. A customer has made a commitment, but the value has not arrived yet. The sales process has created belief, but the post-sale experience has not yet proven that belief was well placed.</p>
+
+<p>This is where many companies unintentionally lose momentum. They are not ignoring the customer. They are processing the deal, updating systems, assigning ownership, preparing implementation, and gathering information. Internally, work is happening. Externally, the customer may experience silence.</p>
+
+<p>That silence is the problem.</p>
+
+<div class="callout">
+  <p>The Purchase & Welcome Play exists to make sure the customer feels momentum while the company coordinates behind the scenes.</p>
+</div>
+
+<p>At some point, a play has to stop being an idea and become something the team can actually run. The difference between a company that talks about customer experience and a company that consistently delivers it is not intention. It is execution. The play is not just the belief that customers should feel welcomed. It is a sequence of actions, signals, and handoffs that happen every time, whether you are watching or not.</p>
+
+<h2>The Play in Motion</h2>
+
+<p>The Purchase & Welcome Play unfolds across a short window of time, but the impact is larger than the timeframe suggests. The customer experiences a simple progression: they make the decision to buy, they receive immediate reinforcement that the decision matters, they are introduced to what happens next, and they arrive at kickoff with clarity instead of uncertainty.</p>
+
+<p>Behind that simple customer experience is a coordinated internal sequence. Sales triggers the play. Systems send the first signal. Internal knowledge transfer carries the story forward. Customer Success enters with context. The kickoff is scheduled with the right people, the right expectations, and the right preparation.</p>
+
+<div class="play-map">
+  <div class="play-map-header">
+    <h3>Purchase & Welcome Sequence</h3>
+    <p>From purchase decision to kickoff readiness</p>
+  </div>
+  <div class="play-steps">
+    <div class="play-step">
+      <div class="play-step-number">1</div>
+      <h4>Customer Says Yes</h4>
+      <p>The play begins at commitment, often before the contract is fully finalized.</p>
+    </div>
+    <div class="play-step">
+      <div class="play-step-number">2</div>
+      <h4>Welcome Signal Sent</h4>
+      <p>An automated or curated message reinforces the decision and creates early momentum.</p>
+    </div>
+    <div class="play-step">
+      <div class="play-step-number">3</div>
+      <h4>IKT Completed</h4>
+      <p>Sales captures why they bought, who matters, what was promised, and what success means.</p>
+    </div>
+    <div class="play-step">
+      <div class="play-step-number">4</div>
+      <h4>CSM Assigned</h4>
+      <p>Customer Success reviews the handoff and prepares to continue the relationship with context.</p>
+    </div>
+    <div class="play-step">
+      <div class="play-step-number">5</div>
+      <h4>Personalized Outreach</h4>
+      <p>The CSM sends a welcome note or short video that reflects the customer’s goals.</p>
+    </div>
+    <div class="play-step">
+      <div class="play-step-number">6</div>
+      <h4>Kickoff Scheduled</h4>
+      <p>The customer knows who should attend, what to prepare, and what happens next.</p>
+    </div>
+  </div>
+</div>
+
+<p>The point of the visual is not to make the process look more sophisticated than it is. The point is to make the process visible enough that it can be repeated. If the team cannot see the sequence, they cannot improve the sequence. If ownership is unclear, the welcome depends on memory and goodwill. If timing is undefined, the customer waits while the company gets organized.</p>
+
+<h2>What Powers This Play</h2>
+
+<p>A play becomes operational when the supporting assets are clear. Without them, the welcome depends on individual effort. With them, the team has a shared way to act, adapt, and improve.</p>
+
+<div class="asset-grid">
+  <div class="asset-card">
+    <h3>Internal Knowledge Transfer Template</h3>
+    <p>The IKT captures why the customer purchased, who matters, what was promised, what was not promised, and what success means in the customer’s world.</p>
+  </div>
+  <div class="asset-card">
+    <h3>Welcome Communication</h3>
+    <p>The first customer-facing message creates the early signal: enthusiasm, clarity, appreciation, and confidence that the next step is already in motion.</p>
+  </div>
+  <div class="asset-card">
+    <h3>CSM Introduction</h3>
+    <p>The first human touch from Customer Success should not sound generic. It should show that the team listened during the buying process and is prepared to continue from there.</p>
+  </div>
+  <div class="asset-card">
+    <h3>Kickoff Scheduling Framework</h3>
+    <p>The kickoff request should make action easy by clarifying who should attend, what to prepare, what will be covered, and how to schedule the meeting.</p>
+  </div>
+</div>
+
+<p>These assets do not need to be complicated. In fact, they should not be. The best play assets are simple enough for the team to use consistently and specific enough to prevent the experience from becoming generic. They create the right amount of structure so that the team can focus its judgment where it matters.</p>
+
+<div class="callout">
+  <p>Templates create consistency. Consistency creates trust. Trust creates momentum.</p>
+</div>
+
+<h2>Run This Play with AI</h2>
+
+<p>AI makes this play more practical because it reduces the friction between information and action. The goal is not to outsource judgment. The goal is to help the team move faster from what they know about the customer to what the customer needs to hear next.</p>
+
+<p>The inputs still matter. A weak internal handoff will produce weak outputs. But when the IKT is strong, AI can quickly turn that context into a welcome email, a short CSM video script, a kickoff scheduling note, or a first-touch plan that feels specific to the customer instead of copied from a template library.</p>
+
+<h3>Prompt: Generate the Welcome Email</h3>
+<div class="prompt-box">
+  <p>Using the customer details below, write a concise and warm welcome email. Reinforce their decision to purchase, reference their goals, and clearly explain what happens next. Keep the tone confident, human, and direct. Avoid sounding overly formal or generic.</p>
+</div>
+
+<h3>Prompt: Create the CSM Welcome Video Script</h3>
+<div class="prompt-box">
+  <p>Using the customer context below, write a 20–30 second video script for a Customer Success Manager. The script should reference why the customer purchased, acknowledge the outcome they care about, and create confidence heading into kickoff. Make it sound natural when spoken aloud.</p>
+</div>
+
+<h3>Prompt: Draft the Kickoff Scheduling Email</h3>
+<div class="prompt-box">
+  <p>Using the customer context below, draft a kickoff scheduling email. Include who should attend, what the customer should prepare, what they can expect from the meeting, and a clear scheduling call to action. Keep the email simple, actionable, and easy to scan.</p>
+</div>
+
+<h3>Prompt: Build the First-Touch Plan</h3>
+<div class="prompt-box">
+  <p>Using the IKT notes below, create a first-touch plan for the CSM. Include the main customer goal, the likely concerns to watch for, the best personalization angle, the recommended welcome message, and the next action needed to move the customer toward kickoff.</p>
+</div>
+
+<p>This is where the Purchase & Welcome Play becomes more than a static process. The play provides the structure. The IKT provides the context. AI helps convert that context into usable execution. The CSM still owns the relationship, but the administrative burden of starting well becomes much lighter.</p>
+
+<div class="callout">
+  <p>AI does not replace judgment. It accelerates execution so your team can focus on the moments that matter.</p>
+</div>
+
+<h2>Where This Leads</h2>
+
+<p>The Purchase & Welcome Play is not about making a good first impression once. It is about designing a system that creates the right first impression every time.</p>
+
+<p>When this play works, the customer does not enter kickoff wondering what happens next. They arrive with clarity. They know who they are working with. They understand the immediate path forward. They feel that the company has been paying attention. Most importantly, they have not been left alone in the most vulnerable moment after purchase.</p>
+
+<p>That is why this play matters. It replaces anxiety with trust, silence with motion, and a handoff with continuity. It prepares the customer for the kickoff, and it prepares the company to deliver on the promise that was just sold.</p>
+
   </div>
 </div>
 
