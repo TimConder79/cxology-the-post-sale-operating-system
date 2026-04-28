@@ -231,11 +231,11 @@ export function AccountWorkspace() {
                   </div>
                   <div className="p-5 space-y-4">
                     {[
-                      { label: 'Goal & timeline', value: account.latestFiveQuestions.q1 },
-                      { label: 'What success looks like', value: account.latestFiveQuestions.q2 },
-                      { label: 'Obstacles & risks', value: account.latestFiveQuestions.q3 },
-                      { label: 'Stakeholders & roles', value: account.latestFiveQuestions.q4 },
-                      { label: 'Measurable outcome', value: account.latestFiveQuestions.q5 },
+                      { label: 'The one thing we must get right', value: account.latestFiveQuestions.q1 },
+                      { label: 'How they define success', value: account.latestFiveQuestions.q2 },
+                      { label: 'Our role', value: account.latestFiveQuestions.q3 },
+                      { label: 'Risks to success', value: account.latestFiveQuestions.q4 },
+                      { label: 'Wildest dreams', value: account.latestFiveQuestions.q5 },
                     ].map((item, i) => item.value ? (
                       <div key={i} className="flex items-start gap-3">
                         <div className="w-5 h-5 rounded-full bg-brand-50 ring-1 ring-brand-200 flex items-center justify-center flex-shrink-0 mt-0.5">

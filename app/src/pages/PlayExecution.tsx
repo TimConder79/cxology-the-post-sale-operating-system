@@ -625,28 +625,28 @@ function StepOutputs({
 const FIVE_Q_DEFS = [
   {
     key: 'q1' as const,
-    label: 'What does the customer need to achieve, and by when?',
-    placeholder: 'Describe the primary goal and the timeline the customer has committed to…',
+    label: 'What is the one thing we must get right to make this worth undertaking?',
+    placeholder: 'The single most critical outcome — the thing that, if it doesn\'t happen, the whole effort fails…',
   },
   {
     key: 'q2' as const,
-    label: 'What does success look like to the customer and their stakeholders?',
-    placeholder: 'How will the customer describe a win in their own words? What changes for them?',
+    label: 'How does your organization define success?',
+    placeholder: 'In their own language — what does success mean to this customer, to their team, to their leadership?',
   },
   {
     key: 'q3' as const,
-    label: 'What obstacles or risks could prevent success?',
-    placeholder: 'Technical barriers, internal resistance, resource constraints, competing priorities…',
+    label: 'What is our role in achieving that success?',
+    placeholder: 'What are we specifically responsible for? Where does the customer\'s ownership begin?',
   },
   {
     key: 'q4' as const,
-    label: 'Who needs to be involved, and what is each person\'s role?',
-    placeholder: 'Champion, decision-maker, end users, finance contact — and their level of engagement…',
+    label: 'What aspects of the internal culture or external environment could put this effort at risk to fail?',
+    placeholder: 'Internal politics, competing priorities, past failed initiatives, market pressures, resource constraints…',
   },
   {
     key: 'q5' as const,
-    label: 'How will we know we have succeeded — what is the measurable outcome?',
-    placeholder: 'Specific metric, measurement method, and who will confirm the result…',
+    label: 'Assuming we mitigate that risk, what would exceed your wildest dreams?',
+    placeholder: 'If everything goes better than expected — what does that look like? What would they brag about?',
   },
 ]
 

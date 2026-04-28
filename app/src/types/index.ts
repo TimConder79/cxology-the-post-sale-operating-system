@@ -258,15 +258,15 @@ export interface FiveQuestions {
   accountId: string
   capturedAt: string
   capturedByRunId: string | null
-  /** What does the customer need to achieve, and by when? */
+  /** What is the one thing we must get right to make this worth undertaking? */
   q1: string
-  /** What does success look like to the customer and their stakeholders? */
+  /** How does your organization define success? */
   q2: string
-  /** What obstacles or risks could prevent success? */
+  /** What is our role in achieving that success? */
   q3: string
-  /** Who needs to be involved and what is each person's role? */
+  /** What aspects of the internal culture or external environment could put this effort at risk to fail? */
   q4: string
-  /** How will we know we have succeeded — what's the measurable outcome? */
+  /** Assuming we mitigate that risk, what would exceed your wildest dreams? */
   q5: string
 }
 
