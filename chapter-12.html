@@ -102,6 +102,71 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
+
+    .chapter-callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.15rem 1.35rem;
+      margin: 1.75rem 0;
+    }
+    .chapter-callout-title {
+      color: var(--olive);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+    .chapter-callout p {
+      color: rgba(255,255,255,.86);
+      font-style: normal;
+      margin: 0;
+      max-width: 100%;
+    }
+    .play-flow {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.75rem 0 2rem;
+    }
+    .play-card, .asset-card, .ai-card {
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      padding: 1.1rem 1.2rem;
+      box-shadow: 0 8px 20px rgba(15,23,42,.04);
+    }
+    .play-card-title, .asset-card-title, .ai-card-title {
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.45rem;
+    }
+    .play-card p, .asset-card p, .ai-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      margin: 0;
+      max-width: 100%;
+    }
+    .asset-grid, .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .chapter-body .section-kicker {
+      color: var(--olive);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 760px) {
+      .play-flow, .asset-grid, .ai-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -174,87 +239,168 @@
       <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
       <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 12</div>
       <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 4 — The First Value Play</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">First Value is not Go Live. Go Live is your company's win. First Value is the customer's win.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">First Value is the customer’s first proof that the promise of the purchase is becoming real.</p>
     </div>
   </div>
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>Following the Six Motions of Onboarding, the customer takes the wheel and drives toward their first critical milestone. For years, the software industry has focused heavily on the concept of "Go Live"—the moment the product is fully implemented. However, the modern Customer Success engine focuses on an entirely different outcome: First Value.</p>
 
-<h3>1. The Why: The Heart, The Smart, and The Minimum Viable Win</h3>
+    <p>First Value is the first moment when the customer feels the promise of the purchase become real. It is not the moment your system is turned on. It is not the moment your implementation checklist reaches one hundred percent. It is not the point when your team can say the customer has technically gone live. Those may be important operating milestones, but they are company-centered milestones. First Value is different because it belongs to the customer. It is the earliest meaningful win the customer can recognize, appreciate, and build from.</p>
 
-<p>A primary reason onboarding fails is that companies confuse "Go Live" with First Value. "Go Live" is your company's win; it means the software is turned on. First Value, on the other hand, is the moment the customer actually feels they have achieved something meaningful from their purchase.</p>
+    <p>This distinction matters because the early post-sale experience is emotionally fragile. During the sales process, customers are often at their highest point of enthusiasm. They have heard the promise. They have imagined the better future. They have chosen your company because they believe something will become easier, faster, clearer, safer, more profitable, or more effective. Then the sale closes, the handoff begins, and the customer suddenly enters a waiting line. They may still be excited, but they are also wondering how long this will take, how much effort it will require, whether the promise was overstated, and whether they made the right decision.</p>
 
-<p>To understand the difference, look at how Disney manages its theme park lines. The customer's decision to join the queue and wait for the ride is "Go Live", but being entertained by characters or interactive games while standing in that line is First Value. It demonstrates progress and value long before the ultimate outcome is reached.</p>
+    <p>The First Value Play exists to protect that moment. It gives the customer a clear, right-sized path to an early win before implementation complexity, internal change management, or product breadth overwhelms them. It narrows the first stretch of onboarding to the outcome that matters most right now. It helps the customer feel progress instead of merely hear updates. It turns onboarding from a long instructional sequence into a guided path toward accomplishment.</p>
 
-<p>In SaaS, customers experience high expectations during the sales cycle, but frequently hit a "trough of disillusionment" if onboarding drags out and the product proves difficult to use. To combat this, the First Value play is designed to guide the customer to a minimum viable win. First Value is about providing the right amount of knowledge to achieve a goal that truly matters to them, no more and no less. The success of this play relies on capturing both the "Heart" and the "Smart":</p>
+    <div class="chapter-callout">
+      <div class="chapter-callout-title">The Customer’s Win</div>
+      <p>Go Live is often the company’s evidence that the product is ready. First Value is the customer’s evidence that the purchase was worth it.</p>
+    </div>
 
-<p>The success of this play relies on capturing both the "Heart" and the "Smart":</p>
+    <h2>Build the Canonical First Value Play</h2>
 
-<ul>
-<li><strong>The Heart:</strong> This is the emotional core of the customer's experience. When you listen to their needs and guide them to an early accomplishment, they feel seen, heard, and valued. Without this early sense of accomplishment, customers are highly likely to disengage.</li>
-</ul>
+    <p>The canonical First Value Play begins before the customer is asked to learn everything. In fact, that is the point. The mistake many post-sale teams make is trying to impress a new customer with the full scope of what they purchased. They introduce every feature, explain every workflow, invite every stakeholder, and attempt to demonstrate the full breadth of the solution. The intention is good. The experience is not. When the customer is still trying to orient themselves, too much capability can feel like too much work.</p>
 
-<ul>
-<li><strong>The Smart:</strong> This represents the successful adoption of your product. First Value is the psychological catalyst for the iterative loop. When a customer experiences solving their very first problem, overcoming a challenge, or creating a new capability, they are immediately more likely to come back to the product and try something else. It proves that the "minimum viable win" isn't just about checking a box; it is the critical first step in increasing their sophistication of use over time. When a customer achieves a fast win, that positive experience primes them for long-term product adoption and makes your solution a sticky part of their daily life.</li>
-</ul>
+    <p>First Value forces a different discipline. It asks the team to identify the smallest meaningful win that proves progress against the customer’s reason for buying. Not the smallest task. Not the easiest checklist item. Not a generic activation metric. The smallest meaningful win. That distinction is important because First Value must be both achievable and relevant. If it is achievable but irrelevant, the customer may comply without feeling momentum. If it is relevant but too large, the customer may stall before they ever experience success. The play works when the win is small enough to happen quickly and meaningful enough to matter.</p>
 
-<h3>2. Design & Build: Rightsizing First Value</h3>
+    <p>This is why First Value has both a heart and a smart dimension. The heart is the customer’s feeling of accomplishment. It is the sense that they have been listened to, guided well, and moved closer to the outcome they wanted when they bought. The smart is the adoption logic underneath that feeling. It is the successful use of the product, process, service, or workflow in a way that makes future use more likely. When the heart is present without the smart, the moment may feel good but fail to create durable adoption. When the smart is present without the heart, the customer may technically complete the step but miss the emotional reinforcement that creates confidence and momentum.</p>
 
-<p>When designing your First Value Play, the most critical rule is time: First Value should ideally be achieved within a couple of weeks. If your current implementation takes months, you must right-size the goal.</p>
+    <p>The play therefore starts with a clear First Value statement. That statement should describe what the customer wants to accomplish first in language that sounds like the customer, not like your implementation methodology. A strong First Value statement might sound like, “I want my customer list and automated campaigns brought over and live,” or, “I want my first team member using the new workflow without needing help,” or, “I want my first report in front of leadership before the next operating meeting.” Each statement creates focus. Each gives the team a path to design around. Each turns a vague promise into a concrete early achievement.</p>
 
-<p>To refine and rightsize First Value, modern teams use a step-by-step reverse-engineering process:</p>
+    <p>The company still owns the operating model. The customer defines what value feels like, but the company defines how to guide the customer there. That means the team must be ready to right-size the customer’s desired outcome into something that can happen within weeks, not months. If the customer says they want to generate five warm lead conversations per month, that may be the larger business objective. It probably is not the first win. The First Value might be creating a profile optimized to attract leads, taking the first meaningful action in the community, or completing the first setup step that makes the larger outcome possible. The work is to move backward from the larger objective until the team finds the first meaningful action the customer can actually complete quickly.</p>
 
-<ul>
-<li>Identify the larger objective the customer wants to achieve.</li>
-</ul>
+    <div class="chapter-callout">
+      <div class="chapter-callout-title">Minimum Viable Win</div>
+      <p>First Value is not all the marbles. It is the first important marble. It gives the customer enough proof to believe the next step is worth taking.</p>
+    </div>
 
-<ul>
-<li>Ask yourself: <em>Can they successfully accomplish this within two weeks?</em></li>
-</ul>
+    <p>This is where Go Live can either help or hurt. If Go Live is defined as the entire product fully implemented, fully configured, fully adopted, and fully embedded into the customer’s operating model, then Go Live is too large to serve as the early emotional milestone. It may still be a useful internal implementation marker, but it cannot carry the weight of First Value. The company has to be willing to redefine Go Live in a way that supports progress, not perfection. In some businesses, Go Live may be the moment the customer can begin the first meaningful workflow. In others, it may be the moment the customer can complete a smaller production use case. The important point is that Go Live should not crowd out the customer’s first real experience of value.</p>
 
-<ul>
-<li>If the answer is yes, you have found your First Value.</li>
-</ul>
+    <h2>Map the Play in Motion</h2>
 
-<ul>
-<li>If the answer is no, ask: <em>What smaller action must happen before they can accomplish that goal?</em></li>
-</ul>
+    <p>The First Value Play moves across three connected moments: prep, execution, and follow-up. It begins in the preparation before kickoff, continues through kickoff and onboarding execution, and then closes with achievement, celebration, and the next goal. When the play works, the customer does not experience these as disconnected steps. They experience them as a guided line of sight from the reason they bought to the first win they achieved.</p>
 
-<ul>
-<li>Continue this exercise of identifying smaller predicating steps until you land on an outcome that can be achieved within the two-week timeframe.</li>
-</ul>
+    <div class="play-flow">
+      <div class="play-card">
+        <div class="play-card-title">Prep</div>
+        <p>The team reviews the sales context, the customer’s stated outcomes, the likely first value patterns, the implementation constraints, and any risks that could delay early progress.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-card-title">Execution</div>
+        <p>The team confirms the customer’s desired first outcome, right-sizes it into a near-term win, and narrows onboarding around the knowledge and actions required to reach it.</p>
+      </div>
+      <div class="play-card">
+        <div class="play-card-title">Follow-Up</div>
+        <p>The team monitors progress, applies resources when the customer stalls, celebrates the win when it happens, captures health signals, and tees up the next goal.</p>
+      </div>
+    </div>
 
-<p>For example, if a customer bought a community platform to generate five warm leads a month, they cannot achieve that in two weeks. However, they <em>can</em> optimize their user profile to attract those leads within two weeks. That optimized profile becomes their First Value.</p>
+    <p>Preparation starts with the customer’s reason for buying. The CSM, implementation lead, or onboarding owner should not walk into kickoff with a blank page. They should understand what was promised, what pain created urgency, what outcome mattered most, who cares about that outcome, and what the customer may assume will happen next. They should also understand the most common First Value patterns for customers like this one. Most companies do not have infinite versions of First Value. The 80/20 rule usually applies. A large percentage of customers tend to cluster around a small number of early wins. The more clearly the team understands those patterns, the easier it becomes to guide the customer without making the experience feel generic.</p>
 
-<p>As you design this play, remember that the 80/20 rule will likely apply. Roughly 80% of your customers will pursue one of a few common First Value goals, meaning your team can build a predictable, repeatable process without reinventing the wheel for every account. Furthermore, you as the company have the power to completely redefine what "Go Live" means in order to support this rapid First Value approach.</p>
+    <p>Kickoff is where First Value is captured and shaped. The five questions from the Kickoff Play become clues. The customer’s answers reveal what they think they bought, where they feel pressure, what would make the purchase feel successful, what barriers may get in the way, and who needs to see progress. The CSM’s job is not simply to record those answers. The CSM’s job is to translate them into a right-sized First Value. That may require guiding the customer away from an outcome that is too large for the first few weeks. It may require explaining the difference between the larger business objective and the first meaningful step toward it. It may require a confident talk track about how your company defines Go Live and why the first milestone will be smaller, faster, and more useful than trying to do everything at once.</p>
 
-<h3>3. Best Practices: Celebration and Gauging Health</h3>
+    <p>Execution happens during onboarding, but it should not feel like ordinary onboarding. Once First Value is defined, onboarding needs blinders. The team should focus on the know-how, configuration, workflow, training, integration, and support required to reach the first win. Everything else may still matter later, but it does not matter equally right now. This is the Disney lesson applied to post-sale execution. The customer may be waiting for a larger outcome, but the experience in the line must demonstrate progress. The team should manage expectations, show movement, remove friction, and apply extra resources when the line starts to stall.</p>
 
-<p>Once the customer crosses the finish line and achieves their minimum viable win, you must put the final best practices of the play into action.</p>
+    <p>Follow-up is where the play becomes a system instead of a moment. If the customer reaches First Value, the team should recognize it quickly and simply. The celebration does not need to be elaborate. The customer has already received a larger welcome moment, and First Value should happen close enough to kickoff that an overproduced celebration can feel excessive. An upbeat email, a short video, a handwritten note, or a small gesture can be enough. The purpose is not theatrics. The purpose is reinforcement. The customer should feel, “We did it, they noticed, and now I know what comes next.”</p>
 
-<p><strong>Customer and Internal Celebrations</strong> Because First Value is achieved so quickly after the Purchase & Welcome celebration, this celebration should be kept simple. An upbeat, visually distinct email, a personalized video, or a simple "have a coffee on me" gift card perfectly reinforces their feeling of successful progress. It is also highly recommended to use this moment to set up their next goal and potentially send an NPS survey to validate your onboarding approach.</p>
+    <p>If the customer does not reach First Value, the follow-up is just as important. Failure to achieve First Value is one of the earliest useful customer health signals in the relationship. It tells the team something about alignment, skillset, knowledge, enthusiasm, change readiness, process fit, stakeholder support, or product fit. The point is not to punish the customer or mark them red because they missed a date. The point is to learn quickly enough to intervene while the relationship is still young.</p>
 
-<p>Simultaneously, you must celebrate this milestone internally. Communicating early customer wins across the organization reminds everyone that CX is a whole-company effort, proving that non-financial wins today lay the foundation for revenue growth tomorrow.</p>
+    <div class="chapter-callout">
+      <div class="chapter-callout-title">Early Health Signal</div>
+      <p>First Value is a canary in the coal mine. When the customer struggles to reach the first meaningful win, the team gets an early view into the risks that may later show up as adoption, renewal, or expansion problems.</p>
+    </div>
 
-<p><strong>First Value as the Canary in the Coal Mine</strong> Finally, tracking whether a customer achieves (or fails to achieve) First Value provides your earliest and most accurate data regarding customer health. First Value acts as a "canary in the coal mine" to determine account risk.</p>
+    <h2>Identify the Critical Assets</h2>
 
-<p>If a customer struggles here, it allows you to instantly evaluate:</p>
+    <p>The First Value Play needs assets because consistency cannot depend on every CSM improvising their way through the same conversation. The goal is not to script away judgment. The goal is to give the team enough structure that good judgment can be applied consistently. The assets should make it easier to capture the right outcome, right-size the win, focus onboarding, monitor progress, celebrate achievement, and learn from the result.</p>
 
-<ul>
-<li><strong>Alignment:</strong> Are your product capabilities and the customer's desired use case truly aligned?</li>
-</ul>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <div class="asset-card-title">First Value Reflection</div>
+        <p>This asset captures what customers commonly say they want to accomplish first. It becomes the raw material for identifying recurring First Value patterns across the customer base.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-title">Rightsizing Worksheet</div>
+        <p>This asset helps the team work backward from the customer’s larger objective to the first meaningful action that can be achieved within weeks.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-title">Kickoff Question Guide</div>
+        <p>This asset gives the CSM the prompts needed to uncover what value means to the customer, who needs to see it, and what could prevent early progress.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-title">Focused Onboarding Path</div>
+        <p>This asset translates the First Value statement into the specific training, configuration, data, workflow, and support required to reach the first win.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-title">Progress Tracker</div>
+        <p>This asset tracks time from kickoff to First Value, selected First Value type, customer actions, roadblocks, resource needs, and completion status.</p>
+      </div>
+      <div class="asset-card">
+        <div class="asset-card-title">Celebration and Next Goal Template</div>
+        <p>This asset makes recognition easy to execute and connects the first win to the next goal block so momentum does not fade after the milestone is reached.</p>
+      </div>
+    </div>
 
-<ul>
-<li><strong>The Five Customer Needs (Skillset </strong><strong>&</strong><strong> Knowledge):</strong> Calling back to the Five Universal Customer Needs we covered previously, is your customer ripe for success? Do they have the tactical <em>skillset</em> required to execute effectively, or the <em>knowledge</em> to make critical decisions with the information available? Failing to reach First Value quickly often exposes a gap in these foundational needs.</li>
-</ul>
+    <p>The reflection asset is especially important because it helps the company learn what customers actually value first. It asks the team to listen across past conversations and capture the first things customers say they want to accomplish after purchase. Those statements may not be perfectly right-sized yet. That is fine. At this stage, the goal is to collect the customer’s language. The company can later refine those statements into more executable First Value options.</p>
 
-<ul>
-<li><strong>Risk:</strong> What is missing from the relationship? Is there a lack of executive buy-in, enthusiasm, or understanding?</li>
-</ul>
+    <p>The rightsizing worksheet is the operating asset that turns broad ambition into near-term progress. It should prompt the team to place one customer objective on the left, ask whether that objective can be accomplished within two weeks, and then identify the necessary preceding step if the answer is no. This repeats until the team finds a win that is both meaningful and achievable. The worksheet prevents the team from treating every customer goal as a first milestone. It creates the discipline to shrink the first outcome without trivializing it.</p>
 
-<p>By flawlessly executing the First Value play, you cure the "trough of disillusionment" and launch your customer directly into the ongoing engagement loop of the "messy middle".</p>
+    <p>The focused onboarding path is where the play becomes real for the customer. If First Value is the target, then onboarding should be organized around the shortest responsible path to that target. That may mean prioritizing one feature area, one configuration step, one integration point, one report, one training module, or one workflow. It may also mean intentionally deferring product capabilities that are exciting but not necessary for the first win. This is often hard for teams because they want the customer to see everything. But First Value depends on restraint. The team earns the right to show more after the customer has succeeded with less.</p>
 
-<p>#</p>
+    <p>The progress tracker turns First Value into a measurable operating signal. At minimum, the team should know when kickoff occurred, what First Value was selected, when the customer was expected to achieve it, whether they completed the necessary action, what got in the way, what resources were required, and what the next goal became. Over time, these data points become incredibly useful. They show which First Value patterns are most common, which are most predictive of adoption, which create resource strain, which expose product friction, and which segments need a different path.</p>
+
+    <h2>Create the AI Layer</h2>
+
+    <p>AI makes the First Value Play much more powerful because the play depends on translation. The team has to translate sales notes into customer intent. It has to translate broad goals into right-sized outcomes. It has to translate kickoff answers into onboarding focus. It has to translate progress signals into health insights. It has to translate an early win into a meaningful celebration and a next goal. Those are exactly the kinds of tasks where AI can reduce prep time, improve consistency, and make the CSM sharper without replacing the CSM’s judgment.</p>
+
+    <div class="ai-grid">
+      <div class="ai-card">
+        <div class="ai-card-title">Sales Context to First Value Options</div>
+        <p>AI can review the handoff notes, opportunity context, stated pain, buyer goals, and implementation constraints, then suggest likely First Value options for the CSM to validate.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-title">Rightsizing Assistant</div>
+        <p>AI can take a broad customer objective and repeatedly work backward to propose smaller meaningful wins that could realistically be achieved within weeks.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-title">Focused Onboarding Builder</div>
+        <p>AI can convert the selected First Value into a focused onboarding path, including required customer actions, internal actions, resources, likely blockers, and check-in points.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-title">Health Signal Interpreter</div>
+        <p>AI can compare expected progress against actual progress and identify whether the issue appears to be alignment, skillset, knowledge, enthusiasm, stakeholder support, or product friction.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-title">Celebration Drafting</div>
+        <p>AI can draft a customer-facing celebration that names the win, reinforces the value achieved, and naturally tees up the next goal without sounding overproduced.</p>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-title">Pattern Learning</div>
+        <p>AI can summarize First Value patterns across accounts so leaders can improve onboarding design, resource planning, product enablement, and forecasting quality.</p>
+      </div>
+    </div>
+
+    <p>The most useful AI prompt for this play starts with the customer’s words. A CSM should be able to feed AI the sales notes, kickoff answers, customer goals, known constraints, segment, product purchased, and standard First Value patterns. The AI should return a short set of possible First Value statements, explain why each one may fit, identify what would need to be true for the customer to achieve it quickly, and flag any risk that could make the first milestone too large. The CSM then chooses, edits, or rejects the recommendation. The judgment stays with the human, but the cognitive load drops dramatically.</p>
+
+    <p>AI can also help enforce the discipline of thinking small. Teams often struggle to right-size because they are too close to their own product. They know what is possible, so they want the customer to reach for too much too soon. A good AI rightsizing prompt can keep asking the same operating question: what smaller action has to happen first? That repetition is not glamorous, but it is useful. It forces the team to move from business outcome to adoption behavior to enabling step to first action. Somewhere along that path is the right first win.</p>
+
+    <p>The AI layer becomes even more valuable after the play runs for a while. Once the company has enough data, AI can compare which First Value options lead to better adoption, faster onboarding, stronger customer sentiment, lower support burden, or better renewal outcomes. This is where First Value moves from a nice customer experience idea to an operating system input. Leaders can see whether the first win is predictive. They can see whether some first wins are too small to matter or too large to achieve. They can see whether certain segments need different paths. They can see where product friction repeatedly interrupts early progress. The play becomes a learning loop.</p>
+
+    <div class="chapter-callout">
+      <div class="chapter-callout-title">AI as the Translation Layer</div>
+      <p>The AI layer should not turn First Value into a generic template. It should help the team translate customer context into a sharper first win, a focused onboarding path, and a better read on early health.</p>
+    </div>
+
+    <h2>What the First Value Play Changes</h2>
+
+    <p>When First Value is missing, onboarding becomes a long line with unclear progress. The customer may be receiving information, attending meetings, completing tasks, and waiting for Go Live, but they may not feel any closer to the reason they bought. That gap is dangerous. It creates space for doubt. It weakens enthusiasm. It makes the sales promise feel further away with every passing week.</p>
+
+    <p>When First Value is designed well, the early customer experience changes. The customer knows what they are working toward. The team knows what to prioritize. The onboarding path becomes more relevant. Progress becomes visible. Risks surface earlier. The first celebration feels earned. The next goal becomes easier to introduce because the customer has already experienced the cycle of identifying a meaningful outcome, taking focused action, achieving it, and being recognized for the progress.</p>
+
+    <p>This is why First Value is not just an onboarding tactic. It is the first proof point in the post-sale operating system. Purchase and Welcome creates confidence that the company is paying attention. Kickoff creates alignment around why the customer bought and what success should mean. Onboarding creates the path. First Value creates the first evidence that the path works. From there, the customer is ready for the next value block, the next insight, the next alignment conversation, and eventually the next commercial decision.</p>
+
+    <p>The play is simple in concept, but it requires real discipline. The team has to resist the urge to teach everything. It has to guide the customer away from oversized first goals. It has to define Go Live in a way that supports customer progress. It has to track the milestone as a health signal, not a vanity metric. It has to celebrate without overcomplicating the moment. And it has to use what it learns to improve the system for the next customer.</p>
+
+    <p>First Value is where the customer stops waiting for the promise and starts experiencing it. That is why it deserves to be designed, measured, celebrated, and improved like any other critical operating motion. It is the first small win that makes the larger relationship possible.</p>
+
   </div>
 </div>
 
@@ -284,26 +430,6 @@ window.addEventListener('scroll', () => {
   document.getElementById('progress-bar').style.width = pct + '%';
 });
 
-// Post-process callouts
-document.querySelectorAll('.chapter-body p').forEach(p => {
-  const t = p.textContent.trim();
-  const calloutPhrases = [
-    "The pipeline doesn't stop",
-    "Customer Success is a sales function",
-    "Judgment Over Templates",
-    "autopsy report",
-    "Birthday Party Trap",
-    "doing whatever it takes",
-    "65%",
-    "canary in the coal mine",
-  ];
-  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
-    const div = document.createElement('div');
-    div.className = 'callout';
-    div.innerHTML = '<p>' + p.innerHTML + '</p>';
-    p.replaceWith(div);
-  }
-});
 </script>
 </body>
 </html>
