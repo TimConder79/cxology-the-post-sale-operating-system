@@ -10,7 +10,7 @@
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--navy);
-      margin: 2rem 0 0.75rem;
+      margin: 2.4rem 0 0.85rem;
       padding-bottom: 0.5rem;
       border-bottom: 2px solid var(--gray-100);
     }
@@ -18,35 +18,79 @@
       font-size: 1.1rem;
       font-weight: 600;
       color: var(--navy-light);
-      margin: 1.5rem 0 0.5rem;
+      margin: 1.7rem 0 0.65rem;
     }
     .chapter-body p {
       color: var(--gray-700);
-      font-size: 0.97rem;
+      font-size: 0.98rem;
       margin-bottom: 1rem;
-      line-height: 1.75;
+      line-height: 1.78;
       max-width: 72ch;
-    }
-    .chapter-body ul {
-      padding-left: 1.4rem;
-      margin-bottom: 1rem;
-    }
-    .chapter-body li {
-      color: var(--gray-700);
-      font-size: 0.97rem;
-      margin-bottom: 0.6rem;
-      line-height: 1.65;
     }
     .chapter-body strong { color: var(--navy); }
     .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .chapter-section-label {
+      display:inline-block;
+      font-size:0.68rem;
+      font-weight:800;
+      letter-spacing:0.11em;
+      text-transform:uppercase;
+      color:var(--olive);
+      margin:2.2rem 0 0.2rem;
+    }
     .callout {
       background: var(--navy);
       border-left: 4px solid var(--olive);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
       padding: 1.2rem 1.5rem;
-      margin: 1.75rem 0;
+      margin: 1.8rem 0;
+      max-width: 76ch;
     }
-    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .callout-label {
+      display:block;
+      color:var(--olive);
+      font-size:0.68rem;
+      font-weight:800;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      margin-bottom:0.55rem;
+      font-style:normal;
+    }
+    .callout p { color: rgba(255,255,255,.86); font-style: normal; margin:0; max-width:100%; }
+    .example-card, .asset-card, .ai-card {
+      border:1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      padding:1.25rem 1.4rem;
+      margin:1.25rem 0;
+      box-shadow:0 10px 30px rgba(16,24,40,.04);
+      max-width:76ch;
+    }
+    .example-card h4, .asset-card h4, .ai-card h4 {
+      margin:0 0 .55rem;
+      color:var(--navy);
+      font-size:0.96rem;
+      font-weight:800;
+      letter-spacing:.01em;
+    }
+    .example-card p, .asset-card p, .ai-card p { max-width:100%; margin-bottom:.8rem; }
+    .formula-step {
+      border-left:3px solid var(--olive);
+      background:var(--off-white);
+      padding:1rem 1.2rem;
+      border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+      margin:1rem 0;
+      max-width:76ch;
+    }
+    .formula-step .step-title {
+      color:var(--navy);
+      font-size:.78rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:.35rem;
+    }
+    .formula-step p { margin:0; max-width:100%; }
     .chapter-nav-btn {
       padding: 8px 18px;
       border: 1px solid var(--gray-200);
@@ -174,101 +218,223 @@
       <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
       <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 14</div>
       <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 6 — The Sharing Insights Play</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Sharing Insights is the rudder on the ship. It steers your customer toward the value they desire to achieve.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">The play that turns customer progress, risk, usage, and better practice into persuasive moments that build trust and move the relationship forward.</p>
     </div>
   </div>
+
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>As your customer works through their Value Blocks, you must actively steer them toward success, ensure they don't veer off course, and continuously prove the value of your partnership. This is accomplished through the <strong>Sharing Insights Play</strong>.</p>
+    <p>There is a long stretch of the customer journey where the relationship can feel quiet from the outside. The contract has been signed. The welcome has happened. Kickoff has created direction. Onboarding has created motion. First Value has given the customer a reason to believe. Value Blocks have created a way to keep progress concrete. But then the relationship enters the part of the journey that is hardest to manage and easiest to underestimate. It enters the messy middle.</p>
 
-<p>If Value Blocks represent the engine driving your customer forward, Sharing Insights is the rudder on the ship. This play is how you communicate additional value, celebrate wins, correct missteps, and expand your reach within the customer’s organization.</p>
+    <p>The messy middle is where customers are using the product, trying to change habits, attempting to apply new processes, running into friction, making partial progress, and deciding, often quietly, whether the solution is becoming part of how they work or just another tool they bought. This is also the place where many Customer Success teams become too passive. They check usage. They answer questions. They wait for the next meeting. They hope the customer sees the value that is starting to form.</p>
 
-<h3>1. The Why: The Rudder on the Ship</h3>
+    <p>The Sharing Insights Play exists because hope is not a retention strategy. If Value Blocks are the engine that gives the customer forward motion, Sharing Insights is the rudder. It is how the CSM steers the customer toward the value they said they wanted. It is how the team recognizes progress before it fades into the background, teaches better practice before poor habits take root, and turns small pieces of evidence into moments of trust, clarity, and momentum.</p>
 
-<p>In the "messy middle" of the customer journey, Customer Success Managers often experience a frustrating phenomenon: you provide key advice, but it feels like you are talking into a microphone that is turned off. Your customers might be doing the required actions, but they aren't optimizing for the outcome, or worse, they are resisting the change required to fully adopt your solution.</p>
+    <div class="callout">
+      <span class="callout-label">The Rudder</span>
+      <p>Sharing Insights is not reporting for the sake of reporting. It is the deliberate act of using evidence, timing, and guidance to steer the customer closer to the outcome they wanted when they bought.</p>
+    </div>
 
-<p>Sharing Insights is your mechanism to break through the noise. It operates as a critical change management tool, helping guide users through the natural human resistance to new technology (often mapped to the Kubler-Ross change curve) and accelerating them toward commitment.</p>
+    <p>This play is deceptively simple. A good insight can look like a short email, a marked-up chart, a quick video, a customer-specific observation, or a small note attached to a larger conversation. But underneath the surface, a strong insight is doing serious work. It is helping the customer interpret what is happening. It is translating activity into meaning. It is reinforcing the right behavior. It is making the value visible enough that someone else inside the customer’s company can understand it, repeat it, and build on it.</p>
 
-<p>When executed correctly, a quality insight does four things:</p>
+    <p>That last point matters. Sharing Insights is not only about helping the person in front of you. It is also about expanding awareness inside the account. A thoughtful insight gives your champion something useful to forward. It gives an executive a reason to understand what is working. It gives a stakeholder outside the day-to-day workflow a window into progress. In a well-designed post-sale operating system, insights become small, repeatable artifacts that help the relationship grow beyond the original point of contact.</p>
 
-<ul>
-<li><strong>Expands your reach:</strong> It gives your primary contact a tangible artifact to forward to their executive team, increasing your visibility.</li>
-</ul>
+    <span class="chapter-section-label">Canonical Play</span>
+    <h2>The Sharing Insights Play</h2>
 
-<ul>
-<li><strong>Cements shared achievements:</strong> It formally recognizes and documents the value achieved during a Value Block.</li>
-</ul>
+    <p>The canonical Sharing Insights Play begins with a simple belief: customers do not always see the value you are creating with them. Sometimes they are too close to the work. Sometimes they are distracted by the next urgent issue. Sometimes the value is buried in usage data, adoption patterns, operational improvements, or leading indicators that are obvious to the CSM but invisible to the customer. The play turns those invisible signals into visible progress.</p>
 
-<ul>
-<li><strong>Informs and teaches better practices:</strong> It corrects bad habits before they become ingrained.</li>
-</ul>
+    <p>At its best, Sharing Insights is a relationship-building motion disguised as a communication motion. The CSM notices something meaningful, interprets it in the context of the customer’s goals, explains why it matters, and gives the customer a practical next step. That insight may celebrate a win, correct a course, encourage a better practice, highlight an underused capability, identify a gap, or position an expansion path. The form can change, but the job stays the same. The insight helps the customer understand where they are, why it matters, and what to do next.</p>
 
-<ul>
-<li><strong>Sets the stage for growth:</strong> It naturally positions upsells or partner offerings by highlighting gaps that need filling.</li>
-</ul>
+    <p>This is especially important because adoption is not purely mechanical. It is also emotional and behavioral. Customers move through change at different speeds. Some are ready to explore new ways of working immediately. Others resist, hesitate, or quietly return to old habits. A new workflow, a new data model, a new operational rhythm, or a new technology-enabled service may make perfect sense to the vendor, but that does not mean the customer is ready to absorb it all at once.</p>
 
-<p>Without a structured play, insights often land flat. This usually happens because the CS team sends a visual that only makes sense to an expert, fails to meet the customer where they are, or delivers the insight too late to be actionable.</p>
+    <p>This is where many companies miss. They sell the vision, then push the customer directly toward the most advanced version of that vision before the customer has built enough confidence to get there. The result is not always open conflict. More often, the customer nods in meetings, uses a fraction of the capability, and never fully changes. Sharing Insights gives the CSM a way to meet the customer where they are and keep moving them forward one meaningful observation at a time.</p>
 
-<h3>2. Design & Build: The 5-Step Formula</h3>
+    <div class="callout">
+      <span class="callout-label">Change Takes Reinforcement</span>
+      <p>We cannot control what the customer does, but we can be influential and persuasive. Sharing Insights is one of the ways we help customers move from resistance to exploration, from exploration to commitment, and from commitment to repeatable value.</p>
+    </div>
 
-<p>To ensure your insights are not ignored, you must build this play around a simple, repeatable formula. Whether you are sharing an insight about feature utilization, a better practice, or a massive win, your team must use this highly digestible, five-step structure:</p>
+    <p>The play fits directly into the engagement sequence created by Value Blocks and continued through Alignment Meetings. Value Blocks create the work. Sharing Insights interprets the work while it is happening. Alignment Meetings elevate the accumulated progress, lessons, risks, and decisions into a broader business conversation. Without insights, the customer may complete tasks and still fail to see momentum. With insights, the CSM continuously turns work into learning, learning into confidence, and confidence into the next level of commitment.</p>
 
-<ul>
-<li><strong>Step 1: Write a one-liner.</strong> Convey the gist of the insight immediately to grab the reader's attention so they continue reading.</li>
-</ul>
+    <p>Sharing Insights also plays an important role before First Value. When a customer is still early in the relationship, the smallest signal can either build trust or create doubt. A timely observation can help the customer understand why a setup step matters, why a recommended practice is worth following, or why an early behavior is already pointing toward the first meaningful outcome. In that moment, the insight is not an afterthought. It is a loyalty builder.</p>
 
-<ul>
-<li><strong>Step 2: Speak to the background.</strong> Bring the reader into the fold. Provide the necessary context so the insight makes perfect sense, even to an uninitiated executive.</li>
-</ul>
+    <p>The trigger for the play is any moment when the customer would benefit from interpretation. That moment may come from usage data, a milestone, a completed Value Block, a stalled action, a pattern in support tickets, a new feature that applies to the customer’s stated goals, or a win that should not be allowed to disappear. The CSM’s job is to recognize that the moment exists. It is not the customer’s responsibility to ask for the insight. It is the CSM’s responsibility to see the inflection point and act on it.</p>
 
-<ul>
-<li><strong>Step 3: Speak to the results.</strong> Clearly illustrate the outcomes (good or bad) and show what is possible. If you are sharing a chart or graph, this is where it goes.</li>
-</ul>
+    <h2>The Five-Part Insight Formula</h2>
 
-<ul>
-<li><strong>Step 4: Clarify the action.</strong> Translate the results into something actionable. The reader must know exactly what you want them to do next.</li>
-</ul>
+    <p>The strength of the Sharing Insights Play is that it can be taught. It does not require every CSM to become a brilliant writer or a data storyteller overnight. It gives the team a repeatable formula that turns an observation into a clear, useful, persuasive customer communication.</p>
 
-<ul>
-<li><strong>Step 5: Reinforce the insight.</strong> Tell them what you told them by bringing it back to the start, reinforcing the core message.</li>
-</ul>
+    <div class="formula-step">
+      <div class="step-title">Step One · Lead with the point</div>
+      <p>The insight begins with a one-liner that conveys the gist of the message. The customer should know immediately why they are reading. A vague subject line or buried conclusion creates work for the reader. A strong one-liner grabs attention and gives the insight a clear center of gravity.</p>
+    </div>
 
-<p><strong>Mapping the Triggers</strong> When building this play in your CS automation tool or CRM, you must define the triggers for when these insights are sent. Insights should be deployed:</p>
+    <div class="formula-step">
+      <div class="step-title">Step Two · Bring them into the background</div>
+      <p>After the one-liner, the CSM gives the context required for the insight to make sense. This is where the message meets the customer where they are. The background should be plain enough for someone outside the daily workflow to understand, but specific enough that the customer sees the insight was written for them.</p>
+    </div>
 
-<ul>
-<li><strong>After a Value Block completion:</strong> To send a "Win Report" celebrating the milestone.</li>
-</ul>
+    <div class="formula-step">
+      <div class="step-title">Step Three · Explain the result</div>
+      <p>The insight then speaks to the result, whether the result is good, bad, emerging, or incomplete. This is where the CSM shows what is happening and why it matters. If a chart, graph, screenshot, short video, or data point is useful, it belongs here, but only if it makes the message easier to understand.</p>
+    </div>
 
-<ul>
-<li><strong>During stalled usage:</strong> To point out a better practice when a customer hits a roadblock or usage drops.</li>
-</ul>
+    <div class="formula-step">
+      <div class="step-title">Step Four · Translate into action</div>
+      <p>The insight must tell the customer what to do next. This is the difference between an interesting observation and an operating motion. The action may be to repeat a behavior, adjust a workflow, add missing information, include another stakeholder, review a resource, or prepare for a conversation.</p>
+    </div>
 
-<ul>
-<li><strong>On an automated cadence:</strong> Sending automated performance or usage insights every two to four weeks to keep the customer engaged.</li>
-</ul>
+    <div class="formula-step">
+      <div class="step-title">Step Five · Reinforce the message</div>
+      <p>The close brings the insight back to the beginning. It reminds the customer of the core point and leaves them with a clear understanding of why the insight matters. The best insights do not end with noise. They end with confidence.</p>
+    </div>
 
-<h3>3. Best Practices: Digestibility and Internal Sharing</h3>
+    <p>This structure works because it respects the reader’s time. It does not assume the customer wants to study a dashboard, decode a chart, or infer the point from a pile of data. It makes the meaning obvious. It gives the customer a clean path from observation to action. It also makes the insight easier to forward because the context travels with the message.</p>
 
-<p>To master the Sharing Insights Play, implement these critical best practices:</p>
+    <span class="chapter-section-label">Play in Motion</span>
+    <h2>How the Play Moves from Prep to Follow-Up</h2>
 
-<ul>
-<li><strong>Keep it Fun-Sized:</strong> Use consistent formatting across all your insight types and ensure they are "bite-sized nuggets". You must minimize the work required for the customer to understand the insight and, more importantly, act on it.</li>
-</ul>
+    <p>The Sharing Insights Play does not begin when the CSM starts typing. It begins with monitoring. The CSM is watching the customer’s progress against the Value Block, the First Value target, the adoption pattern, the agreed outcome, or the next Alignment Meeting. The CSM is looking for signals that deserve interpretation. Some signals are positive. Some are risky. Some are simply useful because they give the customer a better way to act.</p>
 
-<ul>
-<li><strong>Label Graphics for the Uninitiated:</strong> When sharing a chart, a graph, or a screen capture to illustrate your results, always highlight exactly where you want the reader to look. Make sure the graphics are labeled clearly so that an executive who has never logged into your platform can immediately understand the value.</li>
-</ul>
+    <p>In the prep motion, the CSM first identifies the reason for the insight. The reason should be specific enough to make the message worth sending. A customer completed an important milestone. A usage pattern shows that a team is adopting one capability but ignoring another. A report contains noise that is distorting the customer’s interpretation. A new feature can help the customer get closer to a goal they already named. A win is emerging that should be recognized before the next formal meeting. A customer is stalled because they have not yet followed a better practice.</p>
 
-<ul>
-<li><strong>Keep an Internal Learning Library:</strong> Do not let great insights disappear into a single email thread. Keep a library of well-written examples. This helps new team members see how it is done and provides inspiration on days when a CSM is struggling to write the perfect insight.</li>
-</ul>
+    <p>Once the reason is clear, the CSM decides who needs to receive the insight. This decision matters as much as the insight itself. A day-to-day admin may need tactical instructions. A champion may need a message they can forward. An executive may need a concise explanation of business impact. A cross-functional stakeholder may need to understand why their participation matters. The same observation can become several different insights depending on the audience.</p>
 
-<ul>
-<li><strong>Share Wins Internally:</strong> Routinely recognize great insights in your internal team meetings. Share customer "Win Reports" with the entire company. There are team members in your company (like engineering or product) who never work directly with a customer and benefit immensely from seeing the positive impact of their work. Furthermore, Sales and Marketing love these stories, quickly turning them into hot case studies and reference materials.</li>
-</ul>
+    <p>The CSM then gathers the minimum evidence required to make the point. Minimum is important. The goal is not to prove everything. The goal is to make the next right thing obvious. Evidence might include a simple metric, a before-and-after comparison, a marked-up screenshot, a customer-specific example, a short Loom-style video, a usage trend, or a quote from a prior conversation. The CSM should use enough evidence to build trust, but not so much that the customer has to work to find the point.</p>
 
-<p>By consistently executing the Sharing Insights play, you steer the customer effortlessly through the messy middle, ensuring they are perfectly primed for your next major inflection point.</p>
+    <div class="callout">
+      <span class="callout-label">Digestibility</span>
+      <p>A strong insight is a bite-sized nugget. It should be easy to consume, easy to understand, and easy to act on. If the customer has to study it, the insight is carrying too much weight.</p>
+    </div>
 
-<p>#</p>
+    <p>During execution, the CSM writes the insight using the five-part formula. The one-liner creates the hook. The background creates context. The result creates meaning. The action creates movement. The reinforcement creates memory. The tone should be confident, helpful, and specific. The message should feel like guidance from someone who understands the customer’s desired outcome, not like an automated report dressed up as a customer touch.</p>
+
+    <p>If the insight includes a graphic, the CSM should label the graphic for the uninitiated. This is one of the most overlooked details in the play. A chart that makes perfect sense to a platform expert may mean nothing to an executive who has never logged in. A screenshot that is obvious to the CSM may be confusing to someone seeing the workflow for the first time. The CSM should highlight where to look, explain what the viewer is seeing, and connect the visual back to the point of the message.</p>
+
+    <p>The follow-up motion depends on the intent of the insight. A win may be captured for the next Alignment Meeting. A better-practice insight may require a reply, a short working session, or a check-in after the customer makes the change. A feature-utilization insight may become a prompt for enablement. A gap insight may become an expansion conversation later in the pipeline. A risk insight may become a mitigation step. In all cases, the insight should be logged, tagged, and connected back to the customer’s journey so the team can see what guidance has already been provided.</p>
+
+    <p>The best teams do not allow insights to disappear into email threads. They treat them as operating artifacts. They build a library of examples. They recognize strong insights in team meetings. They share customer wins internally so Product, Engineering, Sales, Marketing, and leadership can see the value customers are achieving. They use insights to create case study seeds, reference stories, renewal evidence, expansion narratives, and better internal learning.</p>
+
+    <h2>Three Common Insight Motions</h2>
+
+    <p>The Sharing Insights Play can be used in many ways, but three motions show up again and again. The first is the product or feature insight. This is used when the customer can get better results by using an existing capability more effectively or by adopting a new capability that directly connects to their goal. The CSM is not announcing a feature. The CSM is translating a capability into customer-specific value.</p>
+
+    <div class="example-card">
+      <h4>Feature Utilization Insight</h4>
+      <p>A customer is reviewing reports, but irrelevant results are creating noise. The CSM notices that filters would help the customer focus on the topics that matter most. The insight explains the problem in the customer’s language, shows why the noise is happening, gives simple instructions for using filters, and reinforces the value of refining the report so more relevant topics rise to the top.</p>
+    </div>
+
+    <p>The second motion is the win insight. This is used when the customer has achieved something worth recognizing. A win insight is more than praise. It documents progress in a way that the customer can repeat, share, and eventually connect to business value. It also gives the CSM a reason to celebrate with the customer while reinforcing the behavior that produced the result.</p>
+
+    <div class="example-card">
+      <h4>Win Recognition Insight</h4>
+      <p>A customer’s campaign begins producing stronger search visibility. The CSM points out the progress, explains why ranking for more keywords is a leading indicator, highlights the trend in a simple visual, and encourages the customer to keep following the process. The message celebrates the result while making the next action feel obvious: keep going.</p>
+    </div>
+
+    <p>The third motion is the better-practice insight. This is used when the customer’s current behavior is limiting the value they can achieve. Better-practice insights require care because they can easily sound corrective in the wrong way. The CSM should frame the guidance around the outcome the customer wants, explain the current gap, and make the recommended action feel practical rather than judgmental.</p>
+
+    <div class="example-card">
+      <h4>Better Practice Insight</h4>
+      <p>A customer has not entered enough competitor information for the platform to generate robust market insights. The CSM explains why competitor data matters, clarifies the recommended ratio between direct and indirect competitors, gives the customer the steps to update the account, and reinforces that better input will improve the quality of insights across the platform.</p>
+    </div>
+
+    <p>Each motion follows the same underlying pattern. The CSM is not just sending information. The CSM is helping the customer interpret the information in a way that moves them closer to value. That is why the play is so powerful. It turns the ordinary work of customer communication into a system for reinforcement, recognition, adoption, and growth.</p>
+
+    <span class="chapter-section-label">Critical Assets</span>
+    <h2>The Assets That Make the Play Repeatable</h2>
+
+    <p>The Sharing Insights Play becomes scalable when the team has the right assets. Without assets, each insight depends too heavily on the individual CSM’s memory, writing ability, available time, and confidence. With assets, the play becomes easier to execute consistently without stripping away judgment.</p>
+
+    <div class="asset-card">
+      <h4>The Insight Template</h4>
+      <p>The core asset is a simple template built around the five-part formula: one-liner, background, result, action, and reinforcement. The template should not make every message sound the same. It should give the CSM a reliable path for turning a customer-specific observation into a clear message.</p>
+    </div>
+
+    <div class="asset-card">
+      <h4>The Prep Checklist</h4>
+      <p>The prep checklist helps the CSM confirm the reason for the insight, the customer goal it connects to, the audience, the evidence required, the recommended action, and the follow-up path. It prevents the CSM from sending an insight that is interesting but disconnected from the journey.</p>
+    </div>
+
+    <div class="asset-card">
+      <h4>The Insight Question Bank</h4>
+      <p>The question bank helps the CSM think before writing. It prompts the CSM to ask what changed, what the customer may not see, what behavior should be reinforced, what risk needs to be corrected, what win should be celebrated, and who else inside the customer’s company should understand the message.</p>
+    </div>
+
+    <div class="asset-card">
+      <h4>The Visual Annotation Standard</h4>
+      <p>The visual standard defines how charts, screenshots, graphs, and short videos should be labeled. It reminds the team to highlight where the customer should look, explain what the visual means, and avoid assuming the reader has platform expertise.</p>
+    </div>
+
+    <div class="asset-card">
+      <h4>The Follow-Up and Library Workflow</h4>
+      <p>The follow-up workflow defines where insights are logged, how they are tagged, which insights should appear in the next Alignment Meeting, and which examples should be added to the internal library. This is what turns one good message into organizational learning.</p>
+    </div>
+
+    <p>These assets should be lightweight. The goal is not to bury the CSM in process. The goal is to remove the friction that keeps insights from being shared when they matter. Most teams already have the raw material. They have usage signals, customer goals, support patterns, product updates, wins, gaps, and better practices. What they lack is a simple operating motion that turns those signals into useful customer guidance.</p>
+
+    <span class="chapter-section-label">AI Layer</span>
+    <h2>Where Sharing Insights Gets Really Powerful</h2>
+
+    <p>AI changes the economics of this play. Historically, Sharing Insights has been valuable but difficult to scale because it requires a CSM to notice the signal, interpret the signal, write the message, tailor the message to the audience, and remember to follow up. That is a lot of work, especially across a large book of business. AI does not remove the CSM’s judgment, but it can make the prep, drafting, personalization, and follow-up dramatically easier.</p>
+
+    <p>The first AI layer is signal detection. AI can scan usage data, journey milestones, support themes, meeting notes, Value Block progress, and prior customer goals to identify moments that may deserve an insight. It can flag that a customer reached an adoption threshold, stalled before a key milestone, adopted one capability but ignored a complementary one, or achieved a result worth recognizing. The CSM still decides what matters, but AI helps make the moment visible.</p>
+
+    <div class="ai-card">
+      <h4>AI Prompt: Find the Insight</h4>
+      <p>Review this customer’s current goal, recent usage, meeting notes, support activity, and Value Block status. Identify the most meaningful insight I could share this week. Explain why it matters, who should receive it, what evidence supports it, and what action I should recommend.</p>
+    </div>
+
+    <p>The second AI layer is audience tailoring. The same insight should not be written the same way for every recipient. AI can help the CSM create a tactical version for an admin, a champion-forwardable version for the primary sponsor, and an executive version focused on business impact. This is where the play begins to expand reach more reliably. The insight becomes easier to move through the customer’s organization because it is written in language each audience can use.</p>
+
+    <div class="ai-card">
+      <h4>AI Prompt: Tailor the Message</h4>
+      <p>Take this insight and rewrite it for three audiences: the day-to-day user who needs to take action, the champion who may forward it internally, and the executive sponsor who needs to understand why it matters. Keep each version concise, specific, and tied to the customer’s stated business outcome.</p>
+    </div>
+
+    <p>The third AI layer is formula-based drafting. Once the CSM knows the insight, AI can draft the first version using the five-part structure. This is not about sending an AI-written message without review. It is about eliminating the blank page. The CSM can then apply judgment, sharpen the point, add customer nuance, and make sure the recommendation is right.</p>
+
+    <div class="ai-card">
+      <h4>AI Prompt: Draft the Insight</h4>
+      <p>Draft a customer-facing insight using this structure: one-liner, background, result, recommended action, and reinforcement. Use the customer’s language from our last meeting. Make the message easy to forward, avoid jargon, and include a clear next step.</p>
+    </div>
+
+    <p>The fourth AI layer is visual interpretation. Many insights are trapped inside charts, dashboards, and screenshots that only internal experts understand. AI can help summarize what a visual shows, suggest plain-English labels, and recommend the simplest way to explain the chart to an executive or an uninitiated stakeholder. This makes the CSM better at turning data into meaning.</p>
+
+    <div class="ai-card">
+      <h4>AI Prompt: Explain the Visual</h4>
+      <p>Review this chart or screenshot and help me explain it to someone who has never used our platform. Tell me where to direct their attention, what the visual means, what conclusion they should draw, and what action should follow.</p>
+    </div>
+
+    <p>The fifth AI layer is follow-up intelligence. After an insight is sent, AI can help the CSM determine what should happen next. Should the insight be added to the next Alignment Meeting deck? Should it trigger a task? Should it be logged as renewal evidence? Should it be shared internally as a win? Should it become a case study candidate? Should it inform an expansion hypothesis? The insight becomes part of the operating system rather than a one-off communication.</p>
+
+    <div class="callout">
+      <span class="callout-label">Judgment Over Templates</span>
+      <p>AI can find signals, draft messages, tailor language, and prepare follow-up. The CSM still owns the judgment. The question is not whether AI can write an insight. The question is whether the insight is true, timely, useful, and connected to the customer’s desired outcome.</p>
+    </div>
+
+    <p>When this layer is designed well, Sharing Insights becomes one of the clearest examples of AI-enabled Customer Success. AI is not replacing the relationship. It is making the relationship more attentive. It helps the CSM notice more, prepare faster, communicate more clearly, and build a stronger evidence trail across the customer journey.</p>
+
+    <h2>How to Embed the Play in the Team</h2>
+
+    <p>A play is not embedded because it was documented once. It becomes embedded when the team develops a shared expectation for when it should be used, what good looks like, and how examples are learned from over time. Sharing Insights should become part of the team’s operating rhythm, not an optional activity reserved for the most proactive CSMs.</p>
+
+    <p>Managers can reinforce the play by asking about insights in account reviews. They can ask which customers received a win insight, which customers received a better-practice insight, which stalled customers need guidance, and which insights should be elevated into the next Alignment Meeting. This moves the conversation away from generic account status and toward the quality of customer progress.</p>
+
+    <p>The team should also celebrate strong examples internally. This matters more than it may seem. Many companies spend so much time talking about escalations, risks, and gaps that they forget to show the organization what is working. Sharing customer wins with the company gives teams that do not interact directly with customers a clearer view of impact. Product and Engineering see the value of what they built. Sales and Marketing see stories that may become references, referrals, case studies, and stronger positioning. Leadership sees evidence that the post-sale motion is creating momentum.</p>
+
+    <p>The internal library is the final piece. A good library gives new team members examples to study and experienced team members inspiration when they are stuck. It should include feature insights, better-practice insights, win insights, risk insights, expansion-adjacent insights, and examples of strong visual annotation. Over time, the library becomes part of the company’s customer intelligence. It shows what customers care about, where they struggle, what creates value, and which messages move the relationship forward.</p>
+
+    <h2>The Operating Standard</h2>
+
+    <p>The operating standard for this play is simple: every meaningful customer signal deserves interpretation. Not every signal deserves a long message. Not every insight deserves a meeting. Not every observation needs to become a strategic narrative. But when the customer has made progress, drifted from the path, missed a better practice, encountered a useful feature, or created evidence of value, the CSM should ask whether an insight would help.</p>
+
+    <p>This standard changes the posture of Customer Success. The CSM is no longer waiting for the customer to ask what the data means. The CSM is not waiting until the renewal to assemble proof. The CSM is not saving all value discussion for the next formal business review. The CSM is actively guiding the customer through the messy middle with timely, specific, useful interpretation.</p>
+
+    <p>That is why Sharing Insights belongs in the lifecycle plays. It is not a communication tactic sitting on the side of the operating system. It is one of the core ways the operating system keeps the relationship moving. It connects Value Blocks to Alignment Meetings. It connects usage to meaning. It connects small wins to larger outcomes. It connects the champion’s work to executive awareness. It connects customer behavior to renewal and growth.</p>
+
+    <p>When the play is working, customers feel seen. They do not have to wonder whether progress is happening because someone is helping them see it. They do not have to decode the product alone because someone is teaching them how to use it in context. They do not have to wait until the next big meeting to understand what matters because the CSM is creating clarity along the way.</p>
+
+    <p>Sharing Insights is how the CSM keeps a hand on the rudder. It is how the relationship stays in motion between the major milestones. It is how the post-sale operating system turns customer data, customer behavior, and customer progress into trust. And trust, built consistently in small moments, is what makes the next Alignment Meeting stronger, the renewal easier, and the growth path more natural.</p>
   </div>
 </div>
 
@@ -296,27 +462,6 @@ window.addEventListener('scroll', () => {
   const total = document.documentElement.scrollHeight - window.innerHeight;
   const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
   document.getElementById('progress-bar').style.width = pct + '%';
-});
-
-// Post-process callouts
-document.querySelectorAll('.chapter-body p').forEach(p => {
-  const t = p.textContent.trim();
-  const calloutPhrases = [
-    "The pipeline doesn't stop",
-    "Customer Success is a sales function",
-    "Judgment Over Templates",
-    "autopsy report",
-    "Birthday Party Trap",
-    "doing whatever it takes",
-    "65%",
-    "canary in the coal mine",
-  ];
-  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
-    const div = document.createElement('div');
-    div.className = 'callout';
-    div.innerHTML = '<p>' + p.innerHTML + '</p>';
-    p.replaceWith(div);
-  }
 });
 </script>
 </body>
