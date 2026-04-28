@@ -102,6 +102,22 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
+
+    .section-kicker { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--olive); margin:2.5rem 0 0.4rem; }
+    .callout-title { display:block; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--olive); margin-bottom:0.55rem; font-style:normal; }
+    .callout p { color: rgba(255,255,255,.85); font-style: normal; margin:0; max-width:100%; }
+    .play-card { background:var(--off-white); border:1px solid var(--gray-100); border-radius:var(--radius-md); padding:1.35rem 1.5rem; margin:1.5rem 0; }
+    .play-card h3 { margin-top:0; color:var(--navy); }
+    .play-card p:last-child { margin-bottom:0; }
+    .asset-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1.5rem 0 2rem; }
+    .asset-card { background:var(--white); border:1px solid var(--gray-100); border-radius:var(--radius-md); padding:1.25rem; box-shadow:0 8px 24px rgba(15,23,42,.04); }
+    .asset-card h3 { margin-top:0; font-size:1rem; color:var(--navy); }
+    .asset-card p { font-size:0.92rem; line-height:1.65; margin-bottom:0; }
+    .flow-strip { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.75rem; margin:1.4rem 0 2rem; }
+    .flow-step { background:var(--navy); color:var(--white); border-radius:var(--radius-sm); padding:1rem; border-top:4px solid var(--olive); }
+    .flow-step strong { display:block; color:var(--white); font-size:.8rem; margin-bottom:.35rem; }
+    .flow-step span { color:rgba(255,255,255,.72); font-size:.82rem; line-height:1.45; display:block; }
+    @media (max-width: 720px) { .asset-grid,.flow-strip { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -174,79 +190,185 @@
       <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
       <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 13</div>
       <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 5 — The Value Blocks Play</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">If you abandon your customer in the messy middle, their progress will stall and they will ultimately churn.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">The play that keeps customers moving after First Value by turning broad outcomes into small, visible, repeatable moments of progress.</p>
     </div>
   </div>
+
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>Once your customer achieves First Value, they enter a critical phase of the journey known as the "messy middle". This is the expansive time period between their initial onboarding success and their first renewal. All too often, companies onboard their clients successfully and then completely fall off the radar, only to reappear months later to ask for a renewal.</p>
+    <p>First Value creates the first proof point. It gives the customer a reason to believe the purchase was a good decision, and it gives your team a reason to believe the account is moving in the right direction. But First Value is not the finish line. It is the beginning of the relationship becoming real.</p>
 
-<p>If you abandon your customer in the messy middle, their progress will stall, they will get frustrated, and they will ultimately churn. To ensure continuous progress and make retention an obvious conclusion, you must deploy the Value Blocks Play.</p>
+    <p>The danger after First Value is subtle because it rarely looks like an emergency at first. The kickoff happened. The customer got through onboarding. Someone saw a useful result. The implementation team may have moved on. The account may look stable in the system. Then weeks pass, priorities shift, the customer gets busy, the CSM checks in occasionally, support handles the tactical questions, and everyone assumes progress is happening because nothing is visibly on fire. This is how the messy middle begins.</p>
 
-<h3>1. The Why: Bringing Purpose to the "Messy Middle"</h3>
+    <p>The messy middle is the long stretch between the customer’s first early win and the next meaningful business outcome. It is where most post-sale relationships lose momentum. Customers do not usually churn because they failed to attend one meeting or missed one task. They churn because progress became vague. They churn because the product stayed useful in theory but disconnected from the work they were trying to accomplish. They churn because the relationship drifted from a shared outcome to a set of disconnected interactions.</p>
 
-<p>Value Blocks are designed to bring explicit purpose to the messy middle by creating a strategic cadence of tactical accomplishment. They are small, meaningful, discrete steps that add up to a much larger business objective.</p>
+    <p>The Value Blocks Play exists to prevent that drift. In the original CXology training, this play was called Goal Blocks. The idea is the same: take a larger customer objective and break it into right-sized blocks of progress that are specific enough to act on, meaningful enough to matter, and visible enough to create momentum. In this chapter, I am using the language of Value Blocks because the word value makes the purpose impossible to miss. This play is not about creating goals for the sake of activity. It is about creating a repeatable path for customers to experience progress, recognize progress, and keep choosing the next step with you.</p>
 
-<p>By structuring progress using Value Blocks, you ensure that customers get the exact, right-sized amount of resources and guidance they need at the precise moment they need it. The Iterative Engine of Stickiness: Every time a customer completes a Value Block—whether by solving a problem, overcoming a challenge, or creating a new capability—they build confidence. This confidence makes them more likely to return to the product to try the next block, naturally increasing their sophistication of use over time and resulting in massive product stickiness. This continuous cycle of setting small goals and achieving them prevents customers from feeling overwhelmed and shifts your Customer Success team from being viewed as just another software vendor into being seen as an indispensable, valued partner.</p>
+    <div class="callout"><span class="callout-title">Progress Needs Shape</span><p>After First Value, customers do not need more vague encouragement. They need a clear next block of progress that connects what they are doing now to the outcome they still care about.</p></div>
 
-<h3>2. Design & Build: The Lego Methodology</h3>
+    <p>A Value Block is a small, purposeful step toward a larger customer objective. It is not the larger business outcome itself. It is not a full success plan pretending to be a task. It is not a random training session selected because the CSM needed something to talk about. A Value Block is the next meaningful advancement in the customer’s ability to get value from your product or service. It may include training, a template, a configuration step, a workflow improvement, a stakeholder action, a usage milestone, a decision-making conversation, a “done with you” working session, or a targeted follow-up sequence. The form can vary, but the purpose cannot. Every Value Block should help the customer become more capable, more aligned, or more committed to the outcome they bought you to achieve.</p>
 
-<p>When building your Value Blocks Play, the most effective mental model to use is building a Lego set. When you purchase a massive, complex Lego kit, you do not get one giant set of instructions. The pieces are packaged into distinct packets, each with a clear, simple outcome and an easy path to success. When a customer finishes a packet, they get to pause and appreciate their progress before opening the next one. Value Blocks function exactly like these packets.</p>
+    <p>This is why Value Blocks are the natural continuation of the Purchase and Welcome, Kickoff, Onboarding, and First Value plays. The Purchase and Welcome Play protects the handoff. The Kickoff Play creates alignment. The Onboarding Play turns alignment into execution. The First Value Play proves the customer can achieve something meaningful quickly. The Value Blocks Play turns that proof into a cadence. It keeps the customer moving through the relationship instead of falling into the gap between onboarding and renewal.</p>
 
-<p>To design your Value Blocks, follow these steps:</p>
+    <p>In a strong post-sale operating system, the customer should never have to wonder what comes next. They should not have to translate a broad strategic objective into the next practical step on their own. They should not have to rely on the CSM’s individual memory, personality, or creativity to keep progress alive. The system should create a path. The CSM should guide the customer through that path. The customer should feel that the relationship has a rhythm, that each interaction has a reason, and that every step is moving toward something they still care about.</p>
 
-<ul>
-<li><strong>Reverse-Engineer the Objective:</strong> Identify the large goal your customer wants to hit by their next alignment meeting, and break it down into smaller interim steps. Right-size these steps so each Value Block can be reasonably accomplished within a short timeframe.</li>
-</ul>
+    <h2>The Canonical Value Blocks Play</h2>
 
-<ul>
-<li><strong>Rely on the Law of 80/20:</strong> Do not try to invent a unique Value Block for every single customer. Because your customers likely bought your software to solve similar problems, the Law of 80/20 applies: roughly 80% of the time, the Value Block your customer needs will be one you have already pre-made and refined.</li>
-</ul>
+    <p>The canonical Value Blocks Play begins with a simple belief: customers stay when they keep making progress that matters to them. Usage alone is not enough. A customer can log in and still fail to change a workflow. They can attend meetings and still fail to create internal momentum. They can complete onboarding and still fail to get closer to the business result that justified the purchase. Value Blocks bring usage and goal achievement together. They connect activity to meaning.</p>
 
-<ul>
-<li><strong>Create </strong><strong>"</strong><strong>Easy Buttons</strong><strong>"</strong><strong>:</strong> Map your Value Blocks directly to the Five Customer Needs (Skillset, Knowledge, Cost, Demands, Change). Build "Easy Buttons" to bridge these gaps, such as pre-built templates, done-for-you services, strategic partner recommendations, or specific training modules.</li>
-</ul>
+    <p>The play starts by identifying the customer’s next larger objective. Sometimes that objective is surfaced during kickoff. Sometimes it becomes visible during onboarding. Sometimes it emerges from the First Value reflection. Sometimes it is refreshed in a realignment meeting. Wherever it comes from, the larger objective becomes the anchor. The CSM and customer agree that this is the next meaningful direction of travel. Then the CSM breaks that objective into a sequence of smaller blocks that the customer can actually complete.</p>
 
-<ul>
-<li><strong>The </strong><strong>"</strong><strong>I Do, We Do, You Do</strong><strong>"</strong><strong> Delivery:</strong> When delivering a Value Block that requires training, map your play to this highly effective method. First, the CSM demonstrates the action (<em>I do</em>). Next, the CSM and the customer take the action steps together (<em>We do</em>). Finally, the customer executes the action independently while the CSM observes and provides feedback (<em>You do</em>).</li>
-</ul>
+    <p>The best analogy from the training material is Lego. A complex Lego build does not ask you to dump every piece on the table and somehow imagine the finished structure all at once. It gives you bags. Each bag has a clear purpose. Each bag contains a set of small steps. When you finish a bag, you can see progress, feel progress, and understand how the smaller piece contributes to the larger thing you are building. Value Blocks work the same way. The customer may have a large objective, but the relationship advances one purposeful block at a time.</p>
 
-<h3>3. Best Practices: Efficiencies, Health Insights, and Alignment</h3>
+    <p>That right-sizing matters. If the block is too large, the customer stalls. If it is too small, the work feels trivial. If it is disconnected from the customer’s stated objective, it becomes busywork. If it is all education and no application, the customer learns but does not change. The CSM’s role is to translate the customer’s objective into a block that can be completed in the right timeframe, with the right resources, by the right people, with the right level of support.</p>
 
-<p>To master the Value Blocks Play across your organization, deploy these best practices:</p>
+    <div class="callout"><span class="callout-title">The Lego Principle</span><p>A Value Block should be small enough to complete, large enough to matter, and clear enough that the customer can see how it contributes to the bigger outcome.</p></div>
 
-<ul>
-<li><strong>Realize New Efficiencies:</strong> By standardizing the 80% of common Value Blocks, you create a reusable "learning library". This means your team no longer has to invent a unique solution for every customer, accelerating execution and allowing your CSMs to act as strategic coaches rather than tactical doers. As your library matures, you can even automate certain Value Blocks through in-app gamification or automated video delivery.</li>
-</ul>
+    <p>The play is also built on the Law of 80/20. Most customer needs are not as unique as they first appear. They may arrive with different words, different personalities, different industries, and different internal politics, but the underlying patterns repeat. Customers need skills. They need knowledge. They need lower effort. They have competing demands. They need help creating change inside their own organization. When those needs are captured consistently, the company can stop inventing a new solution for every customer and start creating reusable pathways that solve common problems well.</p>
 
-<ul>
-<li><strong>Generate Leading Health Insights:</strong> Value Blocks act as a real-time health metric. Because you have established clear timelines for these small blocks, you will instantly know if a customer is stalled or struggling. This allows you to trigger early escalations and intervene long before the customer gives up and decides to churn.</li>
-</ul>
+    <p>This does not mean every customer receives the same experience. It means the company becomes smarter about the recurring blocks customers need to complete in order to succeed. Some Value Blocks will become standardized training. Some will become templates. Some will become guided working sessions. Some will become product improvements. Some will become services or bundled offerings. Some will become enablement for the customer’s internal champion. The operating system learns from the pattern and makes the next customer easier to help.</p>
 
-<ul>
-<li><strong>Align Internally:</strong> Do not keep Value Block data trapped within the Customer Success department. Use successful Value Blocks as source material for Marketing and Sales to build powerful case studies. Conversely, mine your stalled or unsuccessful Value Blocks to expose recurring product deficiencies, delivering this hard data directly to your Product team to drive continuous improvement.</li>
-</ul>
+    <p>The canonical play has three objectives. It keeps the customer engaged in a way that is relevant to their desired outcomes. It creates a visible cadence of progress between larger alignment moments. And it generates intelligence for the company by exposing where customers succeed, where they stall, and what they repeatedly need from you in order to move forward.</p>
 
-<ul>
-<li><strong>Celebrate the Completion:</strong> Just like First Value, every time a customer completes a Value Block, you must celebrate it. A simple, visually distinct email, a quick shoutout to their executive team, or a personalized video reinforces their feeling of successful progress and builds massive momentum for them to tackle the next Value Block.</li>
-</ul>
+    <p>That last point is important. Value Blocks are not only a customer engagement motion. They are also a learning system. When a customer completes a block, you learn what works. When they stall, you learn what is unclear, too hard, under-resourced, politically blocked, or unsupported by the product. When many customers stall on the same block, you have a pattern that product, marketing, sales, services, enablement, and leadership should understand. This is how a post-sale play becomes an operating system asset rather than a CSM habit.</p>
 
-<p>By successfully chaining Value Blocks together throughout the messy middle, your customer will continuously recognize the value of your partnership.</p>
+    <h2>Map the Play in Motion</h2>
 
-<p>#</p>
+    <p>The Value Blocks Play moves through four phases: frame the next objective, confirm the block, deliver the block, and close the loop. Those phases can happen in a meeting, across a sequence of touchpoints, or through a mix of guided work and asynchronous follow-up. The specific format should fit the customer and the block. The structure should not change.</p>
+
+    <div class="flow-strip">
+      <div class="flow-step"><strong>Frame</strong><span>Use kickoff, First Value, realignment, or customer signals to anchor the next meaningful objective.</span></div>
+      <div class="flow-step"><strong>Confirm</strong><span>Recommend a right-sized block, align on ownership, and make the chosen path explicit.</span></div>
+      <div class="flow-step"><strong>Deliver</strong><span>Guide the customer through the work with training, assets, coaching, or structured execution.</span></div>
+      <div class="flow-step"><strong>Close</strong><span>Capture progress, share insight, update health, celebrate completion, and tee up the next block.</span></div>
+    </div>
+
+    <p>Preparation begins before the customer sees anything. The CSM reviews the customer’s stated objective, current usage, First Value result, open risks, stakeholder map, support history, prior commitments, and any signals that indicate momentum or friction. The goal is not to create a generic agenda. The goal is to understand what progress should look like next and where the customer may get stuck. If the account is early in the journey, the CSM may choose from common post-onboarding Value Blocks. If the account is further along, the CSM may use the realignment conversation to identify the next larger objective and then recommend the blocks that make the objective achievable.</p>
+
+    <p>The CSM should come prepared with a recommendation, not a blank page. Asking the customer what they want to do next can sound collaborative, but it can also transfer too much burden to a customer who may not know the best path. A stronger approach is to offer two or three sensible options based on what the customer has already told you, what similar customers usually need next, and what the data suggests. The CSM may still invite the customer into the decision, but the customer should feel guided rather than abandoned.</p>
+
+    <p>The confirmation moment is where the play becomes real. The CSM names the larger objective, explains why the recommended Value Block is the right next step, and confirms the customer’s agreement. This does not need to be heavy. It may be a short conversation, a quick email, or a segment inside a recurring meeting. What matters is that the chosen block is documented. The customer should know what is being worked on, why it matters, what success looks like, who owns which actions, and when the block should be complete.</p>
+
+    <div class="callout"><span class="callout-title">Guided Choice Beats Open-Ended Choice</span><p>The CSM should not ask the customer to invent the next step from scratch. The operating system should recommend the best next blocks, and the customer should help choose the one that fits their context.</p></div>
+
+    <p>Execution depends on the type of block. A training block may use a tailored deck, a working session, a practice exercise, and a checklist. A workflow block may include a configuration guide, a process map, and a follow-up review. A stakeholder block may include internal messaging, champion coaching, and a path for bringing new users into the process. A reporting block may include a sample dashboard, a decision framework, and a session to interpret what the data means. The assets vary, but the meeting flow should always connect the work back to the objective.</p>
+
+    <p>A strong Value Block meeting begins by reconnecting to the customer’s chosen goal. The CSM should not dive straight into training or tasks. The customer needs to hear why this block matters and how it fits into the larger path. Then the CSM reviews recent activity and progress since the last interaction, confirms who is involved, identifies any stakeholder or key contact changes, and clarifies whether anything has shifted since the block was chosen. If the context has changed, the block may need to be adjusted. If the context is still valid, the CSM moves into guided execution.</p>
+
+    <p>The best delivery pattern is active, not passive. The training material describes this as “I do, we do, you do,” and that principle is essential. If the CSM only demonstrates, the customer may understand but not adopt. If the CSM only assigns homework, the customer may agree but not complete. The play is strongest when the CSM models the action, works through part of it with the customer, and then has the customer take ownership of the next step. This changes the relationship from vendor doing work for the customer to partner building customer capability.</p>
+
+    <p>Before the meeting ends, the CSM should review the timeline, confirm ownership, make room for questions, reinforce where support is available, and restate the completion criteria. The close matters because Value Blocks are meant to be finished. A block that lingers indefinitely becomes a source of ambiguity. The customer may not fail loudly, but the relationship loses momentum. The CSM’s job is to make completion visible and to treat stalled blocks as meaningful signals.</p>
+
+    <p>Follow-up should happen quickly and should be specific. The CSM summarizes the objective, the chosen block, the actions completed, the remaining steps, the owner of each step, the target completion date, and the support resources available. If there is a checklist, it should be attached or linked. If there is a recording, deck, template, or job aid, it should be easy to find. If the block revealed a product gap, training gap, stakeholder gap, or internal dependency, it should be captured internally. If the customer completed the block, the CSM should celebrate the progress and use that moment to create momentum for the next block.</p>
+
+    <p>Celebration is not fluff. It is part of the system. Customers are busy, and they often do not pause to recognize progress unless you help them see it. A short congratulatory email, a personalized note, a recap that shows before-and-after progress, or a small moment of recognition in a recurring meeting can reinforce that the relationship is producing movement. It also trains the customer to expect a rhythm: choose a block, work the block, complete the block, recognize progress, and move to the next block.</p>
+
+    <h2>The Meeting Flow</h2>
+
+    <p>The Value Blocks Play does not require every block to become a formal meeting, but when a meeting is needed, the flow should be consistent. The CSM opens by naming the larger customer objective and the specific block being advanced. This gives the meeting purpose immediately. The customer should not feel like they are attending another generic check-in. They should feel like they are entering a working session connected to something they already agreed matters.</p>
+
+    <p>After the opening, the CSM reviews what has happened since the last block or alignment point. This is where the play begins to generate health insight. Has the customer completed the prior actions? Has usage increased in the relevant area? Did the champion bring the right people into the conversation? Did a new blocker appear? Did the customer’s priorities change? These questions are not administrative. They reveal whether the account is moving forward as designed.</p>
+
+    <p>Next, the CSM confirms the block. Even if the block was chosen earlier, it is worth restating. “We chose this block because your larger objective is to improve adoption across the team, and this step gives your managers the workflow and language they need to reinforce the new process.” That type of framing reminds the customer that the activity is not random. It also gives the CSM a chance to adjust if the customer’s situation changed.</p>
+
+    <p>The execution portion should be practical and participatory. If there is training, the customer should be doing something with the training. If there is a template, the customer should begin applying it to their real context. If there is a checklist, the CSM and customer should walk through the first decisions together. If there is a stakeholder action, the CSM should help shape the message or plan. The point is not simply to transfer information. The point is to move the customer closer to completion while they are in the room.</p>
+
+    <p>The final portion of the meeting closes the loop. The CSM confirms what was accomplished, what remains, who owns it, when it is due, what support exists, and how completion will be recognized. If the block is complete, the CSM captures the win and transitions to insight. If the block is not complete, the CSM captures the remaining work and the risk. The meeting should never end with “let us know if you need anything.” That phrase is where progress goes to die.</p>
+
+    <div class="callout"><span class="callout-title">No More Vague Check-Ins</span><p>A Value Block meeting should end with a visible state: completed, in progress, stalled, at risk, or ready for the next block. Anything less creates ambiguity in the relationship and noise in the operating system.</p></div>
+
+    <h2>The Critical Assets</h2>
+
+    <p>Like the other lifecycle plays, Value Blocks become scalable only when they are supported by assets. A CSM can run this play from memory for a few accounts, but the company cannot scale consistency from memory. The system needs reusable assets that guide preparation, execution, follow-up, and learning.</p>
+
+    <div class="asset-grid">
+      <div class="asset-card"><h3>Value Block Library</h3><p>The library houses the repeatable blocks your customers commonly need after First Value, including the customer objective each block supports, the likely blockers, the recommended resources, and the completion criteria.</p></div>
+      <div class="asset-card"><h3>Preparation Brief</h3><p>The prep brief helps the CSM connect the customer’s larger objective, current signals, prior commitments, likely risks, recommended next block, and suggested questions before engaging the customer.</p></div>
+      <div class="asset-card"><h3>Working Deck or Guide</h3><p>The deck or guide is not a generic presentation. It frames the block, explains why it matters, walks through the action steps, and gives the customer something practical to use during and after the session.</p></div>
+      <div class="asset-card"><h3>Follow-Up and Completion Template</h3><p>The follow-up template captures the block selected, work completed, remaining actions, owners, due dates, resources, health signals, and the celebration or next-step message.</p></div>
+    </div>
+
+    <p>The Value Block Library is the most important asset because it becomes the memory of the operating system. It should contain the common blocks customers need to complete as they move toward recurring objectives. Each block should be tied to a customer need, not merely a product feature. A product feature may be part of the block, but the reason the block exists should be rooted in the customer’s desired outcome. The library should answer why the block matters, when it should be used, what customer signals indicate it is relevant, what assets support it, what the customer must do, what the CSM must do, and what completion looks like.</p>
+
+    <p>The preparation brief gives the CSM a repeatable way to think before acting. It should force the CSM to connect the block to the customer’s objective and to look for likely loyalty blockers. The five customer needs are useful here. Does the customer lack the skillset to execute? Do they lack the knowledge to make the right decision? Is the work too costly in time, money, or effort? Are competing demands preventing action? Is the key contact unable to facilitate change internally? These questions turn preparation into diagnosis rather than agenda creation.</p>
+
+    <p>The working deck or guide should be tailored enough to feel relevant but standardized enough to scale. A training deck, worksheet, checklist, template, decision tree, or step-by-step guide can all work. What matters is that the asset supports action. The customer should leave with something that makes the next step easier. The CSM should not have to recreate the material every time. The asset should improve as the team learns from repeated use.</p>
+
+    <p>The question set is another critical asset, even if it does not always appear as a standalone document. Strong questions help the CSM right-size the block and detect whether the customer is truly aligned. A CSM should be able to ask what outcome the customer is trying to advance, what has changed since the last alignment point, what would make this step hard to complete, who needs to be involved, what deadline matters, and how the customer will know the block created progress. These questions keep the conversation anchored in the customer’s reality.</p>
+
+    <p>The follow-up template protects the play from disappearing after the meeting. It should make completion visible, record open commitments, and capture health signals. It should also create internal learning. If the block required a workaround, that is product intelligence. If the customer needed extra enablement, that is training intelligence. If the champion could not secure internal participation, that is stakeholder intelligence. If the customer completed the block quickly and expanded usage, that is success-story intelligence. Follow-up is where the play becomes data.</p>
+
+    <p>The celebration asset is often overlooked, but it matters. It can be as simple as a visually distinct email, a personalized message, a customer-facing progress recap, or a note that recognizes the team’s work. Celebration helps the customer feel movement. Internally, it also cues the team to update the system, record the completed block, and prepare the next recommendation.</p>
+
+    <h2>The Five Customer Needs</h2>
+
+    <p>The five customer needs are the diagnostic layer underneath Value Blocks. They help the team avoid a thousand custom solutions for a thousand customers. Instead of treating every stalled account as a unique mystery, the CSM can ask which type of need is blocking progress.</p>
+
+    <p>Skillset is the customer’s tactical ability to perform the work. A customer may believe in the outcome and still lack the ability to execute the required steps. Knowledge is the information or judgment the customer needs to make better decisions. They may know how to use the tool but not know which decision to make, which path to choose, or how to interpret what they are seeing. Cost is the effort, time, and money required to get to the outcome. Even when a product is valuable, the work around it may feel too expensive for the customer’s current capacity. Demands are the competing priorities surrounding the customer. Your product may matter, but it is not the only thing on their plate. Change is the customer’s ability to create movement inside their organization, especially when the key contact needs other people to adopt a new behavior.</p>
+
+    <p>These needs should shape both the design of the block and the assets that support it. If the problem is skillset, training may be appropriate. If the problem is knowledge, examples, benchmarks, decision guides, or insights may matter more. If the problem is cost, the company may need to reduce steps, automate work, or offer done-for-you support. If the problem is demands, the CSM may need to simplify the ask and connect it to a business priority the customer already cares about. If the problem is change, the block may need to include stakeholder messaging, champion coaching, or executive alignment.</p>
+
+    <div class="callout"><span class="callout-title">Needs Before Assets</span><p>The right asset depends on the need blocking progress. Do not send training when the customer needs internal change support, and do not send a checklist when the real issue is decision confidence.</p></div>
+
+    <p>When the team uses this diagnostic layer consistently, the Value Block Library becomes smarter. The company learns not only which blocks are common but why they are needed. That makes product decisions better, marketing stories sharper, sales promises more realistic, onboarding paths clearer, and CSM coaching more consistent.</p>
+
+    <h2>Health Insights and Internal Alignment</h2>
+
+    <p>Value Blocks create a kind of health signal that dashboards alone rarely capture. A customer may appear healthy because they log in, respond to email, or have no open support escalations. But if they are not progressing through meaningful blocks, the relationship may still be at risk. Conversely, a customer who is struggling inside a block may still be healthy if the struggle is visible, shared, and actively being addressed. The point is not whether the work is always easy. The point is whether the customer and company are still moving together.</p>
+
+    <p>For this reason, every Value Block should have a status. The system should know whether the block is recommended, selected, in progress, completed, stalled, at risk, or abandoned. It should know why a block stalled and whether the issue was skillset, knowledge, cost, demands, change, product fit, stakeholder access, or something else. It should know which assets were used and whether they helped. It should know whether the block created the expected customer behavior or outcome.</p>
+
+    <p>This data should not live only in the CSM’s notes. Completed, in-process, and future Value Blocks should be visible internally and, where appropriate, with the customer. Internally, this visibility helps leaders see where customers are making progress and where the journey is breaking down. With the customer, it reinforces accountability and makes the relationship feel purposeful. The customer can see where they have been, what they are working on, and what comes next.</p>
+
+    <p>Value Blocks also create a more constructive way for CS to work with peer teams. Instead of telling Product that customers are frustrated in general, CS can show that a specific block repeatedly stalls because customers cannot complete a workflow without a workaround. Instead of telling Marketing that customers are successful in a vague way, CS can show the progression of blocks that led to a measurable outcome. Instead of telling Sales that customers need better expectations, CS can show which sold outcomes require which blocks and what resources must be in place to deliver them.</p>
+
+    <p>This is where the play becomes a company learning loop. Successful blocks can become case studies, onboarding accelerators, sales proof points, product requirements, and enablement examples. Failed or stalled blocks can become escalation triggers, process improvements, product backlog inputs, service offerings, or leadership discussion topics. A mature organization does not hide failed Value Blocks. It studies them.</p>
+
+    <p>The leadership review should include both successful and unsuccessful blocks. The purpose is not to inspect the CSM. The purpose is to understand the system. Where are customers moving quickly? Where do they repeatedly slow down? Which assets are helping? Which ones are missing? Which blocks create expansion readiness? Which blocks reveal risk? Which teams need to act so the next customer has an easier path?</p>
+
+    <h2>The AI Layer</h2>
+
+    <p>This is where the Value Blocks Play gets powerful. AI can help the CSM move from manual interpretation to intelligent recommendation. The play already creates a rich set of inputs: kickoff notes, onboarding milestones, First Value reflections, usage signals, support history, meeting transcripts, stakeholder changes, prior commitments, customer objectives, and completed or stalled blocks. AI can synthesize those inputs and recommend the next best Value Block with a level of consistency that is difficult for an individual CSM to maintain across a large book of business.</p>
+
+    <p>The first AI use case is block recommendation. AI can review the customer’s stated objective, recent activity, segment, maturity, prior blocks, open risks, and similar-customer patterns to suggest two or three next blocks. The CSM still uses judgment. AI should not automatically decide the customer’s path. But it can reduce prep time, surface options the CSM may have missed, and create a stronger starting point for the customer conversation.</p>
+
+    <p>The second use case is right-sizing. AI can evaluate whether a proposed block is too large, too vague, or too disconnected from the customer’s objective. It can suggest how to split a broad goal into smaller steps, how to combine steps that are too granular, and how to define completion criteria. This matters because many teams struggle not with the idea of goal achievement but with the discipline of making the next step small and clear enough to complete.</p>
+
+    <p>The third use case is asset generation. Once the block is selected, AI can draft the preparation brief, meeting agenda, tailored training deck outline, customer worksheet, internal checklist, follow-up email, and celebration message. It can pull from the approved Value Block Library so the CSM is not starting from scratch. It can tailor language to the customer’s industry, use case, maturity, stakeholders, and prior commitments while preserving the structure of the play.</p>
+
+    <p>The fourth use case is risk detection. AI can compare the current customer’s block progression with expected patterns. If a customer has not selected a block after First Value, that is a signal. If a block remains in progress past the expected date, that is a signal. If the customer repeatedly chooses blocks but fails to complete them, that is a different signal. If a key stakeholder disappears during a block that requires internal change, the risk is not the block itself but the customer’s ability to facilitate adoption. AI can surface these patterns earlier than a quarterly review would.</p>
+
+    <p>The fifth use case is insight generation. After a block is completed, AI can help summarize what happened, what was learned, what progress was created, and what the customer should see next. This becomes the bridge to the Sharing Insights Play in the next chapter. Value Blocks create the raw material. Sharing Insights turns that raw material into meaning for the customer.</p>
+
+    <div class="callout"><span class="callout-title">AI Makes the System Remember</span><p>The promise of AI in this play is not generic automation. It is the ability to remember the customer’s objective, compare it to proven pathways, recommend the next right-sized block, and turn progress into reusable intelligence.</p></div>
+
+    <p>In the strongest version of the play, AI also strengthens the library itself. It can identify which blocks are being used most often, which ones create the fastest completion, which ones correlate with adoption or expansion, which ones frequently stall, and which customer needs appear most often across segments. That helps the company improve the operating system over time. The library becomes less of a static folder and more of a learning engine.</p>
+
+    <p>There is an important caution. AI should not turn Value Blocks into robotic customer engagement. The CSM still needs judgment, empathy, and contextual awareness. A customer that is overwhelmed may need a smaller block. A customer with executive pressure may need a more visible block. A customer with a weak champion may need an internal alignment block before a product usage block. AI can recommend. The CSM must decide. The value comes from combining system memory with human judgment.</p>
+
+    <h2>What Good Looks Like</h2>
+
+    <p>A strong Value Blocks Play changes the feel of the customer relationship. The customer no longer experiences the post-sale journey as a series of meetings. They experience it as a sequence of progress. The CSM no longer has to invent reasons to engage. The operating system creates reasons rooted in the customer’s goals. Leadership no longer has to rely only on lagging indicators. They can see where customers are advancing, where they are stuck, and where the system needs to improve.</p>
+
+    <p>Good looks like a customer who can name the larger objective they are pursuing and the specific block they are working on now. It looks like a CSM who can explain why that block matters, what completion means, and what risk would appear if the block stalls. It looks like a manager who can review a book of business and see which accounts are making progress after First Value and which accounts have gone quiet. It looks like Product, Marketing, Sales, Services, and CS using the same evidence to understand what customers need next.</p>
+
+    <p>Good also looks like restraint. Not every customer needs a complex plan. Not every block needs a meeting. Not every objective needs a custom asset. The Law of 80/20 should make the motion simpler over time, not heavier. The goal is to create enough structure that progress becomes repeatable without creating so much process that the team slows down.</p>
+
+    <p>When the play works, renewal becomes a conclusion rather than a surprise. The customer has been making progress all along. They have seen the evidence. Their team has built capability. Their stakeholders have been brought along. Their blockers have been addressed before they became reasons to leave. The company has learned from their journey. Expansion becomes easier because the customer can see the next block of value, not just the next product to buy.</p>
+
+    <h2>The Operating Standard</h2>
+
+    <p>The operating standard for this play is simple. Every customer should have a visible path of progress after First Value. That path should be made of right-sized blocks tied to the customer’s desired outcomes. Each block should have a reason, an owner, a completion definition, a support asset, a status, and a follow-up motion. Completed blocks should be recognized. Stalled blocks should be investigated. Common blocks should become reusable assets. Repeated blockers should become company learning.</p>
+
+    <p>This is how the messy middle becomes manageable. Not by adding more check-ins. Not by asking CSMs to be heroic. Not by waiting for renewal to discover whether the customer made progress. The messy middle becomes manageable when the operating system can show what the customer is trying to achieve, what block they are working on now, what support they need, what progress they have made, and what should happen next.</p>
+
+    <p>The Value Blocks Play is the connective tissue between First Value and long-term growth. It turns early proof into repeatable progress. It gives the CSM a reason to stay engaged that is helpful rather than intrusive. It gives the customer a path that feels achievable rather than overwhelming. It gives the company a way to learn from every customer interaction instead of letting that knowledge disappear into notes, inboxes, and individual memory.</p>
+
+    <p>Most importantly, it keeps the relationship centered on value. Customers do not renew because your team had meetings. They renew because the relationship kept helping them get somewhere. Value Blocks make that movement visible, repeatable, and scalable.</p>
   </div>
-</div>
 
-<!-- BOTTOM NAV -->
-<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
-  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
-    <div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
-      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 14: Play 6 — The Sharing Insights Play</div>
-    </div>
-    <div style="display:flex;gap:0.75rem">
-      <button onclick="window.location.href='chapter-12.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
-      <button onclick="window.location.href='chapter-14.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
-    </div>
+  <div style="max-width:860px;margin:0 auto;padding:0 2rem 4rem;display:flex;justify-content:space-between;gap:1rem">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-12.html'">← Chapter 12</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-14.html'">Chapter 14 →</button>
   </div>
 </div>
 
