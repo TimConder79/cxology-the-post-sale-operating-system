@@ -196,6 +196,61 @@ export function AccountWorkspace() {
             {/* Left column */}
             <div className="space-y-5">
 
+              {/* First Value Statement */}
+              {(account.firstValueStatement || account.stage === 'identify') && (
+                <div id="first-value" className="bg-white rounded-xl border border-slate-200 scroll-mt-6">
+                  <div className="px-5 py-4 border-b border-slate-100 flex items-center gap-2">
+                    <TrendingUp size={13} className="text-brand-500" />
+                    <h2 className="text-[12px] font-semibold text-slate-500 uppercase tracking-widest">First Value Statement</h2>
+                  </div>
+                  <div className="p-5">
+                    {account.firstValueStatement ? (
+                      <p className="text-[14px] text-slate-800 leading-relaxed font-medium italic">
+                        &ldquo;{account.firstValueStatement}&rdquo;
+                      </p>
+                    ) : (
+                      <p className="text-[12px] text-slate-400 leading-relaxed">
+                        No first value statement defined yet. Capture this during the kickoff play — it anchors the entire relationship.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Five Questions */}
+              {account.latestFiveQuestions && (
+                <div id="five-questions" className="bg-white rounded-xl border border-slate-200 scroll-mt-6">
+                  <div className="px-5 py-4 border-b border-slate-100 flex items-center gap-2">
+                    <div className="w-5 h-5 rounded bg-brand-600 flex items-center justify-center flex-shrink-0">
+                      <span className="text-white text-[9px] font-bold">5Q</span>
+                    </div>
+                    <h2 className="text-[12px] font-semibold text-slate-500 uppercase tracking-widest">Five Questions</h2>
+                    <span className="ml-auto text-[10px] text-slate-400">
+                      Captured {formatDateShort(account.latestFiveQuestions.capturedAt)}
+                    </span>
+                  </div>
+                  <div className="p-5 space-y-4">
+                    {[
+                      { label: 'Goal & timeline', value: account.latestFiveQuestions.q1 },
+                      { label: 'What success looks like', value: account.latestFiveQuestions.q2 },
+                      { label: 'Obstacles & risks', value: account.latestFiveQuestions.q3 },
+                      { label: 'Stakeholders & roles', value: account.latestFiveQuestions.q4 },
+                      { label: 'Measurable outcome', value: account.latestFiveQuestions.q5 },
+                    ].map((item, i) => item.value ? (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-brand-50 ring-1 ring-brand-200 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <span className="text-brand-600 text-[9px] font-bold">{i + 1}</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide mb-0.5">{item.label}</div>
+                          <p className="text-[13px] text-slate-700 leading-relaxed">{item.value}</p>
+                        </div>
+                      </div>
+                    ) : null)}
+                  </div>
+                </div>
+              )}
+
               {/* Inflection Points */}
               <Section id="inflection-points" title="Inflection Points">
                 <div className="space-y-3">

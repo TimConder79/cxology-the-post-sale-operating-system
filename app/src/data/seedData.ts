@@ -1,7 +1,7 @@
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, NextBestAction, PipelineStage, PlayTemplate, Opportunity,
-  AccountTimeline, TimelineMilestone, OutcomeEvidence,
+  AccountTimeline, TimelineMilestone, OutcomeEvidence, FiveQuestions,
 } from '@/types'
 
 // ─── Reference: Pipeline Stages ──────────────────────────────────────────────
@@ -148,6 +148,7 @@ export const accounts: Account[] = [
     progressionStatus: 'advancing',
     renewalDate: '2026-09-15',
     daysInStage: 18,
+    firstValueStatement: 'Reduce patient intake processing time by 40% within 90 days of go-live, measured by the IT team\'s weekly throughput report.',
     createdAt: '2025-12-01T00:00:00Z',
   },
   {
@@ -160,6 +161,7 @@ export const accounts: Account[] = [
     progressionStatus: 'stalled',
     renewalDate: '2026-07-01',
     daysInStage: 34,
+    firstValueStatement: 'Eliminate manual shipment reconciliation for the top 3 carriers within the first 60 days, freeing 8 hours per week for the Ops team.',
     createdAt: '2026-01-10T00:00:00Z',
   },
   {
@@ -172,6 +174,7 @@ export const accounts: Account[] = [
     progressionStatus: 'advancing',
     renewalDate: '2026-06-01',
     daysInStage: 12,
+    firstValueStatement: 'Give RevOps a single source of truth for pipeline data across all three sales regions by end of Q1, confirmed by a live dashboard demo to the CRO.',
     createdAt: '2025-09-01T00:00:00Z',
   },
   {
@@ -184,6 +187,7 @@ export const accounts: Account[] = [
     progressionStatus: 'at_risk',
     renewalDate: '2026-05-15',
     daysInStage: 62,
+    firstValueStatement: null,
     createdAt: '2026-01-05T00:00:00Z',
   },
   {
@@ -196,6 +200,7 @@ export const accounts: Account[] = [
     progressionStatus: 'advancing',
     renewalDate: '2026-11-01',
     daysInStage: 9,
+    firstValueStatement: 'Deliver the first automated anomaly detection report to the Data Science team within 45 days, with at least one actionable business insight surfaced.',
     createdAt: '2026-02-01T00:00:00Z',
   },
 ]
@@ -753,5 +758,58 @@ export const outcomeEvidence: OutcomeEvidence[] = [
     outcomeAchieved: 'All three regional teams operating from a shared workspace. Cross-team data requests eliminated.',
     businessImpact: 'Regional sync meetings reduced from weekly to bi-weekly. Estimated 8 hours/week saved across leadership.',
     capturedAt: '2026-04-05T00:00:00Z', capturedByRunId: 'run-010',
+  },
+]
+
+// ─── Five Questions ───────────────────────────────────────────────────────────
+
+export const fiveQuestions: FiveQuestions[] = [
+  // Meridian Health Systems — captured at kickoff
+  {
+    id: 'fq-001',
+    accountId: 'acc-001',
+    capturedAt: '2025-12-05T00:00:00Z',
+    capturedByRunId: 'run-001',
+    q1: 'Reduce patient intake processing time by 40% within 90 days of go-live. VP Operations owns the outcome.',
+    q2: 'Success means the IT team\'s weekly throughput report shows consistent reduction, and staff are no longer spending evenings on manual data entry.',
+    q3: 'Primary risk is legacy EMR integration complexity — the data format is non-standard. Secondary risk is staff adoption; prior tools were abandoned within 2 months.',
+    q4: 'Priya Nair (IT Director) is our internal champion and will drive adoption. James Whitfield (VP Ops) is the executive sponsor and needs quarterly progress updates. David Ko (CFO) will approve renewal — needs to see ROI before Q3.',
+    q5: 'Processing time drops below 3 minutes per intake by week 12. Measured weekly by Priya\'s team using the operations dashboard report.',
+  },
+  // Apex Logistics Group — captured at kickoff, partially filled
+  {
+    id: 'fq-002',
+    accountId: 'acc-002',
+    capturedAt: '2026-01-15T00:00:00Z',
+    capturedByRunId: null,
+    q1: 'Eliminate manual shipment reconciliation for the top 3 carriers within 60 days.',
+    q2: 'Ops team gets 8 hours per week back. Ron Castellano (COO) wants to see this reflected in the Q2 ops review deck.',
+    q3: 'Carrier API integrations are inconsistent — Carrier B uses a legacy EDI format. Linda Park flagged that the ops team is stretched and may resist process change.',
+    q4: 'Linda Park is the day-to-day champion. Ron Castellano needs executive-level updates monthly. No finance stakeholder identified yet.',
+    q5: 'Zero manual reconciliation entries logged for the top 3 carriers by day 60. Linda to confirm via the ops log.',
+  },
+  // Vantage Financial — captured at kickoff, mature account
+  {
+    id: 'fq-003',
+    accountId: 'acc-003',
+    capturedAt: '2025-09-10T00:00:00Z',
+    capturedByRunId: null,
+    q1: 'Give RevOps a single source of truth for pipeline data across all three sales regions by end of Q1.',
+    q2: 'Claire Nguyen (CRO) can walk into any board meeting and answer pipeline questions in real-time without prep. The RevOps team stops fielding ad-hoc data requests.',
+    q3: 'Historical data hygiene in Region 2 is poor — there are 3 years of inconsistent stage definitions. Tom Adler is aware but the cleanup requires executive mandate.',
+    q4: 'Tom Adler leads implementation with his RevOps team. Claire Nguyen is the renewal decision-maker. Fatima Osei (FP&A) will use the output for quarterly forecasting — she\'s a secondary champion.',
+    q5: 'A live pipeline dashboard reviewed and approved by Claire Nguyen before the March board meeting. All three regions contributing live data.',
+  },
+  // ClearPath Analytics — captured at kickoff, recent account
+  {
+    id: 'fq-004',
+    accountId: 'acc-005',
+    capturedAt: '2026-02-08T00:00:00Z',
+    capturedByRunId: null,
+    q1: 'Deliver the first automated anomaly detection report to the Data Science team within 45 days.',
+    q2: 'Beth Morales\' team can point to one real business insight they found using the platform — something they would have missed manually.',
+    q3: 'Data access approvals are slow — security review for the production data pipeline could take 3-4 weeks. If delayed, the 45-day target is at risk.',
+    q4: 'Beth Morales (Head of Data Science) is our champion and will validate outcomes. Kevin Walsh (CTO) approved the purchase and needs to see measurable results before Q3 to support renewal.',
+    q5: 'At least one anomaly flagged, investigated, and confirmed as a business insight by the Data Science team within 45 days. Beth will document it for the quarterly review.',
   },
 ]

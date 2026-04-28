@@ -3,6 +3,7 @@ import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
   PipelineStage, PlayTemplate, AccountView, ConfidenceLevel, OutcomeEvidence, PipelineStageId,
+  FiveQuestions,
 } from '@/types'
 import {
   accounts as seedAccounts,
@@ -16,6 +17,7 @@ import {
   opportunities as seedOpportunities,
   accountTimelines as seedAccountTimelines,
   outcomeEvidence as seedOutcomeEvidence,
+  fiveQuestions as seedFiveQuestions,
   pipelineStages,
   playTemplates,
 } from '@/data/seedData'
@@ -33,6 +35,7 @@ interface AppState {
   opportunities: Opportunity[]
   accountTimelines: AccountTimeline[]
   outcomeEvidence: OutcomeEvidence[]
+  fiveQuestions: FiveQuestions[]
 }
 
 interface AppContextValue extends AppState {
@@ -52,6 +55,8 @@ interface AppContextValue extends AppState {
   advancePlayStep: (runId: string, step: 1 | 2 | 3 | 4) => void
   completePlay: (runId: string, output: Omit<MeetingOutput, 'id' | 'playRunId' | 'accountId' | 'capturedAt'>) => void
   moveOpportunityStage: (oppId: string, newStage: PipelineStageId) => void
+  captureFiveQuestions: (runId: string, answers: Omit<FiveQuestions, 'id' | 'accountId' | 'capturedAt' | 'capturedByRunId'>) => void
+  setFirstValueStatement: (accountId: string, statement: string) => void
 }
 
 const AppContext = createContext<AppContextValue | null>(null)
@@ -70,12 +75,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
     opportunities: seedOpportunities,
     accountTimelines: seedAccountTimelines,
     outcomeEvidence: seedOutcomeEvidence,
+    fiveQuestions: seedFiveQuestions,
   })
 
   const getAccountView = (accountId: string): AccountView | null => {
     const account = state.accounts.find(a => a.id === accountId)
     if (!account) return null
     const stageConfidence = state.stageConfidences.find(s => s.accountId === accountId && s.stage === account.stage)
+    const accountFQs = state.fiveQuestions
+      .filter(fq => fq.accountId === accountId)
+      .sort((a, b) => b.capturedAt.localeCompare(a.capturedAt))
     return {
       ...account,
       stageConfidence: stageConfidence!,
@@ -85,6 +94,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       contacts: state.contacts.filter(c => c.accountId === accountId),
       nextBestActions: state.nextBestActions.filter(nba => nba.accountId === accountId && nba.status === 'active'),
       outcomeEvidence: state.outcomeEvidence.filter(ev => ev.accountId === accountId),
+      latestFiveQuestions: accountFQs[0] ?? null,
     }
   }
 
@@ -239,6 +249,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
     })
   }
 
+  const captureFiveQuestions = (
+    runId: string,
+    answers: Omit<FiveQuestions, 'id' | 'accountId' | 'capturedAt' | 'capturedByRunId'>
+  ) => {
+    const run = state.playRuns.find(r => r.id === runId)
+    if (!run) return
+    const newFQ: FiveQuestions = {
+      id: `fq-${Date.now()}`,
+      accountId: run.accountId,
+      capturedAt: new Date().toISOString(),
+      capturedByRunId: runId,
+      ...answers,
+    }
+    setState(s => ({ ...s, fiveQuestions: [...s.fiveQuestions, newFQ] }))
+  }
+
+  const setFirstValueStatement = (accountId: string, statement: string) => {
+    setState(s => ({
+      ...s,
+      accounts: s.accounts.map(a =>
+        a.id === accountId ? { ...a, firstValueStatement: statement } : a
+      ),
+    }))
+  }
+
   const moveOpportunityStage = (oppId: string, newStage: PipelineStageId) => {
     setState(s => ({
       ...s,
@@ -264,6 +299,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
       advancePlayStep,
       completePlay,
       moveOpportunityStage,
+      captureFiveQuestions,
+      setFirstValueStatement,
     }}>
       {children}
     </AppContext.Provider>

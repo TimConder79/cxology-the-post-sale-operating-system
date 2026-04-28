@@ -251,6 +251,25 @@ export interface NextBestAction {
   triggeredByOutputId: string | null
 }
 
+// ─── Core: Five Questions ────────────────────────────────────────────────────
+
+export interface FiveQuestions {
+  id: string
+  accountId: string
+  capturedAt: string
+  capturedByRunId: string | null
+  /** What does the customer need to achieve, and by when? */
+  q1: string
+  /** What does success look like to the customer and their stakeholders? */
+  q2: string
+  /** What obstacles or risks could prevent success? */
+  q3: string
+  /** Who needs to be involved and what is each person's role? */
+  q4: string
+  /** How will we know we have succeeded — what's the measurable outcome? */
+  q5: string
+}
+
 // ─── Core: Account ───────────────────────────────────────────────────────────
 
 export interface Account {
@@ -263,6 +282,7 @@ export interface Account {
   progressionStatus: ProgressionStatus
   renewalDate: string
   daysInStage: number
+  firstValueStatement: string | null
   createdAt: string
 }
 
@@ -319,4 +339,5 @@ export interface AccountView extends Account {
   contacts: Contact[]
   nextBestActions: NextBestAction[]
   outcomeEvidence: OutcomeEvidence[]
+  latestFiveQuestions: FiveQuestions | null
 }

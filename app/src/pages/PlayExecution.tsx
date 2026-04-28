@@ -15,6 +15,16 @@ import {
 import { formatDate, cn } from '@/lib/utils'
 import type { ActionPriority, MeetingBrief } from '@/types'
 
+// ─── Five Questions types ─────────────────────────────────────────────────────
+
+interface FiveQAnswers {
+  q1: string
+  q2: string
+  q3: string
+  q4: string
+  q5: string
+}
+
 // ─── Step bar ─────────────────────────────────────────────────────────────────
 
 const STEPS = [
@@ -610,6 +620,102 @@ function StepOutputs({
   )
 }
 
+// ─── Five Questions Capture (kickoff plays) ───────────────────────────────────
+
+const FIVE_Q_DEFS = [
+  {
+    key: 'q1' as const,
+    label: 'What does the customer need to achieve, and by when?',
+    placeholder: 'Describe the primary goal and the timeline the customer has committed to…',
+  },
+  {
+    key: 'q2' as const,
+    label: 'What does success look like to the customer and their stakeholders?',
+    placeholder: 'How will the customer describe a win in their own words? What changes for them?',
+  },
+  {
+    key: 'q3' as const,
+    label: 'What obstacles or risks could prevent success?',
+    placeholder: 'Technical barriers, internal resistance, resource constraints, competing priorities…',
+  },
+  {
+    key: 'q4' as const,
+    label: 'Who needs to be involved, and what is each person\'s role?',
+    placeholder: 'Champion, decision-maker, end users, finance contact — and their level of engagement…',
+  },
+  {
+    key: 'q5' as const,
+    label: 'How will we know we have succeeded — what is the measurable outcome?',
+    placeholder: 'Specific metric, measurement method, and who will confirm the result…',
+  },
+]
+
+function FiveQuestionsSection({
+  answers,
+  onChange,
+  firstValue,
+  onFirstValue,
+}: {
+  answers: FiveQAnswers
+  onChange: (key: keyof FiveQAnswers, value: string) => void
+  firstValue: string
+  onFirstValue: (v: string) => void
+}) {
+  return (
+    <div className="space-y-4">
+      {/* Section header */}
+      <div className="flex items-center gap-2.5 pt-2">
+        <div className="w-6 h-6 rounded-md bg-brand-600 flex items-center justify-center flex-shrink-0">
+          <span className="text-white text-[10px] font-bold">5Q</span>
+        </div>
+        <div>
+          <div className="text-[13px] font-semibold text-slate-900">Five Questions</div>
+          <div className="text-[11px] text-slate-400">
+            Capture the customer's goals in their own language — these travel through the entire relationship.
+          </div>
+        </div>
+      </div>
+
+      {/* Q1–Q5 */}
+      {FIVE_Q_DEFS.map((q, i) => (
+        <Card key={q.key} className="p-5">
+          <div className="flex items-start gap-2.5 mb-3">
+            <div className="w-5 h-5 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="text-brand-600 text-[10px] font-bold">{i + 1}</span>
+            </div>
+            <FieldLabel>{q.label}</FieldLabel>
+          </div>
+          <textarea
+            rows={3}
+            value={answers[q.key]}
+            onChange={e => onChange(q.key, e.target.value)}
+            placeholder={q.placeholder}
+            className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+          />
+        </Card>
+      ))}
+
+      {/* First Value Statement */}
+      <Card className="p-5 ring-1 ring-brand-100">
+        <div className="flex items-center gap-2 mb-1">
+          <TrendingUp size={13} className="text-brand-500" />
+          <FieldLabel required>First Value Statement</FieldLabel>
+        </div>
+        <p className="text-[11px] text-slate-400 mb-3 ml-[21px]">
+          A single customer-language sentence — what does this customer need to achieve first, and by when? This surfaces on the account workspace and anchors the first_value inflection point.
+        </p>
+        <textarea
+          rows={3}
+          value={firstValue}
+          onChange={e => onFirstValue(e.target.value)}
+          placeholder="e.g. Reduce patient intake processing time by 40% within 90 days of go-live, measured by the IT team's weekly throughput report."
+          className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+        />
+      </Card>
+    </div>
+  )
+}
+
 // ─── Step 4: Progression ──────────────────────────────────────────────────────
 
 function StepProgression({
@@ -681,7 +787,7 @@ function StepProgression({
 export function PlayExecution() {
   const { id, runId } = useParams()
   const navigate = useNavigate()
-  const { getPlayRun, getMeetingBrief, getPlayTemplate, getAccountView, advancePlayStep, completePlay } = useApp()
+  const { getPlayRun, getMeetingBrief, getPlayTemplate, getAccountView, advancePlayStep, completePlay, captureFiveQuestions, setFirstValueStatement } = useApp()
 
   const run        = getPlayRun(runId!)
   const brief      = getMeetingBrief(runId!)
@@ -706,6 +812,10 @@ export function PlayExecution() {
   })
   const [advanced, setAdvanced] = useState<boolean | null>(null)
   const [delta, setDelta] = useState(8)
+
+  // ── Five Questions state (kickoff plays only) ──
+  const [fiveQAnswers, setFiveQAnswers] = useState<FiveQAnswers>({ q1: '', q2: '', q3: '', q4: '', q5: '' })
+  const [firstValueText, setFirstValueText] = useState('')
 
   if (!run || !template || !accountView) return <div className="p-8 text-slate-500">Play not found.</div>
 
@@ -734,6 +844,23 @@ export function PlayExecution() {
 
   const handleComplete = () => {
     if (advanced === null) return
+
+    // For kickoff plays: persist Five Questions and First Value Statement
+    if (run.type === 'kickoff') {
+      const hasAnyAnswer = Object.values(fiveQAnswers).some(v => v.trim().length > 0)
+      if (hasAnyAnswer) {
+        captureFiveQuestions(run.id, fiveQAnswers)
+      }
+      if (firstValueText.trim()) {
+        setFirstValueStatement(run.accountId, firstValueText.trim())
+      }
+    }
+
+    // For first_value plays: update the First Value Statement if filled
+    if (run.type === 'first_value' && firstValueText.trim()) {
+      setFirstValueStatement(run.accountId, firstValueText.trim())
+    }
+
     completePlay(run.id, {
       meetingSummary:       outputs.meetingSummary,
       goalUpdates:          outputs.goalUpdates,
@@ -809,15 +936,56 @@ export function PlayExecution() {
               />
             )}
             {currentStep === 3 && (
-              <StepOutputs
-                outputs={outputs}
-                onChange={(k, v) => setOutputs(p => ({ ...p, [k]: v }))}
-                brief={brief}
-                accountName={accountView.name}
-                draftState={summaryGen.state}
-                onDraft={handleDraftOutputs}
-                aiDraftedFields={aiDraftedFields}
-              />
+              <div className="space-y-6">
+                {/* Five Questions — kickoff plays only */}
+                {(run.type === 'kickoff') && (
+                  <FiveQuestionsSection
+                    answers={fiveQAnswers}
+                    onChange={(k, v) => setFiveQAnswers(p => ({ ...p, [k]: v }))}
+                    firstValue={firstValueText}
+                    onFirstValue={setFirstValueText}
+                  />
+                )}
+
+                {/* First Value Statement only — for first_value plays */}
+                {run.type === 'first_value' && (
+                  <Card className="p-5 ring-1 ring-brand-100">
+                    <div className="flex items-center gap-2 mb-1">
+                      <TrendingUp size={13} className="text-brand-500" />
+                      <FieldLabel required>First Value Statement</FieldLabel>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mb-3 ml-[21px]">
+                      Confirm or update the customer's first value statement now that first value has been achieved.
+                    </p>
+                    <textarea
+                      rows={3}
+                      value={firstValueText}
+                      onChange={e => setFirstValueText(e.target.value)}
+                      placeholder="e.g. Reduced patient intake processing time by 40% within 90 days — confirmed by the IT team's weekly throughput report."
+                      className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+                    />
+                  </Card>
+                )}
+
+                {/* Divider when both sections are present */}
+                {(run.type === 'kickoff' || run.type === 'first_value') && (
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 h-px bg-slate-100" />
+                    <span className="text-[10px] text-slate-300 uppercase tracking-widest">Meeting Outputs</span>
+                    <div className="flex-1 h-px bg-slate-100" />
+                  </div>
+                )}
+
+                <StepOutputs
+                  outputs={outputs}
+                  onChange={(k, v) => setOutputs(p => ({ ...p, [k]: v }))}
+                  brief={brief}
+                  accountName={accountView.name}
+                  draftState={summaryGen.state}
+                  onDraft={handleDraftOutputs}
+                  aiDraftedFields={aiDraftedFields}
+                />
+              </div>
             )}
             {currentStep === 4 && (
               <StepProgression
