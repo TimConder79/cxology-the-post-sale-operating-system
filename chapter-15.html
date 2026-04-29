@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ch 15: Play 7 — The Alignment Meeting Play — The Post-Sale Operating System</title>
-  <link rel="stylesheet" href="style.css"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ch 15: Play 7 — The Alignment Meeting Play — The Post-Sale Operating System</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
     .chapter-body h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -105,209 +106,160 @@
   </style>
 </head>
 <body>
-
 <div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
-
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px">
-      <div class="nav-logo-mark">C</div>
-      <span class="nav-logo-text">The Post-Sale Operating System</span>
-    </a>
-  </div>
-  <ul class="nav-links">
-    <li><a href="index.html#parts">All Chapters</a></li>
-    <li><a href="frameworks.html">Frameworks</a></li>
-    <li><a href="calculator.html">ROI Calculator</a></li>
-  </ul>
-  <div style="display:flex;gap:0.6rem;align-items:center">
-    <button class="chapter-nav-btn" onclick="window.location.href='chapter-14.html'">← Prev</button>
-    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-16.html'">Next →</button>
-  </div>
+<div class="nav-logo">
+<a href="index.html" style="display:flex;align-items:center;gap:10px">
+<div class="nav-logo-mark">C</div>
+<span class="nav-logo-text">The Post-Sale Operating System</span>
+</a>
+</div>
+<ul class="nav-links">
+<li><a href="index.html#parts">All Chapters</a></li>
+<li><a href="frameworks.html">Frameworks</a></li>
+<li><a href="calculator.html">ROI Calculator</a></li>
+</ul>
+<div style="display:flex;gap:0.6rem;align-items:center">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-14.html'">← Prev</button>
+<button class="chapter-nav-btn primary" onclick="window.location.href='chapter-16.html'">Next →</button>
+</div>
 </nav>
-
 <!-- TOC BUTTON -->
 <button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
-
 <!-- TOC OVERLAY -->
 <div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
-
 <!-- TOC DRAWER -->
 <div class="toc-drawer" id="toc-drawer">
-  <div class="toc-title">Table of Contents</div>
-  <div class="toc-part">Introduction</div>
-  <a href="index.html" class="toc-link">Overview & The Book</a>
-  <div class="toc-part">Part I · The 2026 CS Evolution</div>
-  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
-  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
-  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
-  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
-  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
-  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
-  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
-  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
-  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
-  <div class="toc-part">Part III · Lifecycle Plays</div>
-  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
-  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
-  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
-  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
-  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
-  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
-  <a href="chapter-15.html" class="toc-link active" data-ch="15">Ch 15: The Alignment Meeting Play</a>
-  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
-  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
-  <div class="toc-part">Part IV · Data, Automation & Scale</div>
-  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
-  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
-  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
-  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
-  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+<div class="toc-title">Table of Contents</div>
+<div class="toc-part">Introduction</div>
+<a class="toc-link" href="index.html">Overview &amp; The Book</a>
+<div class="toc-part">Part I · The 2026 CS Evolution</div>
+<a class="toc-link" data-ch="1" href="chapter-1.html">Ch 1: From Churn Insurance to Revenue Engine</a>
+<a class="toc-link" data-ch="2" href="chapter-2.html">Ch 2: Post-Sale Unification</a>
+<a class="toc-link" data-ch="3" href="chapter-3.html">Ch 3: The Role Evolution of the CSM</a>
+<div class="toc-part">Part II · The Post-Sales Pipeline</div>
+<a class="toc-link" data-ch="4" href="chapter-4.html">Ch 4: Stage 1 — Identify</a>
+<a class="toc-link" data-ch="5" href="chapter-5.html">Ch 5: Stage 2 — Align</a>
+<a class="toc-link" data-ch="6" href="chapter-6.html">Ch 6: Stage 3 — Advocate</a>
+<a class="toc-link" data-ch="7" href="chapter-7.html">Ch 7: Stage 4 — Intent</a>
+<a class="toc-link" data-ch="8" href="chapter-8.html">Ch 8: Stage 5 — Net Revenue Close</a>
+<div class="toc-part">Part III · Lifecycle Plays</div>
+<a class="toc-link" data-ch="9" href="chapter-9.html">Ch 9: Purchase &amp; Welcome Play</a>
+<a class="toc-link" data-ch="10" href="chapter-10.html">Ch 10: The Kickoff Play</a>
+<a class="toc-link" data-ch="11" href="chapter-11.html">Ch 11: The Onboarding Play</a>
+<a class="toc-link" data-ch="12" href="chapter-12.html">Ch 12: The First Value Play</a>
+<a class="toc-link" data-ch="13" href="chapter-13.html">Ch 13: The Value Blocks Play</a>
+<a class="toc-link" data-ch="14" href="chapter-14.html">Ch 14: The Sharing Insights Play</a>
+<a class="toc-link active" data-ch="15" href="chapter-15.html">Ch 15: The Alignment Meeting Play</a>
+<a class="toc-link" data-ch="16" href="chapter-16.html">Ch 16: The Renew &amp; Grow Play</a>
+<a class="toc-link" data-ch="17" href="chapter-17.html">Ch 17: Supporting Plays</a>
+<div class="toc-part">Part IV · Data, Automation &amp; Scale</div>
+<a class="toc-link" data-ch="18" href="chapter-18.html">Ch 18: AI in CS — Judgment Over Templates</a>
+<a class="toc-link" data-ch="19" href="chapter-19.html">Ch 19: Data Governance &amp; One Data Spine</a>
+<a class="toc-link" data-ch="20" href="chapter-20.html">Ch 20: Health Scoring That Actually Works</a>
+<a class="toc-link" data-ch="21" href="chapter-21.html">Ch 21: Cross-Team Collaboration KPIs</a>
+<a class="toc-link" data-ch="22" href="chapter-22.html">Ch 22: Proactive Capacity Planning</a>
 </div>
-
 <!-- CHAPTER CONTENT -->
 <div id="chapter-content">
-  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
-    <div class="hero-grid"></div>
-    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
-      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
-      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 15</div>
-      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 7 — The Alignment Meeting Play</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Replace the passive QBR with an active Alignment Meeting. The goal is to end up strategically aligned — not to present about yourself.</p>
-    </div>
-  </div>
-  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>Alignment is not a meeting you schedule because the calendar says it is time. Alignment is the moment where the customer relationship is either brought back into focus or allowed to drift. In many companies, this moment is hidden inside something called a quarterly business review, monthly business review, or executive business review. The name changes, but the problem is usually the same. The meeting becomes a performance report, a slide presentation, or a review of everything the vendor has done since the last time everyone sat down together. It may be well intended, but it often misses the deeper purpose.</p>
-
-    <p>The purpose of this play is not to review the business. The purpose is to align the relationship. That distinction matters because a review looks backward while alignment reconnects the past, present, and future. It uses what has already happened to determine whether the work still matters, whether the customer still sees the same path to value, and whether the next phase of the relationship is still aimed at the outcomes that caused the customer to buy in the first place.</p>
-
-    <div class="callout"><p>Alignment is not about proving that work happened. It is about making sure the work still matters.</p></div>
-
-    <p>This is why the Alignment Meeting belongs in the lifecycle plays. It is not an administrative checkpoint. It is one of the most important inflection points in the post-sale relationship. As with every inflection point, the moment can either build loyalty or block it. When handled well, the customer feels seen, heard, guided, and confident. When handled poorly, they leave the meeting with more uncertainty than they brought into it. They may not say that out loud. They may even thank you for the update. But the relationship has still weakened because the meeting failed to create clarity.</p>
-
-    <h2>The Canonical Alignment Meeting Play</h2>
-
-    <p>The canonical Alignment Meeting Play exists to create a repeatable rhythm for strategic clarity. It builds on the foundation established during kickoff, the momentum created through onboarding, the trust earned through First Value, the progress reinforced through Value Blocks, and the relevance created through shared insights. Each of those plays creates evidence that the relationship is moving. The Alignment Meeting gives both sides a chance to step back and ask whether it is moving in the right direction.</p>
-
-    <p>This is why I prefer the word alignment to business review. A business review is vague. It does not tell the team what they are trying to accomplish, and it does not tell the customer why the meeting is worth attending. Alignment is active. It names the work. The goal is to end the conversation in a more aligned state than where it began. That means both sides understand what has happened, what has changed, what matters now, and what should happen next.</p>
-
-    <p>The traditional QBR often fails because it is too heavy, too vendor-centered, and too inconsistent. Teams overprepare and still show up underprepared. They gather slides, build charts, pull data, ask executives to participate, and spend hours assembling a meeting that may not actually answer the customer’s most important questions. In the material behind this play, one example stands out clearly. A company invested significant effort into heavyweight business reviews, sometimes requiring directors, account managers, and senior leaders to spend hours preparing for an onsite meeting. Yet the process was so heavy that few customers actually received the meeting, and the company still lost a multimillion-dollar customer because the team mistook personal relationship strength for business alignment.</p>
-
-    <div class="callout"><p>A strong relationship can create access, but it cannot replace alignment.</p></div>
-
-    <p>That story matters because it captures one of the most common traps in post-sale leadership. The team feels good about the account because the relationship feels friendly. The customer likes the people. Calls are pleasant. There may even be executive familiarity. But none of that proves the customer still sees your company as essential to their future. Alignment is what reveals whether the relationship is still connected to business value.</p>
-
-    <p>The Alignment Meeting Play should therefore be simple enough to execute consistently and substantive enough to matter. It should not require heroics. It should not depend on one exceptional CSM who knows how to facilitate an executive conversation. It should be a system. The play gives the team a clear structure, the customer a clear reason to participate, and the company a reliable way to detect changes before they become renewal risk.</p>
-
-    <h2>What the Play Is Designed to Accomplish</h2>
-
-    <p>The Alignment Meeting is designed to continue the trust-building cadence that began earlier in the customer journey. Kickoff established why the customer bought and what success should look like. First Value proved that progress was possible. Value Blocks created a rhythm of focused achievement. Shared insights helped the customer understand what the work meant and where additional value could be found. Alignment brings those threads together and asks whether the relationship is still advancing toward the right outcomes.</p>
-
-    <p>At this point in the relationship, the customer is often asking questions they may not say directly. They may be wondering whether the investment is still worth it, whether enough people inside their company are using the solution, whether the work is producing measurable value, or whether there is more they could do with your company to get a better result. These are not objections to overcome with a slide deck. They are signals to explore through conversation.</p>
-
-    <p>The play is also designed to surface change. Customer priorities change. Executive sponsors leave. Internal initiatives rise or fall in importance. Adoption may expand in one part of the organization while stalling in another. A product may be used, but not in the way that supports the customer’s desired outcome. If the team does not create a structured moment to uncover those shifts, the relationship can appear healthy while strategic relevance quietly erodes.</p>
-
-    <div class="callout"><p>The real risk is not that the customer changed. The risk is that they changed without you knowing.</p></div>
-
-    <p>When this play works, the customer leaves with renewed confidence. They understand what has been achieved, where the relationship is going, what needs attention, and how the next phase connects to their business. Your team leaves with updated context, stronger internal alignment, better executive visibility, and clearer next steps. This is how alignment becomes a retention system instead of a meeting format.</p>
-
-    <h2>Map the Play in Motion</h2>
-
-    <p>The Alignment Meeting moves through three connected phases: preparation, the meeting itself, and follow-through. This mirrors the structure of the Kickoff Play because the customer should experience a consistent operating rhythm. Predictability builds trust. When the customer recognizes the pattern, the meeting feels easier to enter and easier to value. It becomes part of how the relationship works.</p>
-
-    <p>Preparation begins by clarifying expectations. The customer should understand why the meeting matters and who should attend. This is especially important when executives are involved. Executives are more likely to show up when the meeting has a clear purpose and a history of producing useful decisions. If the meeting feels like a generic account update, it becomes easy to delegate. If it feels like a strategic alignment point, it becomes worth their time.</p>
-
-    <p>Preparation then moves into reviewing the relationship history. The team should revisit the original goals, the most recent answers to the Five Questions, the customer’s First Value moment, completed Value Blocks, current work in progress, missed commitments, adoption signals, usage patterns, and any meaningful changes in stakeholder engagement. This review is not done to build an exhaustive report. It is done to prepare a point of view.</p>
-
-    <p>That point of view matters. If progress is strong, the team should be ready to celebrate it and use it as a bridge to the next opportunity. If progress is mixed, the team should be ready to acknowledge it without defensiveness and recommend a practical path forward. If work has stalled, the team should understand why and come prepared with a constructive reset of priorities. Alignment does not require pretending everything is perfect. In many cases, trust increases when the team can name what is not working and show how it will be addressed.</p>
-
-    <div class="callout"><p>Do not hide misses. Acknowledged misses with a clear recovery path can build more trust than polished updates that avoid the truth.</p></div>
-
-    <p>The meeting itself should begin by re-establishing context. If new stakeholders are present, introductions should do more than identify names and titles. They should help everyone understand why each person is in the room and how their role connects to the work. This is especially important in larger accounts, where executive visibility and internal advocacy can determine whether value turns into renewal and expansion.</p>
-
-    <p>From there, the meeting should retrace the customer’s progress. The team should connect the original reason for purchase to First Value, then to the Value Blocks completed since the last anchor meeting. The purpose is not to recite accomplishments. The purpose is to help the customer see a coherent path of progress. When the customer can connect the work to outcomes, the relationship feels intentional rather than reactive.</p>
-
-    <p>Recognition and celebration are important here, but they should be used carefully. Celebration is not fluff. It reinforces the behaviors and decisions that created progress. When customers see what worked and why it mattered, they are more likely to repeat the pattern. This is how achievement becomes momentum.</p>
-
-    <p>The conversation should then shift toward the customer’s business. This is where the Alignment Meeting separates itself from a standard business review. The focus is not your roadmap, your accomplishments, or your internal activity. The focus is the customer’s environment. What has changed? What pressures are emerging? Which priorities are more important now than they were before? Which stakeholders need to be more involved? Where is adoption creating value, and where is it falling short?</p>
-
-    <p>The Five Questions then become the anchor for realignment. The team revisits what must be right for the work to be worth undertaking, how the customer defines success, what role your company plays in achieving that success, what internal or external risks could cause the effort to fail, and what would exceed expectations if those risks were mitigated. These questions are powerful because they move the meeting away from reporting and back into shared understanding.</p>
-
-    <div class="callout"><p>The Five Questions are not a worksheet. They are the operating spine of alignment.</p></div>
-
-    <p>Follow-through begins immediately after the meeting. The team should recap what was discussed, confirm the decisions made, document changes in customer priorities, update internal systems, and translate the conversation into the next Value Blocks or actions. This is where many business reviews fail. A meeting without follow-through creates the feeling of progress without the operating discipline to sustain it.</p>
-
-    <p>Follow-through is also where the team should consider whether the customer has earned the right moment for a referral, review, or testimonial request. That ask should only happen when the customer has experienced a real win and can clearly connect that win to the relationship. When the timing is right, the ask should be specific, easy, and singular. Do not ask for three things at once. Make one clear request and reduce the work required for the customer to say yes.</p>
-
-    <h2>The Critical Assets</h2>
-
-    <p>The Alignment Meeting Play depends on a small set of assets that make the experience repeatable without making it rigid. The first asset is the meeting deck or conversation guide. This should not be a dense report or a generic QBR template. It should be a customer-centered narrative that connects prior goals, achieved outcomes, current realities, and recommended next steps. The deck should help the customer see where they are in the journey and why the next phase matters.</p>
-
-    <p>The second asset is the preparation worksheet. This is where the team consolidates the account history, recent activity, Value Blocks, usage patterns, risks, wins, and open questions. The best preparation asset forces synthesis. It should help the CSM answer what has changed, what matters now, where the customer is gaining value, where loyalty may be blocked, and what recommendation should be brought into the meeting.</p>
-
-    <p>The third asset is the Five Questions worksheet. This artifact should travel through the customer relationship over time. The answers from kickoff should not disappear after onboarding. They should become the baseline for future alignment. Each Alignment Meeting should test whether those answers still hold, how they have changed, and what those changes mean for the next phase of work.</p>
-
-    <p>The fourth asset is the follow-through template. This is more than a thank-you email. It should summarize the customer’s current definition of success, capture decisions, confirm next steps, name owners, and reinforce the agreed-upon path forward. It should also update the internal record so the next interaction begins from the current truth, not from memory.</p>
-
-    <p>The fifth asset is the referral, review, or testimonial prompt. This should only be used when the customer has experienced a meaningful win, but when that moment exists, the team should not improvise. The asset should make the ask easy, help the customer articulate the value they received, and reduce the friction of turning that value into advocacy.</p>
-
-    <div class="callout"><p>The assets do not exist to make every meeting identical. They exist to make every meeting reliable.</p></div>
-
-    <h2>The AI Layer</h2>
-
-    <p>This is where the Alignment Meeting becomes especially powerful. Without AI, the play is still valuable, but it depends heavily on the CSM’s ability to synthesize data, remember history, interpret signals, prepare the meeting, facilitate the conversation, write the follow-up, and update systems. That is a lot of cognitive load. AI reduces that load while improving consistency.</p>
-
-    <p>Before the meeting, AI can gather and summarize the customer’s recent activity. It can compare current usage, engagement, support history, project progress, Value Blocks, stakeholder activity, and prior meeting notes against the customer’s stated goals. It can draft a preparation brief that highlights wins, risks, stalled areas, possible expansion signals, and recommended discussion points. Instead of asking the CSM to start from a blank page, AI gives them a structured point of view to review, challenge, and refine.</p>
-
-    <p>AI can also draft the first version of the Alignment Meeting deck. It can pull forward the customer’s prior Five Questions, summarize what has changed, identify progress since the last anchor meeting, suggest the next Value Blocks, and propose questions for the customer based on detected gaps or opportunities. The CSM still owns the judgment. AI simply removes the unnecessary friction from getting to a strong first draft.</p>
-
-    <p>During the meeting, AI can capture the conversation and listen for changes in strategy, risk, sentiment, stakeholder dynamics, and urgency. It can identify when the customer’s definition of success has shifted or when a new blocker has appeared. It can also flag moments where the customer describes value in their own words, which is especially useful for future advocacy, renewal positioning, and expansion narratives.</p>
-
-    <p>After the meeting, AI can turn the conversation into a usable operating record. It can draft the follow-up email, update the Five Questions, translate next steps into tasks, recommend new Value Blocks, flag renewal or expansion implications, and identify whether the customer has reached a credible advocacy moment. This is the difference between a good meeting and a system that learns.</p>
-
-    <div class="callout"><p>AI does not replace the Alignment Meeting. It makes the meeting easier to prepare, easier to execute, and harder to forget.</p></div>
-
-    <p>The most important use of AI is continuity. Every alignment conversation should improve the next one. Every customer answer should sharpen the system’s understanding. Every win, blocker, and change in direction should become part of the customer record. Over time, AI helps the company see patterns across accounts, identify which customers are drifting, which are ready for deeper engagement, and which plays are creating the most reliable path to retention and growth.</p>
-
-    <h2>Right-Sizing the Play</h2>
-
-    <p>Not every customer needs the same version of the Alignment Meeting. High-touch customers may warrant a live executive conversation with a prepared deck and deeper facilitation. Mid-touch customers may receive a lighter meeting that still follows the same structure. Lower-touch customers may receive a personalized video, one-to-many working session, or automated milestone-based communication that recreates the function of alignment without requiring the same level of human effort.</p>
-
-    <p>The important thing is that right-sizing does not mean abandoning the play. It means preserving the purpose while adjusting the delivery model. Every customer deserves some mechanism that reconnects their goals, progress, risks, and next steps. The format can change by segment, but the operating intent should remain consistent.</p>
-
-    <p>This distinction also helps clarify the difference between alignment and reset. Alignment is part of a healthy operating cadence. It keeps the relationship moving and prevents drift. A reset is different. A reset is required when the relationship has already become unhealthy or when trust has been damaged enough that the normal cadence is no longer sufficient. Alignment should prevent many resets, but it should not be used as a justification exercise when the customer is already at risk.</p>
-
-    <div class="callout"><p>Alignment keeps a healthy relationship moving. Reset is what you need when the relationship has already broken rhythm.</p></div>
-
-    <h2>The Outcome</h2>
-
-    <p>When the Alignment Meeting Play is working, renewal becomes less mysterious. The team is not surprised by changing priorities because it has created a recurring mechanism to surface them. Executives are not strangers because the play gives them a meaningful reason to participate. Expansion is not forced because new opportunities emerge from a deeper understanding of the customer’s evolving needs. Risk is not hidden because the conversation makes it safe and expected to discuss what is not working.</p>
-
-    <p>This is how alignment turns into growth. The customer experiences a relationship that keeps making sense. They see progress, understand the next step, and trust that your team is paying attention. Your company gains visibility into value, risk, advocacy, and expansion potential. The post-sale relationship becomes less dependent on personality and more dependent on a system that creates clarity at the moments that matter most.</p>
-
-    <p>The Alignment Meeting is therefore not a QBR with a better name. It is the operating rhythm that keeps the post-sale promise alive. It protects the relationship from drift, turns progress into shared confidence, and creates the conditions for renewal and growth to become the natural next step.</p>
-
-    <div class="callout"><p>Alignment is not the end of the customer journey. It is how the journey stays true to the reason it began.</p></div>
-
-    <p><em>With the customer realigned around outcomes, priorities, risks, and next steps, the relationship is now positioned for the next major inflection point. Chapter 16 turns that momentum into the Renew &amp; Grow Play, where alignment becomes the foundation for renewal confidence and expansion readiness.</em></p>
-
+<div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+<div class="hero-grid"></div>
+<div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+<div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#C5D44E;margin-bottom:0.75rem">Part III: AI-Enabled Lifecycle Plays</div>
+<div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 15</div>
+<h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Play 7 — The Alignment Meeting Play</h1>
+<p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Replace the passive QBR with an active Alignment Meeting. The goal is to end up strategically aligned — not to present about yourself.</p>
 </div>
+</div>
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+<p>Alignment is not a meeting you schedule because the calendar says it is time. Alignment is the moment where the customer relationship is either brought back into focus or allowed to drift. In many companies, this moment is hidden inside something called a quarterly business review, monthly business review, or executive business review. The name changes, but the problem is usually the same. The meeting becomes a performance report, a slide presentation, or a review of everything the vendor has done since the last time everyone sat down together. It may be well intended, but it often misses the deeper purpose.</p>
+<p>The purpose of this play is not to review the business. The purpose is to align the relationship. That distinction matters because a review looks backward while alignment reconnects the past, present, and future. It uses what has already happened to determine whether the work still matters, whether the customer still sees the same path to value, and whether the next phase of the relationship is still aimed at the outcomes that caused the customer to buy in the first place.</p>
+<div class="callout"><p>Alignment is not about proving that work happened. It is about making sure the work still matters.</p></div>
+<p>This is why the Alignment Meeting belongs in the lifecycle plays. It is not an administrative checkpoint. It is one of the most important inflection points in the post-sale relationship. As with every inflection point, the moment can either build loyalty or block it. When handled well, the customer feels seen, heard, guided, and confident. When handled poorly, they leave the meeting with more uncertainty than they brought into it. They may not say that out loud. They may even thank you for the update. But the relationship has still weakened because the meeting failed to create clarity.</p>
+<h2>The Canonical Alignment Meeting Play</h2>
+<p>The canonical Alignment Meeting Play exists to create a repeatable rhythm for strategic clarity. It builds on the foundation established during kickoff, the momentum created through onboarding, the trust earned through First Value, the progress reinforced through Value Blocks, and the relevance created through shared insights. Each of those plays creates evidence that the relationship is moving. The Alignment Meeting gives both sides a chance to step back and ask whether it is moving in the right direction.</p>
+<p>This is why I prefer the word alignment to business review. A business review is vague. It does not tell the team what they are trying to accomplish, and it does not tell the customer why the meeting is worth attending. Alignment is active. It names the work. The goal is to end the conversation in a more aligned state than where it began. That means both sides understand what has happened, what has changed, what matters now, and what should happen next.</p>
+<p>The traditional QBR often fails because it is too heavy, too vendor-centered, and too inconsistent. Teams overprepare and still show up underprepared. They gather slides, build charts, pull data, ask executives to participate, and spend hours assembling a meeting that may not actually answer the customer’s most important questions. In the material behind this play, one example stands out clearly. A company invested significant effort into heavyweight business reviews, sometimes requiring directors, account managers, and senior leaders to spend hours preparing for an onsite meeting. Yet the process was so heavy that few customers actually received the meeting, and the company still lost a multimillion-dollar customer because the team mistook personal relationship strength for business alignment.</p>
+<div class="callout"><p>A strong relationship can create access, but it cannot replace alignment.</p></div>
+<p>That story matters because it captures one of the most common traps in post-sale leadership. The team feels good about the account because the relationship feels friendly. The customer likes the people. Calls are pleasant. There may even be executive familiarity. But none of that proves the customer still sees your company as essential to their future. Alignment is what reveals whether the relationship is still connected to business value.</p>
+<p>The Alignment Meeting Play should therefore be simple enough to execute consistently and substantive enough to matter. It should not require heroics. It should not depend on one exceptional CSM who knows how to facilitate an executive conversation. It should be a system. The play gives the team a clear structure, the customer a clear reason to participate, and the company a reliable way to detect changes before they become renewal risk.</p>
+<h2>What the Play Is Designed to Accomplish</h2>
+<p>The Alignment Meeting is designed to continue the trust-building cadence that began earlier in the customer journey. Kickoff established why the customer bought and what success should look like. First Value proved that progress was possible. Value Blocks created a rhythm of focused achievement. Shared insights helped the customer understand what the work meant and where additional value could be found. Alignment brings those threads together and asks whether the relationship is still advancing toward the right outcomes.</p>
+<p>At this point in the relationship, the customer is often asking questions they may not say directly. They may be wondering whether the investment is still worth it, whether enough people inside their company are using the solution, whether the work is producing measurable value, or whether there is more they could do with your company to get a better result. These are not objections to overcome with a slide deck. They are signals to explore through conversation.</p>
+<p>The play is also designed to surface change. Customer priorities change. Executive sponsors leave. Internal initiatives rise or fall in importance. Adoption may expand in one part of the organization while stalling in another. A product may be used, but not in the way that supports the customer’s desired outcome. If the team does not create a structured moment to uncover those shifts, the relationship can appear healthy while strategic relevance quietly erodes.</p>
+<div class="callout"><p>The real risk is not that the customer changed. The risk is that they changed without you knowing.</p></div>
+<p>When this play works, the customer leaves with renewed confidence. They understand what has been achieved, where the relationship is going, what needs attention, and how the next phase connects to their business. Your team leaves with updated context, stronger internal alignment, better executive visibility, and clearer next steps. This is how alignment becomes a retention system instead of a meeting format.</p>
 
+<h2>Map the Play in Motion</h2>
+<p>The Alignment Meeting should not feel like a second kickoff. Kickoff creates the first shared definition of success. Alignment tests whether that definition still holds. It is the recurring motion that brings the customer relationship back to the reason it began, updates the truth of the account, and decides what should happen next.</p>
+<p>That distinction changes the shape of the play. The meeting is not organized around introductions, implementation readiness, or the first path to value. It is organized around evidence, change, interpretation, and recommitment. The customer should leave with a clearer understanding of what has been achieved, what has changed, what still matters, and where the relationship is headed next.</p>
+<div class="play-motion" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin:1.75rem 0">
+<div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
+<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">01 · Re-anchor</div>
+<p style="margin-bottom:0">Return to the original reason the customer bought, the current definition of success, and the outcomes the relationship is supposed to produce.</p>
+</div>
+<div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
+<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">02 · Interpret Progress</div>
+<p style="margin-bottom:0">Translate completed Value Blocks, shared insights, usage patterns, milestones, and customer wins into a clear story of progress.</p>
+</div>
+<div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
+<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">03 · Surface Change</div>
+<p style="margin-bottom:0">Identify what has shifted in priorities, stakeholders, adoption, constraints, risks, executive attention, or business context.</p>
+</div>
+<div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
+<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">04 · Choose the Next Block</div>
+<p style="margin-bottom:0">Agree on the next meaningful Value Block, the owner, the evidence of success, and the path that keeps momentum visible.</p>
+</div>
+<div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
+<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">05 · Recommit</div>
+<p style="margin-bottom:0">Confirm decisions, update the operating record, reinforce executive relevance, and create the next reason for confidence.</p>
+</div>
+</div>
+<p>Preparation for this play should therefore begin with the relationship record, not the slide deck. The team should review the original goals, the most recent answers to the Five Questions, the customer’s First Value moment, completed Value Blocks, shared insights, adoption signals, missed commitments, support history, stakeholder changes, and any evidence that the customer’s priorities have shifted. The point is not to create an exhaustive report. The point is to form a useful point of view.</p>
+<p>During the meeting, the CSM’s role is to guide interpretation. If progress is strong, the meeting should help the customer see why it matters and where it can lead. If progress is mixed, the meeting should name what is working and what needs attention without defensiveness. If the relationship has drifted, the meeting should create a constructive path back to relevance. Alignment does not require pretending everything is perfect. It requires making the current truth visible enough that both sides can act on it.</p>
+<p>The meeting should end by turning alignment into motion. The next Value Block should be clear. Owners should be named. Risks should be acknowledged. Executive implications should be understood. Any advocacy, expansion, or renewal signal should be captured while it is fresh. This is what separates an Alignment Meeting from a business review: the customer does not leave with a report. They leave with a renewed path forward.</p>
+<div class="callout"><p>Kickoff defines the first path to value. Alignment keeps that path relevant as the customer, the work, and the business change.</p></div>
+<h2>The Critical Assets</h2>
+<p>The Alignment Meeting Play depends on a small set of assets that make the experience repeatable without making it rigid. The first asset is the meeting deck or conversation guide. This should not be a dense report or a generic QBR template. It should be a customer-centered narrative that connects prior goals, achieved outcomes, current realities, and recommended next steps. The deck should help the customer see where they are in the journey and why the next phase matters.</p>
+<p>The second asset is the preparation worksheet. This is where the team consolidates the account history, recent activity, Value Blocks, usage patterns, risks, wins, and open questions. The best preparation asset forces synthesis. It should help the CSM answer what has changed, what matters now, where the customer is gaining value, where loyalty may be blocked, and what recommendation should be brought into the meeting.</p>
+<p>The third asset is the Five Questions worksheet. This artifact should travel through the customer relationship over time. The answers from kickoff should not disappear after onboarding. They should become the baseline for future alignment. Each Alignment Meeting should test whether those answers still hold, how they have changed, and what those changes mean for the next phase of work.</p>
+<p>The fourth asset is the follow-through template. This is more than a thank-you email. It should summarize the customer’s current definition of success, capture decisions, confirm next steps, name owners, and reinforce the agreed-upon path forward. It should also update the internal record so the next interaction begins from the current truth, not from memory.</p>
+<p>The fifth asset is the referral, review, or testimonial prompt. This should only be used when the customer has experienced a meaningful win, but when that moment exists, the team should not improvise. The asset should make the ask easy, help the customer articulate the value they received, and reduce the friction of turning that value into advocacy.</p>
+<div class="callout"><p>The assets do not exist to make every meeting identical. They exist to make every meeting reliable.</p></div>
+<h2>The AI Layer</h2>
+<p>This is where the Alignment Meeting becomes especially powerful. Without AI, the play is still valuable, but it depends heavily on the CSM’s ability to synthesize data, remember history, interpret signals, prepare the meeting, facilitate the conversation, write the follow-up, and update systems. That is a lot of cognitive load. AI reduces that load while improving consistency.</p>
+<p>Before the meeting, AI can gather and summarize the customer’s recent activity. It can compare current usage, engagement, support history, project progress, Value Blocks, stakeholder activity, and prior meeting notes against the customer’s stated goals. It can draft a preparation brief that highlights wins, risks, stalled areas, possible expansion signals, and recommended discussion points. Instead of asking the CSM to start from a blank page, AI gives them a structured point of view to review, challenge, and refine.</p>
+<p>AI can also draft the first version of the Alignment Meeting deck. It can pull forward the customer’s prior Five Questions, summarize what has changed, identify progress since the last anchor meeting, suggest the next Value Blocks, and propose questions for the customer based on detected gaps or opportunities. The CSM still owns the judgment. AI simply removes the unnecessary friction from getting to a strong first draft.</p>
+<p>During the meeting, AI can capture the conversation and listen for changes in strategy, risk, sentiment, stakeholder dynamics, and urgency. It can identify when the customer’s definition of success has shifted or when a new blocker has appeared. It can also flag moments where the customer describes value in their own words, which is especially useful for future advocacy, renewal positioning, and expansion narratives.</p>
+<p>After the meeting, AI can turn the conversation into a usable operating record. It can draft the follow-up email, update the Five Questions, translate next steps into tasks, recommend new Value Blocks, flag renewal or expansion implications, and identify whether the customer has reached a credible advocacy moment. This is the difference between a good meeting and a system that learns.</p>
+<div class="callout"><p>AI does not replace the Alignment Meeting. It makes the meeting easier to prepare, easier to execute, and harder to forget.</p></div>
+<p>The most important use of AI is continuity. Every alignment conversation should improve the next one. Every customer answer should sharpen the system’s understanding. Every win, blocker, and change in direction should become part of the customer record. Over time, AI helps the company see patterns across accounts, identify which customers are drifting, which are ready for deeper engagement, and which plays are creating the most reliable path to retention and growth.</p>
+<h2>Right-Sizing the Play</h2>
+<p>Not every customer needs the same version of the Alignment Meeting. High-touch customers may warrant a live executive conversation with a prepared deck and deeper facilitation. Mid-touch customers may receive a lighter meeting that still follows the same structure. Lower-touch customers may receive a personalized video, one-to-many working session, or automated milestone-based communication that recreates the function of alignment without requiring the same level of human effort.</p>
+<p>The important thing is that right-sizing does not mean abandoning the play. It means preserving the purpose while adjusting the delivery model. Every customer deserves some mechanism that reconnects their goals, progress, risks, and next steps. The format can change by segment, but the operating intent should remain consistent.</p>
+<p>This distinction also helps clarify the difference between alignment and reset. Alignment is part of a healthy operating cadence. It keeps the relationship moving and prevents drift. A reset is different. A reset is required when the relationship has already become unhealthy or when trust has been damaged enough that the normal cadence is no longer sufficient. Alignment should prevent many resets, but it should not be used as a justification exercise when the customer is already at risk.</p>
+<div class="callout"><p>Alignment keeps a healthy relationship moving. Reset is what you need when the relationship has already broken rhythm.</p></div>
+<h2>The Outcome</h2>
+<p>When the Alignment Meeting Play is working, renewal becomes less mysterious. The team is not surprised by changing priorities because it has created a recurring mechanism to surface them. Executives are not strangers because the play gives them a meaningful reason to participate. Expansion is not forced because new opportunities emerge from a deeper understanding of the customer’s evolving needs. Risk is not hidden because the conversation makes it safe and expected to discuss what is not working.</p>
+<p>This is how alignment turns into growth. The customer experiences a relationship that keeps making sense. They see progress, understand the next step, and trust that your team is paying attention. Your company gains visibility into value, risk, advocacy, and expansion potential. The post-sale relationship becomes less dependent on personality and more dependent on a system that creates clarity at the moments that matter most.</p>
+<p>The Alignment Meeting is therefore not a QBR with a better name. It is the operating rhythm that keeps the post-sale promise alive. It protects the relationship from drift, turns progress into shared confidence, and creates the conditions for renewal and growth to become the natural next step.</p>
+<div class="callout"><p>Alignment is not the end of the customer journey. It is how the journey stays true to the reason it began.</p></div>
+<p><em>With the customer realigned around outcomes, priorities, risks, and next steps, the relationship is now positioned for the next major inflection point. Chapter 16 turns that momentum into the Renew &amp; Grow Play, where alignment becomes the foundation for renewal confidence and expansion readiness.</em></p>
+</div>
 <!-- BOTTOM NAV -->
 <div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
-  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
-    <div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
-      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 16: Play 8 — The Renew & Grow Play</div>
-    </div>
-    <div style="display:flex;gap:0.75rem">
-      <button onclick="window.location.href='chapter-14.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
-      <button onclick="window.location.href='chapter-16.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
-    </div>
-  </div>
+<div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+<div>
+<div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+<div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 16: Play 8 — The Renew &amp; Grow Play</div>
 </div>
-
+<div style="display:flex;gap:0.75rem">
+<button class="chapter-nav-btn" onclick="window.location.href='chapter-14.html'" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+<button onclick="window.location.href='chapter-16.html'" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s">Next Chapter →</button>
+</div>
+</div>
+</div>
 <script>
 function toggleToc() {
   document.getElementById('toc-drawer').classList.toggle('open');
@@ -321,5 +273,5 @@ window.addEventListener('scroll', () => {
 });
 
 </script>
-</body>
+</div></body>
 </html>

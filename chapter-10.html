@@ -118,6 +118,81 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
+
+    /* Normalized play-system components */
+    .system-spine {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+      margin:2rem 0;
+      max-width:76ch;
+    }
+    .system-spine-card {
+      background:var(--off-white);
+      border:1px solid var(--gray-200);
+      border-radius:var(--radius-sm);
+      padding:1.1rem 1.2rem;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+    }
+    .system-spine-label, .motion-card-label, .asset-card-label, .ai-card-label {
+      display:block;
+      font-size:0.68rem;
+      font-weight:800;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:var(--olive);
+      margin-bottom:0.5rem;
+    }
+    .system-spine-card p { margin:0; max-width:100%; font-size:0.92rem; line-height:1.65; }
+    .play-motion, .asset-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1rem;
+      margin:1.75rem 0;
+      max-width:76ch;
+    }
+    .motion-card, .asset-card {
+      background:var(--white);
+      border:1px solid var(--gray-200);
+      border-radius:var(--radius-sm);
+      padding:1.25rem;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+    }
+    .motion-card p, .asset-card p { margin-bottom:0; max-width:100%; font-size:0.92rem; line-height:1.65; }
+    .asset-card { background:var(--off-white); }
+    .asset-card h3 { margin-top:0; color:var(--navy); font-size:1rem; }
+    .asset-card a { color:var(--navy); font-weight:700; text-decoration:none; border-bottom:1px solid var(--olive); }
+    .asset-card a:hover { color:var(--navy-light); }
+    .question-set {
+      background:var(--off-white);
+      border:1px solid var(--gray-200);
+      border-radius:var(--radius-sm);
+      padding:1.35rem 1.5rem;
+      margin:1.75rem 0;
+      max-width:76ch;
+    }
+    .question-set-title {
+      font-size:0.72rem;
+      font-weight:800;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--navy-light);
+      margin-bottom:0.8rem;
+    }
+    .question-set p { margin-bottom:0.55rem; max-width:100%; }
+    .question-set p:last-child { margin-bottom:0; }
+    .ai-card {
+      background:var(--navy-deep);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:var(--radius-sm);
+      padding:1.4rem 1.5rem;
+      margin:1.75rem 0;
+      max-width:76ch;
+      box-shadow:0 10px 30px rgba(15,23,42,.08);
+    }
+    .ai-card p { color:rgba(255,255,255,.82); margin-bottom:0; max-width:100%; }
+    @media (max-width:720px) { .system-spine { grid-template-columns:1fr; } }
+
   </style>
 </head>
 <body>
@@ -209,6 +284,21 @@
 
     <p>In the Post-Sale Operating System, kickoff is the second lifecycle play because the relationship is still early enough to shape. Expectations have not hardened. Misunderstandings can still be corrected. Stakeholders can still be oriented around the same destination. The work has begun, but the customer’s mental model is still forming. That makes kickoff one of the highest-leverage moments in the entire post-sale journey.</p>
 
+    <div class="system-spine">
+      <div class="system-spine-card">
+        <span class="system-spine-label">Input from Chapter 9</span>
+        <p>The welcome has created momentum, captured the sales context, and prepared the customer to engage.</p>
+      </div>
+      <div class="system-spine-card">
+        <span class="system-spine-label">Chapter 10 Play</span>
+        <p>Kickoff turns that momentum into alignment around outcomes, roles, expectations, and First Value.</p>
+      </div>
+      <div class="system-spine-card">
+        <span class="system-spine-label">Output to Chapter 11</span>
+        <p>Onboarding inherits clear ownership, documented success measures, and an agreed path to the first win.</p>
+      </div>
+    </div>
+
     <h2>Build the Canonical Kickoff Play</h2>
 
     <p>The canonical Kickoff Play is built around a simple idea: every customer should leave kickoff with greater confidence than they had when they entered. Confidence comes from clarity. Clarity comes from structure. The structure does not need to make the meeting feel stiff or scripted, but it does need to make the meeting reliable. A customer should not receive a strong kickoff because they happened to be assigned to a great CSM. They should receive a strong kickoff because the company has designed the moment well.</p>
@@ -230,8 +320,8 @@
 
     <p>Then comes the most important discovery moment in the play: the Five Questions. These questions are simple, but they change the quality of the meeting because they shift the conversation away from product usage and toward business success.</p>
 
-    <div class="question-set" style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.35rem 1.5rem;margin:1.75rem 0">
-      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy-light);margin-bottom:0.8rem">The Five Kickoff Questions</div>
+    <div class="question-set">
+      <div class="question-set-title">The Five Kickoff Questions</div>
       <p style="margin-bottom:0.55rem"><strong>1.</strong> What is the one thing we must get right to make this worth undertaking?</p>
       <p style="margin-bottom:0.55rem"><strong>2.</strong> How does your organization define success?</p>
       <p style="margin-bottom:0.55rem"><strong>3.</strong> What is our role in achieving that success?</p>
@@ -255,17 +345,17 @@
 
     <p>The Kickoff Play becomes easier to manage when it is viewed as a motion rather than a meeting. The meeting matters, but it is only the visible center of the play. The full motion begins before the meeting and continues after it. If any of the three movements are weak, the whole play suffers.</p>
 
-    <div class="play-motion" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.75rem 0">
-      <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">01 · Prepare</div>
+    <div class="play-motion">
+      <div class="motion-card">
+        <span class="motion-card-label">01 · Prepare</span>
         <p style="margin-bottom:0">Research the customer, review the contract and IKT, confirm attendees, tailor the agenda, and send the invitation with enough context for the customer to know the meeting has purpose.</p>
       </div>
-      <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">02 · Execute</div>
+      <div class="motion-card">
+        <span class="motion-card-label">02 · Execute</span>
         <p style="margin-bottom:0">Run the kickoff as an alignment conversation: introduce the team, demonstrate customer knowledge, ask the Five Questions, clarify expectations, define First Value, and confirm next steps.</p>
       </div>
-      <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.5rem">03 · Follow Through</div>
+      <div class="motion-card">
+        <span class="motion-card-label">03 · Follow Through</span>
         <p style="margin-bottom:0">Send the recap, document decisions, assign owners and dates, schedule the next meetings, share materials, and move the customer toward the agreed First Value goal.</p>
       </div>
     </div>
@@ -287,34 +377,34 @@
 
     <p>The Kickoff Play should be supported by a small set of assets that make execution easier. The assets are not meant to replace judgment. They are meant to reduce friction, preserve consistency, and make the right behavior easier to repeat.</p>
 
-    <div class="asset-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:1.75rem 0">
-      <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <h3 style="margin-top:0">Kickoff One Sheet</h3>
+    <div class="asset-grid">
+      <div class="asset-card">
+        <h3>Kickoff One Sheet</h3>
         <p>A simple visual summary of the play: prepare, meeting, and follow-through. This is the fastest way to help the team understand the motion.</p>
         <p><a href="Copy%20of%20Kickoff%20One%20Sheet.pptx">Download the one sheet</a></p>
       </div>
-      <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <h3 style="margin-top:0">Kickoff Deck Template</h3>
+      <div class="asset-card">
+        <h3>Kickoff Deck Template</h3>
         <p>The standard meeting structure for introductions, purchase review, Five Questions, first-year overview, roles, First Value, and next steps.</p>
         <p><a href="Copy%20of%20Kickoff%20Meeting%20Deck%20Example(1).pptx">Download the deck example</a></p>
       </div>
-      <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <h3 style="margin-top:0">Five Questions Handout</h3>
+      <div class="asset-card">
+        <h3>Five Questions Handout</h3>
         <p>The discovery and alignment worksheet that captures the customer’s definition of success, risk, and desired outcome in their own language.</p>
         <p><a href="Copy%20of%205%20Questions%20Handout.docx">Download the handout</a></p>
       </div>
-      <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <h3 style="margin-top:0">Kickoff Introduction Email</h3>
+      <div class="asset-card">
+        <h3>Kickoff Introduction Email</h3>
         <p>The pre-kickoff communication that confirms logistics, attendees, agenda, and materials needed before the meeting.</p>
         <p><a href="Copy%20of%20Template%20-%20Kickoff%20Introduction%20Email(1).docx">Download the intro email</a></p>
       </div>
-      <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <h3 style="margin-top:0">Kickoff Follow-Through Email</h3>
+      <div class="asset-card">
+        <h3>Kickoff Follow-Through Email</h3>
         <p>The post-meeting recap that documents discussion points, decisions, owners, due dates, materials, and the First Value path.</p>
         <p><a href="Copy%20of%20Template%20-%20Kickoff%20Follow%20Through%20Email(1).docx">Download the follow-through email</a></p>
       </div>
-      <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:var(--radius-sm);padding:1.25rem">
-        <h3 style="margin-top:0">Loyalty Blockers &amp; Builders</h3>
+      <div class="asset-card">
+        <h3>Loyalty Blockers &amp; Builders</h3>
         <p>The exercise that helps the team identify what could build or block loyalty during kickoff and design responses before problems appear.</p>
         <p><a href="Kickoff_%20Loyalty%20Blockers%20and%20Builders.docx">Download the worksheet</a></p>
       </div>
@@ -332,23 +422,23 @@
 
     <p>That brief should not be treated as truth. It should be treated as preparation. The CSM still needs to verify the details, adjust the tone, and decide what belongs in the meeting. But the starting point becomes much stronger. Instead of preparing from a blank page, the CSM begins with a structured point of view.</p>
 
-    <div class="ai-box" style="background:var(--navy-deep);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);padding:1.4rem 1.5rem;margin:1.75rem 0">
-      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.75rem">AI Prompt · Kickoff Preparation Brief</div>
-      <p style="color:rgba(255,255,255,.82);margin-bottom:0.75rem">Using the sales handoff, contract notes, CRM history, customer website summary, and any relevant email context, create a kickoff preparation brief for the CSM. Include the customer’s likely business objective, what was purchased, stakeholders and possible roles, open questions, potential loyalty blockers, likely First Value options, and recommended areas to confirm during kickoff. Keep the brief practical and separate known facts from assumptions.</p>
+    <div class="ai-card">
+      <span class="ai-card-label">AI Prompt · Kickoff Preparation Brief</span>
+      <p>Using the sales handoff, contract notes, CRM history, customer website summary, and any relevant email context, create a kickoff preparation brief for the CSM. Include the customer’s likely business objective, what was purchased, stakeholders and possible roles, open questions, potential loyalty blockers, likely First Value options, and recommended areas to confirm during kickoff. Keep the brief practical and separate known facts from assumptions.</p>
     </div>
 
     <p>AI can also help the team prepare the kickoff deck. The deck should remain standardized, but the customer-specific sections can be drafted quickly. AI can turn the kickoff brief into a customer journey slide, a proposed agenda, a first-year experience overview, a roles and responsibilities starting point, and a few suggested First Value options. The CSM still reviews and edits, but the manual work drops dramatically.</p>
 
-    <div class="ai-box" style="background:var(--navy-deep);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);padding:1.4rem 1.5rem;margin:1.75rem 0">
-      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.75rem">AI Prompt · Kickoff Deck Personalization</div>
-      <p style="color:rgba(255,255,255,.82);margin-bottom:0.75rem">Using the kickoff preparation brief and our standard kickoff deck structure, draft customer-specific slide content for the kickoff meeting. Personalize only the sections that should be customer-specific: why they purchased, what we understand about their goals, likely risks to discuss, proposed First Value options, and immediate next steps. Do not create a generic product training deck. Keep the tone consultative, clear, and concise.</p>
+    <div class="ai-card">
+      <span class="ai-card-label">AI Prompt · Kickoff Deck Personalization</span>
+      <p>Using the kickoff preparation brief and our standard kickoff deck structure, draft customer-specific slide content for the kickoff meeting. Personalize only the sections that should be customer-specific: why they purchased, what we understand about their goals, likely risks to discuss, proposed First Value options, and immediate next steps. Do not create a generic product training deck. Keep the tone consultative, clear, and concise.</p>
     </div>
 
     <p>During the meeting, AI can assist with note capture and synthesis, but the team should be careful. The customer conversation should still feel human and present. The best use is not to have AI drive the meeting, but to help capture the answers, risks, commitments, and language that matter. After the meeting, AI can turn the transcript or notes into the follow-through email, action item log, CRM updates, First Value record, and internal handoff to onboarding or implementation.</p>
 
-    <div class="ai-box" style="background:var(--navy-deep);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);padding:1.4rem 1.5rem;margin:1.75rem 0">
-      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--olive);margin-bottom:0.75rem">AI Prompt · Follow-Through Email and CRM Update</div>
-      <p style="color:rgba(255,255,255,.82);margin-bottom:0.75rem">Using the kickoff meeting notes or transcript, draft a follow-through email that thanks the customer, summarizes the discussion, captures the answers to the Five Questions, lists decisions made, identifies action items with owners and due dates, states the agreed First Value goal, and confirms the next meeting. Also create a CRM update with structured fields for success definition, risk factors, executive sponsor, customer owners, First Value target, and next steps.</p>
+    <div class="ai-card">
+      <span class="ai-card-label">AI Prompt · Follow-Through Email and CRM Update</span>
+      <p>Using the kickoff meeting notes or transcript, draft a follow-through email that thanks the customer, summarizes the discussion, captures the answers to the Five Questions, lists decisions made, identifies action items with owners and due dates, states the agreed First Value goal, and confirms the next meeting. Also create a CRM update with structured fields for success definition, risk factors, executive sponsor, customer owners, First Value target, and next steps.</p>
     </div>
 
     <p>The real unlock is that AI can help make kickoff measurable. It can identify whether the Five Questions were answered. It can flag missing roles, unclear executive sponsorship, vague success definitions, or action items without owners. It can compare the kickoff output to the play standard and help managers coach the team. That shifts kickoff from a meeting people believe happened well to a process the organization can inspect and improve.</p>
