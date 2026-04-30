@@ -46,6 +46,15 @@
       padding: 1.2rem 1.5rem;
       margin: 1.75rem 0;
     }
+
+    .callout-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 0.45rem;
+    }
     .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
     .chapter-nav-btn {
       padding: 8px 18px;
@@ -102,6 +111,38 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
+
+
+    .visual-panel {
+      background: var(--off-white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 1.4rem 1.5rem;
+      margin: 1.9rem 0;
+      max-width: 72ch;
+    }
+    .visual-kicker { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.45rem; }
+    .visual-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.9rem; line-height: 1.35; }
+    .flow-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.6rem; align-items: stretch; }
+    .flow-step { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 0.85rem 0.75rem; min-height: 86px; position: relative; }
+    .flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -0.55rem; top: 50%; transform: translateY(-50%); color: var(--olive); font-weight: 800; z-index: 2; }
+    .flow-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .flow-copy { font-size: 0.82rem; line-height: 1.45; color: var(--gray-700); font-weight: 600; }
+    .effort-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+    .effort-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem; min-height: 155px; display: flex; flex-direction: column; justify-content: space-between; }
+    .effort-card h3 { margin: 0 0 0.5rem; padding: 0; border: 0; font-size: 1rem; color: var(--navy); }
+    .effort-card p { margin: 0; max-width: 100%; font-size: 0.86rem; line-height: 1.55; color: var(--gray-700); }
+    .effort-signal { margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--gray-100); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #BA7517; }
+    .mix-bar { display: grid; grid-template-columns: 42% 24% 34%; gap: 0.35rem; margin: 1rem 0 0.75rem; }
+    .mix-segment { min-height: 42px; background: var(--navy); color: var(--white); border-radius: 8px; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.45rem; }
+    .mix-segment:nth-child(2) { background: var(--navy-light); }
+    .mix-segment:nth-child(3) { background: #BA7517; }
+    .visual-note { font-size: 0.84rem; line-height: 1.6; color: var(--gray-700); margin-top: 0.85rem; max-width: 100%; }
+    @media (max-width: 760px) {
+      .flow-row, .effort-grid { grid-template-columns: 1fr !important; }
+      .flow-step:not(:last-child)::after { content: '↓'; right: 50%; top: auto; bottom: -0.7rem; transform: translateX(50%); }
+      .mix-bar { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -171,266 +212,174 @@
   <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
     <div class="hero-grid"></div>
     <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
-      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#BA7517;margin-bottom:0.75rem">Part IV: Data, Automation & Scale</div>
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#BA7517;margin-bottom:0.75rem">Part IV: Data, Automation &amp; Scale</div>
       <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 22</div>
       <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Proactive Capacity Planning</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Replace the \$2M ARR/CSM rule with Designed Effort and the 65% Availability Rule.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Where the post-sale journey becomes an investment decision, and where designed effort becomes the proof leaders need to fund the work.</p>
     </div>
   </div>
+
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>To accurately plan for capacity and move away from arbitrary benchmarks like the "\$2M ARR per CSM" rule, you must transition to a highly structured, data-driven methodology. Effective capacity planning is like piecing together a puzzle, requiring a deep understanding of customer needs, operational intricacies, and realistic team availability.</p>
+    <p>Everything in this system leads here. The journey map defines the experience. The plays define how that experience is delivered. The pipeline defines how customers progress. Health scoring shows whether momentum is building. Cross-team measures show whether the operating system is holding together. But none of it becomes real until the organization decides how much capacity it is willing to invest in the experience it says it wants to deliver.</p>
 
-<p>Here is the detailed, step-by-step framework to accurately quantify your team's capacity and forecast your resourcing needs.</p>
+    <p>Capacity planning is that decision point. It is where design meets constraint, where intention meets execution, and where leadership is forced to choose what the customer experience will actually be. This is why proactive capacity planning is not a staffing exercise. It is the financial expression of your post-sale strategy.</p>
 
-<p><strong>Step 1: Map Your Service Blueprint and </strong><strong>"</strong><strong>Designed Effort</strong><strong>"</strong></p>
+    <p>Most Customer Success leaders are asked to participate in annual planning with less evidence than their peer functions. Sales can point to pipeline, quota, conversion rates, and coverage models. Marketing can point to demand creation, campaign performance, and cost of acquisition. Product can point to roadmap commitments, engineering capacity, and delivery trade-offs. Customer Success is often left saying some version of, “We need more people because the team is full.” That may be true, but truth without structure is easy to challenge.</p>
 
-<p>You cannot plan capacity without knowing exactly what your team is expected to do. The starting point is to look at your customer's experience across their first year and beyond, specifically focusing on the eight Key Inflection Points. You must identify exactly how your team responds to the Purchase Moment, the First Meeting, Onboarding Decisions, Early Success, Goal Attainment, Habit Transformation, Ongoing Alignment, and the Renewal and Growth Decision.</p>
-
-<p>For each inflection point, you must map the <strong>Service Blueprint</strong>, which details every planned interaction a customer has with your organization. For every "service moment" (such as a Kickoff or Alignment Meeting), you must calculate the <strong>Designed Effort</strong>, broken down into three components:</p>
-
-<ul>
-<li><strong>Preparation:</strong> The time required to get ready (e.g., researching the client or reviewing internal knowledge transfers).</li>
-</ul>
-
-<ul>
-<li><strong>Execution:</strong> The actual time spent delivering the meeting or interaction.</li>
-</ul>
-
-<ul>
-<li><strong>Follow-through:</strong> The time spent sending recaps, scheduling next steps, and updating the CRM.</li>
-</ul>
-
-<p><em>Note: By relying on templates, a well-prepared CSM can prep for a 60-minute Kickoff in 30 minutes or less, dramatically reducing overall effort.</em></p>
-
-<p>You must total this Designed Effort by month (Months 1–12, and then Year 2+) and segment it by your engagement tiers, such as "High-Touch" versus "Low-Touch".</p>
-
-<p><strong>Step 2: Calculate the Three Types of Effort</strong></p>
-
-<p>To accurately forecast, you must acknowledge that your Customer Success Managers (CSMs) do not spend 100% of their day on proactive customer calls. Effort is categorized into three buckets:</p>
-
-<ul>
-<li><strong>Direct Effort:</strong> Actions that directly contribute to customer success. This includes <em>Proactive Direct Effort</em> (executing the planned service moments from your blueprint) and <em>Reactive Direct Effort</em> (troubleshooting, putting out fires, and answering inbound requests).</li>
-</ul>
-
-<ul>
-<li><strong>Indirect Effort:</strong> Planned, necessary activities that do not impact a customer directly, such as internal recurring meetings, professional development, and paid time off (PTO).</li>
-</ul>
-
-<ul>
-<li><strong>Unplanned Effort:</strong> Lost productive capacity caused by internal distractions, equipment issues, or supporting other departments.</li>
-</ul>
-
-<p><strong>The Cost of Context Switching:</strong> When calculating unplanned effort, you must factor in the cognitive cost of shifting focus. Studies show that when a CSM switches from one complex task to another, it takes an average of <strong>23 minutes and 15 seconds</strong> to fully refocus. If your team is constantly putting out fires, their proactive capacity is decimated by context switching.</p>
-
-<p><strong>Step 3: Apply the 65% Target Availability Rule</strong></p>
-
-<p>One of the biggest mistakes leaders make is assuming that 90% or 100% of a CSM's time is available for direct customer work. This expectation does not allow your team to participate in company events, take PTO, help Sales with product questions, or recover from an illness.</p>
-
-<p>The best practice is to set a <strong>Target Availability of 65%</strong>.</p>
-
-<ul>
-<li>Assuming a standard 40-hour workweek, this equals <strong>26 hours of direct customer time per week (or 5.2 hours per day)</strong>.</li>
-</ul>
-
-<ul>
-<li>The remaining 35% of their time is deliberately left open to absorb indirect internal commitments, PTO, holidays, and the unavoidable reactive chaos of SaaS.</li>
-</ul>
-
-<p>Step 4: Incorporate Customer Data and Forecast Growth</p>
-
-<p>To see how much of your 65% capacity is currently spoken for, you must map your existing customer base against your model:</p>
-
-<ul>
-<li><strong>Export Current Customers:</strong> Pull a list of all current customers and their <em>original contractual start dates</em>. This tells you exactly which lifecycle month (1 through 12, or Year 2+) each customer is currently in, allowing you to accurately assign the appropriate month's Designed Effort to them.</li>
-</ul>
-
-<ul>
-<li><strong>Forecast New Sales:</strong> Align with your Sales team to model the planned influx of new high-touch and low-touch customers for the upcoming year.</li>
-</ul>
-
-<p><strong>Factor in New Hire Ramp Time:</strong> When your model shows that future sales will exceed your team's 65% capacity limit, you must forecast a new hire. However, expecting a new team member to be at 100% capacity in their first week is unfair and risks burnout. Your capacity plan should assume a new hire contributes <strong>0% of their target availability in Month 1, 50% in Month 2, and 100% in Month 3</strong>.</p>
-
-<p><strong>Step 5: Validate and Refine the Plan</strong></p>
-
-<p>Your capacity plan is a living system. Once implemented, you must continuously validate it to ensure it reflects reality:</p>
-
-<ul>
-<li><strong>Track Completion:</strong> Use your CRM to track whether designed service moments are actually being completed.</li>
-</ul>
-
-<ul>
-<li><strong>Conduct Focused Time Studies:</strong> Avoid making your team fill out daily timesheets, as it causes resentment. Instead, run occasional, focused time studies to verify if your time estimates for specific service moments are accurate.</li>
-</ul>
-
-<ul>
-<li><strong>Identify Excess Effort:</strong> If your team is running out of capacity, look for areas of over-preparation (preparing in ways the customer doesn't find valuable), duplicated efforts, or a lack of standardized templates.</li>
-</ul>
-
-<ul>
-<li><strong>Review Regularly:</strong> Institutionalize capacity planning by reviewing the data with actual sales and employment dates in recurring leadership meetings.</li>
-</ul>
-
-<p>By quantifying your team's direct, indirect, and unplanned effort using this methodology, you gain the factual data required to confidently justify headcount requests to the C-suite and ensure your team is perfectly staffed to drive Net Revenue Retention.</p>
-
-<p><strong>Conclusion: The Era of Strategic Customer Success Is Here</strong></p>
-
-<p>We have reached the end of our journey together, moving from the chaotic, reactive reality of the modern post-sale experience to a highly orchestrated, scalable revenue engine. For too long, Customer Success has operated under the exhausting mandate of "doing whatever it takes" to save accounts. While this reliance on heroic efforts may have worked in the early days of your company, it is a recipe for team burnout and unpredictable revenue at scale.</p>
-
-<p>True Strategic Customer Success requires a fundamental shift in mindset: moving away from reactive firefighting and instead focusing on making intentional choices. As business strategist Michael E. Porter perfectly stated, <em>"<strong>Strategy is about making choices, trade-offs; it's about deliberately choosing to be different</strong>"</em>. By abandoning the "doing whatever it takes" mentality, you can seamlessly scale the customer experience, meet expectations consistently, and eliminate the post-sale chaos.</p>
-
-<p><strong>Owning Your Seat at the Table</strong> Customer Success has fought hard to achieve a "seat at the table" alongside Sales, Marketing, and Product—so, now what?. It is time to fully own that seat. To do this, you must lead the charge in three critical areas:</p>
-
-<ul>
-<li><strong>Deliver whole-company customer-centricity:</strong> You must capture real customer stories and behavioral insights, sharing them across departments so that the entire organization is rooted in the customer's reality.</li>
-</ul>
-
-<ul>
-<li><strong>Embrace agility:</strong> You must remain agile in everything you do, from engaging customers to facilitating the continuous improvement of your internal operations.</li>
-</ul>
-
-<ul>
-<li><strong>Stay adaptable:</strong> You must mature your organization by operationalizing a shared model for prioritization, ensuring your team remains adaptable to dynamic business shifts and in lockstep with your peer teams.</li>
-</ul>
-
-<p><strong>The Human Element of Growth</strong> As you implement AI, automation, and predictive health scores, you must never lose sight of a foundational truth: no product thrives in isolation, devoid of human interaction. Your innovation alone cannot take a customer to their unique promised land.</p>
-
-<p>To consistently achieve high net revenue retention, you must build your post-sale journey on three non-negotiable pillars: you must earn their <strong>trust</strong>, you must help them realize new <strong>possibilities</strong> through your recommendations, and you must remain deeply <strong>relevant</strong> to their evolving business goals. When you manage your customer's key inflection points flawlessly, you strip away the mystique of customer variability and forge a clear path to value.</p>
-
-<p><strong>Outro: Your Next Move</strong></p>
-
-<p>The first step toward a brighter, more profitable future is recognizing that the customer’s journey doesn’t end when they sign on the dotted line—it starts there. We must stop devaluing the time our customers spend with us after the sale, and we must stop treating retention as an afterthought. Instead, we must recognize the post-sale pipeline as the very foundation of sustainable, high-margin growth.</p>
-
-<p>When done right, Customer Success isn’t just a support function—it is your company's most powerful growth engine. Strategic Customer Success isn't just a framework; it's a mindset and a commitment to excellence that empowers you to go beyond your current limits and reshape the post-sale journey.</p>
-
-<p>The good news? It’s not too late. But the time to change is now.</p>
-
-<p>Take the plays you have built, implement your data governance, and fiercely align your organization. The path to stronger retention, higher NRR, and deeper customer loyalty starts today.</p>
-
-<p><strong>Are you ready to lead the way?</strong></p>
-
-<p>Here is a comprehensive list of resources, templates, and worksheets drawn from the CXology framework that you should include in your book's appendix.</p>
-
-<p>Organizing these resources by the book's sections will provide your readers with a highly actionable toolkit to immediately implement the Strategic Customer Success methodology.</p>
-
-<h3><strong>Appendix A: Foundational Strategy </strong><strong>&</strong><strong> Financials</strong></h3>
-
-<ul>
-<li><strong>The Avoidable Churn </strong><strong>&</strong><strong> Path to Exit Calculator:</strong> An interactive worksheet/calculator to help leaders quantify the financial impact of avoidable churn, model their Net Revenue Retention (NRR), calculate Customer Acquisition Cost (CAC), and project the compound benefits of retention on their company's overall valuation at exit.</li>
-</ul>
-
-<ul>
-<li><strong>Post-Sale Journey Map Template:</strong> A visual mapping tool that outlines the customer's timeline, thinking, inflection points, loyalty blockers, service milestones, and touchpoints across the first 12 months.</li>
-</ul>
-
-<ul>
-<li><strong>Loyalty Builders </strong><strong>&</strong><strong> Blockers Worksheet</strong>: A worksheet used to evaluate a customer's specific business goals and systematically identify the immediate blockers standing in their way, alongside the corresponding "builders" the CS team can use to overcome them.</li>
-</ul>
-
-<h3><strong>Appendix B: The Lifecycle Plays (Execution Templates)</strong></h3>
-
-<ul>
-<li><strong>Internal Knowledge Transfer (IKT) Template:</strong> A standardized four-question form (Why did they purchase? Who are they? What was promised? What does success mean?) used to ensure a seamless, frictionless handoff from Sales to Customer Success.</li>
-</ul>
-
-<ul>
-<li><strong>Celebration Thought Starters Guide:</strong> A brainstorming list of physical and virtual celebration ideas (e.g., branded games, personalized videos, curated playlists) to help teams right-size their internal and customer-facing celebrations.</li>
-</ul>
-
-<ul>
-<li><strong>The Five Questions Kickoff Handout:</strong> A worksheet detailing the battle-tested questions used during the Kickoff meeting to uncover risks, define success, and align the customer’s business goals with the product.</li>
-</ul>
-
-<ul>
-<li><strong>First Value Reflection </strong><strong>&</strong><strong> Rightsizing Flowchart:</strong> A step-by-step flowchart and worksheet designed to help teams distill a customer's massive objective into a "First Value" win that can realistically be achieved within the first two weeks of Go-Live.</li>
-</ul>
-
-<ul>
-<li><strong>The 5 Customer Needs (</strong><strong>"</strong><strong>Easy Buttons</strong><strong>"</strong><strong>) Exercise:</strong> A team discussion guide to evaluate the five universal customer needs (Skillset, Knowledge, Cost, Demands, Change) and brainstorm scalable resources—like templates or partner offerings—to solve them.</li>
-</ul>
-
-<ul>
-<li><strong>Sharing Insights 5-Step Formula:</strong> A formatting guide for writing highly consumable, persuasive emails to customers (One-liner, Background, Results, Action translation, Reinforcement).</li>
-</ul>
-
-<ul>
-<li><strong>Play Design </strong><strong>&</strong><strong> Build Templates:</strong> The blank templates required to map out any new play, including sections for the Play Objective, Customer Thinking, Action Steps, Play Graphic, and Checklist.</li>
-</ul>
-
-<h3><strong>Appendix C: Supporting Plays </strong><strong>&</strong><strong> Communication Scripts</strong></h3>
-
-<ul>
-<li><strong>Key Contact Change </strong><strong>"</strong><strong>You - We - Me</strong><strong>"</strong><strong> Framework:</strong> A guided meeting agenda and conversation graphic used to smoothly transition a new executive sponsor or champion into an existing account.</li>
-</ul>
-
-<ul>
-<li><strong>The Loyalty Interview Script:</strong> A comprehensive 45-minute interview script designed to capture qualitative feedback, uncover what drives a customer's loyalty, and document case-study-worthy wins.</li>
-</ul>
-
-<ul>
-<li><strong>Offboarding Survey </strong><strong>&</strong><strong> Meeting Questions:</strong> A specific set of 5 questions designed to serve (not sell) the churning customer, leveraging the "Peak-End Rule" to capture insights while leaving the door open for future business.</li>
-</ul>
-
-<ul>
-<li><strong>Referrals, Reviews </strong><strong>&</strong><strong> Testimonials Request Cheat Sheet:</strong> A simple step-by-step guide on how to make a frictionless "ask" for advocacy immediately following a customer win, including drafting the review on their behalf.</li>
-</ul>
-
-<ul>
-<li><strong>Active Listening </strong><strong>&</strong><strong> Difficult Conversations Cheat Sheet:</strong> A quick-reference guide for handling conflict, featuring the "Three C's of Mirroring" (Copy, Confirm, Continue), the use of Concrete Language, and the "Yes-No-Yes" Sandwich Technique.</li>
-</ul>
-
-<h3><strong>Appendix D: Operations, Data </strong><strong>&</strong><strong> Capacity</strong></h3>
-
-<ul>
-<li><strong>Health Score Identification </strong><strong>&</strong><strong> Weighting Matrix:</strong> A matrix to help teams define what a "healthy" customer looks like, select growth-oriented criteria (focused entirely on avoidable churn), and mathematically weight the scores based on their predictive power.</li>
-</ul>
-
-<ul>
-<li><strong>CS Capacity Planning Tool Guidelines:</strong> An overview of the formulas and spreadsheets used to calculate "Designed Effort," map out direct vs. indirect/unplanned effort, and enforce the 65% Target Availability rule to accurately forecast headcount needs.</li>
-</ul>
-
-<div style="margin:2.5rem 0;padding:2rem;background:rgba(55,138,221,.06);border:1px solid rgba(55,138,221,.2);border-radius:16px">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
-    <div>
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#378ADD;margin-bottom:0.4rem">Chapter 22 · Interactive Tool</div>
-      <div style="font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:0.3rem">CS Capacity Planner</div>
-      <div style="font-size:0.85rem;color:rgba(26,46,66,.55);max-width:50ch">Replace the $2M ARR/CSM rule with a data-driven model. Calculate Designed Effort, map your book of business against the 65% Availability Rule, and forecast headcount as you grow.</div>
+    <div class="callout">
+      <div class="callout-title">The Real Constraint</div>
+      <p>You don’t lose budget because you asked for too much. You lose it because you could not show what the investment protects, produces, or makes possible.</p>
     </div>
-    <div style="display:flex;align-items:center;gap:6px;background:rgba(55,138,221,.1);border:1px solid rgba(55,138,221,.25);border-radius:20px;padding:4px 12px;flex-shrink:0">
-      <div style="width:5px;height:5px;border-radius:50%;background:#378ADD;animation:toolblink2 2.2s ease-in-out infinite"></div>
-      <span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#378ADD">Live Tool</span>
+
+    <p>When the story is incomplete, the pattern repeats. The team is already behind. The leader asks for resources. The request is reduced somewhere in the approval process because the rationale does not create enough confidence. The team enters the next year still constrained, which compounds the current state. Customers feel the inconsistency. CSMs make difficult decisions about who gets attention. Managers depend on heroic effort from the same trusted people. Eventually, the organization recognizes the pressure and approves headcount, but the hire arrives late, the onboarding is rushed, and the system remains reactive.</p>
+
+    <p>Capacity planning changes this because it starts somewhere different. It does not begin with headcount. It begins with the customer journey.</p>
+
+    <h2>The Journey Map Becomes the Source of Truth</h2>
+
+    <p>The post-sale journey map is not a poster. It is the strategic design of the customer experience. It identifies the moments when customers evaluate whether they made the right decision, whether progress is happening, whether the relationship is creating value, and whether they should continue or grow. These moments are the inflection points of the relationship. They are the places where loyalty is either built or blocked.</p>
+
+    <p>The plays we built in Chapters 9 through 16 exist because those inflection points cannot be left to chance. Purchase and Welcome protects the moment immediately after Closed-Won. Kickoff creates trust and shared direction. Onboarding prepares the customer for first use. First Value proves momentum early. Value Blocks and shared insights keep progress visible. Alignment Meetings create the space to revisit the reason for purchase, celebrate movement, address gaps, and build consensus. Renew and Grow turns accumulated value into a confident commercial decision.</p>
+
+    <p>Those plays are not random activities. They are service moments designed to guide customers through the journey. Once they are visible, the question becomes unavoidable. If this is the experience we want customers to have, what does it actually take to deliver it?</p>
+
+    <div class="callout">
+      <div class="callout-title">Design Has a Cost</div>
+      <p>Every service moment is a customer experience decision, but it is also a resource decision.</p>
     </div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-bottom:1.25rem">
-    <div style="padding:0.75rem;background:rgba(55,138,221,.08);border:1px solid rgba(55,138,221,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#378ADD;margin-bottom:0.2rem">Step 01</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Designed Effort</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Prep + execution + follow-through</div>
+
+    <p>This is the bridge from journey design to capacity planning. The journey map defines what matters. The service blueprint defines how the company responds. The service moments define the work. Designed effort defines the capacity required to deliver that work consistently. Without this bridge, capacity planning becomes guesswork. With it, the model becomes a direct reflection of the operating system.</p>
+
+    <div class="visual-panel">
+      <div class="visual-kicker">Capacity Translation</div>
+      <div class="visual-title">The post-sale design becomes fundable when each layer translates cleanly into the next.</div>
+      <div class="flow-row">
+        <div class="flow-step"><div class="flow-label">Journey</div><div class="flow-copy">The moments when loyalty is built or blocked.</div></div>
+        <div class="flow-step"><div class="flow-label">Service Moments</div><div class="flow-copy">The intentional actions that guide the customer.</div></div>
+        <div class="flow-step"><div class="flow-label">Designed Effort</div><div class="flow-copy">The preparation, execution, and follow-through required.</div></div>
+        <div class="flow-step"><div class="flow-label">Capacity</div><div class="flow-copy">The team availability needed to deliver consistently.</div></div>
+        <div class="flow-step"><div class="flow-label">Investment</div><div class="flow-copy">The funding decision behind the experience.</div></div>
+      </div>
     </div>
-    <div style="padding:0.75rem;background:rgba(55,138,221,.08);border:1px solid rgba(55,138,221,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#378ADD;margin-bottom:0.2rem">Step 02</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">65% Rule</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Direct vs. indirect effort split</div>
+
+    <h2>Designed Effort Makes the Work Visible</h2>
+
+    <p>Customer Success teams rarely suffer from a lack of work. They suffer from a lack of visible work. Much of what a strong CSM does is hidden inside preparation, interpretation, follow-through, coordination, and judgment. A kickoff is not just a meeting. It includes reviewing the handoff, understanding the customer’s reason for purchase, preparing the agenda, shaping the conversation, facilitating the meeting, documenting decisions, confirming next steps, and carrying the thread forward. An Alignment Meeting is not just time on a calendar. It includes insight gathering, account context, goal review, executive framing, stakeholder preparation, meeting execution, and follow-through that turns conversation into motion.</p>
+
+    <p>Designed effort gives this work a name. It asks leaders to understand the full effort required to deliver a service moment well. Preparation, execution, and follow-through all count because customers experience the quality of all three. A meeting that is poorly prepared feels generic. A meeting that is poorly facilitated feels wasteful. A meeting with weak follow-through erodes trust because nothing changes after the conversation ends.</p>
+
+    <p>When designed effort is mapped across the first year of the customer journey, the workload starts to take shape. The early months are naturally heavier because trust, orientation, onboarding, and first value require intensity. Later months shift toward reinforcement, insight, alignment, and renewal readiness. The work does not disappear after onboarding; it changes form. A strong capacity model shows that change clearly.</p>
+
+    <p>This matters because many resourcing conversations treat customers as if they are equal units of work. They are not. A new customer in onboarding is not the same capacity requirement as a mature customer who has completed an Alignment Meeting and is progressing through established goals. A high-touch customer with complex stakeholders is not the same as a low-touch customer moving through a mostly automated journey. Capacity planning must reflect the experience you designed, not just the number of accounts assigned to a person.</p>
+
+    <h2>The Real Capacity Problem Is the Effort Mix</h2>
+
+    <p>The next layer is effort mix. The designed service moments represent proactive direct effort. This is the work you plan because it moves the customer through the journey. But no team operates only in designed effort. Reactive direct effort also exists. Customers ask questions, raise issues, request help, escalate concerns, or need guidance that was not planned. Indirect effort exists as well. Team meetings, enablement, internal coordination, data cleanup, planning, tooling, and management rhythms all consume time. Unplanned effort appears when the system breaks, when another function creates downstream work, or when a customer situation requires urgent attention.</p>
+
+    <p>Most teams feel overwhelmed because this effort mix is unmanaged. They may believe they have a staffing problem, and often they do, but the deeper issue is that too much effort has become reactive, invisible, or unplanned. The team is not only busy; the team is busy in ways the system does not control.</p>
+
+    <div class="visual-panel">
+      <div class="visual-kicker">Effort Mix</div>
+      <div class="visual-title">Capacity planning separates the work you designed from the work that consumes the team.</div>
+      <div class="effort-grid">
+        <div class="effort-card"><div><h3>Direct Effort</h3><p>The customer-facing work that moves customers through the journey, including planned plays and necessary responses.</p></div><div class="effort-signal">Closest to value</div></div>
+        <div class="effort-card"><div><h3>Indirect Effort</h3><p>The internal work required to support the system, including enablement, planning, coordination, and management rhythms.</p></div><div class="effort-signal">Necessary to operate</div></div>
+        <div class="effort-card"><div><h3>Unplanned Effort</h3><p>The unexpected work created by escalations, broken handoffs, unclear ownership, system gaps, or urgent customer situations.</p></div><div class="effort-signal">Most likely to hide risk</div></div>
+      </div>
+      <div class="mix-bar"><div class="mix-segment">Designed + Reactive Direct</div><div class="mix-segment">Indirect</div><div class="mix-segment">Unplanned</div></div>
+      <div class="visual-note">The goal is not to eliminate every form of indirect or unplanned work. The goal is to make the mix visible so leaders can decide whether the team is leading the customer journey or constantly absorbing work the system failed to manage.</div>
     </div>
-    <div style="padding:0.75rem;background:rgba(55,138,221,.08);border:1px solid rgba(55,138,221,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#378ADD;margin-bottom:0.2rem">Step 03</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Book Mapping</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Current accounts vs. capacity</div>
+
+    <div class="callout">
+      <div class="callout-title">Control vs. Reaction</div>
+      <p>Capacity is not just about how much work the team can handle. It is about how much of that work the system can control.</p>
     </div>
-    <div style="padding:0.75rem;background:rgba(55,138,221,.08);border:1px solid rgba(55,138,221,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#378ADD;margin-bottom:0.2rem">Step 04</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Headcount Forecast</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">With new hire ramp modeling</div>
+
+    <p>This is why proactive design matters. As the journey becomes clearer and service moments become more consistent, some reactive effort begins to decline. Customers know what is coming. CSMs address important questions before they become urgent. Alignment happens in the right forums. Insights are shared before goals stall. Renewal conversations begin before the renewal moment becomes a scramble. The team still responds to customers, but the center of gravity moves from reaction to guidance.</p>
+
+    <p>That shift is the difference between a team that is constantly catching up and a team that is leading the customer forward. It is also the difference between a budget request based on exhaustion and a resource plan based on design.</p>
+
+    <h2>Capacity Planning Forces the Trade-Off Conversation</h2>
+
+    <p>The first real capacity plan can be uncomfortable. When you translate the full journey into designed effort, the number may be larger than expected. That is not a failure of the model. It is the model doing its job. It is showing the organization what the current strategy actually costs if it is delivered with consistency.</p>
+
+    <p>At that point, leadership has a choice. The company can fund the experience it designed, or it can change the experience. Both are valid decisions if they are made intentionally. What is not valid is pretending the team can deliver a high-touch, insight-rich, strategically aligned customer journey with a resource model built for reactive account coverage.</p>
+
+    <p>This is where capacity planning becomes a leadership tool. It allows the CS leader to move the conversation away from “I need more people” and toward “Here is the experience we designed, here is the effort required to deliver it, here is the gap between current capacity and required capacity, and here are the trade-offs available to us.”</p>
+
+    <div class="callout">
+      <div class="callout-title">The Trade-Off Moment</div>
+      <p>If leadership does not want to fund the full experience, the answer is not silent overload. The answer is an explicit decision about what changes.</p>
     </div>
-  </div>
-  <a href="capacity-planner.html" style="display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.25rem;background:#378ADD;border-radius:8px;text-decoration:none;transition:opacity .2s" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='1'">
-    <div>
-      <div style="font-size:0.88rem;font-weight:700;color:#fff">Open the CS Capacity Planner →</div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,.65)">Designed Effort · 65% Rule · Headcount forecasting · New hire ramp modeling</div>
+
+    <p>Those trade-offs are powerful. The company may decide to add headcount. It may decide to reduce or automate specific service moments. It may segment the journey differently by customer tier. It may shift work from human-led delivery to programmatic guidance. It may decide that certain customers receive a lighter model because the economics do not justify the designed effort. The point is not that every service moment must survive. The point is that decisions are made with visibility.</p>
+
+    <div class="visual-panel">
+      <div class="visual-kicker">Leadership Decision</div>
+      <div class="visual-title">Once effort is visible, the conversation moves from budget pressure to strategic choice.</div>
+      <div class="flow-row" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+        <div class="flow-step"><div class="flow-label">Fund</div><div class="flow-copy">Add capacity to deliver the designed experience.</div></div>
+        <div class="flow-step"><div class="flow-label">Focus</div><div class="flow-copy">Protect the service moments that matter most.</div></div>
+        <div class="flow-step"><div class="flow-label">Automate</div><div class="flow-copy">Shift repeatable work away from scarce human capacity.</div></div>
+        <div class="flow-step"><div class="flow-label">Redesign</div><div class="flow-copy">Change the journey when the economics do not support the model.</div></div>
+      </div>
     </div>
-    <div style="font-size:1.4rem;color:#fff">↗</div>
-  </a>
-</div>
-<style>@keyframes toolblink2{0%,100%{opacity:1}50%{opacity:.25}}</style>
+
+    <p>This is also how CS earns a stronger seat at the table. Not by asking the company to care more about customers in the abstract, but by showing how customer experience, retention risk, growth opportunity, team capacity, and investment decisions connect. Numbers create shared language. They allow peers to participate in the decision. They turn a capacity request into a business conversation.</p>
+
+    <h2>The ROI Message Must Be Clear</h2>
+
+    <p>Capacity planning should never be framed only as cost. It is the cost of delivering a retention and growth system. The resource request should be tied to the value the system is expected to protect or create. If the model supports faster First Value, stronger onboarding completion, better goal progression, more consistent Alignment Meetings, stronger renewal preparation, and clearer expansion readiness, then it is directly connected to GRR, NRR, customer lifetime value, and the efficiency of growth.</p>
+
+    <p>This does not mean every capacity request needs to promise an exact financial return with false precision. It means the logic must be visible. If the company wants higher retention, it must fund the work that produces retention. If it wants more expansion, it must fund the moments that create alignment, surface opportunity, and build executive confidence. If it wants scale, it must fund the systems, automation, and role clarity that reduce dependency on heroic effort.</p>
+
+    <p>The ROI message is strongest when it is grounded in trade-offs. A leader can show the cost of delivering the full journey, the risk of underfunding it, and the alternatives available. That conversation is far more credible than a general request for more CSMs. It also gives executives a way to say yes, no, or not yet with a clear understanding of the consequences.</p>
+
+    <div class="callout">
+      <div class="callout-title">Investment Logic</div>
+      <p>The question is not whether Customer Success is expensive. The question is whether the company understands what it is buying when it funds the post-sale system.</p>
+    </div>
+
+    <p>Over time, the credibility of the model improves. The first time, the organization may challenge the assumptions. That is healthy. If leaders can poke holes in the plan, the plan gets better. But as the model is refined, as service moments are validated, and as forecasts begin to match reality, the CS leader earns trust. Eventually, resource conversations become easier because the organization understands the logic behind the ask.</p>
+
+    <h2>Capacity Planning Is an Operating Discipline</h2>
+
+    <p>A capacity plan is not something you build once and defend forever. It is an operating discipline. The model must be validated against execution. If a service moment is not happening consistently, the leader needs to understand why. The estimate may be wrong. The team may not have the confidence or enablement to deliver it. A prior service moment may be creating a bottleneck. The customer segment may require a different motion. Another team may be creating work that was not accounted for.</p>
+
+    <p>This is why the model must stay connected to the operating system. Health scoring can show whether customers are progressing. Cross-team KPIs can show where dependencies are breaking. Play execution can show whether service moments are being delivered. Customer feedback can show whether the moments are creating value. Capacity planning brings those signals together and asks a practical question: do we have the right amount and type of capacity to deliver the experience we designed?</p>
+
+    <p>The answer will change as the business changes. New products, new segments, new pricing, new onboarding motions, new automation, new customer expectations, and new growth targets all affect capacity. A company that treats capacity planning as an annual spreadsheet will always be behind. A company that treats it as part of the operating rhythm can adjust before the system breaks.</p>
+
+    <div class="callout">
+      <div class="callout-title">The System Loop</div>
+      <p>Design informs execution. Execution informs capacity. Capacity informs investment. Investment determines whether the system can deliver what the strategy promised.</p>
+    </div>
+
+    <h2>From Model to Motion</h2>
+
+    <p>At this point, the challenge is no longer conceptual. It becomes practical. How do you take a journey map, translate it into effort, and model it in a way that holds up in a leadership conversation? How do you test scenarios without rebuilding the spreadsheet from scratch? How do you show the effect of adding a play, removing a service moment, changing segmentation, accelerating growth, or delaying a hire?</p>
+
+    <p>Most teams attempt to do this manually. Spreadsheets are created, adjusted, and recreated. The connection to the journey map gets weaker with each revision. Assumptions move around without enough visibility. The model becomes hard to maintain and harder to trust. The thinking may be sound, but the execution becomes fragile.</p>
+
+    <p>To close that gap, we built a capacity planning model designed specifically for this post-sale operating system. It starts with the customer journey, carries through service moments, and translates directly into effort, capacity, and resource requirements. It is meant to help leaders test trade-offs, prepare for planning conversations, and connect the customer experience to the investment required to deliver it.</p>
+
+    <div style="background:var(--off-white);border:1px solid var(--gray-200);border-radius:12px;padding:1.4rem 1.5rem;margin:1.75rem 0;max-width:72ch">
+      <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#BA7517;margin-bottom:0.35rem">Interactive Tool</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.45rem">CS Capacity Planner</div>
+      <p style="margin-bottom:1rem;max-width:100%">Use the capacity planner to translate designed service moments into effort, capacity, and headcount scenarios. The tool is not a replacement for strategy; it is the layer that helps leaders turn strategy into a resource plan.</p>
+      <a href="capacity-planner.html" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.75rem 1rem;background:var(--navy);color:var(--white);border-radius:8px;text-decoration:none;font-size:0.88rem;font-weight:700">Open the Capacity Planning Tool →</a>
+    </div>
+
+    <p>The tool is not the system. It works because the system is already defined. Without a journey map, it becomes just another calculator. Without service moments, the effort is speculative. Without segmentation, the assumptions are too broad. Without a trade-off conversation, the output is only a number. But when the journey, plays, service moments, and effort model are connected, the tool becomes a decision engine.</p>
+
+    <div class="callout">
+      <div class="callout-title">From Theory to Execution</div>
+      <p>The model does not create clarity by itself. It exposes the clarity, or the lack of it, in the system you have designed.</p>
+    </div>
+
+    <p>This is where proactive capacity planning fulfills its purpose. It allows organizations to invest with intention, scale with confidence, and deliver an experience that is both designed and sustainable. It transforms Customer Success from a reactive function trying to keep up into an operating system that can be measured, managed, funded, and improved.</p>
+
+    <p>Most importantly, it ensures that the experience promised to the customer is the experience the company is actually prepared to deliver.</p>
   </div>
 </div>
 
@@ -460,26 +409,6 @@ window.addEventListener('scroll', () => {
   document.getElementById('progress-bar').style.width = pct + '%';
 });
 
-// Post-process callouts
-document.querySelectorAll('.chapter-body p').forEach(p => {
-  const t = p.textContent.trim();
-  const calloutPhrases = [
-    "The pipeline doesn't stop",
-    "Customer Success is a sales function",
-    "Judgment Over Templates",
-    "autopsy report",
-    "Birthday Party Trap",
-    "doing whatever it takes",
-    "65%",
-    "canary in the coal mine",
-  ];
-  if (calloutPhrases.some(ph => t.includes(ph)) && t.length < 300) {
-    const div = document.createElement('div');
-    div.className = 'callout';
-    div.innerHTML = '<p>' + p.innerHTML + '</p>';
-    p.replaceWith(div);
-  }
-});
 </script>
 </body>
 </html>
