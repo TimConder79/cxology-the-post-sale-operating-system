@@ -13,6 +13,16 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
 input[type=number]{-moz-appearance:textfield}
 select{-webkit-appearance:auto;appearance:auto}
 @media print{.no-print{display:none!important}.print-only{display:block!important}}
+.site-nav{position:sticky;top:0;left:0;right:0;z-index:200;background:rgba(15,28,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(197,212,78,.15);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.site-nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.site-nav-mark{width:32px;height:32px;border-radius:8px;background:#C5D44E;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#0F1C28}
+.site-nav-name{font-size:1.1rem;color:#fff;letter-spacing:.02em}
+.site-nav-links{display:flex;gap:2rem;list-style:none}
+.site-nav-links a{color:rgba(255,255,255,.65);font-size:.85rem;font-weight:500;text-decoration:none;transition:color .2s}
+.site-nav-links a:hover{color:#C5D44E}
+.site-nav-cta{padding:8px 20px;background:#C5D44E;color:#0F1C28;border-radius:6px;font-size:.82rem;font-weight:700;text-decoration:none;transition:all .2s}
+.site-nav-cta:hover{background:#d4e455;transform:translateY(-1px)}
+@media print{.site-nav{display:none}}
 #loading-screen{display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:12px;color:#5A6A40;font-size:14px}
 #loading-screen .spin{width:32px;height:32px;border:3px solid #D8DEB8;border-top-color:#C5D44E;border-radius:50%;animation:sp .8s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
@@ -26,6 +36,21 @@ input[type=number]:hover,select:hover{border-color:#7A8A5A;}
 </style>
 </head>
 <body>
+<!-- NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="site-nav-logo">
+    <div class="site-nav-mark">C</div>
+    <span class="site-nav-name">CXology</span>
+  </a>
+  <ul class="site-nav-links">
+    <li><a href="index.html#parts">The Book</a></li>
+    <li><a href="index.html#frameworks">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="index.html#plays">Lifecycle Plays</a></li>
+  </ul>
+  <a href="index.html" class="site-nav-cta">← Back to Book</a>
+</nav>
+
 <div id="loading-screen"><div class="spin"></div><span>Loading…</span></div>
 <div id="err-box"></div>
 <div id="root"></div>
@@ -330,11 +355,10 @@ function App(){
   const scenarioDelta=useMemo(()=>{const base=run({gH,eH,gL,eL,oH,oL,c1H,c1L,c2H,c2L,tm:tm.map(m=>({r:m.r,s:m.s})),rp,ta,pp,rr,wh,oh,tb,sa,hA,lA,gM:1,eM:1});return{headcount:M.hn-base.hn,peak:M.pk-base.pk,firstMonth:(M.fr===base.fr?0:1)};},[M,gH,eH,gL,eL,oH,oL,c1H,c1L,c2H,c2L,tm,rp,ta,pp,rr,wh,oh,tb,sa,hA,lA]);
 
   return <div>
-    {/* NAV */}
-    <nav className="no-print" style={{background:"rgba(15,28,40,.95)",backdropFilter:"blur(12px)",borderBottom:"1px solid rgba(197,212,78,.15)",padding:"0 24px",height:56,display:"flex",alignItems:"center",justifyContent:"space-between",position:"sticky",top:0,zIndex:100}}>
-      <div style={{display:"flex",alignItems:"center",gap:10}}><div style={{width:28,height:28,borderRadius:6,background:C.ol,display:"flex",alignItems:"center",justifyContent:"center",fontSize:12,fontWeight:700,color:C.nd}}>C</div><span style={{color:C.wh,fontSize:14}}>CXology — CS Capacity Planner</span></div>
-      <button onClick={()=>window.print()} style={{...sB,background:C.ol,color:C.nd,padding:"6px 16px",fontSize:12}}>⎙ Print</button>
-    </nav>
+    {/* PRINT BAR */}
+    <div className="no-print" style={{background:"rgba(15,28,40,.6)",borderBottom:"1px solid rgba(197,212,78,.08)",padding:"0 24px",height:36,display:"flex",alignItems:"center",justifyContent:"flex-end"}}>
+      <button onClick={()=>window.print()} style={{...sB,background:C.ol,color:C.nd,padding:"4px 14px",fontSize:12}}>⎙ Print / Save PDF</button>
+    </div>
 
     {/* HERO */}
     <header style={{background:C.nd,padding:"48px 24px 40px",position:"relative",overflow:"hidden"}}>
