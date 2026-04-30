@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ch 21: Cross-Team Collaboration KPIs — The Post-Sale Operating System</title>
+  <title>Ch 21: From Functional Silos to One Operating System — The Post-Sale Operating System</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
     .chapter-body h2 {
@@ -47,6 +47,105 @@
       margin: 1.75rem 0;
     }
     .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+
+    .chapter-body .section-kicker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #BA7517;
+      margin: 2.25rem 0 0.65rem;
+    }
+    .chapter-body .system-callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.15rem 1.35rem;
+      margin: 1.75rem 0;
+      max-width: 72ch;
+    }
+    .chapter-body .system-callout .label {
+      display: block;
+      color: var(--olive);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.55rem;
+    }
+    .chapter-body .system-callout p {
+      color: rgba(255,255,255,.86);
+      font-style: italic;
+      margin: 0;
+      max-width: 100%;
+    }
+    .chapter-body .alignment-visual {
+      max-width: 100%;
+      margin: 2rem 0;
+      padding: 1.25rem;
+      background: var(--off-white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+    }
+    .chapter-body .alignment-visual-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .chapter-body .alignment-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+    .chapter-body .alignment-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+    }
+    .chapter-body .alignment-card h4 {
+      margin: 0 0 0.65rem;
+      font-size: 0.95rem;
+      color: var(--navy);
+    }
+    .chapter-body .alignment-card p {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin: 0;
+      color: var(--gray-700);
+    }
+    .chapter-body .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.85rem;
+      margin: 1.75rem 0 2rem;
+      max-width: 100%;
+    }
+    .chapter-body .metric-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-top: 3px solid var(--olive);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+    }
+    .chapter-body .metric-card h4 {
+      margin: 0 0 0.45rem;
+      font-size: 0.9rem;
+      color: var(--navy);
+    }
+    .chapter-body .metric-card p {
+      font-size: 0.84rem;
+      line-height: 1.55;
+      margin: 0;
+      color: var(--gray-700);
+    }
+    @media (max-width: 760px) {
+      .chapter-body .alignment-grid,
+      .chapter-body .metric-strip { grid-template-columns: 1fr; }
+    }
     .chapter-nav-btn {
       padding: 8px 18px;
       border: 1px solid var(--gray-200);
@@ -162,7 +261,7 @@
   <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
   <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
   <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
-  <a href="chapter-21.html" class="toc-link active" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-21.html" class="toc-link active" data-ch="21">Ch 21: From Functional Silos to One Operating System</a>
   <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
 </div>
 
@@ -173,46 +272,145 @@
     <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
       <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#BA7517;margin-bottom:0.75rem">Part IV: Data, Automation & Scale</div>
       <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 21</div>
-      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Cross-Team Collaboration KPIs</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">You cannot unify teams if you measure them in opposition to one another.</p>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">From Functional Silos to One Operating System</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Alignment is not created by asking teams to cooperate harder. It is created when the company operates from one shared system.</p>
     </div>
   </div>
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>With a Single Source of Truth established and a predictive health score actively running, you now possess something incredibly powerful: hard, reliable data. However, if that data stays trapped within the Customer Success department, you will never realize its full potential.</p>
+    <p>By the time a company has built a reliable data spine, introduced meaningful health scoring, and started to see customer movement through a post-sale pipeline, something important becomes visible. The customer experience is not owned by one team. It never was. Customer Success may be the function most commonly asked to explain retention, but the conditions that create retention are distributed across the entire company.</p>
 
-<p>By design, many companies suffer from a natural tension between departments. Sales focuses on acquiring new logos, Product focuses on shipping features, Marketing focuses on generating leads, and Customer Success is often left holding the bag for non-customer-centric decisions. When this friction becomes toxic, silos form, trust erodes, and the customer ultimately pays the price.</p>
+    <p>This is where many operating models break down. Sales believes its work is complete when the deal closes. Product believes its work is measured by what ships. Marketing believes its work is measured by demand and story creation. Finance believes its work begins when revenue is forecasted. Customer Success is then left to hold all of those decisions together in front of the customer, often with incomplete context, inconsistent promises, unclear product signals, and a set of expectations the customer never should have been allowed to carry forward.</p>
 
-<p>To break down these silos and achieve true, scalable growth, you must transition from departmental goals to shared, cross-team Key Performance Indicators (KPIs). In 2026, aligning the C-suite, Sales, Product, and CS through shared metrics is a foundational requirement for operational maturity.</p>
+    <p>Most companies describe this as a collaboration problem. They say the teams need to communicate better, meet more often, share more context, or become more customer-centric. Those things may help at the edges, but they do not solve the underlying issue. The problem is not that teams refuse to collaborate. The problem is that each team is operating inside a different system.</p>
 
-<p><strong>Moving Beyond Basic NPS</strong></p>
+    <div class="system-callout">
+      <span class="label">The Real Alignment Problem</span>
+      <p>Misalignment is rarely caused by a lack of effort. It is usually caused by teams doing their best work inside systems that do not connect.</p>
+    </div>
 
-<p>For years, companies relied heavily on Net Promoter Score (NPS) or Customer Satisfaction (CSAT) as their primary cross-company indicators of customer happiness. While these metrics have their place, they are lagging indicators that fail to align the business monetarily. You cannot pay your employees with NPS points.</p>
+    <p>Sales has a pipeline. Product has a roadmap. Marketing has campaigns. Finance has forecasts. Support has tickets. Customer Success has accounts, health scores, renewal notes, and a running list of risks that may or may not be visible to anyone else. Each view is useful, but none of them tells the whole truth. The company can be full of smart, well-intentioned people and still create a fragmented customer experience because the operating system itself is fragmented.</p>
 
-<p>To bridge the gap between the C-suite and the CS team, you must speak the language of the business: finance and operational efficiency. You must clear the fog with data and become financial experts in the value of retention.</p>
+    <p>The Post-Sale Operating System changes the conversation. It does not ask teams to align through more meetings. It gives them a shared structure for understanding how customers move from purchase to value, from value to confidence, from confidence to advocacy, and from advocacy to renewal and growth. That structure is what makes collaboration practical. Without it, alignment is an aspiration. With it, alignment becomes visible, measurable, and manageable.</p>
 
-<p>Modern cross-team collaboration relies on three critical shared KPIs:</p>
+    <div class="section-kicker">The Company System</div>
+    <h2>The Post-Sale Pipeline Is Not Just a CS Pipeline</h2>
 
-<p><strong>Shared Metric 1: Net Revenue Retention (NRR)</strong> NRR is the percentage of recurring revenue retained from existing customers over a defined period, including upsells, downgrades, and churn. It is the ultimate shared KPI because it is the most significant driver of high company valuations. NRR cannot be achieved by Customer Success alone; it requires Marketing to attract the right leads, Sales to set the right expectations, Product to deliver functioning features, and CS to drive value realization. When the entire C-suite shares the NRR goal, retention transforms from a "CS problem" into a whole-company objective.</p>
+    <p>The post-sale pipeline is often introduced through the lens of Customer Success because CS is closest to the customer after the sale. But the pipeline is much bigger than a CS management tool. Identify, Align, Advocate, Intent, and Net Revenue Close describe the progression of a customer relationship across the entire business. They show how value is created, how confidence is built, how expansion becomes possible, and how revenue becomes predictable.</p>
 
-<p><strong>Shared Metric 2: Forecast Accuracy</strong> As Customer Success evolves into a revenue engine, CS teams must own expansion targets and forecasting with the same rigor that Sales applies to net-new business. Tracking the accuracy of your post-sale revenue forecasts (predicting renewals and expansions) aligns CS directly with Sales Operations and the CFO. When CS can accurately forecast revenue based on health scores and completed Value Blocks, they earn their seat at the strategic table.</p>
+    <p>When the pipeline is treated as a CS artifact, the company misses the point. Customer Success may orchestrate movement through the pipeline, but Sales influences where the customer enters it. Product influences how quickly the customer can move through it. Marketing influences how customer progress becomes market credibility. Finance depends on the pipeline to understand whether revenue is durable or merely booked. The pipeline becomes the connective tissue between the functions that create demand, close revenue, deliver value, and grow accounts.</p>
 
-<p><strong>Shared Metric 3: Cycle Time Reduction</strong> Cycle time reduction measures the speed and efficiency of moving a customer from one phase to the next. For cross-team collaboration, the most important cycle time is the transition from "Closed-Won" to First Value. This shared metric forces Sales and CS to collaborate on a seamless Internal Knowledge Transfer (IKT), ensuring the customer does not lose momentum or have to repeat themselves after the deal is signed.</p>
+    <p>This is the shift that makes Chapter 21 different from a traditional KPI discussion. The goal is not simply to agree on shared metrics. Shared metrics are easy to name and hard to operationalize. The real goal is to create a shared execution system that produces those metrics as a natural consequence of how the company works.</p>
 
-<p><strong>Operationalizing Alignment: Joint Reviews</strong></p>
+    <div class="system-callout">
+      <span class="label">Pipeline as Alignment</span>
+      <p>The pipeline does not belong to Customer Success. It is the system that shows whether the entire company is helping customers move toward value, confidence, renewal, and growth.</p>
+    </div>
 
-<p>Establishing shared KPIs is only effective if you actively review them together. You must institute recurring joint reviews to ensure your teams remain in lockstep.</p>
+    <p>This matters because most companies try to align around outcomes without agreeing on the path that creates those outcomes. They want higher NRR, stronger expansion, better renewals, faster adoption, and more referenceable customers, but they do not define the progression that makes those results more likely. They measure the end state and then wonder why teams argue about responsibility after the fact.</p>
 
-<p><strong>CS and Sales Alignment</strong> Sales and CS should not operate as separate entities; they are two halves of the same revenue engine. In joint reviews, these teams must evaluate the quality of the IKT, discuss upcoming renewal risks, and strategize on expansion timing. When CS identifies a highly successful customer through their health score, they must feed that story back to Sales to help them close future deals faster by selling "recreatable successes".</p>
+    <p>The Post-Sale Operating System reverses that pattern. It defines the movement first. It makes the key inflection points visible. It connects those moments to customer health, capacity, and revenue risk. It gives leaders a way to see not only whether the company is retaining revenue, but whether the company is doing the work that creates retainable revenue.</p>
 
-<p><strong>CS and Product Alignment</strong> Product leaders make decisions that impact all customers, and they can sometimes be skeptical if CS brings them anecdotal complaints. Joint reviews with Product must be driven by data. CS should share feature utilization trends, report on product-driven churn risks, and validate the product roadmap using real customer stories and health score trends.</p>
+    <div class="alignment-visual">
+      <div class="alignment-visual-title">Old World vs. Operating System</div>
+      <div class="alignment-grid">
+        <div class="alignment-card">
+          <h4>Old World: Functional Systems</h4>
+          <p>Sales tracks the deal, Product tracks the roadmap, Marketing tracks campaigns, Finance tracks the forecast, and CS tries to reconcile the customer reality after decisions have already been made.</p>
+        </div>
+        <div class="alignment-card">
+          <h4>New World: One Post-Sale System</h4>
+          <p>Every team can see where customers are in the relationship, which inflection points have been reached, where progression is stalled, and what work is required to protect and grow revenue.</p>
+        </div>
+      </div>
+    </div>
 
-<p><strong>CS and Marketing Alignment</strong> Marketing teams are constantly searching for compelling stories. When CS effectively executes the "Sharing Insights" and "Alignment Meeting" plays, they generate a goldmine of customer wins. In joint reviews, CS should provide Marketing with successful "Win Reports" to fuel powerful case studies, referenceable customers, and targeted campaigns.</p>
+    <div class="section-kicker">Inflection Points</div>
+    <h2>Alignment Happens at the Moments That Matter</h2>
 
-<p><strong>3. The C-Suite Connection</strong></p>
+    <p>The most useful way to align teams is not to ask them to care about the customer in general. Everyone already claims to care about the customer. The more useful move is to define the specific moments where the customer relationship either gains momentum or begins to drift.</p>
 
-<p>Finally, you must use these shared KPIs to continuously educate your C-suite and board of directors. Many executives suffer from an "optimistic leadership" bias, prioritizing short-term customer acquisition over the long-term realities of customer retention.</p>
+    <p>That is the role of inflection points. Purchase and Welcome, Kickoff, Onboarding, First Value, Value Blocks, Insights, Alignment Meetings, and Renew and Grow are not simply steps in a lifecycle. They are the moments where internal execution becomes visible to the customer. They are also the moments where cross-functional alignment is either strengthened or exposed as missing.</p>
 
-<p>By consistently presenting NRR, forecast accuracy, and the actual cost of avoidable churn to your leadership team, you frame the complexities of Customer Success in terms everyone values. This data-driven approach removes emotion from the equation, proving that strategic retention is the cheapest, most efficient way to grow the business.</p>
+    <p>Sales affects the quality of Purchase and Welcome because the promise made during the buying process becomes the expectation carried into the relationship. If the customer bought a future state that cannot be reached quickly, First Value becomes harder. If the buying committee was not properly understood, stakeholder alignment becomes fragile. If the use case was oversold or poorly qualified, Customer Success inherits a relationship that is already misaligned before it begins.</p>
+
+    <p>Product affects First Value and Value Blocks because adoption depends on whether the product can support the outcomes the customer is trying to achieve. A feature gap is not just a roadmap item when it blocks value realization. A usability issue is not just a product complaint when it slows progression through the pipeline. Product decisions show up in customer health, cycle time, support burden, and expansion readiness whether the Product team is looking at those signals or not.</p>
+
+    <p>Marketing affects Advocacy and Intent because customer stories are not manufactured at the end of a good relationship. They are captured as the relationship matures. When CS shares insights, identifies measurable progress, and documents business outcomes, Marketing gains the raw material for proof. Case studies, references, community stories, and campaign narratives become stronger because they are tied to actual customer movement instead of generic satisfaction.</p>
+
+    <p>Finance affects the system because growth decisions require a clear view of the cost to retain, the cost to expand, and the capacity required to support the customer base. When revenue forecasts are separated from customer progression, leadership is left with optimism disguised as planning. When the forecast is connected to pipeline stage, health, capacity, and inflection point completion, the business can see whether revenue is supported by reality.</p>
+
+    <p>Customer Success sits in the center of this system, but not because it owns every action. CS sits in the center because it orchestrates the relationship across the moments that determine whether the customer is moving forward. That distinction matters. A CSM should not be expected to compensate for every broken handoff, every unclear promise, every product gap, every missing story, or every capacity constraint. The role of the CSM is to make progression visible and drive the next best action. The role of the operating system is to ensure the rest of the company can see and support that progression.</p>
+
+    <div class="system-callout">
+      <span class="label">Where Collaboration Becomes Real</span>
+      <p>Cross-team collaboration becomes operational when every function can see the same inflection points and understand how its work either accelerates or slows customer progression.</p>
+    </div>
+
+    <div class="section-kicker">Metrics as Outputs</div>
+    <h2>KPIs Should Come From the System, Not Sit Beside It</h2>
+
+    <p>This is why traditional collaboration KPIs often feel hollow. A company can put NRR on a slide, announce that retention is everyone’s job, and still operate exactly as it did before. The metric may be shared, but the work remains fragmented. When that happens, shared accountability becomes another form of ambiguity. Everyone is responsible, which often means no one knows what to do differently on Monday morning.</p>
+
+    <p>The better approach is to let the system produce the KPIs. Net Revenue Retention, forecast accuracy, and cycle time are still critical. They are just not the starting point. They are the evidence that the system is working.</p>
+
+    <div class="metric-strip">
+      <div class="metric-card">
+        <h4>NRR</h4>
+        <p>Shows whether the company is creating enough durable value after the sale to retain, expand, and compound existing revenue.</p>
+      </div>
+      <div class="metric-card">
+        <h4>Forecast Accuracy</h4>
+        <p>Shows whether customer progression, health, and expansion readiness are understood early enough to predict revenue with confidence.</p>
+      </div>
+      <div class="metric-card">
+        <h4>Cycle Time</h4>
+        <p>Shows how efficiently customers move from purchase to First Value, from value to confidence, and from confidence to growth.</p>
+      </div>
+    </div>
+
+    <p>NRR becomes more than a board metric when it is connected to the work that creates it. A customer that has reached First Value, completed meaningful Value Blocks, received relevant insights, and participated in effective Alignment Meetings is fundamentally different from a customer that is merely active in the product. Both may appear retained today. Only one is moving through a system designed to create future growth.</p>
+
+    <p>Forecast accuracy becomes more than a finance exercise when it is grounded in observable customer behavior. A renewal forecast should not depend only on CSM sentiment or executive optimism. It should reflect pipeline stage, stakeholder coverage, health trends, value realization, adoption depth, capacity risk, and expansion evidence. When the post-sale pipeline becomes the basis for forecasting, CS earns strategic credibility because it can explain not just what it expects to happen, but why.</p>
+
+    <p>Cycle time becomes more than an efficiency measure when it exposes friction across the business. If customers routinely take too long to reach First Value, the issue may live in onboarding design, product complexity, sales qualification, implementation capacity, or expectation setting. The point is not to assign blame. The point is to make the friction visible early enough that the company can fix the system instead of asking the CSM to work harder around it.</p>
+
+    <div class="system-callout">
+      <span class="label">Metrics Follow Motion</span>
+      <p>You do not align teams by asking them to share metrics. You align teams by giving them one system of motion that produces the metrics together.</p>
+    </div>
+
+    <div class="section-kicker">Operating Reviews</div>
+    <h2>The Review Changes When the System Is Shared</h2>
+
+    <p>In a fragmented company, cross-functional reviews are often meetings where each team brings its own version of the truth. Sales brings the deal context. CS brings the risk narrative. Product brings roadmap constraints. Marketing brings reference needs. Finance brings the forecast. The meeting becomes an exercise in reconciliation before it can become a conversation about action.</p>
+
+    <p>In a unified system, the review starts from a different place. The company is not debating which version of reality is accurate. The company is looking at the same customer movement. Which customers have reached First Value? Which have not? Which accounts have completed meaningful Value Blocks? Which customers have stalled before an Alignment Meeting? Which accounts have strong health signals but no expansion path? Which expansion opportunities are real because the customer has shown Intent, and which are hopeful because the team wants the number?</p>
+
+    <p>This is the difference between reporting and operating. Reporting describes what happened. Operating reviews decide what the company will do next. The best post-sale reviews do not simply summarize churn risk, adoption, or renewal status. They examine the movement of customers through the system and identify where cross-functional action is required.</p>
+
+    <p>Sales and CS can use the system to inspect whether the buying promise is converting into First Value. Product and CS can use it to see where customer progress is blocked by adoption friction or capability gaps. Marketing and CS can use it to identify customers whose progress has created a story worth amplifying. Finance and CS can use it to understand whether the revenue forecast is supported by actual progression or dependent on hope.</p>
+
+    <p>That is a very different kind of collaboration. It does not rely on personalities, heroics, or informal relationships between functional leaders. It relies on the fact that the customer’s progression is visible to everyone and that every team can see how its choices affect that progression.</p>
+
+    <div class="section-kicker">Leadership</div>
+    <h2>The C-Suite Needs a System, Not More Customer Anecdotes</h2>
+
+    <p>Executives do not ignore retention because they are careless. They often ignore it because the signals arrive too late, too emotionally, or too disconnected from the financial model of the business. By the time churn is obvious, the company is already in explanation mode. By the time a renewal is at risk, the path to saving it may be narrow. By the time a customer complains loudly enough to reach the executive team, the system has already failed in quieter ways.</p>
+
+    <p>The operating system gives leadership a better view. It connects customer behavior to revenue risk before the end of the quarter. It shows whether customers are receiving value early enough. It shows whether the company is creating expansion readiness or simply waiting for renewal conversations. It shows whether product issues are isolated complaints or recurring blockers to pipeline progression. It shows whether capacity constraints are threatening the customer experience before the team burns out or the forecast misses.</p>
+
+    <p>This is how Customer Success becomes a strategic function without having to argue for strategic importance. It stops presenting retention as a collection of stories and starts presenting retention as a managed system. The conversation with the C-suite changes from “customers are at risk” to “here is where the system is creating risk, here is the revenue connected to it, and here is what must change.”</p>
+
+    <p>That is the language of operating leadership. It is also the bridge between this chapter and the next. Once the company can see customer progression through one shared system, it can finally ask a more disciplined question: do we have the capacity to execute the system we have designed?</p>
+
+    <p>Capacity planning only works when the work is visible. It requires more than headcount ratios or account assignments. It requires a clear understanding of direct effort, indirect effort, unplanned effort, lifecycle stage, customer complexity, and the operating expectations placed on the team. A unified post-sale system gives the company that view. It shows not just what customers need, but what the organization must be able to support if it wants retention and growth to be designed outcomes rather than heroic rescues.</p>
+
+    <div class="system-callout">
+      <span class="label">The Shift</span>
+      <p>When the post-sale system becomes visible across the company, retention stops being a CS problem and becomes an operating discipline.</p>
+    </div>
+
+    <p>This is the larger promise of the Post-Sale Operating System. It is not a better way to manage Customer Success in isolation. It is a better way to run the part of the company where revenue becomes durable, customer value becomes measurable, and growth becomes more predictable. Once that system is shared, collaboration is no longer an initiative. It is how the company works.</p>
   </div>
 </div>
 
@@ -242,8 +440,8 @@ window.addEventListener('scroll', () => {
   document.getElementById('progress-bar').style.width = pct + '%';
 });
 
-// Post-process callouts
-document.querySelectorAll('.chapter-body p').forEach(p => {
+// Post-process callouts disabled for hand-authored Chapter 21 callouts
+/* document.querySelectorAll('.chapter-body p').forEach(p => {
   const t = p.textContent.trim();
   const calloutPhrases = [
     "The pipeline doesn't stop",
@@ -261,7 +459,7 @@ document.querySelectorAll('.chapter-body p').forEach(p => {
     div.innerHTML = '<p>' + p.innerHTML + '</p>';
     p.replaceWith(div);
   }
-});
+}); */
 </script>
 </body>
 </html>
