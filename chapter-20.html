@@ -174,169 +174,101 @@
       <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#BA7517;margin-bottom:0.75rem">Part IV: Data, Automation & Scale</div>
       <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Chapter 20</div>
       <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Health Scoring That Actually Works</h1>
-      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">If your health score only signals a problem right before renewal, you don't have a health score — you have an autopsy report.</p>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened.</p>
     </div>
   </div>
+
+  <style>
+    .chapter-body .callout-title { color: var(--olive); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .55rem; }
+    .chapter-body .callout p { font-style: normal; }
+    .visual-panel { margin: 2.3rem 0; padding: 1.6rem; border: 1px solid rgba(26,46,66,.12); border-radius: 18px; background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(248,250,245,.94)); box-shadow: 0 18px 44px rgba(26,46,66,.08); }
+    .visual-kicker { font-size: .65rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #BA7517; margin-bottom: .35rem; }
+    .visual-title { font-size: 1.05rem; font-weight: 800; color: var(--navy); margin-bottom: .35rem; }
+    .visual-copy { font-size: .85rem; color: rgba(26,46,66,.62); line-height: 1.55; max-width: 68ch; margin-bottom: 1.2rem; }
+    .path-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .55rem; }
+    .path-card { padding: .85rem; border-radius: 12px; border: 1px solid rgba(26,46,66,.1); background: #fff; min-height: 104px; position: relative; overflow: hidden; }
+    .path-card:before { content:""; position:absolute; top:0; left:0; right:0; height:4px; background: rgba(186,117,23,.55); }
+    .path-card.growth:before { background: rgba(29,158,117,.7); }
+    .path-stage { font-size: .62rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: rgba(26,46,66,.45); margin-bottom: .45rem; }
+    .path-text { font-size: .76rem; line-height: 1.45; color: rgba(26,46,66,.72); }
+    .path-row-label { font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin:.85rem 0 .5rem;display:flex;align-items:center;gap:.45rem; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: #BA7517; display:inline-block; }
+    .dot.growth { background: #1D9E75; }
+    .signal-grid { display:grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+    .signal-card { padding: 1.1rem; border-radius: 14px; border: 1px solid rgba(26,46,66,.1); background: #fff; }
+    .signal-card strong { display:block; font-size: .92rem; margin-bottom: .45rem; }
+    .signal-card span { display:block; font-size: .8rem; line-height:1.55; color: rgba(26,46,66,.62); }
+    .loop-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:.55rem; align-items:stretch; }
+    .loop-step { padding:.9rem .75rem; border-radius: 12px; background: rgba(29,158,117,.07); border: 1px solid rgba(29,158,117,.18); text-align:center; }
+    .loop-num { font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:.35rem; }
+    .loop-label { font-size:.79rem;font-weight:700;color:var(--navy);line-height:1.35; }
+    .tool-panel { margin:2.5rem 0;padding:2rem;background:rgba(29,158,117,.06);border:1px solid rgba(29,158,117,.2);border-radius:16px; }
+    @media (max-width: 760px) { .path-grid, .signal-grid, .loop-grid { grid-template-columns: 1fr; } }
+    @keyframes toolblink{0%,100%{opacity:1}50%{opacity:.25}}
+  </style>
+
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
-    <p>In the previous chapter, we established that a Single Source of Truth and clean data are the prerequisites for scale. Now, it is time to put that data to work.</p>
+    <p>Health scoring sits in a dangerous place inside Customer Success. Almost everyone agrees it matters, but many teams quietly stop trusting it. The score is too complicated to produce, too dependent on subjective judgment, too disconnected from the way customers actually behave, or too late to be useful. By the time the account turns red, the customer has already made up their mind.</p>
 
-<p>Health scoring is the ultimate operational lever for prioritizing your team's resources and predicting revenue. However, in many organizations, health scores are a source of immense frustration. They are often bloated, overly complex, and filled with lagging indicators that only signal a customer is at risk when it is far too late to save the account. If your health score relies entirely on a massive drop in software usage right before a renewal, you don't have a predictive health score—you have an autopsy report.</p>
+    <p>That is why health scoring has to be rebuilt around a different idea. A useful health score is not a label. It is not a color. It is not a dashboard decoration that helps a leadership team feel like someone is watching the portfolio. A useful health score is the visibility layer of the post-sale operating system. It tells the organization whether customers are moving through the experience as designed, whether value is becoming more real over time, and where the system needs to intervene before the renewal conversation becomes a rescue attempt.</p>
 
-<p>To build a health score that actually predicts reality and drives proactive interventions, you must adopt the Strategic Customer Success approach to measurement.</p>
+    <div class="callout"><div class="callout-title">The Health Score Problem</div><p>If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened.</p></div>
 
-<p><strong>The Foundation: Avoidable vs. Unavoidable Churn</strong></p>
+    <p>Most health scores fail because they start at the wrong end of the story. They are built around the visible symptoms of risk, especially the ones that are easiest to measure. Usage drops. Support tickets increase. The CSM feels uneasy. Renewal is approaching. These signals are not worthless, but they are often late. They tell you the customer is already drifting away, not where the drift began.</p>
 
-<p>The single biggest mistake companies make when building a health score is trying to encapsulate every single variable that has ever caused a customer to leave. This makes the score mathematically bloated and operationally useless.</p>
+    <p>Churn rarely starts with one dramatic event. It usually begins much earlier, in small moments that compound. Expectations are not realigned after the sale. Onboarding takes longer than the customer expected. The key contact becomes tired or disengaged. First Value is delayed or poorly understood. Usage eventually drops, but by then usage is not the cause. It is the evidence.</p>
 
-<p>To fix this, you must fiercely separate churn into two distinct categories and entirely ignore one of them:</p>
+    <div class="visual-panel"><div class="visual-kicker">Visual Model</div><div class="visual-title">The path to churn versus the path to growth</div><div class="visual-copy">The same lifecycle can produce two very different outcomes. One path accumulates small misses until risk becomes obvious. The other path creates visible progress early enough to sustain trust.</div><div class="path-row-label"><span class="dot"></span>Path to churn</div><div class="path-grid"><div class="path-card"><div class="path-stage">Purchase</div><div class="path-text">Expectations are not realigned with reality after the sale.</div></div><div class="path-card"><div class="path-stage">Onboarding</div><div class="path-text">Implementation takes longer than expected and fatigue builds.</div></div><div class="path-card"><div class="path-stage">Go Live</div><div class="path-text">The key contact disengages and momentum starts to disappear.</div></div><div class="path-card"><div class="path-stage">Adoption</div><div class="path-text">Usage drops because value was never made clear enough.</div></div><div class="path-card"><div class="path-stage">Renewal</div><div class="path-text">The churn notice arrives after the real risk was already created.</div></div></div><div class="path-row-label"><span class="dot growth"></span>Path to growth</div><div class="path-grid"><div class="path-card growth"><div class="path-stage">Purchase</div><div class="path-text">The customer is welcomed and transitioned cleanly into the post-sale journey.</div></div><div class="path-card growth"><div class="path-stage">Onboarding</div><div class="path-text">Expectations are managed and the work is focused on First Value.</div></div><div class="path-card growth"><div class="path-stage">First Value</div><div class="path-text">The customer achieves a meaningful outcome in a predictable way.</div></div><div class="path-card growth"><div class="path-stage">Adoption</div><div class="path-text">Alignment deepens, wins are celebrated, and use becomes more sophisticated.</div></div><div class="path-card growth"><div class="path-stage">Renewal</div><div class="path-text">Renewal becomes the natural conclusion of progress, often with a path to growth.</div></div></div></div>
 
-<ul>
-<li><strong>Unavoidable Churn:</strong> This is churn over which your company has absolutely no control. Examples include a customer going out of business, being acquired, or "graduating" from your solution because they grew into an enterprise corporation. You cannot build a predictive health score for a company being acquired..</li>
-</ul>
+    <p>This is why health scoring must be connected to the journey, not just the product. Product usage matters, but usage alone does not explain whether the customer is building momentum. A customer can log in often and still fail to reach the outcome that justified the purchase. Another customer may show uneven usage while building executive alignment, completing critical process changes, and preparing for a larger rollout. Without the journey, the score sees activity but misses progress.</p>
 
-<ul>
-<li><strong>Avoidable Churn:</strong> This is churn your company directly contributed to. It is the result of slow or painful onboarding, poor communication, technical glitches, or a fundamental misalignment between what sales promised and what your product actually delivers.</li>
-</ul>
+    <p>The lifecycle plays give health scoring a better foundation. Purchase and Welcome tells us whether the customer was transitioned with confidence. Kickoff tells us whether expectations were reset and the reason for purchase was clarified. Onboarding tells us whether the customer is moving through the early work with enough support and direction. First Value tells us whether the customer has experienced something meaningful quickly enough to believe in the path ahead. Value Blocks, Sharing Insights, Alignment Meetings, and Renew and Grow tell us whether the customer is becoming more capable, more aligned, more visible, and more likely to expand.</p>
 
-<p><strong>The Rule:</strong> Your health score must focus exclusively on <em>avoidable churn</em>. By eliminating the noise of unavoidable churn, your score instantly becomes a more accurate reflection of the relationship dynamics you actually control.</p>
+    <div class="callout"><div class="callout-title">Health Measures Progress</div><p>A strong health score does not ask, “Is this customer red?” It asks, “Is this customer progressing through the system in the way a healthy customer should?”</p></div>
 
-<p><strong>The Inputs: Traditional vs. Growth-Oriented Criteria</strong></p>
+    <p>This changes the role of health scoring. It is no longer a broad attempt to explain every possible form of churn. It becomes a focused attempt to understand the churn your company can influence. Some churn is unavoidable. A customer may go out of business, be acquired, or outgrow the product because their needs fundamentally changed. Those cases matter to revenue, but they do not create a useful operating signal for the team. The health score should focus on avoidable churn, the kind your company contributes to through slow onboarding, poor communication, product confusion, technical defects, or misalignment between what was sold and what can actually be delivered.</p>
 
-<p>A health score that actually works requires a balanced mix of two different types of criteria. Relying solely on one will fail to tell the whole story of the customer.</p>
+    <p>When the score focuses on avoidable churn, it becomes more actionable. It points to the parts of the system that can be improved. It shows whether onboarding is creating fatigue, whether relationship reach is too narrow, whether goal progress is stalling, whether insights are failing to translate into action, or whether the customer still lacks the internal proof needed to defend renewal. The point is not to create a perfect prediction. The point is to create a useful signal early enough to change the outcome.</p>
 
-<p><strong>Traditional Criteria (The Baseline)</strong> These are the standard metrics most companies use: software usage, Net Promoter Score (NPS), the quantity of support cases, and the upcoming renewal date. While necessary, these are often lagging indicators. A drop in usage alone doesn't tell you much until it's paired with deeper context. To make traditional criteria effective, apply specificity—such as measuring product usage in key features rather than overall logins.</p>
+    <p>That requires a different mix of criteria. Traditional criteria still belong in the model. Usage, NPS, support case volume, renewal timing, purchase history, and CSM judgment can all provide context. But they should not carry the whole score. Traditional indicators are often easier to collect than they are to interpret. A usage drop may indicate risk, but it may also indicate seasonality, an implementation dependency, a champion transition, or a process change outside the product. A support spike may indicate frustration, but it may also mean the customer is expanding into more advanced use.</p>
 
-<p><strong>Growth-Oriented Criteria (The Predictors)</strong> Growth-oriented criteria measure activity that often happens outside of the product itself, providing leading indicators of future success. These include:</p>
+    <p>The missing layer is growth-oriented criteria. These are the signals that show whether the customer is becoming healthier before the renewal pressure appears. Relationship reach is one of them. A customer with multiple engaged stakeholders and executive visibility is healthier than a customer dependent on one heroic champion. Lifecycle progression is another. A customer who reaches First Value on time, completes meaningful goal work, and continues to participate in alignment conversations is showing evidence of forward movement. Customer engagement matters as well, especially when the customer consumes guidance, participates in reference activity, shares wins internally, or contributes to a case study. Sophistication of use may be the strongest long-term signal because it shows the customer is not merely using the product but becoming more capable because of it.</p>
 
-<ul>
-<li><strong>Relationship Reach:</strong> Are you getting more executives and teams interested in your product, or are you dangerously reliant on a single internal champion?</li>
-</ul>
+    <div class="visual-panel"><div class="visual-kicker">Signal Design</div><div class="visual-title">Traditional criteria and growth-oriented criteria must work together</div><div class="visual-copy">Traditional indicators help establish a baseline. Growth-oriented indicators reveal whether the customer is becoming more aligned, more capable, and more likely to renew and grow.</div><div class="signal-grid"><div class="signal-card"><strong>Traditional signals</strong><span>Usage, support cases, NPS, CSM input, purchase history, and renewal timing can provide important context, but they often show risk after momentum has already changed.</span></div><div class="signal-card"><strong>Growth-oriented signals</strong><span>Relationship reach, lifecycle progression, goal achievement, customer engagement, and sophistication of use show whether the customer is building the conditions for retention and expansion.</span></div></div></div>
 
-<ul>
-<li><strong>Lifecycle Progression: </strong>Are they progressing through your plays as expected? Did they achieve First Value on time, and have they successfully completed their recent Goal Blocks?</li>
-</ul>
+    <p>The best way to identify these criteria is not to start with the customers who left. That can teach you something, but it often pulls the organization into a failure-centered conversation. A better starting point is your healthiest customers. Look at the customers you would happily clone. They are aligned. They show up prepared. They understand the business objective. They follow through on commitments. They consume guidance. They bring more people into the relationship. They use the product in more mature ways over time. They can describe your value in language their own company understands.</p>
 
-<ul>
-<li><strong>Customer Engagement: </strong>Are they participating in your marketing efforts, acting as a reference, or evangelizing their accomplishments within their own company?</li>
-</ul>
+    <p>Health scoring should be built by reverse-engineering that pattern. What do healthy customers look like? How do they behave? How do they progress through the lifecycle? How do they engage with your team, your product, your recommendations, and their own internal stakeholders? These questions reveal the criteria that matter because they are grounded in the version of the customer you want to reproduce.</p>
 
-<ul>
-<li><strong>Sophistication of Use: </strong>Are they transitioning from an apprentice to a master by adopting your more advanced features? Tracking "Sophistication of Use" is how a CS team mathematically proves the iterative approach is working. It measures the customer's journey of continuously coming back to solve harder problems, overcome challenges, and build new capabilities, which is the ultimate leading indicator of retention and product stickiness.</li>
-</ul>
+    <div class="callout"><div class="callout-title">Model the Healthy Customer</div><p>Do not build the score only by studying failure. Build it by understanding what your best customers have in common and designing the system to create more of them.</p></div>
 
-<p><strong>Modeling Success</strong></p>
+    <p>Once the criteria are identified, the work becomes discipline. Each criterion needs a clear definition. The team needs to know what it means, why it matters, how it will be measured, and what a low or high score actually represents. This is where many health scores become vague. They rely on words like engagement, alignment, or value without defining what those words mean in the operating system. If two CSMs would score the same customer differently because the criteria are unclear, the model is not ready.</p>
 
-<p>When companies finally sit down to assign values to their health score, they usually start by analyzing why their past customers left. This is the wrong approach.</p>
+    <p>Weighting is where the model becomes more honest. Not every signal has equal predictive power. A weak champion may matter more than a modest support increase. Delayed First Value may matter more than a temporary usage dip. Lack of executive visibility may matter more than a neutral NPS response. The weight should reflect the degree to which each criterion helps predict future behavior and the degree to which the company can act on it. The score does not need to be mathematically perfect, but it does need to be thoughtful enough to earn trust.</p>
 
-<p>The best health scores are not built by reverse-engineering failure; they are built by reverse-engineering your <em>healthiest</em> customers. You want to identify what works and replicate that across your entire customer base. To build your scoring model, select a sample of your absolute best customers and ask your team: <em>What does a healthy customer actually look like?</em></p>
+    <p>That trust is built through validation. Score a representative set of customers, then look at the extremes. Are the strongest green accounts truly healthy? Are the deepest red accounts truly at risk? Where does the score surprise the team in a useful way? Where does it misrepresent reality? This is not a failure of the model. It is how the model learns. Health scoring is not something you finish. It is something you launch, use, inspect, and refine.</p>
 
-<ul>
-<li><strong>Alignment </strong><strong>&</strong><strong> Champions:</strong> Do we have alignment across their team with a strong internal champion? Are they able to clearly communicate their business objectives?</li>
-</ul>
+    <div class="visual-panel"><div class="visual-kicker">Operating Loop</div><div class="visual-title">A health score has to become part of how the business runs</div><div class="visual-copy">The score only matters if it creates action. That means it has to move from design into review rhythms, team conversations, leadership visibility, and continuous refinement.</div><div class="loop-grid"><div class="loop-step"><div class="loop-num">01</div><div class="loop-label">Define criteria</div></div><div class="loop-step"><div class="loop-num">02</div><div class="loop-label">Score customers</div></div><div class="loop-step"><div class="loop-num">03</div><div class="loop-label">Validate extremes</div></div><div class="loop-step"><div class="loop-num">04</div><div class="loop-label">Refine the model</div></div><div class="loop-step"><div class="loop-num">05</div><div class="loop-label">Use it to act</div></div></div></div>
 
-<ul>
-<li><strong>Skill Sets </strong><strong>&</strong><strong> Habits:</strong> Do they have the right tactical skills to execute efficiently, and do they demonstrate good habits without over-configuring the technology?</li>
-</ul>
+    <p>This is also why a health score must come from daily operations. If the score depends on a special project, a quarterly cleanup, or a manual scramble before an executive meeting, it will disappear. The mechanisms for capturing the score have to be embedded in the work itself. The kickoff should create data. Onboarding should create data. First Value should create data. Goal progress should create data. Alignment meetings should create data. The more health scoring becomes a byproduct of the system, the more trustworthy it becomes.</p>
 
-<ul>
-<li><strong>Engagement:</strong> Are they present and engaged for our meetings, or do they consistently reschedule? Do they follow through on their commitments and utilize self-service materials?</li>
-</ul>
+    <p>A simple, live health score that inspires action will always beat a sophisticated score that no one uses. Simplicity does not mean shallow. It means focused. The model should contain enough criteria to tell a useful story, but not so many that the team loses the plot. It should be current enough to support decisions, but not so reactive that every small movement creates noise. Above all, it should point to action. If the score does not help the team decide what to do next, it is not an operating tool.</p>
 
-<ul>
-<li><strong>Advocacy:</strong> Are they a source of referrals, or did they achieve an outcome so impressive it became a case study?</li>
-</ul>
+    <div class="callout"><div class="callout-title">Action Is the Test</div><p>A health score that does not change behavior is just reporting. A health score that works tells the team where to act and why it matters.</p></div>
 
-<p><strong>Evaluating, Defining, and Weighting Criteria</strong></p>
+    <p>At this point, the challenge becomes practical. How do you take the signals that matter, define them clearly, weight them thoughtfully, and test whether they reflect reality? How do you avoid building another spreadsheet that becomes too hard to maintain? How do you move from concept to prototype without waiting for perfect data?</p>
 
-<p>Once you identify the core behaviors of your healthiest customers, you must narrow them down to a focused list of about six criteria.</p>
+    <p>To make that transition easier, we built the Health Score Builder for this system. It is designed to help leaders move from abstract agreement to a working model. The tool helps you select a focused set of criteria, balance traditional and growth-oriented signals, assign weights, test customer examples, and begin the rollout process with more confidence.</p>
 
-<p><strong>Evaluate the Criteria:</strong> Ask yourself three critical questions to ensure these metrics are actually viable:</p>
+    <div class="tool-panel"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem"><div><div style="font-size:0.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.4rem">Chapter 20 · Interactive Tool</div><div style="font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:0.3rem">Health Score Builder</div><div style="font-size:0.85rem;color:rgba(26,46,66,.55);max-width:50ch">Design, weight, and validate a health scoring model built from your healthiest customers and tied to the journey you want customers to follow.</div></div><div style="display:flex;align-items:center;gap:6px;background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.25);border-radius:20px;padding:4px 12px;flex-shrink:0"><div style="width:5px;height:5px;border-radius:50%;background:#1D9E75;animation:toolblink 2.2s ease-in-out infinite"></div><span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1D9E75">Live Tool</span></div></div><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-bottom:1.25rem"><div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px"><div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 01</div><div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Define Criteria</div><div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Select the signals that actually describe health.</div></div><div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px"><div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 02</div><div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Weight Signals</div><div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Reflect the predictive strength of each criterion.</div></div><div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px"><div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 03</div><div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Test Customers</div><div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Validate whether the score matches reality.</div></div><div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px"><div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 04</div><div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Roll It Out</div><div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Turn the score into a management rhythm.</div></div></div><a href="health-score-builder.html" style="display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.25rem;background:#1D9E75;border-radius:8px;text-decoration:none;transition:opacity .2s" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='1'"><div><div style="font-size:0.88rem;font-weight:700;color:#fff">Open the Health Score Builder →</div><div style="font-size:0.72rem;color:rgba(255,255,255,.65)">4 guided steps · Weighted model · Validation path</div></div><div style="font-size:1.4rem;color:#fff">↗</div></a></div>
 
-<ul>
-<li>What do we expect to learn by measuring this metric?</li>
-</ul>
+    <p>The tool is not the health score by itself. It is the translation layer that helps the operating system become visible. It works because the journey is already defined, the plays already describe the intended customer experience, and the team has a clearer view of what healthy progress should look like. Without that foundation, a score is just a number. With it, the score becomes a signal the business can act on.</p>
 
-<ul>
-<li>What can we do with that knowledge?</li>
-</ul>
+    <p>This is the real purpose of health scoring. Not to prove that Customer Success is watching the customer base. Not to make a dashboard look more complete. Not to create a false sense of precision. The purpose is to help the company see customer progress early enough to protect it, accelerate it, and scale it.</p>
 
-<ul>
-<li>When will we measure it, and how will we collect the data to assign a score?</li>
-</ul>
-
-<p><strong>Define the Score:</strong> For your team to gather data effectively, you must write a clear description defining the intent of the criteria and exactly what constitutes a "high score" versus a "low score".</p>
-
-<p><strong>Weight the Score:</strong> Not all criteria have the same predictive power. You must weight your metrics so they add up to 100% based on their actual correlation to customer health. For example, if you notice that 85% of your churned customers had poor product usage, but only 40% had a low CSM pulse score, product usage is a significantly stronger predictor and must be given a higher weight in your model.</p>
-
-<p><strong>The Roll-Out Process</strong></p>
-
-<p>Many health scores fail because teams overcomplicate them and hesitate to launch. To successfully roll out your new health score, treat it like a strategic play and follow these five steps:</p>
-
-<ul>
-<li><strong>Design </strong><strong>&</strong><strong> Prototype:</strong> Take a small sampling of customers and try your new scoring model out to see how it feels.</li>
-</ul>
-
-<ul>
-<li><strong>The Initial Pass:</strong> Once confident in the prototype, execute an initial pass across your entire customer base, involving your team early so they understand the criteria.</li>
-</ul>
-
-<ul>
-<li><strong>Review for Insights:</strong> Take time to review the initial pass and see what broad insights you can glean about your portfolio's overall health.</li>
-</ul>
-
-<ul>
-<li><strong>Validate the Extremes:</strong> Look at your highest "green" accounts and your lowest "red" accounts. Discuss with your team: <em>Is this an accurate representation of reality?</em> Use this discussion to refine and improve the score.</li>
-</ul>
-
-<ul>
-<li><strong>Share the Value:</strong> Once you are confident the score accurately reflects reality, tell others. Share the insights with Sales, Product, and the C-suite so the entire company can consume and act on the data.</li>
-</ul>
-
-<p>Do not let your health score go stale, and above all, do not hesitate. A simple, live health score that inspires action is always better than a perfect score that never launches.</p>
-
-<div style="margin:2.5rem 0;padding:2rem;background:rgba(29,158,117,.06);border:1px solid rgba(29,158,117,.2);border-radius:16px">
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem">
-    <div>
-      <div style="font-size:0.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.4rem">Chapter 20 · Interactive Tool</div>
-      <div style="font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:0.3rem">Health Score Builder</div>
-      <div style="font-size:0.85rem;color:rgba(26,46,66,.55);max-width:50ch">Design, weight, and validate a health scoring model built from your healthiest customers — not from reverse-engineering failure.</div>
-    </div>
-    <div style="display:flex;align-items:center;gap:6px;background:rgba(29,158,117,.1);border:1px solid rgba(29,158,117,.25);border-radius:20px;padding:4px 12px;flex-shrink:0">
-      <div style="width:5px;height:5px;border-radius:50%;background:#1D9E75;animation:toolblink 2.2s ease-in-out infinite"></div>
-      <span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1D9E75">Live Tool</span>
-    </div>
+    <p>A health score that actually works does not merely tell you who is red. It tells you where the system needs to act.</p>
   </div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-bottom:1.25rem">
-    <div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 01</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Criteria Selection</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Traditional + growth-oriented signals</div>
-    </div>
-    <div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 02</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Weighting Model</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Allocate 100% by predictive power</div>
-    </div>
-    <div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 03</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Score Simulation</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">Test against real account profiles</div>
-    </div>
-    <div style="padding:0.75rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.15);border-radius:8px">
-      <div style="font-size:0.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.2rem">Step 04</div>
-      <div style="font-size:0.8rem;font-weight:600;color:var(--navy)">Rollout Plan</div>
-      <div style="font-size:0.72rem;color:rgba(26,46,66,.5)">5-step launch framework</div>
-    </div>
-  </div>
-  <a href="health-score-builder.html" style="display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.25rem;background:#1D9E75;border-radius:8px;text-decoration:none;transition:opacity .2s" onmouseenter="this.style.opacity='.88'" onmouseleave="this.style.opacity='1'">
-    <div>
-      <div style="font-size:0.88rem;font-weight:700;color:#fff">Open the Health Score Builder →</div>
-      <div style="font-size:0.72rem;color:rgba(255,255,255,.65)">4 guided steps · Live scoring model · Rollout checklist</div>
-    </div>
-    <div style="font-size:1.4rem;color:#fff">↗</div>
-  </a>
 </div>
-<style>@keyframes toolblink{0%,100%{opacity:1}50%{opacity:.25}}</style>
 
 <!-- BOTTOM NAV -->
 <div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
