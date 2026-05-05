@@ -133,6 +133,57 @@ export const playTemplates: PlayTemplate[] = [
     requiredOutputFields: [],
     progressionInfluence: ['stakeholder_coverage'],
   },
+  {
+    id: 'tmpl-value-blocks',
+    type: 'value_blocks',
+    label: 'Value Blocks',
+    description: 'Keep the customer moving after First Value by breaking their next larger objective into right-sized, visible blocks of progress — preventing the messy middle.',
+    stageId: 'advocate',
+    entryCriteria: [
+      'First Value milestone achieved',
+      'Customer has a stated larger objective to advance',
+      'Account in Advocate stage or actively progressing toward it',
+    ],
+    interactionGuide: {
+      agenda: [
+        'Open: name the customer\'s larger objective — not the block itself. Context before content.',
+        'Review: what happened since the last block or alignment point — activity, usage, champion changes, any surprises',
+        'Confirm the block: name it, explain why it\'s the right next step, adjust if context has shifted since it was chosen',
+        'Execute together: guide the work actively — I do, we do, you do. The customer should be doing something, not just watching.',
+        'Close the loop: what\'s complete, who owns what remains, deadline, completion criteria, and the next block before you leave the room',
+      ],
+      requiredComponents: [
+        'Customer\'s larger objective stated and confirmed as still valid',
+        'Five-needs diagnosis completed: Skillset / Knowledge / Cost / Demands / Change',
+        'Block named with explicit, specific completion criteria — not "make progress" but "done looks like X"',
+        'All remaining actions have an owner and a due date',
+        'Insight shared with customer from progress or usage data',
+        'Next block identified and offered as a recommendation before the session ends',
+      ],
+      keyQuestions: [
+        'What outcome are you still trying to advance — is that still the right destination?',
+        'What has changed since we last worked together — internally, with the team, with priorities?',
+        'What would make this next step hard to complete — time, people, decisions, or something else?',
+        'Who needs to be involved for this block to succeed — and are they in the room today?',
+        'How will you know when this block has created real progress — what does done look like to your team?',
+      ],
+      stakeholderTalkingPoints: [
+        'For champions: frame the block as the next practical step in building your team\'s capability — not another vendor task, but something that makes your team more capable',
+        'For decision makers: connect completed blocks to outcomes already achieved — show the compounding pattern, not just the current ask',
+        'For end users: focus on making the specific workflow easier right now, not the product in general or the long-term vision',
+      ],
+    },
+    requiredOutputFields: [
+      { key: 'blockName',               label: 'Value Block Selected',         inputType: 'textarea', required: true,  placeholder: 'Name the specific block worked — be concrete. Not "adoption work" but "configured the weekly team dashboard with the ops lead"' },
+      { key: 'customerNeedType',        label: 'Need Being Addressed',         inputType: 'select',   required: true,  placeholder: '' },
+      { key: 'completionEvidence',      label: 'Evidence of Progress',         inputType: 'textarea', required: true,  placeholder: 'What was accomplished? Or what specifically remains — and who owns each open item?' },
+      { key: 'insightSharedWithCustomer', label: 'Insight Shared with Customer', inputType: 'textarea', required: false, placeholder: 'What pattern, finding, benchmark, or risk did you surface for the customer during this session?' },
+      { key: 'blockerNotes',            label: 'Blockers or Friction',         inputType: 'textarea', required: false, placeholder: 'Anything that slowed or blocked the block — even partially. Patterns here feed the block library.' },
+      { key: 'nextBlockRecommendation', label: 'Next Block',                   inputType: 'textarea', required: true,  placeholder: 'What\'s the next right-sized block? Name it specifically — the customer should leave knowing what comes after this.' },
+      { key: 'insightForCompany',       label: 'Internal Learning',            inputType: 'textarea', required: false, placeholder: 'Product gap, training gap, stakeholder pattern, common blocker — what should the team know from this session?' },
+    ],
+    progressionInfluence: ['goal_progress', 'insight_delivery'],
+  },
 ]
 
 // ─── Accounts ─────────────────────────────────────────────────────────────────
@@ -288,7 +339,7 @@ export const playRuns: PlayRun[] = [
   // Meridian — ACTIVE alignment meeting
   { id: 'run-004', accountId: 'acc-001', playTemplateId: 'tmpl-alignment-meeting', type: 'alignment_meeting', label: 'Alignment Meeting', status: 'in_progress', currentStep: 1, scheduledDate: '2026-04-28', startedAt: '2026-04-21T09:00:00Z', completedAt: null,                   briefId: 'brief-001', outputId: null },
   // Meridian — upcoming
-  { id: 'run-005', accountId: 'acc-001', playTemplateId: 'tmpl-kickoff',           type: 'value_blocks',      label: 'Value Blocks',      status: 'not_started', currentStep: 1, scheduledDate: '2026-05-15', startedAt: null,                   completedAt: null,                   briefId: null,       outputId: null },
+  { id: 'run-005', accountId: 'acc-001', playTemplateId: 'tmpl-value-blocks',      type: 'value_blocks',      label: 'Value Blocks',      status: 'not_started', currentStep: 1, scheduledDate: '2026-05-15', startedAt: null,                   completedAt: null,                   briefId: 'brief-002', outputId: null },
   // Apex
   { id: 'run-006', accountId: 'acc-002', playTemplateId: 'tmpl-kickoff',           type: 'kickoff',           label: 'Kickoff',           status: 'completed',   currentStep: 4, scheduledDate: '2026-01-28', startedAt: '2026-01-28T09:00:00Z', completedAt: '2026-01-28T10:30:00Z', briefId: null,       outputId: null },
   // Vantage
@@ -369,6 +420,79 @@ export const meetingBriefs: MeetingBrief[] = [
       {
         id: 'focus-003',
         text: 'Surface the Finance Ops expansion opportunity — position as a natural next step, not a sales conversation',
+        priority: 'medium',
+        linkedInflectionPointId: null,
+        linkedStakeholderMapId: 'sm-004',
+      },
+    ],
+  },
+  {
+    id: 'brief-002',
+    playRunId: 'run-005',
+    accountId: 'acc-001',
+    generatedAt: '2026-05-12T08:30:00Z',
+    generatedBy: 'seed',
+    customerSummary:
+      'Meridian Health Systems is 4 months post-kickoff and has proven the platform can deliver value — reporting automation is at 40% completion, and the compliance dashboard win has been cited by the VP of Operations as a direct renewal driver. The relationship has momentum. The risk now is the messy middle: First Value was achieved, but the second major goal (cross-department visibility) still has no internal owner. Without a structured next step, progress stalls quietly while the account appears healthy on the surface.',
+    goalProgress:
+      'Reporting automation is progressing but has not yet hit the 60% target for this period. The compliance dashboard outcome is documented and strong. The cross-department visibility goal — Meridian\'s second primary objective — has never been formally activated: no owner, no milestone, no defined scope. This is not a product gap. It is an internal change gap. Meridian needs someone to own it before it can be worked.',
+    risks: [
+      {
+        id: 'vb-risk-001',
+        text: 'Cross-department visibility goal has no owner — this is a "change" need, not a product gap. Until an internal champion takes ownership, this goal cannot progress regardless of platform capability.',
+        priority: 'high',
+        linkedInflectionPointId: 'ip-003',
+        linkedStakeholderMapId: null,
+      },
+      {
+        id: 'vb-risk-002',
+        text: 'Two power users have not logged in for 14 days — a potential adoption plateau that, if unaddressed, weakens the evidence base for renewal and expansion conversations.',
+        priority: 'medium',
+        linkedInflectionPointId: null,
+        linkedStakeholderMapId: null,
+      },
+      {
+        id: 'vb-risk-003',
+        text: 'No contact established with CFO David Ko — renewal requires finance sign-off. The longer this is delayed, the less runway exists to build the relationship before the close window.',
+        priority: 'medium',
+        linkedInflectionPointId: null,
+        linkedStakeholderMapId: 'sm-003',
+      },
+    ],
+    expansionSignals: [
+      {
+        id: 'vb-exp-001',
+        text: 'Finance Ops team faces the same reporting pain that Meridian\'s IT team solved — the reporting automation outcome is directly transferable. This is not a sales conversation yet; it\'s a natural next Value Block that also happens to be an expansion signal.',
+        priority: 'high',
+        linkedInflectionPointId: null,
+        linkedStakeholderMapId: 'sm-004',
+      },
+      {
+        id: 'vb-exp-002',
+        text: 'Usage spike of 35% in March suggests adoption is spreading beyond the original team without a formal expansion motion — confirming there is internal pull that a structured block could accelerate.',
+        priority: 'medium',
+        linkedInflectionPointId: null,
+        linkedStakeholderMapId: null,
+      },
+    ],
+    recommendedFocus: [
+      {
+        id: 'vb-focus-001',
+        text: 'Run a "change" block: help Priya Nair identify and brief an internal owner for the cross-department visibility goal. The CSM\'s job is not to own this goal — it\'s to help the champion build the internal mandate. Recommended block: "Cross-department visibility ownership session" — 60 minutes with Priya and a nominated dept head.',
+        priority: 'high',
+        linkedInflectionPointId: 'ip-003',
+        linkedStakeholderMapId: null,
+      },
+      {
+        id: 'vb-focus-002',
+        text: 'Share the adoption insight: the March usage spike shows the platform is spreading without a formal rollout. Make this visible to Priya — customers who see their own adoption data presented back to them as a finding are more likely to act on it than those who receive generic progress reports.',
+        priority: 'high',
+        linkedInflectionPointId: 'ip-005',
+        linkedStakeholderMapId: null,
+      },
+      {
+        id: 'vb-focus-003',
+        text: 'Offer the Finance Ops block as the natural next step — not a sales conversation, but a "we solved this for your IT team, here\'s what it looked like" knowledge transfer. Position it as something Priya can take to Aisha Torres, not something that requires a new procurement cycle.',
         priority: 'medium',
         linkedInflectionPointId: null,
         linkedStakeholderMapId: 'sm-004',

@@ -3,8 +3,14 @@ import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
   PipelineStage, PlayTemplate, AccountView, ConfidenceLevel, OutcomeEvidence, PipelineStageId,
-  FiveQuestions,
+  FiveQuestions, BlockStatus,
 } from '@/types'
+
+// Supplementary data passed with value_blocks play completions
+export interface ValueBlockData {
+  blockStatus: BlockStatus
+  hasInsightShared: boolean
+}
 import {
   accounts as seedAccounts,
   contacts as seedContacts,
@@ -53,7 +59,7 @@ interface AppContextValue extends AppState {
 
   // Mutations
   advancePlayStep: (runId: string, step: 1 | 2 | 3 | 4) => void
-  completePlay: (runId: string, output: Omit<MeetingOutput, 'id' | 'playRunId' | 'accountId' | 'capturedAt'>) => void
+  completePlay: (runId: string, output: Omit<MeetingOutput, 'id' | 'playRunId' | 'accountId' | 'capturedAt'>, valueBlockData?: ValueBlockData) => void
   moveOpportunityStage: (oppId: string, newStage: PipelineStageId) => void
   captureFiveQuestions: (runId: string, answers: Omit<FiveQuestions, 'id' | 'accountId' | 'capturedAt' | 'capturedByRunId'>) => void
   setFirstValueStatement: (accountId: string, statement: string) => void
@@ -114,7 +120,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const completePlay = (
     runId: string,
-    output: Omit<MeetingOutput, 'id' | 'playRunId' | 'accountId' | 'capturedAt'>
+    output: Omit<MeetingOutput, 'id' | 'playRunId' | 'accountId' | 'capturedAt'>,
+    valueBlockData?: ValueBlockData,
   ) => {
     const run = state.playRuns.find(r => r.id === runId)
     if (!run) return
@@ -138,12 +145,24 @@ export function AppProvider({ children }: { children: ReactNode }) {
       // 2. Mark linked inflection points as achieved
       const updatedIPs = s.inflectionPoints.map(ip => {
         if (ip.accountId !== run.accountId) return ip
+
+        // alignment_meeting: mark alignment_meeting IP + goal_progress on advancement
         if (run.type === 'alignment_meeting' && ip.type === 'alignment_meeting' && ip.status !== 'achieved') {
           return { ...ip, status: 'achieved' as const, achievedDate: now, achievedByRunId: runId }
         }
         if (run.type === 'alignment_meeting' && ip.type === 'goal_progress' && ip.status === 'pending' && output.customerAdvanced) {
           return { ...ip, status: 'achieved' as const, achievedDate: now, achievedByRunId: runId }
         }
+
+        // value_blocks: mark goal_progress if block was completed
+        if (run.type === 'value_blocks' && ip.type === 'goal_progress' && ip.status !== 'achieved' && valueBlockData?.blockStatus === 'completed') {
+          return { ...ip, status: 'achieved' as const, achievedDate: now, achievedByRunId: runId }
+        }
+        // value_blocks: mark insight_delivery if an insight was shared with the customer
+        if (run.type === 'value_blocks' && ip.type === 'insight_delivery' && ip.status !== 'achieved' && valueBlockData?.hasInsightShared) {
+          return { ...ip, status: 'achieved' as const, achievedDate: now, achievedByRunId: runId }
+        }
+
         return ip
       })
 
@@ -169,7 +188,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
           : nba
       )
 
-      if (output.customerAdvanced) {
+      if (output.customerAdvanced && run.type === 'alignment_meeting') {
         updatedNBAs.push({
           id: `nba-${Date.now()}`,
           accountId: run.accountId,
@@ -185,6 +204,45 @@ export function AppProvider({ children }: { children: ReactNode }) {
           completedAt: null,
           triggeredByOutputId: outputId,
         })
+      }
+
+      if (run.type === 'value_blocks') {
+        const blockStatus = valueBlockData?.blockStatus ?? 'in_progress'
+        if (blockStatus === 'completed') {
+          // Block done — keep the cadence going
+          updatedNBAs.push({
+            id: `nba-${Date.now()}`,
+            accountId: run.accountId,
+            label: 'Schedule next Value Block session — maintain the progress cadence',
+            reason: 'Block completed. Accounts that sustain a Value Block cadence after First Value are significantly more likely to renew and expand. Don\'t let momentum stall.',
+            priority: 'medium',
+            source: 'rule',
+            status: 'active',
+            linkedPlayTemplateId: 'tmpl-value-blocks',
+            linkedInflectionPointId: null,
+            linkedStakeholderMapId: null,
+            createdAt: now,
+            completedAt: null,
+            triggeredByOutputId: outputId,
+          })
+        } else if (blockStatus === 'stalled' || blockStatus === 'at_risk') {
+          // Block stalled — diagnose and unblock
+          updatedNBAs.push({
+            id: `nba-${Date.now()}`,
+            accountId: run.accountId,
+            label: `Value Block ${blockStatus === 'at_risk' ? 'at risk' : 'stalled'} — diagnose and unblock before next session`,
+            reason: 'A stalled block is a signal, not a failure. Identify the root cause (skillset, knowledge, cost, demands, or change) and adjust the block or reduce scope before re-engaging.',
+            priority: blockStatus === 'at_risk' ? 'high' : 'medium',
+            source: 'rule',
+            status: 'active',
+            linkedPlayTemplateId: 'tmpl-value-blocks',
+            linkedInflectionPointId: null,
+            linkedStakeholderMapId: null,
+            createdAt: now,
+            completedAt: null,
+            triggeredByOutputId: outputId,
+          })
+        }
       }
 
       // 5. Update account progression status
@@ -215,6 +273,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
         if (run.type === 'first_value' || run.type === 'kickoff') {
           if (opp.type === 'renewal' && opp.confidence === 'low') {
             return { ...opp, confidence: 'medium' as ConfidenceLevel, lastUpdatedAt: now }
+          }
+        }
+
+        // value_blocks completed → lift renewal confidence + boost expansion readiness
+        if (run.type === 'value_blocks' && valueBlockData?.blockStatus === 'completed') {
+          if (opp.type === 'expansion' || opp.type === 'upsell') {
+            return { ...opp, confidence: upgrade(opp.confidence), lastUpdatedAt: now }
+          }
+          if (opp.type === 'renewal' && opp.confidence !== 'high') {
+            return { ...opp, confidence: upgrade(opp.confidence), lastUpdatedAt: now }
           }
         }
 
@@ -297,7 +365,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
       getPlayTemplate,
       getActivePlayRun,
       advancePlayStep,
-      completePlay,
+      completePlay: completePlay as AppContextValue['completePlay'],
       moveOpportunityStage,
       captureFiveQuestions,
       setFirstValueStatement,

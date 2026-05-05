@@ -19,6 +19,9 @@ export type ExecutionRiskType =
   | 'renewal_window_closing'
   | 'decision_maker_dormant'
 
+export type CustomerNeedType = 'skillset' | 'knowledge' | 'cost' | 'demands' | 'change'
+export type BlockStatus      = 'completed' | 'in_progress' | 'stalled' | 'at_risk'
+
 export interface ExecutionRisk {
   type: ExecutionRiskType
   severity: 'blocking' | 'warning'

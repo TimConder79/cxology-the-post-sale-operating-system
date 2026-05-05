@@ -16,6 +16,13 @@ export const BRIEF_GEN_STEPS: GenStep[] = [
   { label: 'Drafting meeting brief',             ms: 650 },
 ]
 
+export const VALUE_BLOCKS_BRIEF_GEN_STEPS: GenStep[] = [
+  { label: 'Loading account objective and Five Questions', ms: 500 },
+  { label: 'Reviewing First Value and block history',      ms: 650 },
+  { label: 'Diagnosing likely customer need type',         ms: 700 },
+  { label: 'Recommending next Value Blocks',               ms: 750 },
+]
+
 export const SUMMARY_GEN_STEPS: GenStep[] = [
   { label: 'Reading your meeting notes', ms: 500 },
   { label: 'Structuring outputs',        ms: 700 },
@@ -133,6 +140,87 @@ ${topFocus}`
   return { goalUpdates, stakeholderNotes, progressionNotes }
 }
 
+// ─── Value Blocks coaching tips ───────────────────────────────────────────────
+// Derives account-specific coaching tips for the Value Blocks interaction guide.
+// Focus shifts from alignment tactics to block execution tactics.
+
+export function deriveValueBlocksCoachingTips(brief: MeetingBrief, accountName: string): CoachingTip[] {
+  const tips: CoachingTip[] = []
+
+  // Framing: open with the objective, not the block
+  tips.push({
+    id: 'vb-tip-1',
+    text: `Open by naming ${accountName}'s larger objective before introducing the block. "We're here to move the cross-department visibility goal forward" lands better than "today we're running a Value Block session." Purpose before process.`,
+  })
+
+  // Execution: active not passive
+  const topRisk = brief.risks.find(r => r.priority === 'high')
+  if (topRisk) {
+    tips.push({
+      id: 'vb-tip-2',
+      text: `The highest-risk gap today is an internal change problem — no owner on a key goal. Don't try to solve this for them. Guide Priya to name the owner in the room. A commitment made by the customer lands ten times harder than a recommendation made by you.`,
+      linkedRiskId: topRisk.id,
+    })
+  }
+
+  // Insight delivery: make it specific
+  const insightSignal = brief.expansionSignals.find(s => s.priority === 'high')
+  if (insightSignal) {
+    tips.push({
+      id: 'vb-tip-3',
+      text: `When you share the adoption insight, lead with the data point, not the interpretation. "Usage spiked 35% in March — here's what that means for where your team is heading" is more credible than "you're doing great." Let the data make the case.`,
+      linkedSignalId: insightSignal.id,
+    })
+  }
+
+  // Close with the next block
+  if (tips.length < 3) {
+    tips.push({
+      id: 'vb-tip-4',
+      text: `End the session by naming the next block — don't leave it open. "Based on today, the next block I'd recommend is X — does that feel right?" gives the customer a path forward and gives you a reason to meet again that isn't manufactured.`,
+    })
+  }
+
+  return tips.slice(0, 3)
+}
+
+// ─── Value Blocks draft outputs ───────────────────────────────────────────────
+// Drafts standard meeting output fields in the context of a Value Blocks session.
+// In production: Claude call with block context + user notes as input.
+
+export function draftValueBlocksOutputs(
+  brief: MeetingBrief,
+  _accountName: string,
+  userNotes: string,
+  blockName: string,
+): DraftedOutputs {
+  const goalUpdates =
+    `${blockName || 'Value Block'} session completed. ${userNotes.trim() ? `CSM notes: "${userNotes.trim().slice(0, 120)}${userNotes.length > 120 ? '…' : ''}"` : ''}
+
+Based on this session, the cross-department visibility goal now has a nominated internal owner. Reporting automation continues to progress — current estimate is ahead of revised target. Both primary goals are active and assigned.`
+
+  const stakeholderNotes =
+    `Priya Nair (Director of IT, champion): Engaged and driving the internal change conversation. Nominated a department head to own the cross-department visibility goal in this session — follow up to confirm within 5 days.
+
+James Whitfield (VP Operations): Not present in this session. Priya to brief him on the new goal ownership before the next alignment cycle.`
+
+  const topFocus = brief.recommendedFocus
+    .filter(f => f.priority === 'high')
+    .slice(0, 2)
+    .map(f => `• ${f.text.slice(0, 100)}`)
+    .join('\n')
+
+  const progressionNotes =
+    `Block completed. Immediate follow-ups:
+• Confirm the new goal owner has been briefed and has accepted the milestone by May 20
+• Send adoption insight summary to Priya for internal circulation
+• Propose Finance Ops pre-engagement block as the next session — position as knowledge transfer, not expansion motion
+
+${topFocus}`
+
+  return { goalUpdates, stakeholderNotes, progressionNotes }
+}
+
 // ─── Prompt metadata ──────────────────────────────────────────────────────────
 // In production these are the actual prompts sent to Claude.
 // Exposed here so engineers can inspect and tune them.
@@ -152,6 +240,25 @@ Using the account's goal progress, inflection point history, stakeholder map, an
 5. Recommended Focus (3 prioritized actions for the CSM to take in this meeting)
 
 Be specific. Do not generate generic CS advice. Reference the actual goals, stakeholders, and data points for this account.`
+}
+
+export function getValueBlocksBriefPrompt(accountName: string, stage: string, arr: number): string {
+  return `You are a Customer Success AI assistant preparing a CSM to run a Value Blocks session.
+
+Account: ${accountName}
+Pipeline stage: ${stage}
+ARR: $${arr.toLocaleString()}
+
+The Value Blocks Play prevents the "messy middle" — the drift that happens between First Value and renewal when progress becomes vague. Your job is to recommend the next right-sized block of progress.
+
+Using the account's Five Questions, First Value statement, goal progress, inflection point history, usage signals, and stakeholder map, generate a structured block recommendation brief with the following sections:
+1. Customer Summary (where they are post-First Value — momentum, risks, current objective)
+2. Goal & Block Progress (what's been accomplished since First Value, what the next larger objective is)
+3. Risks (list, prioritized — focus on stall signals, unowned goals, adoption plateaus, dormant stakeholders)
+4. Expansion Signals (list — blocks that if completed, open expansion readiness)
+5. Recommended Focus (2–3 specific, named block recommendations — not generic suggestions. Each should name the need type it addresses: Skillset / Knowledge / Cost / Demands / Change)
+
+Be specific. Name actual goals, stakeholders, and data points. Do not recommend a generic training session or check-in. Every recommended block should connect directly to the customer's stated objective.`
 }
 
 export function getSummaryPrompt(accountName: string, userNotes: string): string {

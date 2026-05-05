@@ -3,17 +3,19 @@ import { useParams, useNavigate } from 'react-router-dom'
 import {
   ChevronLeft, ChevronRight, Sparkles, AlertTriangle,
   TrendingUp, CheckCircle2, Circle, Check, RefreshCw,
-  MessageSquare, Lightbulb,
+  MessageSquare, Lightbulb, Layers, ArrowRight,
 } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
+import type { ValueBlockData } from '@/context/AppContext'
 import { useAiGeneration } from '@/hooks/useAiGeneration'
 import {
-  BRIEF_GEN_STEPS, SUMMARY_GEN_STEPS,
-  deriveCoachingTips, draftMeetingOutputs,
-  getBriefPrompt, getSummaryPrompt,
+  BRIEF_GEN_STEPS, VALUE_BLOCKS_BRIEF_GEN_STEPS, SUMMARY_GEN_STEPS,
+  deriveCoachingTips, deriveValueBlocksCoachingTips,
+  draftMeetingOutputs, draftValueBlocksOutputs,
+  getBriefPrompt, getValueBlocksBriefPrompt, getSummaryPrompt,
 } from '@/lib/aiService'
 import { formatDate, cn } from '@/lib/utils'
-import type { ActionPriority, MeetingBrief } from '@/types'
+import type { ActionPriority, MeetingBrief, CustomerNeedType, BlockStatus } from '@/types'
 
 // ─── Five Questions types ─────────────────────────────────────────────────────
 
@@ -24,6 +26,67 @@ interface FiveQAnswers {
   q4: string
   q5: string
 }
+
+// ─── Value Blocks types & config ──────────────────────────────────────────────
+
+interface ValueBlockState {
+  blockName: string
+  customerNeedType: CustomerNeedType | ''
+  completionEvidence: string
+  insightSharedWithCustomer: string
+  blockerNotes: string
+  nextBlockRecommendation: string
+  insightForCompany: string
+}
+
+const EMPTY_VALUE_BLOCK: ValueBlockState = {
+  blockName: '',
+  customerNeedType: '',
+  completionEvidence: '',
+  insightSharedWithCustomer: '',
+  blockerNotes: '',
+  nextBlockRecommendation: '',
+  insightForCompany: '',
+}
+
+const CUSTOMER_NEEDS: { type: CustomerNeedType; label: string; description: string; color: string }[] = [
+  { type: 'skillset',  label: 'Skillset',   description: 'Tactical ability to perform the work',          color: 'text-violet-700 bg-violet-50 ring-violet-200' },
+  { type: 'knowledge', label: 'Knowledge',  description: 'Information or judgment to make better decisions', color: 'text-blue-700 bg-blue-50 ring-blue-200' },
+  { type: 'cost',      label: 'Cost',       description: 'Effort, time, or resources required to proceed',  color: 'text-amber-700 bg-amber-50 ring-amber-200' },
+  { type: 'demands',   label: 'Demands',    description: 'Competing priorities preventing action',          color: 'text-orange-700 bg-orange-50 ring-orange-200' },
+  { type: 'change',    label: 'Change',     description: 'Ability to create movement inside their org',     color: 'text-emerald-700 bg-emerald-50 ring-emerald-200' },
+]
+
+const BLOCK_STATUSES: { status: BlockStatus; label: string; sub: string; selected: string; icon: ReactNode }[] = [
+  {
+    status: 'completed',
+    label: 'Completed',
+    sub: 'Block finished — progress made',
+    selected: 'border-emerald-500 bg-emerald-50 text-emerald-800',
+    icon: <CheckCircle2 size={18} />,
+  },
+  {
+    status: 'in_progress',
+    label: 'In Progress',
+    sub: 'Work started, not yet done',
+    selected: 'border-blue-400 bg-blue-50 text-blue-800',
+    icon: <Circle size={18} />,
+  },
+  {
+    status: 'stalled',
+    label: 'Stalled',
+    sub: 'Progress has stopped — investigate',
+    selected: 'border-amber-400 bg-amber-50 text-amber-800',
+    icon: <AlertTriangle size={18} />,
+  },
+  {
+    status: 'at_risk',
+    label: 'At Risk',
+    sub: 'Block in danger of failing entirely',
+    selected: 'border-red-400 bg-red-50 text-red-800',
+    icon: <AlertTriangle size={18} />,
+  },
+]
 
 // ─── Step bar ─────────────────────────────────────────────────────────────────
 
@@ -108,10 +171,12 @@ function PriorityDot({ priority }: { priority: ActionPriority }) {
 
 // ─── AI generation loading panel ─────────────────────────────────────────────
 
-function GeneratingPanel({ stepLabel, stepIndex, totalSteps }: {
+function GeneratingPanel({ stepLabel, stepIndex, totalSteps, genSteps, title = 'Generating meeting brief' }: {
   stepLabel: string
   stepIndex: number
   totalSteps: number
+  genSteps: { label: string; ms: number }[]
+  title?: string
 }) {
   return (
     <Card className="p-6">
@@ -120,14 +185,14 @@ function GeneratingPanel({ stepLabel, stepIndex, totalSteps }: {
           <Sparkles size={14} className="text-brand-600 animate-pulse" />
         </div>
         <div>
-          <div className="text-[13px] font-semibold text-slate-800">Generating meeting brief</div>
+          <div className="text-[13px] font-semibold text-slate-800">{title}</div>
           <div className="text-[11px] text-slate-400 mt-0.5">{stepLabel}…</div>
         </div>
       </div>
 
       {/* Step indicators */}
       <div className="space-y-2.5">
-        {BRIEF_GEN_STEPS.map((step, i) => {
+        {genSteps.map((step, i) => {
           const done    = i < stepIndex
           const current = i === stepIndex
           return (
@@ -168,7 +233,8 @@ function GeneratingPanel({ stepLabel, stepIndex, totalSteps }: {
 // ─── Step 1: Preparation brief ────────────────────────────────────────────────
 
 function StepPreparation({
-  brief, accountName, arr, stage, genState, genStepIndex, genStepLabel, onGenerate, onRegenerate,
+  brief, accountName, arr, stage, genState, genStepIndex, genStepLabel,
+  genSteps, isValueBlocks, onGenerate, onRegenerate,
 }: {
   brief: MeetingBrief | null
   accountName: string
@@ -177,6 +243,8 @@ function StepPreparation({
   genState: 'idle' | 'generating' | 'done'
   genStepIndex: number
   genStepLabel: string
+  genSteps: { label: string; ms: number }[]
+  isValueBlocks: boolean
   onGenerate: () => void
   onRegenerate: () => void
 }) {
@@ -208,7 +276,12 @@ function StepPreparation({
           </div>
           <div className="text-[11px] text-slate-400 bg-slate-50 rounded-lg p-3 font-mono leading-relaxed">
             <div className="text-slate-300 mb-1">// Prompt context</div>
-            <div className="text-slate-500 whitespace-pre-wrap">{getBriefPrompt(accountName, stage, arr)}</div>
+            <div className="text-slate-500 whitespace-pre-wrap">
+              {isValueBlocks
+                ? getValueBlocksBriefPrompt(accountName, stage, arr)
+                : getBriefPrompt(accountName, stage, arr)
+              }
+            </div>
           </div>
         </Card>
 
@@ -217,11 +290,14 @@ function StepPreparation({
           className="w-full flex items-center justify-center gap-2.5 bg-brand-600 hover:bg-brand-700 text-white text-[13px] font-semibold py-3.5 rounded-xl transition-colors shadow-sm"
         >
           <Sparkles size={15} />
-          Generate Meeting Brief
+          {isValueBlocks ? 'Generate Block Recommendation Brief' : 'Generate Meeting Brief'}
         </button>
 
         <p className="text-center text-[11px] text-slate-400">
-          Uses account context, goal progress, risks, and expansion signals
+          {isValueBlocks
+            ? 'Uses Five Questions, First Value, goal progress, and block history'
+            : 'Uses account context, goal progress, risks, and expansion signals'
+          }
         </p>
       </div>
     )
@@ -233,7 +309,9 @@ function StepPreparation({
       <GeneratingPanel
         stepLabel={genStepLabel}
         stepIndex={genStepIndex}
-        totalSteps={BRIEF_GEN_STEPS.length}
+        totalSteps={genSteps.length}
+        genSteps={genSteps}
+        title={isValueBlocks ? 'Generating block recommendation brief' : 'Generating meeting brief'}
       />
     )
   }
@@ -335,10 +413,12 @@ function StepInteraction({
   guide,
   brief,
   accountName,
+  isValueBlocks,
 }: {
   guide: ReturnType<typeof useApp>['playTemplates'][number]['interactionGuide']
   brief: MeetingBrief | null
   accountName: string
+  isValueBlocks: boolean
 }) {
   const [checked, setChecked] = useState<Set<number>>(new Set())
   const toggle = (i: number) =>
@@ -347,7 +427,9 @@ function StepInteraction({
   const [tipsVisible, setTipsVisible] = useState(false)
   useEffect(() => { const t = setTimeout(() => setTipsVisible(true), 200); return () => clearTimeout(t) }, [])
 
-  const tips = brief ? deriveCoachingTips(brief, accountName) : []
+  const tips = brief
+    ? (isValueBlocks ? deriveValueBlocksCoachingTips(brief, accountName) : deriveCoachingTips(brief, accountName))
+    : []
 
   return (
     <div className="space-y-4">
@@ -620,6 +702,247 @@ function StepOutputs({
   )
 }
 
+// ─── Value Block Capture ──────────────────────────────────────────────────────
+
+function ValueBlockSection({
+  state,
+  onChange,
+}: {
+  state: ValueBlockState
+  onChange: (key: keyof ValueBlockState, value: string) => void
+}) {
+  const hasInsight = state.insightSharedWithCustomer.trim().length > 0
+
+  return (
+    <div className="space-y-4">
+      {/* Section header */}
+      <div className="flex items-center gap-2.5 pt-2">
+        <div className="w-6 h-6 rounded-md bg-brand-600 flex items-center justify-center flex-shrink-0">
+          <Layers size={12} className="text-white" />
+        </div>
+        <div>
+          <div className="text-[13px] font-semibold text-slate-900">Value Block</div>
+          <div className="text-[11px] text-slate-400">
+            Capture the block, need type, progress, and insight — these power the next recommendation.
+          </div>
+        </div>
+      </div>
+
+      {/* Block name */}
+      <Card className="p-5">
+        <FieldLabel required>Value Block Selected</FieldLabel>
+        <textarea
+          rows={2}
+          value={state.blockName}
+          onChange={e => onChange('blockName', e.target.value)}
+          placeholder="Name the specific block worked — be concrete. Not 'adoption work' but 'configured the weekly team dashboard with the ops lead'"
+          className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+        />
+      </Card>
+
+      {/* Customer need type */}
+      <Card className="p-5">
+        <FieldLabel required>Need Being Addressed</FieldLabel>
+        <p className="text-[11px] text-slate-400 mb-3 -mt-1">
+          What type of gap is this block solving? This diagnosis shapes whether training, enablement, stakeholder coaching, or scope reduction is the right response.
+        </p>
+        <div className="grid grid-cols-1 gap-2">
+          {CUSTOMER_NEEDS.map(need => (
+            <button
+              key={need.type}
+              onClick={() => onChange('customerNeedType', need.type)}
+              className={cn(
+                'flex items-center gap-3 px-3.5 py-2.5 rounded-lg border text-left transition-all',
+                state.customerNeedType === need.type
+                  ? 'border-brand-400 bg-brand-50'
+                  : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'
+              )}
+            >
+              <div className={cn(
+                'w-4 h-4 rounded-full ring-2 flex-shrink-0 transition-all',
+                state.customerNeedType === need.type ? 'bg-brand-600 ring-brand-600' : 'bg-white ring-slate-300'
+              )} />
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <span className={cn(
+                    'text-[11px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded ring-1',
+                    state.customerNeedType === need.type ? need.color : 'text-slate-500 bg-slate-50 ring-slate-200'
+                  )}>
+                    {need.label}
+                  </span>
+                </div>
+                <div className="text-[11px] text-slate-400 mt-0.5">{need.description}</div>
+              </div>
+            </button>
+          ))}
+        </div>
+      </Card>
+
+      {/* Completion evidence */}
+      <Card className="p-5">
+        <FieldLabel required>Evidence of Progress</FieldLabel>
+        <textarea
+          rows={4}
+          value={state.completionEvidence}
+          onChange={e => onChange('completionEvidence', e.target.value)}
+          placeholder="What was accomplished? Or what specifically remains — name the open items and who owns each one."
+          className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+        />
+      </Card>
+
+      {/* Insight shared with customer — fires insight_delivery IP */}
+      <Card className={cn('p-5 transition-all duration-300', hasInsight ? 'ring-1 ring-emerald-300 border-emerald-200' : '')}>
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <FieldLabel>Insight Shared with Customer</FieldLabel>
+          {hasInsight && (
+            <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-md ring-1 ring-emerald-200 flex-shrink-0 -mt-0.5">
+              <CheckCircle2 size={9} />
+              Marks Insight Delivery
+            </span>
+          )}
+        </div>
+        {!hasInsight && (
+          <p className="text-[11px] text-slate-400 mb-3 -mt-1 flex items-center gap-1">
+            <ArrowRight size={10} />
+            Filling this marks the Insight Delivery inflection point as achieved.
+          </p>
+        )}
+        <textarea
+          rows={3}
+          value={state.insightSharedWithCustomer}
+          onChange={e => onChange('insightSharedWithCustomer', e.target.value)}
+          placeholder="What pattern, finding, benchmark, or risk did you surface for the customer during this session?"
+          className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+        />
+      </Card>
+
+      {/* Blockers (always visible, optional) */}
+      <Card className="p-5">
+        <FieldLabel>Blockers or Friction</FieldLabel>
+        <p className="text-[11px] text-slate-400 mb-3 -mt-1">
+          Anything that slowed or blocked this block — even partially. Patterns here feed the block library and help the next CSM.
+        </p>
+        <textarea
+          rows={2}
+          value={state.blockerNotes}
+          onChange={e => onChange('blockerNotes', e.target.value)}
+          placeholder="e.g. Champion couldn't secure the right stakeholder in time. Configuration step required IT approval we didn't anticipate."
+          className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+        />
+      </Card>
+
+      {/* Next block recommendation */}
+      <Card className="p-5 ring-1 ring-brand-100">
+        <div className="flex items-center gap-2 mb-1">
+          <ArrowRight size={13} className="text-brand-500" />
+          <FieldLabel required>Next Block</FieldLabel>
+        </div>
+        <p className="text-[11px] text-slate-400 mb-3 ml-[21px]">
+          Name it specifically — the customer should leave knowing exactly what comes next. Not "more work on goal X" but the actual block.
+        </p>
+        <textarea
+          rows={2}
+          value={state.nextBlockRecommendation}
+          onChange={e => onChange('nextBlockRecommendation', e.target.value)}
+          placeholder="e.g. Finance Ops pre-engagement session — 45 minutes with Aisha Torres to walk through the reporting automation outcome and map it to her team's pain."
+          className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+        />
+      </Card>
+
+      {/* Internal learning */}
+      <Card className="p-5">
+        <FieldLabel>Internal Learning</FieldLabel>
+        <p className="text-[11px] text-slate-400 mb-3 -mt-1">
+          Product gap, training gap, stakeholder pattern, common blocker — what should the team know from this session?
+        </p>
+        <textarea
+          rows={2}
+          value={state.insightForCompany}
+          onChange={e => onChange('insightForCompany', e.target.value)}
+          placeholder="e.g. The cross-dept visibility goal consistently stalls at the internal change step — customers need a stakeholder coaching asset to move this forward."
+          className="w-full text-[13px] text-slate-700 placeholder-slate-300 resize-none focus:outline-none leading-relaxed"
+        />
+      </Card>
+    </div>
+  )
+}
+
+// ─── Value Block Progression (Step 4 for value_blocks) ────────────────────────
+
+function StepValueBlockProgression({
+  blockStatus,
+  onBlockStatus,
+  delta,
+  onDelta,
+}: {
+  blockStatus: BlockStatus | null
+  onBlockStatus: (s: BlockStatus) => void
+  delta: number
+  onDelta: (n: number) => void
+}) {
+  return (
+    <div className="space-y-4">
+      <Card className="p-5">
+        <FieldLabel>Block Status</FieldLabel>
+        <p className="text-[11px] text-slate-400 mb-4 -mt-1">
+          Every block should have a clear status. This is how the operating system knows where the customer is making progress and where it needs to respond.
+        </p>
+        <div className="grid grid-cols-2 gap-3">
+          {BLOCK_STATUSES.map(({ status, label, sub, selected, icon }) => (
+            <button
+              key={status}
+              onClick={() => {
+                onBlockStatus(status)
+                // Auto-suggest a confidence delta based on status
+                if (status === 'completed')   onDelta(12)
+                if (status === 'in_progress') onDelta(4)
+                if (status === 'stalled')     onDelta(-5)
+                if (status === 'at_risk')     onDelta(-10)
+              }}
+              className={cn(
+                'py-4 px-3 rounded-xl border-2 text-left transition-all',
+                blockStatus === status
+                  ? selected + ' shadow-sm'
+                  : 'border-slate-200 text-slate-400 hover:border-slate-300 hover:bg-slate-50'
+              )}
+            >
+              <div className={cn(
+                'mb-1.5',
+                blockStatus === status ? '' : 'text-slate-300'
+              )}>
+                {icon}
+              </div>
+              <div className="text-[13px] font-semibold leading-none mb-1">{label}</div>
+              <div className="text-[10px] leading-snug opacity-70">{sub}</div>
+            </button>
+          ))}
+        </div>
+      </Card>
+
+      <Card className="p-5">
+        <FieldLabel>Stage confidence adjustment</FieldLabel>
+        <div className="flex items-center gap-4 mt-1">
+          <input
+            type="range" min="-20" max="20" step="2"
+            value={delta}
+            onChange={e => onDelta(Number(e.target.value))}
+            className="flex-1 accent-brand-600 cursor-pointer"
+          />
+          <div className={cn(
+            'text-[16px] font-bold tabular-nums w-14 text-right',
+            delta > 0 ? 'text-emerald-600' : delta < 0 ? 'text-red-500' : 'text-slate-400'
+          )}>
+            {delta > 0 ? `+${delta}` : delta === 0 ? '±0' : delta}
+          </div>
+        </div>
+        <p className="text-[11px] text-slate-400 mt-2">
+          Auto-suggested based on block status — adjust if the session warrants it.
+        </p>
+      </Card>
+    </div>
+  )
+}
+
 // ─── Five Questions Capture (kickoff plays) ───────────────────────────────────
 
 const FIVE_Q_DEFS = [
@@ -789,19 +1112,22 @@ export function PlayExecution() {
   const navigate = useNavigate()
   const { getPlayRun, getMeetingBrief, getPlayTemplate, getAccountView, advancePlayStep, completePlay, captureFiveQuestions, setFirstValueStatement } = useApp()
 
+  // Derive run type early so hooks receive the right steps
   const run        = getPlayRun(runId!)
+  const isValueBlocks = run?.type === 'value_blocks'
   const brief      = getMeetingBrief(runId!)
   const template   = run ? getPlayTemplate(run.playTemplateId) : null
   const accountView = id ? getAccountView(id) : null
 
-  // ── AI: Brief generation (Step 1) ──
-  const briefGen = useAiGeneration(BRIEF_GEN_STEPS, { autoTrigger: false })
+  // ── AI: Brief generation (Step 1) — steps vary by play type ──
+  const briefGenSteps = isValueBlocks ? VALUE_BLOCKS_BRIEF_GEN_STEPS : BRIEF_GEN_STEPS
+  const briefGen = useAiGeneration(briefGenSteps, { autoTrigger: false })
 
   // ── AI: Summary draft (Step 3) ──
   const summaryGen = useAiGeneration(SUMMARY_GEN_STEPS)
   const [aiDraftedFields, setAiDraftedFields] = useState<Set<keyof OutputState>>(new Set())
 
-  // ── Form state ──
+  // ── Standard form state ──
   const [currentStep, setCurrentStep] = useState<1|2|3|4>((run?.currentStep ?? 1) as 1|2|3|4)
   const [outputs, setOutputs] = useState<OutputState>({
     meetingSummary: '',
@@ -817,6 +1143,10 @@ export function PlayExecution() {
   const [fiveQAnswers, setFiveQAnswers] = useState<FiveQAnswers>({ q1: '', q2: '', q3: '', q4: '', q5: '' })
   const [firstValueText, setFirstValueText] = useState('')
 
+  // ── Value Blocks state ──
+  const [valueBlockState, setValueBlockState] = useState<ValueBlockState>(EMPTY_VALUE_BLOCK)
+  const [blockStatus, setBlockStatus] = useState<BlockStatus | null>(null)
+
   if (!run || !template || !accountView) return <div className="p-8 text-slate-500">Play not found.</div>
 
   const goToStep = (step: 1|2|3|4) => {
@@ -827,11 +1157,12 @@ export function PlayExecution() {
   const handleDraftOutputs = () => {
     if (!brief) return
     summaryGen.trigger()
-    // Simulate async fill after generation completes
     const totalMs = SUMMARY_GEN_STEPS.reduce((s, step) => s + step.ms, 0)
     setTimeout(() => {
       if (!brief) return
-      const drafted = draftMeetingOutputs(brief, accountView.name, outputs.meetingSummary)
+      const drafted = isValueBlocks
+        ? draftValueBlocksOutputs(brief, accountView.name, outputs.meetingSummary, valueBlockState.blockName)
+        : draftMeetingOutputs(brief, accountView.name, outputs.meetingSummary)
       setOutputs(prev => ({
         ...prev,
         goalUpdates:        prev.goalUpdates        || drafted.goalUpdates,
@@ -843,23 +1174,42 @@ export function PlayExecution() {
   }
 
   const handleComplete = () => {
-    if (advanced === null) return
-
     // For kickoff plays: persist Five Questions and First Value Statement
     if (run.type === 'kickoff') {
+      if (advanced === null) return
       const hasAnyAnswer = Object.values(fiveQAnswers).some(v => v.trim().length > 0)
-      if (hasAnyAnswer) {
-        captureFiveQuestions(run.id, fiveQAnswers)
-      }
-      if (firstValueText.trim()) {
-        setFirstValueStatement(run.accountId, firstValueText.trim())
-      }
+      if (hasAnyAnswer) captureFiveQuestions(run.id, fiveQAnswers)
+      if (firstValueText.trim()) setFirstValueStatement(run.accountId, firstValueText.trim())
     }
 
     // For first_value plays: update the First Value Statement if filled
     if (run.type === 'first_value' && firstValueText.trim()) {
       setFirstValueStatement(run.accountId, firstValueText.trim())
     }
+
+    // For value_blocks: use blockStatus-aware completion
+    if (run.type === 'value_blocks') {
+      if (blockStatus === null) return
+      const isComplete = blockStatus === 'completed'
+      const vbData: ValueBlockData = {
+        blockStatus,
+        hasInsightShared: valueBlockState.insightSharedWithCustomer.trim().length > 0,
+      }
+      completePlay(run.id, {
+        meetingSummary:       outputs.meetingSummary || `${valueBlockState.blockName} — ${blockStatus.replace('_', ' ')}`,
+        goalUpdates:          valueBlockState.completionEvidence || outputs.goalUpdates,
+        stakeholderNotes:     outputs.stakeholderNotes,
+        risksOpportunities:   [valueBlockState.blockerNotes, valueBlockState.insightSharedWithCustomer]
+                                .filter(Boolean).join('\n\n') || outputs.risksOpportunities,
+        customerAdvanced:     isComplete,
+        stageConfidenceDelta: delta,
+        progressionNotes:     valueBlockState.nextBlockRecommendation || outputs.progressionNotes,
+      }, vbData)
+      navigate(`/accounts/${id}`)
+      return
+    }
+
+    if (advanced === null) return
 
     completePlay(run.id, {
       meetingSummary:       outputs.meetingSummary,
@@ -924,6 +1274,8 @@ export function PlayExecution() {
                 genState={briefGen.state}
                 genStepIndex={briefGen.stepIndex}
                 genStepLabel={briefGen.stepLabel}
+                genSteps={briefGenSteps}
+                isValueBlocks={isValueBlocks}
                 onGenerate={briefGen.trigger}
                 onRegenerate={() => { briefGen.reset(); setTimeout(briefGen.trigger, 50) }}
               />
@@ -933,12 +1285,21 @@ export function PlayExecution() {
                 guide={template.interactionGuide}
                 brief={brief}
                 accountName={accountView.name}
+                isValueBlocks={isValueBlocks}
               />
             )}
             {currentStep === 3 && (
               <div className="space-y-6">
+                {/* Value Blocks capture — value_blocks plays */}
+                {run.type === 'value_blocks' && (
+                  <ValueBlockSection
+                    state={valueBlockState}
+                    onChange={(k, v) => setValueBlockState(p => ({ ...p, [k]: v }))}
+                  />
+                )}
+
                 {/* Five Questions — kickoff plays only */}
-                {(run.type === 'kickoff') && (
+                {run.type === 'kickoff' && (
                   <FiveQuestionsSection
                     answers={fiveQAnswers}
                     onChange={(k, v) => setFiveQAnswers(p => ({ ...p, [k]: v }))}
@@ -967,11 +1328,11 @@ export function PlayExecution() {
                   </Card>
                 )}
 
-                {/* Divider when both sections are present */}
-                {(run.type === 'kickoff' || run.type === 'first_value') && (
+                {/* Divider before standard meeting outputs */}
+                {(run.type === 'kickoff' || run.type === 'first_value' || run.type === 'value_blocks') && (
                   <div className="flex items-center gap-3">
                     <div className="flex-1 h-px bg-slate-100" />
-                    <span className="text-[10px] text-slate-300 uppercase tracking-widest">Meeting Outputs</span>
+                    <span className="text-[10px] text-slate-300 uppercase tracking-widest">Meeting Notes</span>
                     <div className="flex-1 h-px bg-slate-100" />
                   </div>
                 )}
@@ -987,7 +1348,15 @@ export function PlayExecution() {
                 />
               </div>
             )}
-            {currentStep === 4 && (
+            {currentStep === 4 && run.type === 'value_blocks' && (
+              <StepValueBlockProgression
+                blockStatus={blockStatus}
+                onBlockStatus={s => { setBlockStatus(s) }}
+                delta={delta}
+                onDelta={setDelta}
+              />
+            )}
+            {currentStep === 4 && run.type !== 'value_blocks' && (
               <StepProgression
                 advanced={advanced}
                 onAdvanced={setAdvanced}
@@ -1022,10 +1391,10 @@ export function PlayExecution() {
             ) : (
               <button
                 onClick={handleComplete}
-                disabled={advanced === null}
+                disabled={run.type === 'value_blocks' ? blockStatus === null : advanced === null}
                 className={cn(
                   'flex items-center gap-2 text-[13px] font-semibold px-5 py-2.5 rounded-xl transition-all shadow-sm',
-                  advanced !== null
+                  (run.type === 'value_blocks' ? blockStatus !== null : advanced !== null)
                     ? 'bg-emerald-600 hover:bg-emerald-700 text-white'
                     : 'bg-slate-100 text-slate-300 cursor-not-allowed'
                 )}
