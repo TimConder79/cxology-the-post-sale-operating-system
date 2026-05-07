@@ -2,17 +2,17 @@ import { useState, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Activity, Zap, Calendar, TrendingUp, Users, AlertTriangle,
-  ChevronRight, ArrowUpRight, Flame, Check, Clock, X, Minus,
+  ChevronRight, ArrowUpRight, Flame, Check, Clock, X, Minus, RotateCw,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
 import { buildAccountWorkspacePath, getWorkspaceRecommendation } from '@/lib/accountRouting'
 import { deriveExecutionGaps, SEVERITY_ORDER } from '@/lib/executionGaps'
 import type { ExecutionGap, GapSeverity, GapType } from '@/lib/executionGaps'
-import { formatCurrency, STAGE_LABELS, daysSince, cn } from '@/lib/utils'
+import { formatCurrency, formatDateShort, STAGE_LABELS, daysSince, cn } from '@/lib/utils'
 import type {
   AccountView, Opportunity, OpportunityType, NextBestAction, MilestoneId, MilestoneStatus,
-  TimelineMilestone, AccountTimeline,
+  TimelineMilestone, AccountTimeline, JourneyCycle,
 } from '@/types'
 
 // ─── Severity config ──────────────────────────────────────────────────────────
@@ -102,10 +102,8 @@ const MILESTONE_META: Record<MilestoneId, MilestoneMeta> = {
   },
 }
 
-const MILESTONE_ORDER: MilestoneId[] = [
-  'purchase_moment', 'first_meeting', 'onboarding_decisions', 'early_success',
-  'goal_attainment', 'habit_transformation', 'ongoing_alignment', 'renewal_growth_decision',
-]
+const LEFT_MILESTONES: MilestoneId[]  = ['purchase_moment', 'first_meeting', 'onboarding_decisions', 'early_success']
+const RENEWAL_MILESTONE: MilestoneId  = 'renewal_growth_decision'
 
 // ─── Section definitions ──────────────────────────────────────────────────────
 
@@ -378,8 +376,163 @@ function MilestoneDetail({
   )
 }
 
+// ─── Portfolio Loop Cell ──────────────────────────────────────────────────────
+
+function PortfolioLoopCell({
+  cycles, isExpanded, onClick,
+}: {
+  cycles: JourneyCycle[]; isExpanded: boolean; onClick: () => void
+}) {
+  const completed  = cycles.filter(c => c.status === 'completed').length
+  const inProgress = cycles.find(c => c.status === 'in_progress')
+  const total      = cycles.length
+
+  const allDone    = total > 0 && completed === total
+  const someActive = !!inProgress
+
+  const border = allDone ? 'border-emerald-200' : someActive ? 'border-brand-200' : 'border-slate-200'
+  const bg     = allDone ? 'bg-emerald-50'      : someActive ? 'bg-brand-50'      : 'bg-slate-50'
+  const text   = allDone ? 'text-emerald-700'   : someActive ? 'text-brand-700'   : 'text-slate-400'
+  const icon   = allDone ? 'text-emerald-500'   : someActive ? 'text-brand-500'   : 'text-slate-300'
+
+  const currentCycle = inProgress ?? (cycles.length > 0 ? cycles[cycles.length - 1] : null)
+
+  return (
+    <button
+      onClick={onClick}
+      disabled={total === 0}
+      className={cn(
+        'flex items-center gap-2 px-3 h-7 rounded-lg border-2 w-[120px] flex-shrink-0 transition-all',
+        border, bg,
+        total > 0
+          ? isExpanded ? 'ring-2 ring-offset-1 ring-brand-300' : 'hover:shadow-sm'
+          : 'opacity-40 cursor-default',
+      )}
+    >
+      <RotateCw size={10} className={icon} />
+      <span className={cn('text-[11px] font-bold tabular-nums', text)}>
+        {total > 0 ? `${completed}/${total}` : '—'}
+      </span>
+      {currentCycle && (
+        <div className="flex gap-[2px] ml-auto">
+          {currentCycle.phases.map((p, i) => (
+            <div key={i} className={cn(
+              'w-2.5 h-1 rounded-full',
+              p.status === 'completed'
+                ? allDone ? 'bg-emerald-400' : 'bg-brand-400'
+                : p.status === 'in_progress' ? 'bg-brand-300'
+                : 'bg-slate-200'
+            )} />
+          ))}
+        </div>
+      )}
+    </button>
+  )
+}
+
+// ─── Portfolio Loop Inspector ─────────────────────────────────────────────────
+
+function PortfolioLoopInspector({
+  cycles, workspaceHref, onClose,
+}: {
+  cycles: JourneyCycle[]; workspaceHref: string; onClose: () => void
+}) {
+  const defaultId = cycles.find(c => c.status === 'in_progress')?.id
+    ?? cycles[cycles.length - 1]?.id
+    ?? null
+  const [inspectId, setInspectId] = useState<string | null>(defaultId)
+  const inspected = cycles.find(c => c.id === inspectId) ?? null
+  const completedCount = cycles.filter(c => c.status === 'completed').length
+
+  return (
+    <div className="mt-1 mb-2 ml-[212px] bg-slate-50 rounded-xl border border-slate-200 p-4">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-3">
+            <RotateCw size={11} className="text-slate-400" />
+            <span className="text-[12px] font-semibold text-slate-700">
+              {completedCount} of {cycles.length} cycle{cycles.length !== 1 ? 's' : ''} complete
+            </span>
+          </div>
+
+          {/* Cycle badges */}
+          <div className="flex gap-1.5 mb-3">
+            {cycles.map(cycle => (
+              <button
+                key={cycle.id}
+                onClick={() => setInspectId(inspectId === cycle.id ? null : cycle.id)}
+                className={cn(
+                  'w-7 h-7 rounded-full border-2 flex items-center justify-center text-[11px] font-bold transition-all',
+                  cycle.status === 'completed'
+                    ? inspectId === cycle.id
+                      ? 'border-emerald-600 bg-emerald-500 text-white shadow-sm'
+                      : 'border-emerald-400 bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                    : cycle.status === 'in_progress'
+                    ? inspectId === cycle.id
+                      ? 'border-brand-600 bg-brand-500 text-white shadow-sm'
+                      : 'border-brand-400 bg-brand-50 text-brand-700 hover:bg-brand-100'
+                    : 'border-slate-200 bg-white text-slate-400 cursor-default'
+                )}
+              >
+                {cycle.cycleNumber}
+              </button>
+            ))}
+          </div>
+
+          {/* Selected cycle phases */}
+          {inspected && (
+            <div className="bg-white rounded-lg border border-slate-100 divide-y divide-slate-50">
+              {inspected.phases.map(phase => (
+                <div key={phase.type} className="flex items-center gap-3 px-3 py-2">
+                  <div className={cn(
+                    'w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0',
+                    phase.status === 'completed'   ? 'border-emerald-500 bg-emerald-500' :
+                    phase.status === 'in_progress' ? 'border-brand-400 bg-brand-50'     :
+                                                     'border-slate-200 bg-white'
+                  )}>
+                    {phase.status === 'completed'   && <Check size={8} className="text-white" />}
+                    {phase.status === 'in_progress' && <Clock size={8} className="text-brand-500" />}
+                  </div>
+                  <span className={cn(
+                    'text-[12px] font-medium flex-1',
+                    phase.status === 'completed'   ? 'text-slate-700' :
+                    phase.status === 'in_progress' ? 'text-brand-700' :
+                                                     'text-slate-400'
+                  )}>
+                    {phase.label}
+                  </span>
+                  {phase.completedDate && (
+                    <span className="text-[10px] text-slate-400">{formatDateShort(phase.completedDate)}</span>
+                  )}
+                  {phase.status === 'in_progress' && (
+                    <span className="text-[10px] text-brand-500">In progress</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="flex flex-col items-end gap-2 flex-shrink-0">
+          <button onClick={onClose} className="text-[11px] text-slate-300 hover:text-slate-500 transition-colors px-1">✕</button>
+          <Link to={workspaceHref}
+            className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-brand-50 hover:bg-brand-100 px-2.5 py-1.5 rounded-lg transition-colors">
+            Open Workspace<ChevronRight size={11} />
+          </Link>
+          <Link to={workspaceHref}
+            className="flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-slate-700 bg-slate-50 hover:bg-slate-100 px-2.5 py-1.5 rounded-lg transition-colors">
+            View Account<ArrowUpRight size={11} />
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Timeline content ─────────────────────────────────────────────────────────
+
 function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accountTimelines: AccountTimeline[]; workspaceHrefByAccountId: Record<string, string> }) {
-  const { accounts } = useApp()
+  const { accounts, journeyCycles } = useApp()
   const [selectedKey, setSelectedKey] = useState<string | null>(null)
 
   const toggle = (accountId: string, milestoneId: MilestoneId) => {
@@ -387,24 +540,42 @@ function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accou
     setSelectedKey(prev => prev === key ? null : key)
   }
 
+  const toggleLoop = (accountId: string) => {
+    const key = `${accountId}/loop`
+    setSelectedKey(prev => prev === key ? null : key)
+  }
+
   return (
     <div className="px-8 py-6 overflow-x-auto">
       {/* Column headers */}
       <div className="flex items-end mb-1 ml-[212px]">
-        {MILESTONE_ORDER.map((id, i) => {
-          const meta = MILESTONE_META[id]
-          return (
-            <Fragment key={id}>
-              {i > 0 && <div className="w-9 flex-shrink-0" />}
-              <div className="w-7 flex-shrink-0 flex flex-col items-center gap-0.5">
-                <span className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide leading-none text-center whitespace-nowrap"
-                  style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', height: 56 }}>
-                  {meta.shortLabel}
-                </span>
-              </div>
-            </Fragment>
-          )
-        })}
+        {LEFT_MILESTONES.map((id, i) => (
+          <Fragment key={id}>
+            {i > 0 && <div className="w-9 flex-shrink-0" />}
+            <div className="w-7 flex-shrink-0 flex flex-col items-center gap-0.5">
+              <span className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide leading-none text-center whitespace-nowrap"
+                style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', height: 56 }}>
+                {MILESTONE_META[id].shortLabel}
+              </span>
+            </div>
+          </Fragment>
+        ))}
+
+        <div className="w-9 flex-shrink-0" />
+
+        <div className="w-[120px] flex-shrink-0 flex flex-col items-center justify-end gap-1 pb-1" style={{ height: 56 }}>
+          <RotateCw size={11} className="text-slate-400" />
+          <span className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide">Cycles</span>
+        </div>
+
+        <div className="w-9 flex-shrink-0" />
+
+        <div className="w-7 flex-shrink-0 flex flex-col items-center gap-0.5">
+          <span className="text-[9px] font-semibold text-slate-500 uppercase tracking-wide leading-none text-center whitespace-nowrap"
+            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', height: 56 }}>
+            {MILESTONE_META[RENEWAL_MILESTONE].shortLabel}
+          </span>
+        </div>
       </div>
 
       {/* Separator */}
@@ -415,20 +586,33 @@ function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accou
         const timeline = accountTimelines.find(t => t.accountId === account.id)
         if (!timeline) return null
 
-        const milestones = MILESTONE_ORDER.map(id =>
-          timeline.milestones.find(m => m.id === id)!
-        ).filter(Boolean)
+        const leftMilestones = LEFT_MILESTONES
+          .map(id => timeline.milestones.find(m => m.id === id)!)
+          .filter(Boolean)
 
-        const overdueCount = milestones.filter(m => m.status === 'overdue').length
-        const selectedMilestoneId = selectedKey?.startsWith(account.id + '/')
+        const renewalMilestone = timeline.milestones.find(m => m.id === RENEWAL_MILESTONE) ?? null
+
+        const accountCycles = journeyCycles
+          .filter(c => c.accountId === account.id)
+          .sort((a, b) => a.year - b.year || a.cycleNumber - b.cycleNumber)
+
+        const overdueCount = [
+          ...leftMilestones,
+          ...(renewalMilestone ? [renewalMilestone] : []),
+        ].filter(m => m.status === 'overdue').length
+
+        const isLoopSelected      = selectedKey === `${account.id}/loop`
+        const selectedMilestoneId = selectedKey?.startsWith(account.id + '/') && !isLoopSelected
           ? selectedKey.split('/')[1] as MilestoneId
           : null
+
+        const lastLeft = leftMilestones[leftMilestones.length - 1]
 
         return (
           <div key={account.id} className="mb-0.5">
             <div className={cn(
               'flex items-center py-3 rounded-lg transition-colors',
-              selectedMilestoneId ? 'bg-slate-50' : 'hover:bg-slate-50/60'
+              (selectedMilestoneId || isLoopSelected) ? 'bg-slate-50' : 'hover:bg-slate-50/60'
             )}>
               {/* Account info */}
               <div className="w-[200px] flex-shrink-0 pr-3">
@@ -440,18 +624,28 @@ function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accou
                       {overdueCount} overdue
                     </span>
                   )}
+                  {accountCycles.length > 0 && (
+                    <span className={cn(
+                      'text-[9px] font-bold px-1 py-0.5 rounded tabular-nums ring-1',
+                      accountCycles.some(c => c.status === 'in_progress')
+                        ? 'text-brand-700 bg-brand-50 ring-brand-200'
+                        : 'text-emerald-700 bg-emerald-50 ring-emerald-200'
+                    )}>
+                      {accountCycles.filter(c => c.status === 'completed').length}/{accountCycles.length}c
+                    </span>
+                  )}
                 </div>
               </div>
 
               {/* Separator */}
               <div className="w-px h-8 bg-slate-100 mr-3 flex-shrink-0" />
 
-              {/* Timeline nodes */}
+              {/* Timeline */}
               <div className="flex items-center">
-                {milestones.map((milestone, i) => (
+                {leftMilestones.map((milestone, i) => (
                   <Fragment key={milestone.id}>
                     {i > 0 && (
-                      <div className={cn('w-9 h-0.5 flex-shrink-0', lineColor(milestones[i - 1]))} />
+                      <div className={cn('w-9 h-0.5 flex-shrink-0', lineColor(leftMilestones[i - 1]))} />
                     )}
                     <MilestoneNode
                       milestone={milestone}
@@ -460,12 +654,41 @@ function TimelineContent({ accountTimelines, workspaceHrefByAccountId }: { accou
                     />
                   </Fragment>
                 ))}
+
+                <div className={cn('w-9 h-0.5 flex-shrink-0', lastLeft?.status === 'completed' ? 'bg-emerald-200' : 'bg-slate-150')} />
+
+                <PortfolioLoopCell
+                  cycles={accountCycles}
+                  isExpanded={isLoopSelected}
+                  onClick={() => toggleLoop(account.id)}
+                />
+
+                <div className={cn(
+                  'w-9 h-0.5 flex-shrink-0',
+                  accountCycles.some(c => c.status === 'completed') ? 'bg-emerald-200' : 'bg-slate-150'
+                )} />
+
+                {renewalMilestone && (
+                  <MilestoneNode
+                    milestone={renewalMilestone}
+                    isSelected={selectedKey === `${account.id}/${renewalMilestone.id}`}
+                    onClick={() => toggle(account.id, renewalMilestone.id)}
+                  />
+                )}
               </div>
             </div>
 
-            {/* Inline milestone detail */}
+            {isLoopSelected && accountCycles.length > 0 && (
+              <PortfolioLoopInspector
+                cycles={accountCycles}
+                workspaceHref={workspaceHrefByAccountId[account.id] ?? `/accounts/${account.id}`}
+                onClose={() => setSelectedKey(null)}
+              />
+            )}
+
             {selectedMilestoneId && (() => {
-              const ms = milestones.find(m => m.id === selectedMilestoneId)
+              const allMs = [...leftMilestones, ...(renewalMilestone ? [renewalMilestone] : [])]
+              const ms = allMs.find(m => m.id === selectedMilestoneId)
               return ms ? (
                 <MilestoneDetail
                   milestone={ms}

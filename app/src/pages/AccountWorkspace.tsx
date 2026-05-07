@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useParams, useNavigate, Link, useSearchParams } from 'react-router-dom'
 import { useEffect, type ReactNode } from 'react'
 import {
@@ -13,6 +14,7 @@ import {
   formatCurrency, formatDate, formatDateShort, daysUntil, daysSince, cn,
 } from '@/lib/utils'
 import type { InflectionPointStatus } from '@/types'
+import { JourneyTimeline } from '@/components/JourneyTimeline'
 
 function IPIcon({ status }: { status: InflectionPointStatus }) {
   const size = 16
@@ -52,6 +54,8 @@ export function AccountWorkspace() {
 
   const activeRun  = account.playRuns.find(r => r.status === 'in_progress')
   const otherRuns  = account.playRuns.filter(r => r.id !== activeRun?.id)
+
+  const [activeTab, setActiveTab] = useState<'pipeline' | 'inflection_points'>('pipeline')
 
   useEffect(() => {
     if (!focus) return
@@ -117,6 +121,35 @@ export function AccountWorkspace() {
               <span>{account.csm}</span>
             </div>
           </div>
+
+          {/* Tab switcher */}
+          <div className="flex gap-1 mb-5 border-b border-slate-100 pb-0">
+            {([
+              { id: 'pipeline',          label: 'Pipeline' },
+              { id: 'inflection_points', label: 'Inflection Points' },
+            ] as const).map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={cn(
+                  'px-4 py-2 text-[13px] font-semibold border-b-2 -mb-px transition-colors',
+                  activeTab === tab.id
+                    ? 'border-brand-600 text-brand-700'
+                    : 'border-transparent text-slate-400 hover:text-slate-600'
+                )}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          {/* ── Inflection Points tab ─────────────────────────────────────── */}
+          {activeTab === 'inflection_points' && (
+            <JourneyTimeline account={account} />
+          )}
+
+          {/* ── Pipeline tab ──────────────────────────────────────────────── */}
+          {activeTab === 'pipeline' && <>
 
           {/* Stage pipeline */}
           <div id="pipeline" className="bg-white rounded-xl border border-slate-200 p-5 mb-5 scroll-mt-6">
@@ -518,6 +551,9 @@ export function AccountWorkspace() {
 
             </div>
           </div>
+
+          </> /* end Pipeline tab */}
+
         </div>
       </div>
     </div>

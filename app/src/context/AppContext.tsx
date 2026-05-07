@@ -3,7 +3,7 @@ import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
   PipelineStage, PlayTemplate, AccountView, ConfidenceLevel, OutcomeEvidence, PipelineStageId,
-  FiveQuestions, BlockStatus,
+  FiveQuestions, BlockStatus, JourneyCycle,
 } from '@/types'
 
 // Supplementary data passed with value_blocks play completions
@@ -24,6 +24,7 @@ import {
   accountTimelines as seedAccountTimelines,
   outcomeEvidence as seedOutcomeEvidence,
   fiveQuestions as seedFiveQuestions,
+  journeyCycles as seedJourneyCycles,
   pipelineStages,
   playTemplates,
 } from '@/data/seedData'
@@ -33,6 +34,7 @@ interface AppState {
   contacts: Contact[]
   stakeholderMaps: StakeholderMap[]
   inflectionPoints: InflectionPoint[]
+  journeyCycles: JourneyCycle[]
   stageConfidences: StageConfidence[]
   playRuns: PlayRun[]
   meetingBriefs: MeetingBrief[]
@@ -73,6 +75,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     contacts: seedContacts,
     stakeholderMaps: seedStakeholderMaps,
     inflectionPoints: seedInflectionPoints,
+    journeyCycles: seedJourneyCycles,
     stageConfidences: seedStageConfidences,
     playRuns: seedPlayRuns,
     meetingBriefs: seedMeetingBriefs,
@@ -95,6 +98,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
       ...account,
       stageConfidence: stageConfidence!,
       inflectionPoints: state.inflectionPoints.filter(ip => ip.accountId === accountId),
+      cycles: state.journeyCycles
+        .filter(c => c.accountId === accountId)
+        .sort((a, b) => a.year - b.year || a.cycleNumber - b.cycleNumber),
       playRuns: state.playRuns.filter(pr => pr.accountId === accountId),
       stakeholderMaps: state.stakeholderMaps.filter(sm => sm.accountId === accountId),
       contacts: state.contacts.filter(c => c.accountId === accountId),

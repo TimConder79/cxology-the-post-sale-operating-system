@@ -68,6 +68,28 @@ export type InflectionPointType =
 
 export type InflectionPointStatus = 'not_started' | 'pending' | 'achieved' | 'overdue'
 
+export type CyclePhaseType = 'goals' | 'habit_transformation' | 'align'
+export type CycleStatus = 'not_started' | 'in_progress' | 'completed'
+
+export interface CyclePhase {
+  type: CyclePhaseType
+  label: string
+  status: CycleStatus
+  playRunId: string | null
+  completedDate: string | null
+}
+
+export interface JourneyCycle {
+  id: string
+  accountId: string
+  cycleNumber: number
+  year: number
+  status: CycleStatus
+  phases: CyclePhase[]
+  startedAt: string | null
+  completedAt: string | null
+}
+
 export type StakeholderInfluence = 'champion' | 'decision_maker' | 'end_user' | 'blocker'
 
 export type StakeholderCoverage = 'engaged' | 'dormant' | 'not_contacted'
@@ -337,6 +359,7 @@ export interface OutcomeEvidence {
 export interface AccountView extends Account {
   stageConfidence: StageConfidence
   inflectionPoints: InflectionPoint[]
+  cycles: JourneyCycle[]
   playRuns: PlayRun[]
   stakeholderMaps: StakeholderMap[]
   contacts: Contact[]

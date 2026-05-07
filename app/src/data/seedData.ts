@@ -1,7 +1,7 @@
 import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, NextBestAction, PipelineStage, PlayTemplate, Opportunity,
-  AccountTimeline, TimelineMilestone, OutcomeEvidence, FiveQuestions,
+  AccountTimeline, TimelineMilestone, OutcomeEvidence, FiveQuestions, JourneyCycle,
 } from '@/types'
 
 // ─── Reference: Pipeline Stages ──────────────────────────────────────────────
@@ -935,5 +935,85 @@ export const fiveQuestions: FiveQuestions[] = [
     q3: 'We own onboarding, the anomaly detection configuration, and helping Beth\'s team interpret the first set of findings. ClearPath owns getting production data access approved and designating someone to validate outputs.',
     q4: 'Security review for production data access could take three to four weeks — that\'s outside both of our control and it compresses the timeline significantly. Internally, there\'s a risk that the Data Science team treats this as a lower priority if a client deliverable spikes.',
     q5: 'Beth has hinted that if the platform proves itself, she wants to build a self-serve anomaly alerting system that routes findings directly to the business units — no analyst in the loop. That\'s a fundamentally different operating model for her team. If we help them get there, we\'re not just a tool, we\'re part of how they work.',
+  },
+]
+
+// ─── Journey Cycles ───────────────────────────────────────────────────────────
+
+export const journeyCycles: JourneyCycle[] = [
+  // ── Meridian Health Systems (acc-001, advocate, 3 cycles) ─────────────────
+  {
+    id: 'cyc-001', accountId: 'acc-001', cycleNumber: 1, year: 1,
+    status: 'completed',
+    startedAt: '2026-02-15T00:00:00Z', completedAt: '2026-03-22T00:00:00Z',
+    phases: [
+      { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2026-02-28T00:00:00Z' },
+      { type: 'habit_transformation', label: 'Habit Transformation', status: 'completed',   playRunId: null,      completedDate: '2026-03-12T00:00:00Z' },
+      { type: 'align',               label: 'Align',               status: 'completed',   playRunId: null,      completedDate: '2026-03-22T00:00:00Z' },
+    ],
+  },
+  {
+    id: 'cyc-002', accountId: 'acc-001', cycleNumber: 2, year: 1,
+    status: 'completed',
+    startedAt: '2026-03-25T00:00:00Z', completedAt: '2026-04-20T00:00:00Z',
+    phases: [
+      { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2026-04-02T00:00:00Z' },
+      { type: 'habit_transformation', label: 'Habit Transformation', status: 'completed',   playRunId: null,      completedDate: '2026-04-12T00:00:00Z' },
+      { type: 'align',               label: 'Align',               status: 'completed',   playRunId: null,      completedDate: '2026-04-20T00:00:00Z' },
+    ],
+  },
+  {
+    id: 'cyc-003', accountId: 'acc-001', cycleNumber: 3, year: 1,
+    status: 'in_progress',
+    startedAt: '2026-04-21T00:00:00Z', completedAt: null,
+    phases: [
+      { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2026-04-28T00:00:00Z' },
+      { type: 'habit_transformation', label: 'Habit Transformation', status: 'in_progress', playRunId: null,      completedDate: null },
+      { type: 'align',               label: 'Align',               status: 'not_started', playRunId: 'run-004', completedDate: null },
+    ],
+  },
+
+  // ── Vantage Financial (acc-003, intent, 3 completed cycles) ──────────────
+  {
+    id: 'cyc-004', accountId: 'acc-003', cycleNumber: 1, year: 1,
+    status: 'completed',
+    startedAt: '2025-11-10T00:00:00Z', completedAt: '2025-12-20T00:00:00Z',
+    phases: [
+      { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2025-11-25T00:00:00Z' },
+      { type: 'habit_transformation', label: 'Habit Transformation', status: 'completed',   playRunId: null,      completedDate: '2025-12-10T00:00:00Z' },
+      { type: 'align',               label: 'Align',               status: 'completed',   playRunId: null,      completedDate: '2025-12-20T00:00:00Z' },
+    ],
+  },
+  {
+    id: 'cyc-005', accountId: 'acc-003', cycleNumber: 2, year: 1,
+    status: 'completed',
+    startedAt: '2026-01-05T00:00:00Z', completedAt: '2026-02-14T00:00:00Z',
+    phases: [
+      { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2026-01-20T00:00:00Z' },
+      { type: 'habit_transformation', label: 'Habit Transformation', status: 'completed',   playRunId: null,      completedDate: '2026-02-05T00:00:00Z' },
+      { type: 'align',               label: 'Align',               status: 'completed',   playRunId: null,      completedDate: '2026-02-14T00:00:00Z' },
+    ],
+  },
+  {
+    id: 'cyc-006', accountId: 'acc-003', cycleNumber: 3, year: 1,
+    status: 'completed',
+    startedAt: '2026-02-20T00:00:00Z', completedAt: '2026-04-03T00:00:00Z',
+    phases: [
+      { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2026-03-05T00:00:00Z' },
+      { type: 'habit_transformation', label: 'Habit Transformation', status: 'completed',   playRunId: null,      completedDate: '2026-03-22T00:00:00Z' },
+      { type: 'align',               label: 'Align',               status: 'completed',   playRunId: 'run-008', completedDate: '2026-04-03T00:00:00Z' },
+    ],
+  },
+
+  // ── ClearPath Analytics (acc-005, align, 1 cycle in progress) ────────────
+  {
+    id: 'cyc-007', accountId: 'acc-005', cycleNumber: 1, year: 1,
+    status: 'in_progress',
+    startedAt: '2026-04-10T00:00:00Z', completedAt: null,
+    phases: [
+      { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2026-04-18T00:00:00Z' },
+      { type: 'habit_transformation', label: 'Habit Transformation', status: 'in_progress', playRunId: null,      completedDate: null },
+      { type: 'align',               label: 'Align',               status: 'not_started', playRunId: 'run-010', completedDate: null },
+    ],
   },
 ]
