@@ -22,6 +22,41 @@ export type ExecutionRiskType =
 export type CustomerNeedType = 'skillset' | 'knowledge' | 'cost' | 'demands' | 'change'
 export type BlockStatus      = 'completed' | 'in_progress' | 'stalled' | 'at_risk'
 
+// ─── Health Scoring ───────────────────────────────────────────────────────────
+
+export type HealthBand        = 'healthy' | 'at_risk' | 'critical'
+export type HealthTrend       = 'improving' | 'stable' | 'declining'
+export type HealthDimensionId = 'usage' | 'engagement' | 'outcomes' | 'relationship'
+export type HealthSignalStatus = 'met' | 'partial' | 'unmet'
+
+export interface HealthSignal {
+  id: string
+  label: string
+  score: number           // 0–100
+  weight: number          // relative weight within dimension, sums to 100
+  status: HealthSignalStatus
+  detail: string
+  action: string | null   // recommended action when not 'met'
+}
+
+export interface HealthDimension {
+  id: HealthDimensionId
+  score: number           // 0–100 weighted rollup of signals
+  weight: number          // portfolio weight: usage 30, engagement 25, outcomes 30, relationship 15
+  trend: HealthTrend
+  signals: HealthSignal[]
+}
+
+export interface AccountHealth {
+  id: string
+  accountId: string
+  compositeScore: number  // 0–100 weighted rollup of all dimensions
+  band: HealthBand
+  trend: HealthTrend
+  dimensions: HealthDimension[]
+  updatedAt: string
+}
+
 export interface ExecutionRisk {
   type: ExecutionRiskType
   severity: 'blocking' | 'warning'

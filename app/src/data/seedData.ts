@@ -2,6 +2,7 @@ import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, NextBestAction, PipelineStage, PlayTemplate, Opportunity,
   AccountTimeline, TimelineMilestone, OutcomeEvidence, FiveQuestions, JourneyCycle,
+  AccountHealth,
 } from '@/types'
 
 // ─── Reference: Pipeline Stages ──────────────────────────────────────────────
@@ -1014,6 +1015,644 @@ export const journeyCycles: JourneyCycle[] = [
       { type: 'goals',               label: 'Goals',               status: 'completed',   playRunId: null,      completedDate: '2026-04-18T00:00:00Z' },
       { type: 'habit_transformation', label: 'Habit Transformation', status: 'in_progress', playRunId: null,      completedDate: null },
       { type: 'align',               label: 'Align',               status: 'not_started', playRunId: 'run-010', completedDate: null },
+    ],
+  },
+]
+
+// ─── Health Scores ────────────────────────────────────────────────────────────
+// Four dimensions: Usage (30%), Engagement (25%), Outcomes (30%), Relationship (15%)
+// Composite = weighted rollup of dimension scores.
+// Bands: healthy ≥ 70, at_risk 40–69, critical < 40.
+
+export const accountHealth: AccountHealth[] = [
+
+  // ── Meridian Health Systems (acc-001) ────────────────────────────────────
+  // Healthy overall but relationship dimension has a soft underbelly — CFO
+  // is identified but never contacted. Everything else is strong.
+  {
+    id: 'ah-001',
+    accountId: 'acc-001',
+    compositeScore: 74,
+    band: 'healthy',
+    trend: 'improving',
+    updatedAt: '2026-05-05T00:00:00Z',
+    dimensions: [
+      {
+        id: 'usage',
+        score: 76,
+        weight: 30,
+        trend: 'improving',
+        signals: [
+          {
+            id: 'u1-001', label: 'Active user rate', score: 68, weight: 35, status: 'partial',
+            detail: '68% of licensed seats active in the last 30 days.',
+            action: 'Identify dormant users and run a targeted enablement block with Priya\'s team.',
+          },
+          {
+            id: 'u2-001', label: 'Feature depth', score: 80, weight: 25, status: 'met',
+            detail: 'Reporting automation and compliance dashboard both in active use.',
+            action: null,
+          },
+          {
+            id: 'u3-001', label: 'Session frequency', score: 88, weight: 25, status: 'met',
+            detail: 'Averaging 4.2 sessions/week per active user — above benchmark.',
+            action: null,
+          },
+          {
+            id: 'u4-001', label: 'Department coverage', score: 50, weight: 15, status: 'partial',
+            detail: '2 of 4 departments active. Finance Ops and HR not yet onboarded.',
+            action: 'Propose a Finance Ops enablement block to extend adoption into a third department.',
+          },
+        ],
+      },
+      {
+        id: 'engagement',
+        score: 83,
+        weight: 25,
+        trend: 'stable',
+        signals: [
+          {
+            id: 'e1-001', label: 'Meeting cadence', score: 100, weight: 30, status: 'met',
+            detail: 'Alignment meetings running on schedule. No missed sessions.',
+            action: null,
+          },
+          {
+            id: 'e2-001', label: 'Champion responsiveness', score: 90, weight: 25, status: 'met',
+            detail: 'Priya Nair responds within 4 hours on average.',
+            action: null,
+          },
+          {
+            id: 'e3-001', label: 'Executive sponsor participation', score: 75, weight: 25, status: 'met',
+            detail: 'James Whitfield attended 2 of last 3 alignment meetings.',
+            action: null,
+          },
+          {
+            id: 'e4-001', label: 'CSM action item completion', score: 60, weight: 20, status: 'partial',
+            detail: '60% of committed next steps completed on time across last 3 sessions.',
+            action: 'Reduce the number of next steps per meeting to 2–3 to improve completion rate.',
+          },
+        ],
+      },
+      {
+        id: 'outcomes',
+        score: 70,
+        weight: 30,
+        trend: 'improving',
+        signals: [
+          {
+            id: 'o1-001', label: 'First value achieved', score: 100, weight: 35, status: 'met',
+            detail: 'Reporting automation reduced intake processing time by 40% — documented.',
+            action: null,
+          },
+          {
+            id: 'o2-001', label: 'Goal progress documented', score: 50, weight: 30, status: 'partial',
+            detail: 'Reporting automation goal progressing. Cross-dept visibility goal has no owner.',
+            action: 'Assign a goal owner and set a milestone date in the next alignment meeting.',
+          },
+          {
+            id: 'o3-001', label: 'Customer articulates ROI', score: 75, weight: 20, status: 'met',
+            detail: 'James Whitfield cited compliance dashboard as a renewal driver.',
+            action: null,
+          },
+          {
+            id: 'o4-001', label: 'Outcome evidence documented', score: 50, weight: 15, status: 'partial',
+            detail: '1 evidence entry captured. Second goal needs evidence before renewal.',
+            action: 'Capture a second outcome evidence entry before the renewal conversation.',
+          },
+        ],
+      },
+      {
+        id: 'relationship',
+        score: 53,
+        weight: 15,
+        trend: 'stable',
+        signals: [
+          {
+            id: 'r1-001', label: 'Executive sponsor engaged', score: 80, weight: 35, status: 'met',
+            detail: 'James Whitfield (VP Operations) actively engaged as renewal authority.',
+            action: null,
+          },
+          {
+            id: 'r2-001', label: 'Decision maker contacted', score: 10, weight: 30, status: 'unmet',
+            detail: 'CFO David Ko identified as renewal decision maker — zero contact made.',
+            action: 'Ask James Whitfield to facilitate a CFO introduction before the next alignment cycle.',
+          },
+          {
+            id: 'r3-001', label: 'Champion stability', score: 90, weight: 20, status: 'met',
+            detail: 'Priya Nair has been stable champion for 5+ months.',
+            action: null,
+          },
+          {
+            id: 'r4-001', label: 'Multi-threaded coverage', score: 30, weight: 15, status: 'unmet',
+            detail: '2 engaged contacts out of 4 known. Finance Ops untouched.',
+            action: 'Initiate contact with Aisha Torres (Finance Ops) to expand relationship footprint.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── Apex Logistics Group (acc-002) ───────────────────────────────────────
+  // At risk. Usage plateaued, outcomes stalled, engagement deteriorating.
+  // COO was engaged at kickoff but hasn't been seen since.
+  {
+    id: 'ah-002',
+    accountId: 'acc-002',
+    compositeScore: 47,
+    band: 'at_risk',
+    trend: 'declining',
+    updatedAt: '2026-05-05T00:00:00Z',
+    dimensions: [
+      {
+        id: 'usage',
+        score: 52,
+        weight: 30,
+        trend: 'stable',
+        signals: [
+          {
+            id: 'u1-002', label: 'Active user rate', score: 55, weight: 35, status: 'partial',
+            detail: '55% of licensed seats active. Flat for 6 weeks.',
+            action: 'Run a usage audit with Linda Park to identify who dropped off and why.',
+          },
+          {
+            id: 'u2-002', label: 'Feature depth', score: 40, weight: 25, status: 'partial',
+            detail: 'Only basic shipment tracking features in use. Reconciliation automation untouched.',
+            action: 'Schedule a Knowledge block to demonstrate reconciliation automation — that\'s the stated First Value.',
+          },
+          {
+            id: 'u3-002', label: 'Session frequency', score: 55, weight: 25, status: 'partial',
+            detail: 'Averaging 2.1 sessions/week — below the 3.5/week benchmark for this stage.',
+            action: null,
+          },
+          {
+            id: 'u4-002', label: 'Department coverage', score: 30, weight: 15, status: 'unmet',
+            detail: '1 of 3 departments active. Distribution and Procurement not onboarded.',
+            action: 'Expand onboarding to Distribution — the team that owns the stated First Value goal.',
+          },
+        ],
+      },
+      {
+        id: 'engagement',
+        score: 44,
+        weight: 25,
+        trend: 'declining',
+        signals: [
+          {
+            id: 'e1-002', label: 'Meeting cadence', score: 50, weight: 30, status: 'partial',
+            detail: '2 of last 4 scheduled meetings held. Linda Park cancelled twice.',
+            action: 'Propose a shorter, more focused meeting format — the current agenda may be too long.',
+          },
+          {
+            id: 'e2-002', label: 'Champion responsiveness', score: 40, weight: 25, status: 'partial',
+            detail: 'Linda Park averaging 3-day response time. Slowing.',
+            action: null,
+          },
+          {
+            id: 'e3-002', label: 'Executive sponsor participation', score: 10, weight: 25, status: 'unmet',
+            detail: 'Ron Castellano (COO) has not attended any session since kickoff.',
+            action: 'Re-engage Ron directly with a short ROI update — not a meeting request. Give him something to react to.',
+          },
+          {
+            id: 'e4-002', label: 'CSM action item completion', score: 40, weight: 20, status: 'partial',
+            detail: '40% of committed next steps completed. Several open items aging past 3 weeks.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'outcomes',
+        score: 38,
+        weight: 30,
+        trend: 'declining',
+        signals: [
+          {
+            id: 'o1-002', label: 'First value achieved', score: 30, weight: 35, status: 'unmet',
+            detail: 'Reconciliation automation target not reached. No documented win yet.',
+            action: 'Redefine scope of First Value to a smaller, achievable win within 2 weeks.',
+          },
+          {
+            id: 'o2-002', label: 'Goal progress documented', score: 20, weight: 30, status: 'unmet',
+            detail: 'Both primary goals have no documented progress since kickoff.',
+            action: 'Run an Alignment Meeting to reset goals and capture any partial progress.',
+          },
+          {
+            id: 'o3-002', label: 'Customer articulates ROI', score: 20, weight: 20, status: 'unmet',
+            detail: 'No customer-cited outcome evidence. Linda cannot describe specific value delivered.',
+            action: null,
+          },
+          {
+            id: 'o4-002', label: 'Outcome evidence documented', score: 0, weight: 15, status: 'unmet',
+            detail: 'No outcome evidence entries captured.',
+            action: 'Document any partial win — even a time saved estimate — to create momentum.',
+          },
+        ],
+      },
+      {
+        id: 'relationship',
+        score: 58,
+        weight: 15,
+        trend: 'stable',
+        signals: [
+          {
+            id: 'r1-002', label: 'Executive sponsor engaged', score: 40, weight: 35, status: 'partial',
+            detail: 'COO Ron Castellano engaged at kickoff but absent since. Relationship is thin.',
+            action: 'Send a brief commercial update to Ron — show what\'s at stake if goals slip further.',
+          },
+          {
+            id: 'r2-002', label: 'Decision maker contacted', score: 80, weight: 30, status: 'met',
+            detail: 'Ron Castellano is both decision maker and has been contacted.',
+            action: null,
+          },
+          {
+            id: 'r3-002', label: 'Champion stability', score: 70, weight: 20, status: 'met',
+            detail: 'Linda Park is stable as champion, though engagement is cooling.',
+            action: null,
+          },
+          {
+            id: 'r4-002', label: 'Multi-threaded coverage', score: 30, weight: 15, status: 'unmet',
+            detail: '2 known contacts, only 1 actively engaged. No redundancy in the relationship.',
+            action: 'Identify a second champion-level contact in the Distribution or Procurement team.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── Vantage Financial (acc-003) ──────────────────────────────────────────
+  // Strongest account in the portfolio. High scores across all four dimensions.
+  // Moving toward NRR Close — renewal and expansion both probable.
+  {
+    id: 'ah-003',
+    accountId: 'acc-003',
+    compositeScore: 87,
+    band: 'healthy',
+    trend: 'improving',
+    updatedAt: '2026-05-05T00:00:00Z',
+    dimensions: [
+      {
+        id: 'usage',
+        score: 86,
+        weight: 30,
+        trend: 'improving',
+        signals: [
+          {
+            id: 'u1-003', label: 'Active user rate', score: 82, weight: 35, status: 'met',
+            detail: '82% of licensed seats active across all three sales regions.',
+            action: null,
+          },
+          {
+            id: 'u2-003', label: 'Feature depth', score: 90, weight: 25, status: 'met',
+            detail: 'Pipeline analytics, anomaly detection, and regional dashboards all in active use.',
+            action: null,
+          },
+          {
+            id: 'u3-003', label: 'Session frequency', score: 92, weight: 25, status: 'met',
+            detail: 'Averaging 6.1 sessions/week per active user. Highest in the portfolio.',
+            action: null,
+          },
+          {
+            id: 'u4-003', label: 'Department coverage', score: 75, weight: 15, status: 'met',
+            detail: 'All 3 sales regions active. Finance team not yet onboarded — expansion opportunity.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'engagement',
+        score: 90,
+        weight: 25,
+        trend: 'stable',
+        signals: [
+          {
+            id: 'e1-003', label: 'Meeting cadence', score: 100, weight: 30, status: 'met',
+            detail: 'All scheduled sessions held. No cancellations in 90 days.',
+            action: null,
+          },
+          {
+            id: 'e2-003', label: 'Champion responsiveness', score: 95, weight: 25, status: 'met',
+            detail: 'Champion responds same-day. RevOps team initiates contact proactively.',
+            action: null,
+          },
+          {
+            id: 'e3-003', label: 'Executive sponsor participation', score: 85, weight: 25, status: 'met',
+            detail: 'CRO attended last QBR and cited the pipeline dashboard in a board presentation.',
+            action: null,
+          },
+          {
+            id: 'e4-003', label: 'CSM action item completion', score: 80, weight: 20, status: 'met',
+            detail: '80% completion rate on next steps. Remaining 20% are in-flight expansions.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'outcomes',
+        score: 91,
+        weight: 30,
+        trend: 'improving',
+        signals: [
+          {
+            id: 'o1-003', label: 'First value achieved', score: 100, weight: 35, status: 'met',
+            detail: 'Pipeline single source of truth confirmed by CRO in live demo to board.',
+            action: null,
+          },
+          {
+            id: 'o2-003', label: 'Goal progress documented', score: 90, weight: 30, status: 'met',
+            detail: 'Both primary goals tracking with documented evidence. Expansion goal in sight.',
+            action: null,
+          },
+          {
+            id: 'o3-003', label: 'Customer articulates ROI', score: 90, weight: 20, status: 'met',
+            detail: 'CRO and RevOps both cite specific time-to-close reduction as the headline outcome.',
+            action: null,
+          },
+          {
+            id: 'o4-003', label: 'Outcome evidence documented', score: 85, weight: 15, status: 'met',
+            detail: 'Multiple evidence entries. Strong renewal narrative already built.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'relationship',
+        score: 78,
+        weight: 15,
+        trend: 'improving',
+        signals: [
+          {
+            id: 'r1-003', label: 'Executive sponsor engaged', score: 90, weight: 35, status: 'met',
+            detail: 'CRO is an active and vocal advocate. Cited the platform in a public venue.',
+            action: null,
+          },
+          {
+            id: 'r2-003', label: 'Decision maker contacted', score: 80, weight: 30, status: 'met',
+            detail: 'Renewal decision maker identified and in regular contact.',
+            action: null,
+          },
+          {
+            id: 'r3-003', label: 'Champion stability', score: 90, weight: 20, status: 'met',
+            detail: 'RevOps champion has been stable since kickoff with no personnel changes.',
+            action: null,
+          },
+          {
+            id: 'r4-003', label: 'Multi-threaded coverage', score: 50, weight: 15, status: 'partial',
+            detail: '3 engaged contacts. Finance team not yet introduced — gap before CFO-level renewal.',
+            action: 'Expand into Finance team before renewal conversation — reduces single-threaded risk.',
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── Thornwood Media (acc-004) ─────────────────────────────────────────────
+  // Critical. No first value, no champion engagement, usage barely present.
+  // Renewal window is closing fast. This account needs emergency intervention.
+  {
+    id: 'ah-004',
+    accountId: 'acc-004',
+    compositeScore: 23,
+    band: 'critical',
+    trend: 'declining',
+    updatedAt: '2026-05-05T00:00:00Z',
+    dimensions: [
+      {
+        id: 'usage',
+        score: 20,
+        weight: 30,
+        trend: 'declining',
+        signals: [
+          {
+            id: 'u1-004', label: 'Active user rate', score: 18, weight: 35, status: 'unmet',
+            detail: 'Only 18% of licensed seats have logged in within 30 days.',
+            action: 'Conduct an emergency usage audit. Understand why 82% of users have abandoned the product.',
+          },
+          {
+            id: 'u2-004', label: 'Feature depth', score: 15, weight: 25, status: 'unmet',
+            detail: 'Only login and basic content listing features accessed. Core value features untouched.',
+            action: 'Identify the one feature that maps to their stated goal and build a 30-minute enablement session around it.',
+          },
+          {
+            id: 'u3-004', label: 'Session frequency', score: 20, weight: 25, status: 'unmet',
+            detail: 'Averaging 0.8 sessions/week. Effectively dormant.',
+            action: null,
+          },
+          {
+            id: 'u4-004', label: 'Department coverage', score: 10, weight: 15, status: 'unmet',
+            detail: '1 department attempted onboarding. No other team has been engaged.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'engagement',
+        score: 27,
+        weight: 25,
+        trend: 'declining',
+        signals: [
+          {
+            id: 'e1-004', label: 'Meeting cadence', score: 20, weight: 30, status: 'unmet',
+            detail: '1 of last 4 scheduled meetings held. 3 no-shows or cancellations.',
+            action: 'Send a single direct email to the primary contact — not a meeting request. Acknowledge the pattern and offer a 15-minute reset call.',
+          },
+          {
+            id: 'e2-004', label: 'Champion responsiveness', score: 20, weight: 25, status: 'unmet',
+            detail: 'Response times exceeding 5 days. Last response was over 2 weeks ago.',
+            action: 'Escalate internally. Attempt a different contact channel (phone, LinkedIn) within 48 hours.',
+          },
+          {
+            id: 'e3-004', label: 'Executive sponsor participation', score: 0, weight: 25, status: 'unmet',
+            detail: 'No executive has attended any session. No executive contact established.',
+            action: 'Identify who the internal sponsor should be and approach via the account\'s primary contact as an introduction request.',
+          },
+          {
+            id: 'e4-004', label: 'CSM action item completion', score: 20, weight: 20, status: 'unmet',
+            detail: '1 of 5 action items completed across all sessions. Momentum is absent.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'outcomes',
+        score: 13,
+        weight: 30,
+        trend: 'declining',
+        signals: [
+          {
+            id: 'o1-004', label: 'First value achieved', score: 0, weight: 35, status: 'unmet',
+            detail: 'No first value milestone reached. No first value statement was ever finalized.',
+            action: 'Define a minimal first value target immediately — something achievable in 14 days. Run the First Value play.',
+          },
+          {
+            id: 'o2-004', label: 'Goal progress documented', score: 0, weight: 30, status: 'unmet',
+            detail: 'No goals have documented progress. Both primary goals are inactive.',
+            action: null,
+          },
+          {
+            id: 'o3-004', label: 'Customer articulates ROI', score: 0, weight: 20, status: 'unmet',
+            detail: 'Customer cannot name a single concrete outcome delivered.',
+            action: 'Find any win — no matter how small — and make it visible before the next conversation.',
+          },
+          {
+            id: 'o4-004', label: 'Outcome evidence documented', score: 0, weight: 15, status: 'unmet',
+            detail: 'No evidence entries. Renewal will have no foundation if this continues.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'relationship',
+        score: 22,
+        weight: 15,
+        trend: 'declining',
+        signals: [
+          {
+            id: 'r1-004', label: 'Executive sponsor engaged', score: 0, weight: 35, status: 'unmet',
+            detail: 'No executive sponsor identified or engaged.',
+            action: 'Identify the correct exec sponsor from the contract or sales handoff notes. Initiate contact this week.',
+          },
+          {
+            id: 'r2-004', label: 'Decision maker contacted', score: 20, weight: 30, status: 'unmet',
+            detail: 'Decision maker for renewal is unknown.',
+            action: 'Ask the primary contact directly: "Who in your organization will be part of the renewal decision?"',
+          },
+          {
+            id: 'r3-004', label: 'Champion stability', score: 30, weight: 20, status: 'unmet',
+            detail: 'Primary contact role is unclear. May not have internal authority to drive adoption.',
+            action: 'Validate whether the current contact is the right champion or if a different stakeholder should be engaged.',
+          },
+          {
+            id: 'r4-004', label: 'Multi-threaded coverage', score: 10, weight: 15, status: 'unmet',
+            detail: '1 contact total. No relationship redundancy whatsoever.',
+            action: null,
+          },
+        ],
+      },
+    ],
+  },
+
+  // ── ClearPath Analytics (acc-005) ────────────────────────────────────────
+  // At risk but trending toward healthy. Good engagement, first value
+  // approaching — the outcome and relationship scores just need work.
+  {
+    id: 'ah-005',
+    accountId: 'acc-005',
+    compositeScore: 65,
+    band: 'at_risk',
+    trend: 'improving',
+    updatedAt: '2026-05-05T00:00:00Z',
+    dimensions: [
+      {
+        id: 'usage',
+        score: 64,
+        weight: 30,
+        trend: 'improving',
+        signals: [
+          {
+            id: 'u1-005', label: 'Active user rate', score: 62, weight: 35, status: 'partial',
+            detail: '62% of licensed seats active. Growing week-over-week since onboarding.',
+            action: null,
+          },
+          {
+            id: 'u2-005', label: 'Feature depth', score: 55, weight: 25, status: 'partial',
+            detail: 'Anomaly detection in use by Data Science team. Reporting features not yet adopted.',
+            action: 'Run a brief demo of the reporting suite for the Analytics leads — connect it to their stated Q2 goal.',
+          },
+          {
+            id: 'u3-005', label: 'Session frequency', score: 70, weight: 25, status: 'met',
+            detail: 'Averaging 3.3 sessions/week — on track for this stage.',
+            action: null,
+          },
+          {
+            id: 'u4-005', label: 'Department coverage', score: 60, weight: 15, status: 'partial',
+            detail: '2 of 3 target departments active. Engineering team not yet onboarded.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'engagement',
+        score: 72,
+        weight: 25,
+        trend: 'stable',
+        signals: [
+          {
+            id: 'e1-005', label: 'Meeting cadence', score: 90, weight: 30, status: 'met',
+            detail: 'All scheduled sessions held. Champion initiates some meetings proactively.',
+            action: null,
+          },
+          {
+            id: 'e2-005', label: 'Champion responsiveness', score: 85, weight: 25, status: 'met',
+            detail: 'Responds within 24 hours consistently.',
+            action: null,
+          },
+          {
+            id: 'e3-005', label: 'Executive sponsor participation', score: 40, weight: 25, status: 'partial',
+            detail: 'Head of Data Science has not attended since the kickoff. Next session TBD.',
+            action: 'Invite the Head of Data Science to the next session with a specific agenda item that requires their input.',
+          },
+          {
+            id: 'e4-005', label: 'CSM action item completion', score: 70, weight: 20, status: 'met',
+            detail: '70% completion rate. Improving from 55% six weeks ago.',
+            action: null,
+          },
+        ],
+      },
+      {
+        id: 'outcomes',
+        score: 57,
+        weight: 30,
+        trend: 'improving',
+        signals: [
+          {
+            id: 'o1-005', label: 'First value achieved', score: 50, weight: 35, status: 'partial',
+            detail: 'First anomaly detection report delivered but business insight not yet surfaced.',
+            action: 'Run a 30-minute working session to identify one actionable insight from the first report — that completes the First Value milestone.',
+          },
+          {
+            id: 'o2-005', label: 'Goal progress documented', score: 50, weight: 30, status: 'partial',
+            detail: '1 of 2 goals has documented progress. Reporting goal is not yet tracked.',
+            action: null,
+          },
+          {
+            id: 'o3-005', label: 'Customer articulates ROI', score: 50, weight: 20, status: 'partial',
+            detail: 'Team mentions time savings anecdotally but has not quantified a specific outcome.',
+            action: 'Ask the champion to put a number on the time savings in the next session — even a rough estimate creates momentum.',
+          },
+          {
+            id: 'o4-005', label: 'Outcome evidence documented', score: 30, weight: 15, status: 'unmet',
+            detail: 'No formal outcome evidence captured yet.',
+            action: 'Document the anomaly detection progress as an early evidence entry — imperfect evidence is better than none.',
+          },
+        ],
+      },
+      {
+        id: 'relationship',
+        score: 67,
+        weight: 15,
+        trend: 'stable',
+        signals: [
+          {
+            id: 'r1-005', label: 'Executive sponsor engaged', score: 50, weight: 35, status: 'partial',
+            detail: 'Head of Data Science is nominally the sponsor but has been passive since kickoff.',
+            action: 'Re-engage the Head of Data Science with a short progress summary — make it easy to respond.',
+          },
+          {
+            id: 'r2-005', label: 'Decision maker contacted', score: 80, weight: 30, status: 'met',
+            detail: 'Renewal decision maker identified and has been in contact.',
+            action: null,
+          },
+          {
+            id: 'r3-005', label: 'Champion stability', score: 90, weight: 20, status: 'met',
+            detail: 'Primary champion is stable with no personnel or role changes.',
+            action: null,
+          },
+          {
+            id: 'r4-005', label: 'Multi-threaded coverage', score: 40, weight: 15, status: 'partial',
+            detail: '2 contacts engaged. Engineering team not yet introduced.',
+            action: null,
+          },
+        ],
+      },
     ],
   },
 ]

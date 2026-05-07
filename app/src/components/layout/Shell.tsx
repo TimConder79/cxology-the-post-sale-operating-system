@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from 'react-router-dom'
-import { LayoutGrid, Activity, Zap } from 'lucide-react'
+import { LayoutGrid, Activity, Zap, Heart } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export function Shell() {
@@ -62,6 +62,27 @@ export function Shell() {
                   <div>
                     <div className="text-[13px] font-medium leading-none">Inflection Points</div>
                     <div className={cn('text-[10px] mt-0.5 leading-none', isActive ? 'text-brand-400' : 'text-slate-400')}>Execution quality</div>
+                  </div>
+                </>
+              )}
+            </NavLink>
+            <NavLink
+              to="/health"
+              className={({ isActive }) =>
+                cn(
+                  'flex items-center gap-2.5 px-2.5 py-2 rounded-lg transition-colors',
+                  isActive
+                    ? 'bg-brand-50 text-brand-700'
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                )
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  <Heart size={15} className={cn('flex-shrink-0', isActive ? 'text-brand-600' : 'text-slate-400')} />
+                  <div>
+                    <div className="text-[13px] font-medium leading-none">Health Scoring</div>
+                    <div className={cn('text-[10px] mt-0.5 leading-none', isActive ? 'text-brand-400' : 'text-slate-400')}>Account health signals</div>
                   </div>
                 </>
               )}

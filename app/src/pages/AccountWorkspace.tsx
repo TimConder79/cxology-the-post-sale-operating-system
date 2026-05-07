@@ -4,7 +4,7 @@ import { useEffect, type ReactNode } from 'react'
 import {
   ChevronLeft, CheckCircle2, Circle, AlertCircle, Clock,
   ArrowRight, User, Zap, TrendingUp, AlertTriangle,
-  Calendar, ChevronRight, Award,
+  Calendar, ChevronRight, Award, Heart,
 } from 'lucide-react'
 import { useApp } from '@/context/AppContext'
 import { getWorkspaceRecommendation } from '@/lib/accountRouting'
@@ -13,8 +13,75 @@ import {
   PLAY_RUN_STATUS, SIGNAL_STATUS,
   formatCurrency, formatDate, formatDateShort, daysUntil, daysSince, cn,
 } from '@/lib/utils'
-import type { InflectionPointStatus } from '@/types'
+import type { InflectionPointStatus, AccountHealth, HealthBand, HealthDimensionId } from '@/types'
 import { JourneyTimeline } from '@/components/JourneyTimeline'
+
+// ─── Health score strip ───────────────────────────────────────────────────────
+
+const HEALTH_BAND: Record<HealthBand, { label: string; text: string; bar: string; bg: string; badge: string }> = {
+  healthy:  { label: 'Healthy',  text: 'text-emerald-600', bar: 'bg-emerald-400', bg: 'bg-emerald-50',  badge: 'text-emerald-700 bg-emerald-50 ring-emerald-200' },
+  at_risk:  { label: 'At Risk',  text: 'text-amber-600',   bar: 'bg-amber-400',   bg: 'bg-amber-50',    badge: 'text-amber-700 bg-amber-50 ring-amber-200' },
+  critical: { label: 'Critical', text: 'text-red-600',     bar: 'bg-red-500',     bg: 'bg-red-50',      badge: 'text-red-700 bg-red-50 ring-red-200' },
+}
+const DIM_SHORT: Record<HealthDimensionId, string> = {
+  usage: 'Usage', engagement: 'Eng.', outcomes: 'Outcomes', relationship: 'Rel.'
+}
+
+function AccountHealthStrip({ health }: { health: AccountHealth }) {
+  const cfg = HEALTH_BAND[health.band]
+  return (
+    <div className={cn('rounded-xl border border-slate-200 px-5 py-3.5 flex items-center gap-6 mb-5', cfg.bg)}>
+      {/* Score + band */}
+      <div className="flex items-center gap-2.5 flex-shrink-0">
+        <Heart size={14} className={cfg.text} />
+        <div>
+          <div className={cn('text-[22px] font-bold leading-none', cfg.text)}>{health.compositeScore}</div>
+          <div className="text-[9px] text-slate-400 mt-0.5 uppercase tracking-wide">Health Score</div>
+        </div>
+        <span className={cn('text-[10px] font-bold px-1.5 py-0.5 rounded ring-1 ml-1', cfg.badge)}>
+          {cfg.label}
+        </span>
+      </div>
+
+      {/* Divider */}
+      <div className="w-px h-8 bg-slate-200 flex-shrink-0" />
+
+      {/* Dimension bars */}
+      <div className="flex items-center gap-5 flex-1">
+        {health.dimensions.map(dim => {
+          const dimBand: HealthBand = dim.score >= 70 ? 'healthy' : dim.score >= 40 ? 'at_risk' : 'critical'
+          return (
+            <div key={dim.id} className="flex-1 min-w-0">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[10px] font-medium text-slate-500">{DIM_SHORT[dim.id]}</span>
+                <span className={cn('text-[11px] font-bold tabular-nums', HEALTH_BAND[dimBand].text)}>
+                  {dim.score}
+                </span>
+              </div>
+              <div className="h-1.5 bg-white rounded-full overflow-hidden ring-1 ring-slate-100">
+                <div
+                  className={cn('h-full rounded-full transition-all duration-500', HEALTH_BAND[dimBand].bar)}
+                  style={{ width: `${dim.score}%` }}
+                />
+              </div>
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Divider */}
+      <div className="w-px h-8 bg-slate-200 flex-shrink-0" />
+
+      {/* Link to full health view */}
+      <Link
+        to="/health"
+        className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-800 bg-white hover:bg-brand-50 px-2.5 py-1.5 rounded-lg ring-1 ring-slate-200 transition-colors flex-shrink-0"
+      >
+        Full report <ChevronRight size={11} />
+      </Link>
+    </div>
+  )
+}
 
 function IPIcon({ status }: { status: InflectionPointStatus }) {
   const size = 16
@@ -39,7 +106,7 @@ export function AccountWorkspace() {
   const { id } = useParams()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
-  const { getAccountView, contacts } = useApp()
+  const { getAccountView, contacts, accountHealth } = useApp()
 
   const account = getAccountView(id!)
   if (!account) return <div className="p-8 text-slate-500">Account not found.</div>
@@ -106,7 +173,7 @@ export function AccountWorkspace() {
       <div className="flex-1 overflow-auto">
         <div className="max-w-6xl mx-auto px-8 py-6">
           {/* Account header */}
-          <div className="mb-6">
+          <div className="mb-4">
             <h1 className="text-2xl font-bold text-slate-900 tracking-tight">{account.name}</h1>
             <div className="flex items-center gap-3 mt-1.5 text-[13px] text-slate-500">
               <span>{account.industry}</span>
@@ -121,6 +188,12 @@ export function AccountWorkspace() {
               <span>{account.csm}</span>
             </div>
           </div>
+
+          {/* Health score strip */}
+          {(() => {
+            const health = accountHealth.find(h => h.accountId === account.id)
+            return health ? <AccountHealthStrip health={health} /> : null
+          })()}
 
           {/* Tab switcher */}
           <div className="flex gap-1 mb-5 border-b border-slate-100 pb-0">

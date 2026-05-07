@@ -3,7 +3,7 @@ import type {
   Account, Contact, StakeholderMap, InflectionPoint, StageConfidence,
   PlayRun, MeetingBrief, MeetingOutput, NextBestAction, Opportunity, AccountTimeline,
   PipelineStage, PlayTemplate, AccountView, ConfidenceLevel, OutcomeEvidence, PipelineStageId,
-  FiveQuestions, BlockStatus, JourneyCycle,
+  FiveQuestions, BlockStatus, JourneyCycle, AccountHealth,
 } from '@/types'
 
 // Supplementary data passed with value_blocks play completions
@@ -25,6 +25,7 @@ import {
   outcomeEvidence as seedOutcomeEvidence,
   fiveQuestions as seedFiveQuestions,
   journeyCycles as seedJourneyCycles,
+  accountHealth as seedAccountHealth,
   pipelineStages,
   playTemplates,
 } from '@/data/seedData'
@@ -44,6 +45,7 @@ interface AppState {
   accountTimelines: AccountTimeline[]
   outcomeEvidence: OutcomeEvidence[]
   fiveQuestions: FiveQuestions[]
+  accountHealth: AccountHealth[]
 }
 
 interface AppContextValue extends AppState {
@@ -85,6 +87,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     accountTimelines: seedAccountTimelines,
     outcomeEvidence: seedOutcomeEvidence,
     fiveQuestions: seedFiveQuestions,
+    accountHealth: seedAccountHealth,
   })
 
   const getAccountView = (accountId: string): AccountView | null => {
