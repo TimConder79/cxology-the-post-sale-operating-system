@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction: The Post-Sale Problem — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.82;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" disabled>&#8592; Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-1.html'">Next &#8594;</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">&#9776;</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="chapter-intro.html" class="toc-link active">Introduction: The Post-Sale Problem</a>
+  <div class="toc-part">Part I - The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II - The Post-Sale Pipeline</div>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 - Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 - Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 - Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 - Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 - Net Revenue Close</a>
+  <div class="toc-part">Part III - Lifecycle Plays</div>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase and Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew and Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV - Data, Automation and Scale</div>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS - Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance and One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.75rem">Part I: The 2026 CS Evolution</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Introduction</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">The Post-Sale Problem</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">The post-sale problem hiding inside SaaS is not a lack of effort, intelligence, or tooling. It is the absence of an operating system.</p>
+    </div>
+  </div>
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+    <p>For years, companies have invested heavily in the pre-sale motion. Sales organizations run with structure, rigor, and inspection. Marketing teams manage funnels, conversion rates, attribution models, and pipeline influence with precision. Product organizations use roadmaps, prioritization frameworks, release processes, and adoption analytics to guide execution. Every major function that drives growth operates inside a designed system.</p>
+
+    <p>Then the contract gets signed, and much of that operational discipline disappears.</p>
+
+    <p>The post-sale experience often becomes a collection of disconnected activities held together by the judgment and effort of individual people. Onboarding meetings happen. Training gets delivered. QBRs get scheduled. Health scores get updated. CSMs work incredibly hard to maintain relationships and keep customers engaged. Yet despite all of this activity, retention still feels unpredictable. Expansion remains inconsistent. Customers unexpectedly go dark. Executive teams struggle to forecast renewals confidently. Health scores frequently fail to match reality. Accounts that looked "green" suddenly churn.</p>
+
+    <p>Most organizations interpret these problems independently. One customer had onboarding issues. Another suffered from poor adoption. Another lacked an effective champion. Another was impacted by budget pressure or shifting priorities. Another simply was not a good fit.</p>
+
+    <p>But over time I began to realize these were not isolated operational failures. They were recurring patterns.</p>
+
+    <p>The same breakdowns appeared over and over again across completely different companies, customer segments, and products. Customers technically completed onboarding but never reached meaningful First Value. Champions loved the product but failed to align their own organization around it. Success criteria were discussed but never operationalized. Adoption plateaued after an initial burst of activity. QBRs reviewed historical usage but never created forward-looking alignment. Renewal conversations became reactive because the groundwork for strategic continuation had never actually been built.</p>
+
+    <p>What looked like unrelated customer problems were often manifestations of the same underlying issue: the customer was not progressing predictably through the post-sale journey.</p>
+
+    <p>That realization changed everything for me.</p>
+
+    <p>I stopped thinking about retention primarily as an outcome to measure after the fact and started thinking about it as a system of progression that must be intentionally designed, inspected, and managed long before renewal ever appears on a calendar.</p>
+
+    <div class="callout"><p>Because churn rarely begins at renewal. It starts much earlier.</p></div>
+
+    <p>It starts in the messy first meeting after the deal closes when expectations are misaligned but nobody notices. It starts when onboarding focuses on task completion instead of customer momentum. It starts when technical go-live is mistaken for meaningful adoption. It starts when one enthusiastic champion is treated as organizational alignment. It starts when value is discussed abstractly but never operationalized into measurable outcomes that matter to the customer's business.</p>
+
+    <p>These moments matter because progression is cumulative.</p>
+
+    <p>A customer that reaches meaningful First Value builds confidence. Confidence creates momentum. Momentum encourages deeper adoption. Deeper adoption expands stakeholder engagement. Stakeholder expansion creates organizational alignment. Alignment builds executive relevance. Executive relevance transforms renewal from budget scrutiny into strategic continuation.</p>
+
+    <p>Each successful moment strengthens the next one. Each missed moment compounds downstream risk.</p>
+
+    <div class="callout"><p>Activity is not execution. A CSM can log calls, update CRM records, complete tasks, and maintain a healthy relationship while the account quietly stalls underneath the surface.</p></div>
+
+    <p>The customer may still attend meetings. Usage may remain acceptable. Sentiment may appear positive. Yet critical progression moments never actually occurred.</p>
+
+    <ul>
+      <li>The customer never embedded the product operationally.</li>
+      <li>The broader organization never aligned around success.</li>
+      <li>The executive team never connected the solution to strategic priorities.</li>
+      <li>The product became useful but not essential.</li>
+    </ul>
+
+    <p>And eventually the renewal becomes vulnerable.</p>
+
+    <p>Sales organizations already understand this way of thinking intuitively. They recognize that deals progress through stages. They understand that certain conditions must exist before opportunities advance. They inspect for recurring stall patterns. Weak champions, missing economic buyers, delayed procurement engagement, and lack of compelling events are treated as structural signals, not isolated anecdotes.</p>
+
+    <p>Nobody in sales says, "Every lost deal is unique." Patterns are expected. Pipeline inspection exists specifically to identify recurring progression breakdowns before opportunities are lost.</p>
+
+    <p>Post-sale organizations rarely operate this way today. Instead, churn is often analyzed narratively and retrospectively. The champion left. Budgets changed. Priorities shifted. Adoption declined. Implementation struggled. Those explanations are frequently true. But they are often the final expression of progression failures that began much earlier in the customer journey.</p>
+
+    <p>This book introduces a different way of thinking about the post-sale. It argues that retention behaves much more like a pipeline than most organizations realize.</p>
+
+    <p>Customers move through stages. There are required outcomes. There are critical inflection points that determine whether momentum strengthens or stalls. There are recurring progression failures that can be identified systematically. There are operational conditions that must consistently exist for renewal and growth to become predictable.</p>
+
+    <p>And once progression becomes visible, everything changes.</p>
+
+    <ul>
+      <li>Onboarding is no longer measured by project completion. It becomes a race to meaningful First Value.</li>
+      <li>QBRs stop being retrospective reporting exercises and become alignment mechanisms focused on future movement.</li>
+      <li>Health scores stop functioning as abstract sentiment indicators and start reflecting progression conditions tied to actual customer momentum.</li>
+      <li>Customer Success shifts from reactive relationship management toward operational execution.</li>
+      <li>Forecasting becomes more credible because retention is inspected structurally rather than interpreted emotionally.</li>
+    </ul>
+
+    <p>Even AI begins to fit differently into the model. Today, most AI applications in Customer Success are focused on acceleration — summarizing calls, drafting emails, improving note-taking, automating tasks. Those capabilities are useful, but they primarily make the current operating model faster. They do not fundamentally improve it. Because AI struggles in undefined environments. If there is no clear concept of what progression actually looks like, AI cannot meaningfully recognize whether a customer is advancing or stalling.</p>
+
+    <p>But once progression becomes explicit, AI becomes far more powerful. It can recognize when critical moments have not happened. It can identify accounts exhibiting recurring progression failure patterns. It can surface execution gaps long before renewal risk becomes visible. It can recommend next actions based on historical progression success. At that point, AI stops being merely a productivity layer and starts becoming an execution support system for the post-sale operating model itself.</p>
+
+    <div class="callout"><p>Retention is not a department, a feeling, or a lagging metric. It is a system of customer progression that can be intentionally designed, operationalized, inspected, and improved.</p></div>
+
+    <p>This book is ultimately about creating that operating model. Not a collection of disconnected best practices. Not another playbook or health scoring methodology or framework that depends entirely on individual heroics. A system. One that creates clarity around what must happen after the sale, makes customer progression visible, and enables consistency, forecasting, coaching, and scale.</p>
+
+    <p>The chapters that follow move from foundational concepts into the mechanics of execution. Early sections explore why the modern post-sale model struggles to create predictability and why existing tools often fail to expose the real progression risks hiding beneath customer activity. From there, the book introduces the Post-Sale Pipeline and the critical inflection points that shape adoption, alignment, advocacy, renewal, and growth. As the framework becomes more concrete, the later chapters focus on the operational components required to scale the system: onboarding, First Value, alignment meetings, health scoring, forecasting, capacity planning, AI-assisted execution, and the organizational structure needed to make retention repeatable.</p>
+
+    <p>The goal is not simply to present ideas, but to offer a practical operating model that helps companies finally bring the same rigor, visibility, and predictability to the post-sale that already exists across the rest of the business.</p>
+
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 1: From Churn Insurance to Revenue Engine</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button class="chapter-nav-btn" disabled style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">&#8592; Previous</button>
+      <button onclick="window.location.href='chapter-1.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+</body>
+</html>
