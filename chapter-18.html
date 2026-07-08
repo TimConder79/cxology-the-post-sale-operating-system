@@ -47,6 +47,15 @@
       margin: 1.75rem 0;
     }
     .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .callout-title {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 0.4rem;
+    }
     .chapter-nav-btn {
       padding: 8px 18px;
       border: 1px solid var(--gray-200);
@@ -122,7 +131,7 @@
     <li><a href="calculator.html">ROI Calculator</a></li>
   </ul>
   <div style="display:flex;gap:0.6rem;align-items:center">
-    <button class="chapter-nav-btn" onclick="window.location.href='chapter-17.html'">← Prev</button>
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-part4-intro.html'">← Prev</button>
     <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-19.html'">Next →</button>
   </div>
 </nav>
@@ -161,6 +170,7 @@
   <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
   <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
   <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-part4-intro.html" class="toc-link">Part IV Introduction</a>
   <a href="chapter-18.html" class="toc-link active" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
   <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
   <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
@@ -260,6 +270,8 @@
 
     <p>In practice, this means drawing a clear line. Administrative work — drafting, summarizing, logging, monitoring, triggering — belongs to the execution layer. Relationship work — interpreting, advising, navigating, deciding — belongs to the human. The line is not always obvious, and it will shift as AI capabilities continue to develop. But the question to ask is always the same: does this task require understanding this specific customer in this specific moment, or does it require processing information reliably at scale? The first is human work. The second is where AI earns its place.</p>
 
+    <div class="callout"><span class="callout-title">How the Pipeline Moves</span><p>The AI execution layer makes the pipeline real at scale. Without it, play execution depends on CSM memory and energy — and the pipeline becomes aspirational. When AI handles the prepare-execute-capture cycle reliably, every play in the system produces the dual output the pipeline depends on: a customer outcome and a recorded signal. The plays still serve the customer. AI ensures they happen consistently enough that the pipeline can track what the system is actually doing.</p></div>
+
     <p>When that line is held, something important happens. The CSM's role does not shrink — it sharpens. The work that remains is more demanding and more consequential. The CSM who is not spending hours on administrative prep can spend that time on the judgment calls that actually change outcomes: the difficult renewal conversation, the stakeholder navigation, the moment when a customer is deciding whether to stay or go and a thoughtful, well-prepared human is the difference.</p>
 
     <div class="callout">
@@ -291,7 +303,7 @@
       <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 19: Data Governance and the One Data Spine</div>
     </div>
     <div style="display:flex;gap:0.75rem">
-      <button onclick="window.location.href='chapter-17.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-part4-intro.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
       <button onclick="window.location.href='chapter-19.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
     </div>
   </div>
