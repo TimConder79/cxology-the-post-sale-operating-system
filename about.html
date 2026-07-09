@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Tim Conder — The Post-Sale Operating System</title>
+  <meta name="description" content="Tim Conder — Post-Sale Systems Builder and creator of CXology. 20+ years in B2B SaaS and Healthtech, six consecutive years of 100% logo retention."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">CXology</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="about.html" class="active">About Tim</a></li>
+    <li><a href="index.html#parts">The System</a></li>
+    <li><a href="index.html#frameworks">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="index.html#plays">Lifecycle Plays</a></li>
+  </ul>
+  <a href="index.html" class="nav-cta">← Back to Book</a>
+  <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ABOUT TIM -->
+<section class="section" id="about" style="background:var(--navy-deep);padding-top:8.5rem;min-height:100vh">
+  <div class="section-inner">
+    <div class="about-layout" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1100px;margin:0 auto">
+
+      <!-- Left: Photo + credentials -->
+      <div class="about-profile" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:2rem;align-self:start">
+        <div style="position:relative">
+          <div style="width:220px;height:220px;border-radius:50%;overflow:hidden;border:3px solid rgba(197,212,78,.3);box-shadow:0 0 0 8px rgba(197,212,78,.06),0 20px 60px rgba(0,0,0,.4)">
+            <img src="Tim_Conder_Headshot.jpg" alt="Tim Conder" style="width:100%;height:100%;object-fit:cover;object-position:center top"/>
+          </div>
+          <div style="position:absolute;bottom:-10px;right:10px;background:var(--olive);color:var(--navy-deep);font-size:0.65rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px">Available for Hire</div>
+        </div>
+
+        <div>
+          <div style="font-size:1.4rem;font-weight:700;color:var(--white);font-family:'DM Serif Display',serif;margin-bottom:0.25rem">Tim Conder</div>
+          <div style="font-size:0.82rem;color:var(--olive);font-weight:600;letter-spacing:0.05em;margin-bottom:1.25rem">Post-Sale Systems Builder</div>
+          <div style="display:flex;flex-direction:column;gap:0.6rem">
+            <div style="display:flex;align-items:center;gap:0.6rem;justify-content:center">
+              <div style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></div>
+              <span style="font-size:0.78rem;color:rgba(255,255,255,.5)">20+ years in B2B SaaS &amp; Healthtech</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.6rem;justify-content:center">
+              <div style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></div>
+              <span style="font-size:0.78rem;color:rgba(255,255,255,.5)">Global CS teams · $100M+ revenue bases</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.6rem;justify-content:center">
+              <div style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></div>
+              <span style="font-size:0.78rem;color:rgba(255,255,255,.5)">6 consecutive years · 100% logo retention</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:0.6rem;justify-content:center">
+              <div style="width:5px;height:5px;border-radius:50%;background:var(--teal)"></div>
+              <span style="font-size:0.78rem;color:rgba(255,255,255,.5)">Creator of CXology · AI-enabled CS systems</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center">
+          <a href="https://www.linkedin.com/in/tim-conder/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:0.78rem;font-weight:600;padding:0.5rem 1rem;border-radius:6px;text-decoration:none;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(197,212,78,.4)';this.style.color='var(--olive)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.7)'">
+            LinkedIn ↗
+          </a>
+          <a href="mailto:tim@cxology.co" id="contact-btn" style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(197,212,78,.1);border:1px solid rgba(197,212,78,.25);color:var(--olive);font-size:0.78rem;font-weight:600;padding:0.5rem 1rem;border-radius:6px;text-decoration:none;transition:all 0.2s" onmouseenter="this.style.background='rgba(197,212,78,.2)'" onmouseleave="this.style.background='rgba(197,212,78,.1)'" onclick="copyEmail(event)">
+            <span id="contact-btn-label">Get in Touch →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Bio text -->
+      <div class="about-copy">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--olive);margin-bottom:1rem">About Tim</div>
+        <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--white);line-height:1.2;margin-bottom:1.5rem">I build systems that make retention predictable and growth repeatable.</h1>
+
+        <div class="about-copy-body" style="display:flex;flex-direction:column;gap:1rem">
+          <p class="about-copy-paragraph">Over the last 20 years, I have worked at the intersection of Customer Success, Product, and Operations, beginning as a software engineer and growing into leadership roles responsible for revenue-critical customer relationships, global teams, and post-sale transformation. Across that journey, one idea kept becoming clearer: the best companies do not treat retention as something to monitor after the fact. They design for it from the start.</p>
+
+          <p class="about-copy-paragraph">That belief was shaped most deeply during my time at Aprimo, where I led a global services organization supporting roughly 65% of a $100M revenue base. Over six consecutive years, we achieved 100% logo retention while maintaining strong growth and margins. What stayed with me was not just the outcome, but the larger question beneath it: why do so few organizations have a reliable way to reproduce that kind of performance?</p>
+
+          <p class="about-copy-paragraph">Since then, I have focused on understanding what makes post-sale execution repeatable across different companies, industries, and growth stages. The conclusion I kept coming back to was that most organizations expect retention and expansion without giving post-sale the same structural rigor they give sales. They have talented people and useful tools, but not a true operating system. Execution varies by individual, progress is hard to see, and too much depends on heroics instead of design.</p>
+
+          <div class="about-pipeline-callout">
+            <div class="about-pipeline-label">Core Model</div>
+            <p class="about-copy-paragraph">CXology was my effort to codify a better way: a structured model for post-sale execution that connects strategy to daily work, defines the moments that matter most, and creates a more consistent path from purchase to realized value, renewal, and growth. At the center of that model is the post-sale pipeline: <span style="color:rgba(255,255,255,.88);font-weight:600">Identify, Align, Advocate, Intent, and Net Revenue Close.</span></p>
+          </div>
+
+          <p class="about-copy-paragraph">That pipeline is not meant to mimic pre-sales. It exists to bring the same visibility, discipline, accountability, and continuous improvement to post-sale performance. Combined with integrated plays across the customer lifecycle, it creates a more intentional system for building value, surfacing risk earlier, and making expansion, renewal, and advocacy more predictable.</p>
+
+          <p class="about-copy-paragraph">More recently, I made the decision to move from building CXology independently toward bringing this work into a full-time leadership role. I am most interested in opportunities where these ideas can be embedded inside a company to shape how teams work, how customers experience value, and how revenue is retained and expanded over time.</p>
+
+          <div class="about-pipeline-callout" style="margin-top:0.25rem">
+            <div class="about-pipeline-label">Explore the Site</div>
+            <p class="about-copy-paragraph" style="margin:0">What you are reading here is the current form of that work—built using AI to translate years of CXology training content, recorded sessions, Excel-based tools, and written frameworks into something more accessible and easier to explore. It is not a static book, but a living system that reflects how these ideas come together in practice and continue to evolve. If you want to understand how it all fits, I would start with Part I, then explore the pipeline, plays, and systems that follow, or simply navigate to what matters most to you. The goal is not just to describe what Customer Success could be, but to make it clear how it works when it is intentionally designed.</p>
+          </div>
+
+          <p class="about-copy-paragraph">I bring a proven record of leading customer-facing and operational teams, translating strategy into repeatable execution, and building systems that help companies move beyond reactive account management toward a more disciplined, scalable post-sale model. I am particularly interested in VP or Head of Customer Success and Customer Operations roles in growth-stage B2B SaaS and healthtech companies.</p>
+        </div>
+
+        <!-- Seeking -->
+        <div class="about-seeking" style="margin-top:1.25rem;padding:1rem 1.25rem;background:rgba(29,158,117,.08);border:1px solid rgba(29,158,117,.2);border-radius:var(--radius-sm);display:flex;align-items:center;gap:1rem">
+          <div style="font-size:1.4rem">🎯</div>
+          <div>
+            <div style="font-size:0.78rem;font-weight:700;color:var(--teal);margin-bottom:0.2rem">Currently Seeking</div>
+            <div style="font-size:0.82rem;color:rgba(255,255,255,.55)">VP or Head of Customer Success and Customer Operations roles in growth-stage B2B SaaS and healthtech companies</div>
+          </div>
+        </div>
+
+        <!-- Back to book -->
+        <div style="margin-top:2rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+          <a href="index.html" class="nav-cta" style="display:inline-flex;align-items:center">← Back to the Book</a>
+          <a href="index.html#parts" style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:0.82rem;font-weight:600;padding:8px 20px;border-radius:var(--radius-sm);text-decoration:none;transition:all 0.2s" onmouseenter="this.style.borderColor='rgba(197,212,78,.4)';this.style.color='var(--olive)'" onmouseleave="this.style.borderColor='rgba(255,255,255,.12)';this.style.color='rgba(255,255,255,.7)'">Explore the System →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<style>
+  #about {
+    position: relative;
+    overflow: hidden;
+  }
+  #about::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(197,212,78,.08), transparent 28%),
+      radial-gradient(circle at 88% 82%, rgba(29,158,117,.08), transparent 26%);
+    pointer-events: none;
+  }
+  .about-layout {
+    position: relative;
+    z-index: 1;
+  }
+  .about-copy {
+    max-width: 640px;
+  }
+  .about-copy-body {
+    padding: 1.5rem 1.75rem;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(8px);
+  }
+  .about-copy-paragraph {
+    max-width: none;
+    font-size: 0.98rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,.72);
+  }
+  .about-pipeline-callout {
+    padding: 1rem 1.1rem;
+    background: rgba(197,212,78,.08);
+    border: 1px solid rgba(197,212,78,.18);
+    border-left: 3px solid var(--olive);
+    border-radius: 10px;
+  }
+  .about-pipeline-label {
+    margin-bottom: 0.55rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--olive);
+  }
+  .about-seeking {
+    align-items: flex-start !important;
+  }
+@media (max-width: 768px) {
+  #about .section-inner > div {
+    grid-template-columns: 1fr !important;
+    gap: 3rem !important;
+  }
+  #about .section-inner > div > div:first-child {
+    order: 1;
+  }
+  .about-copy-body {
+    padding: 1.15rem;
+  }
+  .about-copy-paragraph {
+    font-size: 0.94rem;
+    line-height: 1.8;
+  }
+  .about-profile > div:first-child > div:first-child {
+    width: 180px !important;
+    height: 180px !important;
+  }
+}
+</style>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-bottom" style="border-top:none;padding-top:0">
+      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── MOBILE NAV ───────────────────────────────────────────────────────────
+function toggleMenu() {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  links.style.flexDirection = 'column';
+  links.style.position = 'absolute';
+  links.style.top = '60px';
+  links.style.left = '0'; links.style.right = '0';
+  links.style.background = 'rgba(15,28,40,0.98)';
+  links.style.padding = '1rem 2rem 2rem';
+  links.style.gap = '1.2rem';
+}
+
+function copyEmail(e) {
+  navigator.clipboard.writeText('tim@cxology.co').then(() => {
+    const label = document.getElementById('contact-btn-label');
+    const btn = document.getElementById('contact-btn');
+    const original = label.textContent;
+    label.textContent = 'Email Copied ✓';
+    btn.style.background = 'rgba(29,158,117,.2)';
+    btn.style.borderColor = 'rgba(29,158,117,.4)';
+    btn.style.color = 'var(--teal)';
+    setTimeout(() => {
+      label.textContent = original;
+      btn.style.background = 'rgba(197,212,78,.1)';
+      btn.style.borderColor = 'rgba(197,212,78,.25)';
+      btn.style.color = 'var(--olive)';
+    }, 2500);
+  }).catch(() => {
+    // Clipboard failed silently — mailto still opens normally
+  });
+}
+</script>
+</body>
+</html>
