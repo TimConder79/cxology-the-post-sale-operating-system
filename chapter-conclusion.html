@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Conclusion: Running the System — The Post-Sale Operating System</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 0.45rem;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+
+    .visual-panel {
+      background: var(--off-white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 1.4rem 1.5rem;
+      margin: 1.9rem 0;
+      max-width: 72ch;
+    }
+    .visual-kicker { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.45rem; }
+    .visual-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.9rem; line-height: 1.35; }
+    .flow-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.6rem; align-items: stretch; }
+    .flow-step { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 0.85rem 0.75rem; min-height: 86px; position: relative; }
+    .flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -0.55rem; top: 50%; transform: translateY(-50%); color: var(--olive); font-weight: 800; z-index: 2; }
+    .flow-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .flow-copy { font-size: 0.82rem; line-height: 1.45; color: var(--gray-700); font-weight: 600; }
+    .visual-note { font-size: 0.84rem; line-height: 1.6; color: var(--gray-700); margin-top: 0.85rem; max-width: 100%; }
+
+    /* System on One Page */
+    .sys-panel { max-width: 100%; }
+    .sys-layer { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+    .sys-layer-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+    .sys-layer-name { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .sys-layer-role { font-size: 0.76rem; font-weight: 600; color: #BA7517; letter-spacing: 0.03em; }
+    .sys-stage-row { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 0.55rem; }
+    .sys-stage { background: var(--navy); border-radius: 9px; padding: 0.65rem 0.6rem; position: relative; }
+    .sys-stage:not(:last-child)::after { content: '→'; position: absolute; right: -0.55rem; top: 50%; transform: translateY(-50%); color: var(--olive); font-weight: 800; z-index: 2; }
+    .sys-stage-name { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); margin-bottom: 0.3rem; }
+    .sys-stage-copy { font-size: 0.72rem; line-height: 1.4; color: rgba(255,255,255,.65); }
+    .sys-connector { text-align: center; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); padding: 0.55rem 0.75rem; line-height: 1.5; }
+    .sys-connector::before { content: '↑ ↓'; display: block; letter-spacing: 0.35em; color: var(--olive); font-weight: 800; font-size: 0.8rem; margin-bottom: 0.15rem; }
+    .sys-play-flow { display: flex; flex-wrap: wrap; gap: 0.45rem 0.3rem; align-items: center; }
+    .sys-play { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 999px; padding: 0.38rem 0.75rem; font-size: 0.74rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .sys-play-arrow { color: var(--olive); font-weight: 800; font-size: 0.78rem; }
+    .sys-play-support { margin-top: 0.65rem; padding-top: 0.6rem; border-top: 1px dashed var(--gray-200); font-size: 0.74rem; color: var(--text-muted); }
+    .sys-play-support strong { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .sys-infra-row { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 0.55rem; }
+    .sys-infra { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 9px; padding: 0.65rem 0.6rem; }
+    .sys-infra-name { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.3rem; }
+    .sys-infra-copy { font-size: 0.72rem; line-height: 1.4; color: var(--gray-700); }
+    .sys-loop { margin-top: 1rem; background: var(--navy-deep); border-radius: 10px; padding: 0.85rem 1rem; }
+    .sys-loop p { margin: 0; max-width: 100%; font-size: 0.8rem; line-height: 1.55; color: rgba(255,255,255,.75); }
+    .sys-loop strong { color: var(--olive); }
+
+    /* 90-day grid */
+    .ninety-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+    .ninety-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem; }
+    .ninety-card h3 { margin: 0 0 0.2rem; padding: 0; border: 0; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; }
+    .ninety-card h4 { margin: 0 0 0.5rem; font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .ninety-card ul { margin: 0; padding-left: 1.1rem; }
+    .ninety-card li { font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.45rem; color: var(--gray-700); }
+
+    /* Tool links */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+
+    @media (max-width: 760px) {
+      .flow-row, .sys-stage-row, .sys-infra-row, .ninety-grid, .tool-grid { grid-template-columns: 1fr !important; }
+      .flow-step:not(:last-child)::after, .sys-stage:not(:last-child)::after { content: '↓'; right: 50%; top: auto; bottom: -0.7rem; transform: translateX(50%); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html" style="display:flex;align-items:center;gap:10px">
+      <div class="nav-logo-mark">C</div>
+      <span class="nav-logo-text">The Post-Sale Operating System</span>
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#parts">All Chapters</a></li>
+    <li><a href="frameworks.html">Frameworks</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-22.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='index.html'">Home →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Introduction</div>
+  <a href="index.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · The 2026 CS Evolution</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-part2-intro.html" class="toc-link">Part II Introduction</a>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-part3-intro.html" class="toc-link">Part III Introduction</a>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-part4-intro.html" class="toc-link">Part IV Introduction</a>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+  <div class="toc-part">Conclusion</div>
+  <a href="chapter-conclusion.html" class="toc-link active">Running the System</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#BA7517;margin-bottom:0.75rem">Conclusion</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Running the System</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">Where the book ends and the operating model begins — the system on one page, the sequence for building it, and what to do in the first ninety days.</p>
+    </div>
+  </div>
+
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+    <p>This book opened with a claim: retention is not a department, a feeling, or a lagging metric. It is a system of customer progression that can be intentionally designed, operationalized, inspected, and improved. Twenty-two chapters later, that claim has a shape.</p>
+
+    <p>Part I made the argument — that Customer Success must evolve from churn insurance into a revenue engine, and that the CSM role becomes more valuable, not less, when it sits inside a defined system. Part II gave progression a structure: a post-sale pipeline with five stages, each with entry criteria, exit criteria, and a reason to exist. Part III turned the structure into work: designed plays for every inflection point in the customer journey, each with assets, measurement, and an AI layer that reduces the friction of running them well. Part IV built the infrastructure underneath: trusted data, an AI execution layer, health scoring that shows progression, cross-team alignment, and the capacity model that makes the whole design fundable.</p>
+
+    <div class="callout">
+      <div class="callout-title">The Promise, Kept</div>
+      <p>Retention stopped being a hope the moment progression became something you could define, execute, and inspect.</p>
+    </div>
+
+    <h2>The System on One Page</h2>
+
+    <p>If you remember one structure from this book, remember this one. The operating system is three layers and one loop. The pipeline defines how customers progress. The plays create the progression. The infrastructure makes execution consistent enough to trust. And the loop connects them: every play produces two outputs — a customer outcome and a recorded signal. The signal moves the pipeline. The pipeline tells the team which play comes next. The infrastructure keeps the loop honest at scale.</p>
+
+    <div class="visual-panel sys-panel">
+      <div class="visual-kicker">The Post-Sale Operating System</div>
+      <div class="visual-title">Three layers, one loop: customers progress through a pipeline, plays create the progression, infrastructure makes it consistent.</div>
+
+      <div class="sys-layer">
+        <div class="sys-layer-head">
+          <span class="sys-layer-name">The Pipeline</span>
+          <span class="sys-layer-role">How customers progress · Part II</span>
+        </div>
+        <div class="sys-stage-row">
+          <div class="sys-stage"><div class="sys-stage-name">Identify</div><div class="sys-stage-copy">Value, friction, and future need become visible after the sale.</div></div>
+          <div class="sys-stage"><div class="sys-stage-name">Align</div><div class="sys-stage-copy">Opportunity becomes a case grounded in customer need.</div></div>
+          <div class="sys-stage"><div class="sys-stage-name">Advocate</div><div class="sys-stage-copy">Alignment becomes momentum the customer carries internally.</div></div>
+          <div class="sys-stage"><div class="sys-stage-name">Intent</div><div class="sys-stage-copy">Momentum becomes a committed path — timing, approvals, ownership.</div></div>
+          <div class="sys-stage"><div class="sys-stage-name">Net Revenue Close</div><div class="sys-stage-copy">The win is secured and the next cycle begins.</div></div>
+        </div>
+      </div>
+
+      <div class="sys-connector">Plays move customers through the stages. Stage signals tell the team which play to run next.</div>
+
+      <div class="sys-layer">
+        <div class="sys-layer-head">
+          <span class="sys-layer-name">The Plays</span>
+          <span class="sys-layer-role">The work that creates progression · Part III</span>
+        </div>
+        <div class="sys-play-flow">
+          <span class="sys-play">Purchase &amp; Welcome</span><span class="sys-play-arrow">→</span>
+          <span class="sys-play">Kickoff</span><span class="sys-play-arrow">→</span>
+          <span class="sys-play">Onboarding</span><span class="sys-play-arrow">→</span>
+          <span class="sys-play">First Value</span><span class="sys-play-arrow">→</span>
+          <span class="sys-play">Value Blocks</span><span class="sys-play-arrow">→</span>
+          <span class="sys-play">Sharing Insights</span><span class="sys-play-arrow">→</span>
+          <span class="sys-play">Alignment Meeting</span><span class="sys-play-arrow">→</span>
+          <span class="sys-play">Renew &amp; Grow</span>
+        </div>
+        <div class="sys-play-support"><strong>Supporting Plays:</strong> Key Contact Change · Offboarding — run whenever the moment demands, not on a schedule.</div>
+      </div>
+
+      <div class="sys-connector">Infrastructure keeps execution consistent across every CSM, every account, every quarter.</div>
+
+      <div class="sys-layer">
+        <div class="sys-layer-head">
+          <span class="sys-layer-name">The Infrastructure</span>
+          <span class="sys-layer-role">What makes it consistent and fundable · Part IV</span>
+        </div>
+        <div class="sys-infra-row">
+          <div class="sys-infra"><div class="sys-infra-name">AI Execution Layer</div><div class="sys-infra-copy">Prepares, drafts, and captures so judgment goes where it matters.</div></div>
+          <div class="sys-infra"><div class="sys-infra-name">One Data Spine</div><div class="sys-infra-copy">A single customer record every layer can trust.</div></div>
+          <div class="sys-infra"><div class="sys-infra-name">Health Scoring</div><div class="sys-infra-copy">Progression made visible, not just risk made colorful.</div></div>
+          <div class="sys-infra"><div class="sys-infra-name">Cross-Team KPIs</div><div class="sys-infra-copy">One pipeline shared by Sales, CS, Product, and Finance.</div></div>
+          <div class="sys-infra"><div class="sys-infra-name">Capacity Planning</div><div class="sys-infra-copy">The designed experience translated into investment.</div></div>
+        </div>
+      </div>
+
+      <div class="sys-loop">
+        <p><strong>The loop:</strong> every play produces a customer outcome and a recorded signal. Signals advance the pipeline. The pipeline prescribes the next play. The infrastructure keeps the signals trustworthy. That loop — not any single framework — is the operating system.</p>
+      </div>
+    </div>
+
+    <p>Notice what is not on the page. There is no heroics layer. There is no column for the one CSM who holds every relationship together from memory. The system is designed so that good execution is the default, not the exception — and so that judgment, the genuinely human part of the work, is spent on customers instead of on remembering what to do next.</p>
+
+    <h2>Where to Start</h2>
+
+    <p>The most common failure mode is not skepticism. It is enthusiasm without sequence — trying to install all twenty-two chapters at once, stalling in the complexity, and concluding the system does not work. The system works. But it has an order, and the order follows the same precondition this book has repeated from the first pages: AI and automation need a defined model of progression and data they can trust. Build in that order.</p>
+
+    <ul>
+      <li><strong>1. Define progression first.</strong> Write down the pipeline stages, their entry and exit criteria, and what First Value means for your top segment. This costs nothing but thinking, which is exactly why data-poor organizations can start here. The system works before the data does.</li>
+      <li><strong>2. Build the data spine.</strong> Pick the system of record, define the fields that describe progression, and retire the local copies. If it is not in the system, it does not exist.</li>
+      <li><strong>3. Run one play well.</strong> Not eight. One. The Alignment Meeting is the strongest anchor for an established book of business; Kickoff is the right anchor when most customers are new. Run it consistently enough to measure.</li>
+      <li><strong>4. Add the AI layer to the play that is already running.</strong> Never automate an undefined motion — that only accelerates inconsistency. Once the play is defined and the data is real, AI removes the friction that keeps it from running everywhere.</li>
+      <li><strong>5. Scale the system.</strong> Add plays. Turn on health scoring once there is execution to measure. Align the cross-team KPIs. Bring the capacity model to planning season.</li>
+    </ul>
+
+    <div class="callout">
+      <div class="callout-title">Sequence Over Scope</div>
+      <p>You do not need every chapter running to see results. You need the right chapters running in the right order.</p>
+    </div>
+
+    <h2>The First Ninety Days</h2>
+
+    <p>Ninety days is enough to prove the model — not to transform the metrics, but to demonstrate the thing that makes the metrics move: a designed motion, executed consistently, producing a record you trust.</p>
+
+    <div class="visual-panel" style="max-width:100%">
+      <div class="visual-kicker">Proving the Model</div>
+      <div class="visual-title">A ninety-day path from concept to running system.</div>
+      <div class="ninety-grid">
+        <div class="ninety-card">
+          <h3>Days 1–30</h3>
+          <h4>Define</h4>
+          <ul>
+            <li>Write the pipeline stages with entry and exit criteria.</li>
+            <li>Define First Value for your most important segment.</li>
+            <li>Map the inflection points of the first customer year.</li>
+            <li>Choose the one play you will run first.</li>
+          </ul>
+        </div>
+        <div class="ninety-card">
+          <h3>Days 31–60</h3>
+          <h4>Instrument</h4>
+          <ul>
+            <li>Name the system of record and the fields that describe progression.</li>
+            <li>Migrate the truth out of personal notes and side spreadsheets.</li>
+            <li>Build the play's assets: brief, agenda, follow-through template.</li>
+            <li>Set the measurement standard: what counts as the play being run.</li>
+          </ul>
+        </div>
+        <div class="ninety-card">
+          <h3>Days 61–90</h3>
+          <h4>Execute</h4>
+          <ul>
+            <li>Run the play across the book, not just with friendly accounts.</li>
+            <li>Inspect execution weekly — completion, quality, and signals captured.</li>
+            <li>Layer AI onto preparation and follow-through once the motion holds.</li>
+            <li>Report what the system saw, not what the team felt.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="visual-note">At day ninety the win is not a retention number. It is a leadership conversation that starts with evidence: here is the motion we designed, here is how consistently it ran, and here is what the signals tell us to do next.</div>
+    </div>
+
+    <h2>Where to Go Next</h2>
+
+    <p>The book is the system. The tools below exist to help you run it — each one built directly on the frameworks in these chapters, and each one only as useful as the definitions you bring to it.</p>
+
+    <div class="tool-grid">
+      <a class="tool-card" href="journey-map.html">
+        <div class="tool-card-kicker">Design</div>
+        <div class="tool-card-title">The Post-Sale Journey Map</div>
+        <div class="tool-card-desc">The designed customer experience — the inflection points every play protects.</div>
+      </a>
+      <a class="tool-card" href="frameworks.html">
+        <div class="tool-card-kicker">Reference</div>
+        <div class="tool-card-title">Frameworks Library</div>
+        <div class="tool-card-desc">The models from every chapter, collected in one place.</div>
+      </a>
+      <a class="tool-card" href="calculator.html">
+        <div class="tool-card-kicker">Make the Case</div>
+        <div class="tool-card-title">ROI Calculator</div>
+        <div class="tool-card-desc">Connect retention and expansion improvements to revenue impact.</div>
+      </a>
+      <a class="tool-card" href="capacity-planner.html">
+        <div class="tool-card-kicker">Fund the System</div>
+        <div class="tool-card-title">CS Capacity Planner</div>
+        <div class="tool-card-desc">Translate designed service moments into effort, capacity, and headcount.</div>
+      </a>
+    </div>
+
+    <p>Start where the system tells you to start. If progression is undefined, define it. If the data cannot be trusted, fix the spine. If the plays exist only as good intentions, run one until it holds. The sequence is the strategy.</p>
+
+    <p>The companies that win the next decade of post-sale will not be the ones with the most tools or the largest teams. They will be the ones that made customer progression a designed, inspected, operating discipline — and freed their people to do the human work the system cannot do. That is the future this book argued for in Chapter 1: a post-sale organization that is more human and more scalable at the same time.</p>
+
+    <div class="callout">
+      <div class="callout-title">Run the System</div>
+      <p>Retention is not something you hope for at the end of the year. It is something you run — every day, one progression at a time.</p>
+    </div>
+
+    <p>The system exists for one reason: so the promise made in the sales cycle becomes the experience the customer actually lives. Build it. Run it. Inspect it. Improve it. The results follow.</p>
+
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">You've reached the end</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Back to the full book</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-22.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='index.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Back to the Book →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+<footer style="text-align:center;padding:1.5rem 1rem;font-size:0.8rem;color:var(--text-muted);background:transparent;">
+  © 2022–2026 CXology LLC. All rights reserved.
+</footer>
+
+</body>
+</html>
