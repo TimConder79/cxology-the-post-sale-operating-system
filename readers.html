@@ -128,8 +128,8 @@
       <h1>The book ships once.<br>The <em>system keeps moving.</em></h1>
       <p class="rh-hero-sub">Retention is a system you run, not a document you finish. As the plays get sharper in the field, the refinements land here first. Ask questions, tell me what happened when you ran a play, and stay current between editions.</p>
       <div class="rh-actions">
-        <a class="rh-btn rh-btn-primary" href="#subscribe">Subscribe for refinements →</a>
-        <a class="rh-btn rh-btn-ghost" href="#participate">Ask a question</a>
+        <a class="rh-btn rh-btn-primary" href="#participate">Ask a question →</a>
+        <a class="rh-btn rh-btn-ghost" href="#updates">See the latest refinements</a>
       </div>
       <div class="rh-stats">
         <div><div class="rh-stat-num">22</div><div class="rh-stat-label">Chapters</div></div>
@@ -198,17 +198,6 @@
       </article>
     </div>
 
-    <div class="rh-band" id="subscribe">
-      <div class="rh-bt">
-        <b>Get refinements by email</b>
-        <span>New plays and corrections, a couple of times a month. No noise.</span>
-      </div>
-      <form class="rh-subform" id="sub-form">
-        <input class="rh-input" type="email" placeholder="you@company.com" aria-label="Email address" required/>
-        <button class="rh-btn rh-btn-primary" type="submit" style="padding:12px 22px">Subscribe</button>
-      </form>
-    </div>
-    <p class="rh-msg" id="sub-msg"></p>
   </div>
 </section>
 
@@ -308,14 +297,13 @@
   });
 
   // Forms are not wired to a backend yet (email tool pending). Show an honest placeholder.
-  var SOON = "Thanks — the Reader Hub is going live shortly. Sign-ups and submissions open soon.";
+  var SOON = "Thanks — the Reader Hub is going live shortly. Questions and feedback open soon.";
   function hold(e, msgEl, color) {
     e.preventDefault();
     var el = document.getElementById(msgEl);
     el.textContent = SOON;
     if (color) el.style.color = color;
   }
-  document.getElementById('sub-form').addEventListener('submit', function (e) { hold(e, 'sub-msg'); });
   document.getElementById('ask-form').addEventListener('submit', function (e) { hold(e, 'ask-msg', 'var(--olive)'); });
   document.getElementById('fb-form').addEventListener('submit', function (e) { hold(e, 'fb-msg', 'var(--olive)'); });
 </script>
