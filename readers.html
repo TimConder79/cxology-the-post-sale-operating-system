@@ -183,11 +183,6 @@
           <label class="rh-label" for="q-ch">Which chapter?</label>
           <select class="rh-dsel" id="q-ch">
             <option>Not sure / general</option>
-            <option>Ch 4 · Stage 1 — Identify</option>
-            <option>Ch 7 · Stage 4 — Intent</option>
-            <option>Ch 12 · The First Value Play</option>
-            <option>Ch 16 · The Renew &amp; Grow Play</option>
-            <option>Ch 20 · Health Scoring That Actually Works</option>
           </select>
         </div>
         <div class="rh-field">
@@ -223,11 +218,6 @@
           <label class="rh-label" for="f-ch">Chapter</label>
           <select class="rh-dsel" id="f-ch">
             <option>Whole book</option>
-            <option>Ch 4 · Stage 1 — Identify</option>
-            <option>Ch 7 · Stage 4 — Intent</option>
-            <option>Ch 12 · The First Value Play</option>
-            <option>Ch 16 · The Renew &amp; Grow Play</option>
-            <option>Ch 20 · Health Scoring That Actually Works</option>
           </select>
         </div>
         <div class="rh-field" style="margin-bottom:0">
@@ -254,6 +244,43 @@
   document.querySelectorAll('.rh-chip').forEach(function (c) {
     c.addEventListener('click', function () {
       c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  // Populate the chapter dropdowns from the full table of contents.
+  var CHAPTERS = [
+    'Preface · Why I Wrote This Book',
+    'Intro · The Post-Sale Problem',
+    'Ch 1 · From Churn Insurance to Revenue Engine',
+    'Ch 2 · Post-Sale Unification',
+    'Ch 3 · The Role Evolution of the CSM',
+    'Ch 4 · Stage 1 — Identify',
+    'Ch 5 · Stage 2 — Align',
+    'Ch 6 · Stage 3 — Advocate',
+    'Ch 7 · Stage 4 — Intent',
+    'Ch 8 · Stage 5 — Net Revenue Close',
+    'Ch 9 · The Purchase & Welcome Play',
+    'Ch 10 · The Kickoff Play',
+    'Ch 11 · The Onboarding Play',
+    'Ch 12 · The First Value Play',
+    'Ch 13 · The Value Blocks Play',
+    'Ch 14 · The Sharing Insights Play',
+    'Ch 15 · The Alignment Meeting Play',
+    'Ch 16 · The Renew & Grow Play',
+    'Ch 17 · Supporting Plays',
+    'Ch 18 · AI in CS — Judgment Over Templates',
+    'Ch 19 · Data Governance and One Data Spine',
+    'Ch 20 · Health Scoring That Actually Works',
+    'Ch 21 · Cross-Team Collaboration KPIs',
+    'Ch 22 · Proactive Capacity Planning',
+    'Conclusion · Running the System'
+  ];
+  ['q-ch', 'f-ch'].forEach(function (id) {
+    var sel = document.getElementById(id);
+    CHAPTERS.forEach(function (label) {
+      var o = document.createElement('option');
+      o.textContent = label;
+      sel.appendChild(o);
     });
   });
 
