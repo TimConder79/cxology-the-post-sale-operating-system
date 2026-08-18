@@ -1,0 +1,12 @@
+{
+  "updates": [
+    {
+      "kind": "Update",
+      "date": "2026-08-18",
+      "title": "Ask questions and share results, right here",
+      "blurb": "The Reader Hub now takes your questions and field results directly. Ask about any play or stage and I'll reply, and tell me what happened when you ran something so it can shape the next edition.",
+      "link": "#participate",
+      "linkLabel": "Ask or share a result"
+    }
+  ]
+}

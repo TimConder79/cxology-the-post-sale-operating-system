@@ -139,18 +139,8 @@
     </div>
     <div class="rh-hero-visual">
       <div class="rh-hv-label">Latest from the system</div>
-      <div class="rh-hcard">
-        <span class="rh-hdot" style="background:var(--olive)"></span>
-        <div><div class="rh-hcard-label" style="color:var(--olive)">New play · Ch 17</div><div class="rh-hcard-title">A supporting play for accounts that go silent</div></div>
-      </div>
-      <div class="rh-hcard">
-        <span class="rh-hdot" style="background:var(--teal)"></span>
-        <div><div class="rh-hcard-label" style="color:var(--teal)">Reader Q&amp;A · Ch 4</div><div class="rh-hcard-title">"When does a renewal enter the pipeline?"</div></div>
-      </div>
-      <div class="rh-hcard">
-        <span class="rh-hdot" style="background:var(--blue)"></span>
-        <div><div class="rh-hcard-label" style="color:var(--blue)">Refinement · Ch 20</div><div class="rh-hcard-title">Health scoring for teams without usage data</div></div>
-      </div>
+      <!-- Top 3 render from updates.json -->
+      <div id="rh-hero-updates" style="display:flex;flex-direction:column;gap:1rem"></div>
     </div>
   </div>
 </header>
@@ -164,39 +154,8 @@
       <p class="rh-sub">Everything that has sharpened since the book shipped. Each entry is tagged to the chapter it touches, newest first.</p>
     </div>
 
-    <div class="rh-grid">
-      <article class="rh-card" style="--rh-accent: var(--olive-dim)">
-        <div class="rh-card-top"><span class="rh-kind">New play</span><span class="rh-date">Aug 4, 2026</span></div>
-        <span class="rh-chap">Ch 17 · Supporting Plays</span>
-        <h3 class="rh-card-title">A supporting play for accounts that go silent</h3>
-        <p class="rh-card-desc">Between First Value and renewal, some accounts simply stop responding. This new supporting play gives you a structured way to re-engage before the silence hardens into churn.</p>
-        <a class="rh-card-link" href="#">Read the play →</a>
-      </article>
-
-      <article class="rh-card" style="--rh-accent: var(--teal)">
-        <div class="rh-card-top"><span class="rh-kind">Reader Q&amp;A</span><span class="rh-date">Jul 28, 2026</span></div>
-        <span class="rh-chap">Ch 4 · Stage 1 — Identify</span>
-        <h3 class="rh-card-title">"When exactly does a renewal enter the pipeline?"</h3>
-        <p class="rh-card-desc">Asked three times this month, so here it is in the open: the renewal is a pipeline item from day one, not ninety days out. It advances through lifecycle plays like any other opportunity.</p>
-        <a class="rh-card-link" href="#">Read the answer →</a>
-      </article>
-
-      <article class="rh-card" style="--rh-accent: var(--blue)">
-        <div class="rh-card-top"><span class="rh-kind">Refinement</span><span class="rh-date">Jul 19, 2026</span></div>
-        <span class="rh-chap">Ch 20 · Health Scoring</span>
-        <h3 class="rh-card-title">Health scoring for teams without clean usage data</h3>
-        <p class="rh-card-desc">Chapter 20 assumes reliable product telemetry. Many teams do not have it yet. This is the fallback model that runs on the three signals almost everyone can see, and when to graduate to the full version.</p>
-        <a class="rh-card-link" href="#">See the update →</a>
-      </article>
-
-      <article class="rh-card" style="--rh-accent: var(--amber)">
-        <div class="rh-card-top"><span class="rh-kind">Errata</span><span class="rh-date">Jul 11, 2026</span></div>
-        <span class="rh-chap">Ch 8 · Net Revenue Close</span>
-        <h3 class="rh-card-title">The forecast table on p.184</h3>
-        <p class="rh-card-desc">Two columns are transposed in the first printing. The corrected table is here and is already fixed in all digital editions. Thanks to the readers who caught it.</p>
-        <a class="rh-card-link" href="#">See the correction →</a>
-      </article>
-    </div>
+    <!-- Cards render from updates.json (see updates.README.md) -->
+    <div class="rh-grid" id="rh-updates"></div>
 
   </div>
 </section>
@@ -214,6 +173,7 @@
     <div class="rh-forms">
       <!-- ASK -->
       <form class="rh-fcard" id="ask-form">
+        <input class="rh-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
         <div class="rh-fhead">
           <span class="rh-fic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg></span>
           <h3>Ask a question</h3>
@@ -244,6 +204,7 @@
 
       <!-- FEEDBACK -->
       <form class="rh-fcard" id="fb-form">
+        <input class="rh-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0"/>
         <div class="rh-fhead">
           <span class="rh-fic" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg></span>
           <h3>Give feedback</h3>
@@ -296,16 +257,111 @@
     });
   });
 
-  // Forms are not wired to a backend yet (email tool pending). Show an honest placeholder.
-  var SOON = "Thanks — the Reader Hub is going live shortly. Questions and feedback open soon.";
-  function hold(e, msgEl, color) {
-    e.preventDefault();
-    var el = document.getElementById(msgEl);
-    el.textContent = SOON;
-    if (color) el.style.color = color;
+  // Form submissions -> Cloudflare Worker -> Trello card
+  var WORKER_URL = 'https://reader-hub.tim-fcf.workers.dev/';
+
+  function setMsg(el, text, color) { el.textContent = text; el.style.color = color || ''; }
+  function pressedChip(form) {
+    var c = form.querySelector('.rh-chip[aria-pressed="true"]');
+    return c ? c.textContent.trim() : '';
   }
-  document.getElementById('ask-form').addEventListener('submit', function (e) { hold(e, 'ask-msg', 'var(--olive)'); });
-  document.getElementById('fb-form').addEventListener('submit', function (e) { hold(e, 'fb-msg', 'var(--olive)'); });
+
+  function submitForm(form, payload, msgEl) {
+    var btn = form.querySelector('button[type="submit"]');
+    var label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Sending…';
+    setMsg(msgEl, 'Sending…', 'rgba(255,255,255,.5)');
+    fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (res.ok && res.j && res.j.ok) {
+          form.reset();
+          form.querySelectorAll('.rh-chip[aria-pressed="true"]').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+          setMsg(msgEl, 'Got it — thank you. I read every one.', 'var(--olive)');
+        } else {
+          setMsg(msgEl, (res.j && res.j.error) ? 'Could not send: ' + res.j.error : 'Something went wrong. Please try again.', 'var(--amber)');
+        }
+      })
+      .catch(function () { setMsg(msgEl, 'Network error. Please try again.', 'var(--amber)'); })
+      .then(function () { btn.disabled = false; btn.textContent = label; });
+  }
+
+  document.getElementById('ask-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.currentTarget, msg = document.getElementById('ask-msg');
+    var message = document.getElementById('q-body').value.trim();
+    var email = document.getElementById('q-email').value.trim();
+    if (!message) { setMsg(msg, 'Please enter your question.', 'var(--amber)'); return; }
+    if (!email) { setMsg(msg, 'Please add your email so I can reply.', 'var(--amber)'); return; }
+    submitForm(f, {
+      kind: 'question',
+      chapter: document.getElementById('q-ch').value,
+      message: message,
+      email: email,
+      website: (f.querySelector('.rh-hp') || {}).value || ''
+    }, msg);
+  });
+
+  document.getElementById('fb-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.currentTarget, msg = document.getElementById('fb-msg');
+    var message = document.getElementById('f-body').value.trim();
+    if (!message) { setMsg(msg, 'Please add a note.', 'var(--amber)'); return; }
+    submitForm(f, {
+      kind: 'feedback',
+      fbType: pressedChip(f),
+      chapter: document.getElementById('f-ch').value,
+      message: message,
+      email: '',
+      website: (f.querySelector('.rh-hp') || {}).value || ''
+    }, msg);
+  });
+
+  // Updates feed — rendered from updates.json (single source of truth)
+  (function () {
+    var COLOR = { 'New play': 'var(--olive)', 'Reader Q&A': 'var(--teal)', 'Refinement': 'var(--blue)', 'Errata': 'var(--amber)' };
+    var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function (c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+    function fmtDate(d){ var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(d || ''); return m ? MONTHS[+m[2]-1] + ' ' + (+m[3]) + ', ' + m[1] : esc(d); }
+    function shortChap(c){ return c ? String(c).split('·')[0].trim() : ''; }
+
+    function card(u){
+      var accent = COLOR[u.kind] || 'var(--olive)';
+      var link = u.link ? '<a class="rh-card-link" href="' + esc(u.link) + '">' + esc(u.linkLabel || 'Read more') + ' →</a>' : '';
+      return '<article class="rh-card" style="--rh-accent: ' + accent + '">'
+        + '<div class="rh-card-top"><span class="rh-kind">' + esc(u.kind) + '</span><span class="rh-date">' + fmtDate(u.date) + '</span></div>'
+        + (u.chapter ? '<span class="rh-chap">' + esc(u.chapter) + '</span>' : '')
+        + '<h3 class="rh-card-title">' + esc(u.title) + '</h3>'
+        + '<p class="rh-card-desc">' + esc(u.blurb) + '</p>'
+        + link + '</article>';
+    }
+    function heroCard(u){
+      var color = COLOR[u.kind] || 'var(--olive)';
+      var label = esc(u.kind) + (u.chapter ? ' · ' + esc(shortChap(u.chapter)) : '');
+      return '<div class="rh-hcard"><span class="rh-hdot" style="background:' + color + '"></span>'
+        + '<div><div class="rh-hcard-label" style="color:' + color + '">' + label + '</div>'
+        + '<div class="rh-hcard-title">' + esc(u.title) + '</div></div></div>';
+    }
+
+    fetch('updates.json', { cache: 'no-cache' })
+      .then(function (r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data){
+        var list = (data && data.updates) || [];
+        list = list.slice().sort(function (a, b){ return String(b.date || '').localeCompare(String(a.date || '')); });
+        var grid = document.getElementById('rh-updates');
+        var hero = document.getElementById('rh-hero-updates');
+        if (grid) grid.innerHTML = list.length ? list.map(card).join('') : '<p style="color:var(--text-muted)">No updates yet — check back soon.</p>';
+        if (hero) hero.innerHTML = list.slice(0, 3).map(heroCard).join('');
+      })
+      .catch(function (){
+        var grid = document.getElementById('rh-updates');
+        if (grid) grid.innerHTML = '<p style="color:var(--text-muted)">Updates could not load right now.</p>';
+      });
+  })();
 </script>
 
 </body>
