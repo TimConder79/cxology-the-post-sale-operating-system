@@ -284,6 +284,34 @@
     });
   });
 
+  // Deep link from a chapter (?ch=6 / ?ch=intro): prefill both dropdowns and jump to the forms.
+  function chapterLabel(ch) {
+    ch = String(ch).toLowerCase();
+    var named = { preface: 'Preface', intro: 'Intro', conclusion: 'Conclusion' };
+    var prefix = named[ch] ? named[ch] + ' · ' : (/^\d+$/.test(ch) ? 'Ch ' + ch + ' · ' : null);
+    if (!prefix) return null;
+    for (var i = 0; i < CHAPTERS.length; i++) { if (CHAPTERS[i].indexOf(prefix) === 0) return CHAPTERS[i]; }
+    return null;
+  }
+  function isDeepLinked() { return !!new URLSearchParams(location.search).get('ch'); }
+  function scrollToForms() {
+    var t = document.getElementById('participate');
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  (function () {
+    var ch = new URLSearchParams(location.search).get('ch');
+    if (!ch) return;
+    var label = chapterLabel(ch);
+    if (label) {
+      ['q-ch', 'f-ch'].forEach(function (id) {
+        var sel = document.getElementById(id);
+        for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].text === label) { sel.selectedIndex = i; break; } }
+      });
+    }
+    // Fallback scroll; the feed also scrolls once it finishes rendering (see below).
+    setTimeout(scrollToForms, 400);
+  })();
+
   // Form submissions -> Cloudflare Worker -> Trello card
   var WORKER_URL = 'https://reader-hub.tim-fcf.workers.dev/';
 
@@ -387,7 +415,8 @@
       .catch(function (){
         var grid = document.getElementById('rh-updates');
         if (grid) grid.innerHTML = '<p style="color:var(--text-muted)">Updates could not load right now.</p>';
-      });
+      })
+      .then(function () { if (typeof isDeepLinked === 'function' && isDeepLinked()) scrollToForms(); });
   })();
 </script>
 
