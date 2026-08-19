@@ -220,9 +220,13 @@
             <option>Whole book</option>
           </select>
         </div>
-        <div class="rh-field" style="margin-bottom:0">
+        <div class="rh-field">
           <label class="rh-label" for="f-body">Your note</label>
           <textarea class="rh-dtext" id="f-body" rows="3" placeholder="What happened when you ran it?"></textarea>
+        </div>
+        <div class="rh-field" style="margin-bottom:0">
+          <label class="rh-label" for="f-email">Email (optional)</label>
+          <input class="rh-din" id="f-email" type="email" placeholder="you@company.com"/>
         </div>
         <button class="rh-btn rh-btn-primary" type="submit">Send feedback</button>
         <p class="rh-ffoot" id="fb-msg">Feeds the edition-two backlog. Email optional.</p>
@@ -374,7 +378,7 @@
       fbType: pressedChip(f),
       chapter: document.getElementById('f-ch').value,
       message: message,
-      email: '',
+      email: document.getElementById('f-email').value.trim(),
       website: (f.querySelector('.rh-hp') || {}).value || ''
     }, msg);
   });
