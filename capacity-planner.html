@@ -855,7 +855,7 @@ function App(){
     <div style={{...sSec,display:"none"}} className="print-only"><div style={{border:"1px solid "+C.g2,borderRadius:12,padding:20,background:C.wh}}><div style={{fontSize:18,fontWeight:700,color:C.nv,marginBottom:8}}>Print Summary</div><div style={{fontSize:13,color:C.g7,marginBottom:8}}>{actionNow}</div><div style={{fontSize:12,color:C.tm,marginBottom:10}}>Primary driver: {M.pc}. First month over capacity: {M.fr>=0?MO[M.fr]:"None"}.</div><div style={{fontSize:12,color:C.g7,lineHeight:1.6}}>Assumptions: {ta}% target availability, {pp}% proactive designed work, {rr}% reactive work, ramp = {rp.join(" / ")}.</div><div style={{marginTop:12}}>{talks.slice(0,3).map((t,i)=><div key={i} style={{fontSize:12,color:C.g7,marginBottom:6}}>• {t}</div>)}</div></div></div>
     <footer style={{background:C.nd,padding:24,borderTop:"1px solid rgba(197,212,78,.1)",textAlign:"center"}}>
       <p style={{fontSize:12,color:"rgba(255,255,255,.25)"}}><span style={{color:C.ol}}>CS Capacity Planning: The Guide</span> © 2024 by CXology™ · Illustrative, not operational projections.</p>
-        <div style="text-align:center;padding-top:1rem;"><div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div></div>
+        <div style={{textAlign:"center",paddingTop:"1rem"}}><div className="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div></div>
 </footer>
   </div>;
 }
