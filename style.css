@@ -270,9 +270,8 @@ p { max-width: 68ch; }
 .part-card.p3::before { background: var(--olive); }
 .part-card.p4::before { background: var(--amber); }
 .part-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: transparent;
+  box-shadow: var(--shadow);
+  border-color: var(--gray-200);
 }
 .part-num {
   font-family: 'Public Sans', sans-serif;
@@ -294,22 +293,34 @@ p { max-width: 68ch; }
   font-size: 1.2rem; color: var(--navy); margin-bottom: 0.75rem;
 }
 .part-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; max-width: 100%; }
-.chapter-list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
-.chapter-list { margin-top: 0; }
+.chapter-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0; }
 .chapter-list li a {
   display: flex; align-items: center; gap: 8px;
-  font-size: 0.82rem; color: var(--gray-700);
-  padding: 4px 0;
-  transition: color var(--transition);
+  font-size: 0.82rem; font-weight: 500; color: var(--gray-700);
+  padding: 0.55rem 0.8rem;
+  background: var(--off-white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition);
 }
-.chapter-list li a:hover { color: var(--navy); }
-.chapter-list li a::before {
-  content: '';
-  width: 4px; height: 4px; border-radius: 50%;
-  background: var(--gray-200); flex-shrink: 0;
-  transition: background var(--transition);
+.chapter-list li a::after {
+  content: '→';
+  margin-left: auto; flex-shrink: 0;
+  font-size: 0.9rem; color: var(--gray-200);
+  transition: transform var(--transition), color var(--transition);
 }
-.chapter-list li a:hover::before { background: var(--olive); }
+.chapter-list li a:hover {
+  color: var(--navy);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+.chapter-list li a:hover::after { transform: translateX(3px); color: var(--olive-dim); }
+/* per-part hover accent */
+.part-card.p1 .chapter-list li a:hover { border-color: var(--teal); }
+.part-card.p2 .chapter-list li a:hover { border-color: var(--blue); }
+.part-card.p3 .chapter-list li a:hover { border-color: var(--olive-dim); }
+.part-card.p4 .chapter-list li a:hover { border-color: var(--amber); }
 
 /* ─── FRAMEWORKS GRID ────────────────────────────────────────────────────── */
 .frameworks-bg { background: var(--navy-deep); }
