@@ -805,7 +805,7 @@ p { max-width: 68ch; }
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+  .hero-visual { margin-top: 2.25rem; }
   .calc-shell { grid-template-columns: 1fr; }
   .ikt-grid { grid-template-columns: repeat(2, 1fr); }
   .pipeline-stages { grid-template-columns: 1fr; }
