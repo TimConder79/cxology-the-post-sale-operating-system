@@ -250,6 +250,7 @@ p { max-width: 68ch; }
 .parts-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
+  align-items: start;
 }
 .part-card {
   background: var(--white);
@@ -321,6 +322,56 @@ p { max-width: 68ch; }
 .part-card.p2 .chapter-list li a:hover { border-color: var(--blue); }
 .part-card.p3 .chapter-list li a:hover { border-color: var(--olive-dim); }
 .part-card.p4 .chapter-list li a:hover { border-color: var(--amber); }
+
+/* ─── PART CARD PROGRESSIVE DISCLOSURE ─────────────────────────────────────── */
+/* Expand all / Collapse all — understated text control by the section header */
+.parts-controls { margin-top: 1.25rem; }
+.parts-expand-all {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.parts-expand-all:hover { color: var(--navy); border-color: var(--olive-dim); background: var(--off-white); }
+.parts-expand-all:focus-visible { outline: 2px solid var(--olive-dim); outline-offset: 2px; }
+
+/* Per-card control: understated '+ N more' / 'Show fewer' text button */
+.part-toggle {
+  align-self: flex-start;
+  margin-top: 0.6rem;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Public Sans', sans-serif;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.01em;
+  color: var(--olive-dim);
+  background: transparent; border: none;
+  padding: 0.35rem 0.25rem;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.part-toggle:hover { color: var(--navy); }
+.part-toggle:focus-visible { outline: 2px solid var(--olive-dim); outline-offset: 2px; border-radius: var(--radius-sm); }
+.part-toggle-arrow {
+  font-size: 0.9rem; line-height: 1;
+  transition: transform var(--transition);
+}
+.part-card.open .part-toggle-arrow { transform: rotate(180deg); }
+
+/* Peek list (always visible) + collapsible remainder */
+.chapter-peek { margin-top: 0; }
+.chapter-wrap {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.chapter-wrap .chapter-list { margin-top: 0.4rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-wrap { transition: none; }
+}
 
 /* ─── FRAMEWORKS GRID ────────────────────────────────────────────────────── */
 .frameworks-bg { background: var(--navy-deep); }
