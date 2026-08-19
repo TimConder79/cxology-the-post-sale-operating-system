@@ -64,26 +64,39 @@
       </div>
     </div>
     <div class="hero-visual animate-up-delay-2">
-      <div class="hero-card" onclick="location.href='#parts'">
-        <div class="hero-card-label">Foundation</div>
-        <div class="hero-card-title">From Function to System</div>
-        <div class="hero-card-text">From churn insurance to revenue engine — the mindset shift that changes everything.</div>
-      </div>
-      <div class="hero-card" onclick="location.href='#parts'">
-        <div class="hero-card-label">Pipeline</div>
-        <div class="hero-card-title">The Post-Sale Pipeline</div>
-        <div class="hero-card-text">Five stages — Identify, Align, Advocate, Intent, NRR Close — for predictable retention and expansion.</div>
-      </div>
-      <div class="hero-card" onclick="location.href='#plays'">
-        <div class="hero-card-label">Execution</div>
-        <div class="hero-card-title">AI-Enabled Lifecycle Plays</div>
-        <div class="hero-card-text">Eight structured plays covering every customer inflection point at scale.</div>
-      </div>
-      <div class="hero-card" onclick="location.href='#parts'">
-        <div class="hero-card-label">Scale</div>
-        <div class="hero-card-title">Data, AI & Scale</div>
-        <div class="hero-card-text">Health scoring, capacity planning, and the operational infrastructure to run the system at scale.</div>
-      </div>
+      <a href="calculator.html" style="display:block;text-decoration:none" onmouseenter="this.querySelector('.hero-calc-card').style.transform='translateY(-4px)';this.querySelector('.hero-calc-card').style.boxShadow='0 24px 60px rgba(0,0,0,.35)'" onmouseleave="this.querySelector('.hero-calc-card').style.transform='';this.querySelector('.hero-calc-card').style.boxShadow='var(--shadow-lg)'">
+        <div class="hero-calc-card" style="background:var(--navy);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);transition:transform var(--transition),box-shadow var(--transition)">
+          <div style="background:#1A2E42;padding:0.9rem 1.25rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)">
+            <div style="font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,.4)">Retention &amp; Growth ROI Calculator</div>
+            <div style="display:flex;align-items:center;gap:6px;background:rgba(181,189,0,.12);border:1px solid rgba(181,189,0,.3);border-radius:20px;padding:3px 10px">
+              <div style="width:5px;height:5px;border-radius:50%;background:#B5BD00;animation:calcblink 2.2s ease-in-out infinite"></div>
+              <span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00">Live</span>
+            </div>
+          </div>
+          <div style="padding:1.35rem">
+            <div style="font-size:0.7rem;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.4);margin-bottom:0.85rem">What closing the NRR gap is worth</div>
+            <div style="background:rgba(181,189,0,.06);border:1px solid rgba(181,189,0,.18);border-radius:var(--radius-sm);padding:1rem 1.1rem;margin-bottom:0.7rem">
+              <div style="font-size:0.62rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:0.35rem">Valuation Delta at Exit</div>
+              <div style="font-size:2rem;font-weight:900;color:#B5BD00;line-height:1">+$214M</div>
+              <div style="font-size:0.72rem;color:rgba(255,255,255,.35);margin-top:0.3rem">with target vs. current NRR</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-bottom:1.1rem">
+              <div style="background:rgba(16,24,32,.5);border:1px solid rgba(255,255,255,.05);border-radius:var(--radius-sm);padding:0.8rem 0.9rem">
+                <div style="font-size:0.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.3rem">Year 1 Uplift</div>
+                <div style="font-size:1.3rem;font-weight:900;color:#fff;line-height:1">+$640K</div>
+              </div>
+              <div style="background:rgba(16,24,32,.5);border:1px solid rgba(255,255,255,.05);border-radius:var(--radius-sm);padding:0.8rem 0.9rem">
+                <div style="font-size:0.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.3rem">Required CAGR</div>
+                <div style="font-size:1.3rem;font-weight:900;color:#fff;line-height:1">48.3%</div>
+              </div>
+            </div>
+            <div style="padding:0.8rem 1rem;background:#B5BD00;border-radius:var(--radius-sm);display:flex;justify-content:space-between;align-items:center">
+              <div style="font-size:0.85rem;font-weight:700;color:#101820">Open the Calculator →</div>
+              <div style="font-size:1.15rem;color:#101820">↗</div>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -271,90 +284,13 @@
   </div>
 </section>
 
-<!-- ROI CALCULATOR -->
-<section class="section calc-bg" id="calculator">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="stage-eyebrow"><span class="stage-num">2</span><span class="stage-word">Put it to work</span></div>
-      <div class="section-tag">Interactive Tool</div>
-      <h2 class="headline section-title">Retention &amp; Growth ROI Calculator</h2>
-      <p class="section-sub">Six interactive modules showing exactly what avoidable churn costs you — year one, over a decade, and at exit.</p>
-    </div>
-    <a href="calculator.html" style="display:block;text-decoration:none">
-      <div style="background:var(--navy);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);transition:transform var(--transition),box-shadow var(--transition)" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(26,46,66,.25)'" onmouseleave="this.style.transform='';this.style.boxShadow='var(--shadow-lg)'">
-        <div style="background:#1A2E42;padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)">
-          <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,.35)">Retention &amp; Growth ROI Calculator</div>
-          <div style="display:flex;align-items:center;gap:6px;background:rgba(181,189,0,.12);border:1px solid rgba(181,189,0,.3);border-radius:20px;padding:3px 10px">
-            <div style="width:5px;height:5px;border-radius:50%;background:#B5BD00;animation:calcblink 2.2s ease-in-out infinite"></div>
-            <span style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00">Live</span>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);margin:1.5rem;border-radius:var(--radius-sm);overflow:hidden">
-          <div style="background:rgba(16,24,32,.6);padding:1.25rem">
-            <div style="font-size:0.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Required CAGR</div>
-            <div style="font-size:1.6rem;font-weight:900;color:#B5BD00;line-height:1">48.3%</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:0.25rem">to hit your revenue goal</div>
-          </div>
-          <div style="background:rgba(16,24,32,.6);padding:1.25rem">
-            <div style="font-size:0.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Year 1 Uplift</div>
-            <div style="font-size:1.6rem;font-weight:900;color:#fff;line-height:1">+$640K</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:0.25rem">120% vs. 90% NRR</div>
-          </div>
-          <div style="background:rgba(16,24,32,.6);padding:1.25rem">
-            <div style="font-size:0.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Valuation Delta</div>
-            <div style="font-size:1.6rem;font-weight:900;color:#fff;line-height:1">+$214M</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.3);margin-top:0.25rem">at exit with target NRR</div>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:0 1.5rem 1rem">
-          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">01</div>
-            <div style="font-size:0.82rem;font-weight:600;color:#fff">Benchmark Comparison</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">Where you stand vs. B2B SaaS</div>
-          </div>
-          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">02</div>
-            <div style="font-size:0.82rem;font-weight:600;color:#fff">Year 1 Growth Rate</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">NRR impact from day one</div>
-          </div>
-          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">03</div>
-            <div style="font-size:0.82rem;font-weight:600;color:#fff">Cost of Churn (CAC)</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">The treadmill in dollars</div>
-          </div>
-          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">04</div>
-            <div style="font-size:0.82rem;font-weight:600;color:#fff">Sales Burden</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">What quota NRR carries for you</div>
-          </div>
-          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">05</div>
-            <div style="font-size:0.82rem;font-weight:600;color:#fff">Multi-Year Trajectory</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">Compounding gap over time</div>
-          </div>
-          <div style="padding:0.75rem 1rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-sm)">
-            <div style="font-size:0.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B5BD00;margin-bottom:0.25rem">06</div>
-            <div style="font-size:0.82rem;font-weight:600;color:#fff">Exit Valuation</div>
-            <div style="font-size:0.75rem;color:rgba(255,255,255,.35)">NRR's impact on what you're worth</div>
-          </div>
-        </div>
-        <div style="margin:0 1.5rem 1.5rem;padding:1rem 1.25rem;background:#B5BD00;border-radius:var(--radius-sm);display:flex;justify-content:space-between;align-items:center">
-          <div>
-            <div style="font-size:0.88rem;font-weight:700;color:#101820">Open the Full Calculator →</div>
-            <div style="font-size:0.75rem;color:rgba(16,24,32,.6)">Live sliders · 6 analysis modules · Benchmarks included</div>
-          </div>
-          <div style="font-size:1.4rem;color:#101820">↗</div>
-        </div>
-      </div>
-    </a>
-  </div>
-</section>
 <style>@keyframes calcblink{0%,100%{opacity:1}50%{opacity:.25}}</style>
 
 <!-- INTERACTIVE TOOLS -->
 <section class="section" id="tools" style="background:var(--navy-deep);border-top:1px solid rgba(255,255,255,.05)">
   <div class="section-inner">
     <div class="section-header">
+      <div class="stage-eyebrow"><span class="stage-num">2</span><span class="stage-word">Put it to work</span></div>
       <div class="section-tag dark">Interactive Tools</div>
       <h2 class="headline section-title" style="color:var(--white)">Built to Be Used, Not Just Read</h2>
       <p class="section-sub" style="color:rgba(255,255,255,.5)">Each tool operationalizes a core chapter — turning frameworks into working models you can run against your own data.</p>
