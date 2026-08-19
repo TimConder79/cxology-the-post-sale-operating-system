@@ -282,8 +282,8 @@ p { max-width: 68ch; }
 }
 .part-card:hover .part-num { color: var(--olive-pale); }
 .part-label {
-  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; margin-bottom: 0.4rem;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 0.5rem;
 }
 .part-label.p1 { color: var(--teal); }
 .part-label.p2 { color: var(--blue); }
@@ -340,37 +340,59 @@ p { max-width: 68ch; }
 .parts-expand-all:hover { color: var(--navy); border-color: var(--olive-dim); background: var(--off-white); }
 .parts-expand-all:focus-visible { outline: 2px solid var(--olive-dim); outline-offset: 2px; }
 
-/* Per-card control: understated '+ N more' / 'Show fewer' text button */
+/* Per-card control: 'View chapters' / 'Hide chapters' bar at the card's bottom */
 .part-toggle {
-  align-self: flex-start;
-  margin-top: 0.6rem;
-  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;
   font-family: 'Public Sans', sans-serif;
-  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.01em;
-  color: var(--olive-dim);
-  background: transparent; border: none;
-  padding: 0.35rem 0.25rem;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--navy); text-align: left;
+  background: var(--off-white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
   cursor: pointer;
-  transition: color var(--transition);
+  transition: all var(--transition);
 }
-.part-toggle:hover { color: var(--navy); }
-.part-toggle:focus-visible { outline: 2px solid var(--olive-dim); outline-offset: 2px; border-radius: var(--radius-sm); }
+.part-toggle:hover { background: var(--white); box-shadow: var(--shadow); }
+.part-toggle:focus-visible { outline: 2px solid var(--olive-dim); outline-offset: 2px; }
+.part-count { font-size: 0.78rem; font-weight: 500; color: var(--text-muted); }
+.part-toggle-label { display: inline-flex; align-items: center; gap: 6px; }
 .part-toggle-arrow {
   font-size: 0.9rem; line-height: 1;
   transition: transform var(--transition);
 }
 .part-card.open .part-toggle-arrow { transform: rotate(180deg); }
 
-/* Peek list (always visible) + collapsible remainder */
-.chapter-peek { margin-top: 0; }
+/* Collapsible chapter panel with fade-in reveal */
 .chapter-wrap {
   max-height: 0; overflow: hidden;
-  transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
 }
-.chapter-wrap .chapter-list { margin-top: 0.4rem; }
+.chapter-wrap .chapter-list {
+  margin-top: 0.5rem;
+  opacity: 0; transform: translateY(-6px);
+  transition: opacity 0.28s ease 0.06s, transform 0.28s ease 0.06s;
+}
+.part-card.open .chapter-wrap .chapter-list { opacity: 1; transform: none; }
+
+/* Numbered stage spine — Understand it / Put it to work / Execute it */
+.stage-eyebrow { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; }
+.stage-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--olive); color: var(--navy);
+  font-family: 'Public Sans', sans-serif; font-weight: 800; font-size: 0.9rem; line-height: 1;
+}
+.stage-word {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--olive-dim);
+}
+.frameworks-bg .stage-word, #tools .stage-word { color: var(--olive); }
 
 @media (prefers-reduced-motion: reduce) {
   .chapter-wrap { transition: none; }
+  .chapter-wrap .chapter-list { transition: none; transform: none; }
 }
 
 /* ─── FRAMEWORKS GRID ────────────────────────────────────────────────────── */
