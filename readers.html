@@ -254,11 +254,13 @@
     'Ch 1 · From Churn Insurance to Revenue Engine',
     'Ch 2 · Post-Sale Unification',
     'Ch 3 · The Role Evolution of the CSM',
+    'Part II · How the Post-Sale Pipeline Works',
     'Ch 4 · Stage 1 — Identify',
     'Ch 5 · Stage 2 — Align',
     'Ch 6 · Stage 3 — Advocate',
     'Ch 7 · Stage 4 — Intent',
     'Ch 8 · Stage 5 — Net Revenue Close',
+    'Part III · The Plays That Move the Pipeline',
     'Ch 9 · The Purchase & Welcome Play',
     'Ch 10 · The Kickoff Play',
     'Ch 11 · The Onboarding Play',
@@ -268,6 +270,7 @@
     'Ch 15 · The Alignment Meeting Play',
     'Ch 16 · The Renew & Grow Play',
     'Ch 17 · Supporting Plays',
+    'Part IV · Data, Automation & Scale',
     'Ch 18 · AI in CS — Judgment Over Templates',
     'Ch 19 · Data Governance and One Data Spine',
     'Ch 20 · Health Scoring That Actually Works',
@@ -287,7 +290,7 @@
   // Deep link from a chapter (?ch=6 / ?ch=intro): prefill both dropdowns and jump to the forms.
   function chapterLabel(ch) {
     ch = String(ch).toLowerCase();
-    var named = { preface: 'Preface', intro: 'Intro', conclusion: 'Conclusion' };
+    var named = { preface: 'Preface', intro: 'Intro', conclusion: 'Conclusion', part2: 'Part II', part3: 'Part III', part4: 'Part IV' };
     var prefix = named[ch] ? named[ch] + ' · ' : (/^\d+$/.test(ch) ? 'Ch ' + ch + ' · ' : null);
     if (!prefix) return null;
     for (var i = 0; i < CHAPTERS.length; i++) { if (CHAPTERS[i].indexOf(prefix) === 0) return CHAPTERS[i]; }
