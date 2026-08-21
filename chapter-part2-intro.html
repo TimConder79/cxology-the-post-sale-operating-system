@@ -103,6 +103,32 @@
       background: rgba(0,0,0,.4);
     }
     .toc-overlay.open { display: block; }
+
+    .chapter-figure {
+      margin: 0 auto 2.5rem;
+      max-width: 980px;
+      padding: 0 2rem;
+    }
+    .chapter-figure-frame {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: 14px;
+      box-shadow: 0 12px 32px rgba(16,24,40,.08);
+      overflow: hidden;
+    }
+    .chapter-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .chapter-figure figcaption {
+      padding: 0.9rem 1.1rem 1rem;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+      background: var(--off-white);
+      border-top: 1px solid var(--gray-100);
+    }
   </style>
 </head>
 <body>
@@ -189,6 +215,13 @@
   <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
 
     <p>Part I established that retention behaves like a pipeline: customers move through stages, and progression can be designed, inspected, and managed. Part II makes that pipeline concrete. It defines the five stages of Identify, Align, Advocate, Intent, and Net Revenue Close, and explains what must happen inside each one for an opportunity to advance.</p>
+
+    <figure class="chapter-figure">
+      <div class="chapter-figure-frame">
+        <img src="post-sale-pipeline.webp" alt="Post-sale pipeline diagram showing the five stages Identify, Align, Advocate, Intent, and Net Revenue Close, above a customer journey layer of goal facilitation, shared insights, and renew and grow."/>
+        <figcaption>The post-sale pipeline at a glance. An opportunity advances through five stages—Identify, Align, Advocate, Intent, and Net Revenue Close—while the customer journey beneath it shows the work that carries the customer forward: goal facilitation, shared insights, and ongoing progress after First Value. The chapters in this part unpack each stage in turn.</figcaption>
+      </div>
+    </figure>
 
     <p>Before the chapters that follow unpack each stage, three ideas need to be established clearly. They are the operating logic of the pipeline, and they will shape how every stage, every play, and every probability weight should be understood.</p>
 
