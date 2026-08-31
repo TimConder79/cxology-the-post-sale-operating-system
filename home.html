@@ -66,7 +66,6 @@ a{color:inherit;text-decoration:none}
 .logo{display:flex;align-items:center;gap:11px}
 .logo-img{height:34px;width:auto}
 .logo-img.foot{height:28px}
-.c-mk-img{width:34px;height:34px}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .logo-img{filter:invert(1) brightness(1.6)}}
 :root[data-theme="dark"] .logo-img{filter:invert(1) brightness(1.6)}
 .nav .links{display:flex;align-items:center;gap:30px;font-family:'Public Sans';font-weight:700;font-size:.9rem;color:var(--muted)}
@@ -82,12 +81,15 @@ a{color:inherit;text-decoration:none}
 .credit .av img{width:100%;height:100%;object-fit:cover;object-position:66% 18%}
 .credit .txt{font-size:.86rem;color:var(--muted);font-weight:400}
 .credit .txt b{color:var(--ink);font-weight:700}
-.cover{aspect-ratio:3/4;width:100%;max-width:300px;margin:0 auto;border-radius:6px;box-shadow:var(--shadow-lg);background:linear-gradient(160deg,var(--navy),var(--ink));color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:26px 22px}
-.cover .c-top{font-family:'Public Sans';font-weight:700;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
-.cover .c-title{font-family:'Public Sans';font-weight:900;font-size:1.5rem;line-height:1.05;letter-spacing:-.02em}
-.cover .c-by{font-size:.74rem;color:#b7c2cc;font-weight:400}
-.cover .c-mk{width:34px;height:34px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center}
-.cover .c-mk svg{width:16px;height:20px}
+.cover{aspect-ratio:2/3;width:100%;max-width:300px;margin:0 auto;border-radius:7px;overflow:hidden;position:relative;box-shadow:var(--shadow-lg);background:linear-gradient(165deg,#213241,#0b1118);color:#fff;padding:30px 26px;display:flex;flex-direction:column}
+.cover .cover-pat{position:absolute;left:0;right:0;bottom:0;height:62%;background:url("assets/pattern.png") center bottom/auto 170px repeat;opacity:.16;-webkit-mask:linear-gradient(0deg,#000 18%,transparent 90%);mask:linear-gradient(0deg,#000 18%,transparent 90%)}
+.cover .cover-mk{position:relative;z-index:2;width:34px;height:34px;margin-bottom:16px}
+.cover .cover-title{position:relative;z-index:2;font-weight:900;font-size:2.05rem;line-height:.94;letter-spacing:-.03em;color:#fff}
+.cover .cover-title .lm{color:#B5BD00}
+.cover .cover-bot{position:relative;z-index:2;margin-top:auto}
+.cover .cover-sub{font-size:.72rem;color:#aeb9c2;max-width:24ch;margin-bottom:12px;font-weight:300}
+.cover .cover-auth{font-weight:800;font-size:.92rem;color:#fff}
+.cover .cover-cred{font-weight:600;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#B5BD00;margin-top:3px}
 .cta-row{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}
 h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
 .hero .lead{font-size:clamp(1.12rem,2vw,1.4rem);color:var(--muted);max-width:30ch;font-weight:300}
@@ -208,11 +210,13 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
       <div class="credit"><span class="av"><img src="Tim_Conder_Headshot.jpg" alt="Tim Conder"/></span><span class="txt">By <b>Tim Conder</b> · 20+ years turning post-sale into revenue</span></div>
     </div>
     <div class="cover">
-      <div class="c-top">The Post-Sale</div>
-      <div class="c-title">The Post-Sale Operating System</div>
-      <div style="display:flex;justify-content:space-between;align-items:flex-end">
-        <span class="c-by">Tim Conder</span>
-        <img class="c-mk-img" src="assets/mark-lime.png" alt=""/>
+      <div class="cover-pat"></div>
+      <img class="cover-mk" src="assets/mark-lime.png" alt=""/>
+      <h3 class="cover-title">The<br>Post-Sale<br><span class="lm">Operating</span><br>System</h3>
+      <div class="cover-bot">
+        <p class="cover-sub">Turn retention and expansion into a pipeline you can forecast.</p>
+        <div class="cover-auth">Tim Conder</div>
+        <div class="cover-cred">Creator of CXology</div>
       </div>
     </div>
   </div></div>
