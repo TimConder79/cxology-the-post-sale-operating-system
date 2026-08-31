@@ -60,12 +60,6 @@ a{color:inherit;text-decoration:none}
 .btn.on-dark.ghost{color:#fff;border-color:rgba(255,255,255,.28)}
 .btn.on-dark.ghost:hover{border-color:var(--lime)}
 
-/* toggle */
-.toggle{position:fixed;right:16px;bottom:16px;z-index:60;background:var(--ink);color:#fff;border-radius:999px;padding:7px 8px 7px 16px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);font-family:'Public Sans';font-size:.76rem;font-weight:700;letter-spacing:.04em}
-.toggle span{opacity:.7;text-transform:uppercase;letter-spacing:.12em;font-size:.66rem}
-.toggle button{font-family:inherit;font-weight:700;font-size:.78rem;color:var(--ink);background:#fff;border-radius:999px;padding:6px 14px;opacity:.55}
-.toggle button.active{background:var(--lime);opacity:1}
-
 /* NAV */
 .nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav .row{display:flex;align-items:center;justify-content:space-between;height:72px}
@@ -80,10 +74,7 @@ a{color:inherit;text-decoration:none}
 .nav .btn{padding:11px 22px}
 @media(max-width:760px){.nav .links a:not(.btn){display:none}}
 
-/* HERO shared */
-.hero{display:none}
-body[data-hero="a"] #hero-a{display:block}
-body[data-hero="b"] #hero-b{display:block}
+/* HERO */
 .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
 @media(max-width:840px){.hero-grid{grid-template-columns:1fr;gap:40px}}
 .credit{display:flex;align-items:center;gap:11px;margin-top:26px}
@@ -110,19 +101,6 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
   background-image:url("assets/pattern.png");background-size:auto 300px;background-position:right top;background-repeat:repeat;
   -webkit-mask-image:linear-gradient(90deg,transparent 48%,#000 92%);mask-image:linear-gradient(90deg,transparent 48%,#000 92%)}
 #hero-a .hero-grid{position:relative}
-
-/* HERO B - navy */
-#hero-b{background:var(--ink);color:#EAF0F4;position:relative;overflow:hidden}
-#hero-b .band{padding:88px 0 84px;position:relative}
-#hero-b h1.mega, #hero-b h2{color:#fff}
-#hero-b .lead,#hero-b .sub{color:#aeb9c2}
-#hero-b .eyebrow{color:var(--lime)}
-#hero-b .credit .txt{color:#aeb9c2}#hero-b .credit .txt b{color:#fff}
-#hero-b .btn.ghost{color:#fff;border-color:rgba(255,255,255,.26)}
-#hero-b .side{position:absolute;left:40px;top:0;bottom:0;width:90px;opacity:.9;pointer-events:none;
-  background:url("assets/path-lime.png") no-repeat left top/auto 100%;}
-@media(max-width:840px){#hero-b .side{display:none}}
-#hero-b .cover{box-shadow:0 30px 70px rgba(0,0,0,.55);outline:1px solid rgba(181,189,0,.35);outline-offset:6px;background:linear-gradient(160deg,#31465a,#182530)}
 
 /* SECTION rhythm */
 .section{padding:88px 0}
@@ -200,12 +178,6 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
 <body>
 
 
-<!-- HERO TOGGLE -->
-<div class="toggle"><span>Hero</span>
-  <button id="tA" class="active" onclick="document.body.dataset.hero='a';tA.classList.add('active');tB.classList.remove('active')">A · Light</button>
-  <button id="tB" onclick="document.body.dataset.hero='b';tB.classList.add('active');tA.classList.remove('active')">B · Navy</button>
-</div>
-
 <!-- NAV -->
 <header class="nav"><div class="wrap"><div class="row">
   <a class="logo" href="home.html"><img class="logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
@@ -244,33 +216,6 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
       </div>
     </div>
   </div></div>
-</section>
-
-<!-- HERO B: NAVY -->
-<section class="hero" id="hero-b">
-  <div class="band"><div class="side"></div>
-    <div class="wrap"><div class="hero-grid">
-      <div>
-        <div class="eyebrow">A new book by Tim Conder · CXology</div>
-        <h1 class="mega">The Post-Sale<br>Operating System</h1>
-        <p class="lead wide">A framework helps you understand the business. An operating system helps you run it.</p>
-        <p class="sub">The first end-to-end system for turning retention and expansion into a pipeline you can forecast. Not another customer-success playbook. An operating model for everything after the sale.</p>
-        <div class="cta-row">
-          <a href="preface.html" class="btn primary">Read the book</a>
-          <a href="#parts" class="btn ghost on-dark">See what's inside</a>
-        </div>
-        <div class="credit"><span class="av"><img src="Tim_Conder_Headshot.jpg" alt="Tim Conder"/></span><span class="txt">By <b>Tim Conder</b> · 20+ years turning post-sale into revenue</span></div>
-      </div>
-      <div class="cover">
-        <div class="c-top">The Post-Sale</div>
-        <div class="c-title">The Post-Sale Operating System</div>
-        <div style="display:flex;justify-content:space-between;align-items:flex-end">
-          <span class="c-by">Tim Conder</span>
-          <img class="c-mk-img" src="assets/mark-lime.png" alt=""/>
-        </div>
-      </div>
-    </div></div>
-  </div>
 </section>
 
 <!-- GAP -->
@@ -403,8 +348,6 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
   <div class="fl"><a href="index.html">The Book</a><a href="frameworks.html#pipeline">The Pipeline</a><a href="#work">Work With Me</a><a href="about.html">About</a><a href="calculator.html">ROI Calculator</a><a href="readers.html">Reader Hub</a></div>
   <small>© CXology 2026</small>
 </div></div></footer>
-
-<script>document.body.dataset.hero='a';</script>
 
 </body>
 </html>
