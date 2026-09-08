@@ -13,17 +13,17 @@
 
 <!-- NAV -->
 <nav class="nav">
+  <div class="nav-logo">
+    <a href="home.html"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  </div>
   <ul class="nav-links">
-    <li><a href="about.html">About Tim</a></li>
-    <li><a href="#parts">The System</a></li>
-    <li><a href="#frameworks">Frameworks</a></li>
+    <li><a href="index.html" class="active">The Book</a></li>
     <li><a href="calculator.html">ROI Calculator</a></li>
     <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
-  <a href="preface.html" class="nav-cta">Start Reading →</a>
-  <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <a href="preface.html" class="nav-cta">Read the book →</a>
+  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 

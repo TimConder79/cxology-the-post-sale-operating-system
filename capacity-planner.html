@@ -14,15 +14,16 @@ input[type=number]::-webkit-inner-spin-button{opacity:1}
 input[type=number]{-moz-appearance:textfield}
 select{-webkit-appearance:auto;appearance:auto}
 @media print{.no-print{display:none!important}.print-only{display:block!important}}
-.site-nav{position:sticky;top:0;left:0;right:0;z-index:200;background:rgba(15,28,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(197,212,78,.15);padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+.site-nav{position:sticky;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid #E4E6CF;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between}
 .site-nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.site-nav-img{height:30px;width:auto;display:block}
 .site-nav-mark{width:32px;height:32px;border-radius:8px;background:#C5D44E;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#0F1C28}
-.site-nav-name{font-size:1.1rem;color:#fff;letter-spacing:.02em}
-.site-nav-links{display:flex;gap:2rem;list-style:none}
-.site-nav-links a{color:rgba(255,255,255,.65);font-size:.85rem;font-weight:500;text-decoration:none;transition:color .2s}
-.site-nav-links a:hover{color:#C5D44E}
-.site-nav-cta{padding:8px 20px;background:#C5D44E;color:#0F1C28;border-radius:6px;font-size:.82rem;font-weight:700;text-decoration:none;transition:all .2s}
-.site-nav-cta:hover{background:#d4e455;transform:translateY(-1px)}
+.site-nav-name{font-size:1.1rem;color:#253746;letter-spacing:.02em}
+.site-nav-links{display:flex;gap:1.9rem;list-style:none}
+.site-nav-links a{color:#5f6b57;font-size:.9rem;font-weight:700;text-decoration:none;transition:color .2s}
+.site-nav-links a:hover{color:#253746}
+.site-nav-cta{padding:10px 20px;background:#B5BD00;color:#101820;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.site-nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(155,162,0,.3)}
 @media print{.site-nav{display:none}}
 #loading-screen{display:flex;align-items:center;justify-content:center;height:100vh;flex-direction:column;gap:12px;color:#5A6A40;font-size:14px}
 #loading-screen .spin{width:32px;height:32px;border:3px solid #D8DEB8;border-top-color:#C5D44E;border-radius:50%;animation:sp .8s linear infinite}
@@ -39,16 +40,16 @@ input[type=number]:hover,select:hover{border-color:#7A8A5A;}
 <body>
 <!-- NAV -->
 <nav class="site-nav">
-  <a href="index.html" class="site-nav-logo">
-    <div class="site-nav-mark">C</div>
-    <span class="site-nav-name">CXology</span>
+  <a href="home.html" class="site-nav-logo">
+    <img class="site-nav-img" src="assets/logo-h-bb.png" alt="CXology"/>
   </a>
   <ul class="site-nav-links">
-    <li><a href="index.html#parts">The Book</a></li>
-    <li><a href="index.html#frameworks">Frameworks</a></li>
+    <li><a href="index.html">The Book</a></li>
     <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
   </ul>
-  <a href="index.html" class="site-nav-cta">← Back to Book</a>
+  <a href="preface.html" class="site-nav-cta">Read the book →</a>
 </nav>
 
 <div id="loading-screen"><div class="spin"></div><span>Loading…</span></div>
