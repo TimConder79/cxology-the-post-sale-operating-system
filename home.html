@@ -135,10 +135,12 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
 /* THE SYSTEM — four parts */
 .parts{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:38px}
 @media(max-width:760px){.parts{grid-template-columns:1fr}}
-.part{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px 28px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column}
-.part .p-tag{font-family:'Public Sans';font-weight:900;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lime-deep)}
-.part .p-title{font-size:1.22rem;margin:9px 0 10px}
-.part .p-sum{color:var(--muted);font-size:.98rem;margin-bottom:22px}
+.part{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 30px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.part .p-head{display:flex;align-items:baseline;gap:14px;margin:0 0 15px;line-height:1}
+.part .p-num{font-family:'Public Sans';font-weight:900;font-size:2.7rem;line-height:.85;letter-spacing:-.04em;color:var(--lime-deep)}
+.part .p-name{font-family:'Public Sans';font-weight:900;font-size:1.55rem;letter-spacing:-.02em;color:var(--ink)}
+.part .p-lead{font-family:'Public Sans';font-weight:600;font-size:1.1rem;line-height:1.4;color:var(--ink);margin:0 0 12px;text-wrap:balance}
+.part .p-sum{color:var(--muted);font-size:.9rem;font-weight:300;line-height:1.6;margin:0 0 22px}
 .part .p-cta{margin-top:auto;align-self:flex-start;font-family:'Public Sans';font-weight:700;font-size:.82rem;letter-spacing:.04em;color:var(--ink);border-bottom:2px solid var(--lime);padding-bottom:2px;transition:color .15s,border-color .15s}
 .part .p-cta:hover{color:var(--lime-deep);border-color:var(--lime-deep)}
 
@@ -312,31 +314,31 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
     <div class="pathhead"><div class="path"></div><div class="ph-body" style="max-width:760px">
       <div class="eyebrow">The System</div>
       <h2 class="lead-h">Four parts. One working system.</h2>
-      <p class="intro">More than a book: the frameworks, lifecycle plays, calculators, health scoring, and capacity models are all here to put to work. Four parts take you from why post-sale breaks down to the infrastructure that makes it scale.</p>
+      <p class="intro">The frameworks, lifecycle plays, calculators, health scoring, and capacity models are all here to put to work. Four parts take you from why post-sale breaks down to the infrastructure that makes it scale.</p>
     </div></div>
     <div class="parts">
       <div class="part">
-        <div class="p-tag">Part I · Foundation</div>
-        <h3 class="p-title">From Function to System</h3>
-        <p class="p-sum">Post-sale is still run like churn insurance. Part I makes the case for treating it as your most under-used source of growth, and lays the foundation the rest of the system builds on.</p>
+        <h3 class="p-head"><span class="p-num">01</span><span class="p-name">Foundation</span></h3>
+        <p class="p-lead">Post-sale is still run like churn insurance.</p>
+        <p class="p-sum">Part I makes the case for treating it as your most under-used source of growth, and lays the foundation the rest of the system builds on.</p>
         <a href="chapter-intro.html" class="p-cta">Read Part I →</a>
       </div>
       <div class="part">
-        <div class="p-tag">Part II · Pipeline</div>
-        <h3 class="p-title">Architecting the Post-Sale Pipeline</h3>
-        <p class="p-sum">Sales gets a pipeline. Post-sale gets hope. Part II gives retention and expansion the same five-stage discipline — Identify, Align, Advocate, Intent, NRR Close — so growth becomes something you can forecast.</p>
+        <h3 class="p-head"><span class="p-num">02</span><span class="p-name">Pipeline</span></h3>
+        <p class="p-lead">Sales gets a pipeline. Post-sale gets hope.</p>
+        <p class="p-sum">Part II gives retention and expansion the same five-stage discipline — Identify, Align, Advocate, Intent, NRR Close — so growth becomes something you can forecast.</p>
         <a href="chapter-part2-intro.html" class="p-cta">Read Part II →</a>
       </div>
       <div class="part">
-        <div class="p-tag">Part III · Execution</div>
-        <h3 class="p-title">AI-Enabled Lifecycle Plays</h3>
-        <p class="p-sum">A strategy your team can't execute is just a slide. Part III turns the system into eight structured plays that deliver the right touch at every inflection point — so outcomes stop riding on your best CSM's memory.</p>
+        <h3 class="p-head"><span class="p-num">03</span><span class="p-name">Execution</span></h3>
+        <p class="p-lead">A strategy your team can't execute is just a slide.</p>
+        <p class="p-sum">Part III turns the system into eight structured plays that deliver the right touch at every inflection point — so outcomes stop riding on your best CSM's memory.</p>
         <a href="chapter-part3-intro.html" class="p-cta">Read Part III →</a>
       </div>
       <div class="part">
-        <div class="p-tag">Part IV · Scale</div>
-        <h3 class="p-title">Data, Automation &amp; Scale</h3>
-        <p class="p-sum">The system has to hold when you step away. Part IV is the infrastructure — data, health scoring, AI, and capacity planning — that keeps it running at scale.</p>
+        <h3 class="p-head"><span class="p-num">04</span><span class="p-name">Scale</span></h3>
+        <p class="p-lead">The system has to hold when you step away.</p>
+        <p class="p-sum">Part IV is the infrastructure — data, health scoring, AI, and capacity planning — that keeps it running at scale.</p>
         <a href="chapter-part4-intro.html" class="p-cta">Read Part IV →</a>
       </div>
     </div>
