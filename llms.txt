@@ -1,0 +1,71 @@
+# The Post-Sale Operating System
+
+> A book and a set of tools by Tim Conder (creator of CXology) that turn customer retention and expansion into a forecastable post-sale pipeline. It reframes post-sale from reactive "churn insurance" into a disciplined operating system: a five-stage pipeline, eight plays that move it, and the health-scoring, data, and capacity infrastructure that make it real.
+
+Author: Tim Conder, Post-Sale Systems Builder, 20+ years in B2B SaaS. https://www.linkedin.com/in/tim-conder/
+Core concepts: post-sale operating system, post-sale pipeline, strategic customer success, net revenue retention, renewal and expansion, customer health scoring, CS capacity planning.
+
+## Start here
+- [The Post-Sale Operating System (book overview)](https://cxology.co/book.html): What the system is and why post-sale needs an operating system, not more effort.
+- [About Tim Conder](https://cxology.co/about.html): Who wrote it and the experience behind it.
+- [Preface: Why I Wrote This Book](https://cxology.co/preface.html): The origin and argument in the author's words.
+- [Introduction: The Post-Sale Problem](https://cxology.co/chapter-intro.html): The post-sale problem hiding inside SaaS is not a lack of effort, intelligence, or tooling.
+
+## The foundation (Part I)
+- [Ch 1: From Churn Insurance to Revenue Engine](https://cxology.co/chapter-1.html): Why the most expensive thing in SaaS is losing customers you already won.
+- [Ch 2: Post-Sale Unification](https://cxology.co/chapter-2.html): You cannot build a revenue engine while internal gears grind against each other.
+- [Ch 3: The Role Evolution of the CSM](https://cxology.co/chapter-3.html): From tactical product trainer to strategic business advisor.
+
+## The post-sale pipeline: five stages (Part II)
+- [Part II Introduction: How the Post-Sale Pipeline Works](https://cxology.co/chapter-part2-intro.html): The pipeline does not require new data; it requires discipline to capture what the plays reveal.
+- [Ch 4: Stage 1 — Identify](https://cxology.co/chapter-4.html): Growth does not disappear at closed-won; it becomes visible through value, friction, and intent.
+- [Ch 5: Stage 2 — Align](https://cxology.co/chapter-5.html): Turning an opportunity into a case for it.
+- [Ch 6: Stage 3 — Advocate](https://cxology.co/chapter-6.html): Where alignment becomes internal momentum and the customer becomes capable of championing.
+- [Ch 7: Stage 4 — Intent](https://cxology.co/chapter-7.html): Where internal momentum becomes a committed path forward: timing, approvals, urgency.
+- [Ch 8: Stage 5 — Net Revenue Close](https://cxology.co/chapter-8.html): Securing the win, not the end of the pipeline.
+
+## The plays that move the pipeline (Part III)
+- [Part III Introduction: The Plays That Move the Pipeline](https://cxology.co/chapter-part3-intro.html): A play is a designed system for creating a specific customer outcome, not a checklist.
+- [Ch 9: Play 1 — Purchase & Welcome](https://cxology.co/chapter-9.html): The moment a customer says yes, a clock starts; don't let silence fill the space.
+- [Ch 10: Play 2 — Kickoff](https://cxology.co/chapter-10.html): Turning post-purchase momentum into working alignment and First Value.
+- [Ch 11: Play 3 — Onboarding](https://cxology.co/chapter-11.html): Turning kickoff alignment into focused execution and customer confidence.
+- [Ch 12: Play 4 — First Value](https://cxology.co/chapter-12.html): The customer's first proof that the promise of the purchase is becoming real.
+- [Ch 13: Play 5 — Value Blocks](https://cxology.co/chapter-13.html): Keeping customers moving by turning broad outcomes into small, provable wins.
+- [Ch 14: Play 6 — Sharing Insights](https://cxology.co/chapter-14.html): Turning progress, risk, usage, and better practice into persuasive momentum.
+- [Ch 15: Play 7 — Alignment Meeting](https://cxology.co/chapter-15.html): Replacing the passive QBR with an active, strategic Alignment Meeting.
+- [Ch 16: Play 8 — Renew & Grow](https://cxology.co/chapter-16.html): When the system works, renewal is the inevitable outcome of sustained value, not a moment.
+- [Ch 17: Supporting Plays — Key Contact Change & Offboarding](https://cxology.co/chapter-17.html): Handling champion changes and churn without ad-hoc heroics.
+
+## The infrastructure that makes it real (Part IV)
+- [Part IV Introduction: The Infrastructure That Makes the System Real](https://cxology.co/chapter-part4-intro.html): An operating system that cannot be measured, trusted, or scaled is not an operating system.
+- [Ch 18: AI in CS — Judgment Over Templates](https://cxology.co/chapter-18.html): In 2026, AI is not optional, but deployed wrong it hollows out the value of your team.
+- [Ch 19: Data Governance and the One Data Spine](https://cxology.co/chapter-19.html): The plays run on data; if the data cannot be trusted, neither can the system.
+- [Ch 20: Health Scoring That Actually Works](https://cxology.co/chapter-20.html): If your score only notices risk near renewal, it is not predicting health.
+- [Ch 21: From Functional Silos to One Operating System](https://cxology.co/chapter-21.html): Alignment comes from how the company operates, not from asking teams to cooperate harder.
+- [Ch 22: Proactive Capacity Planning](https://cxology.co/chapter-22.html): Where the post-sale journey becomes an investment decision and designed effort is planned.
+- [Conclusion: Running the System](https://cxology.co/chapter-conclusion.html): The system on one page and the sequence for putting it into operation.
+
+## Interactive tools
+- [CXology Frameworks](https://cxology.co/frameworks.html): The core frameworks: the Post-Sale Pipeline, CS Maturity, and more.
+- [Retention & Growth ROI Calculator](https://cxology.co/calculator.html): See what customer retention is worth based on your growth rate and churn.
+- [CS Capacity Planner](https://cxology.co/capacity-planner.html): Model CS capacity with Designed Effort and the 65% Availability Rule.
+- [Health Score Builder](https://cxology.co/health-score-builder.html): Design, weight, and validate a health score built from your healthiest customers.
+- [The Post-Sale Journey Map](https://cxology.co/journey-map.html): Twelve months, eight rows: the complete CXology post-sale system on one map.
+
+## Articles and Q&A
+- [Strategic Customer Success Q&A: Navigating Post-Sale Chaos](https://cxology.co/navigating-post-sale-chaos-strategic-customer-success-qa/): Questions and answers on loyalty blockers and builders, segmentation, timing key moments, and measuring engagement.
+- [Customer Success vs. Strategic Customer Success](https://cxology.co/strategic-customer-success/): How strategic customer success differs from conventional CS.
+- [The Three Essential Elements for Strategic Customer Success](https://cxology.co/three-essential-elements-for-strategic-customer-success/): Relevance, value achievement, and trust.
+- [Strategic Customer Success: The Foundation You Need](https://cxology.co/strategic-customer-success-the-foundation-you-need/): The gap between selling and being a customer.
+- [Strategic Customer Success: A Guide for Sales, Marketing, and Product](https://cxology.co/strategic-customer-success-the-true-guide-for-sales-marketing-and-product/): How other functions rely on and enable CS.
+- [The Trust Factor: Retention and Trust](https://cxology.co/retention-and-trust/): Why trust is the core connection to retention.
+- [Focus Your Customer Experience Framework on Retention](https://cxology.co/focus-your-customer-experience-framework-on-retention/): Turning a "sales-driven culture" toward retention.
+- [Why Your Customer Retention Strategy Matters](https://cxology.co/why-your-customer-retention-strategy-matters/): Great products alone no longer make a leader.
+- [Give Retention the Attention It Deserves](https://cxology.co/give-retention-the-attention-it-deserves/): Why retention is underfunded relative to acquisition.
+- [Heroic Effort: When It Holds Us Back](https://cxology.co/heroic-effort-why-do-we-do-it-and-when-does-it-hold-us-back/): The limits of heroics in startups and CS.
+- [Why We Created CXology](https://cxology.co/why-we-created-cxology-customer-retention-strategies-work/): The reasoning behind CXology.
+- [3 Tips to Start Your Journey with Strategic Customer Success](https://cxology.co/3-tips-to-start-your-journey-with-strategic-customer-success/): A practical starting point.
+
+## Also
+- [Reader Hub](https://cxology.co/readers.html): Ask questions, give feedback, and follow refinements to the book.
+- [Blog](https://cxology.co/blog/): Field notes on strategic customer success, retention, and the post-sale operating system.
