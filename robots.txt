@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://post-sale-operating-system.cxology.co/sitemap.xml
+Sitemap: https://cxology.co/sitemap.xml
