@@ -123,6 +123,91 @@
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://cxology.co/#tim",
+      "name": "Tim Conder",
+      "jobTitle": "Fractional CX & CS Leader, Author",
+      "url": "https://cxology.co/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/tim-conder/"
+      ],
+      "worksFor": {
+        "@id": "https://cxology.co/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxology.co/#org",
+      "name": "CXology",
+      "url": "https://cxology.co",
+      "logo": "https://cxology.co/assets/logo-h-bb.png"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://cxology.co/#book",
+      "name": "The Post-Sale Operating System",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "url": "https://cxology.co/book.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Health Scoring That Actually Works",
+      "name": "Health Scoring That Actually Works",
+      "description": "If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened.",
+      "articleSection": "Part IV: Data, Automation & Scale",
+      "isPartOf": {
+        "@id": "https://cxology.co/#book"
+      },
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-04-16",
+      "dateModified": "2026-09-09",
+      "mainEntityOfPage": "https://cxology.co/chapter-20.html",
+      "url": "https://cxology.co/chapter-20.html",
+      "image": "https://cxology.co/og-image.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cxology.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Book",
+          "item": "https://cxology.co/book.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Health Scoring That Actually Works",
+          "item": "https://cxology.co/chapter-20.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
 </head>
 <body>
 
@@ -239,6 +324,8 @@
 
     <div class="callout"><div class="callout-title">The Health Score Problem</div><p>If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened.</p></div>
 
+    <h2>Why most health scores fail</h2>
+
     <p>Most health scores fail because they start at the wrong end of the story. They are built around the visible symptoms of risk, especially the ones that are easiest to measure. Usage drops. Support tickets increase. The CSM feels uneasy. Renewal is approaching. These signals are not worthless, but they are often late. They tell you the customer is already drifting away, not where the drift began.</p>
 
     <p>Churn rarely starts with one dramatic event. It usually begins much earlier, in small moments that compound. Expectations are not realigned after the sale. Onboarding takes longer than the customer expected. The key contact becomes tired or disengaged. First Value is delayed or poorly understood. Usage eventually drops, but by then usage is not the cause. It is the evidence.</p>
@@ -249,7 +336,9 @@
 
     <p>The lifecycle plays give health scoring a better foundation. Purchase and Welcome tells us whether the customer was transitioned with confidence. Kickoff tells us whether expectations were reset and the reason for purchase was clarified. Onboarding tells us whether the customer is moving through the early work with enough support and direction. First Value tells us whether the customer has experienced something meaningful quickly enough to believe in the path ahead. Value Blocks, Sharing Insights, Alignment Meetings, and Renew and Grow tell us whether the customer is becoming more capable, more aligned, more visible, and more likely to expand.</p>
 
-    <div class="callout"><div class="callout-title">Health Measures Progress</div><p>A strong health score does not ask, “Is this customer red?” It asks, “Is this customer progressing through the system in the way a healthy customer should?”</p></div>
+    <div class="callout"><div class="callout-title">Health Measures Progress</div><h2>Score progression, not just risk</h2>
+
+<p>A strong health score does not ask, “Is this customer red?” It asks, “Is this customer progressing through the system in the way a healthy customer should?”</p></div>
 
     <p>This changes the role of health scoring. It is no longer a broad attempt to explain every possible form of churn. It becomes a focused attempt to understand the churn your company can influence. Some churn is unavoidable. A customer may go out of business, be acquired, or outgrow the product because their needs fundamentally changed. Those cases matter to revenue, but they do not create a useful operating signal for the team. The health score should focus on avoidable churn, the kind your company contributes to through slow onboarding, poor communication, product confusion, technical defects, or misalignment between what was sold and what can actually be delivered.</p>
 
@@ -261,11 +350,15 @@
 
     <div class="visual-panel"><div class="visual-kicker">Signal Design</div><div class="visual-title">Traditional criteria and growth-oriented criteria must work together</div><div class="visual-copy">Traditional indicators help establish a baseline. Growth-oriented indicators reveal whether the customer is becoming more aligned, more capable, and more likely to renew and grow.</div><div class="signal-grid"><div class="signal-card"><strong>Traditional signals</strong><span>Usage, support cases, NPS, CSM input, purchase history, and renewal timing can provide important context, but they often show risk after momentum has already changed.</span></div><div class="signal-card"><strong>Growth-oriented signals</strong><span>Relationship reach, lifecycle progression, goal achievement, customer engagement, and sophistication of use show whether the customer is building the conditions for retention and expansion.</span></div></div></div>
 
+    <h2>Build the score from your healthiest customers</h2>
+
     <p>The best way to identify these criteria is not to start with the customers who left. That can teach you something, but it often pulls the organization into a failure-centered conversation. A better starting point is your healthiest customers. Look at the customers you would happily clone. They are aligned. They show up prepared. They understand the business objective. They follow through on commitments. They consume guidance. They bring more people into the relationship. They use the product in more mature ways over time. They can describe your value in language their own company understands.</p>
 
     <p>Health scoring should be built by reverse-engineering that pattern. What do healthy customers look like? How do they behave? How do they progress through the lifecycle? How do they engage with your team, your product, your recommendations, and their own internal stakeholders? These questions reveal the criteria that matter because they are grounded in the version of the customer you want to reproduce.</p>
 
     <div class="callout"><div class="callout-title">Model the Healthy Customer</div><p>Do not build the score only by studying failure. Build it by understanding what your best customers have in common and designing the system to create more of them.</p></div>
+
+    <h2>Defining, weighting, and validating the score</h2>
 
     <p>Once the criteria are identified, the work becomes discipline. Each criterion needs a clear definition. The team needs to know what it means, why it matters, how it will be measured, and what a low or high score actually represents. This is where many health scores become vague. They rely on words like engagement, alignment, or value without defining what those words mean in the operating system. If two CSMs would score the same customer differently because the criteria are unclear, the model is not ready.</p>
 
@@ -281,9 +374,13 @@
 
     <div class="callout"><div class="callout-title">Action Is the Test</div><p>A health score that does not change behavior is just reporting. A health score that works tells the team where to act and why it matters.</p></div>
 
-    <div class="callout"><span class="callout-title">How the Pipeline Moves</span><p>Health scoring is the visibility layer of the post-sale pipeline. It shows whether customers are progressing through Identify, Align, Advocate, Intent, and Net Revenue Close in the way the system designed. A health score connected to the lifecycle plays does not merely flag risk — it shows where in the pipeline progression has stalled, which play failed to create its intended outcome, and what intervention the system requires. The renewal is protected when progression is visible early enough to act. Expansion opportunities surface when health signals show the customer is building momentum beyond the current engagement.</p></div>
+    <div class="callout"><span class="callout-title">How the Pipeline Moves</span><h2>Health scoring as the visibility layer</h2>
+
+<p>Health scoring is the visibility layer of the post-sale pipeline. It shows whether customers are progressing through Identify, Align, Advocate, Intent, and Net Revenue Close in the way the system designed. A health score connected to the lifecycle plays does not merely flag risk — it shows where in the pipeline progression has stalled, which play failed to create its intended outcome, and what intervention the system requires. The renewal is protected when progression is visible early enough to act. Expansion opportunities surface when health signals show the customer is building momentum beyond the current engagement.</p></div>
 
     <p>At this point, the challenge becomes practical. How do you take the signals that matter, define them clearly, weight them thoughtfully, and test whether they reflect reality? How do you avoid building another spreadsheet that becomes too hard to maintain? How do you move from concept to prototype without waiting for perfect data?</p>
+
+    <h2>The Health Score Builder</h2>
 
     <p>To make that transition easier, we built the Health Score Builder for this system. It is designed to help leaders move from abstract agreement to a working model. The tool helps you select a focused set of criteria, balance traditional and growth-oriented signals, assign weights, test customer examples, and begin the rollout process with more confidence.</p>
 
