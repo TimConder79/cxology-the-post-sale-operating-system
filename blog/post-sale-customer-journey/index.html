@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Post-Sale Customer Journey: How to Design It to Reduce Churn — CXology</title>
+  <meta name="description" content="Learn how to design a post-sale customer journey around customer progression, expose gaps in the experience, and identify churn risk before renewal."/>
+  <link rel="canonical" href="https://cxology.co/blog/post-sale-customer-journey/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="CXology"/>
+  <meta property="og:title" content="Post-Sale Customer Journey: How to Design It to Reduce Churn — CXology"/>
+  <meta property="og:description" content="Learn how to design a post-sale customer journey around customer progression, expose gaps in the experience, and identify churn risk before renewal."/>
+  <meta property="og:url" content="https://cxology.co/blog/post-sale-customer-journey/"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="article:published_time" content="2026-09-10"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Post-Sale Customer Journey: How to Design It to Reduce Churn — CXology"/>
+  <meta name="twitter:description" content="Learn how to design a post-sale customer journey around customer progression, expose gaps in the experience, and identify churn risk before renewal."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+  <link rel="stylesheet" href="/fonts.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+:root{--lime:#B5BD00;--lime-deep:#9BA200;--navy:#253746;--ink:#101820;--paper:#fff;--band:#F7F8F1;--line:#E4E6CF;--text:#25313b;--muted:#5f6b57}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--text);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.nav-logo img{height:30px;width:auto;display:block}
+.nav-links{display:flex;gap:1.9rem;list-style:none}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:700;text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-cta{padding:10px 20px;background:var(--lime);color:var(--ink);border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(155,162,0,.3)}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:6px;background:none;border:none;cursor:pointer}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px}
+@media(max-width:820px){.nav-links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);padding:1rem 2rem 1.4rem;gap:1.1rem}.nav-burger{display:flex}}
+h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:900;text-wrap:balance}
+/* article */
+.article{max-width:720px;margin:0 auto;padding:56px 24px 20px}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime-deep)}
+.a-date{color:var(--muted);font-size:.85rem;font-weight:600;margin-left:10px}
+.a-head h1{font-size:clamp(1.9rem,4.4vw,2.9rem);margin:.35em 0 .1em}
+.a-feat{max-width:960px;margin:26px auto 0;padding:0 24px}
+.a-feat img{width:100%;border-radius:14px;box-shadow:0 18px 44px rgba(16,24,32,.14)}
+.a-body{max-width:720px;margin:0 auto;padding:30px 24px 20px;font-size:1.09rem;color:var(--text)}
+.a-body p{margin:0 0 1.15em}
+.a-body h2{font-size:1.5rem;margin:1.6em 0 .5em}
+.a-body h3{font-size:1.2rem;margin:1.4em 0 .4em}
+.a-body ul,.a-body ol{margin:0 0 1.2em 1.3em}
+.a-body li{margin:.4em 0}
+.a-body a{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2px}
+.a-body img{border-radius:12px;margin:1.4em 0}
+.a-body blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.4em 0;color:var(--ink);font-weight:500}
+.a-body strong{color:var(--ink)}
+/* end cta */
+.endcta{background:var(--navy);color:#EAF0F4;text-align:center;padding:64px 24px;margin-top:40px}
+.endcta h3{color:#fff;font-size:1.7rem}
+.endcta p{color:#b7c6d1;max-width:44ch;margin:12px auto 22px}
+.btn{display:inline-block;background:var(--lime);color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;padding:14px 28px;border-radius:999px;text-decoration:none}
+.backlink{display:inline-block;margin-top:18px;color:#aeb9c2;font-weight:700;font-size:.82rem;text-decoration:none}
+.footer{border-top:1px solid var(--line);padding:26px 2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--muted)}
+.footer a{color:var(--muted);font-weight:700;text-decoration:none}
+/* index */
+.blog-hero{max-width:1080px;margin:0 auto;padding:60px 24px 10px}
+.blog-hero h1{font-size:clamp(2.1rem,5vw,3.2rem)}
+.blog-hero p{color:var(--muted);font-size:1.1rem;margin-top:12px;max-width:60ch}
+.grid{max-width:1080px;margin:30px auto 60px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(16,24,32,.12)}
+.card-img{aspect-ratio:16/10;object-fit:cover;width:100%;background:var(--band)}
+.card-body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+.card-date{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lime-deep)}
+.card h2{font-size:1.14rem;margin:8px 0 8px;color:var(--ink)}
+.card p{font-size:.92rem;color:var(--muted);flex:1}
+.card .more{margin-top:12px;font-size:.8rem;font-weight:700;color:var(--navy)}
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Design a Post-Sale Customer Journey That Reduces Churn",
+  "description": "Learn how to design a post-sale customer journey around customer progression, expose gaps in the experience, and identify churn risk before renewal.",
+  "url": "https://cxology.co/blog/post-sale-customer-journey/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cxology.co/blog/post-sale-customer-journey/"
+  },
+  "datePublished": "2026-09-10",
+  "dateModified": "2026-09-10",
+  "author": {
+    "@type": "Person",
+    "name": "Tim Conder",
+    "@id": "https://cxology.co/#tim",
+    "url": "https://cxology.co/about.html",
+    "sameAs": [
+      "https://www.linkedin.com/in/tim-conder/"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CXology",
+    "@id": "https://cxology.co/#org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cxology.co/assets/logo-h-bb.png"
+    }
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://cxology.co/blog/",
+    "name": "CXology Blog"
+  },
+  "image": "https://cxology.co/og-image.png"
+}
+  </script>
+</head>
+<body>
+<header class="nav">
+  <a class="nav-logo" href="/index.html"><img src="/assets/logo-h-bb.png" alt="CXology"/></a>
+  <nav>
+  <ul class="nav-links">
+    <li><a href="/book.html">The Book</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/calculator.html">ROI Calculator</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul></nav>
+  <a href="/book.html" class="nav-cta">Read the book</a>
+  <button class="nav-burger" onclick="var l=this.closest('header').querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'"><span></span><span></span><span></span></button>
+</header>
+
+<article>
+  <div class="article a-head">
+    <span class="eyebrow">Blog</span><span class="a-date">September 10, 2026</span>
+    <h1>How to Design a Post-Sale Customer Journey That Reduces Churn</h1>
+  </div>
+  <div class="a-feat"><img src="/og-image.png" alt="How to Design a Post-Sale Customer Journey That Reduces Churn"/></div>
+  <div class="a-body">
+    <p>Years ago, I joined a bootstrapped company with only a few months of runway left.</p>
+    <p>The owners had no interest in taking outside investment.</p>
+    <p>The business had to work.</p>
+    <p>We had a problem.</p>
+    <p>Our results tended to arrive around month eight.</p>
+    <p>Our customers tended to leave around month seven.</p>
+    <p>We had to stop the bleeding. And quickly.</p>
+    <p>There wasn't time to guess at why customers were leaving or rely on everyone simply working harder.</p>
+    <p>So I mapped everything.</p>
+    <ul>
+      <li>What the team was doing.</li>
+      <li>When we were talking to customers.</li>
+      <li>What we were talking about.</li>
+      <li>Where work was duplicated.</li>
+      <li>Where customers were waiting.</li>
+      <li>Where we were making promises, and where customers were actually experiencing progress.</li>
+    </ul>
+    <p>It became my first post-sale customer journey map.</p>
+    <p>And it changed how I thought about <a href="/blog/first-90-days-customer-retention/">customer retention</a>.</p>
+
+    <h2>A customer journey should show more than touchpoints</h2>
+    <p>Many customer journey maps document the company's interactions with the customer.</p>
+    <blockquote>Kickoff happens here.<br>Training happens here.<br>QBR happens here.<br>Renewal happens here.</blockquote>
+    <p>That's useful, but it misses something important.</p>
+    <p>A <a href="/journey-map.html">post-sale customer journey</a> shouldn't just show what your company does.</p>
+    <p>It should show how the customer progresses.</p>
+    <p>Those are not necessarily the same thing.</p>
+    <p>You can hold the kickoff, complete the implementation, deliver the training, and conduct every scheduled meeting without the customer actually moving closer to the outcome they purchased.</p>
+    <p>That's why mapping activity alone isn't enough.</p>
+
+    <h2>Map the moments that create customer progress</h2>
+    <p>When I mapped that first customer journey, we looked beyond the scheduled interactions.</p>
+    <p>We looked at what those interactions were supposed to accomplish.</p>
+    <ul>
+      <li>Where was the customer trying to go?</li>
+      <li>What needed to happen for them to get there?</li>
+      <li>Where were they waiting on us?</li>
+      <li>Where were we waiting on them?</li>
+      <li>What did they need to understand, experience, or believe before they were ready for the next step?</li>
+    </ul>
+    <p>That distinction became important.</p>
+    <p>Customer activity isn't the same as customer progression.</p>
+    <p>A meeting isn't progress simply because it happened.</p>
+    <p>Onboarding isn't successful simply because the checklist is complete.</p>
+    <p>Product usage isn't automatically evidence that the customer is achieving the outcome they bought the product to create.</p>
+    <p>The journey needs to be designed around meaningful changes for the customer.</p>
+
+    <h2>Customers need evidence before the final outcome arrives</h2>
+    <p>Our month-eight/month-seven problem exposed another issue.</p>
+    <p>We couldn't make the ultimate result arrive a month earlier simply because customers were leaving.</p>
+    <p>But we could change what customers experienced along the way.</p>
+    <p>We redesigned when we engaged customers and, more importantly, what those conversations needed to accomplish.</p>
+    <p>We removed redundant work.</p>
+    <p>We became more intentional about the sequence of the experience.</p>
+    <p>And we used what we learned to change how we marketed and sold the product in the first place.</p>
+    <p>Customers began seeing evidence of progress before the ultimate result arrived.</p>
+    <p>They could see the path.</p>
+    <p>And they stayed.</p>
+    <p>That distinction matters in businesses where meaningful outcomes take months to achieve.</p>
+    <p>Customers shouldn't have to wait until the end to decide whether they're making progress.</p>
+
+    <h2>Design the journey backward from customer outcomes</h2>
+    <p>One of the simplest ways to rethink your post-sale customer journey is to start at the other end.</p>
+    <p>Don't begin with:</p>
+    <p><em>What does our team normally do after the sale?</em></p>
+    <p>Begin with:</p>
+    <p><em>What has to become true for this customer to achieve the outcome they purchased?</em></p>
+    <p>Then work backward.</p>
+    <ul>
+      <li>What meaningful moments need to occur?</li>
+      <li>What decisions need to be made?</li>
+      <li>What behaviors need to change?</li>
+      <li>What does the customer need to learn?</li>
+      <li>Who needs to become involved?</li>
+      <li>What evidence will tell both the customer and your team that meaningful progress has occurred?</li>
+    </ul>
+    <p>Only then ask what your team needs to do to make those moments happen.</p>
+    <p>That changes the journey from a calendar of company activity into a system designed to create <a href="/frameworks.html">customer progression</a>.</p>
+
+    <h2>Use the journey to find the seams</h2>
+    <p>A good post-sale journey map also exposes the places where your operating model works against the customer.</p>
+    <p>That's what happened to us.</p>
+    <p>Mapping the experience made duplicated work visible.</p>
+    <p>It exposed waiting.</p>
+    <p>It showed where our conversations weren't happening at the right time.</p>
+    <p>And it revealed gaps between what we promised before the sale and what customers experienced afterward.</p>
+    <p>Those seams are easy to miss when every department looks only at its own process.</p>
+    <p>The customer experiences all of them.</p>
+    <p>A journey map gives you a way to see the experience from their perspective and then redesign the work around it.</p>
+
+    <h2>A post-sale customer journey should help you manage retention</h2>
+    <p>This is where journey mapping becomes more than a workshop exercise.</p>
+    <p>If you know the meaningful moments a customer needs to progress through, you can begin managing against them.</p>
+    <ul>
+      <li>Did the customer reach the next important point?</li>
+      <li>Did the thing that needed to happen actually happen?</li>
+      <li>If not, why?</li>
+      <li>What should the team do next?</li>
+    </ul>
+    <p>Now the journey begins producing leading indicators of retention.</p>
+    <p>Instead of waiting for usage to decline, a <a href="/health-score-builder.html">health score</a> to turn red, or a renewal date to approach, you can see when expected customer progression fails to occur.</p>
+    <p>That creates an opportunity to act much earlier.</p>
+
+    <h2>Post sale can be designed</h2>
+    <p>That first customer journey started as a survival exercise.</p>
+    <p>We didn't have the luxury of debating Customer Success theory. Customers were leaving before they experienced the results they had purchased, and the business needed an answer.</p>
+    <p>Mapping the journey gave us one.</p>
+    <p>Not because the map itself stopped churn.</p>
+    <p>It forced us to understand what customers needed to experience between purchase and outcome, and then redesign our work around creating that progression.</p>
+    <p>Customers started seeing and believing in the path before the ultimate result arrived.</p>
+    <p>And they stayed.</p>
+    <p>That experience taught me something I've carried ever since:</p>
+    <blockquote>Post sale didn't have to be something that happened after the sale. It could be designed.</blockquote>
+  </div>
+</article>
+<section class="endcta">
+  <h3>Post-sale is a system, not a hope.</h3>
+  <p>These ideas are the foundation of <em>The Post-Sale Operating System</em>.</p>
+  <a class="btn" href="/book.html">Read the book →</a><br>
+  <a class="backlink" href="/blog/">← All posts</a>
+</section>
+<footer class="footer">
+  <a class="nav-logo" href="/index.html"><img src="/assets/logo-h-bb.png" alt="CXology" style="height:24px"/></a>
+  <div><a href="/book.html">The Book</a> &nbsp; <a href="/blog/">Blog</a> &nbsp; <a href="/about.html">About</a></div>
+  <small>© 2022–2026 CXology LLC. All rights reserved.</small>
+</footer>
+</body></html>
