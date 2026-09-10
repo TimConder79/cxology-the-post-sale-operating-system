@@ -5,6 +5,8 @@
 Author: Tim Conder, Post-Sale Systems Builder, 20+ years in B2B SaaS. https://www.linkedin.com/in/tim-conder/
 Core concepts: post-sale operating system, post-sale pipeline, strategic customer success, net revenue retention, renewal and expansion, customer health scoring, CS capacity planning.
 
+Full text of the book in one file: https://cxology.co/llms-full.txt
+
 ## Start here
 - [The Post-Sale Operating System (book overview)](https://cxology.co/book.html): What the system is and why post-sale needs an operating system, not more effort.
 - [About Tim Conder](https://cxology.co/about.html): Who wrote it and the experience behind it.
