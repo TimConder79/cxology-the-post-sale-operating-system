@@ -503,6 +503,7 @@ window.addEventListener('scroll', () => {
 
 // Post-process callouts
 document.querySelectorAll('.chapter-body p').forEach(p => {
+  if (p.closest('.callout')) return;
   const t = p.textContent.trim();
   const calloutPhrases = [
     "The pipeline doesn't stop",
