@@ -305,7 +305,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
       "isPartOf": {
         "@id": "https://cxology.co/#book"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-09-22"
     },
     {
       "@type": "Person",
@@ -456,8 +456,9 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
   <div class="adv-body" id="adv-body">
     <div class="sb-sec" style="margin-top:18px">
       <div class="ig">
-        <div class="ir"><span class="il">Valuation Multiple</span><span class="iv" id="d-mult">10×</span></div>
-        <input type="range" id="i-mult" min="2" max="30" step="1" value="10">
+        <div class="ir"><span class="il">Market Multiple (SaaS Capital Index)</span><span class="iv" id="d-sci">3.8×</span></div>
+        <input type="range" id="i-sci" min="3.5" max="16.9" step="0.1" value="3.8">
+        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">Public SaaS median ARR multiple · 3.8× as of Jul 2026</div>
       </div>
       <div class="ig">
         <div class="ir"><span class="il">CAC — New Customers</span><span class="iv" id="d-cacn">92%</span></div>
@@ -672,20 +673,20 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
     <div class="card-head">
       <div>
         <div class="card-title">Estimated Exit Valuation</div>
-        <div class="card-desc">NRR directly moves three valuation levers: ARR, growth rate, and retention quality. Investors know this. A company at 120% NRR can command a 2–3× premium multiple versus the same ARR at 95% NRR.</div>
+        <div class="card-desc">Private SaaS is valued on a multiple of ARR, and that multiple is driven by market conditions, growth rate, and net revenue retention. Retention wins twice: it compounds into a larger ARR base and earns a higher multiple on top. Software Equity Group's index shows companies below 100% NRR trade at 3.1× revenue, while those above 120% trade at 9.3×.</div>
       </div>
       <div class="tag">06 · Valuation</div>
     </div>
     <div class="vg">
-      <div class="vb"><div class="vb-tag">Current NRR — Valuation</div><div class="vb-amt" id="v-cur">—</div><div class="vb-f" id="v-cur-f">Multiple × ARR × Growth × NRR</div></div>
-      <div class="vb tgt"><div class="vb-tag">Target NRR — Valuation</div><div class="vb-amt" id="v-tgt">—</div><div class="vb-f" id="v-tgt-f">Multiple × ARR × Growth × NRR</div></div>
+      <div class="vb"><div class="vb-tag">Current NRR — Valuation</div><div class="vb-amt" id="v-cur">—</div><div class="vb-f" id="v-cur-f">— × ARR</div></div>
+      <div class="vb tgt"><div class="vb-tag">Target NRR — Valuation</div><div class="vb-amt" id="v-tgt">—</div><div class="vb-f" id="v-tgt-f">— × ARR</div></div>
     </div>
     <div class="bc">
       <div class="br"><div class="bl" id="l-v-c">Current NRR</div><div class="bt"><div class="bf c" id="b-v-c" style="width:0%"></div></div><div class="bm" id="m-v-c">—</div></div>
       <div class="br"><div class="bl" id="l-v-t">Target NRR</div><div class="bt"><div class="bf t" id="b-v-t" style="width:0%"></div></div><div class="bm em" id="m-v-t">—</div></div>
     </div>
     <div class="src" style="margin-top:16px">
-      <p>Formula: <strong>Multiple × Final ARR × Growth Rate × NRR</strong>. Adjust the multiple in Advanced Inputs for your specific situation. <em>Source: Fullview, SaaS Capital 2025.</em></p>
+      <p>Baseline multiple = <strong>−3.2 + (0.32 × SCI) + (8.26 × Growth Rate) + (2.62 × NRR)</strong>, then Valuation = Final ARR × Multiple. Growth is the exit-year rate; SCI is the SaaS Capital Index (public median ARR multiple, 3.8× as of Jul 2026, adjustable in Advanced Inputs). The baseline is the center of a ±30% range. <em>Source: SaaS Capital, "What's Your SaaS Company Worth?" (Q2 2022 revision); market index July 2026.</em></p>
     </div>
   </div>
 
@@ -705,13 +706,13 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
 </div>
 
 <footer class="footer">
-  <div class="fn">Valuation = Multiple × Final ARR × Growth Rate × NRR &nbsp;·&nbsp; CAC benchmark: 92% of first-year revenue &nbsp;·&nbsp; Benchmark data: SaaS Capital, ChartMogul, High Alpha, Optifai (2025–2026) &nbsp;·&nbsp; Results are illustrative, not financial projections.</div>
+  <div class="fn">Valuation multiple = −3.2 + (0.32 × SCI) + (8.26 × Growth) + (2.62 × NRR), per SaaS Capital &nbsp;·&nbsp; CAC benchmark: 92% of first-year revenue &nbsp;·&nbsp; Benchmark data: SaaS Capital, Software Equity Group, ChartMogul, High Alpha (2024–2026) &nbsp;·&nbsp; Results are illustrative, not financial projections.</div>
   <div class="fb">CXology</div>
     <div style="text-align:center;padding-top:1rem;"><div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div></div>
 </footer>
 
 <script>
-const S={arr:2000000,goal:100000000,cnrr:.9,tnrr:1.2,years:9,multiple:10,cacNew:.92,cacUp:.15,growOverride:0};
+const S={arr:2000000,goal:100000000,cnrr:.9,tnrr:1.2,years:9,sci:3.8,cacNew:.92,cacUp:.15,growOverride:0};
 let chart=null,dT;
 function f$(n){const a=Math.abs(n),s=n<0?'-':'';if(a>=1e9)return s+'$'+(a/1e9).toFixed(2)+'B';if(a>=1e6)return s+'$'+(a/1e6).toFixed(2)+'M';if(a>=1e3)return s+'$'+(a/1e3).toFixed(0)+'K';return s+'$'+Math.round(a).toLocaleString()}
 function pct(n,d=1){return(n*100).toFixed(d)+'%'}
@@ -719,7 +720,7 @@ function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
 function setW(id,p){const e=document.getElementById(id);if(e)e.style.width=Math.min(100,Math.max(0,p*100))+'%'}
 function db(fn,ms=80){clearTimeout(dT);dT=setTimeout(fn,ms)}
 function compute(){
-  const{arr,goal,cnrr,tnrr,years,multiple,cacNew,cacUp,growOverride}=S;
+  const{arr,goal,cnrr,tnrr,years,sci,cacNew,cacUp,growOverride}=S;
   const cagr=growOverride>0?growOverride/100:Math.pow(goal/arr,1/years)-1;
   const cmgr=Math.pow(1+cagr,1/12)-1;
   function mc(nrr){const c=1-nrr;return c>=1?1:1-Math.pow(1-c,1/12)}
@@ -732,12 +733,22 @@ function compute(){
   function cacR(y1){const rG=y1-arr,d=rG-(-arr),c=d<0?(-d*cacNew)+((-arr)*cacNew):(d*cacUp)+((-arr)*cacNew);return rG!==0?Math.abs(c/rG):0}
   const cacC=cacR(cY1),cacT=cacR(tY1);
   const cF=cP[cP.length-1],tF=tP[tP.length-1];
-  const cV=multiple*cF*Math.abs(cGR)*cnrr,tV=multiple*tF*Math.abs(tGR)*tnrr;
+  // Exit-year trailing growth (SaaS Capital uses trailing ARR growth at valuation)
+  const cGx=cP.length>1&&cP[cP.length-2]>0?cP[cP.length-1]/cP[cP.length-2]-1:cGR;
+  const tGx=tP.length>1&&tP[tP.length-2]>0?tP[tP.length-1]/tP[tP.length-2]-1:tGR;
+  // SaaS Capital baseline multiple, clamped to the model's validated input/output domains
+  function scMult(g,nrr){
+    const gg=Math.max(-0.16,Math.min(2.64,g)),nn=Math.max(0.72,Math.min(1.56,nrr));
+    const m=-3.2+0.32*sci+8.26*gg+2.62*nn;
+    return Math.max(0.5,Math.min(27,m));
+  }
+  const cMult=scMult(cGx,cnrr),tMult=scMult(tGx,tnrr);
+  const cV=cF*cMult,tV=tF*tMult;
   const newLogoNeedC=arr*(1-cnrr)/arr,newLogoNeedT=Math.max(0,arr*(1-tnrr))/arr;
   const growthTarget=arr*cagr,churnDrag=arr*Math.max(0,1-cnrr),expansionLift=arr*Math.max(0,tnrr-1);
   const newBurdenC=growthTarget+churnDrag,newBurdenT=Math.max(0,growthTarget-expansionLift);
   const burdenReduction=newBurdenC-newBurdenT,burdenReductionPct=newBurdenC>0?burdenReduction/newBurdenC:0;
-  return{cagr,cY1,tY1,cGR,tGR,cP,tP,cF,tF,cacC,cacT,cV,tV,
+  return{cagr,cY1,tY1,cGR,tGR,cGx,tGx,cMult,tMult,cP,tP,cF,tF,cacC,cacT,cV,tV,
     yr1D:tY1-cY1,totD:tP.reduce((s,v,i)=>s+v-cP[i],0),valD:tV-cV,
     newLogoNeedC,newLogoNeedT,growthTarget,churnDrag,expansionLift,newBurdenC,newBurdenT,burdenReduction,burdenReductionPct};
 }
@@ -781,8 +792,8 @@ function render(){
   if(et)et.style.width=(r.newBurdenT/maxB*100).toFixed(1)+'%';
   renderChart(r);
   set('v-cur',f$(r.cV));set('v-tgt',f$(r.tV));
-  set('v-cur-f',`${S.multiple}× × ${f$(r.cF)} × ${pct(r.cGR)} × ${pct(S.cnrr,0)}`);
-  set('v-tgt-f',`${S.multiple}× × ${f$(r.tF)} × ${pct(r.tGR)} × ${pct(S.tnrr,0)}`);
+  set('v-cur-f',`${r.cMult.toFixed(1)}× × ${f$(r.cF)} ARR  ·  SCI ${S.sci.toFixed(1)} · ${pct(r.cGx,0)} growth · ${pct(S.cnrr,0)} NRR`);
+  set('v-tgt-f',`${r.tMult.toFixed(1)}× × ${f$(r.tF)} ARR  ·  SCI ${S.sci.toFixed(1)} · ${pct(r.tGx,0)} growth · ${pct(S.tnrr,0)} NRR`);
   const mV=Math.max(r.cV,r.tV,1);
   setW('b-v-c',r.cV/mV);setW('b-v-t',r.tV/mV);set('m-v-c',f$(r.cV));set('m-v-t',f$(r.tV));
   set('o-yr1',f$(r.yr1D));set('o-rev',f$(r.yr1D));
@@ -814,7 +825,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   [['i-cnrr','d-cnrr','cnrr',.01,v=>v+'%'],
    ['i-tnrr','d-tnrr','tnrr',.01,v=>v+'%'],
    ['i-years','d-years','years',1,v=>String(v)],
-   ['i-mult','d-mult','multiple',1,v=>v+'×'],
+   ['i-sci','d-sci','sci',1,v=>v.toFixed(1)+'×'],
    ['i-cacn','d-cacn','cacNew',.01,v=>v+'%'],
    ['i-cacu','d-cacu','cacUp',.01,v=>v+'%'],
    ['i-grow','d-grow','growOverride',1,v=>v===0?'Auto':v+'%']
