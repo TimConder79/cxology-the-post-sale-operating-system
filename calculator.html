@@ -487,7 +487,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
     <div class="sc accent">
       <div class="sc-lbl">Required CAGR to Hit Goal</div>
       <div class="sc-val" id="s-cagr">—</div>
-      <div class="sc-sub">over <span id="s-yrs-a">9</span> years</div>
+      <div class="sc-sub">at 100% retention, over <span id="s-yrs-a">9</span> yrs</div>
     </div>
     <div class="sc">
       <div class="sc-lbl">Additional Revenue — Year 1</div>
@@ -660,6 +660,10 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
       <div class="li"><div class="ls c"></div>Current NRR trajectory</div>
       <div class="li"><div class="ls t"></div>Target NRR trajectory</div>
       <div class="li"><div class="ls g"></div>Revenue gap (your opportunity)</div>
+      <div class="li"><div class="ls" style="width:14px;height:3px;border-radius:2px;background:#C77F0A"></div>Revenue goal (at 100% retention)</div>
+    </div>
+    <div class="src" style="margin-top:16px">
+      <p>The default scenario models a venture-scale path: <strong>$2M ARR</strong> just after product-market fit growing to a <strong>$100M ARR</strong> exit over <strong>9 years</strong> — the start and end points of Battery Ventures' T2D3 framework ("triple, triple, double, double, double"), and roughly the median founding-to-IPO timeline. Median ARR at IPO actually runs higher (~$220M), so $100M is a conservative exit anchor. Change any input for your own numbers. <em>Sources: Battery Ventures (T2D3); Meritech (SaaS IPOs).</em></p>
     </div>
   </div>
 
@@ -723,7 +727,7 @@ function compute(){
   const mcC=mc(cnrr),mcT=mc(tnrr);
   const cY1=sim(arr,mcC,cmgr),tY1=sim(arr,mcT,cmgr);
   const cGR=(cY1-arr)/arr,tGR=(tY1-arr)/arr;
-  function proj(y1,ac){const r=[arr,y1];for(let y=2;y<years;y++)r.push(Math.max(0,r[r.length-1]*(1+cagr)-r[r.length-1]*ac));return r}
+  function proj(y1,ac){const r=[arr,y1];for(let y=2;y<=years;y++)r.push(Math.max(0,r[r.length-1]*(1+cagr)-r[r.length-1]*ac));return r}
   const cP=proj(cY1,1-cnrr),tP=proj(tY1,1-tnrr);
   // Annual ARR lost to churn, and the new-logo S&M needed to backfill it (cost per $1 new ARR)
   const churnHoleC=arr*Math.max(0,1-cnrr),churnHoleT=arr*Math.max(0,1-tnrr);
@@ -805,7 +809,8 @@ function renderChart(r){
   const ds=[
     {label:'Current NRR',data:r.cP,borderColor:'#5B7F95',backgroundColor:'rgba(91,127,149,.08)',borderWidth:2,pointRadius:2.5,pointBackgroundColor:'#5B7F95',fill:true,tension:.35},
     {label:'Target NRR',data:r.tP,borderColor:'#253746',backgroundColor:'rgba(37,55,70,.08)',borderWidth:2,pointRadius:2.5,pointBackgroundColor:'#253746',fill:true,tension:.35},
-    {label:'Revenue Gap',data:gap,borderColor:'#B5BD00',backgroundColor:'transparent',borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false,tension:.35}
+    {label:'Revenue Gap',data:gap,borderColor:'#B5BD00',backgroundColor:'transparent',borderWidth:1.5,borderDash:[5,4],pointRadius:0,fill:false,tension:.35},
+    {label:'Goal',data:r.cP.map(()=>S.goal),borderColor:'#C77F0A',backgroundColor:'transparent',borderWidth:2,borderDash:[8,5],pointRadius:0,fill:false,tension:0}
   ];
   if(chart){chart.data.labels=labels;ds.forEach((d,i)=>{chart.data.datasets[i].data=d.data;});chart.update('none');return}
   chart=new Chart(document.getElementById('lineChart').getContext('2d'),{
