@@ -461,13 +461,14 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
         <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">Public SaaS median ARR multiple · 3.8× as of Jul 2026</div>
       </div>
       <div class="ig">
-        <div class="ir"><span class="il">CAC — New Customers</span><span class="iv" id="d-cacn">92%</span></div>
-        <input type="range" id="i-cacn" min="10" max="200" step="1" value="92">
-        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">% of first-year revenue (SaaS avg)</div>
+        <div class="ir"><span class="il">New-logo CAC ratio</span><span class="iv" id="d-cacn">$2.00</span></div>
+        <input type="range" id="i-cacn" min="0.5" max="3.5" step="0.1" value="2.0">
+        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">S&amp;M per $1 of new ARR · median $2.00</div>
       </div>
       <div class="ig">
-        <div class="ir"><span class="il">CAC — Upsells</span><span class="iv" id="d-cacu">15%</span></div>
-        <input type="range" id="i-cacu" min="1" max="50" step="1" value="15">
+        <div class="ir"><span class="il">Expansion CAC ratio</span><span class="iv" id="d-cacu">$1.00</span></div>
+        <input type="range" id="i-cacu" min="0.2" max="2.5" step="0.1" value="1.0">
+        <div style="font-size:11px;color:rgba(255,255,255,.28);margin-top:4px">S&amp;M per $1 of expansion ARR · median $1.00</div>
       </div>
       <div class="ig">
         <div class="ir"><span class="il">Growth Rate Override</span><span class="iv" id="d-grow">Auto</span></div>
@@ -565,42 +566,36 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
     <div class="card-head">
       <div>
         <div class="card-title">The Cost of Replacing Churned Revenue</div>
-        <div class="card-desc">Churn isn't just lost ARR — it forces you onto a treadmill. Every churned dollar must be replaced with new revenue at CAC that averages 92% of first-year revenue. Expansion from existing customers costs roughly 15%. The math is unambiguous.</div>
+        <div class="card-desc">Below 100% NRR, revenue leaks out the bottom and your sales team refills the bucket before the business grows a dollar. New-logo ARR is the most expensive kind to buy: the median B2B SaaS company spends $2.00 in sales and marketing to win $1 of new ARR, versus $1.00 for a dollar of expansion. Churn forces you to re-buy revenue you already had, at the premium price.</div>
       </div>
       <div class="tag">03 · CAC</div>
     </div>
+    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:14px">The same <span id="c-hole" style="color:var(--bb)">$200K</span> of ARR lost to churn each year, refilled two ways</div>
     <div class="bc">
       <div class="br">
-        <div class="bl" id="l-c-c">Current — 90% NRR</div>
-        <div class="bt"><div class="bf c" id="b-c-c" style="width:0%"></div></div>
-        <div class="bm" id="v-c-c">—</div>
+        <div class="bl">Replace with new logos</div>
+        <div class="bt"><div class="bf neg" id="b-c-c" style="width:0%"></div></div>
+        <div class="bm neg" id="v-c-c">—</div>
       </div>
       <div class="br">
-        <div class="bl" id="l-c-t">Target — 120% NRR</div>
-        <div class="bt"><div class="bf t" id="b-c-t" style="width:0%"></div></div>
-        <div class="bm em" id="v-c-t">—</div>
+        <div class="bl">Grow the same via expansion</div>
+        <div class="bt"><div class="bf pos" id="b-c-t" style="width:0%"></div></div>
+        <div class="bm pos" id="v-c-t">—</div>
       </div>
     </div>
     <div class="leg">
-      <div class="li"><div class="ls c"></div>Higher = more revenue consumed replacing churn</div>
-      <div class="li"><div class="ls t"></div>Lower = growth from existing customers at upsell CAC rate</div>
+      <div class="li"><div class="ls" style="background:#C06B5A"></div>New-logo S&amp;M at <span id="leg-newcac">$2.00</span> per $1 of ARR — the only path once revenue churns</div>
+      <div class="li"><div class="ls" style="background:#4CAF87"></div>Expansion S&amp;M at <span id="leg-expcac">$1.00</span> per $1 — available only while you keep the customer</div>
     </div>
-    <div class="divider"></div>
-    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:12px">New Logos Needed to Offset Annual Churn</div>
-    <div class="nlo-grid">
-      <div class="nlo-box">
-        <div class="nlo-tag" id="l-nlo-c">Current — 90% NRR</div>
-        <div class="nlo-val" id="v-nlo-c">—</div>
-        <div class="nlo-sub">new logos/yr to stay flat</div>
-      </div>
-      <div class="nlo-box hl">
-        <div class="nlo-tag" id="l-nlo-t">Target — 120% NRR</div>
-        <div class="nlo-val" id="v-nlo-t">—</div>
-        <div class="nlo-sub">new logos/yr to stay flat (expansion covers the rest)</div>
+    <div class="burden-delta" style="margin-top:18px">
+      <div class="burden-delta-text">Churn locks you into the expensive path. You spend <strong id="v-tax-x">2.0×</strong> to win back revenue you already had — a bill you pay again every year it keeps leaking.</div>
+      <div class="burden-delta-num">
+        <span class="bd-val" id="v-tax">$200K</span>
+        <span class="bd-sub">extra S&amp;M / year vs. expansion</span>
       </div>
     </div>
     <div class="src" style="margin-top:16px">
-      <p>Retaining and expanding an existing customer costs <strong>5× less</strong> than acquiring a new one. At 90% NRR, your sales team is perpetually subsidizing the retention problem. <em>Source: Fullview / SaaS Capital 2025.</em></p>
+      <p>The median B2B SaaS company spends <strong>$2.00</strong> in sales and marketing to acquire $1 of new ARR, versus <strong>$1.00</strong> per $1 of expansion. A dollar retained and expanded is roughly <strong>twice as capital-efficient</strong> as a dollar won from a new logo. <em>Source: Benchmarkit 2025 SaaS Performance Metrics (2024 data), with Pavilion.</em></p>
     </div>
   </div>
 
@@ -712,7 +707,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
 </footer>
 
 <script>
-const S={arr:2000000,goal:100000000,cnrr:.9,tnrr:1.2,years:9,sci:3.8,cacNew:.92,cacUp:.15,growOverride:0};
+const S={arr:2000000,goal:100000000,cnrr:.9,tnrr:1.2,years:9,sci:3.8,newCac:2.0,expCac:1.0,growOverride:0};
 let chart=null,dT;
 function f$(n){const a=Math.abs(n),s=n<0?'-':'';if(a>=1e9)return s+'$'+(a/1e9).toFixed(2)+'B';if(a>=1e6)return s+'$'+(a/1e6).toFixed(2)+'M';if(a>=1e3)return s+'$'+(a/1e3).toFixed(0)+'K';return s+'$'+Math.round(a).toLocaleString()}
 function pct(n,d=1){return(n*100).toFixed(d)+'%'}
@@ -720,7 +715,7 @@ function set(id,v){const e=document.getElementById(id);if(e)e.textContent=v}
 function setW(id,p){const e=document.getElementById(id);if(e)e.style.width=Math.min(100,Math.max(0,p*100))+'%'}
 function db(fn,ms=80){clearTimeout(dT);dT=setTimeout(fn,ms)}
 function compute(){
-  const{arr,goal,cnrr,tnrr,years,sci,cacNew,cacUp,growOverride}=S;
+  const{arr,goal,cnrr,tnrr,years,sci,newCac,expCac,growOverride}=S;
   const cagr=growOverride>0?growOverride/100:Math.pow(goal/arr,1/years)-1;
   const cmgr=Math.pow(1+cagr,1/12)-1;
   function mc(nrr){const c=1-nrr;return c>=1?1:1-Math.pow(1-c,1/12)}
@@ -730,8 +725,9 @@ function compute(){
   const cGR=(cY1-arr)/arr,tGR=(tY1-arr)/arr;
   function proj(y1,ac){const r=[arr,y1];for(let y=2;y<years;y++)r.push(Math.max(0,r[r.length-1]*(1+cagr)-r[r.length-1]*ac));return r}
   const cP=proj(cY1,1-cnrr),tP=proj(tY1,1-tnrr);
-  function cacR(y1){const rG=y1-arr,d=rG-(-arr),c=d<0?(-d*cacNew)+((-arr)*cacNew):(d*cacUp)+((-arr)*cacNew);return rG!==0?Math.abs(c/rG):0}
-  const cacC=cacR(cY1),cacT=cacR(tY1);
+  // Annual ARR lost to churn, and the new-logo S&M needed to backfill it (cost per $1 new ARR)
+  const churnHoleC=arr*Math.max(0,1-cnrr),churnHoleT=arr*Math.max(0,1-tnrr);
+  const replaceCostC=churnHoleC*newCac,replaceCostT=churnHoleT*newCac;
   const cF=cP[cP.length-1],tF=tP[tP.length-1];
   // Exit-year trailing growth (SaaS Capital uses trailing ARR growth at valuation)
   const cGx=cP.length>1&&cP[cP.length-2]>0?cP[cP.length-1]/cP[cP.length-2]-1:cGR;
@@ -744,13 +740,12 @@ function compute(){
   }
   const cMult=scMult(cGx,cnrr),tMult=scMult(tGx,tnrr);
   const cV=cF*cMult,tV=tF*tMult;
-  const newLogoNeedC=arr*(1-cnrr)/arr,newLogoNeedT=Math.max(0,arr*(1-tnrr))/arr;
   const growthTarget=arr*cagr,churnDrag=arr*Math.max(0,1-cnrr),expansionLift=arr*Math.max(0,tnrr-1);
   const newBurdenC=growthTarget+churnDrag,newBurdenT=Math.max(0,growthTarget-expansionLift);
   const burdenReduction=newBurdenC-newBurdenT,burdenReductionPct=newBurdenC>0?burdenReduction/newBurdenC:0;
-  return{cagr,cY1,tY1,cGR,tGR,cGx,tGx,cMult,tMult,cP,tP,cF,tF,cacC,cacT,cV,tV,
+  return{cagr,cY1,tY1,cGR,tGR,cGx,tGx,cMult,tMult,cP,tP,cF,tF,churnHoleC,churnHoleT,replaceCostC,replaceCostT,cV,tV,
     yr1D:tY1-cY1,totD:tP.reduce((s,v,i)=>s+v-cP[i],0),valD:tV-cV,
-    newLogoNeedC,newLogoNeedT,growthTarget,churnDrag,expansionLift,newBurdenC,newBurdenT,burdenReduction,burdenReductionPct};
+    growthTarget,churnDrag,expansionLift,newBurdenC,newBurdenT,burdenReduction,burdenReductionPct};
 }
 function render(){
   const r=compute();
@@ -764,9 +759,9 @@ function render(){
   if(nc){nc.style.left=posC;nc.setAttribute('data-label','Current: '+pct(S.cnrr,0));}
   if(nt){nt.style.left=posT;nt.setAttribute('data-label','Target: '+pct(S.tnrr,0));}
   set('band-c-lbl',pct(S.cnrr,0));set('band-t-lbl',pct(S.tnrr,0));
-  ['l-g-c','l-c-c','l-v-c'].forEach(id=>set(id,cL));
-  ['l-g-t','l-c-t','l-v-t'].forEach(id=>set(id,tL));
-  set('l-nlo-c',cL);set('l-nlo-t',tL);set('t-yrs',S.years);set('o-yrs',S.years);
+  ['l-g-c','l-v-c'].forEach(id=>set(id,cL));
+  ['l-g-t','l-v-t'].forEach(id=>set(id,tL));
+  set('t-yrs',S.years);set('o-yrs',S.years);
   const mG=Math.max(Math.abs(r.cGR),Math.abs(r.tGR),r.cagr,.001);
   setW('b-g-c',Math.abs(r.cGR)/mG);setW('b-g-t',Math.abs(r.tGR)/mG);
   set('v-g-c',pct(r.cGR));set('v-g-t',pct(r.tGR));
@@ -774,11 +769,16 @@ function render(){
   const el=document.getElementById('cagr-g-c');
   if(el){el.style.left=cagrPos;el.setAttribute('data-label','Goal: '+pct(r.cagr));}
   set('leg-cagr',pct(r.cagr));
-  const mC=Math.max(r.cacC,r.cacT,.001);
-  setW('b-c-c',r.cacC/mC);setW('b-c-t',r.cacT/mC);
-  set('v-c-c',pct(r.cacC,0));set('v-c-t',pct(r.cacT,0));
-  set('v-nlo-c',pct(r.newLogoNeedC,0)+' of ARR');
-  set('v-nlo-t',S.tnrr>=1?'0% (expansion covers churn)':pct(r.newLogoNeedT,0)+' of ARR');
+  const hole=r.churnHoleC,costNew=hole*S.newCac,costExp=hole*S.expCac,tax=costNew-costExp,ratio=S.expCac>0?S.newCac/S.expCac:0;
+  set('c-hole',hole>0?f$(hole):'$0');
+  const mC=Math.max(costNew,costExp,1);
+  setW('b-c-c',costNew/mC);setW('b-c-t',costExp/mC);
+  set('v-c-c',hole>0?f$(costNew)+'/yr':'$0');
+  set('v-c-t',hole>0?f$(costExp)+'/yr':'$0');
+  set('leg-newcac','$'+S.newCac.toFixed(2));
+  set('leg-expcac','$'+S.expCac.toFixed(2));
+  set('v-tax-x',ratio.toFixed(1)+'×');
+  set('v-tax',hole>0?f$(tax):'$0');
   set('l-b-c',`Current — ${pct(S.cnrr,0)} NRR`);set('l-b-t',`Target — ${pct(S.tnrr,0)} NRR`);
   set('v-burden-c',f$(r.newBurdenC));set('v-burden-t',f$(r.newBurdenT));
   set('v-growthtgt-c',f$(r.growthTarget));set('v-growthtgt-t',f$(r.growthTarget));
@@ -826,8 +826,8 @@ document.addEventListener('DOMContentLoaded',()=>{
    ['i-tnrr','d-tnrr','tnrr',.01,v=>v+'%'],
    ['i-years','d-years','years',1,v=>String(v)],
    ['i-sci','d-sci','sci',1,v=>v.toFixed(1)+'×'],
-   ['i-cacn','d-cacn','cacNew',.01,v=>v+'%'],
-   ['i-cacu','d-cacu','cacUp',.01,v=>v+'%'],
+   ['i-cacn','d-cacn','newCac',1,v=>'$'+v.toFixed(2)],
+   ['i-cacu','d-cacu','expCac',1,v=>'$'+v.toFixed(2)],
    ['i-grow','d-grow','growOverride',1,v=>v===0?'Auto':v+'%']
   ].forEach(([id,did,key,mult,fmt])=>{
     document.getElementById(id).addEventListener('input',e=>{
