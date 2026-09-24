@@ -56,10 +56,8 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 
 ## Articles and Q&A
 - [Strategic Customer Success Q&A: Navigating Post-Sale Chaos](https://cxology.co/navigating-post-sale-chaos-strategic-customer-success-qa/): Questions and answers on loyalty blockers and builders, segmentation, timing key moments, and measuring engagement.
-- [Customer Success vs. Strategic Customer Success](https://cxology.co/strategic-customer-success/): How strategic customer success differs from conventional CS.
+- [What Is Strategic Customer Success? Definition & Framework](https://cxology.co/strategic-customer-success/): The deliberate management of customer progression toward the outcomes that justified the purchase.
 - [The Three Essential Elements for Strategic Customer Success](https://cxology.co/three-essential-elements-for-strategic-customer-success/): Relevance, value achievement, and trust.
-- [Strategic Customer Success: The Foundation You Need](https://cxology.co/strategic-customer-success-the-foundation-you-need/): The gap between selling and being a customer.
-- [Strategic Customer Success: A Guide for Sales, Marketing, and Product](https://cxology.co/strategic-customer-success-the-true-guide-for-sales-marketing-and-product/): How other functions rely on and enable CS.
 - [The Trust Factor: Retention and Trust](https://cxology.co/retention-and-trust/): Why trust is the core connection to retention.
 - [Focus Your Customer Experience Framework on Retention](https://cxology.co/focus-your-customer-experience-framework-on-retention/): Turning a "sales-driven culture" toward retention.
 - [Why Your Customer Retention Strategy Matters](https://cxology.co/why-your-customer-retention-strategy-matters/): Great products alone no longer make a leader.
