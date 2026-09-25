@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Do You Make Existing-Customer Revenue Predictable? — CXology</title>
+  <meta name="description" content="Make existing-customer revenue predictable by making it visible: put it in a pipeline, manage the customer progression that moves it, and turn confirmed outcomes into forecast probability."/>
+  <link rel="canonical" href="https://cxology.co/predictable-existing-customer-revenue.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="The Post-Sale Operating System"/>
+  <meta property="og:title" content="How Do You Make Existing-Customer Revenue Predictable? — CXology"/>
+  <meta property="og:description" content="Make existing-customer revenue predictable by making it visible: put it in a pipeline, manage the customer progression that moves it, and turn confirmed outcomes into forecast probability."/>
+  <meta property="og:url" content="https://cxology.co/predictable-existing-customer-revenue.html"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="How Do You Make Existing-Customer Revenue Predictable? — CXology"/>
+  <meta name="twitter:description" content="Make existing-customer revenue predictable by making it visible: put it in a pipeline, manage the customer progression that moves it, and turn confirmed outcomes into forecast probability."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+    /* Page-specific additions only — core styles come from style.css */
+    .reading-progress { position: fixed; top: 60px; left: 0; right: 0; z-index: 99; height: 3px; background: rgba(0,0,0,.06); }
+    .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
+
+    /* Chapter-body typography — matches the book chapters exactly */
+    .chapter-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-100); }
+    .chapter-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy-light); margin: 1.5rem 0 0.5rem; }
+    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.82; max-width: 72ch; }
+    .chapter-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+
+    /* Direct answer + emphasized statement */
+    .chapter-body p.answer-lead { font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: var(--navy); max-width: 72ch; border-left: 4px solid var(--olive); padding: .15rem 0 .15rem 1.2rem; margin: .5rem 0 1.6rem; }
+    .chapter-body p.key-statement { font-size: 1.2rem; line-height: 1.5; font-weight: 700; color: var(--navy); background: var(--olive-pale); border-radius: var(--radius-md); padding: 1.15rem 1.4rem; margin: 2rem 0; max-width: 72ch; }
+
+    /* Forecast-loop diagram */
+    .diagram-wrap { margin: 1.6rem 0 1rem; }
+    .diagram-wrap svg { width: 100%; height: auto; display: block; }
+    .chapter-body p.diagram-caption { font-size: .82rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+    .chapter-body ol.loop-steps { list-style: none; margin: 0 0 1.6rem; padding: 0; counter-reset: step; max-width: 72ch; }
+    .chapter-body ol.loop-steps li { position: relative; padding: .6rem 0 .6rem 2.5rem; border-bottom: 1px solid var(--gray-200); font-size: 0.97rem; line-height: 1.6; margin: 0; color: var(--gray-700); }
+    .chapter-body ol.loop-steps li:last-child { border-bottom: 0; }
+    .chapter-body ol.loop-steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: .62rem; width: 1.55rem; height: 1.55rem; border-radius: 50%; background: var(--olive); color: var(--navy-deep); font-size: .8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .chapter-body ol.loop-steps li.prereq::before { content: "0"; background: var(--navy); color: #fff; counter-increment: none; }
+
+    /* Read-next cards (same treatment as the conclusion chapter) */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+    @media (max-width: 760px) { .tool-grid { grid-template-columns: 1fr; } }
+  </style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://cxology.co/predictable-existing-customer-revenue.html#article",
+      "headline": "How Do You Make Existing-Customer Revenue More Predictable?",
+      "description": "Make existing-customer revenue predictable by making it visible: put it in a pipeline, manage the customer progression that moves it, and turn confirmed outcomes into forecast probability.",
+      "url": "https://cxology.co/predictable-existing-customer-revenue.html",
+      "mainEntityOfPage": { "@id": "https://cxology.co/predictable-existing-customer-revenue.html" },
+      "inLanguage": "en",
+      "image": "https://cxology.co/og-image.png",
+      "datePublished": "2026-09-25",
+      "dateModified": "2026-09-25",
+      "author": { "@id": "https://cxology.co/#tim" },
+      "publisher": { "@id": "https://cxology.co/#org" },
+      "isPartOf": { "@id": "https://cxology.co/#book" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://cxology.co/#tim",
+      "name": "Tim Conder",
+      "jobTitle": "Fractional CX & CS Leader, Author",
+      "description": "Post-sale systems builder and creator of CXology. 20+ years in B2B SaaS building customer success and post-sale revenue systems.",
+      "image": "https://cxology.co/Tim_Conder_Headshot.jpg",
+      "url": "https://cxology.co/about.html",
+      "sameAs": [ "https://www.linkedin.com/in/tim-conder/" ],
+      "worksFor": { "@id": "https://cxology.co/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxology.co/#org",
+      "name": "CXology",
+      "url": "https://cxology.co",
+      "logo": "https://cxology.co/assets/logo-h-bb.png"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://cxology.co/#book",
+      "name": "The Post-Sale Operating System",
+      "author": { "@id": "https://cxology.co/#tim" },
+      "publisher": { "@id": "https://cxology.co/#org" },
+      "inLanguage": "en",
+      "url": "https://cxology.co/book.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cxology.co/" },
+        { "@type": "ListItem", "position": 2, "name": "How Do You Make Existing-Customer Revenue More Predictable?", "item": "https://cxology.co/predictable-existing-customer-revenue.html" }
+      ]
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you make existing-customer revenue more predictable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Making existing-customer revenue more predictable starts with making the revenue visible. Improving that predictability requires managing the customer progression that moves it. Put existing-customer revenue into a pipeline. Define what needs to happen for a customer to progress. Capture evidence that progression occurred. Use that evidence to change revenue probability and improve the forecast."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV — exact match to frameworks.html and chapter.html -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="index.html"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <a href="preface.html" class="nav-cta">Read the book →</a>
+  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="chapter-hero">
+  <div class="hero-grid"></div>
+  <div class="chapter-hero-inner">
+    <span class="chapter-num">The Post-Sale Operating System · Forecasting</span>
+    <h1 class="headline">How Do You Make Existing-Customer Revenue More Predictable?</h1>
+    <p class="chapter-hero-sub">Sales can forecast new-logo revenue because it has a pipeline. Existing-customer revenue can be forecast the same way, once you make it visible and manage the progression that moves it.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+  <p class="answer-lead"><strong>Making existing-customer revenue more predictable starts with making the revenue visible. Improving that predictability requires managing the customer progression that moves it.</strong></p>
+  <p>Put existing-customer revenue into a pipeline. Define what needs to happen for a customer to progress. Capture evidence that progression occurred. Use that evidence to change revenue probability and improve the forecast.</p>
+
+  <h2>Why New-Logo Revenue Is Easier to See</h2>
+  <p>The difference is not that sales forecasting is inherently better. It is that sales has more structure built around it.</p>
+  <p>A CRO can see opportunities, stages, values, probabilities, movement, next steps, and expected close dates. When the pipeline changes, the forecast changes.</p>
+  <p>After the sale, the revenue does not disappear. Much of the structure around it does.</p>
+  <p>The revenue is still at stake. It just gets represented through account lists, health scores, usage dashboards, renewal dates, and CSM judgment, none of which behaves like a pipeline until very late in the relationship.</p>
+
+  <h2>Start by Making Existing-Customer Revenue Visible</h2>
+  <p>Every customer represents revenue that will eventually be retained, contracted, lost, or grown. Put that revenue into a pipeline from the beginning of the relationship, not at renewal.</p>
+  <p>Once it is in a pipeline, you can see where the uncertainty actually is. Which revenue looks strong. Which does not. What has changed. What evidence supports the current probability. What needs to happen next.</p>
+  <p>The pipeline makes the revenue visible.</p>
+
+  <h2>Visibility Exposes the Next Problem: Progression</h2>
+  <p>A pipeline does not automatically make revenue predictable. You still need to know what should move a customer through it.</p>
+  <p>Not meetings held. Not usage increased. Not tasks completed. Not a CSM's general sense that things are fine.</p>
+  <p>The real question is whether the customer made the progress that should make you more confident in the revenue.</p>
+  <p>This is where Inflection Points and
+    <!-- TODO: repoint to the dedicated Customer Progression page once Initiative 2 ships -->
+    <a href="chapter-20.html">customer progression</a> enter the picture. Progression is what makes the pipeline actionable.</p>
+
+  <h2>How Progression Becomes a Forecast</h2>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 960 360" role="img" aria-label="Revenue in Pipeline is a one-time prerequisite that feeds a repeating loop: Play, then Customer Outcome Confirmed, then Pipeline Movement and Probability, then Forecast, which repeats back to Play." xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5B7F95"/>
+        </marker>
+      </defs>
+      <!-- prerequisite -->
+      <text x="120" y="60" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#5B7F95">ONE-TIME PREREQUISITE</text>
+      <rect x="30" y="76" width="180" height="86" rx="12" fill="#101820" stroke="#B5BD00" stroke-width="2" stroke-dasharray="6 5"/>
+      <text x="120" y="112" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="16" font-weight="700" fill="#ffffff">Revenue in</text>
+      <text x="120" y="134" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="16" font-weight="700" fill="#ffffff">Pipeline</text>
+      <!-- feed arrow into loop -->
+      <path d="M210,119 L250,119" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <!-- loop label -->
+      <text x="585" y="60" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#B5BD00">THE REPEATING LOOP</text>
+      <!-- loop nodes: Play, Outcome Confirmed, Pipeline Movement & Probability, Forecast -->
+      <g font-family="'Public Sans',sans-serif" fill="#ffffff">
+        <!-- Play -->
+        <rect x="256" y="76" width="150" height="86" rx="12" fill="#253746"/>
+        <rect x="256" y="76" width="150" height="6" rx="3" fill="#B5BD00"/>
+        <text x="331" y="126" text-anchor="middle" font-size="17" font-weight="700">Play</text>
+        <!-- Outcome Confirmed -->
+        <rect x="436" y="76" width="150" height="86" rx="12" fill="#253746"/>
+        <rect x="436" y="76" width="150" height="6" rx="3" fill="#B5BD00"/>
+        <text x="511" y="115" text-anchor="middle" font-size="14.5" font-weight="700">Customer</text>
+        <text x="511" y="133" text-anchor="middle" font-size="14.5" font-weight="700">Outcome Confirmed</text>
+        <!-- Pipeline Movement & Probability -->
+        <rect x="616" y="76" width="150" height="86" rx="12" fill="#253746"/>
+        <rect x="616" y="76" width="150" height="6" rx="3" fill="#B5BD00"/>
+        <text x="691" y="108" text-anchor="middle" font-size="14.5" font-weight="700">Pipeline Movement</text>
+        <text x="691" y="126" text-anchor="middle" font-size="14.5" font-weight="700">&amp;</text>
+        <text x="691" y="144" text-anchor="middle" font-size="14.5" font-weight="700">Probability</text>
+        <!-- Forecast -->
+        <rect x="796" y="76" width="134" height="86" rx="12" fill="#253746"/>
+        <rect x="796" y="76" width="134" height="6" rx="3" fill="#B5BD00"/>
+        <text x="863" y="126" text-anchor="middle" font-size="17" font-weight="700">Forecast</text>
+      </g>
+      <!-- arrows between loop nodes -->
+      <path d="M406,119 L436,119" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <path d="M586,119 L616,119" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <path d="M766,119 L796,119" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <!-- return arrow: Forecast -> Play -->
+      <path d="M863,162 L863,250 Q863,268 845,268 L349,268 Q331,268 331,250 L331,162" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <rect x="533" y="252" width="118" height="32" rx="16" fill="#B5BD00"/>
+      <text x="592" y="273" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="13" font-weight="700" fill="#101820">repeats</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">The forecast loop. Revenue enters the pipeline once; the loop then runs on every play.</p>
+
+  <ol class="loop-steps">
+    <li class="prereq"><strong>Revenue in pipeline</strong>: a one-time prerequisite. Every customer's revenue enters the pipeline at the start of the relationship, not at renewal.</li>
+    <li><strong>Play</strong>: the team runs the play the customer needs next.</li>
+    <li><strong>Customer outcome confirmed</strong>: the play counts as finished only when the customer gets the result it was designed to produce.</li>
+    <li><strong>Pipeline movement and probability</strong>: that confirmed outcome moves the opportunity and updates its revenue probability.</li>
+    <li><strong>Forecast</strong>: the updated probabilities roll up into a sharper revenue forecast. Then the next play runs, and the loop repeats.</li>
+  </ol>
+
+  <p>Progression does not guarantee renewal or expansion. It gives you better evidence for assessing the likelihood of both. A play only counts as finished when the customer gets the result it was designed to produce, not when the CSM checks it off. That confirmed outcome is what changes revenue probability, not elapsed time and not a CSM's general impression.</p>
+  <p>That is what answers the forecasting question directly. It also keeps judgment inside the system instead of replacing it. A CSM still applies judgment. That judgment now has something concrete to work from.</p>
+
+  <h2>Show It With One Customer</h2>
+  <p>Take a $100K ARR customer entering the pipeline. Two moments show how the mechanism actually works.</p>
+  <p><strong>Play: establish First Value.</strong> Outcome: the customer experiences the first meaningful result they bought the product to achieve. Once that outcome is confirmed, not before, the pipeline reflects new, stronger evidence for the $100K.</p>
+  <p><strong>Play: build stakeholder alignment.</strong> Outcome: the customer's key stakeholders agree the result matters and back renewal or expansion. Once that outcome is confirmed, the pipeline reflects it again, independent of the first.</p>
+  <p>At each point, the customer is not simply getting closer to a renewal date. New evidence is emerging about the revenue itself.</p>
+  <p>That evidence changes what you should believe about the likelihood of retaining or growing the $100K, well before the renewal conversation starts.</p>
+
+  <h2>Predictability Requires a System</h2>
+  <p>A pipeline alone is not the operating system. Customer progression alone is not either.</p>
+  <p>The <a href="chapter-part2-intro.html">Post-Sale Operating System</a> is how the pieces work together. The pipeline makes progression and revenue visible. Plays create the intended progression. Health and other signals validate what you are seeing. Capacity ensures the required work can actually happen. Forecasting translates the accumulating evidence into a revenue view.</p>
+  <p class="key-statement">The pipeline makes revenue visible. Progression makes the pipeline actionable.</p>
+  <p>Revenue predictability improves when you can see the revenue, know what needs to happen next, and know whether it happened.</p>
+
+  <h2>Read Next</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="chapter-part2-intro.html">
+      <div class="tool-card-kicker">The Book · Part II</div>
+      <div class="tool-card-title">How the Post-Sale Pipeline Works</div>
+      <div class="tool-card-desc">The five stages, and why play completion, not elapsed time, advances the pipeline.</div>
+    </a>
+    <a class="tool-card" href="journey-map.html">
+      <div class="tool-card-kicker">Design</div>
+      <div class="tool-card-title">The Post-Sale Journey Map</div>
+      <div class="tool-card-desc">The inflection points where progression is won or lost across the customer's year.</div>
+    </a>
+    <a class="tool-card" href="calculator.html">
+      <div class="tool-card-kicker">Make the Case</div>
+      <div class="tool-card-title">Retention ROI Calculator</div>
+      <div class="tool-card-desc">Connect improved retention and expansion to the revenue at stake.</div>
+    </a>
+    <a class="tool-card" href="book.html">
+      <div class="tool-card-kicker">The System</div>
+      <div class="tool-card-title">The Post-Sale Operating System</div>
+      <div class="tool-card-desc">How the pipeline, plays, health, capacity, and forecasting fit into one system.</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CXology</div>
+        <p class="footer-brand-desc">A Strategic Customer Success Operating System for predictable retention and scalable growth.</p>
+        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
+      </div>
+      <div>
+        <div class="footer-col-title">The Book</div>
+        <ul class="footer-links">
+          <li><a href="book.html#parts">Part I: From Function to System</a></li>
+          <li><a href="book.html#parts">Part II: The Pipeline</a></li>
+          <li><a href="book.html#parts">Part III: Lifecycle Plays</a></li>
+          <li><a href="book.html#parts">Part IV: Scale &amp; Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Frameworks</div>
+        <ul class="footer-links">
+          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
+          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
+          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
+          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="calculator.html">NRR Calculator</a></li>
+          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
+          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>

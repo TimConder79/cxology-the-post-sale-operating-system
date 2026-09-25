@@ -2,6 +2,22 @@
   "updates": [
     {
       "kind": "Update",
+      "date": "2026-09-25",
+      "title": "How to make existing-customer revenue predictable",
+      "blurb": "A new page answers a question sales already solved for new logos: how do you forecast the revenue you already have? Put it in a pipeline, manage the customer progression that moves it, and let confirmed outcomes update probability and sharpen the forecast.",
+      "link": "predictable-existing-customer-revenue.html",
+      "linkLabel": "Read the answer"
+    },
+    {
+      "kind": "Update",
+      "date": "2026-09-25",
+      "title": "The conclusion now ties plays to the forecast",
+      "blurb": "The closing chapter's loop passage now spells out how play outcomes update the pipeline, the pipeline updates probability, and probability improves the forecast, making existing-customer revenue predictable the way new-logo revenue is.",
+      "link": "chapter-conclusion.html",
+      "linkLabel": "Read the conclusion"
+    },
+    {
+      "kind": "Update",
       "date": "2026-08-19",
       "title": "See what retention is worth",
       "blurb": "The ROI Calculator turns retention into dollars. Plug in your ARR, growth goal, and NRR, and it shows what a strong post-sale motion is actually worth — faster year-one growth, a far lighter new-sales quota, lower cost of churn, and a bigger number at exit. Run it against your own numbers.",

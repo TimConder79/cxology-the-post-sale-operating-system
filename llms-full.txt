@@ -2744,6 +2744,8 @@ If you remember one structure from this book, remember this one. The operating s
 
 The loop: every play produces a customer outcome and a recorded signal. Signals advance the pipeline. The pipeline prescribes the next play. The infrastructure keeps the signals trustworthy. That loop — not any single framework — is the operating system.
 
+Plays produce customer outcomes. Those outcomes update the pipeline. The pipeline updates probability. And probability improves the forecast. This is what makes existing customer revenue predictable in the same way new logo revenue is predictable.
+
 Notice what is not on the page. There is no heroics layer. There is no column for the one CSM who holds every relationship together from memory. The system is designed so that good execution is the default, not the exception — and so that judgment, the genuinely human part of the work, is spent on customers instead of on remembering what to do next.
 
 
@@ -2813,3 +2815,33 @@ The companies that win the next decade of post-sale will not be the ones with th
 Retention is not something you hope for at the end of the year. It is something you run — every day, one progression at a time.
 
 The system exists for one reason: so the promise made in the sales cycle becomes the experience the customer actually lives. Build it. Run it. Inspect it. Improve it. The results follow.
+
+
+---
+
+# Companion pages
+
+## How Do You Make Existing-Customer Revenue More Predictable?
+Source: https://cxology.co/predictable-existing-customer-revenue.html
+
+Making existing-customer revenue more predictable starts with making the revenue visible. Improving that predictability requires managing the customer progression that moves it.
+
+Put existing-customer revenue into a pipeline. Define what needs to happen for a customer to progress. Capture evidence that progression occurred. Use that evidence to change revenue probability and improve the forecast.
+
+## Why New-Logo Revenue Is Easier to See
+The difference is not that sales forecasting is inherently better. It is that sales has more structure built around it. A CRO can see opportunities, stages, values, probabilities, movement, next steps, and expected close dates. When the pipeline changes, the forecast changes. After the sale, the revenue does not disappear. Much of the structure around it does. The revenue is still at stake. It just gets represented through account lists, health scores, usage dashboards, renewal dates, and CSM judgment, none of which behaves like a pipeline until very late in the relationship.
+
+## Start by Making Existing-Customer Revenue Visible
+Every customer represents revenue that will eventually be retained, contracted, lost, or grown. Put that revenue into a pipeline from the beginning of the relationship, not at renewal. Once it is in a pipeline, you can see where the uncertainty actually is: which revenue looks strong, which does not, what has changed, what evidence supports the current probability, and what needs to happen next. The pipeline makes the revenue visible.
+
+## Visibility Exposes the Next Problem: Progression
+A pipeline does not automatically make revenue predictable. You still need to know what should move a customer through it. Not meetings held. Not usage increased. Not tasks completed. Not a CSM's general sense that things are fine. The real question is whether the customer made the progress that should make you more confident in the revenue. This is where Inflection Points and customer progression enter the picture. Progression is what makes the pipeline actionable.
+
+## How Progression Becomes a Forecast
+Revenue enters the pipeline once, as a one-time prerequisite. From there a loop repeats on every play: a play runs, the customer outcome is confirmed, the pipeline moves and its probability updates, and the forecast improves. Then the next play runs. Progression does not guarantee renewal or expansion. It gives you better evidence for assessing the likelihood of both. A play only counts as finished when the customer gets the result it was designed to produce, not when the CSM checks it off. That confirmed outcome is what changes revenue probability, not elapsed time and not a CSM's general impression. That is what answers the forecasting question directly. It also keeps judgment inside the system instead of replacing it. A CSM still applies judgment. That judgment now has something concrete to work from.
+
+## Show It With One Customer
+Take a $100K ARR customer entering the pipeline. Two moments show how the mechanism actually works. Play: establish First Value. Outcome: the customer experiences the first meaningful result they bought the product to achieve. Once that outcome is confirmed, not before, the pipeline reflects new, stronger evidence for the $100K. Play: build stakeholder alignment. Outcome: the customer's key stakeholders agree the result matters and back renewal or expansion. Once that outcome is confirmed, the pipeline reflects it again, independent of the first. At each point, the customer is not simply getting closer to a renewal date. New evidence is emerging about the revenue itself. That evidence changes what you should believe about the likelihood of retaining or growing the $100K, well before the renewal conversation starts.
+
+## Predictability Requires a System
+A pipeline alone is not the operating system. Customer progression alone is not either. The Post-Sale Operating System is how the pieces work together: the pipeline makes progression and revenue visible, plays create the intended progression, health and other signals validate what you are seeing, capacity ensures the required work can actually happen, and forecasting translates the accumulating evidence into a revenue view. The pipeline makes revenue visible. Progression makes the pipeline actionable. Revenue predictability improves when you can see the revenue, know what needs to happen next, and know whether it happened.
