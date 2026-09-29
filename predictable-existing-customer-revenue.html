@@ -35,6 +35,9 @@
     .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
     .chapter-body strong { color: var(--navy); }
     .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .chapter-body p a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .chapter-body p a:hover { color: var(--olive-dim); text-decoration-color: var(--olive-dim); }
+    .chapter-body p.related-read { font-size: 0.9rem; color: var(--text-muted); margin: .2rem 0 0; max-width: 72ch; }
 
     /* Direct answer + emphasized statement */
     .chapter-body p.answer-lead { font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: var(--navy); max-width: 72ch; border-left: 4px solid var(--olive); padding: .15rem 0 .15rem 1.2rem; margin: .5rem 0 1.6rem; }
@@ -287,6 +290,8 @@
       <div class="tool-card-desc">How the pipeline, plays, health, capacity, and forecasting fit into one system.</div>
     </a>
   </div>
+
+  <p class="related-read">Related reading: <a href="blog/existing-customer-revenue-visibility/">Why Existing-Customer Revenue Is So Hard to See</a>, the visibility problem this page solves.</p>
 
 </div>
 
