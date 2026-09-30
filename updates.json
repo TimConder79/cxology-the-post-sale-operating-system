@@ -2,6 +2,14 @@
   "updates": [
     {
       "kind": "Update",
+      "date": "2026-09-30",
+      "title": "Chapter 9 now opens with the customer's first question",
+      "blurb": "The Purchase & Welcome Play now opens on the question every new customer asks right after buying: did I make the right decision? A new section shows how your company's own story, from founding to where it is headed, is one of the easiest ways to answer it and fight buyer's remorse.",
+      "link": "chapter-9.html",
+      "linkLabel": "Read Chapter 9"
+    },
+    {
+      "kind": "Update",
       "date": "2026-09-25",
       "title": "How to make existing-customer revenue predictable",
       "blurb": "A new page answers a question sales already solved for new logos: how do you forecast the revenue you already have? Put it in a pipeline, manage the customer progression that moves it, and let confirmed outcomes update probability and sharpen the forecast.",
