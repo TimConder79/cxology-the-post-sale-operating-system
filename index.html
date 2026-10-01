@@ -90,7 +90,15 @@ a:focus-visible,.btn:focus-visible{outline:3px solid var(--lime-deep);outline-of
 .nav .links{display:flex;align-items:center;gap:30px;font-family:'Public Sans';font-weight:700;font-size:.9rem;color:var(--muted)}
 .nav .links a:hover{color:var(--ink)}
 .nav .btn{padding:11px 22px}
-@media(max-width:760px){.nav .links a:not(.btn){display:none}}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:0;cursor:pointer}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px}
+@media(max-width:760px){
+  .nav .row{position:relative}
+  .nav-burger{display:flex}
+  .nav .links{display:none;position:absolute;top:72px;left:-30px;right:-30px;flex-direction:column;align-items:flex-start;gap:0;padding:8px 30px 16px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 12px 24px rgba(16,24,32,.08)}
+  .nav.open .links{display:flex}
+  .nav .links a{display:block;width:100%;padding:12px 0;font-size:1rem;color:var(--ink)}
+}
 
 /* HERO */
 .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center}
@@ -278,12 +286,13 @@ a.ilink{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2
 <!-- NAV -->
 <header class="nav"><div class="wrap"><div class="row">
   <a class="logo" href="/"><img class="logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
-  <nav class="links">
+  <nav class="links" onclick="if(event.target.closest('a'))this.closest('header').classList.remove('open')">
     <a href="book.html">The Book</a>
     <a href="blog/">Blog</a>
     <a href="#work">Work With Me</a>
     <a href="#about">About</a>
   </nav>
+  <button class="nav-burger" aria-label="Menu" aria-expanded="false" onclick="var h=this.closest('header');h.classList.toggle('open');this.setAttribute('aria-expanded',h.classList.contains('open'))"><span></span><span></span><span></span></button>
 </div></div></header>
 
 <span id="top"></span>
