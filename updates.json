@@ -3,6 +3,14 @@
     {
       "kind": "Update",
       "date": "2026-10-01",
+      "title": "New: a glossary and index of the book's concepts",
+      "blurb": "A new Glossary & Index after the Conclusion defines the 50 concepts this book introduces, from inflection points and the post-sale pipeline stages to First Value, Value Blocks, and the One Data Spine, with links to every chapter where each term appears.",
+      "link": "glossary.html",
+      "linkLabel": "Open the glossary"
+    },
+    {
+      "kind": "Update",
+      "date": "2026-10-01",
       "title": "The lifecycle is a loop, not a line",
       "blurb": "The Part III introduction now shows how the plays fit together over years: Align once, Engage in a repeating loop of Alignment Meetings, Value Blocks, and Sharing Insights, then Achieve at renewal and go back into the loop. It also defines the inflection points and loyalty blockers and builders the plays are built around.",
       "link": "chapter-part3-intro.html",

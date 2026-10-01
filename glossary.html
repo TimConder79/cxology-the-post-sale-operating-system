@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glossary &amp; Index | The Post-Sale Operating System</title>
+  <meta name="description" content="A glossary and index of the concepts unique to The Post-Sale Operating System, with links to every chapter where each term appears."/>
+  <link rel="canonical" href="https://cxology.co/glossary.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="The Post-Sale Operating System"/>
+  <meta property="og:title" content="Glossary &amp; Index | The Post-Sale Operating System"/>
+  <meta property="og:description" content="A glossary and index of the concepts unique to The Post-Sale Operating System, with links to every chapter where each term appears."/>
+  <meta property="og:url" content="https://cxology.co/glossary.html"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Glossary &amp; Index | The Post-Sale Operating System"/>
+  <meta name="twitter:description" content="A glossary and index of the concepts unique to The Post-Sale Operating System, with links to every chapter where each term appears."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .chapter-body h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+    .chapter-body h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--navy-light);
+      margin: 1.5rem 0 0.5rem;
+    }
+    .chapter-body p {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .chapter-body ul {
+      padding-left: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .chapter-body li {
+      color: var(--gray-700);
+      font-size: 0.97rem;
+      margin-bottom: 0.6rem;
+      line-height: 1.65;
+    }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .callout {
+      background: var(--navy);
+      border-left: 4px solid var(--olive);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+    }
+    .callout-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--olive);
+      margin-bottom: 0.45rem;
+    }
+    .callout p { color: rgba(255,255,255,.85); font-style: italic; margin:0; max-width:100%; }
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+
+    .visual-panel {
+      background: var(--off-white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 1.4rem 1.5rem;
+      margin: 1.9rem 0;
+      max-width: 72ch;
+    }
+    .visual-kicker { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.45rem; }
+    .visual-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.9rem; line-height: 1.35; }
+    .flow-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.6rem; align-items: stretch; }
+    .flow-step { background: var(--white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 0.85rem 0.75rem; min-height: 86px; position: relative; }
+    .flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -0.55rem; top: 50%; transform: translateY(-50%); color: var(--olive); font-weight: 800; z-index: 2; }
+    .flow-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .flow-copy { font-size: 0.82rem; line-height: 1.45; color: var(--gray-700); font-weight: 600; }
+    .visual-note { font-size: 0.84rem; line-height: 1.6; color: var(--gray-700); margin-top: 0.85rem; max-width: 100%; }
+
+    /* System on One Page */
+    .sys-panel { max-width: 100%; }
+    .sys-layer { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+    .sys-layer-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+    .sys-layer-name { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
+    .sys-layer-role { font-size: 0.76rem; font-weight: 600; color: #BA7517; letter-spacing: 0.03em; }
+    .sys-stage-row { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 0.55rem; }
+    .sys-stage { background: var(--navy); border-radius: 9px; padding: 0.65rem 0.6rem; position: relative; }
+    .sys-stage:not(:last-child)::after { content: '→'; position: absolute; right: -0.55rem; top: 50%; transform: translateY(-50%); color: var(--olive); font-weight: 800; z-index: 2; }
+    .sys-stage-name { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); margin-bottom: 0.3rem; }
+    .sys-stage-copy { font-size: 0.72rem; line-height: 1.4; color: rgba(255,255,255,.65); }
+    .sys-connector { text-align: center; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); padding: 0.55rem 0.75rem; line-height: 1.5; }
+    .sys-connector::before { content: '↑ ↓'; display: block; letter-spacing: 0.35em; color: var(--olive); font-weight: 800; font-size: 0.8rem; margin-bottom: 0.15rem; }
+    .sys-play-flow { display: flex; flex-wrap: wrap; gap: 0.45rem 0.3rem; align-items: center; }
+    .sys-play { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 999px; padding: 0.38rem 0.75rem; font-size: 0.74rem; font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .sys-play-arrow { color: var(--olive); font-weight: 800; font-size: 0.78rem; }
+    .sys-play-support { margin-top: 0.65rem; padding-top: 0.6rem; border-top: 1px dashed var(--gray-200); font-size: 0.74rem; color: var(--text-muted); }
+    .sys-play-support strong { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+    .sys-infra-row { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 0.55rem; }
+    .sys-infra { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 9px; padding: 0.65rem 0.6rem; }
+    .sys-infra-name { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.3rem; }
+    .sys-infra-copy { font-size: 0.72rem; line-height: 1.4; color: var(--gray-700); }
+    .sys-loop { margin-top: 1rem; background: var(--navy-deep); border-radius: 10px; padding: 0.85rem 1rem; }
+    .sys-loop p { margin: 0; max-width: 100%; font-size: 0.8rem; line-height: 1.55; color: rgba(255,255,255,.75); }
+    .sys-loop strong { color: var(--olive); }
+
+    /* 90-day grid */
+    .ninety-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 0.75rem; margin-top: 0.5rem; }
+    .ninety-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem; }
+    .ninety-card h3 { margin: 0 0 0.2rem; padding: 0; border: 0; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; }
+    .ninety-card h4 { margin: 0 0 0.5rem; font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .ninety-card ul { margin: 0; padding-left: 1.1rem; }
+    .ninety-card li { font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.45rem; color: var(--gray-700); }
+
+    /* Tool links */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+
+    @media (max-width: 760px) {
+      .flow-row, .sys-stage-row, .sys-infra-row, .ninety-grid, .tool-grid { grid-template-columns: 1fr !important; }
+      .flow-step:not(:last-child)::after, .sys-stage:not(:last-child)::after { content: '↓'; right: 50%; top: auto; bottom: -0.7rem; transform: translateX(50%); }
+    }
+  </style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://cxology.co/#tim",
+      "name": "Tim Conder",
+      "jobTitle": "Fractional CX & CS Leader, Author",
+      "url": "https://cxology.co/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/tim-conder/"
+      ],
+      "worksFor": {
+        "@id": "https://cxology.co/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxology.co/#org",
+      "name": "CXology",
+      "url": "https://cxology.co",
+      "logo": "https://cxology.co/assets/logo-h-bb.png"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://cxology.co/#book",
+      "name": "The Post-Sale Operating System",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "url": "https://cxology.co/book.html"
+    },
+    {
+      "@type": "Article",
+      "headline": "Glossary & Index",
+      "name": "Glossary & Index",
+      "description": "A glossary and index of the concepts unique to The Post-Sale Operating System, with links to every chapter where each term appears.",
+      "articleSection": "Glossary",
+      "isPartOf": {
+        "@id": "https://cxology.co/#book"
+      },
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-10-01",
+      "dateModified": "2026-10-01",
+      "mainEntityOfPage": "https://cxology.co/glossary.html",
+      "url": "https://cxology.co/glossary.html",
+      "image": "https://cxology.co/og-image.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cxology.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Book",
+          "item": "https://cxology.co/book.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Glossary & Index",
+          "item": "https://cxology.co/glossary.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="/"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="book.html" class="active">The Book</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button class="chapter-nav-btn" onclick="window.location.href='chapter-conclusion.html'">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='index.html'">Home →</button>
+  </div>
+</nav>
+
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Preface</div>
+  <a href="preface.html" class="toc-link">Why I Wrote This Book</a>
+  <div class="toc-part">Introduction</div>
+  <a href="book.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · From Function to System</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sales Pipeline</div>
+  <a href="chapter-part2-intro.html" class="toc-link">Part II Introduction</a>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-part3-intro.html" class="toc-link">Part III Introduction</a>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Data, Automation & Scale</div>
+  <a href="chapter-part4-intro.html" class="toc-link">Part IV Introduction</a>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+  <div class="toc-part">Conclusion</div>
+  <a href="chapter-conclusion.html" class="toc-link">Running the System</a>
+  <div class="toc-part">Glossary</div>
+  <a href="glossary.html" class="toc-link active">Glossary &amp; Index</a>
+</div>
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#BA7517;margin-bottom:0.75rem">Back Matter</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">Glossary &amp; Index</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">The concepts this book introduces, what each one means, and every chapter where it shows up.</p>
+    </div>
+  </div>
+
+  <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+    <p>These are the concepts this book introduces or uses in a specific way. Each entry gives a short definition and links to every chapter where the term appears. Selecting a chapter takes you to the first place the term is used there; the number shows how many times it appears in that chapter.</p>
+
+    <nav class="gl-jump" aria-label="Jump to letter"><a href="#letter-A">A</a><a href="#letter-B">B</a><a href="#letter-C">C</a><a href="#letter-D">D</a><a href="#letter-E">E</a><a href="#letter-F">F</a><a href="#letter-G">G</a><a href="#letter-H">H</a><a href="#letter-I">I</a><a href="#letter-L">L</a><a href="#letter-M">M</a><a href="#letter-N">N</a><a href="#letter-O">O</a><a href="#letter-P">P</a><a href="#letter-R">R</a><a href="#letter-S">S</a><a href="#letter-V">V</a><a href="#letter-Y">Y</a></nav>
+
+    <h2 class="gl-letter" id="letter-A">A</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="advocate">
+        <h3>Advocate</h3>
+        <p>The third stage, where internal champions have the evidence and language to carry the value story inside their own organization, even when you are not in the room.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=Advocate">Part II intro <span>(2)</span></a><a class="gl-ref" href="chapter-5.html#:~:text=Advocate">Ch 5 <span>(2)</span></a><a class="gl-ref" href="chapter-6.html#:~:text=Advocate">Ch 6 <span>(17)</span></a><a class="gl-ref" href="chapter-7.html#:~:text=Advocate">Ch 7 <span>(5)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=Advocate">Ch 8</a><a class="gl-ref" href="chapter-13.html#:~:text=Advocate">Ch 13</a><a class="gl-ref" href="chapter-14.html#:~:text=Advocate">Ch 14</a><a class="gl-ref" href="chapter-15.html#:~:text=Advocate">Ch 15 <span>(2)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=Advocate">Ch 19</a><a class="gl-ref" href="chapter-20.html#:~:text=Advocate">Ch 20</a><a class="gl-ref" href="chapter-21.html#:~:text=Advocate">Ch 21</a></div>
+      </div>
+
+      <div class="gl-entry" id="align">
+        <h3>Align</h3>
+        <p>The second stage, where the customer&#x27;s goals, progress, and the opportunity are connected clearly enough that the next step serves the customer&#x27;s own outcomes.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=Align">Part II intro <span>(3)</span></a><a class="gl-ref" href="chapter-4.html#:~:text=Align">Ch 4</a><a class="gl-ref" href="chapter-5.html#:~:text=Align">Ch 5 <span>(13)</span></a><a class="gl-ref" href="chapter-6.html#:~:text=Align">Ch 6 <span>(2)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=Align">Ch 8</a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=Align">Part III intro</a><a class="gl-ref" href="chapter-12.html#:~:text=Identify%20to%20Align">Ch 12 <span>(2)</span></a><a class="gl-ref" href="chapter-13.html#:~:text=Align">Ch 13 <span>(3)</span></a><a class="gl-ref" href="chapter-14.html#:~:text=Align">Ch 14</a><a class="gl-ref" href="chapter-15.html#:~:text=Align">Ch 15 <span>(2)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=Align">Ch 19</a><a class="gl-ref" href="chapter-20.html#:~:text=Align">Ch 20</a><a class="gl-ref" href="chapter-21.html#:~:text=Align">Ch 21</a></div>
+      </div>
+
+      <div class="gl-entry" id="align-engage-achieve">
+        <h3>Align / Engage / Achieve</h3>
+        <p>The three phases of the customer lifecycle. Align happens once (Purchase &amp; Welcome through First Value). Engage is a repeating loop of Value Blocks, Sharing Insights, and Alignment Meetings. Achieve is renewal and growth, after which the customer returns to the Engage loop.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part3-intro.html#:~:text=Achieve">Part III intro <span>(2)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="alignment-meeting">
+        <h3>Alignment Meeting</h3>
+        <p>The recurring meeting that brings the relationship back to the reason it began, checks what has changed, and sets the next objective. It replaces the QBR&#x27;s backward-looking report with forward-looking alignment.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-intro.html#:~:text=alignment%20meetings">Introduction</a><a class="gl-ref" href="chapter-1.html#:~:text=alignment%20meetings">Ch 1</a><a class="gl-ref" href="chapter-part2-intro.html#:~:text=Alignment%20Meetings">Part II intro <span>(4)</span></a><a class="gl-ref" href="chapter-5.html#:~:text=Alignment%20Meeting">Ch 5</a><a class="gl-ref" href="chapter-6.html#:~:text=Alignment%20Meetings">Ch 6 <span>(5)</span></a><a class="gl-ref" href="chapter-7.html#:~:text=Alignment%20Meetings">Ch 7 <span>(2)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=Alignment%20Meeting">Ch 8 <span>(2)</span></a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=Alignment%20Meetings">Part III intro <span>(6)</span></a><a class="gl-ref" href="chapter-10.html#:~:text=Alignment%20Meetings">Ch 10</a><a class="gl-ref" href="chapter-13.html#:~:text=Alignment%20Meetings">Ch 13 <span>(5)</span></a><a class="gl-ref" href="chapter-14.html#:~:text=Alignment%20Meetings">Ch 14 <span>(10)</span></a><a class="gl-ref" href="chapter-15.html#:~:text=Alignment%20Meeting">Ch 15 <span>(18)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=Alignment%20Meetings">Ch 16 <span>(9)</span></a><a class="gl-ref" href="chapter-18.html#:~:text=Alignment%20Meeting">Ch 18 <span>(2)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=alignment%20meetings">Ch 19 <span>(2)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=Alignment%20Meetings">Ch 20 <span>(2)</span></a><a class="gl-ref" href="chapter-21.html#:~:text=Alignment%20Meetings">Ch 21 <span>(3)</span></a><a class="gl-ref" href="chapter-22.html#:~:text=Alignment%20Meetings">Ch 22 <span>(4)</span></a><a class="gl-ref" href="chapter-conclusion.html#:~:text=Alignment%20Meeting">Conclusion <span>(2)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="anchor-meeting">
+        <h3>Anchor meeting</h3>
+        <p>The most recent kickoff or Alignment Meeting, used as the reference point for measuring progress and change.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-15.html#:~:text=anchor%20meeting">Ch 15</a></div>
+      </div>
+
+      <div class="gl-entry" id="avoidable-churn-unavoidable-churn">
+        <h3>Avoidable churn / unavoidable churn</h3>
+        <p>Unavoidable churn comes from events outside the post-sale team&#x27;s influence, such as an acquisition, a shutdown, a budget freeze, or a customer outgrowing the solution. Avoidable churn is the churn your company could have prevented, and it is what the operating system is designed to reduce.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-1.html#:~:text=unavoidable%20churn">Ch 1 <span>(6)</span></a><a class="gl-ref" href="chapter-4.html#:~:text=avoidable%20churn">Ch 4</a><a class="gl-ref" href="chapter-17.html#:~:text=unavoidable%20churn">Ch 17 <span>(3)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=avoidable%20churn">Ch 20 <span>(2)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-B">B</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="big-bang-implementation">
+        <h3>Big Bang implementation</h3>
+        <p>Launching the full product, all capabilities, and all users at once. The book recommends an iterative approach instead, with First Value as the first cycle.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-11.html#:~:text=Big%20Bang">Ch 11 <span>(3)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-C">C</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="canonical-play">
+        <h3>Canonical play</h3>
+        <p>The standard, designed version of a play that every team member runs, so the customer experience depends on the system rather than on who owns the account.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part3-intro.html#:~:text=canonical%20play">Part III intro</a><a class="gl-ref" href="chapter-9.html#:~:text=Canonical%20Purchase%20%26%20Welcome%20Play">Ch 9 <span>(2)</span></a><a class="gl-ref" href="chapter-10.html#:~:text=Canonical%20Kickoff%20Play">Ch 10 <span>(2)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=Canonical%20Onboarding%20Play">Ch 11 <span>(2)</span></a><a class="gl-ref" href="chapter-12.html#:~:text=Canonical%20First%20Value%20Play">Ch 12 <span>(2)</span></a><a class="gl-ref" href="chapter-13.html#:~:text=Canonical%20Value%20Blocks%20Play">Ch 13 <span>(3)</span></a><a class="gl-ref" href="chapter-14.html#:~:text=Canonical%20Play">Ch 14 <span>(2)</span></a><a class="gl-ref" href="chapter-15.html#:~:text=Canonical%20Alignment%20Meeting%20Play">Ch 15 <span>(2)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=Canonical%20Renew%20%26%20Grow%20Play">Ch 16 <span>(2)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="cs-maturity-reactive-proactive-strategic">
+        <h3>CS maturity: reactive, proactive, strategic</h3>
+        <p>The three stages post-sale organizations move through. Reactive teams fight fires and are surprised by churn. Proactive teams anticipate risk. Strategic teams govern the post-sale motion with the same rigor as the sales pipeline.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-1.html#:~:text=CS%20maturity">Ch 1 <span>(3)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-D">D</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="designed-effort">
+        <h3>Designed effort</h3>
+        <p>The capacity required to deliver the designed service moments consistently. It is the bridge from journey design to capacity planning.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part4-intro.html#:~:text=designed%20effort">Part IV intro</a><a class="gl-ref" href="chapter-22.html#:~:text=Designed%20effort">Ch 22 <span>(8)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="dual-output">
+        <h3>Dual output</h3>
+        <p>Every completed play does two things at once: it moves the customer closer to the outcome they care about, and, once logged, it moves the pipeline through a stage change and a forecasting signal.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part3-intro.html#:~:text=dual%20output">Part III intro</a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-E">E</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="effort-mix">
+        <h3>Effort mix</h3>
+        <p>How a team&#x27;s time actually splits: proactive direct effort (designed work), reactive direct effort (unplanned customer requests), indirect effort (internal work), and unplanned effort (when the system breaks).</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-22.html#:~:text=Effort%20Mix">Ch 22 <span>(4)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="evidence-layer">
+        <h3>Evidence layer</h3>
+        <p>The living record of value created across the relationship, from the reason for purchase through First Value, Value Blocks, insights, and Alignment Meetings, including what has not worked.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-14.html#:~:text=evidence%20layer">Ch 14</a><a class="gl-ref" href="chapter-16.html#:~:text=evidence%20layer">Ch 16 <span>(2)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="execution-layer">
+        <h3>Execution layer</h3>
+        <p>AI&#x27;s role in the operating system: helping the team execute the designed plays consistently, rather than serving as a content generator. AI can produce the output; humans own the outcome.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-intro.html#:~:text=execution%20layer">Introduction</a><a class="gl-ref" href="chapter-3.html#:~:text=execution%20layer">Ch 3</a><a class="gl-ref" href="chapter-part4-intro.html#:~:text=execution%20layer">Part IV intro <span>(2)</span></a><a class="gl-ref" href="chapter-18.html#:~:text=execution%20layer">Ch 18 <span>(12)</span></a><a class="gl-ref" href="chapter-conclusion.html#:~:text=execution%20layer">Conclusion <span>(2)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-F">F</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="first-use">
+        <h3>First Use</h3>
+        <p>The moment the customer starts using the solution on their own. It is the first step toward First Value, not the end of onboarding support.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-11.html#:~:text=First%20Use">Ch 11 <span>(25)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="first-value">
+        <h3>First Value</h3>
+        <p>The first moment the customer feels they have achieved something meaningful from their purchase, ideally within a few weeks of kickoff. It belongs to the customer, not to your implementation plan.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-intro.html#:~:text=First%20Value">Introduction <span>(3)</span></a><a class="gl-ref" href="chapter-part2-intro.html#:~:text=First%20Value">Part II intro <span>(3)</span></a><a class="gl-ref" href="chapter-4.html#:~:text=First%20Value">Ch 4 <span>(4)</span></a><a class="gl-ref" href="chapter-5.html#:~:text=First%20Value">Ch 5</a><a class="gl-ref" href="chapter-8.html#:~:text=First%20Value">Ch 8</a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=First%20Value">Part III intro <span>(5)</span></a><a class="gl-ref" href="chapter-10.html#:~:text=First%20Value">Ch 10 <span>(25)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=First%20Value">Ch 11 <span>(39)</span></a><a class="gl-ref" href="chapter-12.html#:~:text=First%20Value">Ch 12 <span>(55)</span></a><a class="gl-ref" href="chapter-13.html#:~:text=First%20Value">Ch 13 <span>(17)</span></a><a class="gl-ref" href="chapter-14.html#:~:text=First%20Value">Ch 14 <span>(3)</span></a><a class="gl-ref" href="chapter-15.html#:~:text=First%20Value">Ch 15 <span>(4)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=First%20Value">Ch 16 <span>(5)</span></a><a class="gl-ref" href="chapter-18.html#:~:text=First%20Value">Ch 18</a><a class="gl-ref" href="chapter-20.html#:~:text=First%20Value">Ch 20 <span>(7)</span></a><a class="gl-ref" href="chapter-21.html#:~:text=First%20Value">Ch 21 <span>(8)</span></a><a class="gl-ref" href="chapter-22.html#:~:text=First%20Value">Ch 22 <span>(2)</span></a><a class="gl-ref" href="chapter-conclusion.html#:~:text=First%20Value">Conclusion <span>(3)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="five-customer-needs">
+        <h3>Five customer needs</h3>
+        <p>The diagnostic layer behind Value Blocks: skill set, knowledge, cost (time, effort, money), competing demands, and the key contact&#x27;s ability to drive change.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-13.html#:~:text=five%20customer%20needs">Ch 13 <span>(4)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="five-questions">
+        <h3>Five Questions</h3>
+        <p>The kickoff questions that define success with the customer: what one thing must go right, how they define success, what your role is, what could put the effort at risk, and what would exceed their wildest dreams. The answers become the baseline for every Alignment Meeting.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-10.html#:~:text=Five%20Questions">Ch 10 <span>(12)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=Five%20Questions">Ch 11</a><a class="gl-ref" href="chapter-12.html#:~:text=five%20questions">Ch 12</a><a class="gl-ref" href="chapter-15.html#:~:text=Five%20Questions">Ch 15 <span>(4)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=Five%20Questions">Ch 19</a></div>
+      </div>
+
+      <div class="gl-entry" id="five-part-insight-formula">
+        <h3>Five-part insight formula</h3>
+        <p>The structure for writing an insight: a one-line gist, the background, the results and how they could be different, the action to take, and a closing reinforcement.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-14.html#:~:text=Five%2DPart%20Insight%20Formula">Ch 14 <span>(2)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="the-floor">
+        <h3>The floor</h3>
+        <p>The renewal: guaranteed to exist from day one, with a fixed close date at contract end and a value equal to current ARR. The lifecycle plays are its commercial motion.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=is%20the%20floor">Part II intro <span>(4)</span></a><a class="gl-ref" href="chapter-9.html#:~:text=is%20the%20floor">Ch 9 <span>(2)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=is%20the%20floor">Ch 16 <span>(2)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="follow-through">
+        <h3>Follow-through</h3>
+        <p>Keeping the process moving after a meeting by doing what you committed to and confirming what the customer committed to. Distinct from follow-up, which only checks in.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-10.html#:~:text=follow%2Dthrough">Ch 10 <span>(13)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=follow%2Dthrough">Ch 11 <span>(7)</span></a><a class="gl-ref" href="chapter-15.html#:~:text=follow%2Dthrough">Ch 15</a><a class="gl-ref" href="chapter-17.html#:~:text=Follow%2DThrough">Ch 17</a><a class="gl-ref" href="chapter-part4-intro.html#:~:text=follow%2Dthrough">Part IV intro</a><a class="gl-ref" href="chapter-22.html#:~:text=follow%2Dthrough">Ch 22 <span>(5)</span></a><a class="gl-ref" href="chapter-conclusion.html#:~:text=follow%2Dthrough">Conclusion <span>(2)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-G">G</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="go-live">
+        <h3>Go Live</h3>
+        <p>The company&#x27;s milestone that the solution is ready. The book separates it from First Value and encourages companies to define Go Live so it does not delay the customer&#x27;s first win.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-intro.html#:~:text=go%2Dlive">Introduction</a><a class="gl-ref" href="chapter-12.html#:~:text=Go%20Live">Ch 12 <span>(12)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=Go%20Live">Ch 20</a></div>
+      </div>
+
+      <div class="gl-entry" id="the-growth">
+        <h3>The growth</h3>
+        <p>Expansion opportunities. They enter the pipeline at Identify whenever they surface and advance through the same stages alongside the renewal.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=The%20expansion%20opportunities%20are%20the%20growth">Part II intro <span>(2)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=The%20expansion%20opportunities%20are%20the%20growth">Ch 16 <span>(2)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-H">H</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="heart-and-smart">
+        <h3>Heart and smart</h3>
+        <p>The two dimensions of First Value. Heart is the customer&#x27;s feeling of accomplishment. Smart is the adoption logic underneath it that makes future use more likely.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-12.html#:~:text=heart%20and%20a%20smart">Ch 12</a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-I">I</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="identify">
+        <h3>Identify</h3>
+        <p>The first pipeline stage. The renewal enters here on day one, and expansion opportunities enter here whenever they surface. Opportunities advance out of Identify when the customer reaches First Value.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=Identify">Part II intro <span>(3)</span></a><a class="gl-ref" href="chapter-4.html#:~:text=Identify">Ch 4 <span>(15)</span></a><a class="gl-ref" href="chapter-5.html#:~:text=Identify">Ch 5</a><a class="gl-ref" href="chapter-6.html#:~:text=Identify">Ch 6</a><a class="gl-ref" href="chapter-9.html#:~:text=Identify">Ch 9 <span>(2)</span></a><a class="gl-ref" href="chapter-10.html#:~:text=Identify">Ch 10 <span>(2)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=Identify">Ch 11 <span>(3)</span></a><a class="gl-ref" href="chapter-12.html#:~:text=Identify">Ch 12 <span>(2)</span></a><a class="gl-ref" href="chapter-13.html#:~:text=Identify">Ch 13</a><a class="gl-ref" href="chapter-14.html#:~:text=Identify">Ch 14</a><a class="gl-ref" href="chapter-15.html#:~:text=Identify">Ch 15 <span>(2)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=Identify">Ch 20</a></div>
+      </div>
+
+      <div class="gl-entry" id="inflection-point">
+        <h3>Inflection point</h3>
+        <p>A moment in time when you have an opportunity to either build or block loyalty. Many happen when you are not in the room, and recognizing them is your responsibility, not the customer&#x27;s.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-intro.html#:~:text=inflection%20points">Introduction <span>(2)</span></a><a class="gl-ref" href="chapter-part2-intro.html#:~:text=inflection%20point">Part II intro</a><a class="gl-ref" href="chapter-4.html#:~:text=inflection%20points">Ch 4 <span>(2)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=inflection%20points">Ch 8 <span>(3)</span></a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=inflection%20points">Part III intro <span>(6)</span></a><a class="gl-ref" href="chapter-9.html#:~:text=inflection%20point">Ch 9</a><a class="gl-ref" href="chapter-11.html#:~:text=inflection%20point">Ch 11</a><a class="gl-ref" href="chapter-12.html#:~:text=inflection%20point">Ch 12</a><a class="gl-ref" href="chapter-14.html#:~:text=inflection%20point">Ch 14</a><a class="gl-ref" href="chapter-15.html#:~:text=inflection%20points">Ch 15 <span>(3)</span></a><a class="gl-ref" href="chapter-part4-intro.html#:~:text=inflection%20points">Part IV intro</a><a class="gl-ref" href="chapter-18.html#:~:text=inflection%20point">Ch 18</a><a class="gl-ref" href="chapter-19.html#:~:text=inflection%20points">Ch 19</a><a class="gl-ref" href="chapter-21.html#:~:text=inflection%20points">Ch 21 <span>(7)</span></a><a class="gl-ref" href="chapter-22.html#:~:text=inflection%20points">Ch 22 <span>(2)</span></a><a class="gl-ref" href="chapter-conclusion.html#:~:text=inflection%20point">Conclusion <span>(3)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="intent">
+        <h3>Intent</h3>
+        <p>The fourth stage, where enough internal belief has formed that the customer is moving toward a buying decision, with the right stakeholders engaged.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=Intent">Part II intro <span>(2)</span></a><a class="gl-ref" href="chapter-6.html#:~:text=Intent">Ch 6 <span>(4)</span></a><a class="gl-ref" href="chapter-7.html#:~:text=Intent">Ch 7 <span>(18)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=Intent">Ch 8 <span>(2)</span></a><a class="gl-ref" href="chapter-15.html#:~:text=Intent">Ch 15</a><a class="gl-ref" href="chapter-16.html#:~:text=Intent">Ch 16</a><a class="gl-ref" href="chapter-19.html#:~:text=Intent">Ch 19 <span>(3)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=Intent">Ch 20</a><a class="gl-ref" href="chapter-21.html#:~:text=Intent">Ch 21 <span>(3)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="internal-knowledge-transfer-ikt">
+        <h3>Internal Knowledge Transfer (IKT)</h3>
+        <p>The handoff from Sales to the post-sale team, built on four questions: why the customer bought, who they are and who matters, what was promised (and what was not), and what success means to them.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-9.html#:~:text=Internal%20Knowledge%20Transfer">Ch 9 <span>(13)</span></a><a class="gl-ref" href="chapter-10.html#:~:text=Internal%20Knowledge%20Transfer">Ch 10 <span>(2)</span></a><a class="gl-ref" href="chapter-18.html#:~:text=IKT">Ch 18 <span>(2)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=IKT">Ch 19 <span>(5)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-L">L</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="lifecycle-play">
+        <h3>Lifecycle play</h3>
+        <p>A designed motion for a specific inflection point in the customer journey, with a trigger, a sequence of actions, supporting assets, an intended outcome, and a way to measure whether it worked. The book covers eight lifecycle plays, from Purchase &amp; Welcome to Renew &amp; Grow.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=lifecycle%20plays">Part II intro <span>(2)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=lifecycle%20plays">Ch 8</a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=lifecycle%20plays">Part III intro</a><a class="gl-ref" href="chapter-10.html#:~:text=lifecycle%20play">Ch 10</a><a class="gl-ref" href="chapter-13.html#:~:text=lifecycle%20plays">Ch 13</a><a class="gl-ref" href="chapter-14.html#:~:text=lifecycle%20plays">Ch 14</a><a class="gl-ref" href="chapter-15.html#:~:text=lifecycle%20plays">Ch 15</a><a class="gl-ref" href="chapter-17.html#:~:text=lifecycle%20plays">Ch 17</a><a class="gl-ref" href="chapter-18.html#:~:text=lifecycle%20plays">Ch 18 <span>(2)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=lifecycle%20plays">Ch 20 <span>(2)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="loyalty-blocker">
+        <h3>Loyalty blocker</h3>
+        <p>A barrier between your offering and the value the customer wants. Occasionally a deal breaker, but far more often a small annoyance that adds up over time.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-4.html#:~:text=loyalty%20blockers">Ch 4</a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=loyalty%20blocker">Part III intro</a><a class="gl-ref" href="chapter-9.html#:~:text=loyalty%20blocker">Ch 9</a><a class="gl-ref" href="chapter-10.html#:~:text=Loyalty%20Blockers">Ch 10 <span>(3)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=loyalty%20blockers">Ch 11 <span>(6)</span></a><a class="gl-ref" href="chapter-13.html#:~:text=loyalty%20blockers">Ch 13</a></div>
+      </div>
+
+      <div class="gl-entry" id="loyalty-builder">
+        <h3>Loyalty builder</h3>
+        <p>Either a best practice someone on your team already uses, or a response you design to counter a specific loyalty blocker.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part3-intro.html#:~:text=loyalty%20builder">Part III intro</a><a class="gl-ref" href="chapter-14.html#:~:text=loyalty%20builder">Ch 14</a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-M">M</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="marble-jar">
+        <h3>Marble jar</h3>
+        <p>A ritual that makes the accumulation of customer wins visible inside the company, whether a literal jar, a win report, or a shared story, so retention and expansion are celebrated rather than invisible.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-8.html#:~:text=marble%20jar">Ch 8</a></div>
+      </div>
+
+      <div class="gl-entry" id="messy-middle">
+        <h3>Messy middle</h3>
+        <p>The long stretch between First Value and renewal, where most post-sale relationships lose momentum. It is navigated by three plays working together: Value Blocks, Sharing Insights, and Alignment Meetings.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part3-intro.html#:~:text=messy%20middle">Part III intro <span>(2)</span></a><a class="gl-ref" href="chapter-13.html#:~:text=messy%20middle">Ch 13 <span>(5)</span></a><a class="gl-ref" href="chapter-14.html#:~:text=messy%20middle">Ch 14 <span>(3)</span></a><a class="gl-ref" href="chapter-15.html#:~:text=messy%20middle">Ch 15</a><a class="gl-ref" href="chapter-17.html#:~:text=messy%20middle">Ch 17</a></div>
+      </div>
+
+      <div class="gl-entry" id="mid-year-reframe">
+        <h3>Mid-Year Reframe</h3>
+        <p>A deliberate renewal-readiness moment around the midpoint of the contract to re-anchor value, surface risk and timing, and spot growth signals while there is still time to act.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-16.html#:~:text=Mid%2DYear%20Reframe">Ch 16 <span>(3)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="minimum-viable-win">
+        <h3>Minimum viable win</h3>
+        <p>The smallest meaningful win that proves progress against the customer&#x27;s reason for buying. Not all the marbles; the first important marble.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-12.html#:~:text=Minimum%20Viable%20Win">Ch 12</a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-N">N</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="net-revenue-close">
+        <h3>Net Revenue Close</h3>
+        <p>The final stage, when the customer confirms a buying path with committed terms and the renewal or expansion closes.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=Net%20Revenue%20Close">Part II intro <span>(3)</span></a><a class="gl-ref" href="chapter-7.html#:~:text=Net%20Revenue%20Close">Ch 7 <span>(4)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=Net%20Revenue%20Close">Ch 8 <span>(8)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=Net%20Revenue%20Close">Ch 16</a><a class="gl-ref" href="chapter-19.html#:~:text=Net%20Revenue%20Close">Ch 19</a><a class="gl-ref" href="chapter-20.html#:~:text=Net%20Revenue%20Close">Ch 20</a><a class="gl-ref" href="chapter-21.html#:~:text=Net%20Revenue%20Close">Ch 21</a><a class="gl-ref" href="chapter-conclusion.html#:~:text=Net%20Revenue%20Close">Conclusion</a></div>
+      </div>
+
+      <div class="gl-entry" id="next-best-action">
+        <h3>Next-best-action</h3>
+        <p>AI that recommends what to do about a signal: which play to run, which contact to reach, and what message fits the moment. The CSM still decides.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-18.html#:~:text=next%2Dbest%2Daction">Ch 18</a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-O">O</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="onboarding-motions">
+        <h3>Onboarding motions</h3>
+        <p>The six motions every onboarding moves through: Align, Configure, Connect, Verify, Transform, and First Use. The form varies by company; the logic does not.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-11.html#:~:text=six%20motions">Ch 11 <span>(15)</span></a><a class="gl-ref" href="chapter-22.html#:~:text=onboarding%20motions">Ch 22</a></div>
+      </div>
+
+      <div class="gl-entry" id="one-data-spine">
+        <h3>One Data Spine</h3>
+        <p>The single, trusted customer record the whole operating system runs on, built by centralizing the data, democratizing access, and eliminating local copies.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part4-intro.html#:~:text=Data%20Spine">Part IV intro <span>(2)</span></a><a class="gl-ref" href="chapter-18.html#:~:text=data%20spine">Ch 18</a><a class="gl-ref" href="chapter-19.html#:~:text=One%20Data%20Spine">Ch 19 <span>(12)</span></a><a class="gl-ref" href="chapter-21.html#:~:text=data%20spine">Ch 21</a><a class="gl-ref" href="chapter-conclusion.html#:~:text=One%20Data%20Spine">Conclusion <span>(2)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-P">P</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="post-sale-operating-system">
+        <h3>Post-Sale Operating System</h3>
+        <p>A designed system of customer progression that governs everything after the sale. It treats retention and growth as outcomes that can be designed, operationalized, inspected, and improved, rather than the result of individual heroics.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="preface.html#:~:text=Post%2DSale%20Operating%20System">Preface <span>(2)</span></a><a class="gl-ref" href="chapter-intro.html#:~:text=post%2Dsale%20operating%20system">Introduction</a><a class="gl-ref" href="chapter-1.html#:~:text=post%2Dsale%20operating%20system">Ch 1 <span>(3)</span></a><a class="gl-ref" href="chapter-6.html#:~:text=post%2Dsale%20operating%20system">Ch 6</a><a class="gl-ref" href="chapter-8.html#:~:text=post%2Dsale%20operating%20system">Ch 8</a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=post%2Dsale%20operating%20system">Part III intro</a><a class="gl-ref" href="chapter-10.html#:~:text=Post%2DSale%20Operating%20System">Ch 10 <span>(2)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=Post%2DSale%20Operating%20System">Ch 11</a><a class="gl-ref" href="chapter-12.html#:~:text=post%2Dsale%20operating%20system">Ch 12</a><a class="gl-ref" href="chapter-13.html#:~:text=post%2Dsale%20operating%20system">Ch 13</a><a class="gl-ref" href="chapter-14.html#:~:text=post%2Dsale%20operating%20system">Ch 14 <span>(2)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=Post%2DSale%20Operating%20System">Ch 16</a><a class="gl-ref" href="chapter-18.html#:~:text=post%2Dsale%20operating%20system">Ch 18 <span>(2)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=Post%2DSale%20Operating%20System">Ch 19 <span>(2)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=post%2Dsale%20operating%20system">Ch 20</a><a class="gl-ref" href="chapter-21.html#:~:text=Post%2DSale%20Operating%20System">Ch 21 <span>(3)</span></a><a class="gl-ref" href="chapter-22.html#:~:text=post%2Dsale%20operating%20system">Ch 22</a><a class="gl-ref" href="chapter-conclusion.html#:~:text=Post%2DSale%20Operating%20System">Conclusion</a></div>
+      </div>
+
+      <div class="gl-entry" id="post-sale-pipeline">
+        <h3>Post-sale pipeline</h3>
+        <p>The pipeline that begins at Closed-Won and tracks renewal and expansion opportunities through five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. Stages advance when plays are completed and logged, not when time passes.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-intro.html#:~:text=Post%2DSale%20Pipeline">Introduction</a><a class="gl-ref" href="chapter-part2-intro.html#:~:text=post%2Dsale%20pipeline">Part II intro</a><a class="gl-ref" href="chapter-4.html#:~:text=post%2Dsale%20pipeline">Ch 4 <span>(7)</span></a><a class="gl-ref" href="chapter-6.html#:~:text=post%2Dsale%20pipeline">Ch 6 <span>(3)</span></a><a class="gl-ref" href="chapter-7.html#:~:text=post%2Dsale%20pipeline">Ch 7 <span>(4)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=post%2Dsale%20pipeline">Ch 8 <span>(4)</span></a><a class="gl-ref" href="chapter-9.html#:~:text=post%2Dsale%20pipeline">Ch 9 <span>(2)</span></a><a class="gl-ref" href="chapter-11.html#:~:text=post%2Dsale%20pipeline">Ch 11</a><a class="gl-ref" href="chapter-12.html#:~:text=post%2Dsale%20pipeline">Ch 12</a><a class="gl-ref" href="chapter-17.html#:~:text=post%2Dsale%20pipeline">Ch 17</a><a class="gl-ref" href="chapter-part4-intro.html#:~:text=post%2Dsale%20pipeline">Part IV intro</a><a class="gl-ref" href="chapter-19.html#:~:text=post%2Dsale%20pipeline">Ch 19 <span>(2)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=post%2Dsale%20pipeline">Ch 20</a><a class="gl-ref" href="chapter-21.html#:~:text=post%2Dsale%20pipeline">Ch 21 <span>(5)</span></a><a class="gl-ref" href="chapter-22.html#:~:text=post%2Dsale%20pipeline">Ch 22</a><a class="gl-ref" href="chapter-conclusion.html#:~:text=post%2Dsale%20pipeline">Conclusion</a></div>
+      </div>
+
+      <div class="gl-entry" id="post-sale-unification">
+        <h3>Post-sale unification</h3>
+        <p>Running the post-sale motion as one system across every team that touches the customer, instead of a collection of functions. Customers experience one journey, not your org chart, and every seam between teams either builds confidence or creates friction.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-2.html">Ch 2</a><a class="gl-ref" href="chapter-21.html#:~:text=unified%20post%2Dsale">Ch 21</a></div>
+      </div>
+
+      <div class="gl-entry" id="progression-based-health-score">
+        <h3>Progression-based health score</h3>
+        <p>A health score that asks whether the customer is progressing through the system the way a healthy customer should, rather than only whether they are at risk.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-intro.html#:~:text=Health%20score">Introduction <span>(3)</span></a><a class="gl-ref" href="chapter-1.html#:~:text=Health%20score">Ch 1</a><a class="gl-ref" href="chapter-2.html#:~:text=Health%20score">Ch 2</a><a class="gl-ref" href="chapter-3.html#:~:text=health%20score">Ch 3</a><a class="gl-ref" href="chapter-part4-intro.html#:~:text=health%20score">Part IV intro</a><a class="gl-ref" href="chapter-18.html#:~:text=health%20score">Ch 18 <span>(2)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=Health%20score">Ch 19 <span>(5)</span></a><a class="gl-ref" href="chapter-20.html#:~:text=health%20score">Ch 20 <span>(22)</span></a><a class="gl-ref" href="chapter-21.html#:~:text=health%20score">Ch 21</a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-R">R</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="reset">
+        <h3>Reset</h3>
+        <p>A separate kind of meeting for a relationship that has become unhealthy or where terms need to be redefined. Alignment keeps a healthy relationship moving; a reset is needed when it has already broken rhythm.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-4.html#:~:text=a%20reset">Ch 4</a><a class="gl-ref" href="chapter-15.html#:~:text=alignment%20and%20reset">Ch 15 <span>(3)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=a%20reset">Ch 16 <span>(3)</span></a></div>
+      </div>
+
+      <div class="gl-entry" id="right-touch-execution">
+        <h3>Right-touch execution</h3>
+        <p>Matching the level and type of engagement to what each customer actually needs, somewhere between high-touch for everyone and fully digital. AI and automation make it attainable at scale when they sit inside a coherent operating model.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-1.html#:~:text=Right%2Dtouch">Ch 1 <span>(2)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-S">S</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="stage-probability-weights">
+        <h3>Stage probability weights</h3>
+        <p>Fixed probability percentages assigned to each pipeline stage. They apply at the stage level, so every opportunity in a stage carries the same weight regardless of segment. What varies by customer is the play sequence needed to advance.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part2-intro.html#:~:text=probability%20weight">Part II intro <span>(3)</span></a><a class="gl-ref" href="chapter-4.html#:~:text=stage%2Dto%2Dprobability">Ch 4 <span>(2)</span></a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=probability%20weights">Part III intro</a><a class="gl-ref" href="chapter-12.html#:~:text=probability%20weight">Ch 12</a><a class="gl-ref" href="chapter-part4-intro.html#:~:text=probability%20weights">Part IV intro</a><a class="gl-ref" href="chapter-19.html#:~:text=probability%20weights">Ch 19</a></div>
+      </div>
+
+      <div class="gl-entry" id="supporting-plays">
+        <h3>Supporting plays</h3>
+        <p>Plays that protect the lifecycle when the relationship changes shape: Key Contact Change, when a champion or sponsor leaves, and Offboarding, when a customer decides to leave.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-part3-intro.html#:~:text=supporting%20plays">Part III intro</a><a class="gl-ref" href="chapter-16.html#:~:text=supporting%20plays">Ch 16</a><a class="gl-ref" href="chapter-17.html#:~:text=supporting%20plays">Ch 17 <span>(4)</span></a><a class="gl-ref" href="chapter-conclusion.html#:~:text=Supporting%20Plays">Conclusion</a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-V">V</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="value-block">
+        <h3>Value Block</h3>
+        <p>A small, purposeful step toward a larger customer objective, sized to be completed by the next Alignment Meeting. Originally called Goal Blocks.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-1.html#:~:text=value%20blocks">Ch 1</a><a class="gl-ref" href="chapter-part2-intro.html#:~:text=Value%20Blocks">Part II intro <span>(2)</span></a><a class="gl-ref" href="chapter-8.html#:~:text=Value%20Blocks">Ch 8</a><a class="gl-ref" href="chapter-part3-intro.html#:~:text=Value%20Blocks">Part III intro <span>(6)</span></a><a class="gl-ref" href="chapter-10.html#:~:text=Value%20Blocks">Ch 10</a><a class="gl-ref" href="chapter-12.html#:~:text=goal%20block">Ch 12 <span>(2)</span></a><a class="gl-ref" href="chapter-13.html#:~:text=Value%20Blocks">Ch 13 <span>(44)</span></a><a class="gl-ref" href="chapter-14.html#:~:text=Value%20Blocks">Ch 14 <span>(9)</span></a><a class="gl-ref" href="chapter-15.html#:~:text=Value%20Blocks">Ch 15 <span>(11)</span></a><a class="gl-ref" href="chapter-16.html#:~:text=Value%20Blocks">Ch 16 <span>(9)</span></a><a class="gl-ref" href="chapter-18.html#:~:text=Value%20Blocks">Ch 18 <span>(2)</span></a><a class="gl-ref" href="chapter-19.html#:~:text=Value%20Blocks">Ch 19</a><a class="gl-ref" href="chapter-20.html#:~:text=Value%20Blocks">Ch 20</a><a class="gl-ref" href="chapter-21.html#:~:text=Value%20Blocks">Ch 21 <span>(4)</span></a><a class="gl-ref" href="chapter-22.html#:~:text=Value%20Blocks">Ch 22</a><a class="gl-ref" href="chapter-conclusion.html#:~:text=Value%20Blocks">Conclusion</a></div>
+      </div>
+
+      <div class="gl-entry" id="value-block-library">
+        <h3>Value Block Library</h3>
+        <p>The reusable collection of common Value Blocks, each tied to a customer need, with its resources and completion criteria.</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-13.html#:~:text=Value%20Block%20Library">Ch 13 <span>(4)</span></a></div>
+      </div>
+
+    </div>
+
+    <h2 class="gl-letter" id="letter-Y">Y</h2>
+    <div class="gl-group">
+
+      <div class="gl-entry" id="you-we-me-framework">
+        <h3>You-We-Me framework</h3>
+        <p>The structure for the Key Contact Change meeting: start with the new contact&#x27;s goals (You), then the shared work (We), and only then your company (Me).</p>
+        <div class="gl-refs"><span class="gl-refs-label">Appears in</span><a class="gl-ref" href="chapter-17.html#:~:text=You%20%2D%20We%20%2D%20Me">Ch 17 <span>(2)</span></a></div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- READER HUB CALLOUT -->
+<div style="background:var(--off-white);padding:0 2rem 4rem">
+  <div style="max-width:860px;margin:0 auto;background:var(--white);border:1px solid var(--gray-200);border-top:4px solid var(--olive);border-radius:var(--radius-md);box-shadow:var(--shadow);padding:2rem 2.25rem;display:flex;justify-content:space-between;align-items:center;gap:1.75rem;flex-wrap:wrap">
+    <div style="flex:1 1 320px">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive-dim);margin-bottom:0.5rem">Reader Hub</div>
+      <div style="font-size:1.4rem;color:var(--navy);font-weight:700;margin-bottom:0.45rem;line-height:1.25">Question on this chapter, or ran the play?</div>
+      <p style="color:var(--text-muted);font-size:0.95rem;margin:0;max-width:56ch;line-height:1.6">Ask me directly, or tell me what happened when you tried it. The best questions get answered in the open, and results from the field shape the next edition.</p>
+    </div>
+    <a href="readers.html?ch=glossary#participate" style="padding:13px 26px;background:var(--olive);color:var(--navy-deep);border-radius:var(--radius-sm);font-size:0.9rem;font-weight:700;white-space:nowrap;flex-shrink:0;text-decoration:none">Ask or give feedback &rarr;</a>
+  </div>
+</div>
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">You've reached the end</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Back to the full book</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-conclusion.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='index.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Back to the Book →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+<footer style="text-align:center;padding:1.5rem 1rem;font-size:0.8rem;color:var(--text-muted);background:transparent;">
+  © 2022–2026 CXology LLC. All rights reserved.
+</footer>
+
+</body>
+</html>
