@@ -2,6 +2,14 @@
   "updates": [
     {
       "kind": "Update",
+      "date": "2026-10-01",
+      "title": "The lifecycle is a loop, not a line",
+      "blurb": "The Part III introduction now shows how the plays fit together over years: Align once, Engage in a repeating loop of Alignment Meetings, Value Blocks, and Sharing Insights, then Achieve at renewal and go back into the loop. It also defines the inflection points and loyalty blockers and builders the plays are built around.",
+      "link": "chapter-part3-intro.html",
+      "linkLabel": "Read the Part III intro"
+    },
+    {
+      "kind": "Update",
       "date": "2026-09-30",
       "title": "Chapter 9 now opens with the customer's first question",
       "blurb": "The Purchase & Welcome Play now opens on the question every new customer asks right after buying: did I make the right decision? A new section shows how your company's own story, from founding to where it is headed, is one of the easiest ways to answer it and fight buyer's remorse.",

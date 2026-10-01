@@ -854,3 +854,17 @@ p { max-width: 68ch; }
 .motion-flow .mi-badge .mi { width: 16px; height: 16px; }
 .chapter-body h3.motion-h { display: flex; align-items: center; gap: 0.6rem; color: var(--navy); margin: 1.8rem 0 0.5rem; }
 .mf-card-label { display: flex; align-items: center; gap: 0.55rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy); margin-bottom: 0.6rem; }
+
+/* Part III lifecycle infinity loop (Align / Engage / Achieve) */
+.lifecycle-infinity { margin: 1.75rem 0; padding: 1rem 1rem 0.75rem; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); }
+.lifecycle-infinity .lci-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.lifecycle-infinity .lci-svg { display: block; width: 100%; min-width: 600px; height: auto; }
+.lifecycle-infinity .lci-path { fill: none; stroke: var(--olive-dim); stroke-width: 10; stroke-linecap: butt; stroke-linejoin: round; }
+.lifecycle-infinity .lci-stem { stroke: var(--olive-dim); stroke-width: 1.5; }
+.lifecycle-infinity .lci-dot { fill: var(--white); stroke: var(--olive-dim); stroke-width: 1.5; }
+.lifecycle-infinity .lci-cross { fill: var(--navy); stroke: var(--white); stroke-width: 2; }
+.lifecycle-infinity .lci-arrow { fill: var(--navy); }
+.lifecycle-infinity .lci-label { fill: var(--navy); font-size: 17px; font-weight: 700; text-anchor: middle; font-family: 'Public Sans', sans-serif; }
+.lifecycle-infinity .lci-left { text-anchor: start; }
+.lifecycle-infinity .lci-phase { fill: var(--navy); font-size: 15px; font-weight: 800; letter-spacing: 0.12em; text-anchor: middle; font-family: 'Public Sans', sans-serif; }
+.lifecycle-infinity figcaption { font-size: 0.82rem; color: var(--navy); text-align: center; margin-top: 0.4rem; font-style: italic; }
