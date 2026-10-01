@@ -883,3 +883,6 @@ p { max-width: 68ch; }
 .gl-ref span { font-weight: 500; }
 .gl-ref:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
 .gl-none { font-size: 0.78rem; color: var(--navy); }
+
+/* Glossary deep-link highlight */
+mark.term-hl { background: var(--olive-pale); color: var(--navy); box-shadow: 0 0 0 3px var(--olive-pale); border-radius: 3px; outline: 2px solid var(--olive-dim); outline-offset: 2px; }
