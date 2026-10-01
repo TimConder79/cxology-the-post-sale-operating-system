@@ -46,6 +46,7 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 - [Ch 21: From Functional Silos to One Operating System](https://cxology.co/chapter-21.html): Alignment comes from how the company operates, not from asking teams to cooperate harder.
 - [Ch 22: Proactive Capacity Planning](https://cxology.co/chapter-22.html): Where the post-sale journey becomes an investment decision and designed effort is planned.
 - [Conclusion: Running the System](https://cxology.co/chapter-conclusion.html): The system on one page and the sequence for putting it into operation.
+- [Glossary & Index](https://cxology.co/glossary.html): Short definitions of the 50 concepts the book introduces, from Alignment Meeting to Value Blocks, each linked to the chapters where it appears.
 
 ## Interactive tools
 - [CXology Frameworks](https://cxology.co/frameworks.html): The core frameworks: the Post-Sale Pipeline, CS Maturity, and more.
