@@ -3960,3 +3960,197 @@ Take a $100K ARR customer entering the pipeline. Two moments show how the mechan
 
 ## Predictability Requires a System
 A pipeline alone is not the operating system. Customer progression alone is not either. The Post-Sale Operating System is how the pieces work together: the pipeline makes progression and revenue visible, plays create the intended progression, health and other signals validate what you are seeing, capacity ensures the required work can actually happen, and forecasting translates the accumulating evidence into a revenue view. The pipeline makes revenue visible. Progression makes the pipeline actionable. Revenue predictability improves when you can see the revenue, know what needs to happen next, and know whether it happened.
+
+## How Do You Know Whether a Customer Is Actually Progressing?
+Source: https://cxology.co/customer-progression-leading-indicators.html
+
+A customer is progressing when something meaningful has changed for them in the direction of the reason they bought, and you can point to evidence that the change occurred.
+
+Meetings held, training delivered, tasks completed, and logins recorded are activity. Activity can create the conditions for progression, but it does not prove progression happened. To know whether a customer is progressing, define the change you expect at each Inflection Point in the lifecycle, run the play designed to help create it, and look for evidence that the change actually happened. When the expected progression does not appear, that absence can be the earliest sign of risk, earlier than a drop in usage or health.
+
+### Start With a Product You Actually Adopted
+
+Think about a product you rely on today, at work or at home.
+
+You had a reason to buy it. Something needed to change. You learned just enough to try something that mattered to you, and it worked. Maybe it was small: a report that took ten minutes instead of an hour, or a meeting you no longer needed to hold. That result was enough to bring you back. So you learned a little more, did the next thing, and saw the next result. Somewhere along the way the product became part of how you work, and the reason you bought it was fulfilled.
+
+The progress started even before that first result. It began when you believed the product understood your problem, could see what success would look like, and felt confident you had made the right decision. Each step after that changed what you believed about the next one.
+
+Every cycle had the same shape:
+
+Reason for purchase → Learn enough to act → Do something meaningful → Experience a result → Recognize value → Return and repeat
+
+You used the product a lot along the way. But the usage was never the point. It was a byproduct of the progress.
+
+You did not adopt the product because you used it. You kept using it because using it helped you progress.
+
+That is customer progression in its simplest form. Everything that follows is the same mechanism, applied to customers whose path is much harder to see.
+
+### What Is Customer Progression?
+
+Customer progression is the meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve. Progression does not require the full reason for purchase to be fulfilled. It is meaningful movement toward it.
+
+Progression is measured from the customer's side. It is not what your team did. It is what changed for the customer: a decision they made, a result they experienced, a way of working that changed, a stakeholder who now cares, a goal they can show they reached.
+
+Each of those changes also shifts what the customer believes: that they were understood, that success is achievable, that the decision to buy was right. You cannot observe belief directly. You can observe what customers do once it shifts, and that is where evidence comes from.
+
+### Activity, Progression, and Evidence Are Not the Same Thing
+
+- Activity is what happened.
+
+- Progression is what meaningfully changed for the customer.
+
+- Evidence tells you whether that change actually occurred.
+
+The distinction matters because activity is easy to see and easy to count, and progression is not. Most post-sale reporting is built from activity: meetings held, tasks closed, sessions delivered, logins recorded. A customer can attend every meeting, complete every training module, configure the product, and log in daily while nothing meaningful changes for them.
+
+The same is true of your own team's work. A play is what the company does. Progression is what changes for the customer. A completed kickoff, training session, or configuration task can create the conditions for progression, but completing it does not prove the customer progressed. The kickoff happened. Whether the customer left it with clarity about their goals, decisions, and responsibilities is a separate question, and it is the one that matters.
+
+Five layers to keep separate:
+- Activity. The question it answers: What happened? Example: a customer's first meaningful result: Onboarding sessions held, the workflow configured, 40 users trained.
+- Progression. The question it answers: What meaningfully changed for the customer? Example: a customer's first meaningful result: The finance team closed the month in the new workflow for the first time.
+- Evidence. The question it answers: How do we know the change occurred? Example: a customer's first meaningful result: The controller confirms the close took three days instead of seven and shares it with the CFO.
+- Operational signals. The question it answers: What may show up later? Example: a customer's first meaningful result: Usage rises in finance, engagement and sentiment improve, the health score moves.
+- Revenue outcome. The question it answers: What eventually happens to the revenue? Example: a customer's first meaningful result: Retention, contraction, expansion, or churn at the commercial decision.
+
+Read these as layers, not a strict one-way chain. Operational signals can move for reasons that have nothing to do with progression, and progression can occur before any signal reflects it.
+
+If you use the health scoring model in Chapter 20, the operational signals here correspond roughly to its traditional signals. Its growth-oriented signals, such as relationship reach, lifecycle progression, and customers sharing wins internally, largely overlap with progression evidence. The two models describe the same thing from different angles.
+
+What counts as evidence. Good evidence is something the customer does or says that they would not do unless something had genuinely changed. The tell is cost. Customers spend their own time, budget, or internal credibility only when they believe the effort is paying off. They introduce new stakeholders. They share a result internally without being asked. They assign an owner on their side. They retire the old way of working. They commit resources to the next phase. "Great call, they seemed happy" is not evidence. "The VP approved rollout to the second region and named an owner" is.
+
+Most of this evidence does not require product telemetry. It shows up in the work your team already does with the customer, which means you can start observing progression before your data is perfect.
+
+### The Same Mechanism, Harder to See: Progression in B2B SaaS
+
+The adoption loop does not disappear in a B2B relationship. It multiplies.
+
+The person with the reason for purchase is often not the person who configures the product, who is not the person whose daily work has to change, who is not the person who decides the renewal. Implementation, configuration, and integrations stand between the purchase and the first meaningful action. Training reaches some user groups and not others. The organizational change the product requires competes with every other priority the customer has. And instead of one reason for purchase there are several outcomes, maturing at different speeds.
+
+Each group runs its own version of the loop. An executive sponsor progresses when they can connect a result to a strategic priority. An administrator progresses when the configuration supports the real workflow, not the demo. End users progress when the new way of working becomes easier than the old one. The economic buyer progresses when they can defend the investment to their own leadership.
+
+The mechanism is still recognizable. What changes is how hard it is to observe. One customer can be progressing in one group and stalled in another, while activity rises across all of them. Progression that is left to emerge on its own gets inferred after the fact, usually from the revenue outcome. In B2B, progression has to be intentionally designed: what change should happen, at what point, for whom, and how you would know it occurred.
+
+Not every customer needs the full enterprise treatment. A narrower or lower-ACV offering may run the same loop with much of the work automated or AI-assisted: a personalized video in place of a meeting, guided in-product steps in place of a working session. The delivery changes. The progression the customer needs to make does not.
+
+### Inflection Points: Where Progression Is Expected
+
+An Inflection Point is a place in the customer lifecycle where meaningful customer progression is expected to occur. What happens there either builds loyalty or blocks it. A loyalty blocker is a barrier between your offering and the value the customer wants; a loyalty builder is the response designed to counter it. Many Inflection Points happen when you are not in the room: a customer hits a wall in the product, has a breakthrough, or quietly wonders whether the purchase was worth it. Recognizing them is your responsibility, not the customer's, which is why the evidence has to be something you can observe after the fact.
+
+The working mechanism has four parts:
+
+Mechanism: Inflection Point, then Play, then Expected Progression, then Evidence. The play creates the conditions; the evidence confirms the change.
+
+- The Inflection Point identifies where progression is expected.
+
+- The play is the designed motion intended to help create it.
+
+- The expected progression is the specific change the customer should make.
+
+- The evidence tells you whether that change actually happened.
+
+The play creates the conditions. The evidence confirms the change. Neither substitutes for the other.
+
+This is already built into how a good play is designed. A well-designed play defines the trigger that starts it, the motions inside it, the assets that support it, the outcome it is supposed to produce, and the way the team knows whether it worked. The last part is the evidence. Running the play is not the same as knowing it worked.
+
+What progression looks like at the eight critical moments:
+- 1. Purchase. Play: Purchase & Welcome. Expected progression: A shared understanding of the decision just made: why the customer bought and what they expect to change. Activity that can happen without it: Contract signed, handoff notes filed, welcome email sent. Evidence it occurred: The post-sale team can state the reason for purchase, the customer confirms it, and any gap between what was sold and what can be delivered is surfaced early.
+- 2. First Meeting. Play: Kickoff. Expected progression: Trust transfers from Sales to the post-sale team, and the customer is confident they are understood. Activity that can happen without it: Kickoff held, introductions made, project plan shared. Evidence it occurred: The customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side.
+- 3. Onboarding Decisions. Play: Onboarding. Expected progression: Decisions about who is involved, what comes first, and what has to change, made in the direction of the outcome purchased. Activity that can happen without it: Training attended, product configured, implementation milestones closed. Evidence it occurred: The customer makes and owns the decisions: names owners, brings in the stakeholders the work requires, and prioritizes the work that leads to First Value.
+- 4. Early Success (First Value). Play: First Value. Expected progression: The first meaningful result the customer recognizes. Activity that can happen without it: Go-live reached, training completed, features activated. Evidence it occurred: The customer can point to the result, says it is starting to work, and shares it with someone internally.
+- 5. Goal Attainment. Play: Value Blocks, Sharing Insights. Expected progression: Meaningful realization of the reason for purchase, recognized by the customer. Activity that can happen without it: Business review held, dashboard delivered. Evidence it occurred: The customer can describe the outcome achieved, connect it to the decision they made, and use it to justify the investment.
+- 6. Habit Transformation. Play: Value Blocks. Expected progression: A durable change in how the customer works. Activity that can happen without it: Logins, users provisioned, usage reports sent. Evidence it occurred: The new process is the default, the old one is retired, and the work runs without your team prompting it.
+- 7. Ongoing Alignment. Play: Alignment Meeting. Expected progression: Shared understanding of evolving priorities, value, and what needs to happen next. Activity that can happen without it: Quarterly meeting held, deck presented. Evidence it occurred: Updated objectives agreed, the next goal defined with a customer owner, new stakeholders engaged after changes in leadership or priorities.
+- 8. Renewal and Growth Decision. Play: Renew & Grow. Expected progression: A decision to renew, expand, reduce, or leave, grounded in the progression that came before it. Activity that can happen without it: Renewal meeting held, quote sent. Evidence it occurred: The customer arrives with their own case for continuing: outcomes they can cite, a sponsor who backs it, a procurement path known well before the last ninety days, and next goals or growth already in view.
+
+The eighth moment is different from the other seven. The renewal decision is where earlier progression becomes a revenue outcome. If the case for renewal has to be built at the end, the progression it depends on was missed earlier.
+
+Some Inflection Points happen once. Goal Attainment, Habit Transformation, and Ongoing Alignment repeat through the middle of the relationship. Your business may need different moments, or more, or fewer. The question at each one is the same: what needs to become true for this customer to move forward? The 8 Critical Moments article walks through each one, and Part III details the plays designed for them.
+
+### Is Product Usage a Leading or Lagging Indicator?
+
+Usage is commonly treated as a leading indicator of churn, and a decline can show up before a customer leaves. But it is usually a late signal. Usage tends to fall after something earlier has already failed: First Value never landed, the new way of working never took hold, or the sponsor never connected the result to a priority. By the time usage drops, it is rarely the cause of the risk. It is the evidence. Some at-risk customers never show a decline at all. Usage stays acceptable while the progression the renewal depends on never happens.
+
+Consider a customer whose usage drops in month seven and who sends a churn notice in month eleven. The usage drop looks like the early warning. But the First Value the customer expected around week four never happened. Training was completed and the admin team logged in regularly, so the account looked active. The finance team simply never closed a month in the product. The real failure was about six months before usage moved.
+
+The same holds for adoption, engagement, sentiment, and health. These are valuable signals, and nothing here argues for ignoring them. The point is timing and interpretation. Many metrics commonly called leading indicators appear after earlier customer progression has already succeeded or failed. A usage dip can mean risk, or seasonality, or a champion transition, or a process change outside the product. Strong usage in one group can hide a stall in another. Read against expected progression, the same number tells you much more.
+
+Customer progression does not replace usage, health, or CSM judgment. It tells you how to interpret them.
+
+### What Are the Leading Indicators of NRR?
+
+The earliest leading indicators of NRR are evidence that customers are making the progression expected at each Inflection Point: a shared understanding of why they bought, First Value on time, goals visibly attained, durable changes in how they work, stakeholders engaged beyond a single champion, and alignment maintained as priorities shift. NRR itself arrives too late to change the behavior that produced it.
+
+Keeping the base depends mostly on early progression: a clean start, clear goals, First Value. Growing it depends mostly on what comes after: goals attained, habits changed, and a champion and executive sponsor who can make the case for more without you in the room.
+
+That gives three layers, ordered roughly by how early they appear:
+
+- Expected progression and its evidence. Earliest, and the most within your team's influence.
+
+- Operational signals. Usage, adoption, engagement, sentiment, health. Valuable context, and easy to misread on their own. The strongest of them, such as depth of use or customers sharing wins internally, are often progression evidence under another name.
+
+- Revenue outcomes. GRR and NRR. They confirm whether the system worked, but arrive too late to coach the behavior behind them.
+
+Progression evidence does not guarantee retention, expansion, or NRR. Some churn is unavoidable: an acquisition, a shutdown, a budget freeze, a customer outgrowing the solution. What progression gives you is earlier and more meaningful evidence about the churn and growth your company can influence.
+
+### How Do You Know When a Customer Has Stalled?
+
+A customer has stalled when the progression expected at an Inflection Point has not occurred when you expected it to, regardless of how active the account looks.
+
+The earliest evidence of customer risk may be the absence of expected progression.
+
+A customer can remain active, responsive, and friendly while failing to make the changes required to realize value.
+
+Stalls rarely announce themselves. Sometimes activity continues: meetings keep happening, but the next goal never gets an owner. Training is complete, but the old process still runs alongside the new one. The champion is enthusiastic, but no one else is carrying the business case internally. Sometimes the relationship simply goes quiet, often mid-contract, when the excitement of purchase has faded and the renewal still feels far away. And stalls are often partial: adoption can expand in one part of the organization while stalling in another.
+
+You can only see a stall if you set an expectation first. If you believe First Value should happen within three weeks, track it. If it routinely takes six, find out why. Without an expected progression there is nothing to inspect.
+
+A stall is not only a warning. It is something to diagnose. Ask which customer need is blocking progress: skill set, knowledge, cost in time, effort, or money, competing demands, or the key contact's ability to drive change internally. Underneath nearly every stalled initiative is a gap that can be addressed, and sometimes the answer is something the customer does not have yet: training, a done-for-you service, or an added capability.
+
+### How Do You See Risk Before Usage Declines?
+
+Look for missing progression, not falling activity. For each Inflection Point, define the change you expect, the window you expect it in, and the evidence that will confirm it. Then review which customers have passed the window without the evidence. Those customers can be at risk while usage, engagement, and sentiment still look fine.
+
+A practical starting point:
+
+- Name the Inflection Points that matter for your segment. Start with the eight critical moments above and adjust.
+
+- Define the expected progression at each one in customer terms. Not "training complete." "The customer's team runs the weekly report themselves."
+
+- Set the evidence and the window. What would you see, and by when?
+
+- Review the absences, then act. Who is overdue? Diagnose which of the five customer needs is blocking progress, or whether product fit is the issue. Then adapt or rerun the play rather than waiting for the signal to turn red.
+
+None of this requires a predictive model. It requires writing down what you expect to change and checking whether it did.
+
+### How Progression Connects to Health, the Pipeline, and Revenue
+
+Progression evidence gives a health score what it usually lacks. A health score built on it asks a better question than "is this customer red?" It asks whether the customer is progressing the way a healthy customer should. Chapter 20 shows how to build that score.
+
+Progression evidence is also what changes revenue probability in the Post-Sale Pipeline. The mechanism runs in one direction: a play is executed, the intended customer progression either occurs or does not, evidence confirms it, and only then do the pipeline and its probability update. How that evidence turns into a more predictable forecast is covered in How Do You Make Existing-Customer Revenue More Predictable?.
+
+Activity tells you what happened. Progression tells you what changed. Evidence tells you whether that change actually occurred.
+
+Build your view of the customer on the last two.
+
+### Frequently Asked Questions
+
+### What is customer progression?
+
+Customer progression is the meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve. It does not require the full reason for purchase to be fulfilled; it is meaningful movement toward it.
+
+### Is completing a play or onboarding task the same as customer progression?
+
+No. A play is what the company does; progression is what changes for the customer. A completed kickoff, training session, or configuration task can create the conditions for progression, but evidence is needed to show the intended change actually occurred.
+
+### Is product usage a leading or lagging indicator?
+
+Usage is commonly treated as a leading indicator of churn, but it is usually a late signal. A decline tends to follow an earlier progression failure, such as a customer who never reached First Value or never changed how they work, and some at-risk customers never show a decline at all.
+
+### What is the earliest sign of customer risk?
+
+It may be the absence of expected progression: a change that should have happened at an Inflection Point and did not, even though the customer is still active.
+
+### Does customer progression guarantee renewal or expansion?
+
+No. Progression provides earlier and more meaningful evidence about what is happening with the customer. Some churn is unavoidable, such as an acquisition, a shutdown, or a budget freeze.

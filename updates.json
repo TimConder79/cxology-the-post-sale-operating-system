@@ -2,6 +2,14 @@
   "updates": [
     {
       "kind": "Update",
+      "date": "2026-10-02",
+      "title": "How do you know a customer is actually progressing?",
+      "blurb": "A new page at the end of Part I separates three things post-sale teams often blur: activity is what happened, progression is what changed for the customer, and evidence shows whether that change actually occurred. It explains why usage is usually a late signal, and why the earliest sign of risk may be progression that never happened.",
+      "link": "customer-progression-leading-indicators.html",
+      "linkLabel": "Read the answer"
+    },
+    {
+      "kind": "Update",
       "date": "2026-10-01",
       "title": "New: a glossary and index of the book's concepts",
       "blurb": "A new Glossary & Index after the Conclusion defines the 50 concepts this book introduces, from inflection points and the post-sale pipeline stages to First Value, Value Blocks, and the One Data Spine, with links to every chapter where each term appears.",

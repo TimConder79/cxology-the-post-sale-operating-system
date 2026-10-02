@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Do You Know Whether a Customer Is Actually Progressing? — CXology</title>
+  <meta name="description" content="Activity is what happened. Progression is what changed for the customer. Evidence shows it occurred. How to spot stalls and risk before usage declines."/>
+  <link rel="canonical" href="https://cxology.co/customer-progression-leading-indicators.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="The Post-Sale Operating System"/>
+  <meta property="og:title" content="How Do You Know Whether a Customer Is Actually Progressing? — CXology"/>
+  <meta property="og:description" content="Activity is what happened. Progression is what changed for the customer. Evidence shows it occurred. How to spot stalls and risk before usage declines."/>
+  <meta property="og:url" content="https://cxology.co/customer-progression-leading-indicators.html"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="How Do You Know Whether a Customer Is Actually Progressing? — CXology"/>
+  <meta name="twitter:description" content="Activity is what happened. Progression is what changed for the customer. Evidence shows it occurred. How to spot stalls and risk before usage declines."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+    /* Page-specific additions only — core styles come from style.css */
+    .reading-progress { position: fixed; top: 60px; left: 0; right: 0; z-index: 99; height: 3px; background: rgba(0,0,0,.06); }
+    .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
+
+    /* Chapter-body typography — matches the book chapters exactly */
+    .chapter-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-100); }
+    .chapter-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy-light); margin: 1.5rem 0 0.5rem; }
+    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.82; max-width: 72ch; }
+    .chapter-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .chapter-body p a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .chapter-body p a:hover { color: var(--olive-dim); text-decoration-color: var(--olive-dim); }
+    .chapter-body p.related-read { font-size: 0.9rem; color: var(--text-muted); margin: .2rem 0 0; max-width: 72ch; }
+
+    /* Direct answer + emphasized statement */
+    .chapter-body p.answer-lead { font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: var(--navy); max-width: 72ch; border-left: 4px solid var(--olive); padding: .15rem 0 .15rem 1.2rem; margin: .5rem 0 1.6rem; }
+    .chapter-body p.key-statement { font-size: 1.2rem; line-height: 1.5; font-weight: 700; color: var(--navy); background: var(--olive-pale); border-radius: var(--radius-md); padding: 1.15rem 1.4rem; margin: 2rem 0; max-width: 72ch; }
+
+    /* Forecast-loop diagram */
+    .diagram-wrap { margin: 1.6rem 0 1rem; }
+    .diagram-wrap svg { width: 100%; height: auto; display: block; }
+    .chapter-body p.diagram-caption { font-size: .82rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+
+    /* Read-next cards (same treatment as the conclusion chapter) */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+    @media (max-width: 760px) { .tool-grid { grid-template-columns: 1fr; } }
+  
+    /* Initiative 2 additions */
+    .chapter-body ol:not(.flow) { padding-left: 1.4rem; margin-bottom: 1rem; max-width: 72ch; }
+    .chapter-body .direct-answer { border-left: 4px solid var(--olive); background: var(--off-white); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .direct-answer p { margin: 0; color: var(--gray-700); }
+    .chapter-body .def { border: 1px solid var(--gray-200); border-top: 4px solid var(--navy); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; background: var(--white); }
+    .chapter-body .def-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-dim); margin-bottom: .35rem; }
+    .chapter-body .def p { margin: 0; font-size: 1.02rem; color: var(--navy); }
+    .chapter-body ol.flow { list-style: none; padding: 0; margin: .4rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; max-width: 72ch; }
+    .chapter-body ol.flow li { margin: 0; background: var(--navy); color: #fff; font-size: .85rem; font-weight: 600; padding: .4rem .75rem; border-radius: 999px; line-height: 1.3; }
+    .chapter-body ol.flow li:not(:last-child)::after { content: "\2192"; color: var(--olive); margin-left: .55rem; font-weight: 700; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1rem; max-width: 100%; }
+    table.cmp { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
+    table.cmp caption { caption-side: top; text-align: left; font-weight: 700; color: var(--navy); font-size: .95rem; margin-bottom: .6rem; }
+    table.cmp th, table.cmp td { text-align: left; padding: .6rem .75rem; border: 1px solid var(--gray-200); vertical-align: top; color: var(--gray-700); }
+    table.cmp thead th { background: var(--navy); color: #fff; font-weight: 700; }
+    table.cmp tbody tr:nth-child(even) td { background: var(--off-white); }
+    table.cmp td:first-child { font-weight: 700; color: var(--navy); }
+    table.cmp-wide { min-width: 820px; }
+    .chapter-body h3 + p { margin-top: 0; }
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://cxology.co/customer-progression-leading-indicators.html#article",
+      "headline": "How Do You Know Whether a Customer Is Actually Progressing?",
+      "description": "Activity is what happened. Progression is what changed for the customer. Evidence shows it occurred. How to spot stalls and risk before usage declines.",
+      "url": "https://cxology.co/customer-progression-leading-indicators.html",
+      "mainEntityOfPage": {
+        "@id": "https://cxology.co/customer-progression-leading-indicators.html"
+      },
+      "inLanguage": "en",
+      "image": "https://cxology.co/og-image.png",
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "isPartOf": {
+        "@id": "https://cxology.co/#book"
+      },
+      "about": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Customer progression",
+          "description": "The meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve. Progression does not require the full reason for purchase to be fulfilled. It is meaningful movement toward it."
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://cxology.co/#tim",
+      "name": "Tim Conder",
+      "jobTitle": "Fractional CX & CS Leader, Author",
+      "description": "Post-sale systems builder and creator of CXology. 20+ years in B2B SaaS building customer success and post-sale revenue systems.",
+      "image": "https://cxology.co/Tim_Conder_Headshot.jpg",
+      "url": "https://cxology.co/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/tim-conder/"
+      ],
+      "worksFor": {
+        "@id": "https://cxology.co/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxology.co/#org",
+      "name": "CXology",
+      "url": "https://cxology.co",
+      "logo": "https://cxology.co/assets/logo-h-bb.png"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://cxology.co/#book",
+      "name": "The Post-Sale Operating System",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "url": "https://cxology.co/book.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cxology.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Book",
+          "item": "https://cxology.co/book.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How Do You Know Whether a Customer Is Actually Progressing?",
+          "item": "https://cxology.co/customer-progression-leading-indicators.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is customer progression?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Customer progression is the meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve. It does not require the full reason for purchase to be fulfilled; it is meaningful movement toward it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is completing a play or onboarding task the same as customer progression?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A play is what the company does; progression is what changes for the customer. A completed kickoff, training session, or configuration task can create the conditions for progression, but evidence is needed to show the intended change actually occurred."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is product usage a leading or lagging indicator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usage is commonly treated as a leading indicator of churn, but it is usually a late signal. A decline tends to follow an earlier progression failure, such as a customer who never reached First Value or never changed how they work, and some at-risk customers never show a decline at all."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the earliest sign of customer risk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It may be the absence of expected progression: a change that should have happened at an Inflection Point and did not, even though the customer is still active."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does customer progression guarantee renewal or expansion?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Progression provides earlier and more meaningful evidence about what is happening with the customer. Some churn is unavoidable, such as an acquisition, a shutdown, or a budget freeze."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV — exact match to frameworks.html and chapter.html -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="/"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="chapter-hero">
+  <div class="hero-grid"></div>
+  <div class="chapter-hero-inner">
+    <span class="chapter-num">The Post-Sale Operating System · Customer Progression</span>
+    <h1 class="headline">How Do You Know Whether a Customer Is Actually Progressing?</h1>
+    <p class="chapter-hero-sub">Activity tells you what happened. Progression tells you what changed. Evidence tells you whether that change actually occurred.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+  <p class="answer-lead"><strong>A customer is progressing when something meaningful has changed for them in the direction of the reason they bought, and you can point to evidence that the change occurred.</strong></p>
+  <p>Meetings held, training delivered, tasks completed, and logins recorded are activity. Activity can create the conditions for progression, but it does not prove progression happened. To know whether a customer is progressing, define the change you expect at each Inflection Point in the lifecycle, run the play designed to help create it, and look for evidence that the change actually happened. When the expected progression does not appear, that absence can be the earliest sign of risk, earlier than a drop in usage or health.</p>
+
+  <h2>Start With a Product You Actually Adopted</h2>
+  <p>Think about a product you rely on today, at work or at home.</p>
+  <p>You had a reason to buy it. Something needed to change. You learned just enough to try something that mattered to you, and it worked. Maybe it was small: a report that took ten minutes instead of an hour, or a meeting you no longer needed to hold. That result was enough to bring you back. So you learned a little more, did the next thing, and saw the next result. Somewhere along the way the product became part of how you work, and the reason you bought it was fulfilled.</p>
+  <p>The progress started even before that first result. It began when you believed the product understood your problem, could see what success would look like, and felt confident you had made the right decision. Each step after that changed what you believed about the next one.</p>
+  <p>Every cycle had the same shape:</p>
+  <ol class="flow" aria-label="The simple adoption loop"><li>Reason for purchase</li><li>Learn enough to act</li><li>Do something meaningful</li><li>Experience a result</li><li>Recognize value</li><li>Return and repeat</li></ol>
+  <p>You used the product a lot along the way. But the usage was never the point. It was a byproduct of the progress.</p>
+  <p class="key-statement">You did not adopt the product because you used it. You kept using it because using it helped you progress.</p>
+  <p>That is customer progression in its simplest form. Everything that follows is the same mechanism, applied to customers whose path is much harder to see.</p>
+  <h2>What Is Customer Progression?</h2>
+  <div class="def" id="definition"><div class="def-label">Definition</div><p><strong>Customer progression</strong> is the meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve. Progression does not require the full reason for purchase to be fulfilled. It is meaningful movement toward it.</p></div>
+  <p>Progression is measured from the customer's side. It is not what your team did. It is what changed for the customer: a decision they made, a result they experienced, a way of working that changed, a stakeholder who now cares, a goal they can show they reached.</p>
+  <p>Each of those changes also shifts what the customer believes: that they were understood, that success is achievable, that the decision to buy was right. You cannot observe belief directly. You can observe what customers do once it shifts, and that is where evidence comes from.</p>
+  <h2>Activity, Progression, and Evidence Are Not the Same Thing</h2>
+  <ul>
+  <li><strong>Activity</strong> is what happened.</li>
+  <li><strong>Progression</strong> is what meaningfully changed for the customer.</li>
+  <li><strong>Evidence</strong> tells you whether that change actually occurred.</li>
+  </ul>
+  <p>The distinction matters because activity is easy to see and easy to count, and progression is not. Most post-sale reporting is built from activity: meetings held, tasks closed, sessions delivered, logins recorded. A customer can attend every meeting, complete every training module, configure the product, and log in daily while nothing meaningful changes for them.</p>
+  <p>The same is true of your own team's work. A play is what the company does. Progression is what changes for the customer. A completed kickoff, training session, or configuration task can create the conditions for progression, but completing it does not prove the customer progressed. The kickoff happened. Whether the customer left it with clarity about their goals, decisions, and responsibilities is a separate question, and it is the one that matters.</p>
+  <div class="table-wrap"><table class="cmp" id="five-layers">
+  <caption>Five layers to keep separate</caption>
+  <thead>
+  <tr>
+  <th scope="col">Layer</th>
+  <th scope="col">The question it answers</th>
+  <th scope="col">Example: a customer's first meaningful result</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>Activity</td>
+  <td>What happened?</td>
+  <td>Onboarding sessions held, the workflow configured, 40 users trained</td>
+  </tr>
+  <tr>
+  <td>Progression</td>
+  <td>What meaningfully changed for the customer?</td>
+  <td>The finance team closed the month in the new workflow for the first time</td>
+  </tr>
+  <tr>
+  <td>Evidence</td>
+  <td>How do we know the change occurred?</td>
+  <td>The controller confirms the close took three days instead of seven and shares it with the CFO</td>
+  </tr>
+  <tr>
+  <td>Operational signals</td>
+  <td>What may show up later?</td>
+  <td>Usage rises in finance, engagement and sentiment improve, the health score moves</td>
+  </tr>
+  <tr>
+  <td>Revenue outcome</td>
+  <td>What eventually happens to the revenue?</td>
+  <td>Retention, contraction, expansion, or churn at the commercial decision</td>
+  </tr>
+  </tbody>
+  </table></div>
+  <p>Read these as layers, not a strict one-way chain. Operational signals can move for reasons that have nothing to do with progression, and progression can occur before any signal reflects it.</p>
+  <p>If you use the health scoring model in <a href="chapter-20.html">Chapter 20</a>, the operational signals here correspond roughly to its traditional signals. Its growth-oriented signals, such as relationship reach, lifecycle progression, and customers sharing wins internally, largely overlap with progression evidence. The two models describe the same thing from different angles.</p>
+  <p><strong>What counts as evidence.</strong> Good evidence is something the customer does or says that they would not do unless something had genuinely changed. The tell is cost. Customers spend their own time, budget, or internal credibility only when they believe the effort is paying off. They introduce new stakeholders. They share a result internally without being asked. They assign an owner on their side. They retire the old way of working. They commit resources to the next phase. "Great call, they seemed happy" is not evidence. "The VP approved rollout to the second region and named an owner" is.</p>
+  <p>Most of this evidence does not require product telemetry. It shows up in the work your team already does with the customer, which means you can start observing progression before your data is perfect.</p>
+  <h2>The Same Mechanism, Harder to See: Progression in B2B SaaS</h2>
+  <p>The adoption loop does not disappear in a B2B relationship. It multiplies.</p>
+  <p>The person with the reason for purchase is often not the person who configures the product, who is not the person whose daily work has to change, who is not the person who decides the renewal. Implementation, configuration, and integrations stand between the purchase and the first meaningful action. Training reaches some user groups and not others. The organizational change the product requires competes with every other priority the customer has. And instead of one reason for purchase there are several outcomes, maturing at different speeds.</p>
+  <p>Each group runs its own version of the loop. An executive sponsor progresses when they can connect a result to a strategic priority. An administrator progresses when the configuration supports the real workflow, not the demo. End users progress when the new way of working becomes easier than the old one. The economic buyer progresses when they can defend the investment to their own leadership.</p>
+  <p>The mechanism is still recognizable. What changes is how hard it is to observe. One customer can be progressing in one group and stalled in another, while activity rises across all of them. Progression that is left to emerge on its own gets inferred after the fact, usually from the revenue outcome. In B2B, progression has to be intentionally designed: what change should happen, at what point, for whom, and how you would know it occurred.</p>
+  <p>Not every customer needs the full enterprise treatment. A narrower or lower-ACV offering may run the same loop with much of the work automated or AI-assisted: a personalized video in place of a meeting, guided in-product steps in place of a working session. The delivery changes. The progression the customer needs to make does not.</p>
+  <h2>Inflection Points: Where Progression Is Expected</h2>
+  <p>An <strong>Inflection Point</strong> is a place in the customer lifecycle where meaningful customer progression is expected to occur. What happens there either builds loyalty or blocks it. A loyalty blocker is a barrier between your offering and the value the customer wants; a loyalty builder is the response designed to counter it. Many Inflection Points happen when you are not in the room: a customer hits a wall in the product, has a breakthrough, or quietly wonders whether the purchase was worth it. Recognizing them is your responsibility, not the customer's, which is why the evidence has to be something you can observe after the fact.</p>
+  <p>The working mechanism has four parts:</p>
+  <div class="diagram-wrap">
+      <svg viewBox="0 0 960 200" role="img" aria-label="Inflection Point, then Play, then Expected Progression, then Evidence. The play creates the conditions; the evidence confirms the change." xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5B7F95"/></marker></defs>
+        <g font-family="'Public Sans',sans-serif" fill="#ffffff" text-anchor="middle">
+          <rect x="20" y="40" width="190" height="92" rx="12" fill="#253746"/><rect x="20" y="40" width="190" height="6" rx="3" fill="#B5BD00"/>
+          <text x="115" y="84" font-size="17" font-weight="700">Inflection Point</text><text x="115" y="108" font-size="12.5" fill="#C9D3DB">Where progression is expected</text>
+          <rect x="260" y="40" width="190" height="92" rx="12" fill="#253746"/><rect x="260" y="40" width="190" height="6" rx="3" fill="#B5BD00"/>
+          <text x="355" y="84" font-size="17" font-weight="700">Play</text><text x="355" y="108" font-size="12.5" fill="#C9D3DB">What the company does</text>
+          <rect x="500" y="40" width="190" height="92" rx="12" fill="#253746"/><rect x="500" y="40" width="190" height="6" rx="3" fill="#B5BD00"/>
+          <text x="595" y="84" font-size="17" font-weight="700">Expected Progression</text><text x="595" y="108" font-size="12.5" fill="#C9D3DB">What should change for the customer</text>
+          <rect x="740" y="40" width="200" height="92" rx="12" fill="#101820" stroke="#B5BD00" stroke-width="2"/>
+          <text x="840" y="84" font-size="17" font-weight="700">Evidence</text><text x="840" y="108" font-size="12.5" fill="#C9D3DB">Whether it actually happened</text>
+        </g>
+        <path d="M210,86 L256,86" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+        <path d="M450,86 L496,86" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+        <path d="M690,86 L736,86" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+        <text x="480" y="176" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="13" font-weight="700" fill="#5B7F95">The play creates the conditions. The evidence confirms the change.</text>
+      </svg>
+    </div>
+    <p class="diagram-caption">Inflection Point, Play, Expected Progression, Evidence. Completing the play is not the same as confirming the change.</p>
+  <ul>
+  <li>The <strong>Inflection Point</strong> identifies where progression is expected.</li>
+  <li>The <strong>play</strong> is the designed motion intended to help create it.</li>
+  <li>The <strong>expected progression</strong> is the specific change the customer should make.</li>
+  <li>The <strong>evidence</strong> tells you whether that change actually happened.</li>
+  </ul>
+  <p>The play creates the conditions. The evidence confirms the change. Neither substitutes for the other.</p>
+  <p>This is already built into how a good play is designed. A well-designed play defines the trigger that starts it, the motions inside it, the assets that support it, the outcome it is supposed to produce, and the way the team knows whether it worked. The last part is the evidence. Running the play is not the same as knowing it worked.</p>
+  <div class="table-wrap"><table class="cmp cmp-wide" id="inflection-points">
+  <caption>What progression looks like at the eight critical moments</caption>
+  <thead>
+  <tr>
+  <th scope="col">Inflection Point</th>
+  <th scope="col">Play</th>
+  <th scope="col">Expected progression</th>
+  <th scope="col">Activity that can happen without it</th>
+  <th scope="col">Evidence it occurred</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>1. Purchase</td>
+  <td>Purchase &amp; Welcome</td>
+  <td>A shared understanding of the decision just made: why the customer bought and what they expect to change</td>
+  <td>Contract signed, handoff notes filed, welcome email sent</td>
+  <td>The post-sale team can state the reason for purchase, the customer confirms it, and any gap between what was sold and what can be delivered is surfaced early</td>
+  </tr>
+  <tr>
+  <td>2. First Meeting</td>
+  <td>Kickoff</td>
+  <td>Trust transfers from Sales to the post-sale team, and the customer is confident they are understood</td>
+  <td>Kickoff held, introductions made, project plan shared</td>
+  <td>The customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side</td>
+  </tr>
+  <tr>
+  <td>3. Onboarding Decisions</td>
+  <td>Onboarding</td>
+  <td>Decisions about who is involved, what comes first, and what has to change, made in the direction of the outcome purchased</td>
+  <td>Training attended, product configured, implementation milestones closed</td>
+  <td>The customer makes and owns the decisions: names owners, brings in the stakeholders the work requires, and prioritizes the work that leads to First Value</td>
+  </tr>
+  <tr>
+  <td>4. Early Success (First Value)</td>
+  <td>First Value</td>
+  <td>The first meaningful result the customer recognizes</td>
+  <td>Go-live reached, training completed, features activated</td>
+  <td>The customer can point to the result, says it is starting to work, and shares it with someone internally</td>
+  </tr>
+  <tr>
+  <td>5. Goal Attainment</td>
+  <td>Value Blocks, Sharing Insights</td>
+  <td>Meaningful realization of the reason for purchase, recognized by the customer</td>
+  <td>Business review held, dashboard delivered</td>
+  <td>The customer can describe the outcome achieved, connect it to the decision they made, and use it to justify the investment</td>
+  </tr>
+  <tr>
+  <td>6. Habit Transformation</td>
+  <td>Value Blocks</td>
+  <td>A durable change in how the customer works</td>
+  <td>Logins, users provisioned, usage reports sent</td>
+  <td>The new process is the default, the old one is retired, and the work runs without your team prompting it</td>
+  </tr>
+  <tr>
+  <td>7. Ongoing Alignment</td>
+  <td>Alignment Meeting</td>
+  <td>Shared understanding of evolving priorities, value, and what needs to happen next</td>
+  <td>Quarterly meeting held, deck presented</td>
+  <td>Updated objectives agreed, the next goal defined with a customer owner, new stakeholders engaged after changes in leadership or priorities</td>
+  </tr>
+  <tr>
+  <td>8. Renewal and Growth Decision</td>
+  <td>Renew &amp; Grow</td>
+  <td>A decision to renew, expand, reduce, or leave, grounded in the progression that came before it</td>
+  <td>Renewal meeting held, quote sent</td>
+  <td>The customer arrives with their own case for continuing: outcomes they can cite, a sponsor who backs it, a procurement path known well before the last ninety days, and next goals or growth already in view</td>
+  </tr>
+  </tbody>
+  </table></div>
+  <p>The eighth moment is different from the other seven. The renewal decision is where earlier progression becomes a revenue outcome. If the case for renewal has to be built at the end, the progression it depends on was missed earlier.</p>
+  <p>Some Inflection Points happen once. Goal Attainment, Habit Transformation, and Ongoing Alignment repeat through the middle of the relationship. Your business may need different moments, or more, or fewer. The question at each one is the same: what needs to become true for this customer to move forward? The <a href="navigating-post-sale-chaos-strategic-customer-success-qa/">8 Critical Moments</a> article walks through each one, and <a href="chapter-part3-intro.html">Part III</a> details the plays designed for them.</p>
+  <h2>Is Product Usage a Leading or Lagging Indicator?</h2>
+  <div class="direct-answer"><p><strong>Usage is commonly treated as a leading indicator of churn, and a decline can show up before a customer leaves. But it is usually a late signal.</strong> Usage tends to fall after something earlier has already failed: First Value never landed, the new way of working never took hold, or the sponsor never connected the result to a priority. By the time usage drops, it is rarely the cause of the risk. It is the evidence. Some at-risk customers never show a decline at all. Usage stays acceptable while the progression the renewal depends on never happens.</p></div>
+  <p>Consider a customer whose usage drops in month seven and who sends a churn notice in month eleven. The usage drop looks like the early warning. But the First Value the customer expected around week four never happened. Training was completed and the admin team logged in regularly, so the account looked active. The finance team simply never closed a month in the product. The real failure was about six months before usage moved.</p>
+  <p>The same holds for adoption, engagement, sentiment, and health. These are valuable signals, and nothing here argues for ignoring them. The point is timing and interpretation. <strong>Many metrics commonly called leading indicators appear after earlier customer progression has already succeeded or failed.</strong> A usage dip can mean risk, or seasonality, or a champion transition, or a process change outside the product. Strong usage in one group can hide a stall in another. Read against expected progression, the same number tells you much more.</p>
+  <p>Customer progression does not replace usage, health, or CSM judgment. It tells you how to interpret them.</p>
+  <h2>What Are the Leading Indicators of NRR?</h2>
+  <div class="direct-answer"><p><strong>The earliest leading indicators of NRR are evidence that customers are making the progression expected at each Inflection Point:</strong> a shared understanding of why they bought, First Value on time, goals visibly attained, durable changes in how they work, stakeholders engaged beyond a single champion, and alignment maintained as priorities shift. NRR itself arrives too late to change the behavior that produced it.</p></div>
+  <p>Keeping the base depends mostly on early progression: a clean start, clear goals, First Value. Growing it depends mostly on what comes after: goals attained, habits changed, and a champion and executive sponsor who can make the case for more without you in the room.</p>
+  <p>That gives three layers, ordered roughly by how early they appear:</p>
+  <ol>
+  <li><strong>Expected progression and its evidence.</strong> Earliest, and the most within your team's influence.</li>
+  <li><strong>Operational signals.</strong> Usage, adoption, engagement, sentiment, health. Valuable context, and easy to misread on their own. The strongest of them, such as depth of use or customers sharing wins internally, are often progression evidence under another name.</li>
+  <li><strong>Revenue outcomes.</strong> GRR and NRR. They confirm whether the system worked, but arrive too late to coach the behavior behind them.</li>
+  </ol>
+  <p>Progression evidence does not guarantee retention, expansion, or NRR. Some churn is unavoidable: an acquisition, a shutdown, a budget freeze, a customer outgrowing the solution. What progression gives you is earlier and more meaningful evidence about the churn and growth your company can influence.</p>
+  <h2>How Do You Know When a Customer Has Stalled?</h2>
+  <div class="direct-answer"><p><strong>A customer has stalled when the progression expected at an Inflection Point has not occurred when you expected it to, regardless of how active the account looks.</strong></p></div>
+  <p class="key-statement">The earliest evidence of customer risk may be the absence of expected progression.</p>
+  <p>A customer can remain active, responsive, and friendly while failing to make the changes required to realize value.</p>
+  <p>Stalls rarely announce themselves. Sometimes activity continues: meetings keep happening, but the next goal never gets an owner. Training is complete, but the old process still runs alongside the new one. The champion is enthusiastic, but no one else is carrying the business case internally. Sometimes the relationship simply goes quiet, often mid-contract, when the excitement of purchase has faded and the renewal still feels far away. And stalls are often partial: adoption can expand in one part of the organization while stalling in another.</p>
+  <p>You can only see a stall if you set an expectation first. If you believe First Value should happen within three weeks, track it. If it routinely takes six, find out why. Without an expected progression there is nothing to inspect.</p>
+  <p>A stall is not only a warning. It is something to diagnose. Ask which customer need is blocking progress: skill set, knowledge, cost in time, effort, or money, competing demands, or the key contact's ability to drive change internally. Underneath nearly every stalled initiative is a gap that can be addressed, and sometimes the answer is something the customer does not have yet: training, a done-for-you service, or an added capability.</p>
+  <h2>How Do You See Risk Before Usage Declines?</h2>
+  <div class="direct-answer"><p><strong>Look for missing progression, not falling activity.</strong> For each Inflection Point, define the change you expect, the window you expect it in, and the evidence that will confirm it. Then review which customers have passed the window without the evidence. Those customers can be at risk while usage, engagement, and sentiment still look fine.</p></div>
+  <p>A practical starting point:</p>
+  <ol>
+  <li><strong>Name the Inflection Points that matter for your segment.</strong> Start with the eight critical moments above and adjust.</li>
+  <li><strong>Define the expected progression at each one in customer terms.</strong> Not "training complete." "The customer's team runs the weekly report themselves."</li>
+  <li><strong>Set the evidence and the window.</strong> What would you see, and by when?</li>
+  <li><strong>Review the absences, then act.</strong> Who is overdue? Diagnose which of the <a href="chapter-13.html">five customer needs</a> is blocking progress, or whether product fit is the issue. Then adapt or rerun the play rather than waiting for the signal to turn red.</li>
+  </ol>
+  <p>None of this requires a predictive model. It requires writing down what you expect to change and checking whether it did.</p>
+  <h2>How Progression Connects to Health, the Pipeline, and Revenue</h2>
+  <p>Progression evidence gives a health score what it usually lacks. A health score built on it asks a better question than "is this customer red?" It asks whether the customer is progressing the way a healthy customer should. <a href="chapter-20.html">Chapter 20</a> shows how to build that score.</p>
+  <p>Progression evidence is also what changes revenue probability in the Post-Sale Pipeline. The mechanism runs in one direction: a play is executed, the intended customer progression either occurs or does not, evidence confirms it, and only then do the pipeline and its probability update. How that evidence turns into a more predictable forecast is covered in <a href="predictable-existing-customer-revenue.html">How Do You Make Existing-Customer Revenue More Predictable?</a>.</p>
+  <p class="key-statement">Activity tells you what happened. Progression tells you what changed. Evidence tells you whether that change actually occurred.</p>
+  <p>Build your view of the customer on the last two.</p>
+  <h2>Frequently Asked Questions</h2>
+  <h3>What is customer progression?</h3>
+  <p>Customer progression is the meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve. It does not require the full reason for purchase to be fulfilled; it is meaningful movement toward it.</p>
+  <h3>Is completing a play or onboarding task the same as customer progression?</h3>
+  <p>No. A play is what the company does; progression is what changes for the customer. A completed kickoff, training session, or configuration task can create the conditions for progression, but evidence is needed to show the intended change actually occurred.</p>
+  <h3>Is product usage a leading or lagging indicator?</h3>
+  <p>Usage is commonly treated as a leading indicator of churn, but it is usually a late signal. A decline tends to follow an earlier progression failure, such as a customer who never reached First Value or never changed how they work, and some at-risk customers never show a decline at all.</p>
+  <h3>What is the earliest sign of customer risk?</h3>
+  <p>It may be the absence of expected progression: a change that should have happened at an Inflection Point and did not, even though the customer is still active.</p>
+  <h3>Does customer progression guarantee renewal or expansion?</h3>
+  <p>No. Progression provides earlier and more meaningful evidence about what is happening with the customer. Some churn is unavoidable, such as an acquisition, a shutdown, or a budget freeze.</p>
+
+  <h2>Read Next</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="chapter-part3-intro.html">
+      <div class="tool-card-kicker">The Book · Part III</div>
+      <div class="tool-card-title">The Plays That Move the Pipeline</div>
+      <div class="tool-card-desc">The plays designed for each Inflection Point, and what each one is meant to change for the customer.</div>
+    </a>
+    <a class="tool-card" href="chapter-20.html">
+      <div class="tool-card-kicker">The Book · Chapter 20</div>
+      <div class="tool-card-title">Health Scoring That Actually Works</div>
+      <div class="tool-card-desc">Score progression, not just risk, so the health score sees change before renewal.</div>
+    </a>
+    <a class="tool-card" href="navigating-post-sale-chaos-strategic-customer-success-qa/">
+      <div class="tool-card-kicker">Inflection Points</div>
+      <div class="tool-card-title">8 Critical Moments in the Post-Sale Customer Journey</div>
+      <div class="tool-card-desc">Each moment where something has to change for the customer to keep progressing.</div>
+    </a>
+    <a class="tool-card" href="predictable-existing-customer-revenue.html">
+      <div class="tool-card-kicker">Forecasting</div>
+      <div class="tool-card-title">How Do You Make Existing-Customer Revenue More Predictable?</div>
+      <div class="tool-card-desc">How progression evidence changes revenue probability and sharpens the forecast.</div>
+    </a>
+  </div>
+
+  <p class="related-read">Go deeper: <a href="chapter-12.html">Chapter 12: The First Value Play</a>, designing the first meaningful result, and <a href="chapter-3.html">Chapter 3: The Role Evolution of the CSM</a>, why the CSM's job is to own customer progression.</p>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CXology</div>
+        <p class="footer-brand-desc">A Strategic Customer Success Operating System for predictable retention and scalable growth.</p>
+        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
+      </div>
+      <div>
+        <div class="footer-col-title">The Book</div>
+        <ul class="footer-links">
+          <li><a href="book.html#parts">Part I: From Function to System</a></li>
+          <li><a href="book.html#parts">Part II: The Pipeline</a></li>
+          <li><a href="book.html#parts">Part III: Lifecycle Plays</a></li>
+          <li><a href="book.html#parts">Part IV: Scale &amp; Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Frameworks</div>
+        <ul class="footer-links">
+          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
+          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
+          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
+          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="calculator.html">NRR Calculator</a></li>
+          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
+          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>

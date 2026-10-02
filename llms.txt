@@ -56,6 +56,7 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 - [The Post-Sale Journey Map](https://cxology.co/journey-map.html): Twelve months, eight rows: the complete CXology post-sale system on one map.
 
 ## Articles and Q&A
+- [How Do You Know Whether a Customer Is Actually Progressing?](https://cxology.co/customer-progression-leading-indicators.html): Activity is what happened, progression is what changed for the customer, and evidence shows whether it occurred. Why usage is usually a late signal, and why the earliest sign of risk may be missing progression.
 - [How Do You Make Existing-Customer Revenue More Predictable?](https://cxology.co/predictable-existing-customer-revenue.html): Put existing-customer revenue into a pipeline and manage the customer progression that moves it, so confirmed outcomes update probability and sharpen the forecast.
 - [8 Critical Moments in the Post-Sale Customer Journey](https://cxology.co/navigating-post-sale-chaos-strategic-customer-success-qa/): The eight customer inflection points, from purchase to the renewal and growth decision, and how plays and expected timing make customer progression visible.
 - [What Is Strategic Customer Success? Definition & Framework](https://cxology.co/strategic-customer-success/): The deliberate management of customer progression toward the outcomes that justified the purchase.
