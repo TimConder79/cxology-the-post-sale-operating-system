@@ -3485,7 +3485,7 @@ The preparation, execution, and follow-through required.
 
 Capacity
 
-The team availability needed to deliver consistently.
+The effort required, compared with the time the team actually has.
 
 Investment
 
@@ -3497,9 +3497,15 @@ Customer Success teams rarely suffer from a lack of work. They suffer from a lac
 
 Designed effort gives this work a name. It asks leaders to understand the full effort required to deliver a service moment well. Preparation, execution, and follow-through all count because customers experience the quality of all three. A meeting that is poorly prepared feels generic. A meeting that is poorly facilitated feels wasteful. A meeting with weak follow-through erodes trust because nothing changes after the conversation ends.
 
+The arithmetic is simple, and it changes the conversation. Consider a customer meeting scheduled for 60 minutes. Preparing well takes about 30 minutes: reviewing goals and progress, pulling usage and outcomes, shaping the agenda. Following through takes another 20: documenting decisions, sending the recap, confirming owners and next steps. The designed effort is 110 minutes, not 60. A model that counts only calendar time underestimates the work by almost half before a single customer has been added. Larger plays carry even more: a full Alignment Meeting, with insight gathering and executive preparation, is modeled at 3.5 hours in the Capacity Planner.
+
+Repeat that across the plays a customer needs in a year and the workload becomes concrete. Using the Capacity Planner’s starting defaults, a high-touch customer moving through Purchase and Welcome, Kickoff, Onboarding, quarterly Alignment Meetings, and ongoing Value Blocks and insights requires about 27.5 hours of designed effort in year one. Half of it, 14 hours, lands in the first three months. In year two, without kickoff and onboarding, the same customer needs about 18. A low-touch customer needs about 8.5 hours in year one and 4 after that. These are planning assumptions, not benchmarks. Your plays and estimates will differ, which is the point.
+
 When designed effort is mapped across the first year of the customer journey, the workload starts to take shape. The early months are naturally heavier because trust, orientation, onboarding, and first value require intensity. Later months shift toward reinforcement, insight, alignment, and renewal readiness. The work does not disappear after onboarding; it changes form. A strong capacity model shows that change clearly.
 
 This matters because many resourcing conversations treat customers as if they are equal units of work. They are not. A new customer in onboarding is not the same capacity requirement as a mature customer who has completed an Alignment Meeting and is progressing through established goals. A high-touch customer with complex stakeholders is not the same as a low-touch customer moving through a mostly automated journey. Capacity planning must reflect the experience you designed, not just the number of accounts assigned to a person.
+
+This is why ARR per CSM and accounts per CSM fail as staffing models. Customer count and ARR describe the customers or revenue being managed. They do not describe the work required to help those customers progress. Two companies can each run at $2 million in ARR per CSM while one team is comfortable and the other is drowning, because the work behind that ARR is completely different. ARR tells you the value of the customers. It doesn’t tell you the work required to move them forward. Benchmarks still have a place. They are useful context and a good sanity check on a model. They are not the model. The better question is not how many customers a CSM can manage. It is how many customers a CSM can move forward.
 
 ## The Real Capacity Problem Is the Effort Mix
 
@@ -3525,7 +3531,7 @@ Necessary to operate
 
 ### Unplanned Effort
 
-The unexpected work created by escalations, broken handoffs, unclear ownership, system gaps, or urgent customer situations.
+Unexpected or avoidable work that consumes productive capacity, often created by escalations, broken handoffs, unclear ownership, or system gaps.
 
 Most likely to hide risk
 
@@ -3545,6 +3551,28 @@ This is why proactive design matters. As the journey becomes clearer and service
 
 That shift is the difference between a team that is constantly catching up and a team that is leading the customer forward. It is also the difference between a budget request based on exhaustion and a resource plan based on design.
 
+## Availability Is an Assumption, Not a Rule
+
+The effort mix leads directly to the supply side of the model. If indirect and unplanned effort are real, then no one on the team has 40 hours a week for customer work. Availability is the percentage of a person’s capacity realistically available for direct customer work after indirect and unplanned effort are accounted for.
+
+CXology has long used 65 percent availability, roughly 26 hours of direct customer time in a 40-hour week, as a planning starting point. It is a useful place to begin. It is not a universal benchmark, and it is not a best practice to enforce. A team carrying heavy cross-functional responsibilities may run closer to 55 percent. A team with strong operations support may sustain more. What matters is that the number is explicit, tested against how the team actually spends its time, and refined as the model matures.
+
+The one assumption that reliably breaks a capacity plan is 100 percent. When leaders assume a full week of customer-facing time, they ignore the work Customer Success does for Sales, Product, leadership, and the team itself. The plan looks efficient on paper and fails in the first month.
+
+Keep the two halves of the model separate. Designed effort describes the demand: how much work the customer experience requires. Availability describes the supply: how much of the team’s time can go to that work. Most staffing arguments go sideways because those two ideas get collapsed into a single ratio.
+
+## Capacity Is a Forecast, Not a Ratio
+
+A ratio is a snapshot. Capacity is a forecast. Customer work moves through the year. New customers arrive in uneven waves, each bringing a heavy first quarter before settling into a steadier pattern. Existing customers cycle through alignment and renewal windows. High-touch and low-touch customers carry different effort profiles, and year-one customers require more than customers in year two and beyond.
+
+The team moves too. People take time off, some months have more workable hours than others, and new hires do not arrive at full strength. Recruiting takes time, and a new CSM might carry a quarter of a full load in the first month, half in the second, and three quarters in the third.
+
+This is why the CXology model looks across 12 months, placing existing customers in their actual lifecycle month, layering in expected new customers by touch model, and comparing that demand with current and future resources at realistic availability. In a simple illustration, a team of three CSMs with 100 existing high-touch customers, adding four more each month, looks comfortable in month one and tightens by month four. It hits its first pinch in month six, a month with fewer workable hours, and stays over capacity from month nine on. Nothing dramatic happens in any single month. Demand climbs because every new customer adds a heavy first quarter and then stays in the base. And because a hire who starts in month six will not be fully productive until month nine, the decision needed to happen when the team still felt fine.
+
+That changes the question leaders should be asking. Not how many CSMs do we need, but when will the customer work we have designed exceed the capacity of the team available to perform it?
+
+The goal is not to predict every hour. Estimates will be wrong in places. The value of the forecast is that it makes the work visible, exposes the assumptions to challenge, and shows where demand and capacity diverge early enough to act.
+
 ## Capacity Planning Forces the Trade-Off Conversation
 
 The first real capacity plan can be uncomfortable. When you translate the full journey into designed effort, the number may be larger than expected. That is not a failure of the model. It is the model doing its job. It is showing the organization what the current strategy actually costs if it is delivered with consistency.
@@ -3557,7 +3585,7 @@ This is where capacity planning becomes a leadership tool. It allows the CS lead
 
 If leadership does not want to fund the full experience, the answer is not silent overload. The answer is an explicit decision about what changes.
 
-Those trade-offs are powerful. The company may decide to add headcount. It may decide to reduce or automate specific service moments. It may segment the journey differently by customer tier. It may shift work from human-led delivery to programmatic guidance. It may decide that certain customers receive a lighter model because the economics do not justify the designed effort. The point is not that every service moment must survive. The point is that decisions are made with visibility.
+Those trade-offs are powerful. The company may decide to add headcount, and start early enough to cover ramp time. It may decide to reduce, redesign, or automate specific service moments. It may move work to another role, such as onboarding specialists, renewal managers, or partners. It may segment the journey differently by customer tier, shifting some customers to a lighter or one-to-many model because the economics do not justify the designed effort. Or it may explicitly accept a lighter experience and name what customers will no longer receive. The point is not that every service moment must survive. The point is that decisions are made with visibility. Capacity planning doesn’t just tell you how many people you need. It forces you to decide what customer work you’re willing to fund.
 
 Leadership Decision
 
@@ -3575,9 +3603,17 @@ Automate
 
 Shift repeatable work away from scarce human capacity.
 
+Shift
+
+Move work to the role best suited to deliver it.
+
 Redesign
 
-Change the journey when the economics do not support the model.
+Change the journey or touch model when the economics do not support it.
+
+Accept
+
+Fund less than the design, and name what customers will not receive.
 
 This is also how CS earns a stronger seat at the table. Not by asking the company to care more about customers in the abstract, but by showing how customer experience, retention risk, growth opportunity, team capacity, and investment decisions connect. Numbers create shared language. They allow peers to participate in the decision. They turn a capacity request into a business conversation.
 
@@ -3619,7 +3655,7 @@ Interactive Tool
 
 CS Capacity Planner
 
-Use the capacity planner to translate designed service moments into effort, capacity, and headcount scenarios. The tool is not a replacement for strategy; it is the layer that helps leaders turn strategy into a resource plan.
+Use the capacity planner to translate designed service moments into a 12-month forecast of demand against available capacity, including new customers, lifecycle timing, future hires, and ramp. The tool is not a replacement for strategy; it is the layer that helps leaders turn strategy into a resource plan.
 
 Open the Capacity Planning Tool →
 
@@ -3631,11 +3667,13 @@ The model does not create clarity by itself. It exposes the clarity, or the lack
 
 **How the Pipeline Moves**
 
-Capacity planning closes the loop on the post-sale pipeline. The pipeline defines how customers progress. The plays define the work that creates progression. Capacity planning answers whether the organization has enough of the right effort to execute the plays that keep the pipeline moving. When capacity is insufficient, plays are skipped or degraded, stage advancement stalls, and the pipeline produces forecasts that cannot be trusted. The pipeline is a designed system. Capacity planning is the investment decision that determines whether the design can be delivered.
+Capacity planning closes the loop on the post-sale pipeline. The pipeline defines how customer revenue moves. Plays are the work designed to help customers progress, and evidence of that progression is what advances a stage. Capacity planning answers whether the organization has enough of the right effort to execute those plays well. When capacity is insufficient, plays are skipped or degraded, customers miss the progression the plays were designed to create, the evidence never appears, and the pipeline produces forecasts that cannot be trusted. The pipeline is a designed system. Capacity planning is the investment decision that determines whether the design can be delivered.
 
 This is where proactive capacity planning fulfills its purpose. It allows organizations to invest with intention, scale with confidence, and deliver an experience that is both designed and sustainable. It transforms Customer Success from a reactive function trying to keep up into an operating system that can be measured, managed, funded, and improved.
 
 Most importantly, it ensures that the experience promised to the customer is the experience the company is actually prepared to deliver.
+
+For a standalone walkthrough of the model, from the 110-minute meeting to a 12-month forecast, read How Many Customers Should a CSM Manage?
 
 
 # Back matter
@@ -4154,3 +4192,306 @@ It may be the absence of expected progression: a change that should have happene
 ### Does customer progression guarantee renewal or expansion?
 
 No. Progression provides earlier and more meaningful evidence about what is happening with the customer. Some churn is unavoidable, such as an acquisition, a shutdown, or a budget freeze.
+
+## How Many Customers Should a CSM Manage?
+Source: https://cxology.co/customer-success-capacity.html
+
+There is no universal number of customers a CSM should manage. The right number depends on how much work your customers need to progress and how much time your team realistically has to do it.
+
+Industry data shows CSMs averaging about 22 accounts in high-touch models and about 144 in low-touch ones, a sixfold difference driven by the work, not the people. To find your number, start with the work: the plays and service moments your customers need, the full effort each one takes, and when that work happens across the year. Then compare that demand with the capacity your team actually has.
+
+Definition
+
+Customer Success capacity is the amount of customer work a team can realistically perform in a given period. It should be planned from the work an organization has intentionally designed to help customers progress, not from a fixed ratio of accounts or ARR per CSM.
+
+### Why Leaders Ask for a Benchmark
+
+If you're looking for a CSM ratio, there's usually a reason. You're building a budget, defending a headcount request, or answering a CFO who wants to know why your team needs another person when a peer company seems to do fine with fewer.
+
+That is a fair question, and benchmarks exist for it. The most widely cited come from Gainsight's analysis of platform data across 17,034 CSMs at US-based customers. It found a median of $1.4 million in ARR per CSM, with the top quartile at $4.2 million. By touch model, CSMs averaged about 22 accounts in high-touch segments (ACV above $100K), 49 in mid-touch ($10K to $100K), and 144 in low-touch (below $10K).1
+
+Those numbers are useful context. They can tell you whether you're far outside the norm and prompt good questions about why. But look at what they show. The top quartile manages three times the ARR of the median. Accounts per CSM changes by a factor of six or more depending on the touch model. The benchmarks themselves are telling you that the number depends on the work. What they can't do is tell you how many people your customers require.
+
+### Why Doesn't ARR per CSM Work as a Staffing Model?
+
+Customer count and ARR describe the customers or revenue being managed. They do not describe the work required to help those customers progress.
+
+ARR tells you the value of the customers. It doesn't tell you the work required to move them forward.
+
+Picture two companies, each running at $2 million in ARR per CSM. At the first, customers buy a simple product, implement it in a few weeks, and involve two or three stakeholders. At the second, customers go through a complex implementation, multiple user groups, integrations, and real organizational change before they reach the outcome they bought. The ratio is identical. The work is not remotely the same.
+
+Accounts per CSM has the same problem. Fifty customers that each need 5 hours of work a year and fifty customers that each need 30 are not the same job, even though the ratio says they are.
+
+A ratio describes how work has been distributed. It doesn't tell you how much work exists. That's why two teams with identical ratios can be comfortably staffed and badly overloaded at the same time.
+
+### Start With the Work Customers Need to Progress
+
+A better question than "how many customers can a CSM manage?" is this:
+
+How many customers can a CSM move forward?
+
+That question points at the work. And the work starts with customer progression: the meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve (see How Do You Know Whether a Customer Is Actually Progressing?).
+
+If you know what progression needs to happen, you can design the plays and service moments intended to help create it: a kickoff that produces clarity on goals and responsibilities, an onboarding motion that gets the customer to first use, a push to First Value, recurring Alignment Meetings, insight sharing, renewal preparation. Those plays require work. That work creates demand for capacity.
+
+The CXology capacity mechanism runs in five steps:
+
+- Expected customer progression
+
+- Plays and service moments
+
+- Designed effort
+
+- Customer population and lifecycle timing
+
+- Required capacity
+
+- Expected customer progression. What needs to change for the customer, and when.
+
+- Plays and service moments. What your team does to help create that change.
+
+- Designed effort. The full effort each play requires: preparation, execution, and follow-through.
+
+- Customer population and lifecycle timing. How many customers need each play, and in which months.
+
+- Required capacity. The total work, month by month, compared with the time your team actually has.
+
+A play is what your team does. Progression is what changes for the customer. Running a play doesn't guarantee progression, but you can't plan for progression without funding the work designed to create it.
+
+### What Is Designed Effort?
+
+Definition
+
+Designed effort is the full effort required to deliver a play or service moment well: preparation, execution, and follow-through. The time on the calendar is only part of the workload.
+
+Start with one meeting. A customer meeting is scheduled for 60 minutes. Delivering it well takes more than that:
+
+Designed effort for one 60-minute meeting
+
+Part of the work | What it includes | Time
+
+Preparation | Review goals and progress, pull usage and outcomes, shape the agenda | 30 min
+
+Execution | The meeting itself | 60 min
+
+Follow-through | Document decisions, send the recap, confirm owners and next steps, update the plan | 20 min
+
+Designed effort | | 110 min
+
+A 60-minute meeting requires 110 minutes of capacity. If your model counts only the 60, it underestimates the work by almost half before you've added a single customer.
+
+Bigger plays carry even more hidden work. A full Alignment Meeting, with insight gathering, executive briefing, stakeholder preparation, the meeting itself, and follow-through, is modeled at 3.5 hours in the CXology Capacity Planner, even though the meeting on the calendar may last an hour.
+
+This is the most common hidden error in CS capacity: counting meetings instead of work. Preparation and follow-through are not overhead. Customers feel the quality of all three. A poorly prepared meeting feels generic, and a meeting without follow-through erodes trust because nothing changes afterward.
+
+### From One Meeting to One Customer
+
+Now repeat that thinking across the plays one customer needs in their first year. The figures below are the starting defaults in the CXology Capacity Planner for a high-touch customer, so you can reproduce them there. They are planning assumptions, not benchmarks. Your plays and estimates will differ.
+
+Designed effort for one high-touch customer, year one
+
+Play / service moment | When | Designed effort
+
+Purchase & Welcome, Kickoff, and Onboarding start | Month 1 | 8.5 hrs
+
+Onboarding continued | Months 2 and 3 | 2 hrs
+
+Quarterly Alignment Meetings (4 at 3.5 hrs) | Months 3, 6, 9, 12 | 14 hrs
+
+Value Blocks and insights (0.5 hr a month) | Months between alignments | 3 hrs
+
+Designed effort, year one | | 27.5 hrs
+
+Two things show up immediately.
+
+First, the work is not spread evenly. About half of it, 14 of the 27.5 hours, lands in the first three months, when kickoff, onboarding, and the push to First Value require intensity.
+
+Second, year two looks different. Without kickoff and onboarding, the same customer needs about 18 hours, weighted toward alignment, insights, and renewal readiness. The work doesn't disappear after onboarding. It changes form.
+
+Touch model changes it again. The Planner's default low-touch customer needs about 8.5 hours in year one and 4 hours a year after that.
+
+That's why a customer is not a unit of work. A new high-touch customer in month two and a mature low-touch customer in year three both count as "one account" on a ratio, yet one needs several times the capacity of the other.
+
+### Direct, Indirect, and Unplanned Effort
+
+Designed plays are not the only thing that consumes a CSM's week. Capacity planning separates three kinds of effort:
+
+The effort mix
+
+Effort type | What it is | Examples
+
+Direct effort | Work that directly contributes to customer success. Includes designed proactive work and reactive customer work. | Plays and service moments; answering customer questions; resolving issues
+
+Indirect effort | Necessary internal work that consumes capacity but doesn't directly serve an individual customer. | Team meetings, enablement, planning, internal coordination, supporting Sales and Product
+
+Unplanned effort | Unexpected or avoidable work that consumes productive capacity. | Escalations from broken handoffs, unclear ownership, system gaps, urgent internal asks
+
+Indirect effort is real work, not a sign of poor discipline. Unplanned effort deserves a harder look. When too much of the week disappears into it, hiring may not be the first answer. The operating model may need attention.
+
+Definition
+
+Availability is the percentage of a person's capacity realistically available for direct customer work after indirect and unplanned effort are accounted for.
+
+CXology has historically used 65% availability, about 26 hours of direct customer time in a 40-hour week, as a planning starting point. It is not a universal benchmark or a best-practice requirement. It is an assumption to validate. A team carrying heavy internal responsibilities may run closer to 55%. A team with strong operations support and little cross-functional load may sustain more. What matters is that the number is explicit, tested against how your team actually spends its time, and refined as you learn.
+
+The one assumption that reliably breaks a capacity model is 100%. If your plan assumes a 40-hour week can be filled with 40 hours of designed customer work, the model is wrong before it starts.
+
+Keep the two ideas separate: designed effort describes the demand (how much work the customers need), and availability describes the supply (how much of your team's time can go to it). Most staffing arguments go sideways because those two get blended into one ratio.
+
+### How Do You Calculate Customer Success Capacity?
+
+Customer Success capacity planning compares two numbers: the designed effort your customers require and the time your team has available to deliver it.
+
+- Define the progression customers need to make across the lifecycle.
+
+- List the plays and service moments designed to help create that progression, by segment or touch model.
+
+- Estimate designed effort for each play: preparation + execution + follow-through.
+
+- Multiply by the customers who need each play, placed in the months they need it.
+
+- Calculate available capacity: each person's workable hours × target availability, adjusted for new-hire ramp and planned hires, with a share of that time held back for reactive customer work.
+
+- Compare demand with available capacity month by month, and decide what to do where they diverge.
+
+Required capacity = Σ (designed effort per play × customers needing that play in the period)
+
+Available capacity = Σ (each person's workable hours × availability × share left for designed work)
+
+A first pass with the Planner's default assumptions:
+
+- About 2,000 workable hours a year × 65% availability ≈ 1,300 hours of direct customer time per CSM.
+
+- Reactive customer work (questions, issues, requests for help) is direct work too. Holding back 30% of direct time for it leaves about 900 hours a year for designed work.
+
+- At 27.5 hours per year-one high-touch customer, that's room for about 33 such customers. At 18 hours per year-two high-touch customer, about 50. At 4 hours per year-two low-touch customer, more than 200.
+
+Notice the shape. A work-based model lands in the same broad territory as the benchmarks above, with a few dozen accounts in high-touch and hundreds in low-touch. The difference is that you can see why, and you can change the answer by changing the work.
+
+That gives you a defensible answer to "how many customers should a CSM manage?" for your own design. But it's still a static answer. It assumes every customer is at the same point in the lifecycle, needs the same work every month, and that the team never changes. None of that is true, which is why the real model looks across time.
+
+### Capacity Is a 12-Month Forecast, Not a Ratio
+
+Customer work moves. New customers arrive in uneven waves. Each one brings a heavy first quarter, then settles into a steadier pattern. Existing customers cycle through quarterly alignment and renewal windows. High-touch and low-touch models carry different effort profiles. Year-one customers need more than year-two customers.
+
+The team moves too. Some months have more workable hours than others. New hires don't arrive at full strength: recruiting takes time, and a new CSM may contribute a quarter of a full load in their first month, half in the second, and three-quarters in the third.
+
+So the CXology model looks across 12 months and accounts for:
+
+- Existing customers, placed in their actual lifecycle month
+
+- Expected new customers, by month and by touch model
+
+- Different effort in year one versus subsequent years
+
+- Current resources and their realistic availability
+
+- Future hires and new-hire ramp time
+
+Here's what that looks like for a simple illustrative team: three CSMs, 100 existing high-touch customers in year two or later, and four new high-touch customers added every month, using the effort and availability assumptions above.
+
+Illustrative 12-month view: demand against capacity
+
+Month | Designed effort required | Capacity for designed work | Position
+
+1 | ~185 hrs | ~230 hrs | Comfortable
+
+4 | ~210 hrs | ~240 hrs | Tightening
+
+6 | ~225 hrs | ~205 hrs | First pinch (a short month)
+
+9 | ~240 hrs | ~220 hrs | Over
+
+12 | ~260 hrs | ~230 hrs | Over, and still climbing
+
+Nothing dramatic happens in any single month. Demand climbs because every new customer adds a heavy first quarter and then stays in the base. A ratio taken in month one would say this team is fine. The forecast shows a first pinch in month six, when fewer workable hours meet growing demand, and a team that stays over capacity from month nine on.
+
+And because a hire who starts in month six won't be fully productive until about month nine, the staffing decision for this team needed to happen around month two or three, when the team still felt comfortable.
+
+That's the more useful operating question. Not "how many CSMs do I need?" but:
+
+When will the customer work we have designed exceed the capacity of the team available to perform it?
+
+The point is not to predict every hour. Estimates will be wrong in places, and that's fine. The value of the forecast is that it makes the work visible, exposes the assumptions so others can challenge them, and shows where demand and capacity diverge early enough to do something about it.
+
+### When the Work Exceeds the Team: Staffing or Service Design
+
+When required work exceeds available capacity, the answer is not automatically "hire." Leadership has real choices:
+
+Six choices when demand exceeds capacity
+
+Choice | What it means
+
+Add capacity | Hire, and start early enough to cover ramp time.
+
+Reduce or redesign service moments | Remove plays that don't help customers progress, or make them lighter.
+
+Automate work | Move repeatable work, such as onboarding steps or routine insights, to programmatic delivery.
+
+Move work to another role | Shift onboarding, renewals, or technical work to specialists or partners.
+
+Change the touch model | Serve some segments with a lighter or one-to-many model.
+
+Accept the tradeoff explicitly | Fund less than the designed experience, and name what customers will no longer receive.
+
+All of these are legitimate if they're made deliberately. The one option that isn't legitimate is the default most teams fall into: keep the design, skip the funding, and let the team quietly absorb the gap. That's when plays get skipped or degraded, progression stalls, and the organization depends on heroic effort from a few people.
+
+Capacity planning doesn't just tell you how many people you need. It forces you to decide what customer work you're willing to fund.
+
+That's also what changes the conversation with a CFO. Instead of "our ARR per CSM is too high," a CS leader can say: "This segment needs these plays to move customers forward. Those plays require this much effort. Based on the customers we already have and the ones we expect to add, we run out of capacity in month six. Here are the options, and here's what each one means for customers."
+
+### Where Benchmarks Still Help
+
+None of this makes ARR per CSM or accounts per CSM useless. They are good context:
+
+- They can tell you whether your model is far outside the range of comparable companies.
+
+- They can raise good questions: why one segment supports more accounts than another, or why your ratio has shifted over time.
+
+- They can sanity-check a capacity model. If your work-based model implies a ratio wildly different from peers, look at your assumptions before you defend the number.
+
+The problem starts when the benchmark becomes the model. Use benchmarks to check your thinking. Build capacity from the work.
+
+### How to Start, and Where the Capacity Planner Fits
+
+You don't need a perfect future-state design to begin.
+
+- Start with the work your team does today. List every kickoff, onboarding session, alignment meeting, insight email, and renewal conversation. Make current reality visible before redesigning it.
+
+- Estimate for the experience you want to deliver consistently, not for the handful of outlier customers who consume unusual amounts of time.
+
+- Use original contract start dates so each customer is placed in the right lifecycle month and follows the right year-one or later-year pattern.
+
+- Treat every number as an assumption. Effort estimates, availability, and ramp all get better once you compare them with what actually happens.
+
+The CXology Capacity Planner is built around this model. It takes planned growth by touch model, your current customers by contract start month, designed effort by lifecycle month for year one and later years, current and future team members with ramp, and target availability. It returns a 12-month view of demand against available capacity, the first month the team goes over, and when hiring needs to start. Use it to test the choices above: add a hire, remove a service moment, change the touch model, or reduce reactive work, and see how the forecast moves.
+
+For the full argument on capacity as the investment decision behind the post-sale operating system, read Chapter 22: Proactive Capacity Planning.
+
+### Frequently Asked Questions
+
+### How many customers should a CSM manage?
+
+There's no universal number. It depends on the work your customers need to progress and the time your team realistically has for it. Calculate it by estimating the designed effort (preparation, execution, and follow-through) for each play customers need, then comparing total demand with each CSM's available hours. Benchmarks can give context, but they can't account for your product, customers, or service design.
+
+### How do you calculate Customer Success capacity?
+
+Define the progression customers need to make, list the plays and service moments designed to help create it, and estimate the designed effort for each. Multiply by the customers who need each play in each month, then compare the result with your team's available hours over 12 months, accounting for availability, reactive work, future hires, and new-hire ramp.
+
+### Why doesn't ARR per CSM work as a staffing model?
+
+ARR describes the value of the customers being managed, not the work required to move them forward. Two companies with the same ARR per CSM can have completely different implementation complexity, stakeholders, and service designs, so the same ratio can mean a comfortable team at one and an overloaded team at the other.
+
+### What is designed effort in Customer Success?
+
+Designed effort is the full effort required to deliver a play or service moment well: preparation, execution, and follow-through. A 60-minute meeting that needs 30 minutes of preparation and 20 minutes of follow-through has a designed effort of 110 minutes.
+
+### What availability should a CSM capacity model assume?
+
+CXology uses 65% availability, about 26 direct customer hours in a 40-hour week, as a planning starting point. It's an assumption to validate against how your team actually spends its time, not a universal benchmark. The remaining time goes to indirect work, such as internal meetings and enablement, and to unplanned work.
+
+### Is hiring the only answer when the team is over capacity?
+
+No. Leadership can add capacity, redesign or remove service moments, automate work, move work to another role, change the touch model, or explicitly accept a lighter customer experience. Capacity planning makes the tradeoff visible so it's a decision rather than silent overload.
+
+Source 1: Nick Mehta and Shantan Reddy, "Gainsight Horizon AI Labs: What Is the Right CSM to Customer Ratio?", Gainsight, July 29, 2022. https://www.gainsight.com/blog/gainsight-horizon-ai-labs-what-is-the-right-csm-to-customer-ratio/

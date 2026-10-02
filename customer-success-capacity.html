@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Many Customers Should a CSM Manage? Customer Success Capacity — CXology</title>
+  <meta name="description" content="There is no universal CSM ratio. Plan Customer Success capacity from designed effort, realistic availability, and a 12-month forecast of the work."/>
+  <link rel="canonical" href="https://cxology.co/customer-success-capacity.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="The Post-Sale Operating System"/>
+  <meta property="og:title" content="How Many Customers Should a CSM Manage? Customer Success Capacity — CXology"/>
+  <meta property="og:description" content="There is no universal CSM ratio. Plan Customer Success capacity from designed effort, realistic availability, and a 12-month forecast of the work."/>
+  <meta property="og:url" content="https://cxology.co/customer-success-capacity.html"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="How Many Customers Should a CSM Manage? Customer Success Capacity — CXology"/>
+  <meta name="twitter:description" content="There is no universal CSM ratio. Plan Customer Success capacity from designed effort, realistic availability, and a 12-month forecast of the work."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+    /* Page-specific additions only — core styles come from style.css */
+    .reading-progress { position: fixed; top: 60px; left: 0; right: 0; z-index: 99; height: 3px; background: rgba(0,0,0,.06); }
+    .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
+
+    /* Chapter-body typography — matches the book chapters exactly */
+    .chapter-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-100); }
+    .chapter-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy-light); margin: 1.5rem 0 0.5rem; }
+    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.82; max-width: 72ch; }
+    .chapter-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .chapter-body p a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .chapter-body p a:hover { color: var(--olive-dim); text-decoration-color: var(--olive-dim); }
+    .chapter-body p.related-read { font-size: 0.9rem; color: var(--text-muted); margin: .2rem 0 0; max-width: 72ch; }
+
+    /* Direct answer + emphasized statement */
+    .chapter-body p.answer-lead { font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: var(--navy); max-width: 72ch; border-left: 4px solid var(--olive); padding: .15rem 0 .15rem 1.2rem; margin: .5rem 0 1.6rem; }
+    .chapter-body p.key-statement { font-size: 1.2rem; line-height: 1.5; font-weight: 700; color: var(--navy); background: var(--olive-pale); border-radius: var(--radius-md); padding: 1.15rem 1.4rem; margin: 2rem 0; max-width: 72ch; }
+
+    /* Forecast-loop diagram */
+    .diagram-wrap { margin: 1.6rem 0 1rem; }
+    .diagram-wrap svg { width: 100%; height: auto; display: block; }
+    .chapter-body p.diagram-caption { font-size: .82rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+
+    /* Read-next cards (same treatment as the conclusion chapter) */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+    @media (max-width: 760px) { .tool-grid { grid-template-columns: 1fr; } }
+  
+    /* Initiative 2 additions */
+    .chapter-body ol:not(.flow) { padding-left: 1.4rem; margin-bottom: 1rem; max-width: 72ch; }
+    .chapter-body .direct-answer { border-left: 4px solid var(--olive); background: var(--off-white); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .direct-answer p { margin: 0; color: var(--gray-700); }
+    .chapter-body .def { border: 1px solid var(--gray-200); border-top: 4px solid var(--navy); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; background: var(--white); }
+    .chapter-body .def-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-dim); margin-bottom: .35rem; }
+    .chapter-body .def p { margin: 0; font-size: 1.02rem; color: var(--navy); }
+    .chapter-body ol.flow { list-style: none; padding: 0; margin: .4rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; max-width: 72ch; }
+    .chapter-body ol.flow li { margin: 0; background: var(--navy); color: #fff; font-size: .85rem; font-weight: 600; padding: .4rem .75rem; border-radius: 999px; line-height: 1.3; }
+    .chapter-body ol.flow li:not(:last-child)::after { content: "\2192"; color: var(--olive); margin-left: .55rem; font-weight: 700; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1rem; max-width: 100%; }
+    table.cmp { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
+    table.cmp caption { caption-side: top; text-align: left; font-weight: 700; color: var(--navy); font-size: .95rem; margin-bottom: .6rem; }
+    table.cmp th, table.cmp td { text-align: left; padding: .6rem .75rem; border: 1px solid var(--gray-200); vertical-align: top; color: var(--gray-700); }
+    table.cmp thead th { background: var(--navy); color: #fff; font-weight: 700; }
+    table.cmp tbody tr:nth-child(even) td { background: var(--off-white); }
+    table.cmp td:first-child { font-weight: 700; color: var(--navy); }
+    table.cmp-wide { min-width: 820px; }
+    .chapter-body h3 + p { margin-top: 0; }
+    /* Initiative 3 additions */
+    .chapter-body .formula { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: .9rem 1.2rem; margin: .4rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .formula p { margin: .2rem 0; font-size: .92rem; color: var(--navy); }
+    .chapter-body sup a { color: var(--olive-dim); font-weight: 700; text-decoration: none; padding: 0 .1rem; }
+    .chapter-body .sources { border-top: 1px solid var(--gray-200); margin: 2rem 0 1rem; padding-top: 1rem; max-width: 72ch; }
+    .chapter-body .sources-title { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .4rem; }
+    .chapter-body .sources p { font-size: .82rem; line-height: 1.6; color: var(--text-muted); }
+    table.cmp td:last-child { white-space: nowrap; }
+    #effort-mix td:last-child, #choices td:last-child { white-space: normal; }
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://cxology.co/customer-success-capacity.html#article",
+      "headline": "How Many Customers Should a CSM Manage?",
+      "description": "There is no universal CSM ratio. Plan Customer Success capacity from designed effort, realistic availability, and a 12-month forecast of the work.",
+      "url": "https://cxology.co/customer-success-capacity.html",
+      "mainEntityOfPage": {
+        "@id": "https://cxology.co/customer-success-capacity.html"
+      },
+      "inLanguage": "en",
+      "image": "https://cxology.co/og-image.png",
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "isPartOf": {
+        "@id": "https://cxology.co/#book"
+      },
+      "citation": "https://www.gainsight.com/blog/gainsight-horizon-ai-labs-what-is-the-right-csm-to-customer-ratio/",
+      "about": [
+        {
+          "@type": "DefinedTerm",
+          "name": "Customer Success capacity",
+          "description": "The amount of customer work a team can realistically perform in a given period, planned from the work an organization has intentionally designed to help customers progress, not from a fixed ratio of accounts or ARR per CSM."
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Designed effort",
+          "description": "The full effort required to deliver a play or service moment well: preparation, execution, and follow-through."
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Availability",
+          "description": "The percentage of a person's capacity realistically available for direct customer work after indirect and unplanned effort are accounted for."
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://cxology.co/#tim",
+      "name": "Tim Conder",
+      "jobTitle": "Fractional CX & CS Leader, Author",
+      "description": "Post-sale systems builder and creator of CXology. 20+ years in B2B SaaS building customer success and post-sale revenue systems.",
+      "image": "https://cxology.co/Tim_Conder_Headshot.jpg",
+      "url": "https://cxology.co/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/tim-conder/"
+      ],
+      "worksFor": {
+        "@id": "https://cxology.co/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxology.co/#org",
+      "name": "CXology",
+      "url": "https://cxology.co",
+      "logo": "https://cxology.co/assets/logo-h-bb.png"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://cxology.co/#book",
+      "name": "The Post-Sale Operating System",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "url": "https://cxology.co/book.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cxology.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Book",
+          "item": "https://cxology.co/book.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How Many Customers Should a CSM Manage?",
+          "item": "https://cxology.co/customer-success-capacity.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many customers should a CSM manage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's no universal number. It depends on the work your customers need to progress and the time your team realistically has for it. Calculate it by estimating the designed effort (preparation, execution, and follow-through) for each play customers need, then comparing total demand with each CSM's available hours. Benchmarks can give context, but they can't account for your product, customers, or service design."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate Customer Success capacity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Define the progression customers need to make, list the plays and service moments designed to help create it, and estimate the designed effort for each. Multiply by the customers who need each play in each month, then compare the result with your team's available hours over 12 months, accounting for availability, reactive work, future hires, and new-hire ramp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why doesn't ARR per CSM work as a staffing model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ARR describes the value of the customers being managed, not the work required to move them forward. Two companies with the same ARR per CSM can have completely different implementation complexity, stakeholders, and service designs, so the same ratio can mean a comfortable team at one and an overloaded team at the other."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is designed effort in Customer Success?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Designed effort is the full effort required to deliver a play or service moment well: preparation, execution, and follow-through. A 60-minute meeting that needs 30 minutes of preparation and 20 minutes of follow-through has a designed effort of 110 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What availability should a CSM capacity model assume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CXology uses 65% availability, about 26 direct customer hours in a 40-hour week, as a planning starting point. It's an assumption to validate against how your team actually spends its time, not a universal benchmark. The remaining time goes to indirect work, such as internal meetings and enablement, and to unplanned work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is hiring the only answer when the team is over capacity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Leadership can add capacity, redesign or remove service moments, automate work, move work to another role, change the touch model, or explicitly accept a lighter customer experience. Capacity planning makes the tradeoff visible so it's a decision rather than silent overload."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV — exact match to frameworks.html and chapter.html -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="/"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="chapter-hero">
+  <div class="hero-grid"></div>
+  <div class="chapter-hero-inner">
+    <span class="chapter-num">The Post-Sale Operating System · Customer Success Capacity</span>
+    <h1 class="headline">How Many Customers Should a CSM Manage?</h1>
+    <p class="chapter-hero-sub">ARR tells you the value of the customers. It doesn't tell you the work required to move them forward. Capacity starts with the work.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+  <p class="answer-lead"><strong>There is no universal number of customers a CSM should manage. The right number depends on how much work your customers need to progress and how much time your team realistically has to do it.</strong></p>
+  <p>Industry data shows CSMs averaging about 22 accounts in high-touch models and about 144 in low-touch ones, a sixfold difference driven by the work, not the people. To find your number, start with the work: the plays and service moments your customers need, the full effort each one takes, and when that work happens across the year. Then compare that demand with the capacity your team actually has.</p>
+  <div class="def" id="definition"><div class="def-label">Definition</div><p><strong>Customer Success capacity</strong> is the amount of customer work a team can realistically perform in a given period. It should be planned from the work an organization has intentionally designed to help customers progress, not from a fixed ratio of accounts or ARR per CSM.</p></div>
+
+  <h2>Why Leaders Ask for a Benchmark</h2>
+  <p>If you're looking for a CSM ratio, there's usually a reason. You're building a budget, defending a headcount request, or answering a CFO who wants to know why your team needs another person when a peer company seems to do fine with fewer.</p>
+  <p>That is a fair question, and benchmarks exist for it. The most widely cited come from Gainsight's analysis of platform data across 17,034 CSMs at US-based customers. It found a median of <strong>$1.4 million in ARR per CSM</strong>, with the top quartile at <strong>$4.2 million</strong>. By touch model, CSMs averaged about <strong>22 accounts in high-touch</strong> segments (ACV above $100K), <strong>49 in mid-touch</strong> ($10K to $100K), and <strong>144 in low-touch</strong> (below $10K).<sup><a href="#source-1" id="ref-1">1</a></sup></p>
+  <p>Those numbers are useful context. They can tell you whether you're far outside the norm and prompt good questions about why. But look at what they show. The top quartile manages three times the ARR of the median. Accounts per CSM changes by a factor of six or more depending on the touch model. The benchmarks themselves are telling you that the number depends on the work. What they can't do is tell you how many people <em>your</em> customers require.</p>
+
+  <h2>Why Doesn't ARR per CSM Work as a Staffing Model?</h2>
+  <div class="direct-answer"><p><strong>Customer count and ARR describe the customers or revenue being managed. They do not describe the work required to help those customers progress.</strong></p></div>
+  <p class="key-statement">ARR tells you the value of the customers. It doesn't tell you the work required to move them forward.</p>
+  <p>Picture two companies, each running at $2 million in ARR per CSM. At the first, customers buy a simple product, implement it in a few weeks, and involve two or three stakeholders. At the second, customers go through a complex implementation, multiple user groups, integrations, and real organizational change before they reach the outcome they bought. The ratio is identical. The work is not remotely the same.</p>
+  <p>Accounts per CSM has the same problem. Fifty customers that each need 5 hours of work a year and fifty customers that each need 30 are not the same job, even though the ratio says they are.</p>
+  <p>A ratio describes how work has been <em>distributed</em>. It doesn't tell you how much work <em>exists</em>. That's why two teams with identical ratios can be comfortably staffed and badly overloaded at the same time.</p>
+
+  <h2>Start With the Work Customers Need to Progress</h2>
+  <p>A better question than "how many customers can a CSM manage?" is this:</p>
+  <p class="key-statement">How many customers can a CSM move forward?</p>
+  <p>That question points at the work. And the work starts with customer progression: the meaningful change a customer makes from the reason they purchased toward the outcomes they intended to achieve (see <a href="customer-progression-leading-indicators.html">How Do You Know Whether a Customer Is Actually Progressing?</a>).</p>
+  <p>If you know what progression needs to happen, you can design the plays and service moments intended to help create it: a kickoff that produces clarity on goals and responsibilities, an onboarding motion that gets the customer to first use, a push to First Value, recurring Alignment Meetings, insight sharing, renewal preparation. Those plays require work. That work creates demand for capacity.</p>
+  <p>The CXology capacity mechanism runs in five steps:</p>
+  <ol class="flow" aria-label="The CXology capacity mechanism"><li>Expected customer progression</li><li>Plays and service moments</li><li>Designed effort</li><li>Customer population and lifecycle timing</li><li>Required capacity</li></ol>
+  <ul>
+  <li><strong>Expected customer progression.</strong> What needs to change for the customer, and when.</li>
+  <li><strong>Plays and service moments.</strong> What your team does to help create that change.</li>
+  <li><strong>Designed effort.</strong> The full effort each play requires: preparation, execution, and follow-through.</li>
+  <li><strong>Customer population and lifecycle timing.</strong> How many customers need each play, and in which months.</li>
+  <li><strong>Required capacity.</strong> The total work, month by month, compared with the time your team actually has.</li>
+  </ul>
+  <p>A play is what your team does. Progression is what changes for the customer. Running a play doesn't guarantee progression, but you can't plan for progression without funding the work designed to create it.</p>
+
+  <h2>What Is Designed Effort?</h2>
+  <div class="def" id="designed-effort"><div class="def-label">Definition</div><p><strong>Designed effort</strong> is the full effort required to deliver a play or service moment well: preparation, execution, and follow-through. The time on the calendar is only part of the workload.</p></div>
+  <p>Start with one meeting. A customer meeting is scheduled for 60 minutes. Delivering it well takes more than that:</p>
+  <div class="table-wrap"><table class="cmp" id="one-meeting">
+  <caption>Designed effort for one 60-minute meeting</caption>
+  <thead><tr><th scope="col">Part of the work</th><th scope="col">What it includes</th><th scope="col">Time</th></tr></thead>
+  <tbody>
+  <tr><td>Preparation</td><td>Review goals and progress, pull usage and outcomes, shape the agenda</td><td>30 min</td></tr>
+  <tr><td>Execution</td><td>The meeting itself</td><td>60 min</td></tr>
+  <tr><td>Follow-through</td><td>Document decisions, send the recap, confirm owners and next steps, update the plan</td><td>20 min</td></tr>
+  <tr><td>Designed effort</td><td></td><td><strong>110 min</strong></td></tr>
+  </tbody>
+  </table></div>
+  <p>A 60-minute meeting requires 110 minutes of capacity. If your model counts only the 60, it underestimates the work by almost half before you've added a single customer.</p>
+  <p>Bigger plays carry even more hidden work. A full Alignment Meeting, with insight gathering, executive briefing, stakeholder preparation, the meeting itself, and follow-through, is modeled at 3.5 hours in the CXology Capacity Planner, even though the meeting on the calendar may last an hour.</p>
+  <p>This is the most common hidden error in CS capacity: counting meetings instead of work. Preparation and follow-through are not overhead. Customers feel the quality of all three. A poorly prepared meeting feels generic, and a meeting without follow-through erodes trust because nothing changes afterward.</p>
+
+  <h2>From One Meeting to One Customer</h2>
+  <p>Now repeat that thinking across the plays one customer needs in their first year. The figures below are the starting defaults in the <a href="capacity-planner.html">CXology Capacity Planner</a> for a high-touch customer, so you can reproduce them there. They are planning assumptions, not benchmarks. Your plays and estimates will differ.</p>
+  <div class="table-wrap"><table class="cmp" id="one-customer">
+  <caption>Designed effort for one high-touch customer, year one</caption>
+  <thead><tr><th scope="col">Play / service moment</th><th scope="col">When</th><th scope="col">Designed effort</th></tr></thead>
+  <tbody>
+  <tr><td>Purchase &amp; Welcome, Kickoff, and Onboarding start</td><td>Month 1</td><td>8.5 hrs</td></tr>
+  <tr><td>Onboarding continued</td><td>Months 2 and 3</td><td>2 hrs</td></tr>
+  <tr><td>Quarterly Alignment Meetings (4 at 3.5 hrs)</td><td>Months 3, 6, 9, 12</td><td>14 hrs</td></tr>
+  <tr><td>Value Blocks and insights (0.5 hr a month)</td><td>Months between alignments</td><td>3 hrs</td></tr>
+  <tr><td>Designed effort, year one</td><td></td><td><strong>27.5 hrs</strong></td></tr>
+  </tbody>
+  </table></div>
+  <p>Two things show up immediately.</p>
+  <p>First, the work is not spread evenly. About half of it, 14 of the 27.5 hours, lands in the first three months, when kickoff, onboarding, and the push to First Value require intensity.</p>
+  <p>Second, year two looks different. Without kickoff and onboarding, the same customer needs about 18 hours, weighted toward alignment, insights, and renewal readiness. The work doesn't disappear after onboarding. It changes form.</p>
+  <p>Touch model changes it again. The Planner's default low-touch customer needs about 8.5 hours in year one and 4 hours a year after that.</p>
+  <p>That's why a customer is not a unit of work. A new high-touch customer in month two and a mature low-touch customer in year three both count as "one account" on a ratio, yet one needs several times the capacity of the other.</p>
+
+  <h2>Direct, Indirect, and Unplanned Effort</h2>
+  <p>Designed plays are not the only thing that consumes a CSM's week. Capacity planning separates three kinds of effort:</p>
+  <div class="table-wrap"><table class="cmp" id="effort-mix">
+  <caption>The effort mix</caption>
+  <thead><tr><th scope="col">Effort type</th><th scope="col">What it is</th><th scope="col">Examples</th></tr></thead>
+  <tbody>
+  <tr><td>Direct effort</td><td>Work that directly contributes to customer success. Includes designed proactive work and reactive customer work.</td><td>Plays and service moments; answering customer questions; resolving issues</td></tr>
+  <tr><td>Indirect effort</td><td>Necessary internal work that consumes capacity but doesn't directly serve an individual customer.</td><td>Team meetings, enablement, planning, internal coordination, supporting Sales and Product</td></tr>
+  <tr><td>Unplanned effort</td><td>Unexpected or avoidable work that consumes productive capacity.</td><td>Escalations from broken handoffs, unclear ownership, system gaps, urgent internal asks</td></tr>
+  </tbody>
+  </table></div>
+  <p>Indirect effort is real work, not a sign of poor discipline. Unplanned effort deserves a harder look. When too much of the week disappears into it, hiring may not be the first answer. The operating model may need attention.</p>
+  <div class="def" id="availability"><div class="def-label">Definition</div><p><strong>Availability</strong> is the percentage of a person's capacity realistically available for direct customer work after indirect and unplanned effort are accounted for.</p></div>
+  <p>CXology has historically used <strong>65% availability</strong>, about 26 hours of direct customer time in a 40-hour week, as a planning starting point. It is not a universal benchmark or a best-practice requirement. It is an assumption to validate. A team carrying heavy internal responsibilities may run closer to 55%. A team with strong operations support and little cross-functional load may sustain more. What matters is that the number is explicit, tested against how your team actually spends its time, and refined as you learn.</p>
+  <p>The one assumption that reliably breaks a capacity model is 100%. If your plan assumes a 40-hour week can be filled with 40 hours of designed customer work, the model is wrong before it starts.</p>
+  <p>Keep the two ideas separate: <strong>designed effort describes the demand</strong> (how much work the customers need), and <strong>availability describes the supply</strong> (how much of your team's time can go to it). Most staffing arguments go sideways because those two get blended into one ratio.</p>
+
+  <h2>How Do You Calculate Customer Success Capacity?</h2>
+  <div class="direct-answer"><p><strong>Customer Success capacity planning compares two numbers: the designed effort your customers require and the time your team has available to deliver it.</strong></p></div>
+  <ol>
+  <li><strong>Define the progression</strong> customers need to make across the lifecycle.</li>
+  <li><strong>List the plays and service moments</strong> designed to help create that progression, by segment or touch model.</li>
+  <li><strong>Estimate designed effort</strong> for each play: preparation + execution + follow-through.</li>
+  <li><strong>Multiply by the customers who need each play</strong>, placed in the months they need it.</li>
+  <li><strong>Calculate available capacity</strong>: each person's workable hours × target availability, adjusted for new-hire ramp and planned hires, with a share of that time held back for reactive customer work.</li>
+  <li><strong>Compare demand with available capacity</strong> month by month, and decide what to do where they diverge.</li>
+  </ol>
+  <div class="formula"><p><strong>Required capacity</strong> = Σ (designed effort per play × customers needing that play in the period)</p><p><strong>Available capacity</strong> = Σ (each person's workable hours × availability × share left for designed work)</p></div>
+  <p>A first pass with the Planner's default assumptions:</p>
+  <ul>
+  <li>About 2,000 workable hours a year × 65% availability ≈ <strong>1,300 hours of direct customer time</strong> per CSM.</li>
+  <li>Reactive customer work (questions, issues, requests for help) is direct work too. Holding back 30% of direct time for it leaves about <strong>900 hours a year for designed work</strong>.</li>
+  <li>At 27.5 hours per year-one high-touch customer, that's room for about <strong>33 such customers</strong>. At 18 hours per year-two high-touch customer, about <strong>50</strong>. At 4 hours per year-two low-touch customer, more than <strong>200</strong>.</li>
+  </ul>
+  <p>Notice the shape. A work-based model lands in the same broad territory as the benchmarks above, with a few dozen accounts in high-touch and hundreds in low-touch. The difference is that you can see <em>why</em>, and you can change the answer by changing the work.</p>
+  <p>That gives you a defensible answer to "how many customers should a CSM manage?" for your own design. But it's still a static answer. It assumes every customer is at the same point in the lifecycle, needs the same work every month, and that the team never changes. None of that is true, which is why the real model looks across time.</p>
+
+  <h2>Capacity Is a 12-Month Forecast, Not a Ratio</h2>
+  <p>Customer work moves. New customers arrive in uneven waves. Each one brings a heavy first quarter, then settles into a steadier pattern. Existing customers cycle through quarterly alignment and renewal windows. High-touch and low-touch models carry different effort profiles. Year-one customers need more than year-two customers.</p>
+  <p>The team moves too. Some months have more workable hours than others. New hires don't arrive at full strength: recruiting takes time, and a new CSM may contribute a quarter of a full load in their first month, half in the second, and three-quarters in the third.</p>
+  <p>So the CXology model looks across 12 months and accounts for:</p>
+  <ul>
+  <li>Existing customers, placed in their actual lifecycle month</li>
+  <li>Expected new customers, by month and by touch model</li>
+  <li>Different effort in year one versus subsequent years</li>
+  <li>Current resources and their realistic availability</li>
+  <li>Future hires and new-hire ramp time</li>
+  </ul>
+  <p>Here's what that looks like for a simple illustrative team: three CSMs, 100 existing high-touch customers in year two or later, and four new high-touch customers added every month, using the effort and availability assumptions above.</p>
+  <div class="table-wrap"><table class="cmp" id="forecast">
+  <caption>Illustrative 12-month view: demand against capacity</caption>
+  <thead><tr><th scope="col">Month</th><th scope="col">Designed effort required</th><th scope="col">Capacity for designed work</th><th scope="col">Position</th></tr></thead>
+  <tbody>
+  <tr><td>1</td><td>~185 hrs</td><td>~230 hrs</td><td>Comfortable</td></tr>
+  <tr><td>4</td><td>~210 hrs</td><td>~240 hrs</td><td>Tightening</td></tr>
+  <tr><td>6</td><td>~225 hrs</td><td>~205 hrs</td><td>First pinch (a short month)</td></tr>
+  <tr><td>9</td><td>~240 hrs</td><td>~220 hrs</td><td>Over</td></tr>
+  <tr><td>12</td><td>~260 hrs</td><td>~230 hrs</td><td>Over, and still climbing</td></tr>
+  </tbody>
+  </table></div>
+  <p>Nothing dramatic happens in any single month. Demand climbs because every new customer adds a heavy first quarter and then stays in the base. A ratio taken in month one would say this team is fine. The forecast shows a first pinch in month six, when fewer workable hours meet growing demand, and a team that stays over capacity from month nine on.</p>
+  <p>And because a hire who starts in month six won't be fully productive until about month nine, the staffing decision for this team needed to happen around month two or three, when the team still felt comfortable.</p>
+  <p>That's the more useful operating question. Not "how many CSMs do I need?" but:</p>
+  <p class="key-statement">When will the customer work we have designed exceed the capacity of the team available to perform it?</p>
+  <p>The point is not to predict every hour. Estimates will be wrong in places, and that's fine. The value of the forecast is that it makes the work visible, exposes the assumptions so others can challenge them, and shows where demand and capacity diverge early enough to do something about it.</p>
+
+  <h2>When the Work Exceeds the Team: Staffing or Service Design</h2>
+  <p>When required work exceeds available capacity, the answer is not automatically "hire." Leadership has real choices:</p>
+  <div class="table-wrap"><table class="cmp" id="choices">
+  <caption>Six choices when demand exceeds capacity</caption>
+  <thead><tr><th scope="col">Choice</th><th scope="col">What it means</th></tr></thead>
+  <tbody>
+  <tr><td>Add capacity</td><td>Hire, and start early enough to cover ramp time.</td></tr>
+  <tr><td>Reduce or redesign service moments</td><td>Remove plays that don't help customers progress, or make them lighter.</td></tr>
+  <tr><td>Automate work</td><td>Move repeatable work, such as onboarding steps or routine insights, to programmatic delivery.</td></tr>
+  <tr><td>Move work to another role</td><td>Shift onboarding, renewals, or technical work to specialists or partners.</td></tr>
+  <tr><td>Change the touch model</td><td>Serve some segments with a lighter or one-to-many model.</td></tr>
+  <tr><td>Accept the tradeoff explicitly</td><td>Fund less than the designed experience, and name what customers will no longer receive.</td></tr>
+  </tbody>
+  </table></div>
+  <p>All of these are legitimate if they're made deliberately. The one option that isn't legitimate is the default most teams fall into: keep the design, skip the funding, and let the team quietly absorb the gap. That's when plays get skipped or degraded, progression stalls, and the organization depends on heroic effort from a few people.</p>
+  <p class="key-statement">Capacity planning doesn't just tell you how many people you need. It forces you to decide what customer work you're willing to fund.</p>
+  <p>That's also what changes the conversation with a CFO. Instead of "our ARR per CSM is too high," a CS leader can say: "This segment needs these plays to move customers forward. Those plays require this much effort. Based on the customers we already have and the ones we expect to add, we run out of capacity in month six. Here are the options, and here's what each one means for customers."</p>
+
+  <h2>Where Benchmarks Still Help</h2>
+  <p>None of this makes ARR per CSM or accounts per CSM useless. They are good context:</p>
+  <ul>
+  <li>They can tell you whether your model is far outside the range of comparable companies.</li>
+  <li>They can raise good questions: why one segment supports more accounts than another, or why your ratio has shifted over time.</li>
+  <li>They can sanity-check a capacity model. If your work-based model implies a ratio wildly different from peers, look at your assumptions before you defend the number.</li>
+  </ul>
+  <p>The problem starts when the benchmark becomes the model. Use benchmarks to check your thinking. Build capacity from the work.</p>
+
+  <h2>How to Start, and Where the Capacity Planner Fits</h2>
+  <p>You don't need a perfect future-state design to begin.</p>
+  <ul>
+  <li><strong>Start with the work your team does today.</strong> List every kickoff, onboarding session, alignment meeting, insight email, and renewal conversation. Make current reality visible before redesigning it.</li>
+  <li><strong>Estimate for the experience you want to deliver consistently</strong>, not for the handful of outlier customers who consume unusual amounts of time.</li>
+  <li><strong>Use original contract start dates</strong> so each customer is placed in the right lifecycle month and follows the right year-one or later-year pattern.</li>
+  <li><strong>Treat every number as an assumption.</strong> Effort estimates, availability, and ramp all get better once you compare them with what actually happens.</li>
+  </ul>
+  <p>The <a href="capacity-planner.html">CXology Capacity Planner</a> is built around this model. It takes planned growth by touch model, your current customers by contract start month, designed effort by lifecycle month for year one and later years, current and future team members with ramp, and target availability. It returns a 12-month view of demand against available capacity, the first month the team goes over, and when hiring needs to start. Use it to test the choices above: add a hire, remove a service moment, change the touch model, or reduce reactive work, and see how the forecast moves.</p>
+  <p>For the full argument on capacity as the investment decision behind the post-sale operating system, read <a href="chapter-22.html">Chapter 22: Proactive Capacity Planning</a>.</p>
+
+  <h2>Frequently Asked Questions</h2>
+  <h3>How many customers should a CSM manage?</h3>
+  <p>There's no universal number. It depends on the work your customers need to progress and the time your team realistically has for it. Calculate it by estimating the designed effort (preparation, execution, and follow-through) for each play customers need, then comparing total demand with each CSM's available hours. Benchmarks can give context, but they can't account for your product, customers, or service design.</p>
+  <h3>How do you calculate Customer Success capacity?</h3>
+  <p>Define the progression customers need to make, list the plays and service moments designed to help create it, and estimate the designed effort for each. Multiply by the customers who need each play in each month, then compare the result with your team's available hours over 12 months, accounting for availability, reactive work, future hires, and new-hire ramp.</p>
+  <h3>Why doesn't ARR per CSM work as a staffing model?</h3>
+  <p>ARR describes the value of the customers being managed, not the work required to move them forward. Two companies with the same ARR per CSM can have completely different implementation complexity, stakeholders, and service designs, so the same ratio can mean a comfortable team at one and an overloaded team at the other.</p>
+  <h3>What is designed effort in Customer Success?</h3>
+  <p>Designed effort is the full effort required to deliver a play or service moment well: preparation, execution, and follow-through. A 60-minute meeting that needs 30 minutes of preparation and 20 minutes of follow-through has a designed effort of 110 minutes.</p>
+  <h3>What availability should a CSM capacity model assume?</h3>
+  <p>CXology uses 65% availability, about 26 direct customer hours in a 40-hour week, as a planning starting point. It's an assumption to validate against how your team actually spends its time, not a universal benchmark. The remaining time goes to indirect work, such as internal meetings and enablement, and to unplanned work.</p>
+  <h3>Is hiring the only answer when the team is over capacity?</h3>
+  <p>No. Leadership can add capacity, redesign or remove service moments, automate work, move work to another role, change the touch model, or explicitly accept a lighter customer experience. Capacity planning makes the tradeoff visible so it's a decision rather than silent overload.</p>
+
+  <h2>Read Next</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="chapter-22.html">
+      <div class="tool-card-kicker">The Book · Chapter 22</div>
+      <div class="tool-card-title">Proactive Capacity Planning</div>
+      <div class="tool-card-desc">Capacity as the investment decision behind the post-sale experience you designed.</div>
+    </a>
+    <a class="tool-card" href="capacity-planner.html">
+      <div class="tool-card-kicker">Interactive Tool</div>
+      <div class="tool-card-title">CS Capacity Planner</div>
+      <div class="tool-card-desc">Model designed effort, availability, and hiring across 12 months, then test the tradeoffs.</div>
+    </a>
+    <a class="tool-card" href="customer-progression-leading-indicators.html">
+      <div class="tool-card-kicker">Customer Progression</div>
+      <div class="tool-card-title">How Do You Know Whether a Customer Is Actually Progressing?</div>
+      <div class="tool-card-desc">The progression your plays are designed to create, and how to see whether it happened.</div>
+    </a>
+    <a class="tool-card" href="chapter-part3-intro.html">
+      <div class="tool-card-kicker">The Book · Part III</div>
+      <div class="tool-card-title">The Plays That Move the Pipeline</div>
+      <div class="tool-card-desc">The plays and service moments that become the work in your capacity model.</div>
+    </a>
+  </div>
+
+  <p class="related-read">Also see: <a href="blog/arr-per-csm-capacity-planning/">ARR per CSM Is Not a Capacity Model</a>, on why the benchmark conversation goes sideways and how to change it.</p>
+
+  <div class="sources">
+    <div class="sources-title">Sources</div>
+    <p id="source-1"><a href="#ref-1">1.</a> Nick Mehta and Shantan Reddy, "<a href="https://www.gainsight.com/blog/gainsight-horizon-ai-labs-what-is-the-right-csm-to-customer-ratio/" rel="noopener">Gainsight Horizon AI Labs: What Is the Right CSM to Customer Ratio?</a>," Gainsight, July 29, 2022. ARR figures cover 17,034 CSMs at US-based Gainsight customers; account figures are from US-based enterprise customers above $100M ARR.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CXology</div>
+        <p class="footer-brand-desc">A Strategic Customer Success Operating System for predictable retention and scalable growth.</p>
+        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
+      </div>
+      <div>
+        <div class="footer-col-title">The Book</div>
+        <ul class="footer-links">
+          <li><a href="book.html#parts">Part I: From Function to System</a></li>
+          <li><a href="book.html#parts">Part II: The Pipeline</a></li>
+          <li><a href="book.html#parts">Part III: Lifecycle Plays</a></li>
+          <li><a href="book.html#parts">Part IV: Scale &amp; Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Frameworks</div>
+        <ul class="footer-links">
+          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
+          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
+          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
+          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="calculator.html">NRR Calculator</a></li>
+          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
+          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>

@@ -1,6 +1,15 @@
 {
   "updates": [
     {
+      "kind": "Refinement",
+      "chapter": "Ch 22 · Proactive Capacity Planning",
+      "date": "2026-10-02",
+      "title": "Chapter 22 now shows the math behind capacity planning",
+      "blurb": "Chapter 22 now walks through how a 60-minute meeting becomes 110 minutes of designed effort, treats 65 percent availability as an assumption to validate rather than a rule, and shows capacity as a 12-month forecast instead of a ratio. A new companion page answers the question leaders ask first: how many customers should a CSM manage?",
+      "link": "chapter-22.html",
+      "linkLabel": "Read Chapter 22"
+    },
+    {
       "kind": "Update",
       "date": "2026-10-02",
       "title": "How do you know a customer is actually progressing?",

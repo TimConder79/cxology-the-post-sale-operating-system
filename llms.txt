@@ -51,12 +51,13 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 ## Interactive tools
 - [CXology Frameworks](https://cxology.co/frameworks.html): The core frameworks: the Post-Sale Pipeline, CS Maturity, and more.
 - [Retention & Growth ROI Calculator](https://cxology.co/calculator.html): See what customer retention is worth based on your growth rate and churn.
-- [CS Capacity Planner](https://cxology.co/capacity-planner.html): Model CS capacity with Designed Effort and the 65% Availability Rule.
+- [CS Capacity Planner](https://cxology.co/capacity-planner.html): Forecast 12 months of Customer Success demand against capacity from designed effort, target availability (65% as a starting assumption), and hiring ramp; test staffing versus service-design tradeoffs.
 - [Health Score Builder](https://cxology.co/health-score-builder.html): Design, weight, and validate a health score built from your healthiest customers.
 - [The Post-Sale Journey Map](https://cxology.co/journey-map.html): Twelve months, eight rows: the complete CXology post-sale system on one map.
 
 ## Articles and Q&A
 - [How Do You Know Whether a Customer Is Actually Progressing?](https://cxology.co/customer-progression-leading-indicators.html): Activity is what happened, progression is what changed for the customer, and evidence shows whether it occurred. Why usage is usually a late signal, and why the earliest sign of risk may be missing progression.
+- [How Many Customers Should a CSM Manage?](https://cxology.co/customer-success-capacity.html): There is no universal CSM ratio. Customer count and ARR describe what is managed, not the work required to help customers progress. Plan capacity from designed effort (preparation, execution, follow-through), realistic availability, and a 12-month forecast, then decide whether to add staff or change the service design.
 - [How Do You Make Existing-Customer Revenue More Predictable?](https://cxology.co/predictable-existing-customer-revenue.html): Put existing-customer revenue into a pipeline and manage the customer progression that moves it, so confirmed outcomes update probability and sharpen the forecast.
 - [8 Critical Moments in the Post-Sale Customer Journey](https://cxology.co/navigating-post-sale-chaos-strategic-customer-success-qa/): The eight customer inflection points, from purchase to the renewal and growth decision, and how plays and expected timing make customer progression visible.
 - [What Is Strategic Customer Success? Definition & Framework](https://cxology.co/strategic-customer-success/): The deliberate management of customer progression toward the outcomes that justified the purchase.

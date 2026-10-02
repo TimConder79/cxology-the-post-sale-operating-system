@@ -5,12 +5,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>CXology — CS Capacity Planner</title>
-  <meta name="description" content="Model customer success capacity with Designed Effort and the 65% Availability Rule, and forecast the headcount your post-sale motion actually needs. A tool from The Post-Sale Operating System by Tim Conder."/>
+  <meta name="description" content="Forecast Customer Success capacity over 12 months from designed effort, realistic availability, and hiring ramp, then test staffing and service-design tradeoffs. A tool from The Post-Sale Operating System by Tim Conder."/>
   <link rel="canonical" href="https://cxology.co/capacity-planner.html"/>
   <meta property="og:type" content="article"/>
   <meta property="og:site_name" content="The Post-Sale Operating System"/>
   <meta property="og:title" content="CXology — CS Capacity Planner"/>
-  <meta property="og:description" content="Model customer success capacity with Designed Effort and the 65% Availability Rule, and forecast the headcount your post-sale motion actually needs. A tool from The Post-Sale Operating System by Tim Conder."/>
+  <meta property="og:description" content="Forecast Customer Success capacity over 12 months from designed effort, realistic availability, and hiring ramp, then test staffing and service-design tradeoffs. A tool from The Post-Sale Operating System by Tim Conder."/>
   <meta property="og:url" content="https://cxology.co/capacity-planner.html"/>
   <meta property="og:image" content="https://cxology.co/og-image.png"/>
   <meta property="og:image:width" content="1200"/>
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="CXology — CS Capacity Planner"/>
-  <meta name="twitter:description" content="Model customer success capacity with Designed Effort and the 65% Availability Rule, and forecast the headcount your post-sale motion actually needs. A tool from The Post-Sale Operating System by Tim Conder."/>
+  <meta name="twitter:description" content="Forecast Customer Success capacity over 12 months from designed effort, realistic availability, and hiring ramp, then test staffing and service-design tradeoffs. A tool from The Post-Sale Operating System by Tim Conder."/>
   <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
 
   <link rel="stylesheet" href="fonts.css"/>
@@ -51,6 +51,21 @@ summary{list-style:none}
 input[type=number]:focus,input[type=text]:focus,select:focus{outline:none;border-color:#1A2E42 !important;box-shadow:0 0 0 3px rgba(26,46,66,.08) !important;}
 input[type=number]:hover,select:hover{border-color:#7A8A5A;}
 .step-row:hover{background:rgba(248,249,242,.8);}
+#static-summary{max-width:1100px;margin:0 auto;padding:1rem 2rem .75rem;color:#1A2E42}
+#static-summary .ss-kicker{display:none}
+#static-summary h1{font-size:.95rem;font-weight:700;line-height:1.4;margin-bottom:.25rem}
+#static-summary p{font-size:.85rem;line-height:1.6;color:#3D4B3A;max-width:100ch;margin-bottom:.4rem}
+#static-summary a{color:#1A2E42;font-weight:700;text-decoration:underline;text-decoration-color:#B5BD00;text-decoration-thickness:2px;text-underline-offset:3px}
+#static-summary details{background:#fff;border:1px solid #E4E6CF;border-radius:8px;padding:.5rem .9rem;margin:.4rem 0 0}
+#static-summary summary{cursor:pointer;font-weight:700;font-size:.82rem}
+#static-summary summary::after{content:" +";color:#7A8A2A}
+#static-summary details[open] summary::after{content:" \2212"}
+#static-summary .ss-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem 1.5rem;margin-top:.9rem}
+#static-summary h2{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#253746;margin-bottom:.35rem}
+#static-summary ul{padding-left:1.1rem;margin:0}
+#static-summary li{font-size:.85rem;line-height:1.6;color:#3D4B3A;margin-bottom:.25rem}
+@media (max-width:640px){#static-summary{padding:1.5rem 1rem .25rem}}
+@media print{#static-summary details{display:none}}
 </style>
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
@@ -64,7 +79,7 @@ input[type=number]:hover,select:hover{border-color:#7A8A5A;}
       "@id": "https://cxology.co/capacity-planner.html#app",
       "name": "CS Capacity Planner",
       "url": "https://cxology.co/capacity-planner.html",
-      "description": "Model customer success capacity with Designed Effort and the 65% Availability Rule, and forecast the headcount your post-sale motion actually needs. A tool from The Post-Sale Operating System by Tim Conder.",
+      "description": "Forecast Customer Success capacity over 12 months from designed effort, realistic availability, and hiring ramp, then test staffing and service-design tradeoffs. A tool from The Post-Sale Operating System by Tim Conder.",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Any (web-based)",
       "browserRequirements": "Requires JavaScript. Runs in any modern browser.",
@@ -85,7 +100,7 @@ input[type=number]:hover,select:hover{border-color:#7A8A5A;}
       "isPartOf": {
         "@id": "https://cxology.co/#book"
       },
-      "dateModified": "2026-09-09"
+      "dateModified": "2026-10-02"
     },
     {
       "@type": "Person",
@@ -167,6 +182,48 @@ input[type=number]:hover,select:hover{border-color:#7A8A5A;}
   </ul>
 </nav>
 
+
+<!-- STATIC SUMMARY (server-rendered so the planner is readable without JavaScript) -->
+<section id="static-summary" aria-labelledby="ss-title">
+  <div class="ss-kicker">Interactive Tool · Chapter 22</div>
+  <h1 id="ss-title">CS Capacity Planner: Forecast Customer Success Capacity From Designed Effort</h1>
+  <p>Find out <strong>when the customer work you have designed will exceed the capacity of the team available to perform it</strong>. The planner builds demand from designed effort (preparation, execution, and follow-through) and compares it with realistic team availability month by month for 12 months. The model behind it: <a href="customer-success-capacity.html">How Many Customers Should a CSM Manage?</a> and <a href="chapter-22.html">Chapter 22</a>.</p>
+  <details>
+    <summary>How the planner works: inputs, outputs, and assumptions</summary>
+    <div class="ss-grid">
+      <div>
+        <h2>Inputs</h2>
+        <ul>
+          <li><strong>Forecast growth:</strong> new high-touch and low-touch customers by month.</li>
+          <li><strong>Current customers:</strong> existing customers by contract start month, so each follows its own lifecycle.</li>
+          <li><strong>Designed effort:</strong> hours per customer by lifecycle month, for year one and for year two and beyond, by touch model.</li>
+          <li><strong>Team capacity:</strong> current staff, future hires with start dates, and new-hire ramp (default 25%, 50%, 75%).</li>
+          <li><strong>Availability:</strong> workable hours by month, target availability (default 65%), and the share of direct time held for reactive work (default 30%).</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Outputs</h2>
+        <ul>
+          <li>Monthly demand against available capacity for 12 months.</li>
+          <li>Utilization by month, the first month over capacity, and peak utilization.</li>
+          <li>Additional headcount needed and when to start hiring to cover ramp.</li>
+          <li>Scenarios: base plan, conservative hiring, growth upside, and service redesign.</li>
+          <li>Context figures such as team cost and supported revenue.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Assumptions to challenge</h2>
+        <ul>
+          <li>65% availability is a planning starting point, not a benchmark. Validate it against how your team spends its time.</li>
+          <li>Default effort values are starting assumptions. Replace them with your own plays and estimates.</li>
+          <li>It is a planning model, not a precision forecast. Its value is making the work and the assumptions visible.</li>
+          <li>When demand exceeds capacity, hiring is one option. Redesigning, automating, shifting, or explicitly reducing service moments are others.</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</section>
+
 <div id="loading-screen"><div class="spin"></div><span>Loading…</span></div>
 <div id="err-box"></div>
 <div id="root"></div>
@@ -189,6 +246,7 @@ const {useState,useMemo,useRef}=React;
 
 const MO=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const WH=[168,160,168,176,176,152,176,176,160,176,152,168];
+const spread=n=>Array.from({length:12},(_,i)=>Math.floor(n/12)+(i<n%12?1:0));
 const JC=Array.from({length:12},(_,i)=>"M"+(i+1));
 const sum=a=>a.reduce((s,v)=>s+(v||0),0);
 const fmt=(n)=>Math.round(n).toLocaleString();
@@ -206,7 +264,7 @@ function run(p){
     oD[c]+=(gH[s]*(p.oH[j]*effortMix.oH)+gL[s]*(p.oL[j]*effortMix.oL));
     cD[c]+=(gH[s]*(p.c1H[j]*effortMix.c1H)+gL[s]*(p.c1L[j]*effortMix.c1L));
   }
-  for(let c=0;c<12;c++)cD[c]+=(p.eH*(p.c2H[c]*effortMix.c2H)+p.eL*(p.c2L[c]*effortMix.c2L));
+  for(let c=0;c<12;c++)for(let k=0;k<12;k++){const j=(c-k+12)%12;cD[c]+=(p.eH[k]*(p.c2H[j]*effortMix.c2H)+p.eL[k]*(p.c2L[j]*effortMix.c2L));}
   const tD=oD.map((v,i)=>v+cD[i]),oS=Array(12).fill(0),cS=Array(12).fill(0);
   p.tm.forEach(m=>{
     for(let mo=0;mo<12;mo++){
@@ -227,7 +285,7 @@ function run(p){
   const rT=sum(rH);let pc="growth volume";
   if(oSh>cSh&&oSh>rT)pc="onboarding load";else if(cSh>oSh&&cSh>rT)pc="ongoing CSM load";else if(rT>oSh&&rT>cSh)pc="reactive drag";
   const fl=p.sa*(1+p.oh/100+p.tb/100);
-  return{oD,cD,tD,oS,cS,oES,cES,eS,rH,ut,hd,rs,fr,rc:rs.filter(r=>r==="red").length,oc:rs.filter(r=>r==="orange").length,gc:rs.filter(r=>r==="green").length,pk,pm,ts,hn,hm:fr>=0?Math.max(0,fr-3):-1,pc,oSh,cSh,rT,fl,tc:ts*fl,ah:hn*fl,sr:(p.eH+sum(gH))*p.hA+(p.eL+sum(gL))*p.lA,ro:gap*.8<=0,gap};
+  return{oD,cD,tD,oS,cS,oES,cES,eS,rH,ut,hd,rs,fr,rc:rs.filter(r=>r==="red").length,oc:rs.filter(r=>r==="orange").length,gc:rs.filter(r=>r==="green").length,pk,pm,ts,hn,hm:fr>=0?Math.max(0,fr-3):-1,pc,oSh,cSh,rT,fl,tc:ts*fl,ah:hn*fl,sr:(sum(p.eH)+sum(gH))*p.hA+(sum(p.eL)+sum(gL))*p.lA,ro:gap*.8<=0,gap};
 }
 
 const STAGES=[
@@ -390,7 +448,7 @@ function App(){
   const [sc,setSc]=useState("base"),[openStep,setOpenStep]=useState("forecast-growth"),[guidedMode,setGuidedMode]=useState(true),[financialOpen,setFinancialOpen]=useState(false);
   const plannerStepRefs=useRef({});
   const [gH,sgH]=useState([3,3,3,4,4,4,6,4,4,5,5,5]),[gL,sgL]=useState([6,6,6,8,8,8,6,6,6,8,8,6]);
-  const [eH,seH]=useState(126),[eL,seL]=useState(124);
+  const [eH,seH]=useState(spread(126)),[eL,seL]=useState(spread(124));
   const [oH,soH]=useState([8.5,1,1,0,0,0,0,0,0,0,0,0]),[oL,soL]=useState([3,1,.5,0,0,0,0,0,0,0,0,0]);
   const [c1H,sc1H]=useState([0,0,3.5,.5,.5,3.5,.5,.5,3.5,.5,.5,3.5]),[c1L,sc1L]=useState([0,0,1,0,0,1,0,0,1,0,0,1]);
   const [c2H,sc2H]=useState([.5,.5,3.5,.5,.5,3.5,.5,.5,3.5,.5,.5,3.5]),[c2L,sc2L]=useState([0,0,1,0,0,1,0,0,1,0,0,1]);
@@ -622,8 +680,11 @@ function App(){
             <div id="current-customers" ref={el=>plannerStepRefs.current["current-customers"]=el} style={{...sCd,border:openStep==="current-customers"?"2px solid "+C.bl:"1px solid "+C.g2,boxShadow:openStep==="current-customers"?"0 10px 28px rgba(26,46,66,.10)":"none",scrollMarginTop:90,transition:"all .2s ease"}}>
         <StepHeader step="2" title="Add Current Customers" desc="Bring in the customer base that already consumes capacity today." open={openStep==="current-customers"} onToggle={()=>setOpenStep(openStep==="current-customers"?null:"current-customers")} color={C.bl} />
         {openStep==="current-customers"&&<div style={{marginTop:16}}><div style={{fontSize:13,color:C.g7,lineHeight:1.65,marginBottom:14}}>Current customers are easy to overlook because they are already in motion, but they are often where most of the real demand lives. Bringing them into the model keeps the plan grounded in the work the team is already carrying before a single new logo is added.</div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12}}><div><label style={sL}>Existing HT</label><input type="number" value={eH} onChange={e=>seH(+e.target.value||0)} style={sI}/><div style={{fontSize:12,color:C.tm,marginTop:6}}>Customers already in motion still consume real capacity. Count the customers the team is truly supporting today.</div></div><div><label style={sL}>Existing LT</label><input type="number" value={eL} onChange={e=>seL(+e.target.value||0)} style={sI}/><div style={{fontSize:12,color:C.tm,marginTop:6}}>This becomes the baseline load the team carries before future growth is layered on top.</div></div></div>
-        <Ac title="How cohorts cascade"><p style={{fontSize:12,color:C.tm,lineHeight:1.6}}>Each month's new customers cascade demand forward through journey months. Onboarding concentrates in early lifecycle months. Existing customers use the year-two-and-beyond pattern.</p></Ac>
+        <NG label={"Existing High Touch by Contract Start Month ("+sum(eH)+" total)"} values={eH} onChange={seH} accent={C.nv}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-10,marginBottom:14,paddingLeft:9,borderLeft:"2px solid "+C.g2}}>Count the customers the team is truly supporting today, by the month their contract started. Each customer's alignment and renewal work lands in their own lifecycle months, not all at once. If you only know the total, spread it evenly across the year.</div>
+        <NG label={"Existing Low Touch by Contract Start Month ("+sum(eL)+" total)"} values={eL} onChange={seL} accent={C.bl}/>
+        <div style={{fontSize:12,color:C.tm,marginTop:-10,marginBottom:14,paddingLeft:9,borderLeft:"2px solid "+C.g2}}>This becomes the baseline load the team carries before future growth is layered on top.</div>
+        <Ac title="How cohorts cascade"><p style={{fontSize:12,color:C.tm,lineHeight:1.6}}>Each month's new customers cascade demand forward through journey months. Onboarding concentrates in early lifecycle months. Existing customers use the year-two-and-beyond pattern, placed by contract start month so their work follows their own lifecycle.</p></Ac>
         {guidedMode&&<GuideBox title="Use original start dates" tone="neutral">Use the original contractual start date whenever possible. That is what lets the planner determine where a customer sits in the lifecycle and whether they should follow year-one effort or the steadier year-two-and-beyond pattern. If you use the wrong date, the model may look precise while quietly misclassifying demand.</GuideBox>}
         </div>}
       </div>
