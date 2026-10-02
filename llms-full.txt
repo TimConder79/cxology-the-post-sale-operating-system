@@ -3557,7 +3557,7 @@ The effort mix leads directly to the supply side of the model. If indirect and u
 
 CXology has long used 65 percent availability, roughly 26 hours of direct customer time in a 40-hour week, as a planning starting point. It is a useful place to begin. It is not a universal benchmark, and it is not a best practice to enforce. A team carrying heavy cross-functional responsibilities may run closer to 55 percent. A team with strong operations support may sustain more. What matters is that the number is explicit, tested against how the team actually spends its time, and refined as the model matures.
 
-The one assumption that reliably breaks a capacity plan is 100 percent. When leaders assume a full week of customer-facing time, they ignore the work Customer Success does for Sales, Product, leadership, and the team itself. The plan looks efficient on paper and fails in the first month.
+A capacity plan that assumes 100 percent availability is almost certainly overstating the team’s usable capacity. When leaders assume a full week of customer-facing time, they leave out the work Customer Success does for Sales, Product, leadership, and the team itself. The plan looks efficient on paper and falls short in practice.
 
 Keep the two halves of the model separate. Designed effort describes the demand: how much work the customer experience requires. Availability describes the supply: how much of the team’s time can go to that work. Most staffing arguments go sideways because those two ideas get collapsed into a single ratio.
 
@@ -4198,7 +4198,7 @@ Source: https://cxology.co/customer-success-capacity.html
 
 There is no universal number of customers a CSM should manage. The right number depends on how much work your customers need to progress and how much time your team realistically has to do it.
 
-Industry data shows CSMs averaging about 22 accounts in high-touch models and about 144 in low-touch ones, a sixfold difference driven by the work, not the people. To find your number, start with the work: the plays and service moments your customers need, the full effort each one takes, and when that work happens across the year. Then compare that demand with the capacity your team actually has.
+Industry data shows CSMs averaging about 22 accounts in high-touch models and about 144 in low-touch ones, a sixfold difference that illustrates why a single CSM ratio can't describe every service model. To find your number, start with the work: the plays and service moments your customers need, the full effort each one takes, and when that work happens across the year. Then compare that demand with the capacity your team actually has.
 
 Definition
 
@@ -4255,6 +4255,8 @@ The CXology capacity mechanism runs in five steps:
 - Customer population and lifecycle timing. How many customers need each play, and in which months.
 
 - Required capacity. The total work, month by month, compared with the time your team actually has.
+
+Progression defines what needs to happen for the customer. Capacity determines whether you've funded enough work to help make it happen.
 
 A play is what your team does. Progression is what changes for the customer. Running a play doesn't guarantee progression, but you can't plan for progression without funding the work designed to create it.
 
@@ -4334,7 +4336,7 @@ Availability is the percentage of a person's capacity realistically available fo
 
 CXology has historically used 65% availability, about 26 hours of direct customer time in a 40-hour week, as a planning starting point. It is not a universal benchmark or a best-practice requirement. It is an assumption to validate. A team carrying heavy internal responsibilities may run closer to 55%. A team with strong operations support and little cross-functional load may sustain more. What matters is that the number is explicit, tested against how your team actually spends its time, and refined as you learn.
 
-The one assumption that reliably breaks a capacity model is 100%. If your plan assumes a 40-hour week can be filled with 40 hours of designed customer work, the model is wrong before it starts.
+A capacity model that assumes 100% availability is almost certainly overstating the team's usable capacity. A 40-hour workweek does not mean 40 hours are available for designed customer work.
 
 Keep the two ideas separate: designed effort describes the demand (how much work the customers need), and availability describes the supply (how much of your team's time can go to it). Most staffing arguments go sideways because those two get blended into one ratio.
 
@@ -4365,6 +4367,8 @@ A first pass with the Planner's default assumptions:
 - Reactive customer work (questions, issues, requests for help) is direct work too. Holding back 30% of direct time for it leaves about 900 hours a year for designed work.
 
 - At 27.5 hours per year-one high-touch customer, that's room for about 33 such customers. At 18 hours per year-two high-touch customer, about 50. At 4 hours per year-two low-touch customer, more than 200.
+
+These are illustrations of how the math works, not recommended CSM ratios. Change the plays, effort estimates, reactive workload, availability, or customer lifecycle mix and the answer changes.
 
 Notice the shape. A work-based model lands in the same broad territory as the benchmarks above, with a few dozen accounts in high-touch and hundreds in low-touch. The difference is that you can see why, and you can change the answer by changing the work.
 
