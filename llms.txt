@@ -57,7 +57,7 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 
 ## Articles and Q&A
 - [How Do You Make Existing-Customer Revenue More Predictable?](https://cxology.co/predictable-existing-customer-revenue.html): Put existing-customer revenue into a pipeline and manage the customer progression that moves it, so confirmed outcomes update probability and sharpen the forecast.
-- [Strategic Customer Success Q&A: Navigating Post-Sale Chaos](https://cxology.co/navigating-post-sale-chaos-strategic-customer-success-qa/): Questions and answers on loyalty blockers and builders, segmentation, timing key moments, and measuring engagement.
+- [8 Critical Moments in the Post-Sale Customer Journey](https://cxology.co/navigating-post-sale-chaos-strategic-customer-success-qa/): The eight customer inflection points, from purchase to the renewal and growth decision, and how plays and expected timing make customer progression visible.
 - [What Is Strategic Customer Success? Definition & Framework](https://cxology.co/strategic-customer-success/): The deliberate management of customer progression toward the outcomes that justified the purchase.
 - [The Three Essential Elements for Strategic Customer Success](https://cxology.co/three-essential-elements-for-strategic-customer-success/): Relevance, value achievement, and trust.
 - [The Trust Factor: Retention and Trust](https://cxology.co/retention-and-trust/): Why trust is the core connection to retention.
