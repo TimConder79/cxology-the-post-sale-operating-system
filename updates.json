@@ -2,6 +2,15 @@
   "updates": [
     {
       "kind": "Refinement",
+      "chapter": "Part III · Introduction",
+      "date": "2026-10-06",
+      "title": "Part III has a new title: The Plays That Help Customers Progress",
+      "blurb": "Plays are the work that helps customers progress; evidence of that progress is what moves the pipeline. The Part III introduction's title and opening now say so.",
+      "link": "chapter-part3-intro.html",
+      "linkLabel": "Read the Part III introduction"
+    },
+    {
+      "kind": "Refinement",
       "chapter": "Conclusion · Running the System",
       "date": "2026-10-06",
       "title": "The operating loop now separates the work from the evidence",
