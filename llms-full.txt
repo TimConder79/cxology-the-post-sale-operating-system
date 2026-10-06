@@ -1,6 +1,6 @@
 # The Post-Sale Operating System — Full Text
 
-> The complete text of The Post-Sale Operating System by Tim Conder (creator of CXology). A book and set of tools that turn customer retention and expansion into a forecastable post-sale pipeline: a five-stage pipeline, eight lifecycle plays, and the health-scoring, data, and capacity infrastructure that make it real.
+> The complete text of The Post-Sale Operating System by Tim Conder (founder of CXology). A book and set of tools that turn customer retention and expansion into a forecastable post-sale pipeline: a five-stage pipeline, eight lifecycle plays, and the health-scoring, data, and capacity infrastructure that make it real.
 
 Author: Tim Conder. Source: https://cxology.co/ . Interactive tools and articles are indexed in https://cxology.co/llms.txt .
 
