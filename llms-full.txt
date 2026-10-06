@@ -2795,7 +2795,7 @@ By implementing these supporting plays, you ensure that even when the customer j
 ## Part IV Introduction: The Infrastructure That Makes the System Real
 Source: https://cxology.co/chapter-part4-intro.html
 
-Part I made the case that Customer Success is a revenue function. Part II defined the post-sale pipeline: five stages, fixed probability weights, and stage advancement driven by evidence that plays produced their intended outcomes. Part III unpacked the plays — the designed motions that create customer outcomes and produce the signals the pipeline tracks. What Parts I through III deliberately left unaddressed was the question every operator eventually asks: how does any of this actually work at scale?
+Part I made the case that Customer Success is a revenue function. Part II defined the post-sale pipeline: five stages, fixed probability weights, and stage advancement driven by evidence that plays produced their intended outcomes. Part III unpacked the plays: the designed motions intended to help customers reach their outcomes and to produce the evidence the pipeline tracks. What Parts I through III deliberately left unaddressed was the question every operator eventually asks: how does any of this actually work at scale?
 
 Part IV answers that question.
 
@@ -2805,9 +2805,9 @@ The infrastructure chapters are not an appendix. They are the load-bearing layer
 
 Most post-sale teams build the customer-facing layer first. They design plays, define stages, train the team, and hope that execution will be consistent enough to produce reliable outputs. Some of the time it works. But when the team is stretched, when a CSM inherits an unfamiliar book, when leadership needs a forecast they can defend, when the AI layer needs context it can trust — that is when the infrastructure reveals itself. Either it is there, or it is not.
 
-Infrastructure in this system means five things. Data that is trusted. AI that reduces friction without replacing judgment. Health scoring that shows progression, not just risk. Cross-functional alignment that makes the pipeline a company system rather than a CS artifact. And capacity planning that connects the designed experience to the investment required to deliver it.
+Infrastructure in this system means six things. Data that is trusted. AI that reduces friction without replacing judgment. Health scoring that shows progression, not just risk. Cross-functional alignment that makes the pipeline a company system rather than a CS artifact. Capacity planning that connects the designed experience to the investment required to deliver it. And management discipline: a regular cadence of inspecting execution and evidence, and making decisions from what they show.
 
-These are not independent projects. They are interdependent layers. The AI layer cannot produce useful outputs without trusted data. Health scoring cannot show meaningful progression without consistent play execution to measure. Cross-team alignment cannot hold without a shared view of customer movement. Capacity planning cannot be credible without a clear picture of the designed effort the system requires. Each layer depends on the others. When one is missing, the system compensates through heroic effort. When all are present, the system operates.
+These are not independent projects. They are interdependent layers. The AI layer cannot produce useful outputs without trusted data. Health scoring cannot show meaningful progression without consistent play execution to measure. Cross-team alignment cannot hold without a shared view of customer movement. Capacity planning cannot be credible without a clear picture of the designed effort the system requires. Management discipline cannot inspect what was never recorded, and every other layer drifts without it. Each layer depends on the others. When one is missing, the system compensates through heroic effort. When all are present, the system operates.
 
 ## Each layer solves a specific problem that the plays alone cannot.
 
@@ -2823,6 +2823,8 @@ Cross-team alignment solves the ownership problem. The pipeline is not a CS arti
 
 Capacity planning solves the investment problem. The plays define the work. Capacity planning answers whether the organization has enough of the right effort to deliver that work consistently. Without it, CS leaders ask for headcount with a story. With it, they present a resource plan grounded in the designed experience, the effort it requires, and the trade-offs available to leadership.
 
+Management discipline solves the drift problem. Every other layer can be built well and still decay if nobody looks at it. Leaders need a regular cadence for inspecting whether the plays ran, whether the expected progression occurred, what the evidence says about the revenue, and whether the resources match the work. That cadence is what turns the infrastructure from a one-time build into an operating rhythm.
+
 The pipeline becomes a managed system when the infrastructure holds. Without it, the pipeline is a framework. With it, the pipeline is a forecast, a coaching tool, a resource model, and a shared view of the customer that the entire company can act on.
 
 ## The pipeline becomes real when it can be measured, trusted, and funded.
@@ -2837,7 +2839,7 @@ The most common mistake in scaling a post-sale function is adding volume without
 
 Part IV redefines scale. Scale is not the number of accounts the team can touch. It is the number of accounts the team can guide through the designed experience with enough consistency that the pipeline produces signals worth trusting. That is a fundamentally different metric, and it requires infrastructure that most teams have not yet built.
 
-The chapters that follow move through the infrastructure in sequence. They begin with AI — the execution layer that makes plays scalable without making them generic — and progress through data governance, health scoring, cross-team alignment, and capacity planning. Each chapter is designed to be read in order but applied independently. The structure is consistent. The infrastructure adapts to the maturity, tooling, and constraints of the organization building it.
+The chapters that follow move through the infrastructure in sequence. They begin with AI — the execution layer that makes plays scalable without making them generic — and progress through data governance, health scoring, cross-team alignment, and capacity planning. Management discipline does not get its own chapter. It runs through all of them, and the Conclusion shows what that cadence looks like in practice. Each chapter is designed to be read in order but applied independently. The structure is consistent. The infrastructure adapts to the maturity, tooling, and constraints of the organization building it.
 
 
 ---
@@ -3753,6 +3755,10 @@ Capacity Planning
 
 The designed experience translated into investment.
 
+Management Discipline
+
+A steady cadence of inspecting execution and evidence, and deciding from it.
+
 The loop: every play is designed around an expected customer outcome and a recorded signal of whether it occurred. Evidence of that outcome, not completion of the play, updates the pipeline. The pipeline and the evidence together inform the next action. The infrastructure keeps the signals trustworthy. That loop, not any single framework, is the operating system.
 
 Plays create the conditions for customer progress. Evidence of that progress updates the pipeline. The pipeline updates probability. And probability improves the forecast. This is what makes existing customer revenue predictable in the same way new logo revenue is predictable.
@@ -3947,7 +3953,7 @@ The concepts this book introduces or uses in a specific way, with short definiti
 
 **One Data Spine**: The single, trusted customer record the whole operating system runs on, built by centralizing the data, democratizing access, and eliminating local copies.
 
-**Post-Sale Operating System**: A designed system of customer progression that governs everything after the sale. It treats retention and growth as outcomes that can be designed, operationalized, inspected, and improved, rather than the result of individual heroics.
+**Post-Sale Operating System**: A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting. In plain terms, it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue.
 
 **Post-sale pipeline**: The pipeline that begins at Closed-Won and tracks renewal and expansion opportunities through five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. Stages advance on logged evidence that plays produced their intended outcomes, not when time passes.
 
