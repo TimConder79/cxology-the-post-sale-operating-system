@@ -1,6 +1,14 @@
 {
   "updates": [
     {
+      "kind": "Update",
+      "date": "2026-10-06",
+      "title": "New companion page: What Is a Post-Sale Operating System?",
+      "blurb": "A single-page explanation of the whole system: the definition, the three layers (Post-Sale Pipeline, Plays, Infrastructure), the one loop that connects them, a two-step customer example, and a practical build path. It sits at the end of Part III.",
+      "link": "post-sale-operating-system.html",
+      "linkLabel": "Read the answer"
+    },
+    {
       "kind": "Refinement",
       "chapter": "Part III · Introduction",
       "date": "2026-10-06",

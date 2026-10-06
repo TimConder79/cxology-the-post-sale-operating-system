@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What Is a Post-Sale Operating System? Three Layers, One Loop — CXology</title>
+  <meta name="description" content="A Post-Sale Operating System connects customer progression, plays, evidence, health, capacity, and forecasting into one company system. Three layers, one loop."/>
+  <link rel="canonical" href="https://cxology.co/post-sale-operating-system.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="The Post-Sale Operating System"/>
+  <meta property="og:title" content="What Is a Post-Sale Operating System? Three Layers, One Loop — CXology"/>
+  <meta property="og:description" content="A Post-Sale Operating System connects customer progression, plays, evidence, health, capacity, and forecasting into one company system. Three layers, one loop."/>
+  <meta property="og:url" content="https://cxology.co/post-sale-operating-system.html"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="What Is a Post-Sale Operating System? Three Layers, One Loop — CXology"/>
+  <meta name="twitter:description" content="A Post-Sale Operating System connects customer progression, plays, evidence, health, capacity, and forecasting into one company system. Three layers, one loop."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+    /* Page-specific additions only — core styles come from style.css */
+    .reading-progress { position: fixed; top: 60px; left: 0; right: 0; z-index: 99; height: 3px; background: rgba(0,0,0,.06); }
+    .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
+
+    /* Chapter-body typography — matches the book chapters exactly */
+    .chapter-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-100); }
+    .chapter-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy-light); margin: 1.5rem 0 0.5rem; }
+    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.82; max-width: 72ch; }
+    .chapter-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .chapter-body p a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .chapter-body p a:hover { color: var(--olive-dim); text-decoration-color: var(--olive-dim); }
+    .chapter-body p.related-read { font-size: 0.9rem; color: var(--text-muted); margin: .2rem 0 0; max-width: 72ch; }
+
+    /* Direct answer + emphasized statement */
+    .chapter-body p.answer-lead { font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: var(--navy); max-width: 72ch; border-left: 4px solid var(--olive); padding: .15rem 0 .15rem 1.2rem; margin: .5rem 0 1.6rem; }
+    .chapter-body p.key-statement { font-size: 1.2rem; line-height: 1.5; font-weight: 700; color: var(--navy); background: var(--olive-pale); border-radius: var(--radius-md); padding: 1.15rem 1.4rem; margin: 2rem 0; max-width: 72ch; }
+
+    /* Forecast-loop diagram */
+    .diagram-wrap { margin: 1.6rem 0 1rem; }
+    .diagram-wrap svg { width: 100%; height: auto; display: block; }
+    .chapter-body p.diagram-caption { font-size: .82rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+
+    /* Read-next cards (same treatment as the conclusion chapter) */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+    @media (max-width: 760px) { .tool-grid { grid-template-columns: 1fr; } }
+  
+    /* Initiative 2 additions */
+    .chapter-body ol:not(.flow) { padding-left: 1.4rem; margin-bottom: 1rem; max-width: 72ch; }
+    .chapter-body .direct-answer { border-left: 4px solid var(--olive); background: var(--off-white); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .direct-answer p { margin: 0; color: var(--gray-700); }
+    .chapter-body .def { border: 1px solid var(--gray-200); border-top: 4px solid var(--navy); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; background: var(--white); }
+    .chapter-body .def-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-dim); margin-bottom: .35rem; }
+    .chapter-body .def p { margin: 0; font-size: 1.02rem; color: var(--navy); }
+    .chapter-body ol.flow { list-style: none; padding: 0; margin: .4rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; max-width: 72ch; }
+    .chapter-body ol.flow li { margin: 0; background: var(--navy); color: #fff; font-size: .85rem; font-weight: 600; padding: .4rem .75rem; border-radius: 999px; line-height: 1.3; }
+    .chapter-body ol.flow li:not(:last-child)::after { content: "\2192"; color: var(--olive); margin-left: .55rem; font-weight: 700; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1rem; max-width: 100%; }
+    table.cmp { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
+    table.cmp caption { caption-side: top; text-align: left; font-weight: 700; color: var(--navy); font-size: .95rem; margin-bottom: .6rem; }
+    table.cmp th, table.cmp td { text-align: left; padding: .6rem .75rem; border: 1px solid var(--gray-200); vertical-align: top; color: var(--gray-700); }
+    table.cmp thead th { background: var(--navy); color: #fff; font-weight: 700; }
+    table.cmp tbody tr:nth-child(even) td { background: var(--off-white); }
+    table.cmp td:first-child { font-weight: 700; color: var(--navy); }
+    table.cmp-wide { min-width: 820px; }
+    .chapter-body h3 + p { margin-top: 0; }
+    /* Initiative 3 additions */
+    .chapter-body .formula { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: .9rem 1.2rem; margin: .4rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .formula p { margin: .2rem 0; font-size: .92rem; color: var(--navy); }
+    .chapter-body sup a { color: var(--olive-dim); font-weight: 700; text-decoration: none; padding: 0 .1rem; }
+    .chapter-body .sources { border-top: 1px solid var(--gray-200); margin: 2rem 0 1rem; padding-top: 1rem; max-width: 72ch; }
+    .chapter-body .sources-title { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .4rem; }
+    .chapter-body .sources p { font-size: .82rem; line-height: 1.6; color: var(--text-muted); }
+    .chapter-body ol li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://cxology.co/post-sale-operating-system.html#article",
+      "headline": "What Is a Post-Sale Operating System?",
+      "description": "A Post-Sale Operating System connects customer progression, plays, evidence, health, capacity, and forecasting into one company system. Three layers, one loop.",
+      "url": "https://cxology.co/post-sale-operating-system.html",
+      "mainEntityOfPage": {
+        "@id": "https://cxology.co/post-sale-operating-system.html"
+      },
+      "inLanguage": "en",
+      "image": "https://cxology.co/og-image.png",
+      "datePublished": "2026-10-06",
+      "dateModified": "2026-10-06",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "isPartOf": {
+        "@id": "https://cxology.co/#book"
+      },
+      "about": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-operating-system.html#definition",
+          "name": "Post-Sale Operating System",
+          "description": "A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-operating-system.html#post-sale-pipeline",
+          "name": "Post-Sale Pipeline",
+          "description": "The layer of a Post-Sale Operating System that makes customer progression and existing-customer revenue visible, from purchase onward, through five stages: Identify, Align, Advocate, Intent, and Net Revenue Close.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-operating-system.html#plays",
+          "name": "Play",
+          "description": "The designed work a company does to help a customer progress at a specific point in the lifecycle. A play is what the company does; progression is what changes for the customer; evidence tells whether the intended change occurred.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-operating-system.html#infrastructure",
+          "name": "Post-sale infrastructure",
+          "description": "The supporting capabilities that make post-sale execution observable, trustworthy, repeatable, and scalable: data, health, capacity, technology and AI, cross-functional alignment, and management discipline.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        }
+      ],
+      "mentions": [
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/customer-progression-leading-indicators.html",
+          "url": "https://cxology.co/customer-progression-leading-indicators.html",
+          "name": "How Do You Know Whether a Customer Is Actually Progressing?"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/customer-success-capacity.html",
+          "url": "https://cxology.co/customer-success-capacity.html",
+          "name": "How Many Customers Should a CSM Manage?"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/predictable-existing-customer-revenue.html",
+          "url": "https://cxology.co/predictable-existing-customer-revenue.html",
+          "name": "How Do You Make Existing-Customer Revenue More Predictable?"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/chapter-part2-intro.html",
+          "url": "https://cxology.co/chapter-part2-intro.html",
+          "name": "How the Post-Sale Pipeline Works"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/chapter-20.html",
+          "url": "https://cxology.co/chapter-20.html",
+          "name": "Health Scoring That Actually Works"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://cxology.co/#tim",
+      "name": "Tim Conder",
+      "jobTitle": "Fractional CX & CS Leader, Author",
+      "description": "Post-sale systems builder and creator of CXology. 20+ years in B2B SaaS building customer success and post-sale revenue systems.",
+      "image": "https://cxology.co/Tim_Conder_Headshot.jpg",
+      "url": "https://cxology.co/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/tim-conder/"
+      ],
+      "worksFor": {
+        "@id": "https://cxology.co/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxology.co/#org",
+      "name": "CXology",
+      "url": "https://cxology.co",
+      "logo": "https://cxology.co/assets/logo-h-bb.png"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://cxology.co/#book",
+      "name": "The Post-Sale Operating System",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "url": "https://cxology.co/book.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cxology.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Book",
+          "item": "https://cxology.co/book.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What Is a Post-Sale Operating System?",
+          "item": "https://cxology.co/post-sale-operating-system.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a post-sale operating system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting. In plain terms, it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the three layers of a post-sale operating system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Post-Sale Pipeline, which makes customer progression and existing-customer revenue visible; Plays, the designed work intended to help customers progress; and Infrastructure, which makes execution observable, trustworthy, repeatable, and scalable through data, health, capacity, technology and AI, cross-functional alignment, and management discipline."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a post-sale operating model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A post-sale operating model is how a company intends to run everything after the sale: what progress customers should make, what work supports that progress, who does it, how results are observed, and how those results inform decisions about resources and revenue. CXology uses operating system to emphasize the connected mechanism that makes the model run repeatedly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is an operating system different from a Customer Success framework?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly. Journey maps, health scores, and playbooks are useful frameworks, but they do not form an operating system when they are managed separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does completing a play mean the customer progressed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A play is what the company does. Progression is what changes for the customer. Evidence tells you whether the intended change occurred. A play can be completed without the customer progressing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a post-sale operating system the same as a Customer Success operating system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Customer Success often orchestrates it, but Sales, Product, Services, Support, Marketing, Finance, and leadership all affect whether customers progress and whether existing-customer revenue is retained or grown."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you start building a post-sale operating model?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start by defining the progression customers should make and the evidence that would show it happened. Then map Inflection Points, design plays, build the Post-Sale Pipeline, create health and signals, model capacity, forecast revenue, and inspect and improve the loop. Treat this as a practical order, not a rigid sequence."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV — exact match to frameworks.html and chapter.html -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="/"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="chapter-hero">
+  <div class="hero-grid"></div>
+  <div class="chapter-hero-inner">
+    <span class="chapter-num">The Post-Sale Operating System · The System</span>
+    <h1 class="headline">What Is a Post-Sale Operating System?</h1>
+    <p class="chapter-hero-sub">A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+<div class="def" id="definition"><div class="def-label">Definition</div><p><strong>A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting.</strong></p></div>
+  <p class="answer-lead">In plain terms: it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue.</p>
+
+  <div class="direct-answer" id="short-answer"><p><strong>The short answer.</strong> A Post-Sale Operating System has three layers and one loop. The <strong>Post-Sale Pipeline</strong> makes customer progression and existing-customer revenue visible. <strong>Plays</strong> are the work the company designs to help customers progress. <strong>Infrastructure</strong> (data, health, capacity, technology and AI, cross-functional alignment, and management discipline) makes that work observable, trustworthy, repeatable, and scalable. The loop runs continuously: decide what progress the customer should make, run the work designed to help, check what actually changed, update what you believe about the revenue, and decide what happens next.</p></div>
+
+  <h2 id="why">Why Does Post-Sale Need an Operating System?</h2>
+  <p>Most companies already have the pieces.</p>
+  <p>They have a customer journey map. A set of playbooks. A health score. A CRM. Product usage data. Some version of a capacity model. A renewal process. A forecast. Increasingly, AI tools layered on top.</p>
+  <p>Each piece can be useful. The problem is that they are usually built and managed separately. The journey map lives in a slide deck. The playbooks live with Customer Success. The health score is tuned by operations. Usage lives with Product. The renewal forecast lives with Finance and the account team. Capacity gets argued once a year at planning time.</p>
+  <p>When the pieces run separately, nobody can answer the questions that actually matter for existing-customer revenue:</p>
+  <ul>
+  <li>What should this customer have accomplished by now?</li>
+  <li>Did we do the work designed to help them get there?</li>
+  <li>Did anything actually change for the customer?</li>
+  <li>How do we know?</li>
+  <li>What should that change about our view of the revenue?</li>
+  <li>What happens next, and do we have the people to do it?</li>
+  </ul>
+  <p class="key-statement">The problem is not necessarily that companies lack the pieces. The pieces often do not operate as one system.</p>
+  <p>An operating system is what connects them. It is the difference between owning tools for post-sale and running post-sale.</p>
+
+  <h2 id="framework-vs-operating-system">Framework vs. Operating System: What's the Difference?</h2>
+  <div class="direct-answer"><p><strong>A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly.</strong></p></div>
+  <p>A journey map explains the stages a customer moves through. A health score explains how to summarize risk. A capacity model explains how much work a team can absorb. A renewal process explains how to manage the decision at the end of a term. Each is a framework, and each answers a real question.</p>
+  <p>None of them, alone, tells you how the work, the evidence, the decisions, and the resources connect. That connection is what makes post-sale repeatable rather than dependent on which customer you have, which CSM you assigned, or which quarter it is.</p>
+  <div class="table-wrap"><table class="cmp" id="framework-vs-system">
+  <caption>Framework vs. operating system</caption>
+  <thead><tr><th scope="col"></th><th scope="col">A framework</th><th scope="col">An operating system</th></tr></thead>
+  <tbody>
+  <tr><td>Scope</td><td>One piece of the problem</td><td>The connected whole</td></tr>
+  <tr><td>Question it answers</td><td>How should we think about this?</td><td>How do we run this, every week, for every customer?</td></tr>
+  <tr><td>Typical output</td><td>A model, a map, a score, a ratio</td><td>Decisions about customers, resources, and revenue</td></tr>
+  <tr><td>What breaks without it</td><td>Understanding</td><td>Consistency, visibility, and predictability</td></tr>
+  </tbody>
+  </table></div>
+  <p>A company can have excellent frameworks and still not have an operating system.</p>
+
+  <h2 id="operating-model">What Is a Post-Sale Operating Model?</h2>
+  <p>A post-sale operating model is how a company intends to run everything after the sale: what progress customers should make, what work supports that progress, who does it, how results are observed, and how those results inform decisions about resources and revenue.</p>
+  <p>The terms are often used interchangeably. CXology uses <em>operating system</em> to emphasize the part most operating models leave out: the connected mechanism that makes the model run repeatedly, turning evidence from customers into decisions, customer by customer, period after period.</p>
+
+  <h2 id="three-layers">The Three Layers of a Post-Sale Operating System</h2>
+  <p>The Post-Sale Operating System is made of three layers. Each answers a different management question.</p>
+  <div class="table-wrap"><table class="cmp" id="layers">
+  <caption>The three layers</caption>
+  <thead><tr><th scope="col">Layer</th><th scope="col">What it is</th><th scope="col">The question it answers</th></tr></thead>
+  <tbody>
+  <tr><td>Post-Sale Pipeline</td><td>Makes customer progression and existing-customer revenue visible</td><td>What should happen, and what does it mean for the revenue?</td></tr>
+  <tr><td>Plays</td><td>The designed work intended to help customers progress</td><td>What are we going to do about it?</td></tr>
+  <tr><td>Infrastructure</td><td>Makes execution observable, trustworthy, repeatable, and scalable</td><td>Can we execute and trust the system?</td></tr>
+  </tbody>
+  </table></div>
+
+  <h3 id="post-sale-pipeline">Layer 1: The Post-Sale Pipeline</h3>
+  <p><strong>The Post-Sale Pipeline makes customer progression and existing-customer revenue visible.</strong></p>
+  <p>Sales leaders can see their new-logo revenue because it sits in a pipeline: stages, evidence, probability, and next steps. After the contract is signed, most of that structure disappears, even though the revenue is still at stake. The Post-Sale Pipeline restores it from purchase onward, not just in the months before renewal.</p>
+  <p>For leadership, the pipeline answers four questions about every customer:</p>
+  <ul>
+  <li>What should happen next?</li>
+  <li>What evidence exists?</li>
+  <li>What does that evidence mean?</li>
+  <li>How should our belief about this revenue change?</li>
+  </ul>
+  <p>CXology's Post-Sale Pipeline has five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. How customers move between them, and how probability changes, is covered in depth in <a href="chapter-part2-intro.html">Part II: How the Post-Sale Pipeline Works</a>. This page covers only the pipeline's role in the larger system.</p>
+
+  <h3 id="plays">Layer 2: Plays</h3>
+  <p><strong>Plays are the designed work intended to help customers progress.</strong></p>
+  <p>A play is a defined motion: what triggers it, what happens inside it, what assets support it, what customer change it is designed to produce, and how the team will know whether that change happened. Kickoff, Onboarding, First Value, and the Alignment Meeting are examples of plays.</p>
+  <p>The most important distinction in the system lives here:</p>
+  <ul>
+  <li><strong>A play is what the company does.</strong></li>
+  <li><strong>Progression is what changes for the customer.</strong></li>
+  <li><strong>Evidence tells us whether the intended change actually occurred.</strong></li>
+  </ul>
+  <p>Completing a play does not mean the customer progressed, and it does not advance the pipeline on its own. A kickoff can be held without the customer committing to anything. Training can be attended without anyone changing how they work. Plays create the conditions for progression. They do not guarantee it.</p>
+  <p class="related-read">For the full distinction between activity, progression, and evidence, see <a href="customer-progression-leading-indicators.html">How Do You Know Whether a Customer Is Actually Progressing?</a></p>
+
+  <h3 id="infrastructure">Layer 3: Infrastructure</h3>
+  <p><strong>Infrastructure makes execution observable, trustworthy, repeatable, and scalable.</strong></p>
+  <p>Infrastructure is not a technology layer. It is every supporting capability the company needs to run the pipeline and the plays consistently across customers, teams, and time:</p>
+  <ul>
+  <li><strong>Data:</strong> one trusted record of what each customer is trying to accomplish, what work happened, and what evidence exists.</li>
+  <li><strong>Health:</strong> a running interpretation of the accumulated evidence about each customer's state.</li>
+  <li><strong>Capacity:</strong> enough people and time to execute the work the company has designed.</li>
+  <li><strong>Technology and AI:</strong> tools that reduce the effort to prepare, execute, capture, and inspect the work, once the work itself is defined.</li>
+  <li><strong>Cross-functional alignment:</strong> shared definitions, goals, and handoffs across Sales, Customer Success, Product, Services, Support, Marketing, and Finance.</li>
+  <li><strong>Management discipline:</strong> the cadence of inspecting execution and evidence, and making decisions from them.</li>
+  </ul>
+  <p>Without infrastructure, the pipeline and the plays may work for a few customers or a few strong team members. With it, they work by default.</p>
+
+  <h2 id="one-loop">The One Loop: How a Post-Sale Operating System Runs</h2>
+  <p>The three layers describe what the system is made of. The loop describes how it runs.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 960 400" role="img" aria-label="The One Loop: Expected Progression, then Play, then Customer Progression, then Evidence, then Post-Sale Pipeline and Probability, then Next Action, which repeats back to Expected Progression. Infrastructure supports the entire loop." xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5B7F95"/></marker></defs>
+      <rect x="0" y="0" width="960" height="400" rx="16" fill="#101820"/>
+      <text x="480" y="56" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#B5BD00">THE ONE LOOP</text>
+      <rect x="22" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="22" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="90.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">1</text>
+      <text x="90.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Expected</text>
+      <text x="90.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Progression</text>
+      <path d="M159,136.0 L177,136.0" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <rect x="178" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="178" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="246.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">2</text>
+      <text x="246.0" y="143.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="16" font-weight="700" fill="#ffffff">Play</text>
+      <path d="M315,136.0 L333,136.0" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <rect x="334" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="334" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="402.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">3</text>
+      <text x="402.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Customer</text>
+      <text x="402.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Progression</text>
+      <path d="M471,136.0 L489,136.0" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <rect x="490" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="490" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="558.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">4</text>
+      <text x="558.0" y="143.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="16" font-weight="700" fill="#ffffff">Evidence</text>
+      <path d="M627,136.0 L645,136.0" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <rect x="646" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="646" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="714.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">5</text>
+      <text x="714.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Pipeline /</text>
+      <text x="714.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Probability</text>
+      <path d="M783,136.0 L801,136.0" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <rect x="802" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="802" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="870.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">6</text>
+      <text x="870.0" y="143.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="16" font-weight="700" fill="#ffffff">Next Action</text>
+      <path d="M870.0,180 L870.0,242 Q870.0,258 854.0,258 L106.0,258 Q90.0,258 90.0,242 L90.0,184" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+      <rect x="421" y="242" width="118" height="32" rx="16" fill="#B5BD00"/><text x="480" y="263" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="13" font-weight="700" fill="#101820">repeats</text>
+      <rect x="22" y="298" width="916" height="74" rx="12" fill="none" stroke="#B5BD00" stroke-width="2" stroke-dasharray="6 5"/>
+      <text x="480" y="328" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#B5BD00">INFRASTRUCTURE SUPPORTS THE ENTIRE LOOP</text>
+      <text x="480" y="352" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="14" font-weight="500" fill="#ffffff">Data · Health · Capacity · Technology and AI · Cross-functional alignment · Management discipline</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">The One Loop. Six steps repeat for every customer, and infrastructure supports the entire loop. The same loop is written out below.</p>
+  <ol id="loop-steps">
+  <li><strong>Expected Progression.</strong> What meaningful change should occur for the customer?</li>
+  <li><strong>Play.</strong> What work has the company designed to help that progression occur?</li>
+  <li><strong>Customer Progression.</strong> What actually changed for the customer?</li>
+  <li><strong>Evidence.</strong> How do we know whether that change occurred?</li>
+  <li><strong>Post-Sale Pipeline / Probability.</strong> What should the new evidence change about what the company believes about the existing-customer revenue?</li>
+  <li><strong>Next Action.</strong> Given what happened, or failed to happen, what needs to happen next?</li>
+  </ol>
+  <p>Then the loop runs again. <strong>Infrastructure supports the entire loop.</strong></p>
+  <p class="key-statement">Decide what progress the customer should make, do the work designed to help, see what actually changed, prove it, update what you believe about the revenue, and decide what comes next.</p>
+  <p>The loop is not a machine where each step produces the next. Plays create conditions for progression; they do not guarantee it. Progression evidence informs probability; it does not guarantee retention or expansion. And evidence does not set probability automatically. People still apply judgment. The difference is that their judgment now has something concrete to work from.</p>
+  <p>How the loop maps to the layers:</p>
+  <ul>
+  <li>Expected Progression and Customer Progression belong to the customer.</li>
+  <li>The Play is Layer 2.</li>
+  <li>The Pipeline / Probability step is Layer 1.</li>
+  <li>Evidence is captured, trusted, and acted on because of Layer 3.</li>
+  <li>Next Action is a decision that draws on all three.</li>
+  </ul>
+  <p>The places in the customer lifecycle where meaningful progression is expected are called <a href="customer-progression-leading-indicators.html#inflection-points">Inflection Points</a>. Each turn of the loop usually centers on one.</p>
+
+  <h2 id="example">One Customer, Two Turns of the Loop</h2>
+  <p>The loop is easiest to see with one customer. Take a newly signed customer at the start of the relationship.</p>
+  <h3 id="turn-1">Turn 1: Establishing the outcome</h3>
+  <div class="table-wrap"><table class="cmp" id="turn-1-table">
+  <thead><tr><th scope="col">Step</th><th scope="col">What happens</th></tr></thead>
+  <tbody>
+  <tr><td>Expected progression</td><td>The customer establishes the outcomes they bought for, the stakeholders who need to be involved, who is responsible for what, and the next steps.</td></tr>
+  <tr><td>Play</td><td>The company runs its first-meeting and onboarding work: Kickoff, then Onboarding.</td></tr>
+  <tr><td>Customer progression</td><td>The customer moves from "we signed" to "we know what we are trying to achieve, who owns it on our side, and what happens next."</td></tr>
+  <tr><td>Evidence</td><td>The customer restates the reason for purchase and the first result they expect in their own words. They name owners on their side. The stakeholders the work requires show up. Next steps are committed with names and dates, and the first ones are kept.</td></tr>
+  <tr><td>Pipeline / probability</td><td>The revenue is now attached to a defined outcome with a customer owner. That is a real change in what the company knows, and its confidence in the revenue can reasonably increase.</td></tr>
+  <tr><td>Next action</td><td>Focus the next work on helping the customer reach a first meaningful result.</td></tr>
+  </tbody>
+  </table></div>
+  <h3 id="turn-2">Turn 2: First Value</h3>
+  <div class="table-wrap"><table class="cmp" id="turn-2-table">
+  <thead><tr><th scope="col">Step</th><th scope="col">What happens</th></tr></thead>
+  <tbody>
+  <tr><td>Expected progression</td><td>The customer experiences First Value: the first meaningful result they recognize from the purchase.</td></tr>
+  <tr><td>Play</td><td>The company runs the First Value play, designed to help the customer reach that first result.</td></tr>
+  <tr><td>Customer progression</td><td>The customer gets a result that matters to them, tied to the outcome they named in Turn 1.</td></tr>
+  <tr><td>Evidence</td><td>The customer can point to the result, says in their own words that it is starting to work, and shares it with someone else in their organization.</td></tr>
+  <tr><td>Pipeline / probability</td><td>The reason for purchase is beginning to be realized, and the customer recognizes it. The company has better grounds to believe the revenue will be retained, though nothing is guaranteed.</td></tr>
+  <tr><td>Next action</td><td>Build on the result toward broader adoption and the larger outcome the customer bought for.</td></tr>
+  </tbody>
+  </table></div>
+  <p>Notice what the second turn depends on. The First Value target only exists because the first turn produced a customer-defined outcome. Each turn sets up the next.</p>
+  <h3 id="when-evidence-is-missing">What happens when the evidence doesn't appear</h3>
+  <p>Suppose kickoff happened, but the customer never named an owner and the executive sponsor didn't attend. The play was completed. The progression didn't occur.</p>
+  <p>The loop still runs. The evidence says the expected change is missing, so the company should not raise its confidence in the revenue, and may need to lower it. The next action changes: find the missing owner, re-engage the sponsor, or escalate, before moving on to First Value.</p>
+  <p>This is where the system earns its value. A missing piece of expected progression is visible months before it would show up in usage, health, or a renewal conversation.</p>
+
+  <h2 id="health-and-capacity">Where Do Customer Health and Capacity Fit?</h2>
+  <p>Neither health nor capacity is a step in the loop. Both are part of the Infrastructure that supports it, and each plays a specific role.</p>
+  <p><strong>Health is an interpretation of accumulated evidence about the customer's state.</strong> Each turn of the loop adds evidence. Health summarizes what all of that evidence, taken together, says about the customer right now. It should change when new evidence changes what the company believes about the customer's progression, not only when usage dips or a ticket spikes.</p>
+  <p><strong>Capacity determines whether the organization has enough resources to consistently execute the work it has designed.</strong> Every play in the loop takes real time to prepare, run, and follow through on. If the work required across all customers exceeds the time available, plays get skipped or thinned out, evidence goes missing, and the loop stops turning reliably. When that happens, leaders can add capacity or deliberately change the work they have designed.</p>
+  <p class="related-read">Go deeper: <a href="chapter-20.html">Chapter 20: Health Scoring That Actually Works</a> and <a href="customer-success-capacity.html">How Many Customers Should a CSM Manage?</a></p>
+
+  <h2 id="company-operating-system">A Company Operating System, Not a Customer Success Operating System</h2>
+  <div class="direct-answer"><p><strong>The Post-Sale Operating System is not a Customer Success operating system. It is the system a company uses to turn a purchase into customer progress, retention, expansion, and durable existing-customer revenue.</strong></p></div>
+  <p>Many functions affect whether that happens:</p>
+  <ul>
+  <li><strong>Sales</strong> shapes the customer's expectations and the reason for purchase.</li>
+  <li><strong>Product</strong> affects the customer's ability to progress.</li>
+  <li><strong>Services and Support</strong> affect execution.</li>
+  <li><strong>Marketing</strong> can support education and advocacy.</li>
+  <li><strong>Finance</strong> participates in the revenue view.</li>
+  <li><strong>Leadership</strong> makes the resource and tradeoff decisions.</li>
+  <li><strong>Customer Success</strong> often orchestrates much of the system.</li>
+  </ul>
+  <p>Customer Success cannot produce post-sale performance alone. A customer can stall because of what was promised in the sale, a product gap, a delayed implementation, or an under-resourced team, and none of those are fixed inside Customer Success.</p>
+  <p>This is not an argument about who owns post-sale. It is an argument for shared operating discipline: the same definitions of progression, the same evidence standard, the same pipeline view, and the same cadence for making decisions about existing-customer revenue.</p>
+
+  <h2 id="how-to-build">How Do You Build a Post-Sale Operating Model?</h2>
+  <div class="direct-answer"><p><strong>Short answer:</strong> define the progress customers should make, map where it is expected to happen, design the work that supports it, decide what evidence proves it, put the revenue in a pipeline, interpret the evidence as health, model the capacity the work requires, forecast from the evidence, and keep inspecting and improving the loop.</p></div>
+  <p>A practical build path:</p>
+  <ol id="build-path">
+  <li><strong>Define progression.</strong> What meaningful change should customers make, starting from why they bought?</li>
+  <li><strong>Map Inflection Points.</strong> Where in the lifecycle is that progression expected to occur?</li>
+  <li><strong>Design plays.</strong> What work will the company do to help progression happen at each point?</li>
+  <li><strong>Establish evidence.</strong> For each expected change, what observable evidence would show it occurred?</li>
+  <li><strong>Build the Post-Sale Pipeline.</strong> Put existing-customer revenue into stages, from purchase onward, so evidence can change what the company believes about it.</li>
+  <li><strong>Create health and signals.</strong> Interpret accumulated evidence into a view of each customer's state.</li>
+  <li><strong>Model capacity.</strong> Translate the designed work into the time and people required to run it.</li>
+  <li><strong>Forecast revenue.</strong> Use pipeline evidence and probability to inform the existing-customer revenue forecast.</li>
+  <li><strong>Inspect and improve the loop.</strong> Review execution and evidence on a regular cadence, and change the plays, evidence standards, or resources when the loop isn't producing progression.</li>
+  </ol>
+  <p>This is a practical starting order, not a rule. Many companies already have some of these pieces and will start in the middle, and some steps will run in parallel. The build path is how you assemble the system. The loop is how the system runs once it exists. They are different things.</p>
+  <p>You do not need every piece in place to begin. Defining progression and evidence costs little more than thinking, which is why companies with limited data can start there. For a ninety-day version of this path, see <a href="chapter-conclusion.html">the Conclusion: Running the System</a>.</p>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <h3>What is a post-sale operating system?</h3>
+  <p>A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting. In plain terms, it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue.</p>
+  <h3>What are the three layers of a post-sale operating system?</h3>
+  <p>The Post-Sale Pipeline, which makes customer progression and existing-customer revenue visible; Plays, the designed work intended to help customers progress; and Infrastructure, which makes execution observable, trustworthy, repeatable, and scalable through data, health, capacity, technology and AI, cross-functional alignment, and management discipline.</p>
+  <h3>What is a post-sale operating model?</h3>
+  <p>A post-sale operating model is how a company intends to run everything after the sale: what progress customers should make, what work supports that progress, who does it, how results are observed, and how those results inform decisions about resources and revenue. CXology uses operating system to emphasize the connected mechanism that makes the model run repeatedly.</p>
+  <h3>How is an operating system different from a Customer Success framework?</h3>
+  <p>A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly. Journey maps, health scores, and playbooks are useful frameworks, but they do not form an operating system when they are managed separately.</p>
+  <h3>Does completing a play mean the customer progressed?</h3>
+  <p>No. A play is what the company does. Progression is what changes for the customer. Evidence tells you whether the intended change occurred. A play can be completed without the customer progressing.</p>
+  <h3>Is a post-sale operating system the same as a Customer Success operating system?</h3>
+  <p>No. Customer Success often orchestrates it, but Sales, Product, Services, Support, Marketing, Finance, and leadership all affect whether customers progress and whether existing-customer revenue is retained or grown.</p>
+  <h3>How do you start building a post-sale operating model?</h3>
+  <p>Start by defining the progression customers should make and the evidence that would show it happened. Then map Inflection Points, design plays, build the Post-Sale Pipeline, create health and signals, model capacity, forecast revenue, and inspect and improve the loop. Treat this as a practical order, not a rigid sequence.</p>
+
+  <h2 id="read-next">Read Next</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="customer-progression-leading-indicators.html">
+      <div class="tool-card-kicker">Customer Progression</div>
+      <div class="tool-card-title">How Do You Know Whether a Customer Is Actually Progressing?</div>
+      <div class="tool-card-desc">What progression is, how it differs from activity, and how to observe it.</div>
+    </a>
+    <a class="tool-card" href="chapter-part2-intro.html">
+      <div class="tool-card-kicker">The Book · Part II</div>
+      <div class="tool-card-title">How the Post-Sale Pipeline Works</div>
+      <div class="tool-card-desc">The five stages, how customers move, and how probability changes.</div>
+    </a>
+    <a class="tool-card" href="customer-success-capacity.html">
+      <div class="tool-card-kicker">Capacity</div>
+      <div class="tool-card-title">How Many Customers Should a CSM Manage?</div>
+      <div class="tool-card-desc">Derive capacity from the work customers need to progress, not a ratio.</div>
+    </a>
+    <a class="tool-card" href="chapter-20.html">
+      <div class="tool-card-kicker">The Book · Chapter 20</div>
+      <div class="tool-card-title">Health Scoring That Actually Works</div>
+      <div class="tool-card-desc">Health that reflects progression, not just risk.</div>
+    </a>
+    <a class="tool-card" href="predictable-existing-customer-revenue.html">
+      <div class="tool-card-kicker">Forecasting</div>
+      <div class="tool-card-title">How Do You Make Existing-Customer Revenue More Predictable?</div>
+      <div class="tool-card-desc">How progression evidence changes revenue probability and the forecast.</div>
+    </a>
+    <a class="tool-card" href="book.html">
+      <div class="tool-card-kicker">The Book</div>
+      <div class="tool-card-title">The Post-Sale Operating System</div>
+      <div class="tool-card-desc">The full system, chapter by chapter.</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CXology</div>
+        <p class="footer-brand-desc">A Strategic Customer Success Operating System for predictable retention and scalable growth.</p>
+        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
+      </div>
+      <div>
+        <div class="footer-col-title">The Book</div>
+        <ul class="footer-links">
+          <li><a href="book.html#parts">Part I: From Function to System</a></li>
+          <li><a href="book.html#parts">Part II: The Pipeline</a></li>
+          <li><a href="book.html#parts">Part III: Lifecycle Plays</a></li>
+          <li><a href="book.html#parts">Part IV: Scale &amp; Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Frameworks</div>
+        <ul class="footer-links">
+          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
+          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
+          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
+          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="calculator.html">NRR Calculator</a></li>
+          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
+          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>

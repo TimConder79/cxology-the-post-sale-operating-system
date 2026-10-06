@@ -255,6 +255,8 @@ This is where the idea of a post-sale operating system becomes essential. An ope
 
 In practical terms, this means treating the post-sale journey with the same seriousness that companies already apply to pre-sale pipeline management. It means defining what progression looks like after the deal is signed. It means being explicit about the plays that move relationships forward: purchase and welcome, kickoff, onboarding, first value, alignment meetings, value blocks and insights, renew and grow. It means distinguishing between customer activity and customer progress. It means creating visibility not only into risk, but into whether execution is happening the way it was designed.
 
+The operating system is not owned by Customer Success alone. Sales, Product, Services, Support, Marketing, Finance, and leadership all shape whether customers progress. For the full definition, the three layers, and the loop that connects them, read What Is a Post-Sale Operating System? (https://cxology.co/post-sale-operating-system.html)
+
 ## Right-touch execution at scale
 
 This matters even more now than it did a few years ago. Growth is harder to buy. Capital is more expensive. Leaders care more deeply about efficiency, predictability, and durable net retention. At the same time, customers expect faster time to value, clearer outcomes, and more relevant engagement. They are less patient with generic touches and less tolerant of friction. The old model of high-touch for everyone is too expensive to scale, and the fully digital extreme often strips away the judgment required to manage real complexity.
@@ -2787,6 +2789,8 @@ An effective offboarding play consists of a survey, a meeting, and a final thank
 
 By implementing these supporting plays, you ensure that even when the customer journey goes off script, your team handles it with the same strategic rigor, empathy, and professionalism that drives your core post-sale pipeline.
 
+For how the plays connect to the pipeline, the evidence, and the infrastructure in Part IV as one system, read What Is a Post-Sale Operating System? (https://cxology.co/post-sale-operating-system.html)
+
 
 # Part IV: Data, Automation & Scale
 
@@ -4505,3 +4509,313 @@ CXology uses 65% availability, about 26 direct customer hours in a 40-hour week,
 No. Leadership can add capacity, redesign or remove service moments, automate work, move work to another role, change the touch model, or explicitly accept a lighter customer experience. Capacity planning makes the tradeoff visible so it's a decision rather than silent overload.
 
 Source 1: Nick Mehta and Shantan Reddy, "Gainsight Horizon AI Labs: What Is the Right CSM to Customer Ratio?", Gainsight, July 29, 2022. https://www.gainsight.com/blog/gainsight-horizon-ai-labs-what-is-the-right-csm-to-customer-ratio/
+
+## What Is a Post-Sale Operating System?
+Source: https://cxology.co/post-sale-operating-system.html
+
+Definition
+A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting.
+
+In plain terms: it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue.
+
+The short answer. A Post-Sale Operating System has three layers and one loop. The Post-Sale Pipeline makes customer progression and existing-customer revenue visible. Plays are the work the company designs to help customers progress. Infrastructure (data, health, capacity, technology and AI, cross-functional alignment, and management discipline) makes that work observable, trustworthy, repeatable, and scalable. The loop runs continuously: decide what progress the customer should make, run the work designed to help, check what actually changed, update what you believe about the revenue, and decide what happens next.
+
+## Why Does Post-Sale Need an Operating System?
+
+Most companies already have the pieces.
+
+They have a customer journey map. A set of playbooks. A health score. A CRM. Product usage data. Some version of a capacity model. A renewal process. A forecast. Increasingly, AI tools layered on top.
+
+Each piece can be useful. The problem is that they are usually built and managed separately. The journey map lives in a slide deck. The playbooks live with Customer Success. The health score is tuned by operations. Usage lives with Product. The renewal forecast lives with Finance and the account team. Capacity gets argued once a year at planning time.
+
+When the pieces run separately, nobody can answer the questions that actually matter for existing-customer revenue:
+
+- What should this customer have accomplished by now?
+
+- Did we do the work designed to help them get there?
+
+- Did anything actually change for the customer?
+
+- How do we know?
+
+- What should that change about our view of the revenue?
+
+- What happens next, and do we have the people to do it?
+
+The problem is not necessarily that companies lack the pieces. The pieces often do not operate as one system.
+
+An operating system is what connects them. It is the difference between owning tools for post-sale and running post-sale.
+
+## Framework vs. Operating System: What's the Difference?
+
+A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly.
+
+A journey map explains the stages a customer moves through. A health score explains how to summarize risk. A capacity model explains how much work a team can absorb. A renewal process explains how to manage the decision at the end of a term. Each is a framework, and each answers a real question.
+
+None of them, alone, tells you how the work, the evidence, the decisions, and the resources connect. That connection is what makes post-sale repeatable rather than dependent on which customer you have, which CSM you assigned, or which quarter it is.
+
+Framework vs. operating system
+
+| A framework | An operating system
+
+Scope | One piece of the problem | The connected whole
+
+Question it answers | How should we think about this? | How do we run this, every week, for every customer?
+
+Typical output | A model, a map, a score, a ratio | Decisions about customers, resources, and revenue
+
+What breaks without it | Understanding | Consistency, visibility, and predictability
+
+A company can have excellent frameworks and still not have an operating system.
+
+## What Is a Post-Sale Operating Model?
+
+A post-sale operating model is how a company intends to run everything after the sale: what progress customers should make, what work supports that progress, who does it, how results are observed, and how those results inform decisions about resources and revenue.
+
+The terms are often used interchangeably. CXology uses operating system to emphasize the part most operating models leave out: the connected mechanism that makes the model run repeatedly, turning evidence from customers into decisions, customer by customer, period after period.
+
+## The Three Layers of a Post-Sale Operating System
+
+The Post-Sale Operating System is made of three layers. Each answers a different management question.
+
+The three layers
+
+Layer | What it is | The question it answers
+
+Post-Sale Pipeline | Makes customer progression and existing-customer revenue visible | What should happen, and what does it mean for the revenue?
+
+Plays | The designed work intended to help customers progress | What are we going to do about it?
+
+Infrastructure | Makes execution observable, trustworthy, repeatable, and scalable | Can we execute and trust the system?
+
+### Layer 1: The Post-Sale Pipeline
+
+The Post-Sale Pipeline makes customer progression and existing-customer revenue visible.
+
+Sales leaders can see their new-logo revenue because it sits in a pipeline: stages, evidence, probability, and next steps. After the contract is signed, most of that structure disappears, even though the revenue is still at stake. The Post-Sale Pipeline restores it from purchase onward, not just in the months before renewal.
+
+For leadership, the pipeline answers four questions about every customer:
+
+- What should happen next?
+
+- What evidence exists?
+
+- What does that evidence mean?
+
+- How should our belief about this revenue change?
+
+CXology's Post-Sale Pipeline has five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. How customers move between them, and how probability changes, is covered in depth in Part II: How the Post-Sale Pipeline Works. This page covers only the pipeline's role in the larger system.
+
+### Layer 2: Plays
+
+Plays are the designed work intended to help customers progress.
+
+A play is a defined motion: what triggers it, what happens inside it, what assets support it, what customer change it is designed to produce, and how the team will know whether that change happened. Kickoff, Onboarding, First Value, and the Alignment Meeting are examples of plays.
+
+The most important distinction in the system lives here:
+
+- A play is what the company does.
+
+- Progression is what changes for the customer.
+
+- Evidence tells us whether the intended change actually occurred.
+
+Completing a play does not mean the customer progressed, and it does not advance the pipeline on its own. A kickoff can be held without the customer committing to anything. Training can be attended without anyone changing how they work. Plays create the conditions for progression. They do not guarantee it.
+
+For the full distinction between activity, progression, and evidence, see How Do You Know Whether a Customer Is Actually Progressing?
+
+### Layer 3: Infrastructure
+
+Infrastructure makes execution observable, trustworthy, repeatable, and scalable.
+
+Infrastructure is not a technology layer. It is every supporting capability the company needs to run the pipeline and the plays consistently across customers, teams, and time:
+
+- Data: one trusted record of what each customer is trying to accomplish, what work happened, and what evidence exists.
+
+- Health: a running interpretation of the accumulated evidence about each customer's state.
+
+- Capacity: enough people and time to execute the work the company has designed.
+
+- Technology and AI: tools that reduce the effort to prepare, execute, capture, and inspect the work, once the work itself is defined.
+
+- Cross-functional alignment: shared definitions, goals, and handoffs across Sales, Customer Success, Product, Services, Support, Marketing, and Finance.
+
+- Management discipline: the cadence of inspecting execution and evidence, and making decisions from them.
+
+Without infrastructure, the pipeline and the plays may work for a few customers or a few strong team members. With it, they work by default.
+
+## The One Loop: How a Post-Sale Operating System Runs
+
+The three layers describe what the system is made of. The loop describes how it runs.
+
+The One Loop. Six steps repeat for every customer, and infrastructure supports the entire loop. The same loop is written out below.
+
+- Expected Progression. What meaningful change should occur for the customer?
+
+- Play. What work has the company designed to help that progression occur?
+
+- Customer Progression. What actually changed for the customer?
+
+- Evidence. How do we know whether that change occurred?
+
+- Post-Sale Pipeline / Probability. What should the new evidence change about what the company believes about the existing-customer revenue?
+
+- Next Action. Given what happened, or failed to happen, what needs to happen next?
+
+Then the loop runs again. Infrastructure supports the entire loop.
+
+Decide what progress the customer should make, do the work designed to help, see what actually changed, prove it, update what you believe about the revenue, and decide what comes next.
+
+The loop is not a machine where each step produces the next. Plays create conditions for progression; they do not guarantee it. Progression evidence informs probability; it does not guarantee retention or expansion. And evidence does not set probability automatically. People still apply judgment. The difference is that their judgment now has something concrete to work from.
+
+How the loop maps to the layers:
+
+- Expected Progression and Customer Progression belong to the customer.
+
+- The Play is Layer 2.
+
+- The Pipeline / Probability step is Layer 1.
+
+- Evidence is captured, trusted, and acted on because of Layer 3.
+
+- Next Action is a decision that draws on all three.
+
+The places in the customer lifecycle where meaningful progression is expected are called Inflection Points. Each turn of the loop usually centers on one.
+
+## One Customer, Two Turns of the Loop
+
+The loop is easiest to see with one customer. Take a newly signed customer at the start of the relationship.
+
+### Turn 1: Establishing the outcome
+
+Step | What happens
+
+Expected progression | The customer establishes the outcomes they bought for, the stakeholders who need to be involved, who is responsible for what, and the next steps.
+
+Play | The company runs its first-meeting and onboarding work: Kickoff, then Onboarding.
+
+Customer progression | The customer moves from "we signed" to "we know what we are trying to achieve, who owns it on our side, and what happens next."
+
+Evidence | The customer restates the reason for purchase and the first result they expect in their own words. They name owners on their side. The stakeholders the work requires show up. Next steps are committed with names and dates, and the first ones are kept.
+
+Pipeline / probability | The revenue is now attached to a defined outcome with a customer owner. That is a real change in what the company knows, and its confidence in the revenue can reasonably increase.
+
+Next action | Focus the next work on helping the customer reach a first meaningful result.
+
+### Turn 2: First Value
+
+Step | What happens
+
+Expected progression | The customer experiences First Value: the first meaningful result they recognize from the purchase.
+
+Play | The company runs the First Value play, designed to help the customer reach that first result.
+
+Customer progression | The customer gets a result that matters to them, tied to the outcome they named in Turn 1.
+
+Evidence | The customer can point to the result, says in their own words that it is starting to work, and shares it with someone else in their organization.
+
+Pipeline / probability | The reason for purchase is beginning to be realized, and the customer recognizes it. The company has better grounds to believe the revenue will be retained, though nothing is guaranteed.
+
+Next action | Build on the result toward broader adoption and the larger outcome the customer bought for.
+
+Notice what the second turn depends on. The First Value target only exists because the first turn produced a customer-defined outcome. Each turn sets up the next.
+
+### What happens when the evidence doesn't appear
+
+Suppose kickoff happened, but the customer never named an owner and the executive sponsor didn't attend. The play was completed. The progression didn't occur.
+
+The loop still runs. The evidence says the expected change is missing, so the company should not raise its confidence in the revenue, and may need to lower it. The next action changes: find the missing owner, re-engage the sponsor, or escalate, before moving on to First Value.
+
+This is where the system earns its value. A missing piece of expected progression is visible months before it would show up in usage, health, or a renewal conversation.
+
+## Where Do Customer Health and Capacity Fit?
+
+Neither health nor capacity is a step in the loop. Both are part of the Infrastructure that supports it, and each plays a specific role.
+
+Health is an interpretation of accumulated evidence about the customer's state. Each turn of the loop adds evidence. Health summarizes what all of that evidence, taken together, says about the customer right now. It should change when new evidence changes what the company believes about the customer's progression, not only when usage dips or a ticket spikes.
+
+Capacity determines whether the organization has enough resources to consistently execute the work it has designed. Every play in the loop takes real time to prepare, run, and follow through on. If the work required across all customers exceeds the time available, plays get skipped or thinned out, evidence goes missing, and the loop stops turning reliably. When that happens, leaders can add capacity or deliberately change the work they have designed.
+
+Go deeper: Chapter 20: Health Scoring That Actually Works and How Many Customers Should a CSM Manage?
+
+## A Company Operating System, Not a Customer Success Operating System
+
+The Post-Sale Operating System is not a Customer Success operating system. It is the system a company uses to turn a purchase into customer progress, retention, expansion, and durable existing-customer revenue.
+
+Many functions affect whether that happens:
+
+- Sales shapes the customer's expectations and the reason for purchase.
+
+- Product affects the customer's ability to progress.
+
+- Services and Support affect execution.
+
+- Marketing can support education and advocacy.
+
+- Finance participates in the revenue view.
+
+- Leadership makes the resource and tradeoff decisions.
+
+- Customer Success often orchestrates much of the system.
+
+Customer Success cannot produce post-sale performance alone. A customer can stall because of what was promised in the sale, a product gap, a delayed implementation, or an under-resourced team, and none of those are fixed inside Customer Success.
+
+This is not an argument about who owns post-sale. It is an argument for shared operating discipline: the same definitions of progression, the same evidence standard, the same pipeline view, and the same cadence for making decisions about existing-customer revenue.
+
+## How Do You Build a Post-Sale Operating Model?
+
+Short answer: define the progress customers should make, map where it is expected to happen, design the work that supports it, decide what evidence proves it, put the revenue in a pipeline, interpret the evidence as health, model the capacity the work requires, forecast from the evidence, and keep inspecting and improving the loop.
+
+A practical build path:
+
+- Define progression. What meaningful change should customers make, starting from why they bought?
+
+- Map Inflection Points. Where in the lifecycle is that progression expected to occur?
+
+- Design plays. What work will the company do to help progression happen at each point?
+
+- Establish evidence. For each expected change, what observable evidence would show it occurred?
+
+- Build the Post-Sale Pipeline. Put existing-customer revenue into stages, from purchase onward, so evidence can change what the company believes about it.
+
+- Create health and signals. Interpret accumulated evidence into a view of each customer's state.
+
+- Model capacity. Translate the designed work into the time and people required to run it.
+
+- Forecast revenue. Use pipeline evidence and probability to inform the existing-customer revenue forecast.
+
+- Inspect and improve the loop. Review execution and evidence on a regular cadence, and change the plays, evidence standards, or resources when the loop isn't producing progression.
+
+This is a practical starting order, not a rule. Many companies already have some of these pieces and will start in the middle, and some steps will run in parallel. The build path is how you assemble the system. The loop is how the system runs once it exists. They are different things.
+
+You do not need every piece in place to begin. Defining progression and evidence costs little more than thinking, which is why companies with limited data can start there. For a ninety-day version of this path, see the Conclusion: Running the System.
+
+## Frequently Asked Questions
+
+### What is a post-sale operating system?
+
+A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting. In plain terms, it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue.
+
+### What are the three layers of a post-sale operating system?
+
+The Post-Sale Pipeline, which makes customer progression and existing-customer revenue visible; Plays, the designed work intended to help customers progress; and Infrastructure, which makes execution observable, trustworthy, repeatable, and scalable through data, health, capacity, technology and AI, cross-functional alignment, and management discipline.
+
+### What is a post-sale operating model?
+
+A post-sale operating model is how a company intends to run everything after the sale: what progress customers should make, what work supports that progress, who does it, how results are observed, and how those results inform decisions about resources and revenue. CXology uses operating system to emphasize the connected mechanism that makes the model run repeatedly.
+
+### How is an operating system different from a Customer Success framework?
+
+A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly. Journey maps, health scores, and playbooks are useful frameworks, but they do not form an operating system when they are managed separately.
+
+### Does completing a play mean the customer progressed?
+
+No. A play is what the company does. Progression is what changes for the customer. Evidence tells you whether the intended change occurred. A play can be completed without the customer progressing.
+
+### Is a post-sale operating system the same as a Customer Success operating system?
+
+No. Customer Success often orchestrates it, but Sales, Product, Services, Support, Marketing, Finance, and leadership all affect whether customers progress and whether existing-customer revenue is retained or grown.
+
+### How do you start building a post-sale operating model?
+
+Start by defining the progression customers should make and the evidence that would show it happened. Then map Inflection Points, design plays, build the Post-Sale Pipeline, create health and signals, model capacity, forecast revenue, and inspect and improve the loop. Treat this as a practical order, not a rigid sequence.
