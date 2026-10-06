@@ -2,6 +2,15 @@
   "updates": [
     {
       "kind": "Refinement",
+      "chapter": "Conclusion · Running the System",
+      "date": "2026-10-06",
+      "title": "The operating loop now separates the work from the evidence",
+      "blurb": "The Conclusion's \"three layers, one loop\" model now makes a sharper distinction: a play is what the company does, and evidence that the customer actually changed is what updates the pipeline and the forecast. Completing a play is no longer treated as proof of progress. The same wording is now on the Part IV intro and the predictable-revenue page.",
+      "link": "chapter-conclusion.html",
+      "linkLabel": "Read the Conclusion"
+    },
+    {
+      "kind": "Refinement",
       "chapter": "Ch 22 · Proactive Capacity Planning",
       "date": "2026-10-02",
       "title": "Chapter 22 now shows the math behind capacity planning",
