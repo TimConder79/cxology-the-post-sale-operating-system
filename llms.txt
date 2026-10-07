@@ -1,6 +1,6 @@
 # The Post-Sale Operating System
 
-> A book and a set of tools by Tim Conder (founder of CXology) that turn customer retention and expansion into a forecastable post-sale pipeline. It reframes post-sale from reactive "churn insurance" into a disciplined operating system: a five-stage pipeline, eight plays that move it, and the health-scoring, data, and capacity infrastructure that make it real.
+> A book and a set of tools by Tim Conder (founder of CXology) that turn customer retention and expansion into a forecastable post-sale pipeline. It reframes post-sale from reactive "churn insurance" into a disciplined operating system: a five-stage pipeline of revenue opportunities, eight plays that help customers progress, and the health-scoring, data, and capacity infrastructure that make it real.
 
 Author: Tim Conder, Post-Sale Systems Builder, 20+ years in B2B SaaS. https://www.linkedin.com/in/tim-conder/
 Core concepts: post-sale operating system, post-sale pipeline, strategic customer success, net revenue retention, renewal and expansion, customer health scoring, CS capacity planning.
@@ -20,12 +20,12 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 - [Ch 3: The Role Evolution of the CSM](https://cxology.co/chapter-3.html): From tactical product trainer to strategic business advisor.
 
 ## The post-sale pipeline: five stages (Part II)
-- [Part II Introduction: How the Post-Sale Pipeline Works](https://cxology.co/chapter-part2-intro.html): The pipeline does not require new data; it requires discipline to capture what the plays reveal.
+- [Part II Introduction: How the Post-Sale Pipeline Works](https://cxology.co/chapter-part2-intro.html): Revenue opportunities, not customers, move through five stages, advancing only when evidence meets each stage's exit criteria.
 - [Ch 4: Stage 1 — Identify](https://cxology.co/chapter-4.html): Growth does not disappear at closed-won; it becomes visible through value, friction, and intent.
 - [Ch 5: Stage 2 — Align](https://cxology.co/chapter-5.html): Turning an opportunity into a case for it.
 - [Ch 6: Stage 3 — Advocate](https://cxology.co/chapter-6.html): Where alignment becomes internal momentum and the customer becomes capable of championing.
 - [Ch 7: Stage 4 — Intent](https://cxology.co/chapter-7.html): Where internal momentum becomes a committed path forward: timing, approvals, urgency.
-- [Ch 8: Stage 5 — Net Revenue Close](https://cxology.co/chapter-8.html): Securing the win, not the end of the pipeline.
+- [Ch 8: Stage 5 — Net Revenue Close](https://cxology.co/chapter-8.html): The finalized revenue outcome, and the start of the next cycle.
 
 ## The plays that help customers progress (Part III)
 - [Part III Introduction: The Plays That Help Customers Progress](https://cxology.co/chapter-part3-intro.html): A play is designed work that helps a customer reach a specific outcome, not a checklist.
@@ -60,7 +60,8 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 - [What Is a Post-Sale Operating System?](https://cxology.co/post-sale-operating-system.html): Three layers (Post-Sale Pipeline, Plays, Infrastructure) and one loop (Expected Progression, Play, Customer Progression, Evidence, Pipeline / Probability, Next Action). A company operating system, not a Customer Success operating system.
 - [How Do You Know Whether a Customer Is Actually Progressing?](https://cxology.co/customer-progression-leading-indicators.html): Activity is what happened, progression is what changed for the customer, and evidence shows whether it occurred. Why usage is usually a late signal, and why the earliest sign of risk may be missing progression.
 - [How Many Customers Should a CSM Manage?](https://cxology.co/customer-success-capacity.html): There is no universal CSM ratio. Customer count and ARR describe what is managed, not the work required to help customers progress. Plan capacity from designed effort (preparation, execution, follow-through), realistic availability, and a 12-month forecast, then decide whether to add staff or change the service design.
-- [How Do You Make Existing-Customer Revenue More Predictable?](https://cxology.co/predictable-existing-customer-revenue.html): Put existing-customer revenue into a pipeline and manage the customer progression that moves it, so confirmed outcomes update probability and sharpen the forecast.
+- [What Is a Post-Sale Pipeline?](https://cxology.co/post-sale-pipeline.html): Canonical definition. A Post-Sale Pipeline is the structured revenue process for managing existing-customer retention and growth opportunities from identification through customer commitment and Net Revenue Close. Five stages with default probabilities (Identify 20%, Align 40%, Advocate 60%, Intent 90%, Net Revenue Close 100%); revenue opportunities, not customers, advance on evidence that meets each stage's exit criteria.
+- [How Do You Make Existing-Customer Revenue More Predictable?](https://cxology.co/predictable-existing-customer-revenue.html): Put existing-customer revenue into a pipeline and manage the customer progression behind it, so evidence that meets each stage's criteria updates probability and sharpens the forecast.
 - [8 Critical Moments in the Post-Sale Customer Journey](https://cxology.co/navigating-post-sale-chaos-strategic-customer-success-qa/): The eight customer inflection points, from purchase to the renewal and growth decision, and how plays and expected timing make customer progression visible.
 - [What Is Strategic Customer Success? Definition & Framework](https://cxology.co/strategic-customer-success/): The deliberate management of customer progression toward the outcomes that justified the purchase.
 - [The Three Essential Elements for Strategic Customer Success](https://cxology.co/three-essential-elements-for-strategic-customer-success/): Relevance, value achievement, and trust.

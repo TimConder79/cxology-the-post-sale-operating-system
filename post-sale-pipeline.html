@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What Is a Post-Sale Pipeline? Stages, Exit Criteria, and Forecasting — CXology</title>
+  <meta name="description" content="A Post-Sale Pipeline manages existing-customer retention and growth opportunities through five evidence-based stages, from Identify to Net Revenue Close."/>
+  <link rel="canonical" href="https://cxology.co/post-sale-pipeline.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="The Post-Sale Operating System"/>
+  <meta property="og:title" content="What Is a Post-Sale Pipeline? Stages, Exit Criteria, and Forecasting — CXology"/>
+  <meta property="og:description" content="A Post-Sale Pipeline manages existing-customer retention and growth opportunities through five evidence-based stages, from Identify to Net Revenue Close."/>
+  <meta property="og:url" content="https://cxology.co/post-sale-pipeline.html"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="What Is a Post-Sale Pipeline? Stages, Exit Criteria, and Forecasting — CXology"/>
+  <meta name="twitter:description" content="A Post-Sale Pipeline manages existing-customer retention and growth opportunities through five evidence-based stages, from Identify to Net Revenue Close."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+    /* Page-specific additions only — core styles come from style.css */
+    .reading-progress { position: fixed; top: 60px; left: 0; right: 0; z-index: 99; height: 3px; background: rgba(0,0,0,.06); }
+    .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
+
+    /* Chapter-body typography — matches the book chapters exactly */
+    .chapter-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-100); }
+    .chapter-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy-light); margin: 1.5rem 0 0.5rem; }
+    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.82; max-width: 72ch; }
+    .chapter-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .chapter-body p a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .chapter-body p a:hover { color: var(--olive-dim); text-decoration-color: var(--olive-dim); }
+    .chapter-body p.related-read { font-size: 0.9rem; color: var(--text-muted); margin: .2rem 0 0; max-width: 72ch; }
+
+    /* Direct answer + emphasized statement */
+    .chapter-body p.answer-lead { font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: var(--navy); max-width: 72ch; border-left: 4px solid var(--olive); padding: .15rem 0 .15rem 1.2rem; margin: .5rem 0 1.6rem; }
+    .chapter-body p.key-statement { font-size: 1.2rem; line-height: 1.5; font-weight: 700; color: var(--navy); background: var(--olive-pale); border-radius: var(--radius-md); padding: 1.15rem 1.4rem; margin: 2rem 0; max-width: 72ch; }
+
+    /* Forecast-loop diagram */
+    .diagram-wrap { margin: 1.6rem 0 1rem; }
+    .diagram-wrap svg { width: 100%; height: auto; display: block; }
+    .chapter-body p.diagram-caption { font-size: .82rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+
+    /* Read-next cards (same treatment as the conclusion chapter) */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+    @media (max-width: 760px) { .tool-grid { grid-template-columns: 1fr; } }
+  
+    /* Initiative 2 additions */
+    .chapter-body ol:not(.flow) { padding-left: 1.4rem; margin-bottom: 1rem; max-width: 72ch; }
+    .chapter-body .direct-answer { border-left: 4px solid var(--olive); background: var(--off-white); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .direct-answer p { margin: 0; color: var(--gray-700); }
+    .chapter-body .def { border: 1px solid var(--gray-200); border-top: 4px solid var(--navy); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; background: var(--white); }
+    .chapter-body .def-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-dim); margin-bottom: .35rem; }
+    .chapter-body .def p { margin: 0; font-size: 1.02rem; color: var(--navy); }
+    .chapter-body ol.flow { list-style: none; padding: 0; margin: .4rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; max-width: 72ch; }
+    .chapter-body ol.flow li { margin: 0; background: var(--navy); color: #fff; font-size: .85rem; font-weight: 600; padding: .4rem .75rem; border-radius: 999px; line-height: 1.3; }
+    .chapter-body ol.flow li:not(:last-child)::after { content: "\2192"; color: var(--olive); margin-left: .55rem; font-weight: 700; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1rem; max-width: 100%; }
+    table.cmp { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
+    table.cmp caption { caption-side: top; text-align: left; font-weight: 700; color: var(--navy); font-size: .95rem; margin-bottom: .6rem; }
+    table.cmp th, table.cmp td { text-align: left; padding: .6rem .75rem; border: 1px solid var(--gray-200); vertical-align: top; color: var(--gray-700); }
+    table.cmp thead th { background: var(--navy); color: #fff; font-weight: 700; }
+    table.cmp tbody tr:nth-child(even) td { background: var(--off-white); }
+    table.cmp td:first-child { font-weight: 700; color: var(--navy); }
+    table.cmp-wide { min-width: 820px; }
+    .chapter-body h3 + p { margin-top: 0; }
+    /* Initiative 3 additions */
+    .chapter-body .formula { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: .9rem 1.2rem; margin: .4rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .formula p { margin: .2rem 0; font-size: .92rem; color: var(--navy); }
+    .chapter-body sup a { color: var(--olive-dim); font-weight: 700; text-decoration: none; padding: 0 .1rem; }
+    .chapter-body .sources { border-top: 1px solid var(--gray-200); margin: 2rem 0 1rem; padding-top: 1rem; max-width: 72ch; }
+    .chapter-body .sources-title { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .4rem; }
+    .chapter-body .sources p { font-size: .82rem; line-height: 1.6; color: var(--text-muted); }
+    .chapter-body ol li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://cxology.co/post-sale-pipeline.html#article",
+      "headline": "What Is a Post-Sale Pipeline?",
+      "description": "A Post-Sale Pipeline manages existing-customer retention and growth opportunities through five evidence-based stages, from Identify to Net Revenue Close.",
+      "url": "https://cxology.co/post-sale-pipeline.html",
+      "mainEntityOfPage": {
+        "@id": "https://cxology.co/post-sale-pipeline.html"
+      },
+      "inLanguage": "en",
+      "image": "https://cxology.co/og-image.png",
+      "datePublished": "2026-10-07",
+      "dateModified": "2026-10-07",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "isPartOf": {
+        "@id": "https://cxology.co/#book"
+      },
+      "about": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-pipeline.html#definition",
+          "name": "Post-Sale Pipeline",
+          "description": "A Post-Sale Pipeline is the structured revenue process for managing existing-customer retention and growth opportunities from identification through customer commitment and Net Revenue Close.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-pipeline.html#intent",
+          "name": "Intent",
+          "description": "The fourth stage of the Post-Sale Pipeline (default probability 90%). The customer has given an explicit commitment, a verbal yes or its equivalent, with a credible path forward: timing, ownership, approvals, and next steps. Intent is not a signed contract.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-pipeline.html#net-revenue-close",
+          "name": "Net Revenue Close",
+          "description": "The fifth stage of the Post-Sale Pipeline (100%). The remaining commercial process is complete and the revenue outcome is final, whether a full renewal, a reduced one, an expansion, or a loss.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://cxology.co/post-sale-pipeline.html#exit-criteria",
+          "name": "Exit criteria",
+          "description": "The observable evidence a revenue opportunity must show to leave a Post-Sale Pipeline stage. The stage reflects what you can prove, so an opportunity also moves back when the evidence behind its stage no longer holds.",
+          "inDefinedTermSet": "https://cxology.co/glossary.html"
+        }
+      ],
+      "mentions": [
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/customer-progression-leading-indicators.html",
+          "url": "https://cxology.co/customer-progression-leading-indicators.html",
+          "name": "How Do You Know Whether a Customer Is Actually Progressing?"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/predictable-existing-customer-revenue.html",
+          "url": "https://cxology.co/predictable-existing-customer-revenue.html",
+          "name": "How Do You Make Existing-Customer Revenue More Predictable?"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/post-sale-operating-system.html",
+          "url": "https://cxology.co/post-sale-operating-system.html",
+          "name": "What Is a Post-Sale Operating System?"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cxology.co/chapter-part2-intro.html",
+          "url": "https://cxology.co/chapter-part2-intro.html",
+          "name": "How the Post-Sale Pipeline Works"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://cxology.co/#tim",
+      "name": "Tim Conder",
+      "jobTitle": "Fractional CX & CS Leader, Author",
+      "description": "Post-sale systems builder and founder of CXology. 20+ years in B2B SaaS building customer success and post-sale revenue systems.",
+      "image": "https://cxology.co/Tim_Conder_Headshot.jpg",
+      "url": "https://cxology.co/about.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/tim-conder/"
+      ],
+      "worksFor": {
+        "@id": "https://cxology.co/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cxology.co/#org",
+      "name": "CXology",
+      "url": "https://cxology.co",
+      "logo": "https://cxology.co/assets/logo-h-bb.png"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://cxology.co/#book",
+      "name": "The Post-Sale Operating System",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      },
+      "inLanguage": "en",
+      "url": "https://cxology.co/book.html"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cxology.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "The Book",
+          "item": "https://cxology.co/book.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What Is a Post-Sale Pipeline?",
+          "item": "https://cxology.co/post-sale-pipeline.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a post-sale pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Post-Sale Pipeline is the structured revenue process for managing existing-customer retention and growth opportunities from identification through customer commitment and Net Revenue Close. It works like a sales pipeline for the revenue you already have: every retention and expansion opportunity sits in a stage, carries a probability, and advances only on evidence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the stages of a post-sale pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CXology's Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are default forecasting assumptions, not measured close rates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do customers move through the post-sale pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Revenue opportunities do. Every customer creates at least one retention opportunity at purchase, and expansion opportunities are added when they are specific enough to manage, so one customer can have opportunities in several stages at once."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What moves an opportunity from one stage to the next?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Observable evidence that satisfies the exit criteria for the next stage. Completing a play, time passing, usage alone, or a CSM's confidence does not advance a stage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does a first-term renewal leave the Identify stage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When the customer reaches First Value. The only exception is documented: the customer has confirmed a specific reason First Value is delayed, reaffirmed the goal, and set a revised First Value date. If that date passes, the renewal returns to Identify and is escalated. Later renewals don't have to earn First Value again."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an opportunity move backward in a post-sale pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. An opportunity sits at the highest stage its current evidence supports. If that evidence no longer holds, such as an advocate leaving or a commitment being withdrawn, it moves back to the stage the remaining evidence supports. A usage drop or a red health score doesn't move a stage back on its own; it triggers a check of the evidence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Intent mean the contract is signed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Intent means the customer has given an explicit commitment, a verbal yes or its equivalent, with a credible path forward. Contracting, legal, procurement, and approvals may remain. Net Revenue Close is when the outcome is final."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you forecast existing-customer revenue with a post-sale pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply each opportunity's value by its stage probability and place the result in the period of its expected close date. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV — exact match to frameworks.html and chapter.html -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="/"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="chapter-hero">
+  <div class="hero-grid"></div>
+  <div class="chapter-hero-inner">
+    <span class="chapter-num">The Post-Sale Operating System · Part II</span>
+    <h1 class="headline">What Is a Post-Sale Pipeline?</h1>
+    <p class="chapter-hero-sub">Customers don't move through the Post-Sale Pipeline. Revenue opportunities do.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+<div class="def" id="definition"><div class="def-label">Definition</div><p><strong>A Post-Sale Pipeline is the structured revenue process for managing existing-customer retention and growth opportunities from identification through customer commitment and Net Revenue Close.</strong></p></div>
+  <p class="answer-lead">It does for existing-customer revenue what a sales pipeline does for new-logo revenue.</p>
+  <div class="direct-answer" id="short-answer"><p><strong>The short answer.</strong> Every retention and expansion opportunity sits in one of five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. Each stage carries a default forecast probability. An opportunity advances only when observable evidence satisfies the exit criteria for the next stage. The result is a revenue view that shows where each opportunity stands, why it stands there, what has to happen next, and what it means for the forecast.</p></div>
+
+  <h2 id="not-a-pipeline">Why a Renewal Calendar or Health Score Is Not a Pipeline</h2>
+  <p>Most companies already track existing-customer revenue somewhere. The trouble is that the tools they use answer different questions.</p>
+  <p class="key-statement">A renewal calendar tells you when revenue comes due. A health score tells you something about the state of the customer. A Post-Sale Pipeline tells you where the revenue opportunity stands, what evidence supports that position, what needs to happen next, and what it means for the forecast.</p>
+  <div class="table-wrap"><table class="cmp" id="calendar-health-pipeline">
+  <caption>Renewal calendar, health score, and Post-Sale Pipeline</caption>
+  <thead><tr><th scope="col"></th><th scope="col">What it tells you</th><th scope="col">What it doesn't tell you</th></tr></thead>
+  <tbody>
+  <tr><td>Renewal calendar</td><td>When revenue comes due</td><td>How likely it is to close, or what has to happen first</td></tr>
+  <tr><td>Health score</td><td>Something about the state of the customer</td><td>Where a specific revenue opportunity stands commercially</td></tr>
+  <tr><td>Post-Sale Pipeline</td><td>Where each revenue opportunity stands, the evidence behind that position, the next action, and the forecast impact</td><td>It depends on the calendar for timing and on health for context</td></tr>
+  </tbody>
+  </table></div>
+  <p>Both the calendar and the health score stay useful. Renewal dates give the pipeline its timing. Health gives context about the customer. Neither is a pipeline, because neither tracks a specific revenue opportunity through defined stages with evidence and probability. A green health score six months before renewal says nothing about whether anyone has committed to renew. A renewal date says nothing about likelihood at all.</p>
+
+  <h2 id="what-goes-in">What Goes Into a Post-Sale Pipeline?</h2>
+  <p>Two kinds of revenue opportunity.</p>
+  <p><strong>Retention opportunities.</strong> Every customer creates at least one retention opportunity at purchase. Its value is the revenue up for renewal. Its expected close date is usually the end of the contract term. It enters the pipeline on day one, not when the renewal gets close.</p>
+  <p><strong>Expansion opportunities.</strong> Additional users, a new team, a new use case, an upgrade, a cross-sell. These enter the pipeline when they become specific and relevant enough to identify and manage: you can say what would be bought, roughly what it is worth, and why it might matter to this customer.</p>
+  <p>What doesn't go in is speculative expansion. An account that could theoretically buy more is not an opportunity. Loading the pipeline with "white space" inflates the forecast and teaches everyone to discount it.</p>
+
+  <h2 id="opportunities-not-customers">Customers Don't Move Through the Pipeline. Revenue Opportunities Do.</h2>
+  <p><strong>Customers don't move through the Post-Sale Pipeline. Revenue opportunities do.</strong> A customer is not "in Advocate." A specific renewal or expansion opportunity is.</p>
+  <p>This matters because one customer can have several opportunities in different stages at the same time. The renewal may be well advanced while a new expansion idea has only just been identified. Assign one stage to the whole customer and you either overstate the expansion or understate the renewal. Either way, the forecast stops meaning anything.</p>
+  <p>It also keeps the pipeline honest about the renewal. The renewal is not an event at the end of the contract. It is a revenue opportunity that has to earn its way through the same stages as any expansion.</p>
+
+  <h2 id="stages">What Stages Should a Post-Sale Pipeline Have?</h2>
+  <p>CXology's Post-Sale Pipeline has five stages. Each stage answers one commercial question.</p>
+  <div class="table-wrap"><table class="cmp" id="five-stages">
+  <caption>The five stages of the Post-Sale Pipeline</caption>
+  <thead><tr><th scope="col">Stage</th><th scope="col">Default probability</th><th scope="col">The question it answers</th></tr></thead>
+  <tbody>
+  <tr><td>1. Identify</td><td>20%</td><td>Is there a real revenue opportunity?</td></tr>
+  <tr><td>2. Align</td><td>40%</td><td>Is it relevant to something the customer is trying to accomplish?</td></tr>
+  <tr><td>3. Advocate</td><td>60%</td><td>Can someone inside the customer carry the case forward without us?</td></tr>
+  <tr><td>4. Intent</td><td>90%</td><td>Has the customer committed to moving forward?</td></tr>
+  <tr><td>5. Net Revenue Close</td><td>100%</td><td>Did the revenue outcome actually close?</td></tr>
+  </tbody>
+  </table></div>
+
+  <h3 id="identify">Identify (20%): Is there a real revenue opportunity?</h3>
+  <p>A specific retention or growth opportunity exists. For retention, that is true from the moment of purchase. For expansion, it starts when an opportunity is specific enough to name and manage. Much of the raw material shows up early: what the customer deferred during the sale, teams that were left out, capability gaps that surface during onboarding. Identify makes opportunity visible. It does not mean you have earned the right to pursue it.</p>
+  <p>A first-term renewal stays in Identify until the customer reaches First Value. A customer who has never experienced a meaningful result from what they bought is a renewal at real risk, and the pipeline should say so.</p>
+
+  <h3 id="align">Align (40%): Is it relevant to something the customer is trying to accomplish?</h3>
+  <p>The opportunity is connected to a customer need, goal, problem, reason for purchase, or business priority worth pursuing. Alignment is what turns a vendor idea into something the customer recognizes as their own. If the customer can't see their goals, results, and use cases in the opportunity, it is still yours, not theirs.</p>
+
+  <h3 id="advocate">Advocate (60%): Can someone inside the customer carry the case forward without us?</h3>
+  <p>Renewal and expansion decisions travel through budget owners, executives, finance, and procurement. The vendor is not in most of those conversations. Advocate means the customer understands and agrees with the value case, and a credible person inside the customer can carry it forward. A friendly contact is not enough. An advocate has the trust, context, and proof to move the conversation when you are not in the room.</p>
+
+  <h3 id="intent">Intent (90%): Has the customer committed to moving forward?</h3>
+  <p>The customer has given an explicit commitment, a verbal yes or its equivalent, and there is a credible path forward: timing, ownership, approvals, and next steps. Intent is not a signed contract. Contracting, legal, procurement, finance approval, and signature may all still be ahead. That is why Intent is 90%, not 100%. A verbal yes without a path is not intent. It is optimism.</p>
+
+  <h3 id="net-revenue-close">Net Revenue Close (100%): Did the revenue outcome actually close?</h3>
+  <p>The remaining commercial process is complete and the revenue outcome is final. Net Revenue Close records what actually happened. At this stage the number is no longer a forecast. It is the result.</p>
+  <p>Every retention opportunity ends here, whatever the outcome: renewed in full, renewed at a reduced amount, or $0 if the customer churns. Retention never quietly drops out of the pipeline.</p>
+
+  <h3 id="intent-vs-net-revenue-close">Intent Versus Net Revenue Close</h3>
+  <div class="direct-answer"><p><strong>Intent is the customer's commitment to move forward. Net Revenue Close is the completed commercial outcome.</strong> An opportunity in Intent has a yes and a credible path. An opportunity at Net Revenue Close has a finished result. Keeping the two separate stops a verbal yes from being reported as closed revenue.</p></div>
+
+  <h2 id="what-moves-an-opportunity">What Moves a Revenue Opportunity From One Stage to the Next?</h2>
+  <p>Evidence. Specifically, observable evidence that satisfies the exit criteria for the next stage.</p>
+  <p class="key-statement">The stage is not determined by what your team did. It is determined by what you can prove about the opportunity.</p>
+  <div class="table-wrap"><table class="cmp cmp-wide" id="exit-criteria">
+  <caption>Exit criteria for each stage</caption>
+  <thead><tr><th scope="col">Move</th><th scope="col">Exit criteria</th><th scope="col">Example evidence</th></tr></thead>
+  <tbody>
+  <tr><td>Identify → Align</td><td>A specific retention or growth opportunity exists and is connected to a customer need, goal, problem, reason for purchase, or meaningful business priority worth pursuing.</td><td><strong>First-term renewal:</strong> the customer has reached First Value, a meaningful result tied to why they bought (see the exception below). <strong>Later-term renewal:</strong> the customer has confirmed the goals for the next term. <strong>Expansion:</strong> the idea is tied to a goal the customer has named.</td></tr>
+  <tr><td>Align → Advocate</td><td>The customer understands and agrees with the value or business case, and a credible internal person is capable of carrying that case forward inside the customer organization.</td><td>A business case built on the customer's own goals and results, which your primary contact can explain to their leadership without you present.</td></tr>
+  <tr><td>Advocate → Intent</td><td>Internal advocacy and momentum have produced an explicit customer commitment (a verbal yes or equivalent) and a credible path forward, including timing, ownership, approvals, and next steps.</td><td>The customer says they are moving forward, and the budget owner, approval sequence, procurement steps, and target date are known.</td></tr>
+  <tr><td>Intent → Net Revenue Close</td><td>The remaining commercial process is completed and the revenue outcome is finalized.</td><td>The renewal or order is signed and the final amount is recorded.</td></tr>
+  </tbody>
+  </table></div>
+  <p>What does <strong>not</strong> move an opportunity:</p>
+  <ul>
+  <li><strong>Completing a play.</strong> A kickoff, business review, or training session can happen without producing the change it was designed for.</li>
+  <li><strong>Time passing.</strong> Getting closer to the renewal date is not evidence.</li>
+  <li><strong>Usage alone.</strong> Usage is useful context, but it does not show relevance, advocacy, or commitment.</li>
+  <li><strong>A CSM's sense that the account is healthy.</strong> Confidence without evidence is still an opinion.</li>
+  </ul>
+
+  <h3 id="first-term-renewal">Why a First-Term Renewal Waits for First Value</h3>
+  <p>A first-term renewal is the one opportunity where the customer hasn't yet proven the purchase was worth it. Until they reach First Value, the connection between the renewal and the reason they bought is still a promise. So a first-term renewal stays in Identify until First Value, with one documented exception.</p>
+  <p><strong>The exception:</strong> the customer has confirmed a specific reason First Value is delayed (a longer implementation, a reorganization, a postponed start), has reaffirmed the goal, and a revised First Value date is set. The record shows:</p>
+  <ul>
+  <li>The reason for the delay</li>
+  <li>Who on the customer side confirmed it, and when</li>
+  <li>The revised First Value date</li>
+  <li>The next review date</li>
+  </ul>
+  <p>If the revised date passes without First Value, the renewal returns to Identify and is escalated. Every exception can be explained to a CRO, CEO, or board in one sentence, with the evidence behind it.</p>
+  <p>Stage alone won't show this risk, because a customer 30 days in and a customer 300 days in can both sit in Identify. So every first-term renewal also carries an <strong>expected First Value date</strong>, and an overdue date is flagged. That flag is how a stalled renewal becomes visible months before the renewal date.</p>
+  <p>The rule applies to the first term only. Once a customer has reached First Value, later renewals don't have to earn it again.</p>
+
+  <h3 id="moving-backward">Can an Opportunity Move Backward?</h3>
+  <p>Yes. The same standard works in both directions. <strong>An opportunity sits at the highest stage its current evidence supports.</strong> If the evidence behind its stage no longer holds, it moves back to the highest stage the remaining evidence still supports, and the probability updates right away. The owner records what changed, when, and how they know.</p>
+  <div class="table-wrap"><table class="cmp" id="moving-backward-table">
+  <caption>What sends an opportunity back</caption>
+  <thead><tr><th scope="col">Stage</th><th scope="col">What sends an opportunity back</th></tr></thead>
+  <tbody>
+  <tr><td>Align</td><td>The customer's goal or priority changes, so the opportunity is no longer tied to it.</td></tr>
+  <tr><td>Advocate</td><td>The advocate leaves or loses influence, or the customer no longer agrees with the case.</td></tr>
+  <tr><td>Intent</td><td>The commitment is withdrawn, or the path breaks: budget frozen, approval denied.</td></tr>
+  </tbody>
+  </table></div>
+  <p>An opportunity can drop more than one stage. If the advocate leaves and the new leader questions the goal, the opportunity goes back to Identify.</p>
+  <p><strong>What doesn't move an opportunity back on its own:</strong> a drop in usage, a red health score, or a CSM's concern. These don't advance a stage, so they don't reverse one either. They should trigger a check of whether the evidence still holds. That keeps the forecast from swinging with every dashboard change while making sure warning signs get looked at.</p>
+  <p><strong>Timing slips.</strong> If the expected close date slips but the customer confirms new timing, the opportunity stays in Intent and only the date changes. If it slips without confirmed timing, the path is no longer credible, and the opportunity moves back to Advocate.</p>
+  <p><strong>Amount versus likelihood.</strong> If the customer signals a smaller renewal or a smaller expansion, change the opportunity's value, not its stage. Stage reflects how likely the opportunity is to close. Value reflects how much.</p>
+  <p><strong>Lost opportunities.</strong> Retention opportunities don't leave the pipeline early. They end at Net Revenue Close with whatever actually happened, including $0. An expansion opportunity that dies is closed as lost, not deleted, with the reason and the last stage it reached. That keeps the evidence trail and shows how often each stage actually converts.</p>
+
+  <h2 id="customer-progression">How Does Customer Progression Support the Pipeline?</h2>
+  <p>Customer progression and pipeline progression are related. They are not the same thing.</p>
+  <ul>
+  <li><strong>A play</strong> is what the company does.</li>
+  <li><strong>Progression</strong> is what changes with the customer.</li>
+  <li><strong>Evidence</strong> tells whether the required change occurred.</li>
+  <li><strong>The Post-Sale Pipeline</strong> translates that evidence into a revenue view.</li>
+  </ul>
+  <p><a href="customer-progression-leading-indicators.html">Customer progression</a> is the meaningful change a customer makes toward the outcomes they intended to achieve. It supplies much of the evidence that makes retention and growth opportunities credible, especially early in the relationship. A customer who confirms their goals, reaches First Value, and sees meaningful results gives you real evidence that the retention opportunity is aligned, and often reveals where an expansion opportunity is relevant.</p>
+  <p>But progression doesn't carry an opportunity all the way. Later stages need different kinds of evidence.</p>
+  <div class="table-wrap"><table class="cmp" id="evidence-by-stage">
+  <caption>The evidence each stage relies on most</caption>
+  <thead><tr><th scope="col">Stage</th><th scope="col">The evidence it relies on most</th></tr></thead>
+  <tbody>
+  <tr><td>Identify and Align</td><td>The customer's needs, goals, and reason for purchase, and their progression toward intended outcomes</td></tr>
+  <tr><td>Advocate</td><td>Internal advocacy: someone inside the customer who can carry the case</td></tr>
+  <tr><td>Intent</td><td>Commercial commitment: a yes and a credible path</td></tr>
+  <tr><td>Net Revenue Close</td><td>The completed revenue outcome</td></tr>
+  </tbody>
+  </table></div>
+  <p>A customer can be progressing well while an expansion opportunity stalls at Align because no one has confirmed it matters. A customer can be highly engaged while the renewal has no advocate who can defend it to finance. Progression informs the pipeline. It doesn't replace the exit criteria.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 960 230" role="img" aria-label="How an opportunity advances: a revenue opportunity enters the pipeline, plays support the required customer and commercial progression, evidence satisfies the stage exit criteria, the stage advances, the probability updates, and the forecast updates." xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="arm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5B7F95"/></marker></defs>
+      <rect x="0" y="0" width="960" height="230" rx="16" fill="#101820"/>
+      <text x="480" y="56" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#B5BD00">HOW AN OPPORTUNITY ADVANCES</text>
+      <rect x="22" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="22" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="90.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">1</text>
+      <text x="90.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Opportunity</text>
+      <text x="90.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">enters</text>
+      <path d="M159,136 L177,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arm)"/>
+      <rect x="178" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="178" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="246.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">2</text>
+      <text x="246.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Plays support</text>
+      <text x="246.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">progression</text>
+      <path d="M315,136 L333,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arm)"/>
+      <rect x="334" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="334" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="402.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">3</text>
+      <text x="402.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Evidence meets</text>
+      <text x="402.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">exit criteria</text>
+      <path d="M471,136 L489,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arm)"/>
+      <rect x="490" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="490" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="558.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">4</text>
+      <text x="558.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Stage</text>
+      <text x="558.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">advances</text>
+      <path d="M627,136 L645,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arm)"/>
+      <rect x="646" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="646" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="714.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">5</text>
+      <text x="714.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Probability</text>
+      <text x="714.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">updates</text>
+      <path d="M783,136 L801,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arm)"/>
+      <rect x="802" y="92" width="136" height="88" rx="12" fill="#253746"/><rect x="802" y="92" width="136" height="6" rx="3" fill="#B5BD00"/>
+      <text x="870.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">6</text>
+      <text x="870.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Forecast</text>
+      <text x="870.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">updates</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">How an opportunity advances. The same mechanism is written out below.</p>
+  <ol id="mechanism">
+  <li>A revenue opportunity enters the pipeline.</li>
+  <li>Plays support the required customer and commercial progression.</li>
+  <li>Evidence satisfies the stage exit criteria.</li>
+  <li>The stage advances.</li>
+  <li>The probability updates.</li>
+  <li>The forecast updates.</li>
+  </ol>
+
+  <h2 id="probabilities">How Do Post-Sale Pipeline Probabilities Work?</h2>
+  <p>Each stage carries a default forecast probability: Identify 20%, Align 40%, Advocate 60%, Intent 90%, Net Revenue Close 100%.</p>
+  <p>These are standardized forecasting assumptions attached to increasing levels of commercial evidence. They are not empirically measured close rates, and they don't claim that every opportunity in Align has exactly a 40% chance of closing.</p>
+  <p>Standard defaults are the point. The same stage means the same thing across segments, teams, and CSMs. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital-led SMB account. What differs is the work needed to produce the evidence, not the math. That is what makes the model explainable to a CRO and a CFO.</p>
+  <div class="formula" id="formula"><p><strong>Opportunity Value × Stage Probability = Weighted Forecast Value</strong></p></div>
+
+  <h2 id="example">One Customer, Multiple Revenue Opportunities</h2>
+  <p><em>Illustration of the mechanics only. Not a recommended forecast or a statistically validated probability model.</em></p>
+  <p>Customer A currently has $100K ARR.</p>
+  <div class="table-wrap"><table class="cmp" id="customer-a">
+  <caption>Customer A: three revenue opportunities (illustrative)</caption>
+  <thead><tr><th scope="col">Opportunity</th><th scope="col">Value</th><th scope="col">Stage</th><th scope="col">Default probability</th><th scope="col">Weighted value</th></tr></thead>
+  <tbody>
+  <tr><td>Retention (renewal)</td><td>$100K</td><td>Advocate</td><td>60%</td><td>$60K</td></tr>
+  <tr><td>Expansion A</td><td>$25K</td><td>Align</td><td>40%</td><td>$10K</td></tr>
+  <tr><td>Expansion B</td><td>$40K</td><td>Identify</td><td>20%</td><td>$8K</td></tr>
+  <tr><td>Total</td><td><strong>$165K</strong></td><td></td><td></td><td><strong>$78K</strong></td></tr>
+  </tbody>
+  </table></div>
+  <p>Now try to describe Customer A with one stage. Put the whole $165K at Advocate and you forecast $99K, overstating two expansion opportunities that haven't earned it. Look only at the renewal and you miss $65K of potential growth, and you can't see that one expansion is further along than the other.</p>
+  <p>The opportunity-level view shows the floor, the growth, and what each one needs next. The renewal needs a commitment. Expansion A needs an internal advocate. Expansion B needs to be connected to something the customer is trying to accomplish.</p>
+
+  <h2 id="forecast">How Do You Forecast Existing-Customer Revenue Without Relying on CSM Judgment?</h2>
+  <div class="direct-answer"><p>Forecast each revenue opportunity, not each customer. Multiply its value by its stage probability, place it in the period of its expected close date, and require evidence that justifies the stage. Judgment still matters. It just works inside a shared structure.</p></div>
+  <p>Every opportunity should carry at least:</p>
+  <ul>
+  <li>Revenue amount</li>
+  <li>Stage</li>
+  <li>Probability</li>
+  <li>Expected close date</li>
+  <li>Evidence</li>
+  <li>Next action</li>
+  <li>Owner</li>
+  </ul>
+  <p>First-term renewals also carry an expected First Value date until First Value is reached.</p>
+  <p><strong>Probability without timing gives you a total, not a forecast.</strong> A useful period forecast needs both. Each opportunity's weighted value counts toward the period in which it is expected to close. In the illustration above, if the renewal is expected to close in Q3, its $60K weighted value counts toward Q3. If Expansion A is expected in Q4, its $10K counts there.</p>
+  <div class="table-wrap"><table class="cmp" id="judgment">
+  <caption>Unstructured versus evidence-informed judgment</caption>
+  <thead><tr><th scope="col">Unstructured judgment</th><th scope="col">Evidence-informed judgment</th></tr></thead>
+  <tbody>
+  <tr><td>&quot;I think they're green. They'll renew.&quot;</td><td>Retention, $100K, Advocate (60%), expected close September 30. Evidence: the VP of Operations presented our results to the CFO without us in the room. Next action: confirm budget timing and the approval path. Owner: assigned CSM.</td></tr>
+  </tbody>
+  </table></div>
+  <p class="key-statement">The goal isn't to remove judgment from the forecast. It's to give judgment a common structure and an evidence trail.</p>
+  <p>That changes the pipeline review. When someone disagrees about a stage, the conversation moves from opinion to evidence: what would prove the next exit criterion, and who is going to get it.</p>
+
+  <h2 id="how-to-build">How Do You Build a Post-Sale Pipeline?</h2>
+  <div class="direct-answer"><p><strong>Short answer:</strong> put existing-customer revenue into the pipeline from purchase, separate it into distinct retention and expansion opportunities, define the five stages and their evidence-based exit criteria, assign default probabilities, capture the evidence and next action for every opportunity, forecast by amount × probability × timing, and review movement on a regular cadence.</p></div>
+  <ol id="build-path">
+  <li><strong>Put the revenue in the pipeline.</strong> Create a retention opportunity for every customer at purchase. For a new customer, set an expected First Value date.</li>
+  <li><strong>Separate distinct revenue opportunities.</strong> Add expansion opportunities only when they are specific enough to manage. One customer can have several.</li>
+  <li><strong>Define the five stages.</strong> Identify, Align, Advocate, Intent, and Net Revenue Close, each with its commercial question.</li>
+  <li><strong>Define evidence-based exit criteria.</strong> Write down what must be observably true for an opportunity to leave each stage.</li>
+  <li><strong>Assign stage probabilities.</strong> Start with the defaults (20%, 40%, 60%, 90%, 100%) and apply them the same way everywhere.</li>
+  <li><strong>Capture evidence and next action.</strong> Every opportunity carries the evidence for its current stage, the next action, and an owner.</li>
+  <li><strong>Forecast by amount × probability × timing.</strong> Weighted value, placed in the period of the expected close date.</li>
+  <li><strong>Review movement regularly.</strong> On a set cadence, inspect what moved forward, what moved back, what stalled, and why, the same way sales reviews its pipeline.</li>
+  </ol>
+  <p>Retention enters at purchase. Expansion enters when it becomes specific enough to manage.</p>
+
+  <h2 id="after-net-revenue-close">What Happens After Net Revenue Close?</h2>
+  <p>Net Revenue Close is not the end of the customer relationship. The pipeline doesn't reset to zero.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 960 280" role="img" aria-label="The cycle after Net Revenue Close: the closed outcome leads to the customer&#x27;s next goals, which create new or continuing revenue opportunities, and the pipeline continues." xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="arc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5B7F95"/></marker></defs>
+      <rect x="0" y="0" width="960" height="280" rx="16" fill="#101820"/>
+      <text x="480" y="56" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="700" letter-spacing="1.2" fill="#B5BD00">THE CYCLE CONTINUES</text>
+      <rect x="22" y="92" width="214" height="88" rx="12" fill="#253746"/><rect x="22" y="92" width="214" height="6" rx="3" fill="#B5BD00"/>
+      <text x="129.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">1</text>
+      <text x="129.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Net Revenue</text>
+      <text x="129.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Close</text>
+      <path d="M237,136 L255,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arc)"/>
+      <rect x="256" y="92" width="214" height="88" rx="12" fill="#253746"/><rect x="256" y="92" width="214" height="6" rx="3" fill="#B5BD00"/>
+      <text x="363.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">2</text>
+      <text x="363.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Customer's</text>
+      <text x="363.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">next goals</text>
+      <path d="M471,136 L489,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arc)"/>
+      <rect x="490" y="92" width="214" height="88" rx="12" fill="#253746"/><rect x="490" y="92" width="214" height="6" rx="3" fill="#B5BD00"/>
+      <text x="597.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">3</text>
+      <text x="597.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">New or continuing</text>
+      <text x="597.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">opportunities</text>
+      <path d="M705,136 L723,136" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arc)"/>
+      <rect x="724" y="92" width="214" height="88" rx="12" fill="#253746"/><rect x="724" y="92" width="214" height="6" rx="3" fill="#B5BD00"/>
+      <text x="831.0" y="82" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="11" font-weight="700" fill="#5B7F95">4</text>
+      <text x="831.0" y="133.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">Pipeline</text>
+      <text x="831.0" y="153.0" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="15" font-weight="700" fill="#ffffff">continues</text>
+      <path d="M831.0,180 L831.0,226 Q831.0,242 815.0,242 L145.0,242 Q129.0,242 129.0,226 L129.0,184" stroke="#5B7F95" stroke-width="2.5" fill="none" marker-end="url(#arc)"/>
+      <rect x="416" y="226" width="128" height="32" rx="16" fill="#B5BD00"/><text x="480" y="247" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="13" font-weight="700" fill="#101820">repeats</text>
+    </svg>
+  </div>
+  <p class="diagram-caption">The cycle after Net Revenue Close. The same cycle is written out below.</p>
+  <ol id="cycle">
+  <li>Net Revenue Close</li>
+  <li>The customer's next goals</li>
+  <li>New or continuing revenue opportunities</li>
+  <li>The pipeline continues</li>
+  </ol>
+  <p>When a renewal closes, the next term's retention opportunity begins. It enters at Identify like any opportunity, but it rarely starts from nothing. The customer has already reached First Value, so it doesn't have to be earned again. The customer's history, evidence, trust, value realization, relationships, and commitments carry forward, so early exit criteria are often met quickly. The reasons the customer renewed or expanded become the starting point for their next goals, and often the source of the next expansion opportunity. Meanwhile, the customer's other opportunities keep moving at their own stages.</p>
+
+  <h2 id="faq">Frequently Asked Questions</h2>
+  <h3>What is a post-sale pipeline?</h3>
+  <p>A Post-Sale Pipeline is the structured revenue process for managing existing-customer retention and growth opportunities from identification through customer commitment and Net Revenue Close. It works like a sales pipeline for the revenue you already have: every retention and expansion opportunity sits in a stage, carries a probability, and advances only on evidence.</p>
+  <h3>What are the stages of a post-sale pipeline?</h3>
+  <p>CXology&#x27;s Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are default forecasting assumptions, not measured close rates.</p>
+  <h3>Do customers move through the post-sale pipeline?</h3>
+  <p>No. Revenue opportunities do. Every customer creates at least one retention opportunity at purchase, and expansion opportunities are added when they are specific enough to manage, so one customer can have opportunities in several stages at once.</p>
+  <h3>What moves an opportunity from one stage to the next?</h3>
+  <p>Observable evidence that satisfies the exit criteria for the next stage. Completing a play, time passing, usage alone, or a CSM&#x27;s confidence does not advance a stage.</p>
+  <h3>When does a first-term renewal leave the Identify stage?</h3>
+  <p>When the customer reaches First Value. The only exception is documented: the customer has confirmed a specific reason First Value is delayed, reaffirmed the goal, and set a revised First Value date. If that date passes, the renewal returns to Identify and is escalated. Later renewals don&#x27;t have to earn First Value again.</p>
+  <h3>Can an opportunity move backward in a post-sale pipeline?</h3>
+  <p>Yes. An opportunity sits at the highest stage its current evidence supports. If that evidence no longer holds, such as an advocate leaving or a commitment being withdrawn, it moves back to the stage the remaining evidence supports. A usage drop or a red health score doesn&#x27;t move a stage back on its own; it triggers a check of the evidence.</p>
+  <h3>Does Intent mean the contract is signed?</h3>
+  <p>No. Intent means the customer has given an explicit commitment, a verbal yes or its equivalent, with a credible path forward. Contracting, legal, procurement, and approvals may remain. Net Revenue Close is when the outcome is final.</p>
+  <h3>How do you forecast existing-customer revenue with a post-sale pipeline?</h3>
+  <p>Multiply each opportunity&#x27;s value by its stage probability and place the result in the period of its expected close date. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail.</p>
+
+  <h2 id="read-next">Read Next</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="customer-progression-leading-indicators.html">
+      <div class="tool-card-kicker">Customer Progression</div>
+      <div class="tool-card-title">How Do You Know Whether a Customer Is Actually Progressing?</div>
+      <div class="tool-card-desc">What customer progression is, and how to tell it apart from activity.</div>
+    </a>
+    <a class="tool-card" href="predictable-existing-customer-revenue.html">
+      <div class="tool-card-kicker">Forecasting</div>
+      <div class="tool-card-title">How Do You Make Existing-Customer Revenue More Predictable?</div>
+      <div class="tool-card-desc">The CRO's version of the problem, and how progression evidence changes the forecast.</div>
+    </a>
+    <a class="tool-card" href="post-sale-operating-system.html">
+      <div class="tool-card-kicker">The System</div>
+      <div class="tool-card-title">What Is a Post-Sale Operating System?</div>
+      <div class="tool-card-desc">How the pipeline, plays, and infrastructure run as one system.</div>
+    </a>
+    <a class="tool-card" href="chapter-part2-intro.html">
+      <div class="tool-card-kicker">The Book · Part II</div>
+      <div class="tool-card-title">The Post-Sale Pipeline</div>
+      <div class="tool-card-desc">The full treatment of each stage, Chapters 4 through 8.</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CXology</div>
+        <p class="footer-brand-desc">A post-sale operating system for predictable retention and scalable growth.</p>
+        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
+      </div>
+      <div>
+        <div class="footer-col-title">The Book</div>
+        <ul class="footer-links">
+          <li><a href="book.html#parts">Part I: From Function to System</a></li>
+          <li><a href="book.html#parts">Part II: The Pipeline</a></li>
+          <li><a href="book.html#parts">Part III: Lifecycle Plays</a></li>
+          <li><a href="book.html#parts">Part IV: Scale &amp; Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Frameworks</div>
+        <ul class="footer-links">
+          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
+          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
+          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
+          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="calculator.html">NRR Calculator</a></li>
+          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
+          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>

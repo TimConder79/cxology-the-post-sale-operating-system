@@ -2,6 +2,23 @@
   "updates": [
     {
       "kind": "Update",
+      "date": "2026-10-07",
+      "title": "New companion page: What Is a Post-Sale Pipeline?",
+      "blurb": "A single-page explanation of the pipeline: the definition, the five stages and the question each one answers, the evidence that moves a revenue opportunity from one stage to the next, the default stage probabilities, and how the pipeline produces a forecast. It sits at the end of Part II.",
+      "link": "post-sale-pipeline.html",
+      "linkLabel": "Read the answer"
+    },
+    {
+      "kind": "Refinement",
+      "chapter": "Part II · The Post-Sale Pipeline",
+      "date": "2026-10-07",
+      "title": "Part II now tracks revenue opportunities, not customers",
+      "blurb": "Each stage now advances only on evidence that meets its exit criteria, not on plays being completed. Intent means the customer has said yes with a credible path; Net Revenue Close is when the outcome is final. A first-term renewal stays in Identify until First Value, opportunities can move backward when the evidence stops holding, and the default stage probabilities are now stated.",
+      "link": "chapter-part2-intro.html",
+      "linkLabel": "Read the Part II introduction"
+    },
+    {
+      "kind": "Update",
       "date": "2026-10-06",
       "title": "New companion page: What Is a Post-Sale Operating System?",
       "blurb": "A single-page explanation of the whole system: the definition, the three layers (Post-Sale Pipeline, Plays, Infrastructure), the one loop that connects them, a two-step customer example, and a practical build path. It sits at the end of Part III.",
