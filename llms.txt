@@ -66,7 +66,7 @@ Full text of the book in one file: https://cxology.co/llms-full.txt
 - [What Is Strategic Customer Success? Definition & Framework](https://cxology.co/strategic-customer-success/): The deliberate management of customer progression toward the outcomes that justified the purchase.
 - [The Three Essential Elements for Strategic Customer Success](https://cxology.co/three-essential-elements-for-strategic-customer-success/): Relevance, value achievement, and trust.
 - [Customer Retention Is Built on Trust. But What Builds Trust?](https://cxology.co/retention-and-trust/): How customer progression creates the evidence that builds, or erodes, trust, and why that evidence decides retention.
-- [Focus Your Customer Experience Framework on Retention](https://cxology.co/focus-your-customer-experience-framework-on-retention/): Turning a "sales-driven culture" toward retention.
+- [Your Customer Experience Should Be Designed for Retention, Not Just Acquisition](https://cxology.co/focus-your-customer-experience-framework-on-retention/): Why customer experience should be designed and operated as a cross-functional system for retention and growth, with the same discipline companies apply to acquisition.
 - [Why Your Customer Retention Strategy Matters](https://cxology.co/why-your-customer-retention-strategy-matters/): Great products alone no longer make a leader.
 - [Give Retention the Attention It Deserves](https://cxology.co/give-retention-the-attention-it-deserves/): Why retention is underfunded relative to acquisition.
 - [Heroic Effort: When It Holds Us Back](https://cxology.co/heroic-effort-why-do-we-do-it-and-when-does-it-hold-us-back/): The limits of heroics in startups and CS.
