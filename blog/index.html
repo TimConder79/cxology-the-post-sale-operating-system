@@ -68,6 +68,16 @@ h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:
 .blog-hero{max-width:1080px;margin:0 auto;padding:60px 24px 10px}
 .blog-hero h1{font-size:clamp(2.1rem,5vw,3.2rem)}
 .blog-hero p{color:var(--muted);font-size:1.1rem;margin-top:12px;max-width:60ch}
+.start-here{border:1px solid var(--line);border-radius:16px;background:var(--band);padding:20px 22px}
+.sh-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep)}
+.sh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:.8rem}
+.sh-card{display:flex;flex-direction:column;gap:.35rem;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;transition:border-color .15s,transform .15s}
+.sh-card:hover{border-color:var(--navy);transform:translateY(-2px)}
+.sh-kicker{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime-deep)}
+.sh-title{font-size:1rem;font-weight:700;line-height:1.35;color:var(--navy)}
+.sh-desc{font-size:.85rem;line-height:1.55;color:var(--muted)}
+.sh-basics{margin:.9rem 0 0;font-size:.95rem;line-height:1.7}
+@media(max-width:860px){.sh-grid{grid-template-columns:1fr}}
 .grid{max-width:1080px;margin:30px auto 60px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 @media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.grid{grid-template-columns:1fr}}
@@ -241,8 +251,13 @@ h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:
   <h1>Field notes on post-sale.</h1>
   <p>Essays on strategic customer success, retention, and running post-sale like a system — the thinking behind the book.</p>
 </div>
-<div class="featured" style="max-width:1080px;margin:22px auto 0;padding:0 24px"><div style="border:1px solid var(--line);border-radius:16px;background:var(--band);padding:20px 22px"><div style="font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime-deep)">Start here</div><p style="margin:.5rem 0 0;font-size:1rem;line-height:1.7">New here? Start with the two cornerstones: <a href="/strategic-customer-success/" style="color:var(--lime-deep);font-weight:700;text-decoration:underline;text-underline-offset:2px">What Is Strategic Customer Success?</a> and <a href="/why-your-customer-retention-strategy-matters/" style="color:var(--lime-deep);font-weight:700;text-decoration:underline;text-underline-offset:2px">What Is a Customer Retention Strategy?</a>.</p></div></div>
-<div class="grid">
+<div class="featured" style="max-width:1080px;margin:22px auto 0;padding:0 24px"><div class="start-here"><div class="sh-label">Start here</div>
+<div class="sh-grid">
+<a class="sh-card" href="/predictable-existing-customer-revenue.html"><span class="sh-kicker">The problem</span><span class="sh-title">How Do You Make Existing-Customer Revenue More Predictable?</span><span class="sh-desc">Why installed-base revenue is hard to see, and how customer progression makes it forecastable.</span></a>
+<a class="sh-card" href="/post-sale-pipeline.html"><span class="sh-kicker">The pipeline</span><span class="sh-title">What Is a Post-Sale Pipeline?</span><span class="sh-desc">Five stages, the evidence that moves a revenue opportunity between them, and how the forecast works.</span></a>
+<a class="sh-card" href="/post-sale-operating-system.html"><span class="sh-kicker">The system</span><span class="sh-title">What Is a Post-Sale Operating System?</span><span class="sh-desc">How the pipeline, plays, and infrastructure run as one system across the company.</span></a>
+</div>
+<p class="sh-basics">Or start with the basics: <a href="/strategic-customer-success/" style="color:var(--lime-deep);font-weight:700;text-decoration:underline;text-underline-offset:2px">What Is Strategic Customer Success?</a> and <a href="/why-your-customer-retention-strategy-matters/" style="color:var(--lime-deep);font-weight:700;text-decoration:underline;text-underline-offset:2px">What Is a Customer Retention Strategy?</a></p></div></div> <div class="grid">
 <a class="card" href="/blog/predictable-existing-customer-revenue-drivers/">
     <img class="card-img" src="/assets/featured-predictable-revenue-drivers-640.webp" srcset="/assets/featured-predictable-revenue-drivers-640.webp 640w, /assets/featured-predictable-revenue-drivers-1200.webp 1200w" sizes="(max-width:560px) 100vw, (max-width:860px) 50vw, 340px" width="640" height="336" alt="The 5 Drivers of Predictable Existing-Customer Revenue" decoding="async"/>
     <div class="card-body"><div class="card-date">October 19, 2026</div>
