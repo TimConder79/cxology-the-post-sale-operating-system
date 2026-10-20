@@ -32,6 +32,27 @@
     }
     .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
 
+    /* Initiative 6: canonical Journey components (same treatment as the canonical pages) */
+    .chapter-body .direct-answer { border-left: 4px solid var(--olive); background: var(--off-white); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .direct-answer p { margin: 0; color: var(--gray-700); }
+    .chapter-body .def { border: 1px solid var(--gray-200); border-top: 4px solid var(--navy); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; background: var(--white); }
+    .chapter-body .def-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-dim); margin-bottom: .35rem; }
+    .chapter-body .def p { margin: 0; font-size: 1.02rem; color: var(--navy); }
+    .chapter-body ol.flow { list-style: none; padding: 0; margin: .4rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; max-width: 72ch; }
+    .chapter-body ol.flow li { margin: 0; background: var(--navy); color: #fff; font-size: .85rem; font-weight: 600; padding: .4rem .75rem; border-radius: 999px; line-height: 1.3; }
+    .chapter-body ol.flow li:not(:last-child)::after { content: "\2192"; color: var(--olive); margin-left: .55rem; font-weight: 700; }
+    .chapter-body ol.steps { padding-left: 1.4rem; margin-bottom: 1rem; max-width: 72ch; }
+    .chapter-body ol.steps li, .chapter-body ul.gap-list li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+    .chapter-body ul.gap-list { padding-left: 1.4rem; margin-bottom: 1rem; max-width: 72ch; }
+    .chapter-body .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1rem; max-width: 100%; }
+    .chapter-body table.cmp { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
+    .chapter-body table.cmp th, .chapter-body table.cmp td { text-align: left; padding: .6rem .75rem; border: 1px solid var(--gray-200); vertical-align: top; color: var(--gray-700); }
+    .chapter-body table.cmp thead th { background: var(--navy); color: #fff; font-weight: 700; }
+    .chapter-body table.cmp tbody tr:nth-child(even) td { background: var(--off-white); }
+    .chapter-body table.cmp td:first-child { font-weight: 700; color: var(--navy); }
+    .chapter-body table.cmp td a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-underline-offset: 3px; }
+    .chapter-body table.cmp-wide { min-width: 720px; }
+
     /* ── ARTIFACT SHELL ───────────────────────────────────────────────── */
     .artifact-shell {
       background: #0a1520;
@@ -281,7 +302,7 @@
 <div class="chapter-hero">
   <div class="hero-grid"></div>
   <div class="chapter-hero-inner">
-    <span class="chapter-num">Part II · The Pipeline · Core Framework</span>
+    <span class="chapter-num">Part III · Customer Journey · Core Framework</span>
     <h1 class="headline">The Post-Sale Journey Map</h1>
     <p class="chapter-hero-sub">Twelve months. Eight rows. Every gap where customers are lost — and every lever to prevent it.</p>
   </div>
@@ -328,6 +349,81 @@
 <div class="chapter-body">
 
   <div class="chapter-section reveal">
+    <h2 id="operational">How Do You Make the Customer Journey Operational?</h2>
+    <div class="direct-answer"><p><strong>A customer journey becomes operational when each important Inflection Point has four things: the customer progression you expect, a play designed to support it, the evidence that will show whether that change occurred, and a next action based on what the evidence shows.</strong> Without those four, a journey map describes the experience. With them, the team can run it, inspect it, and act when it breaks.</p></div>
+    <ol class="flow"><li>Where does it matter?</li><li>What should change?</li><li>What will we do?</li><li>How will we know?</li><li>What happens next?</li></ol>
+    <p>Those five questions are the whole model. The rest of this page explains each one, names the eight moments it applies to, and shows how the map lays them across the first year.</p>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2 id="customer-journey">What Is the Customer Journey?</h2>
+    <div class="def"><div class="def-label">Customer Journey</div><p>The Customer Journey describes the broader experience through which the customer moves from purchase toward the outcomes they intended to achieve.</p></div>
+    <p>The journey is not the same thing as customer progression. The journey tells you where the important moments occur. <a href="customer-progression-leading-indicators.html">Customer progression</a> tells you what meaningfully changes for the customer at those moments.</p>
+    <div class="def"><div class="def-label">Inflection Point</div><p>Inflection Points are consequential moments in the Customer Journey where the company has an opportunity to build or block loyalty, and where meaningful customer progression should be intentionally designed and observed.</p></div>
+    <p>Many of them happen when you are not in the room. A customer hits a wall in the product, has a breakthrough, or quietly wonders whether the purchase was worth it. Recognizing those moments is your responsibility, not the customer's.</p>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2 id="inflection-points">The Eight Inflection Points</h2>
+    <p>The map is built around eight moments. Some happen once. Goal Attainment, Habit Transformation, and Ongoing Alignment repeat through the middle of the relationship. Your business may need different moments, or more, or fewer.</p>
+    <div class="table-wrap"><table class="cmp cmp-wide" id="eight-inflection-points">
+      <thead><tr><th>Inflection Point</th><th>Where it falls</th><th>What the customer is deciding</th><th>Play designed for it</th></tr></thead>
+      <tbody>
+        <tr><td>1. Purchase Moment</td><td>Month 1, weeks 1–2</td><td>Did I make the right decision?</td><td>Purchase &amp; Welcome</td></tr>
+        <tr><td>2. First Meeting</td><td>Month 1, weeks 2–4</td><td>Does this team understand why we bought and what we expect to change?</td><td>Kickoff</td></tr>
+        <tr><td>3. Onboarding Decisions</td><td>Month 1, weeks 2–4</td><td>Who needs to be involved, what comes first, and what has to change?</td><td>Onboarding</td></tr>
+        <tr><td>4. Early Success</td><td>Month 2, weeks 4–8</td><td>Is this starting to work?</td><td>First Value</td></tr>
+        <tr><td>5. Goal Attainment</td><td>Repeats through the middle</td><td>Are we achieving what we bought this for?</td><td>Value Blocks, Sharing Insights</td></tr>
+        <tr><td>6. Habit Transformation</td><td>Repeats through the middle</td><td>Has this become how we work?</td><td>Value Blocks</td></tr>
+        <tr><td>7. Ongoing Alignment</td><td>Repeats, often quarterly</td><td>Does this still matter to where we are going?</td><td>Alignment Meeting</td></tr>
+        <tr><td>8. Renewal and Growth Decision</td><td>Months 11–12</td><td>Should we renew, expand, reduce, or leave?</td><td>Renew &amp; Grow</td></tr>
+      </tbody>
+    </table></div>
+    <p>The progression to expect at each moment, the activity that can happen without it, and the evidence that shows it occurred are laid out in <a href="customer-progression-leading-indicators.html#inflection-points">How Do You Know Whether a Customer Is Actually Progressing?</a> Each moment is walked through in <a href="navigating-post-sale-chaos-strategic-customer-success-qa/">8 Critical Moments in the Post-Sale Customer Journey</a>, and <a href="chapter-part3-intro.html">Part III</a> details the plays.</p>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2 id="journey-model">The Operational Journey Model</h2>
+    <p>At each Inflection Point, the work follows the same four steps.</p>
+    <ol class="steps">
+      <li><strong>Define the expected customer progression.</strong> What should meaningfully change for the customer at this moment? Write it in customer terms. Not "go-live reached." "The finance team closed the month in the new workflow."</li>
+      <li><strong>Design the play intended to support it.</strong> The play is what the company does. It creates the conditions for the change. It does not guarantee it.</li>
+      <li><strong>Define the evidence that will show whether it occurred.</strong> Decide in advance what you would see, and by when, if the change really happened. Evidence is something the customer does or says. A completed task, a CRM update, or a CSM's impression is not evidence.</li>
+      <li><strong>Determine the next action based on what the evidence shows.</strong> If the change occurred, build on it toward the next moment. If it didn't, find out why and respond to the gap.</li>
+    </ol>
+    <h3>Each part of the system does a different job</h3>
+    <p>The journey sits at the center of the customer system, but it doesn't do every job. These are connected management mechanisms, not one measure and not one rigid chain.</p>
+    <div class="table-wrap"><table class="cmp" id="system-jobs">
+      <thead><tr><th>Concept</th><th>The question it answers</th><th>Where it is defined</th></tr></thead>
+      <tbody>
+        <tr><td>Customer Journey and Inflection Points</td><td>Where does it matter?</td><td>This page</td></tr>
+        <tr><td>Expected progression</td><td>What should change?</td><td><a href="customer-progression-leading-indicators.html">Customer Progression</a></td></tr>
+        <tr><td>Play</td><td>What will we do to help?</td><td><a href="chapter-part3-intro.html">Part III: The Plays</a></td></tr>
+        <tr><td>Evidence</td><td>How will we know?</td><td><a href="customer-progression-leading-indicators.html">Customer Progression</a></td></tr>
+        <tr><td>Customer health</td><td>What does the accumulated customer evidence tell us?</td><td><a href="chapter-20.html">Chapter 20: Health Scoring</a></td></tr>
+        <tr><td>Post-Sale Pipeline</td><td>What does relevant evidence mean for this revenue opportunity?</td><td><a href="post-sale-pipeline.html">What Is a Post-Sale Pipeline?</a></td></tr>
+        <tr><td>Capacity</td><td>Can we execute the work we designed?</td><td><a href="customer-success-capacity.html">How Many Customers Should a CSM Manage?</a></td></tr>
+        <tr><td>Forecast</td><td>What should we now believe about the revenue?</td><td><a href="predictable-existing-customer-revenue.html">Predictable Existing-Customer Revenue</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>Two boundaries matter most. Customer health evaluates the customer: it interprets the accumulated evidence about the customer's condition. The Post-Sale Pipeline evaluates a specific renewal or expansion opportunity. Evidence from an Inflection Point can inform both, but it moves neither automatically. Not every Inflection Point, and not every piece of progression evidence, changes a revenue opportunity. Relevant evidence counts toward an opportunity's next stage only when it satisfies that stage's exit criteria.</p>
+  </div>
+
+  <div class="chapter-section reveal">
+    <h2 id="when-progression-stalls">When the Expected Progression Doesn't Happen</h2>
+    <p>The model has to work when things go wrong, because that is when it earns its keep.</p>
+    <p>Take Early Success. The onboarding play runs as designed: sessions held, workflow configured, users trained. But the customer never reaches First Value. The finance team still closes the month in the old system.</p>
+    <ul class="gap-list">
+      <li><strong>The activity occurred.</strong> The play was completed.</li>
+      <li><strong>The intended progression did not.</strong> Nothing meaningful has changed for the customer yet.</li>
+      <li><strong>The evidence shows the gap.</strong> The First Value window passed without the result the customer was supposed to see.</li>
+      <li><strong>The barrier gets diagnosed.</strong> Is it skill set, knowledge, cost in time, effort, or money, competing demands, or the key contact's ability to drive change internally? Or is it product fit?</li>
+      <li><strong>The next action responds to the missing progression.</strong> Adapt the play, rerun it, add resources, or escalate, instead of moving on to the next moment as if this one worked.</li>
+    </ul>
+    <p>The activity occurred, but that doesn't mean the customer progressed, the health assessment should change, or the renewal opportunity should advance. A missed expected change is often the earliest risk signal you will get, months before usage or a renewal conversation shows it.</p>
+  </div>
+
+  <div class="chapter-section reveal">
     <h2>The system behind the relationship</h2>
     <p>Most post-sale teams operate without a map. They have processes — onboarding checklists, QBR templates, renewal reminders — but no unified view of how a customer moves from "just signed" to "fully adopted, expanded, and renewed." That gap is where retention dies.</p>
     <p>This artifact is the CXology Post-Sale Journey Map. It documents the entire 12-month customer lifecycle as a system: what the customer is thinking at each stage, where they're most likely to disengage, what your team needs to execute internally, and which signals tell you whether the relationship is healthy or at risk.</p>
@@ -336,7 +432,7 @@
   </div>
 
   <div class="chapter-section reveal">
-    <h2>Eight rows. One revenue pipeline.</h2>
+    <h2>Eight rows. One connected system.</h2>
     <p>The map reads left to right — Month 1 through Month 12 — and top to bottom across eight functional rows. Each row answers a different question about the customer relationship. Read them together and you see the full picture. Read any single row in isolation and you're managing a symptom, not the system.</p>
     <div class="visual-block">
       <div class="visual-block-title">The 8 System Rows</div>
@@ -347,11 +443,11 @@
         </div>
         <div class="row-item">
           <div class="row-label-col"><div class="row-label">Row 02</div><div class="row-bar" style="background:#9fe1cb"></div></div>
-          <div class="row-content"><h4>Customer Inflection Points</h4><p>The eight moments where loyalty is built or broken. These are not random touchpoints — they are predictable forks in the relationship. Miss one and you're recovering from it for months. Hit them with precision and the renewal becomes a formality.</p></div>
+          <div class="row-content"><h4>Customer Inflection Points</h4><p>The eight moments where loyalty is built or broken. These are not random touchpoints — they are predictable forks in the relationship. Miss one and you're recovering from it for months. Design for each one and you can see much earlier whether the customer is actually progressing toward renewal.</p></div>
         </div>
         <div class="row-item">
           <div class="row-label-col"><div class="row-label">Row 03</div><div class="row-bar" style="background:#b4b2a9"></div></div>
-          <div class="row-content"><h4>Customer Journey</h4><p>The observable behavioral path — what the customer is doing in the product and with your team at each stage. Adoption curves, usage patterns, escalation moments. This is the data layer that informs everything else.</p></div>
+          <div class="row-content"><h4>Customer Journey</h4><p>The observable path through the broader journey: what the customer is doing in the product and with your team at each stage. Adoption curves, usage patterns, escalation moments. Much of the evidence that progression did or didn't happen shows up in this row.</p></div>
         </div>
         <div class="row-item">
           <div class="row-label-col"><div class="row-label">Row 04</div><div class="row-bar" style="background:#f0997b"></div></div>
@@ -371,7 +467,7 @@
         </div>
         <div class="row-item">
           <div class="row-label-col"><div class="row-label">Row 08</div><div class="row-bar" style="background:#97c459"></div></div>
-          <div class="row-content"><h4>Health, Feedback &amp; Signals</h4><p>The measurement layer. Health scores, feedback loops, usage signals, engagement patterns. This is how you know whether the rows above are working — before the renewal conversation reveals the damage.</p></div>
+          <div class="row-content"><h4>Health, Feedback &amp; Signals</h4><p>The interpretation layer. Health scores, feedback loops, usage signals, engagement patterns, read together with the evidence of progression to judge the customer's condition and where to act, before the renewal conversation reveals the damage.</p></div>
         </div>
       </div>
     </div>
@@ -379,7 +475,7 @@
 
   <div class="chapter-section reveal">
     <h2>Six stages. Eight critical moments.</h2>
-    <p>The lifecycle is not a flat line — it has distinct stages with different risks, different customer emotions, and different operational requirements. Understanding the shape of the journey tells you where to invest human attention and where automation can carry the load.</p>
+    <p>The lifecycle is not a flat line — it has distinct stages with different risks, different customer emotions, and different operational requirements. Understanding the shape of the journey tells you where to invest human attention and where automation can carry the load. The six stages describe the shape of the year. The <a href="#inflection-points">eight Inflection Points</a> sit inside them.</p>
     <div class="stage-grid">
       <div class="stage-card">
         <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(197,212,78,.12)">🎉</div><span class="stage-card-num" style="color:var(--olive)">Stage 01</span></div>
@@ -415,7 +511,7 @@
         <div class="stage-card-eyebrow"><div class="stage-card-icon" style="background:rgba(216,90,48,.12)">🔄</div><span class="stage-card-num" style="color:var(--coral)">Stage 06</span></div>
         <div class="stage-card-title">Renewal &amp; Growth</div>
         <div class="stage-card-timing">Months 11–12</div>
-        <p>If the previous five stages were executed, the renewal is not a conversation — it's a conclusion. If they weren't, this is where you pay for everything that went unaddressed.</p>
+        <p>If the earlier stages produced real progression, the renewal decision rests on evidence the customer already recognizes. If they didn't, this is where you pay for everything that went unaddressed.</p>
       </div>
     </div>
   </div>
@@ -433,7 +529,7 @@
           <tr><td>Insights never shared</td><td>Customer can't see ROI. Executive sponsor loses the internal business case.</td><td><span class="impact-pill pill-warn">Expansion loss</span></td></tr>
           <tr><td>No health measurement</td><td>Red accounts look green. Renewal surprise at Month 11.</td><td><span class="impact-pill pill-danger">Reactive recovery</span></td></tr>
           <tr><td>Renewal = first close attempt</td><td>Negotiation starts from scratch. No documented value evidence.</td><td><span class="impact-pill pill-warn">Price erosion</span></td></tr>
-          <tr><td>All 8 rows executed</td><td>Renewal is a formality. Expansion is in pipeline. NRR above 110%.</td><td><span class="impact-pill pill-success">NRR target hit</span></td></tr>
+          <tr><td>All 8 rows designed and inspected</td><td>Missing progression is visible early and acted on. The renewal decision rests on evidence. Expansion surfaces from real goals.</td><td><span class="impact-pill pill-success">Strongest NRR position</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -441,16 +537,16 @@
   </div>
 
   <div class="chapter-section reveal">
-    <h2>How to operationalize this</h2>
+    <h2>How to put the map to work</h2>
     <h3>Step 1 — Audit your current state</h3>
     <p>Walk every row month by month. For each cell, ask: does this exist in our operation today? If yes, is it systematized — documented, triggered, repeatable — or is it dependent on individual heroics? Mark every cell that relies on a single person instead of a process. That is your risk inventory.</p>
     <h3>Step 2 — Identify your top three gaps</h3>
     <p>Where are the largest distances between the Loyalty Blockers row and the Loyalty Builders row at the same point in time? Those gaps are costing you retention now. Prioritize closing them before building anything new.</p>
     <h3>Step 3 — Map your plays to inflection points</h3>
-    <p>Every play in this framework maps to a specific inflection point on this map. If you don't have a structured play for an inflection point, you're leaving that moment to chance. See <a href="chapter.html?ch=9" style="color:var(--teal)">Part III: The Lifecycle Plays →</a></p>
-    <div class="callout"><p>A play is not a meeting agenda. It is a trigger-based sequence with defined inputs, a structured interaction, a documented output, and a measurable outcome. If your team can't describe the trigger, the action, and the expected result for every inflection point — you don't have a play, you have a habit.</p></div>
+    <p>Every play in this framework maps to a specific inflection point on this map. If you don't have a structured play for an inflection point, you're leaving that moment to chance. See <a href="chapter-part3-intro.html" style="color:var(--teal)">Part III: The Plays That Help Customers Progress →</a></p>
+    <div class="callout"><p>A play is not a meeting agenda. It is a trigger-based sequence with defined inputs, a structured interaction, a documented output, an intended customer outcome, and a way to know whether that outcome occurred. If your team can't describe the trigger, the action, the expected change, and the evidence for every inflection point, you don't have a play. You have a habit.</p></div>
     <h3>Step 4 — Build the measurement layer last</h3>
-    <p>Too many teams start with health scoring and wonder why it doesn't change behavior. Measurement only works when there are defined plays to trigger from that data. Build the plays first. Then build the signals that tell you when to run them. See <a href="frameworks.html#health" style="color:var(--teal)">Health Score Matrix →</a></p>
+    <p>Too many teams start with health scoring and wonder why it doesn't change behavior. Measurement only works when there are defined plays to trigger from that data. Build the plays first. Then build the signals that tell you when to run them. See <a href="frameworks.html#health" style="color:var(--teal)">Health Score Matrix →</a> and <a href="chapter-20.html" style="color:var(--teal)">Chapter 20: Health Scoring That Actually Works →</a></p>
     <h3>Step 5 — Segment your execution</h3>
     <p>Not every customer needs every row at high-touch. The map defines what needs to happen. Your segmentation model determines who executes it — a CSM, an automated sequence, or a hybrid. Right-touch is not cutting corners; it is delivering exactly what the segment requires, efficiently.</p>
   </div>
@@ -460,7 +556,7 @@
     <p><strong>Gross Revenue Retention (GRR)</strong> is determined primarily by the left half of the map — Months 1 through 6. If the customer doesn't achieve First Value, doesn't experience a structured Kickoff, and doesn't have a defined success metric, you will not retain the base. GRR below 85% is almost always a Month 1–3 problem.</p>
     <p><strong>Net Revenue Retention (NRR)</strong> — which includes expansions and upsells — is determined by the right half. Months 7–12, alignment meetings, sharing strategic insights, developing an internal champion who can make the expansion case upward. Companies running NRR above 110% are not running better renewal conversations. They are running better Month 4 through Month 10 operating rhythms.</p>
     <div class="callout"><p>NRR is not a metric. It's the output of 12 months of systematic execution — visible only at renewal, caused much earlier.</p></div>
-    <p>The journey map makes this causal chain explicit. When you can see the system, you can identify exactly where a customer trajectory is breaking. And when you can identify that, you can intervene before the renewal conversation reveals the damage. That is the point of the map. Not documentation. <strong>Intervention.</strong></p>
+    <p>The journey map makes this chain visible. When you can see the system, you can identify exactly where a customer trajectory is breaking. And when you can identify that, you can intervene before the renewal conversation reveals the damage. That is the point of the map. Not documentation. <strong>Intervention.</strong></p>
     <p style="margin-top:1.5rem"><a href="calculator.html" style="color:var(--teal);font-weight:600">→ Model your NRR impact in the calculator</a></p>
   </div>
 
