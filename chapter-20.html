@@ -5,12 +5,12 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ch 20: Health Scoring That Actually Works — The Post-Sale Operating System</title>
-  <meta name="description" content="If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened."/>
+  <meta name="description" content="What customer health is, what should change a health assessment, and how to build a health score from your healthiest customers and the evidence they produce."/>
   <link rel="canonical" href="https://cxology.co/chapter-20.html"/>
   <meta property="og:type" content="article"/>
   <meta property="og:site_name" content="The Post-Sale Operating System"/>
   <meta property="og:title" content="Ch 20: Health Scoring That Actually Works — The Post-Sale Operating System"/>
-  <meta property="og:description" content="If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened."/>
+  <meta property="og:description" content="What customer health is, what should change a health assessment, and how to build a health score from your healthiest customers and the evidence they produce."/>
   <meta property="og:url" content="https://cxology.co/chapter-20.html"/>
   <meta property="og:image" content="https://cxology.co/og-image.png"/>
   <meta property="og:image:width" content="1200"/>
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Ch 20: Health Scoring That Actually Works — The Post-Sale Operating System"/>
-  <meta name="twitter:description" content="If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened."/>
+  <meta name="twitter:description" content="What customer health is, what should change a health assessment, and how to build a health score from your healthiest customers and the evidence they produce."/>
   <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
 
   <link rel="stylesheet" href="style.css"/>
@@ -165,8 +165,8 @@
       "@type": "Article",
       "headline": "Health Scoring That Actually Works",
       "name": "Health Scoring That Actually Works",
-      "description": "If your health score only notices risk when renewal is near, it is not predicting health. It is documenting what already happened.",
-      "articleSection": "Part IV: Data, Automation & Scale",
+      "description": "What customer health is, what should change a health assessment, and how to build a health score from your healthiest customers and the evidence they produce.",
+      "articleSection": "Part IV: Infrastructure That Makes the System Real",
       "isPartOf": {
         "@id": "https://cxology.co/#book"
       },
@@ -178,7 +178,7 @@
       },
       "inLanguage": "en",
       "datePublished": "2026-04-16",
-      "dateModified": "2026-10-07",
+      "dateModified": "2026-10-20",
       "mainEntityOfPage": "https://cxology.co/chapter-20.html",
       "url": "https://cxology.co/chapter-20.html",
       "image": "https://cxology.co/og-image.png"
@@ -335,7 +335,7 @@
 
     <p>Churn rarely starts with one dramatic event. It usually begins much earlier, in small moments that compound. Expectations are not realigned after the sale. Onboarding takes longer than the customer expected. The key contact becomes tired or disengaged. First Value is delayed or poorly understood. Usage eventually drops, but by then usage is not the cause. It is the evidence.</p>
 
-    <div class="visual-panel"><div class="visual-kicker">Visual Model</div><div class="visual-title">The path to churn versus the path to growth</div><div class="visual-copy">The same lifecycle can produce two very different outcomes. One path accumulates small misses until risk becomes obvious. The other path creates visible progress early enough to sustain trust.</div><div class="path-row-label"><span class="dot"></span>Path to churn</div><div class="path-grid"><div class="path-card"><div class="path-stage">Purchase</div><div class="path-text">Expectations are not realigned with reality after the sale.</div></div><div class="path-card"><div class="path-stage">Onboarding</div><div class="path-text">Implementation takes longer than expected and fatigue builds.</div></div><div class="path-card"><div class="path-stage">Go Live</div><div class="path-text">The key contact disengages and momentum starts to disappear.</div></div><div class="path-card"><div class="path-stage">Adoption</div><div class="path-text">Usage drops because value was never made clear enough.</div></div><div class="path-card"><div class="path-stage">Renewal</div><div class="path-text">The churn notice arrives after the real risk was already created.</div></div></div><div class="path-row-label"><span class="dot growth"></span>Path to growth</div><div class="path-grid"><div class="path-card growth"><div class="path-stage">Purchase</div><div class="path-text">The customer is welcomed and transitioned cleanly into the post-sale journey.</div></div><div class="path-card growth"><div class="path-stage">Onboarding</div><div class="path-text">Expectations are managed and the work is focused on First Value.</div></div><div class="path-card growth"><div class="path-stage">First Value</div><div class="path-text">The customer achieves a meaningful outcome in a predictable way.</div></div><div class="path-card growth"><div class="path-stage">Adoption</div><div class="path-text">Alignment deepens, wins are celebrated, and use becomes more sophisticated.</div></div><div class="path-card growth"><div class="path-stage">Renewal</div><div class="path-text">Renewal becomes the natural conclusion of progress, often with a path to growth.</div></div></div></div>
+    <div class="visual-panel"><div class="visual-kicker">Visual Model</div><div class="visual-title">The path to churn versus the path to growth</div><div class="visual-copy">The same lifecycle can produce two very different outcomes. One path accumulates small misses until risk becomes obvious. The other path creates visible progress early enough to sustain trust. The turning point is the third milestone: the churn path treats Go Live as success, while the growth path aims onboarding at First Value, a result the customer actually recognizes.</div><div class="path-row-label"><span class="dot"></span>Path to churn</div><div class="path-grid"><div class="path-card"><div class="path-stage">Purchase</div><div class="path-text">Expectations are not realigned with reality after the sale.</div></div><div class="path-card"><div class="path-stage">Onboarding</div><div class="path-text">Implementation takes longer than expected and fatigue builds.</div></div><div class="path-card"><div class="path-stage">Go Live</div><div class="path-text">The key contact disengages and momentum starts to disappear.</div></div><div class="path-card"><div class="path-stage">Adoption</div><div class="path-text">Usage drops because value was never made clear enough.</div></div><div class="path-card"><div class="path-stage">Renewal</div><div class="path-text">The churn notice arrives after the real risk was already created.</div></div></div><div class="path-row-label"><span class="dot growth"></span>Path to growth</div><div class="path-grid"><div class="path-card growth"><div class="path-stage">Purchase</div><div class="path-text">The customer is welcomed and transitioned cleanly into the post-sale journey.</div></div><div class="path-card growth"><div class="path-stage">Onboarding</div><div class="path-text">Expectations are managed and the work is focused on First Value.</div></div><div class="path-card growth"><div class="path-stage">First Value</div><div class="path-text">The customer achieves a meaningful outcome in a predictable way.</div></div><div class="path-card growth"><div class="path-stage">Adoption</div><div class="path-text">Alignment deepens, wins are celebrated, and use becomes more sophisticated.</div></div><div class="path-card growth"><div class="path-stage">Renewal</div><div class="path-text">Renewal becomes the natural conclusion of progress, often with a path to growth.</div></div></div></div>
 
     <p>This is why health scoring must be connected to the <a href="journey-map.html">journey</a>, not just the product. Product usage matters, but usage alone does not explain whether the customer is building momentum. A customer can log in often and still fail to reach the outcome that justified the purchase. Another customer may show uneven usage while building executive alignment, completing critical process changes, and preparing for a larger rollout. Without the journey, the score sees activity but misses progress.</p>
 
@@ -393,13 +393,13 @@
 
     <p>What should move it is evidence that changes the story. The customer reaches First Value, or the window for it passes without a result. A new stakeholder starts carrying the results internally. The executive sponsor leaves and no one else holds the relationship. The goal that justified the purchase stops mattering to the customer's leadership.</p>
 
-    <p>Progression and health can also move in different directions. A customer can reach First Value in the same month the executive sponsor leaves, and with no one else holding the relationship, overall health can decline even though the customer just progressed. Another customer can look stable, with steady usage and a friendly champion, while making little meaningful progress. Progression tells you what changed. Health interprets what those changes, along with everything else you know, mean for the customer's overall condition.</p>
+    <p>Progression and health can also move in different directions. A customer can reach First Value in the same month the executive sponsor leaves, and with no one else holding the relationship, overall health can decline even though the customer just progressed. Another customer can look stable, with steady usage and a friendly champion, while making little meaningful progress. <a href="customer-progression-leading-indicators.html">Progression</a> tells you what changed. Health interprets what those changes, along with everything else you know, mean for the customer's overall condition.</p>
 
     <h2>Health scoring as the visibility layer</h2>
 
     <div class="callout"><span class="callout-title">Health and the Pipeline</span>
 
-<p>Health scoring and the post-sale pipeline answer different questions. Health describes the state of the customer. The pipeline shows where each revenue opportunity stands and what evidence supports that position. A health score connected to the lifecycle plays does more than flag risk. It shows where customer progression has stalled, which play failed to create its intended outcome, and what intervention the system requires. That tells the team where to check the evidence behind each opportunity's stage. Health does not move a stage on its own, in either direction. When a health signal changes, the question is whether the evidence behind the stage still holds. The renewal is protected when stalled progression is visible early enough to act. Expansion opportunities surface when health signals show the customer is building momentum beyond the current engagement.</p></div>
+<p>Health scoring and the <a href="post-sale-pipeline.html">post-sale pipeline</a> answer different questions. Health describes the state of the customer. The pipeline shows where each revenue opportunity stands and what evidence supports that position. A health score connected to the lifecycle plays does more than flag risk. It shows where customer progression has stalled, which play failed to create its intended outcome, and what intervention the system requires. That tells the team where to check the evidence behind each opportunity's stage. Health does not move a stage on its own, in either direction. When a health signal changes, the question is whether the evidence behind the stage still holds. The renewal is protected when stalled progression is visible early enough to act. Expansion opportunities surface when health signals show the customer is building momentum beyond the current engagement.</p></div>
 
     <p>At this point, the challenge becomes practical. How do you take the signals that matter, define them clearly, weight them thoughtfully, and test whether they reflect reality? How do you avoid building another spreadsheet that becomes too hard to maintain? How do you move from concept to prototype without waiting for perfect data?</p>
 

@@ -1,0 +1,5 @@
+# GitHub Pages (Jekyll) build settings.
+# app/ holds the execution-platform source and its internal development docs.
+# It stays in the repository but is not published to cxology.co.
+exclude:
+  - app

@@ -1,6 +1,15 @@
 {
   "updates": [
     {
+      "kind": "Refinement",
+      "chapter": "Across the book",
+      "date": "2026-10-20",
+      "title": "Sharper lines between the parts of the system",
+      "blurb": "This refinement makes the relationships between the parts of the Post-Sale Operating System more explicit. Customers move through a journey and make meaningful progress. Evidence tells us whether that progress occurred. Revenue opportunities, not customers, move through the Post-Sale Pipeline when evidence meets the appropriate exit criteria. Customer Health interprets evidence about the customer, while Capacity tells us whether we can execute the work we've designed. The underlying system hasn't changed. The lines between its parts are simply clearer.",
+      "link": "post-sale-operating-system.html",
+      "linkLabel": "See how the parts connect"
+    },
+    {
       "kind": "Update",
       "date": "2026-10-07",
       "title": "New companion page: What Is a Post-Sale Pipeline?",
