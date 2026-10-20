@@ -562,51 +562,21 @@
   <div id="capacity" style="margin-bottom:2rem">
     <div style="margin-bottom:1.5rem">
       <div class="section-tag" style="margin-bottom:0.75rem">Chapter 22</div>
-      <h2 class="headline" style="font-size:1.8rem;color:var(--navy);margin-bottom:0.5rem">Capacity Planning Calculator</h2>
-      <p style="color:var(--text-muted);font-size:0.95rem">Plan capacity from designed effort and realistic availability, not an ARR-per-CSM ratio. For the full 12-month forecast, use the <a href="capacity-planner.html" style="color:var(--navy);font-weight:700">Capacity Planner</a>.</p>
+      <h2 class="headline" style="font-size:1.8rem;color:var(--navy);margin-bottom:0.5rem">Capacity Planning</h2>
+      <p style="color:var(--text-muted);font-size:0.95rem">Plan capacity from designed effort and realistic availability, not an ARR-per-CSM ratio. ARR tells you the value of the customers. It doesn't tell you the work required to move them forward.</p>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-      <div style="background:var(--navy);border-radius:var(--radius-md);padding:2rem">
-        <h3 style="font-family:'DM Serif Display',serif;color:var(--white);font-size:1.2rem;margin-bottom:0.5rem">Your Team</h3>
-        <p style="font-size:0.85rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem">Adjust to model your capacity situation.</p>
-        <div class="field">
-          <label>Number of CSMs</label>
-          <input type="range" id="cap-csms" min="1" max="20" value="5" step="1" oninput="capUpdate()"/>
-          <div class="field-value" id="cap-csms-val">5 CSMs</div>
-        </div>
-        <div class="field">
-          <label>High-Touch Customers</label>
-          <input type="range" id="cap-ht" min="0" max="200" value="40" step="5" oninput="capUpdate()"/>
-          <div class="field-value" id="cap-ht-val">40</div>
-        </div>
-        <div class="field">
-          <label>Low-Touch Customers</label>
-          <input type="range" id="cap-lt" min="0" max="500" value="80" step="10" oninput="capUpdate()"/>
-          <div class="field-value" id="cap-lt-val">80</div>
-        </div>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:2rem;display:flex;flex-direction:column;justify-content:center">
-        <h3 style="font-family:'DM Serif Display',serif;color:var(--navy);font-size:1.2rem;margin-bottom:1.5rem">Capacity Analysis</h3>
-        <div style="margin-bottom:1.25rem">
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:4px">Available direct hours/week</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--teal)" id="cap-hours">130 hrs</div>
-          <div style="font-size:0.75rem;color:var(--text-muted)">5 CSMs × 26 hrs (65% of 40hr week)</div>
-        </div>
-        <div style="margin-bottom:1.25rem">
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:4px">Estimated hours required/week</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:2rem;" id="cap-required" style="color:var(--navy)">118 hrs</div>
-        </div>
-        <div style="margin-bottom:1rem">
-          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:6px">Capacity utilization</div>
-          <div style="background:var(--gray-100);border-radius:4px;overflow:hidden;height:12px">
-            <div id="cap-bar" style="height:100%;border-radius:4px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1)"></div>
-          </div>
-        </div>
-        <div id="cap-status" style="padding:0.75rem;border-radius:var(--radius-sm);font-size:0.85rem;font-weight:500"></div>
-      </div>
+    <div style="background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-md);padding:1.5rem 1.75rem">
+      <ol style="margin:0;padding-left:1.2rem;color:var(--navy);font-size:0.92rem;line-height:1.7">
+        <li><strong>Expected customer progression.</strong> What needs to change for the customer, and when.</li>
+        <li><strong>Plays and service moments.</strong> What your team does to help create that change.</li>
+        <li><strong>Designed effort.</strong> Preparation, execution, and follow-through for each one.</li>
+        <li><strong>Customer population and lifecycle timing.</strong> How many customers need each play, and in which months.</li>
+        <li><strong>Required capacity.</strong> That demand, month by month, compared with the time your team realistically has.</li>
+      </ol>
+      <p style="font-size:0.88rem;color:var(--text-muted);margin:1rem 0 0">Run the 12-month model in the <a href="capacity-planner.html" style="color:var(--navy);font-weight:700">CS Capacity Planner</a>. The method behind it: <a href="customer-success-capacity.html" style="color:var(--navy);font-weight:700">How Many Customers Should a CSM Manage?</a></p>
     </div>
     <div style="margin-top:1rem;padding:1rem 1.25rem;background:var(--olive-pale);border-radius:var(--radius-sm)">
-      <p style="font-size:0.85rem;color:var(--olive-dim);font-weight:500;margin:0">🎯 Target availability: this calculator starts at 65% of a 40-hour week = <strong>26 direct hours per CSM per week</strong>. The remaining 35% absorbs indirect work, PTO, holidays, and unplanned work. 65% is a planning starting point to validate for your team, not a universal benchmark.</p>
+      <p style="font-size:0.85rem;color:var(--olive-dim);font-weight:500;margin:0">🎯 Availability: CXology uses 65% as a planning starting point, about 26 direct customer hours in a 40-hour week. It is an assumption to validate for your team, not a universal benchmark.</p>
     </div>
   </div>
 
@@ -694,41 +664,7 @@ rowsEl.innerHTML += `<div style="display:grid;grid-template-columns:2fr 1fr 2fr 
   <div style="text-align:center"><span style="display:inline-block;padding:4px 10px;border-radius:6px;font-family:'DM Serif Display',serif;font-size:1rem;font-weight:700;color:var(--navy-deep);background:var(--olive)">100%</span></div>
 </div>`;
 
-// ── CAPACITY PLANNING ────────────────────────────────────────────────────────
-function capUpdate() {
-  const csms = parseInt(document.getElementById('cap-csms').value);
-  const ht   = parseInt(document.getElementById('cap-ht').value);
-  const lt   = parseInt(document.getElementById('cap-lt').value);
-  document.getElementById('cap-csms-val').textContent = csms + ' CSMs';
-  document.getElementById('cap-ht-val').textContent   = ht;
-  document.getElementById('cap-lt-val').textContent   = lt;
-  const available = csms * 26;
-  const required  = Math.round(ht * 2.5 + lt * 0.8); // rough Designed Effort estimates
-  const utilPct   = Math.min(120, Math.round((required / available) * 100));
-  document.getElementById('cap-hours').textContent    = available + ' hrs';
-  document.getElementById('cap-required').textContent = required + ' hrs';
-  const bar = document.getElementById('cap-bar');
-  const status = document.getElementById('cap-status');
-  bar.style.width = Math.min(100, utilPct) + '%';
-  if (utilPct < 65) {
-    bar.style.background = '#1D9E75';
-    status.style.background = '#D6EBE4';
-    status.style.color = '#1F4A3E';
-    status.textContent = `✓ ${utilPct}% utilized — your team has capacity headroom.`;
-  } else if (utilPct < 85) {
-    bar.style.background = '#BA7517';
-    status.style.background = '#FDF8EC';
-    status.style.color = '#5A3A08';
-    status.textContent = `⚡ ${utilPct}% utilized — approaching capacity. Monitor closely.`;
-  } else {
-    bar.style.background = '#D85A30';
-    status.style.background = '#FAECE7';
-    status.style.color = '#5A1A08';
-    status.textContent = `⚠ ${utilPct}% utilized — over capacity. Time to hire.`;
-  }
-  document.getElementById('cap-required').style.color = utilPct >= 85 ? 'var(--coral)' : utilPct >= 65 ? 'var(--amber)' : 'var(--teal)';
-}
-capUpdate();
+
 </script>
 </body>
 </html>
