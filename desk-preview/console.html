@@ -129,14 +129,29 @@
   // Measured from the Desk server log for the test period (Oct 21-22, 2026).
   const OVERHEAD = {
     otherQuestions: { count: 8, cost: 0.78, note: "Test questions not kept in this log (earlier runs and the $180K scenario)" },
-    cacheLoads: { count: 4, each: 2.58, avoidable: 3, note: "Loading the book into the cache; 3 were the overnight keep-alive bug, since fixed" },
+    cacheLoads: { note: "Loading the whole book into the cache; see the reload log below" },
     pings: { count: 11, each: 0.065, note: "Keep-alive pings that kept the cache warm" },
+  };
+  // Cache reload log. On the local Desk server this is replaced by the live log (/api/cache-events),
+  // which records the exact time, trigger, and reason for every reload from now on.
+  let RELOADS = [
+    { at: "2026-10-21", approx: true, trigger: "keep-alive", cost: 2.58, reason: "startup warm-up when the server started (warm-up since removed)" },
+    { at: "2026-10-21", approx: true, trigger: "keep-alive", cost: 2.58, reason: "overnight: laptop slept, cache expired, keep-alive reloaded it (bug, since fixed)" },
+    { at: "2026-10-22", approx: true, trigger: "keep-alive", cost: 2.58, reason: "overnight: laptop slept, cache expired, keep-alive reloaded it (bug, since fixed)" },
+    { at: "2026-10-22", approx: true, trigger: "keep-alive", cost: 2.58, reason: "overnight: laptop slept, cache expired, keep-alive reloaded it (bug, since fixed)" },
+  ];
+  const reloadTotal = () => RELOADS.reduce((n, r) => n + r.cost, 0);
+  const avoidableTotal = () => RELOADS.filter((r) => /bug/.test(r.reason)).reduce((n, r) => n + r.cost, 0);
+  const when = (r) => {
+    if (r.approx) return { d: new Date(r.at + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }), t: "time not recorded" };
+    const x = new Date(r.at);
+    return { d: x.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }), t: x.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }) };
   };
   const money = (n) => "$" + n.toFixed(2);
   const money3 = (n) => "$" + n.toFixed(3);
   const live = () => results.filter((r) => r.cost != null);
   const qTotal = () => live().reduce((n, r) => n + r.cost, 0);
-  const periodTotal = () => qTotal() + OVERHEAD.otherQuestions.cost + OVERHEAD.cacheLoads.count * OVERHEAD.cacheLoads.each + OVERHEAD.pings.count * OVERHEAD.pings.each;
+  const periodTotal = () => qTotal() + OVERHEAD.otherQuestions.cost + reloadTotal() + OVERHEAD.pings.count * OVERHEAD.pings.each;
 
   let results = [], tab = "brief";
   const decisions = {};
@@ -198,14 +213,14 @@
         results.filter((r) => r.expect === "decline").map((r) => `<div class="item"><h3>${esc(r.q)}</h3><p>${esc(r.text.replace(/\[\[\w+\]\]/g, "").split("\n")[0])}</p>${evLinks([r.id])}</div>`).join("");
     },
     costs() {
-      const o = OVERHEAD, loads = o.cacheLoads.count * o.cacheLoads.each, pings = o.pings.count * o.pings.each;
+      const o = OVERHEAD, loads = reloadTotal(), pings = o.pings.count * o.pings.each;
       const rows = [
         ["Questions in this log", live().length, money3(qTotal() / (live().length || 1)) + " avg", qTotal(), "Each answer, with the book already cached"],
         ["Other test questions", o.otherQuestions.count, money3(o.otherQuestions.cost / o.otherQuestions.count) + " avg", o.otherQuestions.cost, o.otherQuestions.note],
-        ["Cache loads", o.cacheLoads.count, money(o.cacheLoads.each) + " each", loads, o.cacheLoads.note],
+        ["Cache reloads", RELOADS.length, money(loads / (RELOADS.length || 1)) + " each", loads, o.cacheLoads.note],
         ["Keep-alive pings", o.pings.count, money3(o.pings.each) + " each", pings, o.pings.note],
       ];
-      const total = periodTotal(), avoidable = o.cacheLoads.avoidable * o.cacheLoads.each;
+      const total = periodTotal(), avoidable = avoidableTotal();
       return `<h1>Costs</h1><p class="lead">What the Desk spent on the Claude API this period, measured from the server log. Questions are cheap; loading the book into the cache is the big line, and most of it was avoidable.</p>
         <div class="stats">
           <div class="stat"><b>${money(total)}</b><span>total this period</span></div>
@@ -216,6 +231,11 @@
         <table class="q"><tr><th>Line</th><th style="text-align:right">Count</th><th style="text-align:right">Rate</th><th style="text-align:right">Cost</th><th>What it is</th></tr>
         ${rows.map(([l, c, rate, cost, note]) => `<tr><td><strong>${l}</strong></td><td style="text-align:right">${c}</td><td style="text-align:right">${rate}</td><td style="text-align:right">${money3(cost)}</td><td>${note}</td></tr>`).join("")}
         <tr><td><strong>Total</strong></td><td></td><td></td><td style="text-align:right"><strong>${money3(total)}</strong></td><td></td></tr></table>
+        <h2 class="sec">Cache reload log</h2>
+        <p class="ev" style="margin:0 0 10px">Every time the book had to be loaded into the cache. ${RELOADS.length} reloads, ${money(loads)} total. Times are recorded automatically from now on; the first four predate the log.</p>
+        <table class="q"><tr><th>Date</th><th>Time</th><th>Trigger</th><th>Why the cache was cold</th><th style="text-align:right">Cost</th></tr>
+        ${RELOADS.slice().reverse().map((r) => { const w = when(r); return `<tr><td>${w.d}</td><td>${w.t}</td><td>${r.trigger === "keep-alive" ? "Keep-alive" : "Question"}</td><td>${esc(r.reason)}</td><td style="text-align:right">${money(r.cost)}</td></tr>`; }).join("")}
+        <tr><td colspan="4"><strong>${RELOADS.length} reloads</strong></td><td style="text-align:right"><strong>${money(loads)}</strong></td></tr></table>
         <h2 class="sec">What this means at scale</h2>
         <div class="dot"><p>At about ${money3(qTotal() / (live().length || 1))} per question plus one cache load per busy hour, 1,000 questions a month costs roughly $90 for questions plus cache loads on the days the Desk is used. Routing simple jobs to a smaller model and sending only the relevant chapters would cut the per-question figure further (not yet measured).</p></div>`;
     },
@@ -250,7 +270,9 @@
   document.getElementById("modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
   document.getElementById("role").addEventListener("change", draw);
 
-  fetch("test-results.json").then((r) => r.json()).then((d) => { results = d; draw(); });
+  const liveLog = location.hostname === "localhost" && location.port === "4321"
+    ? fetch("/api/cache-events").then((r) => r.ok ? r.json() : null).then((d) => { if (d && d.length) RELOADS = d; }).catch(() => {}) : Promise.resolve();
+  Promise.all([fetch("test-results.json").then((r) => r.json()).then((d) => { results = d; }), liveLog]).then(draw);
 </script>
 <p style="text-align:center;font-size:13px;margin:0 0 32px"><a href="index.html" style="color:#5A6A40">CXology Desk preview home</a></p>
 </body>
