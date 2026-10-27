@@ -126,6 +126,18 @@
     ],
   };
 
+  // Measured from the Desk server log for the test period (Oct 21-22, 2026).
+  const OVERHEAD = {
+    otherQuestions: { count: 8, cost: 0.78, note: "Test questions not kept in this log (earlier runs and the $180K scenario)" },
+    cacheLoads: { count: 4, each: 2.58, avoidable: 3, note: "Loading the book into the cache; 3 were the overnight keep-alive bug, since fixed" },
+    pings: { count: 11, each: 0.065, note: "Keep-alive pings that kept the cache warm" },
+  };
+  const money = (n) => "$" + n.toFixed(2);
+  const money3 = (n) => "$" + n.toFixed(3);
+  const live = () => results.filter((r) => r.cost != null);
+  const qTotal = () => live().reduce((n, r) => n + r.cost, 0);
+  const periodTotal = () => qTotal() + OVERHEAD.otherQuestions.cost + OVERHEAD.cacheLoads.count * OVERHEAD.cacheLoads.each + OVERHEAD.pings.count * OVERHEAD.pings.each;
+
   let results = [], tab = "brief";
   const decisions = {};
   try { Object.assign(decisions, JSON.parse(localStorage.getItem("console-decisions") || "{}")); } catch {}
@@ -156,6 +168,7 @@
           <div class="stat"><b>${gaps}</b><span>book gaps</span></div>
           <div class="stat"><b>${cites}</b><span>avg citations</span></div>
           <div class="stat"><b>23 of 44</b><span>sources never cited</span></div>
+          <div class="stat viewer-hide"><b>${money(periodTotal())}</b><span>API spend this period</span></div>
         </div>
         <h2 class="sec">Connecting the dots</h2>
         ${BRIEF.dots.map((d) => `<div class="dot"><h3>${d.h}</h3><p>${d.p}</p>${evLinks(d.ev)}</div>`).join("")}
@@ -175,12 +188,36 @@
     },
     questions() {
       return `<h1>Questions</h1><p class="lead">Every logged question with how the Desk responded. Click a row to read the answer.</p>
-        <table class="q"><tr><th>#</th><th>Question</th><th>Area</th><th>Response</th><th>Citations</th></tr>
-        ${results.map((r) => `<tr class="click" onclick="openQ(${r.id})"><td>${r.id}</td><td>${esc(r.q.length > 110 ? r.q.slice(0, 110) + "..." : r.q)}</td><td>${esc(r.area)}</td><td>${r.expect === "decline" ? "Book gap" : r.kind === "play" ? "Play card" : "Clarified"}</td><td>${r.sources.length}</td></tr>`).join("")}</table>`;
+        <table class="q"><tr><th>#</th><th>Question</th><th>Area</th><th>Response</th><th>Citations</th><th style="text-align:right">Cost</th></tr>
+        ${results.map((r) => `<tr class="click" onclick="openQ(${r.id})"><td>${r.id}</td><td>${esc(r.q.length > 110 ? r.q.slice(0, 110) + "..." : r.q)}</td><td>${esc(r.area)}</td><td>${r.expect === "decline" ? "Book gap" : r.kind === "play" ? "Play card" : "Clarified"}</td><td>${r.sources.length}</td><td style="text-align:right">${r.cost == null ? '<span title="Written to the Desk\'s rules by hand, no API call">$0 (hand-run)</span>' : money3(r.cost)}</td></tr>`).join("")}
+        <tr><td></td><td colspan="4"><strong>Total for ${live().length} live questions</strong> · average ${money3(qTotal() / (live().length || 1))} each</td><td style="text-align:right"><strong>${money3(qTotal())}</strong></td></tr></table>
+        <p class="ev" style="margin-top:10px">Full spend for the period, including cache loads and keep-alive pings, is on the Costs tab.</p>`;
     },
     gaps() {
       return `<h1>Gaps</h1><p class="lead">Questions the book couldn't answer, with what it offered instead.</p>` +
         results.filter((r) => r.expect === "decline").map((r) => `<div class="item"><h3>${esc(r.q)}</h3><p>${esc(r.text.replace(/\[\[\w+\]\]/g, "").split("\n")[0])}</p>${evLinks([r.id])}</div>`).join("");
+    },
+    costs() {
+      const o = OVERHEAD, loads = o.cacheLoads.count * o.cacheLoads.each, pings = o.pings.count * o.pings.each;
+      const rows = [
+        ["Questions in this log", live().length, money3(qTotal() / (live().length || 1)) + " avg", qTotal(), "Each answer, with the book already cached"],
+        ["Other test questions", o.otherQuestions.count, money3(o.otherQuestions.cost / o.otherQuestions.count) + " avg", o.otherQuestions.cost, o.otherQuestions.note],
+        ["Cache loads", o.cacheLoads.count, money(o.cacheLoads.each) + " each", loads, o.cacheLoads.note],
+        ["Keep-alive pings", o.pings.count, money3(o.pings.each) + " each", pings, o.pings.note],
+      ];
+      const total = periodTotal(), avoidable = o.cacheLoads.avoidable * o.cacheLoads.each;
+      return `<h1>Costs</h1><p class="lead">What the Desk spent on the Claude API this period, measured from the server log. Questions are cheap; loading the book into the cache is the big line, and most of it was avoidable.</p>
+        <div class="stats">
+          <div class="stat"><b>${money(total)}</b><span>total this period</span></div>
+          <div class="stat"><b>${money3(qTotal() / (live().length || 1))}</b><span>per question (cached)</span></div>
+          <div class="stat"><b>${money(avoidable)}</b><span>avoidable (keep-alive bug, fixed)</span></div>
+          <div class="stat"><b>${money(total - avoidable)}</b><span>with the fix in place</span></div>
+        </div>
+        <table class="q"><tr><th>Line</th><th style="text-align:right">Count</th><th style="text-align:right">Rate</th><th style="text-align:right">Cost</th><th>What it is</th></tr>
+        ${rows.map(([l, c, rate, cost, note]) => `<tr><td><strong>${l}</strong></td><td style="text-align:right">${c}</td><td style="text-align:right">${rate}</td><td style="text-align:right">${money3(cost)}</td><td>${note}</td></tr>`).join("")}
+        <tr><td><strong>Total</strong></td><td></td><td></td><td style="text-align:right"><strong>${money3(total)}</strong></td><td></td></tr></table>
+        <h2 class="sec">What this means at scale</h2>
+        <div class="dot"><p>At about ${money3(qTotal() / (live().length || 1))} per question plus one cache load per busy hour, 1,000 questions a month costs roughly $90 for questions plus cache loads on the days the Desk is used. Routing simple jobs to a smaller model and sending only the relevant chapters would cut the per-question figure further (not yet measured).</p></div>`;
     },
     backlog() {
       const acc = BRIEF.recs.map((r, i) => ({ ...r, key: "rec" + i })).filter((r) => decisions[r.key] === "Accepted");
@@ -196,9 +233,9 @@
     document.body.classList.toggle("viewer", role() === "viewer");
     const accepted = Object.values(decisions).filter((d) => d === "Accepted" || d === "Tagged to Backlog").length;
     const open = BRIEF.inbox.filter((_, i) => !decisions["in" + i]).length;
-    const names = [["brief", "Insights brief"], ["inbox", "Inbox", open], ["questions", "Questions", results.length], ["gaps", "Gaps"], ["backlog", "Backlog", accepted]]
-      .filter(([k]) => !(k === "inbox" && role() === "viewer"));
-    if (tab === "inbox" && role() === "viewer") tab = "brief";
+    const names = [["brief", "Insights brief"], ["inbox", "Inbox", open], ["questions", "Questions", results.length], ["gaps", "Gaps"], ["backlog", "Backlog", accepted], ["costs", "Costs"]]
+      .filter(([k]) => !((k === "inbox" || k === "costs") && role() === "viewer"));
+    if ((tab === "inbox" || tab === "costs") && role() === "viewer") tab = "brief";
     document.getElementById("tabs").innerHTML = names.map(([k, l, n]) => `<button class="${tab === k ? "on" : ""}" onclick="tab='${k}';draw()">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
     document.getElementById("view").innerHTML = views[tab]();
   }
