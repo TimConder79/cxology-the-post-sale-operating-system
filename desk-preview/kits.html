@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desk Action Kits</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="desk.css">
+<style>
+  .wrap { padding-top: 28px; padding-bottom: 80px; }
+  .mock { font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 6px; }
+  .applied { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--navy-mid); background: #E4EAF0; border-radius: 4px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }
+  .move { margin-bottom: 18px; }
+  .move-title { font-size: 16.5px; }
+  .kit { margin-top: 10px; border: 1px solid var(--gray-200); border-radius: 10px; background: var(--off-white); }
+  .kit-head { display: flex; gap: 12px; align-items: center; padding: 12px 14px; flex-wrap: wrap; }
+  .kit-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--olive); display: grid; place-items: center; font-weight: 900; font-size: 13px; flex: none; }
+  .kit-name { font-weight: 700; font-size: 15px; }
+  .kit-desc { font-size: 13.5px; color: var(--muted); }
+  .kit-src { font-size: 12px; color: var(--muted); }
+  .kit-actions { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 14px 12px; }
+  .kit-actions button, .kit-actions a { font: inherit; font-size: 13px; font-weight: 700; border-radius: 18px; padding: 7px 14px; text-decoration: none; cursor: pointer; border: 1px solid var(--navy); }
+  .primary { background: var(--navy); color: #fff; }
+  .ghost { background: #fff; color: var(--navy); }
+  details.prompt { padding: 0 14px 12px; }
+  details.prompt summary { cursor: pointer; font-size: 13px; font-weight: 700; color: var(--navy-mid); }
+  details.prompt pre { white-space: pre-wrap; font: 13px/1.5 ui-monospace, Menlo, monospace; background: #fff; border: 1px solid var(--gray-200); border-radius: 8px; padding: 12px; margin-top: 8px; max-height: 320px; overflow: auto; color: var(--navy); }
+  .personalize { background: #fff; border-radius: 12px; padding: 16px 20px; margin: 18px 0; box-shadow: 0 4px 24px rgba(26,46,66,.06); }
+  .personalize h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 4px; }
+  .personalize p { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+  .fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  .fields label { font-size: 12px; font-weight: 700; display: block; }
+  .fields input { width: 100%; font: inherit; font-size: 14px; padding: 7px 10px; border: 1px solid var(--gray-200); border-radius: 6px; margin-top: 3px; }
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--navy); color: #fff; padding: 10px 18px; border-radius: 20px; font-size: 14px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .toast.show { opacity: 1; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 24px; border-top: 1px solid var(--gray-200); padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="mock">Mockup · action kits</div>
+  <div class="brand" style="font-size:28px;text-align:left">CXology<span>Desk</span></div>
+
+  <div class="q">We're a mid-market SaaS company. One of our larger customers is at $180K ARR, 14 months in, and renewal is in 5 months. They bought 4 modules but only adopted 2, and usage of the main one is down about 30% since the summer. Our champion, their Director of Ops, got promoted and handed us to a newer manager without much pull. The VP who signed hasn't met with us since kickoff. They've cancelled their last two QBRs, had layoffs, and their CFO is reviewing every contract over $100K. Sales wants to pitch our new analytics add-on. What should we do?</div>
+
+  <div class="personalize">
+    <h3>Personalize your kits</h3>
+    <p>Optional. These fill into every prompt below. Avoid confidential details.</p>
+    <div class="fields">
+      <label>Customer name<input id="f-customer" placeholder="the customer"></label>
+      <label>New contact's name<input id="f-contact" placeholder="the new manager"></label>
+      <label>Your product<input id="f-product" placeholder="our platform"></label>
+      <label>Your name<input id="f-me" placeholder="me"></label>
+    </div>
+  </div>
+
+  <div class="card play">
+    <h2>What's really going on</h2>
+    <p>This renewal is at the Renewal and Growth Decision Inflection Point, and the case was never built. Your champion moved on, and the replacement is a friendly contact rather than an advocate. A friendly contact is not the same as an advocate.<sup><a href="#s1">1</a></sup> With cancelled QBRs and a CFO reviewing contracts, a champion can believe in the product and still lose the internal business case if usage is unclear or outcomes are vague.<sup><a href="#s2">2</a></sup></p>
+
+    <h2>The play to run</h2>
+    <p><strong>Key Contact Change</strong> comes first: if you do not proactively define the narrative, the new contact may view your software as an unnecessary expense.<sup><a href="#s3">3</a></sup> Then <strong>Renew &amp; Grow</strong>: work backward from how the customer buys, not forward from the contract date.<sup><a href="#s4">4</a></sup> Hold the analytics pitch. This customer needs to stabilize before it is ready to grow.<sup><a href="#s4">4</a></sup></p>
+
+    <h2>Your next 3 moves</h2>
+
+    <div class="move">
+      <div class="move-title">1. <strong>Run the "You - We - Me" meeting with the new manager.</strong> Start entirely focused on them: their new role, successes, challenges, and milestones.<sup><a href="#s3">3</a></sup> Ask the promoted Director to help get the VP back in the room.<span class="applied">Applied to your situation</span></div>
+      <div class="kit" data-kit="ywm"></div>
+    </div>
+
+    <div class="move">
+      <div class="move-title">2. <strong>Build your renewal readiness pack.</strong> A Renewal Readiness Brief, a Usage &amp; License Review, and a Stakeholder &amp; Approval Map that includes the CFO.<sup><a href="#s4">4</a></sup> Two unused modules can be a clean chance to right-size and rebuild trust.<sup><a href="#s4">4</a></sup></div>
+      <div class="kit" data-kit="brief"></div>
+    </div>
+
+    <div class="move">
+      <div class="move-title">3. <strong>Align with Sales before anyone contacts the customer.</strong> The customer should experience one team.<sup><a href="#s4">4</a></sup> Log the reporting tickets as a signal for later, not a pitch.<span class="applied">Applied to your situation</span></div>
+      <div class="kit" data-kit="sales"></div>
+    </div>
+
+    <h2>How you'll know it's working</h2>
+    <p>You return to Advocate when your primary contact can explain the business case to their leadership without you present.<sup><a href="#s5">5</a></sup> You reach Intent when the budget owner, approval sequence, procurement steps, and target date are known.<sup><a href="#s5">5</a></sup></p>
+
+    <div class="deeper"><h3>Go deeper in the book</h3>
+      <div class="src" id="s1"><div class="n">1</div><a href="https://post-sale-operating-system.cxology.co/chapter-6.html" target="_blank">Chapter 6: Stage 3, Advocate</a><blockquote>A friendly contact is not the same as an advocate.</blockquote></div>
+      <div class="src" id="s2"><div class="n">2</div><a href="https://post-sale-operating-system.cxology.co/chapter-16.html" target="_blank">Chapter 16: The Renew &amp; Grow Play</a><blockquote>A champion can believe in the product and still lose the internal business case if usage is unclear or outcomes are vague.</blockquote></div>
+      <div class="src" id="s3"><div class="n">3</div><a href="https://post-sale-operating-system.cxology.co/chapter-17.html" target="_blank">Chapter 17: The Key Contact Change Play</a><blockquote>The new contact is stepping into a role with their own priorities...</blockquote></div>
+      <div class="src" id="s4"><div class="n">4</div><a href="https://post-sale-operating-system.cxology.co/chapter-16.html" target="_blank">Chapter 16: The Renew &amp; Grow Play</a><blockquote>Work backward from how the customer buys, not forward from the contract date.</blockquote></div>
+      <div class="src" id="s5"><div class="n">5</div><a href="https://post-sale-operating-system.cxology.co/post-sale-pipeline.html" target="_blank">What Is a Post-Sale Pipeline?</a><blockquote>The customer says they are moving forward, and the budget owner, approval sequence, procurement steps, and target date are known.</blockquote></div>
+    </div>
+  </div>
+
+  <p class="note">Mockup. Kits are written once per play, approved by Tim, and filled with the reader's situation at answer time, so they add no API cost. The reader's own AI does the drafting.</p>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+  const SITUATION = `{customer} is a $180K ARR customer, 14 months in, with renewal in 5 months. They bought 4 modules but adopted only 2, and usage of the main module is down about 30% since the summer. Our original champion, their Director of Ops, was promoted and handed us to {contact}, a newer manager who is friendly but has limited influence. The VP who signed the deal has not met with us since kickoff. They cancelled their last two QBRs, had layoffs last quarter, and their CFO is reviewing every software contract over $100K. Our product: {product}.`;
+
+  const KITS = {
+    ywm: {
+      icon: "1", name: "Key Contact Change kit", src: "Built on Chapter 17: the \"You - We - Me\" framework",
+      desc: "Drafts your LinkedIn note, a three-part meeting agenda, and the recap email.",
+      template: { file: "you-we-me-meeting.md", body: `# Key Contact Change: "You - We - Me" meeting\n\nSource: The Post-Sale Operating System, Chapter 17\n\n## Before the meeting\n- [ ] Research the new contact on LinkedIn and connect with a personal note\n- [ ] Review recent usage and performance\n- [ ] Send a tailored agenda\n\n## You (their world)\n- Their perspective on the new role:\n- Successes so far:\n- Challenges:\n- Milestones they need to hit:\n\n## We (our partnership, tied to what they shared)\n- How our product supports their goals:\n- How our process and team will work with them:\n\n## Me (what we need from them)\n- Product basics they should know:\n- Expectations:\n- Deliverables they will send us:\n- Next steps and dates:\n\n## After the meeting\n- [ ] Recap email: thanks, their most important goals, to-dos\n- [ ] Follow up on every commitment in the exact timeframe promised\n` },
+      prompt: `You are helping me, a Customer Success Manager, run a Key Contact Change using the "You - We - Me" framework from The Post-Sale Operating System by Tim Conder (Chapter 17).
+
+Situation: ${"{situation}"}
+
+Draft three things:
+
+1. A short, personal LinkedIn connection note to {contact}. Focus on them and their new role, not on our software.
+
+2. A meeting agenda in three parts:
+   - You: questions about their perspective on the new role, their successes and challenges, and the milestones they need to hit.
+   - We: how our product, process, and team relate to their goals (leave clear placeholders I fill in after hearing their answers).
+   - Me: what we need from them to serve them well: product basics, expectations, deliverables they send us, and next steps.
+   Also suggest how to ask the promoted Director of Ops to help re-engage the VP who signed the deal.
+
+3. A recap email to send after the meeting: thank them, restate their most important goals in their words, and list to-dos with owners and dates.
+
+Rules: start with their success, not a defense of our software. Do not mention price or new products. Keep it brief and in plain language. Sign as {me}. Ask me for any detail you need before drafting.`
+    },
+    brief: {
+      icon: "2", name: "Renewal readiness pack", src: "Built on Chapter 16: Renew & Grow critical assets",
+      desc: "Turns your notes into a Renewal Readiness Brief, Usage & License Review, and Stakeholder & Approval Map.",
+      template: { file: "renewal-readiness-pack.md", body: `# Renewal readiness pack\n\nSource: The Post-Sale Operating System, Chapter 16 (Renew & Grow)\nKeep it light: if this takes a full day to build, it will not scale.\n\n## Renewal Readiness Brief (internal)\n- Value delivered:\n- Adoption signals:\n- Stakeholder health:\n- Open risks:\n- Customer timing (how they buy, budget cycle):\n- Likely objections:\n- Recommended renewal path:\n\n## Usage & License Review\n- Adoption depth:\n- Seat utilization:\n- Feature usage:\n- Underused capacity (right-size option?):\n- Workflow consolidation opportunities:\n- Expansion indicators:\n\n## Stakeholder & Approval Map\n| Person | Role (champion, economic buyer, blocker, procurement, legal, exec sponsor) | Stance | Last contact | Next step |\n| --- | --- | --- | --- | --- |\n|  |  |  |  |  |\n\n## Questions every asset should answer\n- Why did the customer buy?\n- What has changed because of the relationship?\n- Who cares about the outcome?\n- What could block the renewal?\n` },
+      prompt: `You are helping me prepare a renewal using the Renew & Grow Play from The Post-Sale Operating System by Tim Conder (Chapter 16).
+
+Situation: ${"{situation}"}
+
+Using my notes below, build three short internal assets:
+
+1. Renewal Readiness Brief: value delivered, adoption signals, stakeholder health, open risks, customer timing, likely objections, and the recommended renewal path.
+2. Usage & License Review: adoption depth, seat utilization, feature usage, underused capacity, workflow consolidation opportunities, and expansion indicators. Treat the 2 unused modules as a possible chance to right-size and rebuild trust, and show me that option.
+3. Stakeholder & Approval Map: champions, economic buyers, blockers, procurement contacts, legal requirements, executive sponsors, and anyone else who can influence the renewal. Include the CFO who is reviewing contracts over $100K.
+
+Rules: include gaps and risks honestly; a renewal story with only wins sounds like marketing. Keep each asset to one page. Where my notes are missing something, list it as a question for me instead of guessing.
+
+My notes:
+[paste usage data, meeting notes, and contacts here]`
+    },
+    sales: {
+      icon: "3", name: "One-team alignment note", src: "Built on Chapter 16: \"The customer should experience one team\"",
+      desc: "Drafts the internal note to Sales proposing a joint plan before anyone contacts the customer.",
+      template: null,
+      prompt: `You are helping me write an internal note to our Sales team, using the Renew & Grow Play from The Post-Sale Operating System by Tim Conder (Chapter 16).
+
+Situation: ${"{situation}"}
+
+Sales wants to pitch our new analytics add-on to this customer. Draft a short, collaborative note to the account executive that:
+
+1. Explains why we should hold the pitch for now: the customer needs to stabilize before they are ready to grow.
+2. Proposes a joint plan: CS brings the evidence, trust, and context; Sales brings commercial discipline and deal execution. The customer should experience one team.
+3. Suggests logging the recent reporting-related support tickets as a possible future growth signal, not something to pitch now.
+4. Asks to agree on who contacts the customer, when, and with what message before anyone reaches out.
+
+Rules: respectful and specific, not defensive. Under 200 words. Sign as {me}.`
+    }
+  };
+
+  const val = (id, fallback) => document.getElementById(id).value.trim() || fallback;
+  function fill(text) {
+    const v = { customer: val("f-customer", "The customer"), contact: val("f-contact", "the new manager"), product: val("f-product", "our platform"), me: val("f-me", "me") };
+    return text.replace("{situation}", SITUATION).replace(/\{(customer|contact|product|me)\}/g, (_, k) => v[k]);
+  }
+
+  const toast = (msg) => { const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 1600); };
+
+  function drawKits() {
+    for (const el of document.querySelectorAll(".kit")) {
+      const k = KITS[el.dataset.kit], prompt = fill(k.prompt), q = encodeURIComponent(prompt);
+      el.innerHTML = `
+        <div class="kit-head"><div class="kit-icon">${k.icon}</div><div><div class="kit-name">${k.name}</div><div class="kit-desc">${k.desc}</div><div class="kit-src">${k.src}</div></div></div>
+        <div class="kit-actions">
+          <button class="primary" data-act="copy">Copy prompt</button>
+          <a class="ghost" target="_blank" href="https://claude.ai/new?q=${q}">Open in Claude</a>
+          <a class="ghost" target="_blank" href="https://chatgpt.com/?q=${q}">Open in ChatGPT</a>
+          ${k.template ? `<button class="ghost" data-act="download">Download template</button>` : ""}
+        </div>
+        <details class="prompt"><summary>Preview the prompt</summary><pre></pre></details>`;
+      el.querySelector("pre").textContent = prompt;
+      el.querySelector('[data-act="copy"]').onclick = async () => {
+        try { await navigator.clipboard.writeText(fill(k.prompt)); toast("Prompt copied. Paste it into your AI tool."); }
+        catch { toast("Copy blocked. Use Preview to select the text."); }
+      };
+      const dl = el.querySelector('[data-act="download"]');
+      if (dl) dl.onclick = () => {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([k.template.body], { type: "text/markdown" }));
+        a.download = k.template.file; a.click(); URL.revokeObjectURL(a.href);
+      };
+    }
+  }
+  document.querySelectorAll(".fields input").forEach((i) => i.addEventListener("input", drawKits));
+  drawKits();
+</script>
+<p style="text-align:center;font-size:13px;margin:0 0 32px"><a href="index.html" style="color:#5A6A40">CXology Desk preview home</a></p>
+</body>
+</html>

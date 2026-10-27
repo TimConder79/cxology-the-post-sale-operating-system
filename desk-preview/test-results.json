@@ -1,0 +1,859 @@
+[
+ {
+  "id": 1,
+  "area": "Purchase & Welcome",
+  "expect": "play",
+  "q": "We just closed a $400K deal. The AE is already off to the next one and the customer hasn't heard from anyone in two weeks. What should happen right now?",
+  "text": "## What's really going on\n\nYou're at the Purchase Moment, the first Inflection Point. Silence after purchase is not neutral. It is the first loyalty blocker.[[1]] The customer is quietly asking did I make the right decision?[[2]] Two weeks of silence is the classic pattern: Sales is closing the next deal. Finance is processing the contract. Customer Success is finishing a handoff somewhere else. Internally, a lot is happening. Externally, the customer hears nothing. And in that silence, doubt begins to form.[[3]]\n\n## The play to run\n\nRun the Purchase & Welcome Play now, late. It exists to replace that silence with momentum, and to answer the question the customer is already asking: yes, you made the right decision, and here is what happens next.[[4]] It must weave in personalization, celebration, and expectation-setting.[[5]] Remember that the renewal enters the Identify stage of the post-sale pipeline at purchase[[6]], so this $400K renewal is already on the clock.\n\n## Your next 3 moves\n\n1. **Get the Internal Knowledge Transfer from the AE today.** The IKT answers Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?[[7]] It should live in the CRM as a required field set, not in a sales rep's inbox.[[8]]\n2. **Send personalized CSM outreach.** The CSM sends a welcome note or short video that reflects the customer's specific goals and creates confidence before kickoff.[[9]] Customers dislike nothing more than re-explaining what they spent months telling Sales.[[10]]\n3. **Schedule kickoff with purpose, and put the AE in the room.** The request should clarify who should attend and why, what the customer should bring or prepare, and what to expect from the meeting.[[11]] Tim advocates having the seller attend because they can answer, on the spot, the questions that come out of the sales conversation[[12]].\n\n## How you'll know it's working\n\nTrack IKT completion rate before CSM assignment, time from Closed-Won to first customer communication, and time from first communication to kickoff scheduled.[[13]] Then watch kickoff show rate[[14]] and whether the right stakeholders attended with the right context[[15]]. Going forward, the first communication from the company should reach the customer within hours, not days.[[16]]",
+  "sources": [
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Silence after purchase is not neutral. It is the first loyalty blocker."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Every customer asks the same question right after they buy: did I make the right decision?"
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Sales is closing the next deal. Finance is processing the contract. Customer Success is finishing a handoff somewhere else. Internally, a lot is happening. Externally, the customer hears nothing. And in that silence, doubt begins to form."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "The Purchase & Welcome Play exists to replace that silence with momentum, and to answer the question the customer is already asking: yes, you made the right decision, and here is what happens next."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Three elements must be woven into every Purchase & Welcome Play: personalization, celebration, and expectation-setting."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "How the Pipeline Moves\n\nThe renewal enters the Identify stage of the post-sale pipeline at purchase, just as a closed-won deal enters the sales pipeline."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "The IKT answers four questions that Sales must capture before the handoff is complete: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?"
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "It should live in the CRM as a required field set — not in a sales rep's inbox."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "5\n\n#### Personalized Outreach\n\nThe CSM sends a welcome note or short video that reflects the customer's specific goals and creates confidence before kickoff."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Lincoln Murphy's observation has proven consistently true: customers dislike nothing more than re-explaining what they spent months telling Sales."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "It should clarify who should attend and why, what the customer should bring or prepare, and what to expect from the meeting."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "But the seller is the one person who can answer, on the spot, the questions that come out of the sales conversation: what was discussed, what was promised, and what was meant."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Process adherence comes first: IKT completion rate before CSM assignment, time from Closed-Won to first customer communication, and time from first communication to kickoff scheduled."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Customer experience follows: kickoff show rate is a meaningful proxy — a customer who does not show up is signaling that the welcome sequence did not create enough clarity or urgency to make the meeting feel important."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Kickoff preparation quality — whether the right stakeholders attended with the right context — is the next indicator."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "The first communication from the company should reach the customer within hours, not days."
+   }
+  ],
+  "kind": "play",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 53,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 53,
+     "output_tokens": 1276,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 1276,
+   "output_tokens_details": {
+    "thinking_tokens": 223
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.0902264,
+  "seconds": 20
+ },
+ {
+  "id": 2,
+  "area": "Purchase & Welcome",
+  "expect": "play",
+  "q": "Sales promised the customer things during the deal that CS didn't know about. How do we stop finding out at kickoff?",
+  "text": "## What's really going on\n\nThis is a Purchase Moment problem that surfaces at the First Meeting. The root cause is that the handoff from sales to post-sale is treated as a transition, not a transfer of intelligence.[[1]] The book names this exact pattern: with no IKT from Sales, kickoff is a product demo, not alignment. CSM walks in blind.[[2]]\n\n## The play to run\n\n**Purchase & Welcome**, built on the Internal Knowledge Transfer (IKT). The IKT answers four questions that Sales must capture before the handoff is complete: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?[[3]] The third question targets your problem directly.\n\nBack it up with the **Kickoff Play**. I advocate for having the seller in the kickoff meeting.[[4]] When a misunderstanding surfaces in kickoff and the seller is in the room, it gets resolved in a minute.[[5]]\n\n## Your next 3 moves\n\n1. Make the IKT system-enforced. It should live in the CRM as a required field set, not in a sales rep's inbox.[[6]] A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play.[[7]]\n2. Add the seller to every kickoff invite, and have the kickoff owner open with a plain review of what was purchased and what the customer did not buy.[[8]]\n3. Agree this with your Sales leader as shared work. Sales affects the quality of Purchase and Welcome because the promise made during the buying process becomes the expectation carried into the relationship.[[9]]\n\n## How you'll know it's working\n\nTrack process adherence: IKT completion rate before CSM assignment, time from Closed-Won to first customer communication, and time from first communication to kickoff scheduled.[[10]] Blank fields are not a data problem — it is a coaching conversation.[[11]]\n\nThe customer-side evidence: the post-sale team can state the reason for purchase, the customer confirms it, and any gap between what was sold and what can be delivered is surfaced early[[12]]. At kickoff, the customer should not have to re-explain the entire sales conversation[[13]].",
+  "sources": [
+   {
+    "title": "Chapter 4: Stage 1 — Identify",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-4.html",
+    "quote": "The handoff from sales to post-sale is treated as a transition, not a transfer of intelligence."
+   },
+   {
+    "title": "The Post-Sale Journey Map",
+    "url": "https://post-sale-operating-system.cxology.co/journey-map.html",
+    "quote": "| Failure Pattern | Where It Shows Up | NRR Impact |\n|---|---|---|\n| No IKT from Sales | Kickoff is a product demo, not alignment. CSM walks in blind."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "The IKT answers four questions that Sales must capture before the handoff is complete: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?"
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "I advocate for having the seller in the kickoff meeting."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "When a misunderstanding surfaces in kickoff and the seller is in the room, it gets resolved in a minute."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "It should live in the CRM as a required field set — not in a sales rep's inbox."
+   },
+   {
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-19.html",
+    "quote": "A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "The same review should cover what the customer did not buy."
+   },
+   {
+    "title": "Chapter 21: From Functional Silos to One Operating System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-21.html",
+    "quote": "Sales affects the quality of Purchase and Welcome because the promise made during the buying process becomes the expectation carried into the relationship."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-9.html",
+    "quote": "Process adherence comes first: IKT completion rate before CSM assignment, time from Closed-Won to first customer communication, and time from first communication to kickoff scheduled."
+   },
+   {
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-19.html",
+    "quote": "If the Kickoff Play requires the Five Questions to be captured in the CRM, and a leader sees those fields are blank across a portion of the portfolio, that is not a data problem — it is a coaching conversation."
+   },
+   {
+    "title": "How Do You Know Whether a Customer Is Actually Progressing?",
+    "url": "https://post-sale-operating-system.cxology.co/customer-progression-leading-indicators.html",
+    "quote": "Purchase Moment | Purchase & Welcome | A shared understanding of the decision just made: why the customer bought and what they expect to change | Contract signed, handoff notes filed, welcome email sent | The post-sale team can state the reason for purchase, the customer confirms it, and any gap between what was sold and what can be delivered is surfaced early |\n| 2."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "Trust Builder\n\nThe customer should not have to re-explain the entire sales conversation in kickoff."
+   }
+  ],
+  "kind": "play",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 41,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 41,
+     "output_tokens": 1426,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 1426,
+   "output_tokens_details": {
+    "thinking_tokens": 457
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.0931784,
+  "seconds": 14
+ },
+ {
+  "id": 3,
+  "area": "Kickoff",
+  "expect": "play",
+  "q": "Our kickoff meetings are just a slide tour and a project timeline. Customers leave without knowing what success looks like. How should a kickoff actually work?",
+  "text": "## What's really going on\n\nThis is the First Meeting Inflection Point, where the customer is asking \"Does this team understand why we bought and what we expect to change?\"[[1]] Your kickoff has slipped into a common trap: the meeting becomes a transfer of information instead of a foundation for trust.[[2]] They are shown what the system can do before the two companies have agreed on what the customer is trying to accomplish.[[3]]\n\n## The play to run\n\nRun the Kickoff Play. Its operating principle: Kickoff is not product training. It is the first working conversation where two companies align around outcomes, roles, expectations, and the path to First Value.[[4]] The meeting follows a set order: introductions, the customer's journey and a review of what was purchased, the Five Questions, expectations, First Value, and next steps.[[5]] Standardize the structure and customize the conversation.[[6]]\n\n## Your next 3 moves\n\n1. **Prepare from the handoff.** Before inviting anyone, research the customer, review the contract and IKT, confirm attendees, tailor the agenda[[7]]. Consider inviting the seller, who can answer, on the spot, the questions that come out of the sales conversation[[8]].\n2. **Replace the slide tour with the Five Questions.** Start with What is the one thing we must get right to make this worth undertaking?[[9]] and include the risk question. Each participant should have an opportunity to respond, and the most senior person in the room should answer last.[[10]]\n3. **End with First Value and follow-through.** Translate the big outcome into a first win; in many environments, a useful target is less than two weeks from kickoff[[11]]. Then send a recap that should summarize decisions, action items, owners, due dates, materials, and the chosen First Value goal.[[12]]\n\n## How you'll know it's working\n\nThe evidence is that the customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side[[13]]. Track how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded.[[14]] In the pipeline, the first-term renewal stays in Identify until First Value, but it is no longer just a date on a calendar: it is tied to a confirmed reason for purchase and a target the customer owns.[[15]]",
+  "sources": [
+   {
+    "title": "The Post-Sale Journey Map",
+    "url": "https://post-sale-operating-system.cxology.co/journey-map.html",
+    "quote": "First Meeting | Month 1, weeks 2–4 | Does this team understand why we bought and what we expect to change?"
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "The meeting becomes a transfer of information instead of a foundation for trust."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "They are shown what the system can do before the two companies have agreed on what the customer is trying to accomplish."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "Operating Principle\n\nKickoff is not product training. It is the first working conversation where two companies align around outcomes, roles, expectations, and the path to First Value."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "The meeting should follow a standard flow: introductions, the customer’s journey and a review of what was purchased, the Five Questions, expectations, First Value, and next steps."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "The better approach is to standardize the structure and customize the conversation."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "01 · Prepare\n\nResearch the customer, review the contract and IKT, confirm attendees, tailor the agenda, and send the invitation with enough context for the customer to know the meeting has purpose."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "But the seller is the one person who can answer, on the spot, the questions that come out of the sales conversation: what was discussed, what was promised, and what was meant."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "What is the one thing we must get right to make this worth undertaking?"
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "Each participant should have an opportunity to respond, and the most senior person in the room should answer last."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "In many environments, a useful target is less than two weeks from kickoff, but the exact timeline should fit the product, the customer, and the complexity of the use case."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "The follow-through email should summarize decisions, action items, owners, due dates, materials, and the chosen First Value goal."
+   },
+   {
+    "title": "How Do You Know Whether a Customer Is Actually Progressing?",
+    "url": "https://post-sale-operating-system.cxology.co/customer-progression-leading-indicators.html",
+    "quote": "First Meeting | Kickoff | Trust transfers from Sales to the post-sale team, and the customer is confident they are understood | Kickoff held, introductions made, project plan shared | The customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side |\n| 3."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "At a minimum, the team should know how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-10.html",
+    "quote": "It stays in Identify until First Value, but it is no longer just a date on a calendar: it is tied to a confirmed reason for purchase and a target the customer owns."
+   }
+  ],
+  "kind": "play",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 54,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 54,
+     "output_tokens": 1446,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 1446,
+   "output_tokens_details": {
+    "thinking_tokens": 430
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.09363039999999999,
+  "seconds": 15
+ },
+ {
+  "id": 45,
+  "area": "Data-poor",
+  "expect": "play",
+  "q": "We're a startup with 30 customers and no CS tooling at all. Is this method too heavy for us?",
+  "text": "## What's really going on\n\nThe method isn't too heavy, but installing it all at once would be. The book names the most common failure as enthusiasm without sequence — trying to install all twenty-two chapters at once, stalling in the complexity, and concluding the system does not work.[[1]] Having no tooling is not a blocker. The first step costs nothing but thinking, which is exactly why data-poor organizations can start here. The system works before the data does.[[2]]\n\n## The play to run\n\nRun one play well. The Alignment Meeting is the strongest anchor for an established book of business; Kickoff is the right anchor when most customers are new. Run it consistently enough to see whether it produces the change it was designed for.[[3]] With 30 customers, choose based on whether most of them signed recently or have been with you a while.\n\n## Your next 3 moves\n\n1. **Define progression.** Write down what should change for customers at each inflection point and what First Value means for your top segment. Then write the pipeline stages and the exit criteria revenue opportunities must meet.[[4]]\n2. **Pick one place for customer data.** The Data Spine is not a product category or a specific platform.[[5]] Pick the system of record, define the fields that describe progression, and retire the local copies. If it is not in the system, it does not exist.[[6]]\n3. **Choose your one play and build light assets for it.** Create a brief, agenda, follow-through template.[[7]] Then run the play across the book, not just with friendly accounts.[[8]]\n\nHold off on health scoring and AI. Turn on health scoring once the system is producing enough evidence about progression, value, and relationships to interpret.[[9]] Never automate an undefined motion — that only accelerates inconsistency.[[10]]\n\n## How you'll know it's working\n\nInspect weekly: whether the play ran, whether the expected change occurred, and what the evidence means for each opportunity and next action.[[11]] You don't need telemetry for this. Most of this evidence does not require product telemetry. It shows up in the work your team already does with the customer, which means you can start observing progression before your data is perfect.[[12]] At day ninety, the win is a leadership conversation that starts with evidence: here is the motion we designed, here is how consistently it ran, and here is what the signals tell us to do next.[[13]]",
+  "sources": [
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "It is enthusiasm without sequence — trying to install all twenty-two chapters at once, stalling in the complexity, and concluding the system does not work."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "This costs nothing but thinking, which is exactly why data-poor organizations can start here. The system works before the data does."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "The Alignment Meeting is the strongest anchor for an established book of business; Kickoff is the right anchor when most customers are new. Run it consistently enough to see whether it produces the change it was designed for."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "Write down what should change for customers at each inflection point and what First Value means for your top segment. Then write the pipeline stages and the exit criteria revenue opportunities must meet."
+   },
+   {
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-19.html",
+    "quote": "It is not a product category or a specific platform."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "Pick the system of record, define the fields that describe progression, and retire the local copies. If it is not in the system, it does not exist."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "- Build the play's assets: brief, agenda, follow-through template."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "### Days 61–90\n\n#### Execute\n\n- Run the play across the book, not just with friendly accounts."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "Turn on health scoring once the system is producing enough evidence about progression, value, and relationships to interpret."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "Never automate an undefined motion — that only accelerates inconsistency."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "- Inspect weekly: whether the play ran, whether the expected change occurred, and what the evidence means for each opportunity and next action."
+   },
+   {
+    "title": "How Do You Know Whether a Customer Is Actually Progressing?",
+    "url": "https://post-sale-operating-system.cxology.co/customer-progression-leading-indicators.html",
+    "quote": "Most of this evidence does not require product telemetry. It shows up in the work your team already does with the customer, which means you can start observing progression before your data is perfect."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "It is a leadership conversation that starts with evidence: here is the motion we designed, here is how consistently it ran, and here is what the signals tell us to do next."
+   }
+  ],
+  "kind": "play",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 37,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 37,
+     "output_tokens": 1440,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 1440,
+   "output_tokens_details": {
+    "thinking_tokens": 489
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.0934424,
+  "seconds": 24
+ },
+ {
+  "id": 46,
+  "area": "Vague",
+  "expect": "clarify",
+  "q": "One of our accounts is at risk.",
+  "text": "Before I recommend a play, I need two facts. The answer changes depending on them.\n\n1. **Has this customer reached First Value, and how far are you from renewal?** A first-term account that never got its first meaningful win needs different work than a mature account drifting in the messy middle. The book notes that in the first term, the renewal stays in Identify until the customer reaches First Value, because a customer who has not yet experienced a meaningful result from what they bought is a renewal at real risk.[[1]]\n\n2. **What is the risk signal, and did your champion or executive sponsor leave?** If a key contact left, the book has a dedicated supporting play, because when your primary champion or executive sponsor leaves their role, your account immediately enters a state of high risk.[[2]] If the signal is something else, such as a usage drop or a customer who has gone quiet, the diagnosis starts somewhere different.",
+  "sources": [
+   {
+    "title": "Chapter 4: Stage 1 — Identify",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-4.html",
+    "quote": "In the first term, the renewal stays in Identify until the customer reaches First Value, because a customer who has not yet experienced a meaningful result from what they bought is a renewal at real risk."
+   },
+   {
+    "title": "Chapter 17: Supporting Plays — Key Contact Change & Offboarding",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-17.html",
+    "quote": "### Supporting Play A: The Key Contact Change Play\n\n## The Key Contact Change play\n\nWhen your primary champion or executive sponsor leaves their role, your account immediately enters a state of high risk."
+   }
+  ],
+  "kind": "clarify",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 16,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 16,
+     "output_tokens": 615,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 615,
+   "output_tokens_details": {
+    "thinking_tokens": 303
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.0768584,
+  "seconds": 10
+ },
+ {
+  "id": 47,
+  "area": "Vague",
+  "expect": "clarify",
+  "q": "Our churn is too high.",
+  "text": "Before I point you to a play, two quick questions, because the answer changes which part of the system to fix first:\n\n1. **When do most customers leave?** Mostly in their first contract term, or at later renewals after year one?\n2. **What usually precedes the loss?** Did those customers reach a first meaningful result (First Value) and then drift, or did something like a champion or executive sponsor leaving come first?\n\nWhy this matters: the book draws a sharp line by timing. Gross Revenue Retention (GRR) is determined primarily by the left half of the map — Months 1 through 6. If the customer doesn't achieve First Value, doesn't experience a structured Kickoff, and doesn't have a defined success metric, you will not retain the base.[[1]] Later losses point elsewhere: Companies running NRR above 110% are not running better renewal conversations. They are running better Month 4 through Month 10 operating rhythms.[[2]] And a departed contact calls for a different play entirely, since when your primary champion or executive sponsor leaves their role, your account immediately enters a state of high risk.[[3]]\n\nIf you are not sure of the answers, that is useful too. The book suggests a quick way to find out: Take your last five churned customers. For each one, identify: When did you officially recognize the customer was at risk? When did your metrics first indicate a problem? When did the conditions that eventually caused the problem actually begin? What should have happened at that point in the customer journey? Did you know at the time that it hadn't happened?[[4]]\n\nShare what you find and I'll recommend the specific play and your next three moves.",
+  "sources": [
+   {
+    "title": "The Post-Sale Journey Map",
+    "url": "https://post-sale-operating-system.cxology.co/journey-map.html",
+    "quote": "## Tying the map to NRR\n\nGross Revenue Retention (GRR) is determined primarily by the left half of the map — Months 1 through 6. If the customer doesn't achieve First Value, doesn't experience a structured Kickoff, and doesn't have a defined success metric, you will not retain the base."
+   },
+   {
+    "title": "The Post-Sale Journey Map",
+    "url": "https://post-sale-operating-system.cxology.co/journey-map.html",
+    "quote": "They are running better Month 4 through Month 10 operating rhythms."
+   },
+   {
+    "title": "Chapter 17: Supporting Plays — Key Contact Change & Offboarding",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-17.html",
+    "quote": "### Supporting Play A: The Key Contact Change Play\n\n## The Key Contact Change play\n\nWhen your primary champion or executive sponsor leaves their role, your account immediately enters a state of high risk."
+   },
+   {
+    "title": "Blog: Proactive Customer Success: What It Actually Means",
+    "url": "https://post-sale-operating-system.cxology.co/blog/proactive-customer-success/",
+    "quote": "Take your last five churned customers.\n\n For each one, identify:\n\n When did you officially recognize the customer was at risk?\n\n When did your metrics first indicate a problem?\n\n When did the conditions that eventually caused the problem actually begin?\n\n What should have happened at that point in the customer journey?\n\n Did you know at the time that it hadn't happened?"
+   }
+  ],
+  "kind": "clarify",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 13,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 13,
+     "output_tokens": 946,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 946,
+   "output_tokens_details": {
+    "thinking_tokens": 353
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.0834664,
+  "seconds": 12
+ },
+ {
+  "id": 48,
+  "area": "Out of scope",
+  "expect": "decline",
+  "q": "What price should we charge for our product?",
+  "text": "The book does not cover how to set a price for your product. It has no pricing frameworks, price points, or packaging benchmarks, so I can't recommend a number or a method.\n\nHere is what it does say that touches on pricing:\n\n**Price shows up at renewal as part of your commercial system.** The book describes renewal as a meeting of three systems, and the third is your commercial system: terms, pricing, timing, expansion paths, and the handoff between CS and Sales.[[1]] As commercial details get more complex, pricing strategy requires coordination[[2]], and the mistake is treating Sales involvement as a handoff.[[3]]\n\n**Weak value evidence erodes price.** The journey map lists \"Renewal = first close attempt\" as a failure pattern where negotiation starts from scratch. No documented value evidence. Price erosion[[4]]. The fix is to build the case all year: every Alignment Meeting, insight, and Value Block should add to the case, so the renewal is easier to approve because the case has already been built.[[5]]\n\n**How you bill can interact with First Value.** In one example, a company did not charge anything until after Go Live.[[6]] Onboarding dragged and many customers quit before going live, so because billing started at Go Live, every hour spent finding, selling, and onboarding those customers became a loss[[7]]. The lesson the book draws is about reaching a first win, not about pricing itself: the product was never the problem. The customers simply never reached a first win.[[8]]\n\n**The economics of retention.** The book notes that Customer Acquisition Cost often consumes the majority of a customer's first-year revenue[[9]], and points to the Retention & Growth ROI Calculator[[10]] for modeling retention with your own numbers.\n\n**Delivery cost matters too.** Capacity planning is framed as the financial expression of your post-sale strategy[[11]], which can tell you what your designed post-sale experience costs to deliver.\n\nFor an actual pricing decision, I'd suggest booking an intro call with Tim to talk through whether and how CXology can help in your situation.",
+  "sources": [
+   {
+    "title": "Chapter 16: Play 8 — The Renew & Grow Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-16.html",
+    "quote": "The third is your commercial system: terms, pricing, timing, expansion paths, and the handoff between CS and Sales."
+   },
+   {
+    "title": "Chapter 7: Stage 4 — Intent",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-7.html",
+    "quote": "Pricing strategy requires coordination."
+   },
+   {
+    "title": "Chapter 7: Stage 4 — Intent",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-7.html",
+    "quote": "The mistake is treating Sales involvement as a handoff."
+   },
+   {
+    "title": "The Post-Sale Journey Map",
+    "url": "https://post-sale-operating-system.cxology.co/journey-map.html",
+    "quote": "| Reactive recovery |\n| Renewal = first close attempt | Negotiation starts from scratch. No documented value evidence. | Price erosion |\n| All 8 rows designed and inspected | Missing progression is visible early and acted on."
+   },
+   {
+    "title": "Chapter 16: Play 8 — The Renew & Grow Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-16.html",
+    "quote": "Every Alignment Meeting, insight, and Value Block should add to the case, so the renewal is easier to approve because the case has already been built."
+   },
+   {
+    "title": "Chapter 12: Play 4 — The First Value Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-12.html",
+    "quote": "Saying yes was easy, partly because the company did not charge anything until after Go Live."
+   },
+   {
+    "title": "Chapter 12: Play 4 — The First Value Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-12.html",
+    "quote": "Because billing started at Go Live, every hour spent finding, selling, and onboarding those customers became a loss, and it hurt morale as much as revenue."
+   },
+   {
+    "title": "Chapter 12: Play 4 — The First Value Play",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-12.html",
+    "quote": "The product was never the problem. The customers simply never reached a first win."
+   },
+   {
+    "title": "Chapter 1: From Churn Insurance to Revenue Engine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-1.html",
+    "quote": "In SaaS, acquisition is paid for upfront while the return arrives over time, and Customer Acquisition Cost often consumes the majority of a customer's first-year revenue."
+   },
+   {
+    "title": "Chapter 1: From Churn Insurance to Revenue Engine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-1.html",
+    "quote": "Rather than work through the math here, I built the [Retention & Growth ROI Calculator](https://cxology.co/calculator.html) so you can model it with your own numbers."
+   },
+   {
+    "title": "Chapter 22: Proactive Capacity Planning",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-22.html",
+    "quote": "It is the financial expression of your post-sale strategy."
+   }
+  ],
+  "kind": "clarify",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 15,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 15,
+     "output_tokens": 1160,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 1160,
+   "output_tokens_details": {
+    "thinking_tokens": 383
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.0877544,
+  "seconds": 15
+ },
+ {
+  "id": 49,
+  "area": "Out of scope",
+  "expect": "decline",
+  "q": "Is Gainsight or Vitally the better CS platform?",
+  "text": "The book doesn't compare CS platforms, so I can't tell you whether Gainsight or Vitally is better. (Gainsight appears only as the source of a CSM ratio benchmark, not as a recommendation.)\n\nThe closest thing the book covers is how to make the decision, and its position is that the tool is not the starting point.\n\n**The platform is not the system.** The book treats AI and tooling as an infrastructure decision, not a tool selection. The questions that matter most are not which AI products to use (those will continue to change) but how AI is embedded into the plays, the data, and the operating rhythm of the team.[[1]] The same applies to your record of truth: It is not a product category or a specific platform.[[2]] It is a design principle: every customer-facing system — CRM, CS platform, support desk, professional services automation, product telemetry — is integrated such that the customer record in the designated source of truth reflects reality at all times.[[3]]\n\n**Sequence comes before software.** The recommended order is: Define progression first.[[4]] Then Build the data spine. Pick the system of record, define the fields that describe progression, and retire the local copies.[[5]] Only then layer on automation, because you should Never automate an undefined motion — that only accelerates inconsistency.[[6]]\n\n**A practical way to evaluate either platform.** Once progression is defined, test each tool against what the system needs it to do, such as enforcing the plays: A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play.[[7]] You'd also want AI wired to those trigger points, not left as an optional resource.[[8]]\n\nThe book is blunt about the trap here: The companies that win the next decade of post-sale will not be the ones with the most tools or the largest teams.[[9]]\n\nIf you're mid-evaluation and want help turning your progression model and evidence fields into selection criteria, an intro call with Tim would be the right next step.",
+  "sources": [
+   {
+    "title": "Chapter 18: AI in CS: Judgment Over Templates",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-18.html",
+    "quote": "## Deploying AI Inside the Operating System\n\nDeploying AI well requires treating it as an infrastructure decision, not a tool selection."
+   },
+   {
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-19.html",
+    "quote": "It is not a product category or a specific platform."
+   },
+   {
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-19.html",
+    "quote": "It is a design principle: every customer-facing system — CRM, CS platform, support desk, professional services automation, product telemetry — is integrated such that the customer record in the designated source of truth reflects reality at all times."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "Define progression first."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "Build the data spine. Pick the system of record, define the fields that describe progression, and retire the local copies."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "Never automate an undefined motion — that only accelerates inconsistency."
+   },
+   {
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-19.html",
+    "quote": "A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play."
+   },
+   {
+    "title": "Chapter 18: AI in CS: Judgment Over Templates",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-18.html",
+    "quote": "AI should be wired to those trigger points, not left as an optional resource."
+   },
+   {
+    "title": "Conclusion: Running the System",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-conclusion.html",
+    "quote": "The companies that win the next decade of post-sale will not be the ones with the most tools or the largest teams."
+   }
+  ],
+  "kind": "clarify",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 24,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 24,
+     "output_tokens": 1052,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 1052,
+   "output_tokens_details": {
+    "thinking_tokens": 265
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.0856304,
+  "seconds": 20
+ },
+ {
+  "id": 50,
+  "area": "Out of scope",
+  "expect": "decline",
+  "q": "What NPS score is considered good for B2B SaaS?",
+  "text": "The book doesn't give an NPS benchmark or say what score counts as \"good\" for B2B SaaS. I can't give you a number without going beyond CXology's material.\n\nHere is the closest thing the book does cover: where NPS fits in a health model.\n\n**NPS is context, not the score.** Traditional criteria still belong in the model. Usage, NPS, support case volume, renewal timing, purchase history, and CSM judgment can all provide context. But they should not carry the whole score.[[1]] The reason is that traditional indicators are often easier to collect than they are to interpret.[[2]]\n\n**Weight it against signals you can act on.** The book says weights should reflect what predicts behavior. For example, lack of executive visibility may matter more than a neutral NPS response.[[3]] The missing layer is growth-oriented criteria[[4]], such as relationship reach, lifecycle progression, goal achievement, customer engagement, and sophistication of use[[5]].\n\n**Calibrate from your own best customers, not an outside number.** The book recommends you look at the customers you would happily clone[[6]] and build health scoring by reverse-engineering that pattern.[[7]] Then validate the score: Are the strongest green accounts truly healthy? Are the deepest red accounts truly at risk?[[8]]\n\n**Sentiment is not progression evidence.** The book draws a clear line here. \"Great call, they seemed happy\" is not evidence. \"The VP approved rollout to the second region and named an owner\" is.[[9]] Good evidence costs the customer something. Customers spend their own time, budget, or internal credibility only when they believe the effort is paying off.[[10]]\n\nSo a practical next step is to stop asking \"is our NPS good?\" and ask what the book asks instead: \"Given everything we can see, is this customer progressing toward the outcomes they bought for, and are they able to sustain them?\"[[11]] The [Health Score Builder](https://cxology.co/health-score-builder.html) can help you place NPS alongside those progression signals.\n\nIf you need an external NPS benchmark for a board or a specific segment, that's outside the book. An intro call with Tim would be the best way to talk it through.",
+  "sources": [
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "Traditional criteria still belong in the model. Usage, NPS, support case volume, renewal timing, purchase history, and CSM judgment can all provide context. But they should not carry the whole score."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "Traditional indicators are often easier to collect than they are to interpret."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "Lack of executive visibility may matter more than a neutral NPS response."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "The missing layer is growth-oriented criteria."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "Growth-oriented indicators reveal whether the customer is becoming more aligned, more capable, and more likely to renew and grow.Traditional signalsUsage, support cases, NPS, CSM input, purchase history, and renewal timing can provide important context, but they often show risk after momentum has already changed.Growth-oriented signalsRelationship reach, lifecycle progression, goal achievement, customer engagement, and sophistication of use show whether the customer is building the conditions for retention and expansion."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "Look at the customers you would happily clone."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "Health scoring should be built by reverse-engineering that pattern."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "Are the strongest green accounts truly healthy? Are the deepest red accounts truly at risk?"
+   },
+   {
+    "title": "How Do You Know Whether a Customer Is Actually Progressing?",
+    "url": "https://post-sale-operating-system.cxology.co/customer-progression-leading-indicators.html",
+    "quote": "\"Great call, they seemed happy\" is not evidence. \"The VP approved rollout to the second region and named an owner\" is."
+   },
+   {
+    "title": "How Do You Know Whether a Customer Is Actually Progressing?",
+    "url": "https://post-sale-operating-system.cxology.co/customer-progression-leading-indicators.html",
+    "quote": "Customers spend their own time, budget, or internal credibility only when they believe the effort is paying off."
+   },
+   {
+    "title": "Chapter 20: Health Scoring That Actually Works",
+    "url": "https://post-sale-operating-system.cxology.co/chapter-20.html",
+    "quote": "It asks, “Given everything we can see, is this customer progressing toward the outcomes they bought for, and are they able to sustain them?”"
+   }
+  ],
+  "kind": "clarify",
+  "blocked": false,
+  "usage": {
+   "input_tokens": 23,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 322472,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "iterations": [
+    {
+     "input_tokens": 23,
+     "output_tokens": 1385,
+     "cache_read_input_tokens": 322472,
+     "cache_creation_input_tokens": 0,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+     },
+     "type": "message",
+     "model": null
+    }
+   ],
+   "output_tokens": 1385,
+   "output_tokens_details": {
+    "thinking_tokens": 502
+   },
+   "service_tier": "standard",
+   "inference_geo": "global",
+   "speed": "standard"
+  },
+  "cost": 0.09228639999999999,
+  "seconds": 16
+ }
+]

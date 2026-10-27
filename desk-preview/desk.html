@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CXology Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="desk.css">
+</head>
+<body>
+<div class="wrap">
+  <section class="home">
+    <div class="brand">CXology<span>Desk</span></div>
+    <p class="tag">Bring a customer situation. Get the play, grounded in <em>The Post-Sale Operating System</em>.</p>
+    <form id="ask">
+      <textarea id="input" rows="1" placeholder="Our champion just left and renewal is in 90 days..." autofocus></textarea>
+      <button id="go">Ask</button>
+    </form>
+    <div class="chips">
+      <button class="chip">Our champion left and renewal is in 90 days</button>
+      <button class="chip">Customer signed 4 months ago and still hasn't seen value</button>
+      <button class="chip">How many accounts should each CSM carry?</button>
+      <button class="chip">Leadership wants a renewal forecast we can trust</button>
+    </div>
+  </section>
+  <section class="thread" id="thread"></section>
+</div>
+<script src="render.js"></script>
+<script>
+  const thread = document.getElementById("thread");
+  const input = document.getElementById("input");
+  const go = document.getElementById("go");
+  let history = [];
+
+  // Demo mode: anywhere but the local server, play back real answers recorded in testing (no API calls).
+  const DEMO = location.hostname !== "localhost" || location.search.includes("demo");
+  let samples = [];
+  if (DEMO) {
+    document.querySelector(".tag").insertAdjacentHTML("afterend",
+      `<p class="tag" style="font-size:14px;margin-top:-18px">Preview: this plays back real answers from testing. Pick a sample situation below.</p>`);
+    fetch("test-results.json").then((r) => r.json()).then((data) => {
+      samples = data.filter((r) => r.text);
+      const picks = [1, 3, 47, 49].map((id) => samples.find((s) => s.id === id)).filter(Boolean);
+      document.querySelector(".chips").innerHTML = picks.map((s) => `<button class="chip">${esc(s.q)}</button>`).join("");
+      document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => submit(c.textContent)));
+    });
+  }
+
+  function demoAnswer(text) {
+    const s = samples.find((x) => x.q === text);
+    if (s) return { result: s, seconds: s.seconds || 30 };
+    return { picker: true };
+  }
+
+  function showPicker() {
+    const card = document.createElement("div"); card.className = "card clarify";
+    card.innerHTML = `<p>This preview can't answer new questions yet. It plays back answers the Desk gave in testing. Try one of these:</p>` +
+      samples.map((s) => `<p><button class="chip" style="text-align:left">${esc(s.q)}</button></p>`).join("");
+    card.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => submit(c.textContent)));
+    thread.appendChild(card);
+  }
+
+  async function submit(text) {
+    text = text.trim(); if (!text) return;
+    if (DEMO) {
+      document.body.classList.add("asked");
+      const q = document.createElement("div"); q.className = "q"; q.textContent = text; thread.appendChild(q);
+      input.value = "";
+      const d = demoAnswer(text);
+      if (d.picker) { showPicker(); return; }
+      const loading = document.createElement("div"); loading.className = "loading"; loading.textContent = "Reading the book";
+      thread.appendChild(loading); loading.scrollIntoView({ behavior: "smooth" });
+      await new Promise((r) => setTimeout(r, 1200));
+      loading.remove();
+      thread.appendChild(render(d.result, "a" + thread.children.length));
+      const meta = document.createElement("div"); meta.className = "meta";
+      meta.textContent = `Recorded answer · took ${d.seconds}s live · ${d.result.sources.length} citations` +
+        (d.result.kind === "clarify" ? " · in the live Desk you would answer these questions next" : "");
+      thread.appendChild(meta);
+      return;
+    }
+    document.body.classList.add("asked");
+    history.push({ role: "user", text });
+    const q = document.createElement("div"); q.className = "q"; q.textContent = text; thread.appendChild(q);
+    const loading = document.createElement("div"); loading.className = "loading"; loading.textContent = "Reading the book";
+    thread.appendChild(loading); loading.scrollIntoView({ behavior: "smooth" });
+    input.value = ""; go.disabled = true;
+    const t0 = Date.now();
+    try {
+      const r = await fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ history }) });
+      const result = await r.json();
+      loading.remove();
+      const card = render(result, "a" + history.length);
+      const meta = document.createElement("div"); meta.className = "meta";
+      meta.textContent = `${((Date.now() - t0) / 1000).toFixed(0)}s · ${result.sources?.length || 0} citations`;
+      thread.appendChild(card); thread.appendChild(meta);
+      if (result.text) history.push({ role: "assistant", text: result.text.replace(/\[\[\d+\]\]/g, "") });
+      else history.pop();
+      input.placeholder = result.kind === "clarify" ? "Answer here..." : "Ask a follow-up, or describe another situation...";
+    } catch (e) { loading.textContent = "Something went wrong: " + e.message; history.pop(); }
+    go.disabled = false; input.focus();
+  }
+
+  document.getElementById("ask").addEventListener("submit", (e) => { e.preventDefault(); submit(input.value); });
+  input.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submit(input.value); } });
+  input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; });
+  document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => submit(c.textContent)));
+</script>
+<p style="text-align:center;font-size:13px;margin:0 0 32px"><a href="index.html" style="color:#5A6A40">CXology Desk preview home</a></p>
+</body>
+</html>
