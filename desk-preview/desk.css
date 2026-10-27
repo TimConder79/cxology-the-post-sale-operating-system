@@ -46,3 +46,17 @@
   .cta { margin-top: 14px; font-size: 14px; }
   .cta a { color: var(--navy); font-weight: 700; }
   @media (max-width: 560px) { .card { padding: 18px; } }
+
+.applied { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--navy-mid); background: #E4EAF0; border-radius: 4px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }
+.card .kit { margin-top: 10px; border: 1px solid var(--gray-200); border-radius: 10px; background: var(--off-white); }
+.card .kit-head { display: flex; gap: 12px; align-items: center; padding: 12px 14px; }
+.card .kit-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--olive); display: grid; place-items: center; font-weight: 900; font-size: 13px; flex: none; }
+.card .kit-name { font-weight: 700; font-size: 15px; }
+.card .kit-desc { font-size: 13.5px; color: var(--muted); }
+.card .kit-actions { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 14px 12px; }
+.card .kit-actions button, .card .kit-actions a { font: inherit; font-size: 13px; font-weight: 700; border-radius: 18px; padding: 7px 14px; text-decoration: none; cursor: pointer; border: 1px solid var(--navy); }
+.card .kit-actions .primary { background: var(--navy); color: #fff; }
+.card .kit-actions .ghost { background: #fff; color: var(--navy); }
+.card details.prompt { padding: 0 14px 12px; }
+.card details.prompt summary { cursor: pointer; font-size: 13px; font-weight: 700; color: var(--navy-mid); }
+.card details.prompt pre { white-space: pre-wrap; font: 13px/1.5 ui-monospace, Menlo, monospace; background: #fff; border: 1px solid var(--gray-200); border-radius: 8px; padding: 12px; margin-top: 8px; max-height: 320px; overflow: auto; }

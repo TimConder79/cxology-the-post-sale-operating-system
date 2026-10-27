@@ -42,7 +42,7 @@
       `<p class="tag" style="font-size:14px;margin-top:-18px">Preview: this plays back real answers from testing. Pick a sample situation below.</p>`);
     fetch("test-results.json").then((r) => r.json()).then((data) => {
       samples = data.filter((r) => r.text);
-      const picks = [1, 3, 47, 49].map((id) => samples.find((s) => s.id === id)).filter(Boolean);
+      const picks = [51, 1, 3, 47, 49].map((id) => samples.find((s) => s.id === id)).filter(Boolean);
       document.querySelector(".chips").innerHTML = picks.map((s) => `<button class="chip">${esc(s.q)}</button>`).join("");
       document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => submit(c.textContent)));
     });
@@ -76,7 +76,8 @@
       loading.remove();
       thread.appendChild(render(d.result, "a" + thread.children.length));
       const meta = document.createElement("div"); meta.className = "meta";
-      meta.textContent = `Recorded answer · took ${d.seconds}s live · ${d.result.sources.length} citations` +
+      meta.textContent = (d.result.handRun ? `Example written to the Desk's rules · ${d.result.sources.length} citations, each verified word for word against the book`
+        : `Recorded answer · took ${d.seconds}s live · ${d.result.sources.length} citations`) +
         (d.result.kind === "clarify" ? " · in the live Desk you would answer these questions next" : "");
       thread.appendChild(meta);
       return;

@@ -855,5 +855,90 @@
   },
   "cost": 0.09228639999999999,
   "seconds": 16
+ },
+ {
+  "id": 51,
+  "area": "Hand-run example",
+  "expect": "play",
+  "q": "RevOps question: when a renewal forecast doesn't line up with the account notes, customer health, or stated next steps, where do we draw the line between reporting the forecast and influencing the strategy? How does RevOps get enough context to say more than \"the data says X\" without becoming Sales Management?",
+  "kind": "play",
+  "blocked": false,
+  "handRun": true,
+  "text": "## What's really going on\nThe forecast and the account notes disagree because the renewal is being forecast on opinion, not evidence. The book's example of that kind of judgment is a stage call like \"I think they're green. They'll renew.\"[[1]] The underlying gap isn't data: more customer data doesn't automatically create that visibility.[[2]] That's an operating-system problem.[[3]]\n**Book gap:** the book doesn't define where RevOps ends and Sales Management begins. It does define a third option: make the evidence standard the thing everyone debates.[[applied]]\n## The play to run\nRun **post-sale pipeline reviews** on a set cadence: inspect what moved forward, what moved back, what stalled, and why, the same way sales reviews its pipeline.[[4]] The goal isn't to remove judgment from the forecast. It's to give judgment a common structure and an evidence trail.[[5]]\n## Your next 3 moves\n1. **Require every renewal to carry the same fields:** amount, stage, probability, expected close date, evidence, next action, and owner. A renewal missing evidence for its stage is a data gap, squarely in RevOps's lane, not a strategy opinion.[[applied]]\n2. **Ask the evidence question, not the strategy question.** When someone disagrees about a stage, the conversation moves from opinion to evidence: what would prove the next exit criterion, and who is going to get it.[[6]] The pipeline moves on evidence, not on the team's sense that advocacy exists,[[7]] and not on forecast optimism or friendly signals.[[8]]\n3. **Get context from CS, not by becoming Sales.** After Closed Won, the strongest evidence is customer progression, which is different from activity, which only tells us what the team did.[[9]] CS is closest to that evidence, so partner with CS for it.[[applied]] Keep health and commitment separate: a customer can be healthy without having committed to renew.[[10]]\n## How you'll know it's working\nStage disagreements end with a named exit criterion and an owner instead of a debate.[[6]] RevOps's voice in forecast reviews carries weight because it rests on evidence, not tenure: judgment still matters, it just works inside a shared structure.[[11]]",
+  "sources": [
+   {
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "I think they're green. They'll renew."
+   },
+   {
+    "title": "Blog: Revenue Operations After Closed Won: The Missing Infrastructure",
+    "url": "https://cxology.co/blog/revenue-operations-after-closed-won/",
+    "quote": "More customer data doesn't automatically create that visibility."
+   },
+   {
+    "title": "Blog: Revenue Operations After Closed Won: The Missing Infrastructure",
+    "url": "https://cxology.co/blog/revenue-operations-after-closed-won/",
+    "quote": "That's an operating-system problem."
+   },
+   {
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "On a set cadence, inspect what moved forward, what moved back, what stalled, and why, the same way sales reviews its pipeline."
+   },
+   {
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "The goal isn't to remove judgment from the forecast. It's to give judgment a common structure and an evidence trail."
+   },
+   {
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "When someone disagrees about a stage, the conversation moves from opinion to evidence: what would prove the next exit criterion, and who is going to get it."
+   },
+   {
+    "title": "Chapter 6: Stage 3 — Advocate",
+    "url": "https://cxology.co/chapter-6.html",
+    "quote": "The pipeline moves on evidence, not on the team's sense that advocacy exists."
+   },
+   {
+    "title": "Chapter 7: Stage 4 — Intent",
+    "url": "https://cxology.co/chapter-7.html",
+    "quote": "an opportunity moves on evidence, not on forecast optimism or friendly signals."
+   },
+   {
+    "title": "Blog: Customer Progression: The Evidence Behind Revenue Forecasts",
+    "url": "https://cxology.co/blog/evidence-of-customer-progression/",
+    "quote": "Evidence of progression is observable proof that something meaningful has changed for the customer in a way that moves them toward value, renewal, or growth. It is different from activity, which only tells us what the team did."
+   },
+   {
+    "title": "Blog: Customer Progression: The Evidence Behind Revenue Forecasts",
+    "url": "https://cxology.co/blog/evidence-of-customer-progression/",
+    "quote": "A customer can be healthy without having committed to renew."
+   },
+   {
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "Judgment still matters. It just works inside a shared structure."
+   }
+  ],
+  "kits": [
+   {
+    "name": "Renewal evidence audit",
+    "desc": "Paste a renewal export; flags missing fields and evidence that doesn't support the stage.",
+    "prompt": "You are helping me, a RevOps leader, audit our renewal forecast using the Post-Sale Pipeline from The Post-Sale Operating System by Tim Conder.\n\nEvery renewal opportunity should carry seven fields: revenue amount, stage, probability, expected close date, evidence, next action, and owner. The stages are Identify, Align, Advocate, Intent, and Net Revenue Close. An opportunity should move only on evidence that meets the stage's exit criteria, not on forecast optimism or friendly signals.\n\nUsing the renewal export below:\n1. Flag every opportunity missing any of the seven fields.\n2. Flag every opportunity whose evidence does not support its current stage, and say what evidence would.\n3. Separate activity (what our team did) from evidence of customer progression (what changed for the customer).\n4. List the top 5 renewals to discuss in the next forecast review, each with the question: what would prove the next exit criterion, and who is going to get it?\n\nIdentify gaps and questions only; do not make deal strategy calls. Ask me about anything unclear.\n\nRenewal export:\n[paste here]"
+   },
+   {
+    "name": "Forecast review agenda",
+    "desc": "A 30-minute post-sale pipeline review built on moved forward, moved back, stalled, and why.",
+    "prompt": "Build a 30-minute post-sale pipeline review agenda based on the Post-Sale Pipeline from The Post-Sale Operating System by Tim Conder.\n\nStructure it around what moved forward, what moved back, what stalled, and why, the same way sales reviews its pipeline. For each disputed stage, use the question: what would prove the next exit criterion, and who is going to get it?\n\nInclude clear roles for RevOps (evidence and data gaps), Customer Success (customer progression evidence), and Sales (commercial path), and end with owners and dates for every open item.\n\nOur context: [team size, number of renewals this quarter, current review cadence]"
+   },
+   {
+    "name": "CS evidence request",
+    "desc": "A short note asking CS for the progression evidence behind each at-risk renewal.",
+    "prompt": "Draft a short, collaborative note from me (RevOps) to our Customer Success team asking for evidence on at-risk renewals.\n\nExplain that we are moving forecast reviews from opinion to evidence, following the Post-Sale Pipeline in The Post-Sale Operating System by Tim Conder. For each renewal listed below, ask for: the stage they would place it in, the evidence of customer progression that supports it (what changed for the customer, not activities completed), the next action, and the owner.\n\nKeep it under 150 words and make clear this is meant to support CS, not audit them.\n\nRenewals:\n[paste list]"
+   }
+  ],
+  "cost": null
  }
 ]
