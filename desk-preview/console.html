@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desk Console</title>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="desk.css">
+<style>
+  body { background: var(--off-white); }
+  .top { background: var(--navy); color: #fff; }
+  .top .wrap { display: flex; align-items: center; gap: 16px; padding: 14px 16px; max-width: 1040px; flex-wrap: wrap; }
+  .top .brand { font-size: 22px; color: #fff; text-align: left; letter-spacing: -.5px; }
+  .top .brand span { margin-left: 4px; }
+  .top .sub { color: var(--gray-200); font-size: 13px; }
+  .who { margin-left: auto; display: flex; gap: 8px; align-items: center; font-size: 13px; }
+  .who select { font: inherit; font-size: 13px; border-radius: 6px; padding: 4px 6px; border: 0; }
+  .wrap { max-width: 1040px; }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--gray-200); margin: 18px 0 20px; flex-wrap: wrap; }
+  .tabs button { background: none; color: var(--navy); border-radius: 0; padding: 10px 14px; font-weight: 400; border-bottom: 3px solid transparent; }
+  .tabs button.on { font-weight: 700; border-bottom-color: var(--olive); }
+  .tabs .count { font-size: 11px; background: var(--olive-pale); border-radius: 8px; padding: 1px 6px; margin-left: 4px; font-weight: 700; }
+  .note { font-size: 13px; color: var(--muted); background: #fff; border-left: 4px solid var(--navy-mid); padding: 10px 14px; border-radius: 6px; margin-bottom: 18px; }
+  h1 { font-weight: 900; font-size: 28px; margin-bottom: 4px; }
+  .lead { font-size: 17px; margin-bottom: 18px; max-width: 760px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 24px; }
+  .stat { background: #fff; border-radius: 10px; padding: 12px 16px; box-shadow: 0 2px 10px rgba(26,46,66,.06); }
+  .stat b { display: block; font-size: 24px; font-weight: 900; }
+  .stat span { font-size: 13px; color: var(--muted); }
+  h2.sec { font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin: 26px 0 10px; }
+  .dot, .rec, .item { background: #fff; border-radius: 10px; padding: 16px 20px; margin-bottom: 10px; box-shadow: 0 2px 10px rgba(26,46,66,.06); }
+  .dot h3, .rec h3, .item h3 { font-size: 16.5px; font-weight: 700; margin-bottom: 4px; }
+  .dot p, .rec p, .item p { font-size: 15px; }
+  .ev { margin-top: 8px; font-size: 13px; color: var(--muted); }
+  .ev a { color: var(--navy); font-weight: 700; cursor: pointer; text-decoration: underline; }
+  .rec { display: grid; grid-template-columns: 34px 1fr; gap: 4px 14px; }
+  .rank { font-weight: 900; font-size: 22px; color: var(--muted); }
+  .chips2 { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
+  .pill { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; border-radius: 4px; padding: 2px 7px; background: var(--olive-pale); }
+  .pill.high { background: #F6D9CF; color: #8a2f12; }
+  .pill.med { background: #FBEBC9; color: #7a4d06; }
+  .pill.low { background: #E4EAF0; color: var(--navy-mid); }
+  .acts { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .acts button { font-size: 13px; padding: 6px 14px; border: 1px solid var(--navy); }
+  .acts .ghost { background: #fff; color: var(--navy); }
+  .state { font-size: 13px; font-weight: 700; margin-top: 10px; }
+  .state.ok { color: #1D9E75; } .state.no { color: var(--muted); }
+  table.q { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(26,46,66,.06); }
+  table.q th, table.q td { text-align: left; padding: 10px 12px; font-size: 14px; border-bottom: 1px solid var(--gray-100); vertical-align: top; }
+  table.q th { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); }
+  table.q tr.click { cursor: pointer; } table.q tr.click:hover td { background: var(--off-white); }
+  .viewer-hide { } body.viewer .viewer-hide { display: none !important; }
+  .modal { position: fixed; inset: 0; background: rgba(15,28,40,.45); display: none; align-items: flex-start; justify-content: center; overflow: auto; padding: 40px 16px; }
+  .modal.show { display: flex; }
+  .modal .box { max-width: 760px; width: 100%; }
+  .modal .close { float: right; margin-bottom: 8px; }
+  .empty { color: var(--muted); font-size: 15px; padding: 20px 0; }
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="brand">CXology<span>Desk</span></div><div class="sub">Console</div>
+  <div class="who">Viewing as
+    <select id="role"><option value="owner">Tim · Owner</option><option value="reviewer">Reviewer</option><option value="viewer">Viewer (advisor)</option></select>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div class="tabs" id="tabs"></div>
+  <div class="note">Mockup. This brief was written by Claude from the 10 recorded test questions, not real readers, at no API cost. In the live console it runs weekly on every logged question. Evidence links open the actual answers.</div>
+  <div id="view"></div>
+</div>
+
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeModal()">Close</button><div id="modal-body"></div></div></div>
+
+<script src="render.js"></script>
+<script>
+  const BRIEF = {
+    title: "Weekly insights brief",
+    period: "Sample week · 10 questions",
+    lead: "The Desk is strongest on early-lifecycle and pipeline questions. The two clearest wins are a structured intake so answers start with First Value and timing, and a defined RevOps role in pipeline reviews. Testing so far has skipped the middle of the lifecycle.",
+    dots: [
+      { h: "Vague questions all hinge on one missing fact: First Value",
+        p: "Both clarifying responses asked first whether the customer had reached First Value and how far out renewal is. That is the single most useful fact the Desk is missing when a question arrives.",
+        ev: [46, 47] },
+      { h: "Two canonical pages are doing more work than any chapter",
+        p: "The Post-Sale Journey Map and \"How Do You Know Whether a Customer Is Actually Progressing?\" were each cited in 4 of 10 answers, more than any chapter. Changes to those two pages ripple across many answers, so they are the highest-leverage pages to keep sharp.",
+        ev: [2, 3, 47, 45] },
+      { h: "Handoff problems are being answered as data problems",
+        p: "The sales-promises question drew on Data Governance (Chapter 19) and Functional Silos (Chapter 21) alongside the plays, and Chapter 19 appeared in 3 of 10 answers. Readers describing handoffs are really describing a missing shared record.",
+        ev: [2, 45] },
+      { h: "An early reviewer's data-poor concern now has a good answer",
+        p: "An early reviewer of the book's introduction asked twice how the method works without data. The startup question was answered confidently from the Conclusion: \"The system works before the data does.\" Their segmentation concern (low-touch customers) has not been tested yet.",
+        ev: [45] },
+      { h: "A new reader role is showing up: RevOps",
+        p: "The forecast question came from a RevOps point of view, and the only source that speaks to RevOps directly is the Oct 27 blog post. The book itself does not define RevOps's role in the post-sale pipeline.",
+        ev: [51] },
+    ],
+    recs: [
+      { type: "Software feature", pri: "high", h: "Add a short situation intake before answering",
+        p: "Ask 3 to 4 optional fields up front: months since purchase, months to renewal, First Value reached (yes, no, unsure), and whether the champion is still in place. Answers start in the right place instead of spending a turn on clarifying questions. The same fields become the paid tier's saved account profile.",
+        ev: [46, 47, 45] },
+      { type: "Book refinement", pri: "high", h: "Define RevOps's role in post-sale pipeline reviews",
+        p: "The Desk had to say the book doesn't define where RevOps ends and Sales Management begins. A short section (or a Field Note first) on RevOps owning the evidence standard, CS owning progression evidence, and Sales owning the commercial path would close the gap. Pair it with the three RevOps action kits already drafted.",
+        ev: [51] },
+      { type: "Content + kit", pri: "med", h: "Write \"Where NPS and survey scores fit\" and a CS platform evaluation guide",
+        p: "Both questions were declined honestly, but the book had partial material: NPS appears in Chapter 20 as context, not the score, and Gainsight only as a benchmark source. Two short blog posts would turn these declines into answers, and a platform evaluation kit (questions to ask any vendor, built on the Data Spine) is a natural action kit.",
+        ev: [49, 50] },
+      { type: "Testing", pri: "med", h: "Test the middle of the lifecycle next",
+        p: "Onboarding, Value Blocks, Sharing Insights, and Alignment Meeting were never cited in these 10 answers. That is a gap in the test set, not the book. Running test situations 5 to 14 would cover them, for about $1 once credits are added.",
+        ev: [] },
+      { type: "Testing", pri: "med", h: "Check the early reviewer's segmentation theme",
+        p: "Run the low-touch test (2,000 small customers, 4 CSMs) to confirm the book flexes across segments, the third theme from that review.",
+        ev: [45] },
+      { type: "Dismiss", pri: "low", h: "Keep declining pricing questions",
+        p: "Pricing is outside the method. The Desk's current answer (decline, then point to how weak value evidence erodes price at renewal) is the right one. No change needed.",
+        ev: [48] },
+    ],
+    inbox: [
+      { h: "\"Ask the promoted Director to help get the VP back in the room\"", where: "$180K renewal scenario", p: "Applied advice in a Key Contact Change answer. Closest doctrine: Chapter 17's \"You - We - Me\" meeting." },
+      { h: "\"Log the reporting tickets as a signal for later, not a pitch\"", where: "$180K renewal scenario", p: "Applied advice in a Renew & Grow answer. Closest doctrine: distinguish customers ready to grow from those who need to stabilize (Chapter 16)." },
+      { h: "\"Make the evidence standard the thing everyone debates\"", where: "RevOps forecast question", ev: 51, p: "Applied framing of RevOps's role. Closest doctrine: moving pipeline reviews from opinion to evidence (What Is a Post-Sale Pipeline?)." },
+      { h: "\"A renewal missing evidence for its stage is a data gap, squarely in RevOps's lane\"", where: "RevOps forecast question", ev: 51, p: "Applied boundary between RevOps and Sales Management. Candidate for the RevOps book refinement above." },
+      { h: "\"CS is closest to that evidence, so partner with CS for it\"", where: "RevOps forecast question", ev: 51, p: "Applied advice on where RevOps gets context. Closest doctrine: customer progression as evidence (Customer Progression blog)." },
+    ],
+  };
+
+  let results = [], tab = "brief";
+  const decisions = {};
+  try { Object.assign(decisions, JSON.parse(localStorage.getItem("console-decisions") || "{}")); } catch {}
+  const save = () => { try { localStorage.setItem("console-decisions", JSON.stringify(decisions)); } catch {} };
+  const role = () => document.getElementById("role").value;
+
+  const evLinks = (ids) => ids.length ? `<div class="ev">Evidence: ${ids.map((id) => `<a onclick="openQ(${id})">#${id}</a>`).join(", ")}</div>` : `<div class="ev">Evidence: coverage of the 10 answers (no single question)</div>`;
+  const decide = (key) => {
+    const d = decisions[key];
+    if (role() === "viewer") return d ? `<div class="state ${d === "Accepted" ? "ok" : "no"}">${d}</div>` : "";
+    if (d) return `<div class="state ${d === "Accepted" ? "ok" : "no"}">${d} <a style="color:inherit;font-weight:400;cursor:pointer;margin-left:8px" onclick="setD('${key}', null)">undo</a></div>`;
+    return `<div class="acts"><button onclick="setD('${key}','Accepted')">Accept to Backlog</button><button class="ghost" onclick="setD('${key}','Declined')">Decline</button></div>`;
+  };
+  function setD(key, v) { if (v) decisions[key] = v; else delete decisions[key]; save(); draw(); }
+
+  const views = {
+    brief() {
+      const plays = results.filter((r) => r.kind === "play").length;
+      const gaps = results.filter((r) => r.expect === "decline").length;
+      const clar = results.filter((r) => r.kind === "clarify").length - gaps;
+      const cites = results.length ? (results.reduce((n, r) => n + r.sources.length, 0) / results.length).toFixed(1) : 0;
+      return `<h1>${BRIEF.title}</h1><div class="ev" style="margin:0 0 10px">${BRIEF.period} · written by Claude</div>
+        <p class="lead">${BRIEF.lead}</p>
+        <div class="stats">
+          <div class="stat"><b>${results.length}</b><span>questions</span></div>
+          <div class="stat"><b>${plays}</b><span>play cards</span></div>
+          <div class="stat"><b>${clar}</b><span>asked to clarify</span></div>
+          <div class="stat"><b>${gaps}</b><span>book gaps</span></div>
+          <div class="stat"><b>${cites}</b><span>avg citations</span></div>
+          <div class="stat"><b>23 of 44</b><span>sources never cited</span></div>
+        </div>
+        <h2 class="sec">Connecting the dots</h2>
+        ${BRIEF.dots.map((d) => `<div class="dot"><h3>${d.h}</h3><p>${d.p}</p>${evLinks(d.ev)}</div>`).join("")}
+        <h2 class="sec">Recommended priorities</h2>
+        ${BRIEF.recs.map((r, i) => `<div class="rec"><div class="rank">${i + 1}</div><div>
+          <div class="chips2"><span class="pill">${r.type}</span><span class="pill ${r.pri}">${{ high: "High", med: "Medium", low: "Low" }[r.pri]} priority</span></div>
+          <h3>${r.h}</h3><p>${r.p}</p>${evLinks(r.ev)}${decide("rec" + i)}</div></div>`).join("")}`;
+    },
+    inbox() {
+      return `<h1>Inbox</h1><p class="lead">Advice the Desk gave that the book doesn't state. Endorse it as a Field Note, correct it, tag it for the Backlog, or dismiss it.</p>` +
+        BRIEF.inbox.map((x, i) => {
+          const d = decisions["in" + i];
+          const acts = role() === "viewer" ? (d ? `<div class="state ok">${d}</div>` : "") : d ? `<div class="state ok">${d} <a style="color:inherit;font-weight:400;cursor:pointer;margin-left:8px" onclick="setD('in${i}', null)">undo</a></div>` :
+            `<div class="acts">${["Endorse", "Correct", "Tag", "Dismiss"].map((a, k) => `<button class="${k ? "ghost" : ""}" onclick="setD('in${i}','${{ Endorse: "Endorsed as a Field Note", Correct: "Correction drafted", Tag: "Tagged to Backlog", Dismiss: "Dismissed" }[a]}')">${a}</button>`).join("")}</div>`;
+          return `<div class="item"><div class="chips2"><span class="pill low">Applied advice</span><span class="pill">${x.where}</span></div><h3>${x.h}</h3><p>${x.p}</p>${x.ev ? evLinks([x.ev]) : ""}${acts}</div>`;
+        }).join("");
+    },
+    questions() {
+      return `<h1>Questions</h1><p class="lead">Every logged question with how the Desk responded. Click a row to read the answer.</p>
+        <table class="q"><tr><th>#</th><th>Question</th><th>Area</th><th>Response</th><th>Citations</th></tr>
+        ${results.map((r) => `<tr class="click" onclick="openQ(${r.id})"><td>${r.id}</td><td>${esc(r.q.length > 110 ? r.q.slice(0, 110) + "..." : r.q)}</td><td>${esc(r.area)}</td><td>${r.expect === "decline" ? "Book gap" : r.kind === "play" ? "Play card" : "Clarified"}</td><td>${r.sources.length}</td></tr>`).join("")}</table>`;
+    },
+    gaps() {
+      return `<h1>Gaps</h1><p class="lead">Questions the book couldn't answer, with what it offered instead.</p>` +
+        results.filter((r) => r.expect === "decline").map((r) => `<div class="item"><h3>${esc(r.q)}</h3><p>${esc(r.text.replace(/\[\[\w+\]\]/g, "").split("\n")[0])}</p>${evLinks([r.id])}</div>`).join("");
+    },
+    backlog() {
+      const acc = BRIEF.recs.map((r, i) => ({ ...r, key: "rec" + i })).filter((r) => decisions[r.key] === "Accepted");
+      const tagged = BRIEF.inbox.map((x, i) => ({ ...x, key: "in" + i })).filter((x) => decisions[x.key] === "Tagged to Backlog");
+      if (!acc.length && !tagged.length) return `<h1>Backlog</h1><p class="empty">Nothing here yet. Accept a recommendation in the brief or tag an Inbox item, and it lands here.</p>`;
+      return `<h1>Backlog</h1><p class="lead">What you've chosen to build or write, ranked by priority.</p>` +
+        acc.map((r) => `<div class="item"><div class="chips2"><span class="pill">${r.type}</span><span class="pill ${r.pri}">${{ high: "High", med: "Medium", low: "Low" }[r.pri]}</span></div><h3>${r.h}</h3>${evLinks(r.ev)}</div>`).join("") +
+        tagged.map((x) => `<div class="item"><div class="chips2"><span class="pill low">From Inbox</span></div><h3>${x.h}</h3></div>`).join("");
+    },
+  };
+
+  function draw() {
+    document.body.classList.toggle("viewer", role() === "viewer");
+    const accepted = Object.values(decisions).filter((d) => d === "Accepted" || d === "Tagged to Backlog").length;
+    const open = BRIEF.inbox.filter((_, i) => !decisions["in" + i]).length;
+    const names = [["brief", "Insights brief"], ["inbox", "Inbox", open], ["questions", "Questions", results.length], ["gaps", "Gaps"], ["backlog", "Backlog", accepted]]
+      .filter(([k]) => !(k === "inbox" && role() === "viewer"));
+    if (tab === "inbox" && role() === "viewer") tab = "brief";
+    document.getElementById("tabs").innerHTML = names.map(([k, l, n]) => `<button class="${tab === k ? "on" : ""}" onclick="tab='${k}';draw()">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
+    document.getElementById("view").innerHTML = views[tab]();
+  }
+
+  function openQ(id) {
+    const r = results.find((x) => x.id === id); if (!r) return;
+    const body = document.getElementById("modal-body"); body.innerHTML = `<div class="q" style="margin-top:0">${esc(r.q)}</div>`;
+    body.appendChild(render(r, "m" + id));
+    document.getElementById("modal").classList.add("show");
+  }
+  function closeModal() { document.getElementById("modal").classList.remove("show"); }
+  document.getElementById("modal").addEventListener("click", (e) => { if (e.target.id === "modal") closeModal(); });
+  document.getElementById("role").addEventListener("change", draw);
+
+  fetch("test-results.json").then((r) => r.json()).then((d) => { results = d; draw(); });
+</script>
+<p style="text-align:center;font-size:13px;margin:0 0 32px"><a href="index.html" style="color:#5A6A40">CXology Desk preview home</a></p>
+</body>
+</html>
