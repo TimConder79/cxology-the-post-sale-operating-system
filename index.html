@@ -5,12 +5,12 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Post-Sale Operating System — Tim Conder</title>
-  <meta name="description" content="The Post-Sale Operating System by Tim Conder. Turn retention and expansion into a forecastable post-sale pipeline. Explore the book, tools, and advisory work behind CXology."/>
+  <meta name="description" content="The Post-Sale Operating System by Tim Conder. Turn retention and expansion into a forecastable post-sale pipeline. Explore the book, tools, and advisory work."/>
   <link rel="canonical" href="https://cxology.co/"/>
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="The Post-Sale Operating System"/>
   <meta property="og:title" content="The Post-Sale Operating System — Tim Conder"/>
-  <meta property="og:description" content="The Post-Sale Operating System by Tim Conder. Turn retention and expansion into a forecastable post-sale pipeline. Explore the book, tools, and advisory work behind CXology."/>
+  <meta property="og:description" content="The Post-Sale Operating System by Tim Conder. Turn retention and expansion into a forecastable post-sale pipeline. Explore the book, tools, and advisory work."/>
   <meta property="og:url" content="https://cxology.co/"/>
   <meta property="og:image" content="https://cxology.co/og-image.png"/>
   <meta property="og:image:width" content="1200"/>
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="The Post-Sale Operating System — Tim Conder"/>
-  <meta name="twitter:description" content="The Post-Sale Operating System by Tim Conder. Turn retention and expansion into a forecastable post-sale pipeline. Explore the book, tools, and advisory work behind CXology."/>
+  <meta name="twitter:description" content="The Post-Sale Operating System by Tim Conder. Turn retention and expansion into a forecastable post-sale pipeline. Explore the book, tools, and advisory work."/>
   <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
   <link rel="stylesheet" href="fonts.css"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
@@ -215,6 +215,15 @@ h1.mega{font-size:clamp(2.6rem,6.4vw,4.7rem);margin:.24em 0 .26em}
 .footer .fl a:hover{color:var(--ink)}
 .footer small{color:var(--muted)}
 a.ilink{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2px}
+.lw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:36px}
+@media(max-width:900px){.lw-grid{grid-template-columns:1fr}}
+.lw-card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+.lw-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.lw-card img{width:100%;height:auto;aspect-ratio:16/8.4;object-fit:cover;display:block}
+.lw-body{padding:18px 20px 22px}
+.lw-date{font-family:'Public Sans';font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--lime-deep)}
+.lw-body h3{font-size:1.1rem;line-height:1.25;margin:8px 0;color:var(--ink)}
+.lw-body p{font-size:.92rem;color:var(--muted)}
 </style>
 <script type="application/ld+json">
 {
@@ -286,7 +295,7 @@ a.ilink{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2
 
 <!-- NAV -->
 <header class="nav"><div class="wrap"><div class="row">
-  <a class="logo" href="/"><img class="logo-img" src="assets/logo-h-bb.png" alt="CXology"/></a>
+  <a class="logo" href="/"><img class="logo-img" src="assets/logo-h-bb.png" alt="CXology" width="1329" height="269"/></a>
   <nav class="links" onclick="if(event.target.closest('a'))this.closest('header').classList.remove('open')">
     <a href="book.html">The Book</a>
     <a href="blog/">Blog</a>
@@ -360,7 +369,7 @@ a.ilink{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2
       <div class="part">
         <h3 class="p-head"><span class="p-num">02</span><span class="p-name">Pipeline</span></h3>
         <p class="p-lead">Sales gets a pipeline. Post-sale gets hope.</p>
-        <p class="p-sum">Part II gives retention and expansion the same five-stage discipline (Identify, Align, Advocate, Intent, and Net Revenue Close) so growth becomes something you can forecast.</p>
+        <p class="p-sum">Part II gives retention and expansion the same <a class="ilink" href="post-sale-pipeline.html">five-stage discipline</a> (Identify, Align, Advocate, Intent, and Net Revenue Close) so growth becomes something you can forecast.</p>
         <a href="chapter-part2-intro.html" class="p-cta">Read Part II →</a>
       </div>
       <div class="part">
@@ -437,6 +446,31 @@ a.ilink{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2
   </div></div>
 </section>
 
+<!-- LATEST WRITING -->
+<section class="section band" id="latest">
+  <div class="wrap">
+    <div class="pathhead"><div class="path"></div><div class="ph-body" style="max-width:720px">
+      <div class="eyebrow">Latest Writing</div>
+      <h2 class="lead-h">Field notes on post-sale.</h2>
+    </div></div>
+    <div class="lw-grid">
+      <a class="lw-card" href="blog/predictable-expansion-revenue/">
+        <img src="assets/featured-predictable-expansion-revenue-640.webp" width="640" height="336" alt="The Expansion That Saved Your Quarter Might Reveal a Revenue Blind Spot" loading="lazy" decoding="async"/>
+        <div class="lw-body"><div class="lw-date">October 29, 2026</div><h3>The Expansion That Saved Your Quarter Might Reveal a Revenue Blind Spot</h3><p>The expansion that saves your quarter may have been developing for months. Here&rsquo;s how customer progression and evidence can make that growth visible earlier.</p></div>
+      </a>
+      <a class="lw-card" href="blog/revenue-operations-after-closed-won/">
+        <img src="assets/featured-revenue-operations-after-closed-won-640.webp" width="640" height="336" alt="Why the Revenue Operating Model Shouldn&rsquo;t Stop at Closed Won" loading="lazy" decoding="async"/>
+        <div class="lw-body"><div class="lw-date">October 27, 2026</div><h3>Why the Revenue Operating Model Shouldn&rsquo;t Stop at Closed Won</h3><p>CROs increasingly own acquisition, retention, and growth as one revenue system. But the operating infrastructure still changes dramatically at Closed Won.</p></div>
+      </a>
+      <a class="lw-card" href="blog/evidence-of-customer-progression/">
+        <img src="assets/featured-evidence-of-progression-640.webp" width="640" height="336" alt="Why Existing-Customer Revenue Needs Evidence of Progression" loading="lazy" decoding="async"/>
+        <div class="lw-body"><div class="lw-date">October 19, 2026</div><h3>Why Existing-Customer Revenue Needs Evidence of Progression</h3><p>Activity tells us what the team did. Evidence of progression tells us what changed for the customer, and gives us a better signal of where revenue is headed.</p></div>
+      </a>
+    </div>
+    <div class="cta-center"><a href="blog/" class="morelink">All posts →</a></div>
+  </div>
+</section>
+
 <!-- CLOSE -->
 <section class="close" id="contact">
   <div class="wrap">
@@ -452,8 +486,8 @@ a.ilink{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2
 
 <!-- FOOTER -->
 <footer class="footer"><div class="wrap"><div class="row">
-  <a class="logo" href="/"><img class="logo-img foot" src="assets/logo-h-bb.png" alt="CXology"/></a>
-  <div class="fl"><a href="book.html">The Book</a><a href="blog/">Blog</a><a href="frameworks.html#pipeline">The Pipeline</a><a href="#work">Work With Me</a><a href="about.html">About</a><a href="calculator.html">ROI Calculator</a><a href="readers.html">Reader Hub</a></div>
+  <a class="logo" href="/"><img class="logo-img foot" src="assets/logo-h-bb.png" alt="CXology" width="1329" height="269"/></a>
+  <div class="fl"><a href="book.html">The Book</a><a href="blog/">Blog</a><a href="post-sale-pipeline.html">The Pipeline</a><a href="#work">Work With Me</a><a href="about.html">About</a><a href="calculator.html">ROI Calculator</a><a href="readers.html">Reader Hub</a></div>
   <small>© 2022–2026 CXology LLC. All rights reserved. CXology® is a registered trademark of CXology LLC.</small>
 </div></div></footer>
 
