@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What Is Time to Value? How to Measure TTV That Matters</title>
+  <meta name="description" content="Time to value (TTV) measures how fast customers see results after buying. Learn how to define, measure, and shorten it, and why First Value matters more."/>
+  <link rel="canonical" href="https://cxology.co/time-to-value.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="The Post-Sale Operating System"/>
+  <meta property="og:title" content="What Is Time to Value? How to Measure TTV That Matters"/>
+  <meta property="og:description" content="Time to value (TTV) measures how fast customers see results after buying. Learn how to define, measure, and shorten it, and why First Value matters more."/>
+  <meta property="og:url" content="https://cxology.co/time-to-value.html"/>
+  <meta property="og:image" content="https://cxology.co/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt" content="The Post-Sale Operating System by Tim Conder"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="What Is Time to Value? How to Measure TTV That Matters"/>
+  <meta name="twitter:description" content="Time to value (TTV) measures how fast customers see results after buying. Learn how to define, measure, and shorten it, and why First Value matters more."/>
+  <meta name="twitter:image" content="https://cxology.co/og-image.png"/>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+    /* Page-specific additions only — core styles come from style.css */
+    .reading-progress { position: fixed; top: 60px; left: 0; right: 0; z-index: 99; height: 3px; background: rgba(0,0,0,.06); }
+    .reading-progress-bar { height: 100%; background: var(--olive); width: 0%; transition: width 0.1s linear; }
+
+    /* Chapter-body typography — matches the book chapters exactly */
+    .chapter-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-100); }
+    .chapter-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy-light); margin: 1.5rem 0 0.5rem; }
+    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.82; max-width: 72ch; }
+    .chapter-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
+    .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+    .chapter-body strong { color: var(--navy); }
+    .chapter-body em { font-style: italic; color: var(--text-muted); }
+    .chapter-body p a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .chapter-body p a:hover { color: var(--olive-dim); text-decoration-color: var(--olive-dim); }
+    .chapter-body p.related-read { font-size: 0.9rem; color: var(--text-muted); margin: .2rem 0 0; max-width: 72ch; }
+
+    /* Direct answer + emphasized statement */
+    .chapter-body p.answer-lead { font-size: 1.2rem; line-height: 1.6; font-weight: 600; color: var(--navy); max-width: 72ch; border-left: 4px solid var(--olive); padding: .15rem 0 .15rem 1.2rem; margin: .5rem 0 1.6rem; }
+    .chapter-body p.key-statement { font-size: 1.2rem; line-height: 1.5; font-weight: 700; color: var(--navy); background: var(--olive-pale); border-radius: var(--radius-md); padding: 1.15rem 1.4rem; margin: 2rem 0; max-width: 72ch; }
+
+    /* Forecast-loop diagram */
+    .diagram-wrap { margin: 1.6rem 0 1rem; }
+    .diagram-wrap svg { width: 100%; height: auto; display: block; }
+    .chapter-body p.diagram-caption { font-size: .82rem; color: var(--text-muted); margin: .2rem 0 1.6rem; }
+
+    /* Read-next cards (same treatment as the conclusion chapter) */
+    .tool-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.75rem; margin: 1.5rem 0 1.75rem; max-width: 72ch; }
+    .tool-card { display: block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.1rem; text-decoration: none; transition: all 0.2s; }
+    .tool-card:hover { border-color: var(--navy); background: var(--white); }
+    .tool-card-kicker { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem; }
+    .tool-card-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .tool-card-desc { font-size: 0.8rem; line-height: 1.5; color: var(--gray-700); }
+    @media (max-width: 760px) { .tool-grid { grid-template-columns: 1fr; } }
+  
+    /* Initiative 2 additions */
+    .chapter-body ol:not(.flow) { padding-left: 1.4rem; margin-bottom: 1rem; max-width: 72ch; }
+    .chapter-body .direct-answer { border-left: 4px solid var(--olive); background: var(--off-white); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .direct-answer p { margin: 0; color: var(--gray-700); }
+    .chapter-body .def { border: 1px solid var(--gray-200); border-top: 4px solid var(--navy); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin: .5rem 0 1.4rem; max-width: 72ch; background: var(--white); }
+    .chapter-body .def-label { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--olive-dim); margin-bottom: .35rem; }
+    .chapter-body .def p { margin: 0; font-size: 1.02rem; color: var(--navy); }
+    .chapter-body ol.flow { list-style: none; padding: 0; margin: .4rem 0 1.4rem; display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; max-width: 72ch; }
+    .chapter-body ol.flow li { margin: 0; background: var(--navy); color: #fff; font-size: .85rem; font-weight: 600; padding: .4rem .75rem; border-radius: 999px; line-height: 1.3; }
+    .chapter-body ol.flow li:not(:last-child)::after { content: "\2192"; color: var(--olive); margin-left: .55rem; font-weight: 700; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1rem; max-width: 100%; }
+    table.cmp { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
+    table.cmp caption { caption-side: top; text-align: left; font-weight: 700; color: var(--navy); font-size: .95rem; margin-bottom: .6rem; }
+    table.cmp th, table.cmp td { text-align: left; padding: .6rem .75rem; border: 1px solid var(--gray-200); vertical-align: top; color: var(--gray-700); }
+    table.cmp thead th { background: var(--navy); color: #fff; font-weight: 700; }
+    table.cmp tbody tr:nth-child(even) td { background: var(--off-white); }
+    table.cmp td:first-child { font-weight: 700; color: var(--navy); }
+    table.cmp-wide { min-width: 820px; }
+    .chapter-body h3 + p { margin-top: 0; }
+    /* Initiative 3 additions */
+    .chapter-body .formula { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: .9rem 1.2rem; margin: .4rem 0 1.4rem; max-width: 72ch; }
+    .chapter-body .formula p { margin: .2rem 0; font-size: .92rem; color: var(--navy); }
+    .chapter-body sup a { color: var(--olive-dim); font-weight: 700; text-decoration: none; padding: 0 .1rem; }
+    .chapter-body .sources { border-top: 1px solid var(--gray-200); margin: 2rem 0 1rem; padding-top: 1rem; max-width: 72ch; }
+    .chapter-body .sources-title { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .4rem; }
+    .chapter-body .sources p { font-size: .82rem; line-height: 1.6; color: var(--text-muted); }
+    .chapter-body ol li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script src="/copy-credit.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://cxology.co/time-to-value.html#article",
+      "headline": "What Is Time to Value?",
+      "description": "Time to value (TTV) measures how fast customers see results after buying. Learn how to define, measure, and shorten it, and why First Value matters more.",
+      "url": "https://cxology.co/time-to-value.html",
+      "mainEntityOfPage": {
+        "@id": "https://cxology.co/time-to-value.html"
+      },
+      "inLanguage": "en",
+      "image": "https://cxology.co/og-image.png",
+      "datePublished": "2026-10-29",
+      "dateModified": "2026-10-29",
+      "author": {
+        "@id": "https://cxology.co/#tim"
+      },
+      "publisher": {
+        "@id": "https://cxology.co/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cxology.co/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "What Is Time to Value?",
+          "item": "https://cxology.co/time-to-value.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is time to value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Time to value (TTV) is how long it takes a new customer to get meaningful value from what they bought. The most useful version is time to First Value: the customer’s first meaningful win, tied to why they bought."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate time to value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Subtract the kickoff date from the date the customer achieves the First Value target agreed at kickoff. Track Closed-Won to kickoff separately, and track both by segment and by type of first win."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good time to value?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the product and segment, but First Value should be right-sized to happen within weeks, not months. If the first milestone can’t be reached in a few weeks, it’s probably too big."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between time to value and time to Go Live?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Go Live measures when the solution is ready. Time to value measures when the customer gets a meaningful result. A customer can be live and still not have value."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between time to value and ROI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Time to value measures how quickly the customer gets first proof the purchase works. ROI measures whether the whole investment was worth its cost, usually judged at renewal. First Value doesn’t prove the ROI. It proves the path to it works."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+<!-- NAV — exact match to frameworks.html and chapter.html -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="/"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology" width="1329" height="269"/></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="calculator.html">ROI Calculator</a></li>
+    <li><a href="readers.html">Reader Hub</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="chapter-hero">
+  <div class="hero-grid"></div>
+  <div class="chapter-hero-inner">
+    <span class="chapter-num">The Post-Sale Operating System · Progression</span>
+    <h1 class="headline">What Is Time to Value?</h1>
+    <p class="chapter-hero-sub">How to define it, measure it, and shorten it, and why First Value is the version that matters.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
+
+  <div class="direct-answer" id="short-answer"><p><strong>Short answer:</strong> Time to value (TTV) is how long it takes a new customer to get meaningful value from what they bought. The problem is that most companies never define "value," so they end up measuring time to Go Live or time to onboarding complete. The more useful measure is <strong>time to First Value</strong>: the time it takes the customer to reach their first meaningful win, tied to the reason they bought, and recognized by the customer.</p></div>
+  <p>Every post-sale team says they want faster time to value.</p>
+  <p>Very few can tell you what the clock is measuring.</p>
+  <p>Ask three teams and you&rsquo;ll get three answers. Time to Go Live. Time to onboarding complete. Time to first login.</p>
+  <p>All of those are useful. None of them is value.</p>
+  <h2>What is time to value?</h2>
+  <p>Time to value is the elapsed time between a customer&rsquo;s purchase and the moment they get meaningful value from it.</p>
+  <p>It matters because the early post-sale experience is fragile. During the sale, the customer is at their highest point of enthusiasm. They&rsquo;ve heard the promise. Then the contract closes, onboarding starts, and they&rsquo;re quietly asking:</p>
+  <ul><li>How long until I see something real?</li><li>How much effort is this going to take?</li><li>Was the promise overstated?</li></ul>
+  <p>The longer those questions go unanswered, the more room doubt has to grow.</p>
+  <h2>Why most time-to-value metrics measure the wrong thing</h2>
+  <p>Most TTV metrics are company-centered. They measure when <em>we</em> finished something.</p>
+  <div class="table-wrap"><table class="cmp">
+    <thead><tr><th scope="col">What gets measured</th><th scope="col">What it actually tells you</th></tr></thead>
+    <tbody>
+      <tr><td>Time to Go Live</td><td>The solution is ready</td></tr>
+      <tr><td>Time to onboarding complete</td><td>Our checklist is done</td></tr>
+      <tr><td>Time to First Use</td><td>The customer took the wheel: the first step toward First Value</td></tr>
+      <tr><td><strong>Time to First Value</strong></td><td><strong>The customer got a meaningful result tied to why they bought</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p>Go Live is the company&rsquo;s evidence that the product is ready. First Value is the customer&rsquo;s evidence that the purchase was worth it.</p>
+  <p>A customer can be fully live and still not feel any closer to the reason they bought.</p>
+  <p>The same goes for onboarding. Onboarding isn&rsquo;t successful because every possible configuration is complete. It&rsquo;s successful when the customer is confident enough to move toward First Value.</p>
+  <h2>What is First Value?</h2>
+  <p>First Value is the customer&rsquo;s first proof that the promise of the purchase is becoming real.</p>
+  <p>It&rsquo;s the smallest meaningful win the customer can recognize, appreciate, and build from. Not the smallest task. Not the easiest checklist item. Not a generic activation metric.</p>
+  <p>It has to be both:</p>
+  <ul><li><strong>Achievable:</strong> small enough to happen in weeks, not months.</li><li><strong>Relevant:</strong> connected to the reason the customer bought.</li></ul>
+  <p>If it&rsquo;s achievable but irrelevant, the customer complies without feeling momentum. If it&rsquo;s relevant but too big, they stall before they ever experience success.</p>
+  <p>And it should sound like the customer, not like your implementation plan.</p>
+  <h2>How do you measure time to value?</h2>
+  <p>Measure time to First Value, and measure it the same way every time.</p>
+  <p class="key-statement">Time to First Value = date the customer achieves First Value &minus; kickoff date</p>
+  <p>Three rules make the number useful:</p>
+  <ol><li><strong>Start the clock at kickoff, and time the handoff separately.</strong> Measure time to First Value from kickoff. Track the stretch from Closed-Won to first customer contact, and from first contact to kickoff scheduled, as separate numbers, so handoff delays show up on their own instead of hiding inside onboarding.</li><li><strong>Define First Value before the clock starts.</strong> Capture it at kickoff, in the customer&rsquo;s words, right-size it into something achievable within weeks, and agree on it with the customer.</li><li><strong>Count it only when the customer achieves it.</strong> First Value counts when the customer has reached the First Value target they agreed to. Not hoped for it. Not been trained on it. Achieved it. A completed configuration step doesn&rsquo;t count, and neither does usage data on its own.</li></ol>
+  <p>Then track it by segment and by First Value type. Teams that track time to First Value by segment often find the variance traces back to the welcome phase, not onboarding itself. The quality of the sales-to-CS handoff shapes the quality of the kickoff, which shapes the focus of onboarding.</p>
+  <h2>Time to value examples</h2>
+  <p>A strong First Value statement sounds like the customer:</p>
+  <ul><li>"I want my customer list and automated campaigns brought over and live."</li><li>"I want my first team member using the new workflow without needing help."</li><li>"I want my first report in front of leadership before the next operating meeting."</li></ul>
+  <p>Each one creates focus and gives the team something specific to design around, and to time.</p>
+  <p>Sometimes the customer&rsquo;s goal is too big to be the first win. Say a customer wants to generate five warm lead conversations a month. That&rsquo;s the business objective, and it&rsquo;s probably not the first win. First Value might be a profile built to attract leads, or the first meaningful action taken in the community: the first step that makes the larger outcome possible.</p>
+  <p>The work is to move backward from the big objective until you find the first meaningful action the customer can complete quickly. A useful test: can this be done within two weeks? If not, what has to happen first?</p>
+  <h2>Time to value vs. ROI</h2>
+  <p>They measure different things, at different points in the relationship.</p>
+  <p><strong>Time to value</strong> is about the first proof. How quickly does the customer get a meaningful win tied to why they bought?</p>
+  <p><strong>ROI</strong> is about the whole business case. Was the investment worth what it cost? It usually gets judged later, when someone has to decide whether to keep paying.</p>
+  <p>They&rsquo;re connected, because ROI is built out of progress, and First Value is where progress starts.</p>
+  <p>Go back to the customer who wants five warm lead conversations a month. That outcome is the return they bought for. The first win is much smaller: a profile built to attract leads. The first win doesn&rsquo;t prove the ROI. It proves the path to it works, and it gives the customer a reason to keep going.</p>
+  <p>From there, the customer keeps building toward the larger outcome, one Value Block at a time. By renewal, someone inside the customer has to <a href="chapter-16.html">defend the investment</a>, often without you in the room. A champion can believe in the product and still lose that internal business case if the outcomes are vague. The evidence that started with First Value is what lets them make it.</p>
+  <p>A slow time to value can hurt your return, too. In the book, I describe a company that didn&rsquo;t bill customers until Go Live. Onboarding tried to show every customer everything the product could do. It was too much, and many customers gave up before they ever went live. Every hour spent finding, selling, and onboarding those customers became a loss. They left angry, and they carried that story into the market. The product was never the problem. The customers simply never reached a first win.</p>
+  <h2>How to reduce time to value</h2>
+  <p>Shortening TTV usually isn&rsquo;t about working faster. It&rsquo;s about narrowing the path.</p>
+  <ul><li><strong>Right-size the first win.</strong> Don&rsquo;t make the customer&rsquo;s biggest goal their first milestone.</li><li><strong>Put blinders on onboarding.</strong> Teach and configure only what the first win requires. Show the rest after the customer succeeds with less.</li><li><strong>Redefine Go Live.</strong> If Go Live means everything fully implemented, it&rsquo;s too big to be the first milestone. Let it support progress, not perfection.</li><li><strong>Start before kickoff.</strong> Review the sales context, the reason for purchase, and the most common First Value patterns for customers like this one. Most companies have a small number of first wins that most customers cluster around.</li><li><strong>Intervene when it stalls.</strong> A missed First Value date is a signal to apply resources, not a reason to mark the customer red.</li></ul>
+  <p>I&rsquo;ve seen an implementation redesign built this way take time to First Value under three weeks, down from inconsistent and reactive.</p>
+  <h2>What happens after First Value?</h2>
+  <p>First Value isn&rsquo;t the finish line. It&rsquo;s the beginning of the relationship becoming real.</p>
+  <p>The danger comes next, and it rarely looks like an emergency. Onboarding is done. Someone saw a useful result. The implementation team moves on, the account looks stable, and weeks pass. Progress gets vague.</p>
+  <p>This is the messy middle: the long stretch between First Value and renewal, where most post-sale relationships lose momentum.</p>
+  <p>So the first win should set up the next one. Celebrate it simply, then connect it to the customer&rsquo;s next objective, broken into <a href="chapter-13.html">Value Blocks</a>: small, purposeful steps toward a larger outcome the customer still cares about.</p>
+  <h2>Why time to First Value matters to revenue</h2>
+  <p>This is where it stops being an onboarding metric.</p>
+  <p><strong>First Value is the first real risk signal.</strong> A first-term customer who hasn&rsquo;t reached it is, in the book&rsquo;s words, "a renewal at real risk." When a customer struggles to get there, you see the risks that later show up as adoption, renewal, or expansion problems while the relationship is still young enough to fix. It&rsquo;s also the line before growth. Until the customer has First Value, you haven&rsquo;t earned the right to pursue expansion. Without that proof, expansion feels like a risk to the customer rather than a continuation of success.</p>
+  <p><strong>It&rsquo;s where gross retention starts.</strong> If a customer never reaches First Value, never gets a structured kickoff, and never agrees on what success means, you won&rsquo;t keep them.</p>
+  <p><strong>It moves the renewal.</strong> In the <a href="post-sale-pipeline.html">Post-Sale Pipeline</a>, a first-term renewal stays in Identify until the customer reaches First Value. That&rsquo;s the evidence that moves it to Align. It&rsquo;s the single most important stage transition in the pipeline. Everything before it is preparation. Everything after it builds on proof.</p>
+  <p class="key-statement">Time to First Value isn&rsquo;t just an onboarding metric. It&rsquo;s how long your first-term renewals wait in Identify.</p>
+  <h2 id="faq">Frequently asked questions</h2>
+  <h3>What is time to value?</h3>
+  <p>Time to value (TTV) is how long it takes a new customer to get meaningful value from what they bought. The most useful version is time to First Value: the customer&rsquo;s first meaningful win, tied to why they bought.</p>
+  <h3>How do you calculate time to value?</h3>
+  <p>Subtract the kickoff date from the date the customer achieves the First Value target agreed at kickoff. Track Closed-Won to kickoff separately, and track both by segment and by type of first win.</p>
+  <h3>What is a good time to value?</h3>
+  <p>It depends on the product and segment, but First Value should be right-sized to happen within weeks, not months. If the first milestone can&rsquo;t be reached in a few weeks, it&rsquo;s probably too big.</p>
+  <h3>What is the difference between time to value and time to Go Live?</h3>
+  <p>Go Live measures when the solution is ready. Time to value measures when the customer gets a meaningful result. A customer can be live and still not have value.</p>
+  <h3>What is the difference between time to value and ROI?</h3>
+  <p>Time to value measures how quickly the customer gets first proof the purchase works. ROI measures whether the whole investment was worth its cost, usually judged at renewal. First Value doesn&rsquo;t prove the ROI. It proves the path to it works.</p>
+
+  <h2 id="read-next">Read Next</h2>
+  <div class="tool-grid">
+    <a class="tool-card" href="chapter-12.html"><div class="tool-card-kicker">The Book · Chapter 12</div><div class="tool-card-title">The First Value Play</div><div class="tool-card-desc">How to define, right-size, reach, and celebrate the customer&rsquo;s first win.</div></a>
+    <a class="tool-card" href="post-sale-pipeline.html"><div class="tool-card-kicker">The Pipeline</div><div class="tool-card-title">What Is a Post-Sale Pipeline?</div><div class="tool-card-desc">Why First Value is the evidence that moves a first-term renewal.</div></a>
+    <a class="tool-card" href="blog/how-to-forecast-renewals/"><div class="tool-card-kicker">How-To</div><div class="tool-card-title">How to Forecast Renewals</div><div class="tool-card-desc">A step-by-step method for forecasting renewals on customer evidence.</div></a>
+    <a class="tool-card" href="journey-map.html"><div class="tool-card-kicker">Design</div><div class="tool-card-title">The Post-Sale Journey Map</div><div class="tool-card-desc">Where retention is won or lost across the customer&rsquo;s year.</div></a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">CXology</div>
+        <p class="footer-brand-desc">A post-sale operating system for predictable retention and scalable growth.</p>
+        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
+      </div>
+      <div>
+        <div class="footer-col-title">The Book</div>
+        <ul class="footer-links">
+          <li><a href="book.html#parts">Part I: From Function to System</a></li>
+          <li><a href="book.html#parts">Part II: The Pipeline</a></li>
+          <li><a href="book.html#parts">Part III: Lifecycle Plays</a></li>
+          <li><a href="book.html#parts">Part IV: Scale &amp; Data</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Frameworks</div>
+        <ul class="footer-links">
+          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
+          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
+          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
+          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Tools</div>
+        <ul class="footer-links">
+          <li><a href="calculator.html">NRR Calculator</a></li>
+          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
+          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
+      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+</script>
+
+</body>
+</html>
