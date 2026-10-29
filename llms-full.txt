@@ -4784,7 +4784,7 @@ Not every customer needs every row at high-touch. The map defines what needs to 
 
 ## Tying the map to NRR
 
-Gross Revenue Retention (GRR) is determined primarily by the left half of the map — Months 1 through 6. If the customer doesn't achieve First Value, doesn't experience a structured Kickoff, and doesn't have a defined success metric, you will not retain the base. GRR below 85% is almost always a Month 1–3 problem.
+Gross Revenue Retention (GRR) is determined primarily by the left half of the map — Months 1 through 6. If the customer doesn't achieve First Value, doesn't experience a structured Kickoff, and doesn't have a defined success metric, you will not retain the base.
 
 Net Revenue Retention (NRR) — which includes expansions and upsells — is determined by the right half. Months 7–12, alignment meetings, sharing strategic insights, developing an internal champion who can make the expansion case upward. Companies running NRR above 110% are not running better renewal conversations. They are running better Month 4 through Month 10 operating rhythms.
 
