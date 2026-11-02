@@ -1,6 +1,6 @@
 # The Post-Sale Operating System: Full Text
 
-> The complete text of The Post-Sale Operating System by Tim Conder (founder of CXology), followed by the canonical companion pages. The Post-Sale Operating System has three layers (the Post-Sale Pipeline, plays, and infrastructure) and one management loop that connects expected customer progression, plays, evidence, the pipeline, and the next action.
+> The complete text of The Post-Sale Operating System by Tim Conder (founder of CXology), followed by the canonical companion pages. Retention is a designed outcome. The Post-Sale Operating System has three components (the Post-Sale Pipeline, plays, and infrastructure) and one management loop that connects expected vs. actual progression, triggered plays, customer progression, confirmed evidence, the pipeline and forecast, and next action and learning.
 
 Author: Tim Conder. Source: https://cxology.co/ . Navigation index: https://cxology.co/llms.txt .
 
@@ -109,9 +109,9 @@ What looked like unrelated customer problems were often manifestations of the sa
 
 That realization changed everything for me.
 
-## Retention is a system of progression, not an outcome
+## Retention is a designed outcome
 
-I stopped thinking about retention primarily as an outcome to measure after the fact and started thinking about it as a system of progression that must be intentionally designed, inspected, and managed long before renewal ever appears on a calendar.
+I stopped thinking about retention primarily as an outcome to measure after the fact and started thinking about it as an outcome to design: the result of a system of progression that must be intentionally designed, inspected, and managed long before renewal ever appears on a calendar. Retention is still an outcome. It is just not merely a lagging metric.
 
 Churn rarely begins at renewal. It begins much earlier, and it can start when:
 
@@ -169,7 +169,7 @@ This book introduces a different way of thinking about the post-sale. It argues 
 
 Customers progress through a designed journey. There are required outcomes. There are critical inflection points that determine whether momentum strengthens or stalls. There are recurring progression failures that can be identified systematically. There are operational conditions that must consistently exist for renewal and growth to become predictable.
 
-The mechanics mirror what sales already does. Deals advance when defined conditions are met and inspected, and customers can advance the same way. And because the pipeline runs on evidence the team already captures in its daily work, not on usage telemetry, it works even in organizations convinced they don't have the data for it. The chapters ahead show exactly how.
+The mechanics mirror what sales already does. Deals advance when defined conditions are met and inspected. Customer progression can be inspected the same way, and renewal and expansion opportunities can advance the same way. Customers don't move through the pipeline. Revenue opportunities do. And because the pipeline runs on evidence the team already captures in its daily work, not on usage telemetry, it works even in organizations convinced they don't have the data for it. The chapters ahead show exactly how.
 
 And once progression becomes visible, everything changes.
 
@@ -189,7 +189,7 @@ Even AI fits differently into this model. Today, most AI in the post-sale is foc
 
 ## What a post-sale operating system really is
 
-Retention is not a department, a feeling, or a lagging metric. It is a system of customer progression that can be intentionally designed, operationalized, inspected, and improved.
+Retention is not a department, a feeling, or merely a lagging metric. It is a designed outcome. The Post-Sale Operating System connects the work, evidence, and resources required to create customer progression with the commercial decisions that determine retention and growth.
 
 This book is ultimately about creating that operating model. Not a collection of disconnected best practices. Not another playbook or health scoring methodology or framework that depends entirely on individual heroics. A system. One that creates clarity around what must happen after the sale, makes customer progression visible, and enables consistency, forecasting, coaching, and scale.
 
@@ -264,9 +264,9 @@ Seen through that lens, one of the central weaknesses in most Customer Success o
 
 This is where the idea of a post-sale operating system becomes essential. An operating system is not a dashboard. It is not a list of best practices. It is not another management layer designed to observe work from a distance. It is the structure that defines how customers progress, what plays are required at each inflection point, what signals matter, and how all of that connects directly to retention and growth. It creates consistency without eliminating judgment. It makes execution visible without reducing the work to a checklist.
 
-In practical terms, this means treating the post-sale journey with the same seriousness that companies already apply to pre-sale pipeline management. It means defining what progression looks like after the deal is signed. It means being explicit about the plays that move relationships forward: purchase and welcome, kickoff, onboarding, first value, alignment meetings, value blocks and insights, renew and grow. It means distinguishing between customer activity and customer progress. It means creating visibility not only into risk, but into whether execution is happening the way it was designed.
+In practical terms, this means treating the post-sale journey with the same seriousness that companies already apply to pre-sale pipeline management. It means defining what progression looks like after the deal is signed. It means being explicit about the plays that move relationships forward: purchase and welcome, kickoff, onboarding, first value, value blocks, sharing insights, alignment meetings, renew and grow. It means distinguishing between customer activity and customer progress. It means creating visibility not only into risk, but into whether execution is happening the way it was designed.
 
-The operating system is not owned by Customer Success alone. Sales, Product, Services, Support, Marketing, Finance, and leadership all shape whether customers progress. For the full definition, the three layers, and the loop that connects them, read [What Is a Post-Sale Operating System?](https://cxology.co/post-sale-operating-system.html)
+The operating system is not owned by Customer Success alone. Sales, Product, Services, Support, Marketing, Finance, and leadership all shape whether customers progress. For the full definition, the three components, and the loop that connects them, read [What Is a Post-Sale Operating System?](https://cxology.co/post-sale-operating-system.html)
 
 ## Right-touch execution at scale
 
@@ -463,9 +463,9 @@ For a focused walkthrough of how to tell activity from real customer progression
 ## Part II Introduction: How the Post-Sale Pipeline Works
 Source: https://cxology.co/chapter-part2-intro.html
 
-[Diagram] The post-sale pipeline at a glance: the sales pipeline ends at purchase, where the renewal enters Identify. Kickoff, onboarding, and First Value happen while a first-term renewal sits in Identify; First Value is the evidence that moves it to Align, then Advocate, Intent, and Net Revenue Close. The customer journey runs beneath the stages.
+[Diagram] The post-sale pipeline at a glance: the sales pipeline ends at purchase, where the renewal enters Identify. Kickoff, onboarding, and First Value happen while a first-term renewal sits in Identify; First Value, the confirmed customer outcome designated as the exit criterion, moves it to Align, then Advocate, Intent, and Net Revenue Close. Beneath the stages, the customer journey runs through Value Blocks, Sharing Insights, Alignment Meetings, and Renew and Grow.
 
-The post-sale pipeline at a glance. Revenue opportunities, not customers, advance through five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. The customer journey beneath shows the work that helps the customer progress: goal facilitation, shared insights, and ongoing progress after First Value. The renewal enters Identify at purchase, not after onboarding. Onboarding happens while the first-term renewal sits in Identify, building toward First Value. The chapters in this part unpack each stage in turn.
+The post-sale pipeline at a glance. Revenue opportunities, not customers, advance through five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. The customer journey beneath shows the plays that help the customer progress after First Value: Value Blocks, Sharing Insights, and Alignment Meetings, with goal facilitation exercised through them, then Renew & Grow. The renewal enters Identify at purchase, not after onboarding. Onboarding happens while the first-term renewal sits in Identify, building toward First Value. The chapters in this part unpack each stage in turn.
 
 Part I established that retention behaves like a pipeline: customer progression can be designed, inspected, and managed, and the revenue it supports can be seen and forecast. Part II makes that pipeline concrete. It defines the five stages of Identify, Align, Advocate, Intent, and Net Revenue Close, and the evidence each one requires for an opportunity to advance. One distinction runs through all of it: customers don't move through the pipeline. Revenue opportunities do.
 
@@ -485,21 +485,23 @@ This is exactly how a sales pipeline works. A sales rep does not hold a discover
 
 This distinction matters because it defines how the post-sale pipeline creates revenue, and how the two kinds of revenue move through the same stages differently.
 
-Every customer creates a renewal opportunity at purchase. The renewal exists from day one. It carries a known close date: the end of the contract. Its value is the current ARR up for renewal. It is the floor. It does not need a separate sales motion, because the lifecycle plays do most of the work that supports it. But it is held to the same evidence standard as any other opportunity. In the first term, it stays in Identify until the customer reaches First Value. Value Blocks create evidence of progress. Alignment Meetings keep the relationship pointed at the right outcomes and build the internal support the renewal needs. Renew & Grow brings the accumulated evidence together and surfaces the customer's commitment. The renewal advances only as that evidence meets each stage's criteria, and it reaches Intent only when the customer says yes and the path forward is credible. The pipeline shows exactly where it stands.
+Every customer creates a renewal opportunity at purchase. The renewal exists from day one. It carries a known close date: the end of the contract. Its value is the current ARR up for renewal. It is the floor. It does not need a separate sales motion, because the lifecycle plays do most of the work that supports it. But it is held to the same evidence standard as any other opportunity. In the first term, it stays in Identify until the customer reaches First Value, the confirmed customer outcome designated as that stage's exit criterion. Value Blocks create evidence of progress. Alignment Meetings keep the relationship pointed at the right outcomes and build the internal support the renewal needs. Renew & Grow brings the accumulated evidence together and surfaces the customer's commitment. The renewal advances only as that evidence meets each stage's criteria, and it reaches Intent only when the customer says yes and the path forward is credible. The pipeline shows exactly where it stands.
+
+Customer progression does not automatically advance commercial opportunities. A commercial opportunity advances only when its defined exit criteria are satisfied. Those criteria may include confirmed customer outcomes, commercial commitments, or both, depending on the stage and opportunity type.
 
 Expansion opportunities are different. They are new revenue. An upsell identified during a Sharing Insights play. A cross-sell that surfaces in an Alignment Meeting. A new business unit that appears when a champion introduces a peer. Each of these is a distinct opportunity that enters the pipeline at Identify once it is specific enough to manage and moves through Align, Advocate, Intent, and Net Revenue Close on the strength of its own evidence.
 
-Speed is not a property of the opportunity type. It is a property of how much of the required evidence already exists. A first-term renewal is often the slowest opportunity in the pipeline, because it has to earn every stage, starting with First Value. A repeat-cycle renewal often moves quickly, because it inherits what the relationship has already built. Alignment, advocates, and evidence carry forward, and the early exit criteria are often met quickly. Expansion opportunities move at whatever pace the account's existing conditions allow.
+Speed is not a property of the opportunity type. It is a property of how much of the required evidence already exists. A first-term renewal is often the slowest opportunity in the pipeline, because it has to earn every stage, starting with First Value. A repeat-cycle renewal often moves quickly, because it inherits what the relationship has already built. Alignment, advocates, and evidence carry forward, and the early exit criteria are often met quickly. It does not earn First Value again. It advances from Identify to Align when the customer confirms the goals or business priorities that justify continuing for the next term. Expansion opportunities move at whatever pace the account's existing conditions allow.
 
 A single customer may have one renewal and two or three expansion opportunities moving through the pipeline at once, each in its own stage. The renewal is the floor. The expansion opportunities are the growth. The pipeline tracks both. Evidence that meets each stage's exit criteria advances both.
 
 ## Probability weights are set per stage. What varies is the work required to earn them.
 
-Each stage carries a default probability: Identify 20%, Align 40%, Advocate 60%, Intent 90%, and Net Revenue Close 100%. These are standardized forecasting assumptions tied to increasing levels of commercial evidence, not measured close rates. The model stays simple because the math does not change by customer tier, segment, or complexity. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital SMB customer. The difference is operational, not mathematical. A high-touch customer may need a formal Alignment Meeting with executive stakeholders to produce the evidence. A low-touch customer may produce it through a self-service milestone or an automated check-in. The plays change. The stages do not. The probabilities do not.
+Each stage carries a default probability: Identify 20%, Align 40%, Advocate 60%, Intent 90%, and Net Revenue Close 100%. These are standardized forecasting assumptions tied to increasing levels of evidence, from confirmed customer outcomes in the early stages to commercial commitments in the later ones. They are not measured close rates. The model stays simple because the math does not change by customer tier, segment, or complexity. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital SMB customer. The difference is operational, not mathematical. A high-touch customer may need a formal Alignment Meeting with executive stakeholders to produce the evidence. A low-touch customer may produce it through a self-service milestone or an automated check-in. The plays change. The stages do not. The probabilities do not.
 
 This is what makes the model defensible to a CRO. The pipeline is not a custom scoring system that needs to be explained differently for every segment. It is a shared structure with consistent definitions and consistent math, delivered through segment-appropriate motions.
 
-The pipeline also moves in both directions. An opportunity sits at the highest stage its current evidence supports. When an advocate leaves, a priority changes, or a commitment is withdrawn, the opportunity moves back to the stage its remaining evidence supports. Retention opportunities never drop out early. Each one ends at Net Revenue Close with what actually happened, including a reduced renewal or a loss.
+The pipeline also moves in both directions. An opportunity sits at the highest stage its current evidence supports. When an advocate leaves, a priority changes, or a commitment is withdrawn, the opportunity moves back to the stage its remaining evidence supports. Retention opportunities never drop out early. Each one ends at Net Revenue Close with what actually happened, including a reduced renewal or a loss. Most opportunities reach that point stage by stage. A binding auto-renewal is the exception: silence is not a yes, so it holds its last evidence-supported stage until the renewal takes effect and can then move directly to Net Revenue Close.
 
 The chapters that follow make the pipeline concrete. They move through the five stages in order, from Identify through Net Revenue Close, and define the evidence each one requires for an opportunity to advance. Every stage follows the same rule: the stage is not determined by what the team did. It is determined by what the team can prove about the opportunity. Plays help create that evidence. In the early stages, much of it comes from customer progression. In the later stages, it comes from internal advocacy, an explicit commitment, and finally the completed close. When the evidence meets the next stage's exit criteria, the stage changes, the probability updates, and the forecast updates.
 
@@ -564,7 +566,7 @@ Seen this way, Identify is not a single step. It is a continuous process of disc
 
 How the Pipeline Moves
 
-Every customer's retention opportunity enters the pipeline at purchase, in Identify. It does not wait for the renewal to get close. In the first term, the renewal stays in Identify until the customer reaches First Value, because a customer who has not yet experienced a meaningful result from what they bought is a renewal at real risk. The Kickoff and First Value plays help create that progress, but the stage moves on evidence that First Value occurred, not on the plays being completed and not on usage data. There is one documented exception: the customer has confirmed a specific reason First Value is delayed, reaffirmed the goal, and set a revised First Value date. If that date passes, the renewal returns to Identify and is escalated. Later renewals do not have to earn First Value again. Expansion opportunities enter Identify when they are specific enough to manage, and advance to Align when they are tied to a goal the customer has named.
+Every customer's retention opportunity enters the pipeline at purchase, in Identify. It does not wait for the renewal to get close. In the first term, the renewal stays in Identify until the customer reaches First Value, because a customer who has not yet experienced a meaningful result from what they bought is a renewal at real risk. The Kickoff and First Value plays help create that progress, but the stage moves on evidence that First Value occurred, not on the plays being completed and not on usage data. First Value is the confirmed customer outcome designated as this stage's exit criterion. A documented delay does not change that. If the customer confirms a specific reason First Value is delayed, reaffirms the goal, and agrees to a revised First Value date, the renewal stays in Identify. The team records the reason, the revised date, the owner, and the next inspection. The delay changes how the renewal is monitored, not its stage, and if the revised date passes, the renewal is escalated. Later renewals do not have to earn First Value again. For a repeat renewal, the opportunity advances from Identify to Align when the customer has confirmed the goals or business priorities that justify continuing the relationship for the next term. Prior value provides context, but the opportunity must remain connected to a current customer need. Expansion opportunities enter Identify when they are specific enough to manage, and advance to Align when they are tied to a goal the customer has named.
 
 This is also why probability works at the stage level, not the customer level. A retention opportunity for a low-touch SMB customer and one for a high-touch enterprise customer can both sit in Identify and carry the same default probability. What differs is the work required to produce the evidence that moves them, not the math. The forecasting model stays simple enough to defend to a CRO while still respecting the operational reality that different segments require different motions.
 
@@ -742,7 +744,7 @@ What have you given your advocate that they could use, without editing, to expla
 
 ## Goal Facilitation Keeps Advocacy Grounded
 
-Goal facilitation plays a similar role. If Align keeps progress connected to purpose, goal facilitation keeps the customer moving toward the outcomes that justify the relationship. It prevents the partnership from becoming passive. The CSM is not waiting for the customer to ask for help or for a risk signal to appear. They are staying involved enough to see where progress is accelerating, where it is slowing, and where additional support may be needed.
+Goal facilitation plays a similar role. It is not a separate play. It is a capability exercised through the existing plays, especially Value Blocks and Alignment Meetings. If Align keeps progress connected to purpose, goal facilitation keeps the customer moving toward the outcomes that justify the relationship. It prevents the partnership from becoming passive. The CSM is not waiting for the customer to ask for help or for a risk signal to appear. They are staying involved enough to see where progress is accelerating, where it is slowing, and where additional support may be needed.
 
 That ongoing involvement strengthens advocacy because it gives the advocate a stronger story to tell. The story is no longer limited to product usage or satisfaction. It becomes a story about progress against a meaningful business goal. It shows that the relationship has a direction, that obstacles are being addressed, and that the vendor is acting like a partner rather than a supplier.
 
@@ -917,7 +919,7 @@ Most importantly, Intent keeps the post-sale pipeline honest. If the customer is
 
 How the Pipeline Moves
 
-An opportunity enters Intent when the customer has made an explicit commitment, a verbal yes or its equivalent, and the path forward is credible: the budget owner, approval sequence, procurement timeline, and executive sponsorship are known. The Renew & Grow play helps surface and document that path. Intent is not a signed agreement. The opportunity advances to Net Revenue Close only when the remaining commercial process is complete and the revenue outcome is final. The renewal is held to the same standard. It has been in the pipeline since day one, but it still needs the customer's commitment to reach Intent. If the commitment is withdrawn or the path breaks, the opportunity moves back to Advocate. If the close date slips, it stays in Intent only when the customer confirms new timing. As in every stage, an opportunity moves on evidence, not on forecast optimism or friendly signals.
+An opportunity enters Intent when the customer has made an explicit commitment, a verbal yes or its equivalent, and the path forward is credible: the budget owner, approval sequence, procurement timeline, and executive sponsorship are known. The Renew & Grow play helps surface and document that path. Intent is not a signed agreement. The opportunity advances to Net Revenue Close only when the remaining commercial process is complete and the revenue outcome is final. The renewal is held to the same standard. It has been in the pipeline since day one, but it still needs the customer's commitment to reach Intent. If the commitment is withdrawn or the path breaks, the opportunity moves back to Advocate. If the close date slips, it stays in Intent only when the customer confirms new timing. If it slips without confirmed new timing, the path is no longer credible, and the opportunity moves back to Advocate. A contract that renews automatically is not a verbal yes either. Contractual continuation is not commercial intent, so an auto-renewing opportunity holds its last evidence-supported stage until the customer commits or the renewal takes effect. As in every stage, an opportunity moves on evidence, not on forecast optimism or friendly signals.
 
 Chapter Takeaway
 
@@ -1040,7 +1042,7 @@ The Mechanic That Connects Parts II and III
 
 Throughout this section, each stage has described what it takes for an opportunity to advance: observable evidence that satisfies that stage's exit criteria. The plays are how much of that evidence gets created. A play is what the company does. Progression is what changes with the customer. Evidence tells whether the required change occurred. The pipeline translates that evidence into a revenue view. In the early stages, much of the evidence is customer progression: a confirmed goal, First Value, meaningful results. In the later stages, it is internal advocacy, an explicit commitment, and finally the completed revenue outcome. Running a play does not move a stage. When the evidence meets the next stage's criteria, the stage advances, the probability updates, and the forecast updates. When the evidence stops holding, the opportunity moves back. There is no separate data layer to build. The plays are the operational work, and the evidence they produce is what the forecast reads. Part III shows what those plays look like in practice.
 
-Part III moves from architecture to execution. The next chapters focus on the lifecycle plays that create the conditions for the pipeline to work in the first place: Purchase and Welcome, Kickoff, Onboarding, First Value, Value Blocks and Insights, Alignment Meetings, and Renew and Grow. These plays are where the theory becomes practical. They are how teams create relevance, deliver value, build trust, and guide customers through the inflection points that determine whether the relationship grows stronger or begins to weaken.
+Part III moves from architecture to execution. The next chapters focus on the lifecycle plays that create the conditions for the pipeline to work in the first place: Purchase and Welcome, Kickoff, Onboarding, First Value, Value Blocks, Sharing Insights, Alignment Meetings, and Renew and Grow. These plays are where the theory becomes practical. They are how teams create relevance, deliver value, build trust, and guide customers through the inflection points that determine whether the relationship grows stronger or begins to weaken.
 
 If Part II defined the growth path, Part III shows how to run it.
 
@@ -1079,7 +1081,7 @@ At each inflection point, the design work has the same shape: decide what should
 
 ## Each play creates a dual output.
 
-This is the mechanic that connects Part III to Part II. When a play does its job and the customer makes the intended progress, they move closer to the outcome they care about: a successful onboarding, a first meaningful win, a stronger alignment with their own organization, a confident path to renewal and growth. The evidence of that progress is what the pipeline can read. When it meets the exit criteria for an opportunity's next stage, the stage changes, the probability updates, and the forecast updates. When it doesn't, the play still served the customer, but the pipeline doesn't move.
+This is the mechanic that connects Part III to Part II. When a play does its job and the customer makes the intended progress, they move closer to the outcome they care about: a successful onboarding, a first meaningful win, a stronger alignment with their own organization, a confident path to renewal and growth. The evidence of that progress is what the pipeline can read. When it meets the exit criteria for an opportunity's next stage, the stage changes, the probability updates, and the forecast updates. When it doesn't, the play still served the customer, but the pipeline doesn't move. Customer progression does not automatically advance commercial opportunities. A commercial opportunity advances only when its defined exit criteria are satisfied. Those criteria may include confirmed customer outcomes, commercial commitments, or both, depending on the stage and opportunity type.
 
 The CSM does not run the play for the pipeline. The CSM runs the play for the customer. But if the play is designed well and its evidence is captured, the pipeline has something real to read.
 
@@ -1097,7 +1099,7 @@ The first phase is Align, a lifecycle phase, not the Align stage of the pipeline
 
 The second phase is Engage, and it is a loop. Value Blocks, Sharing Insights, and Alignment Meetings work together through the messy middle between First Value and renewal. An Alignment Meeting sets the next objective. Value Blocks break it into achievable steps. Insights steer the customer, recognize progress, and celebrate outcomes along the way. Then the next Alignment Meeting checks what changed and sets the next objective. A healthy customer moves through that loop several times a year.
 
-The third phase is Achieve. Renew & Grow confirms the value the loop produced and turns it into the next commitment, and the anniversary is a moment to celebrate it. Then the customer goes back into the Engage loop for year two, and year three, and beyond. Year two does not repeat onboarding. It runs the loop with everything year one built: a known definition of success, proven Value Blocks, engaged stakeholders, and evidence. That is why a repeat renewal often moves faster than the first one.
+The third phase is Achieve. Renew & Grow confirms the value the loop produced and turns it into the next commitment, and the anniversary is a moment to celebrate it. Then the customer goes back into the Engage loop for year two, and year three, and beyond. Year two does not repeat onboarding, and First Value is not earned again. It runs the loop with everything year one built: a known definition of success, proven Value Blocks, engaged stakeholders, and evidence. Where the new year starts depends on the customer's current state. When goals, priorities, stakeholders, or expected outcomes need to be revisited or reconfirmed, it starts with an Alignment Meeting. When priorities are already established, it starts with the next Value Block. That is why a repeat renewal often moves faster than the first one.
 
 How many times a customer moves through the loop, and how much of it involves people, depends on what they bought. A complex, higher-cost offering may cycle through the loop several times a year, with live Alignment Meetings, CSM-led Value Blocks, and insights tailored to each stakeholder. A narrower or lower-ACV offering may go around once or a few times a year, with much of the work automated or AI-assisted: a personalized video in place of a meeting, guided in-product steps in place of a working session, insights triggered by usage. The delivery changes. The motions do not. Every customer still needs a way to align on what they are trying to achieve, see what is working, and keep making progress toward value.
 
@@ -1278,7 +1280,7 @@ That is the work this play does. It replaces anxiety with trust, silence with mo
 
 How the Pipeline Moves
 
-The renewal enters the Identify stage of the post-sale pipeline at purchase, just as a closed-won deal enters the sales pipeline. Purchase & Welcome is the first play that serves it: IKT transferred, CSM assigned, welcome delivered, kickoff scheduled. It is the first opportunity every account carries: a fixed close date at the end of the contract, a value equal to current ARR. The renewal is the floor, and the operating system protects it from this first moment forward. The plays serve the customer and help create the evidence the renewal needs. The pipeline tracks what that evidence shows about the renewal.
+The renewal enters the Identify stage of the post-sale pipeline at purchase, just as a closed-won deal enters the sales pipeline. Purchase & Welcome is the first play that serves it. The execution is visible in the record: IKT transferred, CSM assigned, welcome delivered, kickoff scheduled. The intended customer outcome is what matters: a customer who feels confident in the decision they just made and is ready for kickoff. It is the first opportunity every account carries: a fixed close date at the end of the contract, a value equal to current ARR. The renewal is the floor, and the operating system protects it from this first moment forward. The plays serve the customer and help create the evidence the renewal needs. The pipeline tracks what that evidence shows about the renewal.
 
 ## Chapter 10: Play 2 — The Kickoff Play
 Source: https://cxology.co/chapter-10.html
@@ -1371,7 +1373,7 @@ I have seen this pay off directly. In a kickoff with an enterprise client, the f
 
 Once the customer’s definition of success is clearer, the kickoff should transition into expectations. This is where the company clarifies roles and responsibilities on both sides of the table. Who owns what? Who makes decisions? Who signs off on milestones? How will priorities be established? What is expected of the customer team? What can the customer expect from your team? What will executive engagement look like after kickoff?
 
-This is also the right moment to show the customer the path ahead. A visual overview of the first year can be powerful, not because it needs to be complex, but because it gives the customer a mental map. It shows that onboarding is not the destination. First Value is coming. Alignment Meetings are coming. Value Blocks and Insights are coming. Renewal and growth are not last-minute commercial events; they are the result of a relationship that has been intentionally designed from the beginning.
+This is also the right moment to show the customer the path ahead. A visual overview of the first year can be powerful, not because it needs to be complex, but because it gives the customer a mental map. It shows that onboarding is not the destination. First Value is coming. Alignment Meetings are coming. Value Blocks and Sharing Insights are coming. Renewal and growth are not last-minute commercial events; they are the result of a relationship that has been intentionally designed from the beginning.
 
 The final strategic move inside kickoff is defining the path to First Value. The customer may have a large desired outcome, but the kickoff team should help translate that outcome into the first achievable win. First Value should be meaningful enough for the customer to feel progress and narrow enough to create momentum quickly. In many environments, a useful target is less than two weeks from kickoff, but the exact timeline should fit the product, the customer, and the complexity of the use case.
 
@@ -1734,7 +1736,7 @@ The next play, First Value, depends on this foundation. First Value should not h
 
 How the Pipeline Moves
 
-The six onboarding motions position the renewal for the move from Identify to Align. Completing them does not advance the stage on their own; First Value does that. But onboarding creates the conditions that make First Value achievable. When onboarding is weak, the renewal stalls in Identify regardless of elapsed time. The pipeline reflects evidence, not activity or duration.
+The six onboarding motions position the renewal for the move from Identify to Align. Completing them does not advance the stage on their own; First Value, the designated exit criterion, does that. But onboarding creates the conditions that make First Value achievable. When onboarding is weak, the renewal stalls in Identify regardless of elapsed time. The pipeline reflects evidence, not activity or duration.
 
 Onboarding is also where growth first becomes visible. Working through the motions uncovers what the customer needs to succeed: skill sets, knowledge, time, relief from competing demands, and help managing change. It reveals other teams that could benefit and advanced capabilities the customer will want later. Each of these can become an expansion opportunity that enters the pipeline at Identify alongside the renewal.
 
@@ -1903,9 +1905,11 @@ The play is simple in concept, but it requires real discipline. The team has to 
 
 First Value is where the customer stops waiting for the promise and starts experiencing it. That is why it deserves to be designed, measured, celebrated, and improved like any other critical operating motion. It is the first small win that makes the larger relationship possible.
 
+Because so much rests on it, First Value has to be confirmed, not assumed. A completed onboarding task does not count. Neither does a training session, a configuration milestone, or the team's sense that things are going well. Those are internal activities. First Value is something the customer experienced: a meaningful outcome connected to the reason they bought. The evidence is usually easy to recognize once you know what to look for. The customer can point to the result. They say, in their own words, that it is starting to work. And they share it with someone else in their organization. When the record shows that, First Value has occurred. When it doesn't, it hasn't yet, no matter how much work has been done.
+
 How the Pipeline Moves
 
-First Value is the evidence a first-term renewal needs to move from Identify to Align. When the record shows that the customer has experienced a meaningful outcome (not hoped for one, not been trained on one, but achieved one), that exit criterion is met, the renewal moves to Align, and its probability weight steps up with it. This is the single most important stage transition in the post-sale pipeline. Everything before it is preparation. Everything after it builds on proof. The renewal is being secured because the customer now has evidence the relationship works. Expansion opportunities may begin to surface here, entering the pipeline at Identify alongside the renewal as the account's demonstrated value opens the door to growth conversations.
+First Value is the evidence a first-term renewal needs to move from Identify to Align. It is a confirmed customer outcome, deliberately designated as the exit criterion for this one transition. When the record shows that the customer has experienced a meaningful outcome (not hoped for one, not been trained on one, but achieved one), that designated exit criterion is met, the renewal moves to Align, and its probability weight steps up with it. First Value happens once, in the initial customer journey. Later renewals do not earn it again. Customers keep experiencing new value in later terms; what is not repeated is the First Value play as a requirement for renewal. This is the single most important stage transition in the post-sale pipeline. Everything before it is preparation. Everything after it builds on proof. The renewal is being secured because the customer now has evidence the relationship works. Expansion opportunities may begin to surface here, entering the pipeline at Identify alongside the renewal as the account's demonstrated value opens the door to growth conversations.
 
 ## Chapter 13: Play 5 — The Value Blocks Play
 Source: https://cxology.co/chapter-13.html
@@ -2120,7 +2124,7 @@ Most importantly, it keeps the relationship centered on value. Customers do not 
 
 How the Pipeline Moves
 
-After First Value, the renewal sits in Align, and Value Blocks keep the customer progressing. Each completed block, logged with the customer behavior or outcome it created, adds to the evidence that the customer is progressing toward the outcome they bought for. That evidence is what the Sharing Insights and Alignment Meeting plays later build on to create the conditions for Advocate: a business case the customer agrees with, and someone inside who can carry it. A stalled block matters too. It is a reason to check whether the evidence behind the renewal's stage still holds. When blocks stop completing, the evidence the renewal needs stops accumulating, no matter how active the account looks.
+After First Value, the renewal sits in Align, and Value Blocks keep the customer progressing. Each completed block, logged with the customer behavior or outcome it created, adds to the evidence that the customer is progressing toward the outcome they bought for. That evidence is what the Sharing Insights and Alignment Meeting plays later build on to create the conditions for Advocate: a business case the customer agrees with, and someone inside who can carry it. A stalled block matters too. It is a reason to check whether the evidence behind the renewal's stage still holds. When blocks stop completing, the evidence the renewal needs stops accumulating, no matter how active the account looks. In later terms, this is often where the work picks up again: when the customer's priorities are already established, the new term begins with the next Value Block, not with onboarding.
 
 Value Blocks are also a steady source of growth. When a block stalls on one of the five customer needs, the answer is often something the customer does not have yet: training, a done-for-you service, a partner, or an added capability. When a block succeeds, it often opens the next objective. Either way, each can become an expansion opportunity that enters the pipeline at Identify alongside the renewal.
 
@@ -2339,7 +2343,7 @@ Sharing Insights is how the CSM keeps a hand on the rudder. It is how the relati
 
 How the Pipeline Moves
 
-Sharing Insights contributes to pipeline advancement through Align toward Advocate. Each logged insight — delivered, received, acted upon — builds the evidence layer that signals the renewal is progressing. The pipeline does not advance because the CSM believes alignment is strong. It advances because the insights changed what the customer understands or does, and the record shows it. Insights also surface expansion signals that can enter the pipeline at Identify as their own opportunities, advancing alongside the renewal and connecting customer progress to growth.
+Sharing Insights contributes to pipeline advancement through Align toward Advocate. Delivering an insight is not, by itself, evidence of progress. An insight counts when the customer acts on it or changes what they understand, and that change is evidence of customer progression the renewal can draw on. The pipeline does not advance because the CSM believes alignment is strong. It advances when the record shows that change, together with what the other plays produce, satisfies the stage's exit criteria. Insights also surface expansion signals that can enter the pipeline at Identify as their own opportunities, advancing alongside the renewal and connecting customer progress to growth.
 
 ## Chapter 15: Play 7 — The Alignment Meeting Play
 Source: https://cxology.co/chapter-15.html
@@ -2484,7 +2488,7 @@ With the customer realigned around outcomes, priorities, risks, and next steps, 
 
 How the Pipeline Moves
 
-The Alignment Meeting is the play that most often produces the evidence opportunities need to cross stage lines. When it produces a documented business case tied to the customer’s own goals that the customer agrees with, and someone inside the customer can carry that case with the evidence Sharing Insights has given them, the renewal advances from Align to Advocate. In later meetings, an executive may validate that business case and a champion may carry the value story without you. That strengthens Advocate, but it is not Intent. The renewal advances from Advocate to Intent only when the customer explicitly commits to moving forward and the path is credible: timing, ownership, approvals, and next steps. The meeting itself does not move the pipeline. What it produces, logged in the record and measured against the exit criteria, does.
+The Alignment Meeting is the play that most often produces the evidence opportunities need to cross stage lines. When it produces a documented business case tied to the customer’s own goals that the customer agrees with, and someone inside the customer can carry that case with the evidence Sharing Insights has given them, the renewal advances from Align to Advocate. In later meetings, an executive may validate that business case and a champion may carry the value story without you. That strengthens Advocate, but it is not Intent. The renewal advances from Advocate to Intent only when the customer explicitly commits to moving forward and the path is credible: timing, ownership, approvals, and next steps. The meeting itself does not move the pipeline. What it produces, logged in the record and measured against the exit criteria, does. In later terms, an Alignment Meeting is usually where the work begins again whenever goals, priorities, stakeholders, or expected outcomes need to be revisited or reconfirmed.
 
 Alignment Meetings are also where most expansion opportunities first come into view. A new objective, a new team, a shifted priority, or a customer asking what else they could do with you: each becomes an opportunity that enters at Identify and advances through the same stages alongside the renewal.
 
@@ -2506,6 +2510,8 @@ The chapter title matters. It is not simply Renew. It is Renew & Grow. The goal 
 Auto-renewing contracts deserve a specific note. They feel like the easiest renewals in the book because no one has to ask for anything. The contract rolls over, the revenue stays in the forecast, and attention moves to the accounts that need a decision. But the customer is still deciding whether you are worth it; they just are not telling you. An auto-renewal that nobody paid attention to can become a surprise cancellation or downgrade the following year. That raises a harder question: do you remind the customer the renewal is coming, or let it roll over quietly?
 
 I have been in these situations. When your company is winning, it is easy to say you should tell the customer. When you are not, it is easy to justify flying under the radar. That can be a tough choice depending on your circumstances, and there is no perfect answer. But if your executives cannot confront the brutal facts and improve, the outcome is nearly written in stone.
+
+Whatever you decide, keep three things separate in the pipeline. Contractual continuation means the terms roll the contract forward. Affirmative commercial intent means the customer has actually said yes. The final revenue outcome is the renewal taking effect at a known amount. Silence is not a yes, so an auto-renewing opportunity stays at its last evidence-supported stage. When verified contract terms make the renewal binding and it takes effect with a final amount, it can move directly to Net Revenue Close without passing through Intent. Nobody should invent a commitment to keep the stages tidy.
 
 What the Customer Is Thinking
 
@@ -2683,7 +2689,7 @@ The renewal is not the finish line. It is the proof point. When it works, the re
 
 How the Pipeline Moves
 
-The Renew & Grow play operates at the intersection of all three layers. The plays serve the customer by making value visible and the next goal clear. The renewal has been in the pipeline since the first day of the relationship, advancing stage by stage as the evidence met each stage's criteria. This play helps surface the customer's commitment and document the buying path. The renewal reaches Intent when the customer gives an explicit yes with a credible path forward. It reaches Net Revenue Close when the commercial process is complete and the outcome is final, whether that is a full renewal, a reduced one, or a loss. Expansion opportunities identified along the way are separate opportunities. Each moves on its own evidence and may sit in a different stage than the renewal. The pipeline tracks both. The renewal is the floor. The expansion opportunities are the growth.
+The Renew & Grow play operates at the intersection of all three components. The plays serve the customer by making value visible and the next goal clear. The renewal has been in the pipeline since the first day of the relationship, advancing stage by stage as the evidence met each stage's criteria. This play helps surface the customer's commitment and document the buying path. The renewal reaches Intent when the customer gives an explicit yes with a credible path forward. It reaches Net Revenue Close when the commercial process is complete and the outcome is final, whether that is a full renewal, a reduced one, or a loss. Expansion opportunities identified along the way are separate opportunities. Each moves on its own evidence and may sit in a different stage than the renewal. The pipeline tracks both. The renewal is the floor. The expansion opportunities are the growth.
 
 ## Chapter 17: Supporting Plays — Key Contact Change & Offboarding
 Source: https://cxology.co/chapter-17.html
@@ -2701,6 +2707,8 @@ When your primary champion or executive sponsor leaves their role, your account 
 ### 1. The Why: Protecting the Relationship
 
 Your previous champion held all the institutional knowledge of why your product was purchased, the value it provided, and the trust you had built. The new contact is stepping into a role with their own priorities, and if you do not proactively define the narrative, they may view your software as an unnecessary expense. A structured play ensures you act quickly to establish rapport and align your solution with their new goals.
+
+The change also has a pipeline consequence. If the departing contact was the advocate carrying the case for a renewal or expansion, the existing rule applies: when the advocate leaves or loses influence, the opportunity moves back to Align until a new carrier is in place. This play is how that new carrier is built.
 
 ### 2. Design & Build: The "You - We - Me" Framework
 
@@ -2781,7 +2789,9 @@ The infrastructure chapters are not an appendix. They are the load-bearing layer
 
 Most post-sale teams build the customer-facing layer first. They design plays, define stages, train the team, and hope that execution will be consistent enough to produce reliable outputs. Some of the time it works. But when the team is stretched, when a CSM inherits an unfamiliar book, when leadership needs a forecast they can defend, when the AI layer needs context it can trust — that is when the infrastructure reveals itself. Either it is there, or it is not.
 
-Infrastructure in this system means six things. Data that is trusted. AI that reduces friction without replacing judgment. Health scoring that interprets progression, not just risk. Cross-functional alignment that makes the pipeline a company system rather than a CS artifact. Capacity planning that connects the designed experience to the investment required to deliver it. And management discipline: a regular cadence of inspecting execution and evidence, and making decisions from what they show.
+Infrastructure in this system means six things. Data that is trusted. AI that reduces friction without replacing judgment. Health scoring that interprets progression, not just risk. Cross-functional alignment that makes the pipeline a company system rather than a CS artifact. Capacity planning that connects the designed experience to the investment required to deliver it. And management discipline: a regular cadence of inspecting progression, execution, commercial evidence, forecasts, and results, and using what is learned to improve the system.
+
+Four capabilities run inside those six rather than beside them. Decision rights live in cross-functional alignment: who owns what, who decides, how work is handed off and escalated. Economics lives in capacity planning: the cost of the work and the investment it requires. Inspection and learning live in management discipline. They are not additional infrastructure. They are what makes the six work.
 
 These are not independent projects. They are interdependent layers. The AI layer cannot produce useful outputs without trusted data. Health scoring cannot interpret progression without consistent evidence from the plays to read. Cross-team alignment cannot hold without a shared view of how customers are progressing and where the revenue stands. Capacity planning cannot be credible without a clear picture of the designed effort the system requires. Management discipline cannot inspect what was never recorded, and every other layer drifts without it. Each layer depends on the others. When one is missing, the system compensates through heroic effort. When all are present, the system operates.
 
@@ -2791,7 +2801,7 @@ The plays are designed to help customers reach the outcomes they bought for. But
 
 AI solves the consistency problem. A team of fifteen CSMs, each managing forty to sixty accounts, cannot execute every play with the same preparation, personalization, and follow-through without an execution layer that handles synthesis, drafting, and capture. The plays were designed for a world where AI is a working tool. The AI chapter defines where it belongs and — just as importantly — where it does not.
 
-The Data Spine solves the trust problem. Every play writes to the customer record. Every signal the pipeline reads comes from the customer record. If that record is fragmented, stale, or incomplete, the entire system produces outputs that cannot be trusted. The Data Spine is not a tool selection. It is a design principle: one record, one source of truth, accessible to every function that needs it.
+The Data Spine solves the trust problem. Every play writes to the customer record. Every customer signal the team assesses, and every piece of evidence the pipeline reads, comes from the customer record. If that record is fragmented, stale, or incomplete, the entire system produces outputs that cannot be trusted. The Data Spine is not a tool selection. It is a design principle: one record, one source of truth, accessible to every function that needs it.
 
 Health scoring solves the visibility problem. The pipeline shows where each revenue opportunity stands. Health scoring shows what the accumulated evidence says about the customer: whether they are progressing toward the outcomes they bought for and able to sustain them. Without health scoring connected to the lifecycle, the team sees activity but misses momentum. With it, intervention happens early enough to change outcomes.
 
@@ -2813,7 +2823,7 @@ This is the shift Part IV makes explicit. The plays serve the customer. The pipe
 
 The most common mistake in scaling a post-sale function is adding volume without adding structure. More accounts per CSM. More automated emails. More dashboards. More health score colors. The team works harder, the output increases, and the quality of the customer experience quietly degrades because the system underneath was never built to hold the weight.
 
-Part IV redefines scale. Scale is not the number of accounts the team can touch. It is the number of accounts the team can guide through the designed experience with enough consistency that the pipeline produces signals worth trusting. That is a fundamentally different metric, and it requires infrastructure that most teams have not yet built.
+Part IV redefines scale. Scale is not the number of accounts the team can touch. It is the number of accounts the team can guide through the designed experience with enough consistency that the evidence, and the forecast built on it, are worth trusting. That is a fundamentally different metric, and it requires infrastructure that most teams have not yet built.
 
 The chapters that follow move through the infrastructure in sequence. They begin with AI — the execution layer that makes plays scalable without making them generic — and progress through data governance, health scoring, cross-team alignment, and capacity planning. Management discipline does not get its own chapter. It runs through all of them, and the Conclusion shows what that cadence looks like in practice. Each chapter is designed to be read in order but applied independently. The structure is consistent. The infrastructure adapts to the maturity, tooling, and constraints of the organization building it.
 
@@ -3358,7 +3368,7 @@ Designed effort gives this work a name. It asks leaders to understand the full e
 
 The arithmetic is simple, and it changes the conversation. Consider a customer meeting scheduled for 60 minutes. Preparing well takes about 30 minutes: reviewing goals and progress, pulling usage and outcomes, shaping the agenda. Following through takes another 20: documenting decisions, sending the recap, confirming owners and next steps. The designed effort is 110 minutes, not 60. A model that counts only calendar time underestimates the work by almost half before a single customer has been added. Larger plays carry even more: a full Alignment Meeting, with insight gathering and executive preparation, is modeled at 3.5 hours in the Capacity Planner.
 
-Repeat that across the plays a customer needs in a year and the workload becomes concrete. Using the Capacity Planner’s starting defaults, a high-touch customer moving through Purchase and Welcome, Kickoff, Onboarding, quarterly Alignment Meetings, and ongoing Value Blocks and insights requires about 27.5 hours of designed effort in year one. Half of it, 14 hours, lands in the first three months. In year two, without kickoff and onboarding, the same customer needs about 18. A low-touch customer needs about 8.5 hours in year one and 4 after that. These are planning assumptions, not benchmarks. Your plays and estimates will differ, which is the point.
+Repeat that across the plays a customer needs in a year and the workload becomes concrete. Using the Capacity Planner’s starting defaults, a high-touch customer moving through Purchase and Welcome, Kickoff, Onboarding, quarterly Alignment Meetings, and ongoing Value Blocks and Sharing Insights requires about 27.5 hours of designed effort in year one. Half of it, 14 hours, lands in the first three months. In year two, without kickoff and onboarding, the same customer needs about 18. A low-touch customer needs about 8.5 hours in year one and 4 after that. These are planning assumptions, not benchmarks. Your plays and estimates will differ, which is the point.
 
 When designed effort is mapped across the first year of the customer journey, the workload starts to take shape. The early months are naturally heavier because trust, orientation, onboarding, and first value require intensity. Later months shift toward reinforcement, insight, alignment, and renewal readiness. The work does not disappear after onboarding; it changes form. A strong capacity model shows that change clearly.
 
@@ -3507,9 +3517,9 @@ For a standalone walkthrough of the model, from the 110-minute meeting to a 12-m
 ## Conclusion: Running the System
 Source: https://cxology.co/chapter-conclusion.html
 
-This book opened with a claim: retention is not a department, a feeling, or a lagging metric. It is a system of customer progression that can be intentionally designed, operationalized, inspected, and improved. Twenty-two chapters later, that claim has a shape.
+This book opened with a claim: retention is not a department, a feeling, or merely a lagging metric. It is a designed outcome, produced by a system of customer progression that can be intentionally designed, operationalized, inspected, and improved. The Post-Sale Operating System connects the work, evidence, and resources required to create customer progression with the commercial decisions that determine retention and growth. Twenty-two chapters later, that claim has a shape.
 
-Part I made the argument — that Customer Success must evolve from churn insurance into a revenue engine, and that the CSM role becomes more valuable, not less, when it sits inside a defined system. Part II gave progression a structure: a post-sale pipeline with five stages, each with entry criteria, exit criteria, and a reason to exist. Part III turned the structure into work: designed plays for every inflection point in the customer journey, each with assets, measurement, and an AI layer that reduces the friction of running them well. Part IV built the infrastructure underneath: trusted data, an AI execution layer, health scoring that shows progression, cross-team alignment, and the capacity model that makes the whole design fundable.
+Part I made the argument — that Customer Success must evolve from churn insurance into a revenue engine, and that the CSM role becomes more valuable, not less, when it sits inside a defined system. Part II gave revenue opportunities a structure, informed by customer progression but distinct from it: a post-sale pipeline with five stages, each with entry criteria, exit criteria, and a reason to exist. Part III turned the structure into work: designed plays for every inflection point in the customer journey, each with assets, measurement, and an AI layer that reduces the friction of running them well. Part IV built the infrastructure underneath: trusted data, an AI execution layer, health scoring that shows progression, cross-team alignment, and the capacity model that makes the whole design fundable.
 
 **The Promise, Kept**
 
@@ -3517,15 +3527,15 @@ Retention stopped being a hope the moment progression became something you could
 
 ## The System on One Page
 
-If you remember one structure from this book, remember this one. The operating system is [three layers and one loop](https://cxology.co/post-sale-operating-system.html). The pipeline makes the revenue visible and shows where each opportunity stands. The plays are the designed work that helps customers progress. The infrastructure makes execution consistent enough to trust. And the loop connects them: every play is designed around an expected change for the customer and a recorded signal of whether that change occurred. Completing the play is not the proof. The evidence is. That evidence informs what the team believes about the customer and the revenue, and it shapes what needs to happen next. The infrastructure keeps the loop honest at scale.
+If you remember one structure from this book, remember this one. The operating system is [three components and one loop](https://cxology.co/post-sale-operating-system.html). The pipeline makes the revenue visible and shows where each opportunity stands. The plays are the designed work that helps customers progress. The infrastructure makes execution consistent enough to trust. And the loop connects them: it compares expected and actual progression, triggers the play the situation calls for, and looks for confirmed evidence of whether the intended change occurred. Completing the play is not the proof. The evidence is. That evidence informs what the team believes about the customer and the revenue, and it shapes what needs to happen next and what the team should learn. The infrastructure keeps the loop honest at scale.
 
 **The Post-Sale Operating System**
 
-Three layers, one loop: the pipeline makes the revenue visible, plays help customers progress, infrastructure makes it consistent. The Pipeline How revenue opportunities advance · Part II IdentifyValue, friction, and future need become visible after the sale. AlignOpportunity becomes a case grounded in customer need. AdvocateAlignment becomes momentum the customer carries internally. IntentThe customer commits: a yes with timing, approvals, and ownership. Net Revenue CloseThe outcome is final and the next cycle begins. Plays help customers progress. Evidence that meets each stage's exit criteria, not play completion, moves the revenue opportunity and tells the team what to do next. The Plays The work designed to help customers progress · Part III Purchase & Welcome→ Kickoff→ Onboarding→ First Value→ Value Blocks→ Sharing Insights→ Alignment Meeting→ Renew & Grow Supporting Plays: Key Contact Change · Offboarding — run whenever the moment demands, not on a schedule. Infrastructure keeps execution consistent across every CSM, every account, every quarter. The Infrastructure What makes it consistent and fundable · Part IV AI Execution LayerPrepares, drafts, and captures so judgment goes where it matters. One Data SpineA single customer record every layer can trust. Health ScoringEvidence interpreted, not just risk made colorful. Cross-Team KPIsOne pipeline shared by Sales, CS, Product, and Finance. Capacity PlanningThe designed experience translated into investment. Management DisciplineA steady cadence of inspecting execution and evidence, and deciding from it.
+Three components, one loop: the pipeline makes the revenue visible, plays help customers progress, infrastructure makes it consistent. The Pipeline How revenue opportunities advance · Part II IdentifyValue, friction, and future need become visible after the sale. AlignOpportunity becomes a case grounded in customer need. AdvocateAlignment becomes momentum the customer carries internally. IntentThe customer commits: a yes with timing, approvals, and ownership. Net Revenue CloseThe outcome is final and the next cycle begins. Plays help customers progress. Evidence that meets each stage's exit criteria, not play completion, moves the revenue opportunity and tells the team what to do next. The Plays The work designed to help customers progress · Part III Purchase & Welcome→ Kickoff→ Onboarding→ First Value→ Value Blocks→ Sharing Insights→ Alignment Meeting→ Renew & Grow Supporting Plays: Key Contact Change · Offboarding — run whenever the moment demands, not on a schedule. Infrastructure keeps execution consistent across every CSM, every account, every quarter. The Infrastructure What makes it consistent and fundable · Part IV AI Execution LayerPrepares, drafts, and captures so judgment goes where it matters. One Data SpineA reliable record of customer state, progression, outcomes, and opportunities. Health ScoringEvidence interpreted, not just risk made colorful. Cross-Team KPIsOwnership, decision rights, and handoffs across one shared pipeline. Capacity PlanningThe designed experience translated into resources, cost, and investment. Management DisciplineInspecting progression, evidence, forecasts, and results, and learning from them.
 
-The loop: every play is designed around an expected customer outcome and a recorded signal of whether it occurred. Evidence of that outcome, not completion of the play, is what the pipeline reads, and it moves an opportunity only when it meets the next stage's exit criteria. The pipeline and the evidence together inform the next action. The infrastructure keeps the signals trustworthy. That loop, not any single framework, is the operating system.
+The loop: compare expected and actual progression, trigger the play the situation calls for, and confirm with evidence whether the intended outcome occurred. Evidence of that outcome, not completion of the play, is what the pipeline reads, and it moves an opportunity only when it meets the next stage's exit criteria. The pipeline and the evidence together inform the next action and what the team learns. The infrastructure keeps the evidence trustworthy. That loop, not any single framework, is the operating system.
 
-Plays create the conditions for customer progress. Evidence of that progress can inform a revenue opportunity. Evidence that meets the stage's exit criteria moves it. The stage sets the forecast probability. And probability, value, and timing make the forecast. This is what makes existing customer revenue predictable in the same way new logo revenue is predictable.
+Plays create the conditions for customer progress. Evidence of that progress can inform a revenue opportunity, but customer progression does not automatically advance it. Evidence that meets the stage's defined exit criteria, whether a confirmed customer outcome, a commercial commitment, or both, moves it. The stage sets the forecast probability. And probability, value, and timing make the forecast. This is what makes existing customer revenue predictable in the same way new logo revenue is predictable.
 
 Notice what is not on the page. There is no heroics layer. There is no column for the one CSM who holds every relationship together from memory. The system is designed so that good execution is the default, not the exception — and so that judgment, the genuinely human part of the work, is spent on customers instead of on remembering what to do next.
 
@@ -3591,7 +3601,7 @@ A ninety-day path from concept to running system.
 
 - Report what the system saw, not what the team felt.
 
-At day ninety the win is not a retention number. It is a leadership conversation that starts with evidence: here is the motion we designed, here is how consistently it ran, and here is what the signals tell us to do next.
+At day ninety the win is not a retention number. It is a leadership conversation that starts with evidence: here is the motion we designed, here is how consistently it ran, and here is what the evidence tells us to do next.
 
 ## Where to Go Next
 
@@ -3621,7 +3631,9 @@ A Post-Sale Operating System is the integrated management system a company uses 
 
 In plain terms: it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue.
 
-The short answer. A Post-Sale Operating System has three layers and one loop. The Post-Sale Pipeline makes existing-customer revenue visible and shows where each retention and growth opportunity stands. Plays are the work the company designs to help customers progress. Infrastructure (data, health, capacity, technology and AI, cross-functional alignment, and management discipline) makes that work observable, trustworthy, repeatable, and scalable. The loop runs continuously: decide what progress the customer should make, run the work designed to help, check what actually changed, update what you believe about the revenue, and decide what happens next.
+Retention is a designed outcome. The Post-Sale Operating System connects the work, evidence, and resources required to create customer progression with the commercial decisions that determine retention and growth.
+
+The short answer. A Post-Sale Operating System has three components and one loop. The Post-Sale Pipeline makes existing-customer revenue visible and shows where each retention and growth opportunity stands. Plays are the work the company designs to help customers progress. Infrastructure (data, health, capacity, technology and AI, cross-functional alignment, and management discipline) makes that work observable, trustworthy, repeatable, and scalable. The loop runs continuously: compare expected and actual progression, trigger the work designed to help, confirm what actually changed, assess what that means for the revenue, and decide the next action and what to learn from it.
 
 ## Why Does Post-Sale Need an Operating System?
 
@@ -3674,19 +3686,21 @@ A post-sale operating model is how a company intends to run everything after the
 
 The terms are often used interchangeably. CXology uses operating system to emphasize the part most operating models leave out: the connected mechanism that makes the model run repeatedly, turning evidence from customers into decisions, customer by customer, period after period.
 
-## The Three Layers of a Post-Sale Operating System
+## The Three Components of a Post-Sale Operating System
 
-The Post-Sale Operating System is made of three layers. Each answers a different management question.
+The Post-Sale Operating System is made of three components. Each answers a different management question.
 
-| Layer | What it is | The question it answers |
+| Component | What it is | The question it answers |
 |---|---|---|
 | Post-Sale Pipeline | Makes existing-customer revenue visible and shows where each retention and growth opportunity stands | What should happen, and what does it mean for the revenue? |
 | Plays | The designed work intended to help customers progress | What are we going to do about it? |
 | Infrastructure | Makes execution observable, trustworthy, repeatable, and scalable | Can we execute and trust the system? |
 
-The three layers
+The three components
 
-### Layer 1: The Post-Sale Pipeline
+Three conceptual distinctions run through all of them: customer state and progression (what is changing for the customer?), plays and execution (what work is designed to create the intended change?), and the Post-Sale Pipeline (where do renewal and expansion opportunities stand?). They are ways of reading the system, not additional components.
+
+### Component 1: The Post-Sale Pipeline
 
 The Post-Sale Pipeline makes existing-customer revenue visible and shows where each retention and growth opportunity stands.
 
@@ -3706,7 +3720,7 @@ For leadership, the pipeline answers four questions about every revenue opportun
 
 CXology's Post-Sale Pipeline has five stages: Identify, Align, Advocate, Intent, and Net Revenue Close. How revenue opportunities move between them, and how probability changes, is covered in [What Is a Post-Sale Pipeline?](https://cxology.co/post-sale-pipeline.html) and in depth in [Part II: How the Post-Sale Pipeline Works](https://cxology.co/chapter-part2-intro.html). This page covers only the pipeline's role in the larger system.
 
-### Layer 2: Plays
+### Component 2: Plays
 
 Plays are the designed work intended to help customers progress.
 
@@ -3724,63 +3738,69 @@ Completing a play does not mean the customer progressed, and it does not advance
 
 For the full distinction between activity, progression, and evidence, see [How Do You Know Whether a Customer Is Actually Progressing?](https://cxology.co/customer-progression-leading-indicators.html)
 
-### Layer 3: Infrastructure
+### Component 3: Infrastructure
 
 Infrastructure makes execution observable, trustworthy, repeatable, and scalable.
 
 Infrastructure is not a technology layer. It is every supporting capability the company needs to run the pipeline and the plays consistently across customers, teams, and time:
 
-- Data: one trusted record of what each customer is trying to accomplish, what work happened, and what evidence exists.
+- Data: reliable records of customer state, progression, outcomes, and commercial opportunities.
 
-- Health: a running interpretation of the accumulated evidence about each customer's state.
+- Health: interprets accumulated evidence, including customer signals and progression, to identify conditions that need attention.
 
-- Capacity: enough people and time to execute the work the company has designed.
+- Capacity: connects the work required by the customer journey to available resources, cost, and investment decisions.
 
-- Technology and AI: tools that reduce the effort to prepare, execute, capture, and inspect the work, once the work itself is defined.
+- Technology and AI: enables consistent execution, visibility, analysis, and appropriate automation.
 
-- Cross-functional alignment: shared definitions, goals, and handoffs across Sales, Customer Success, Product, Services, Support, Marketing, and Finance.
+- Cross-functional alignment: establishes ownership, decision rights, handoffs, escalation paths, and accountability across Sales, Customer Success, Product, Services, Support, Marketing, and Finance.
 
-- Management discipline: the cadence of inspecting execution and evidence, and making decisions from them.
+- Management discipline: inspects progression, execution, commercial evidence, forecasts, and results, and uses what is learned to improve the system.
+
+Decision rights, economics, inspection, and learning are capabilities within these six, not separate elements. Decision rights live in cross-functional alignment. Economics lives in capacity. Inspection and learning live in management discipline.
 
 Without infrastructure, the pipeline and the plays may work for a few customers or a few strong team members. With it, they work by default.
 
 ## The One Loop: How a Post-Sale Operating System Runs
 
-The three layers describe what the system is made of. The loop describes how it runs.
+The three components describe what the system is made of. The loop describes how it runs.
 
-[Diagram] The One Loop: Expected Progression, then Play, then Customer Progression, then Evidence, then Post-Sale Pipeline and Probability, then Next Action, which repeats back to Expected Progression. Infrastructure supports the entire loop.
+[Diagram] The One Loop: Expected vs. Actual Progression, then Triggered Play, then Customer Progression, then Confirmed Evidence, then Post-Sale Pipeline and Forecast, then Next Action and Learning, which repeats back to Expected vs. Actual Progression. Infrastructure supports the entire loop.
 
 The One Loop. Six steps repeat for every customer, and infrastructure supports the entire loop. The same loop is written out below.
 
-- Expected Progression. What meaningful change should occur for the customer?
+- Expected vs. Actual Progression. What should be happening for the customer, and what have they actually achieved? Comparing the two shows where work is needed.
 
-- Play. What work has the company designed to help that progression occur?
+- Triggered Play. What intentional work does that condition call for? A play can be triggered by a customer progression condition or a commercial progression condition.
 
 - Customer Progression. What actually changed for the customer?
 
-- Evidence. How do we know whether that change occurred?
+- Confirmed Evidence. How do we know? Verify the outcome rather than assuming a completed activity produced it.
 
-- Post-Sale Pipeline / Probability. What should the new evidence change about what the company believes about the existing-customer revenue? If it satisfies the exit criteria for a specific opportunity's next stage, that stage and its probability change. If it doesn't, it may still matter for the customer's health or the next action.
+- Post-Sale Pipeline / Forecast. What does the evidence mean for the renewal and expansion opportunities? If it satisfies the exit criteria for a specific opportunity's next stage, that stage and its probability change. If it doesn't, nothing advances automatically, though the evidence may still matter for the customer's health or the next action.
 
-- Next Action. Given what happened, or failed to happen, what needs to happen next?
+- Next Action & Learning. Given what happened, or failed to happen, what does the customer need next, and does the operating design itself need to improve?
 
 Then the loop runs again. Infrastructure supports the entire loop.
 
-Decide what progress the customer should make, do the work designed to help, see what actually changed, prove it, update what you believe about the revenue, and decide what comes next.
+Compare where the customer is with where they should be, trigger the work designed to help, see what actually changed, prove it, assess what it means for the revenue, and decide what comes next and what to learn.
 
-The loop is not a machine where each step produces the next. Plays create conditions for progression; they do not guarantee it. Progression evidence informs probability; it does not guarantee retention or expansion. And evidence does not change probability automatically. An opportunity's stage, and the standardized probability that comes with it, changes only when the evidence satisfies that stage's exit criteria. Some evidence matters for health, some for a revenue opportunity, some for both, and some for neither. People still apply judgment. The difference is that their judgment now has something concrete to work from.
+The loop is iterative, not a mandatory linear workflow. A play can be triggered by a customer milestone, missed progression, a change in the customer's situation, or an emerging risk. Those are customer progression triggers. It can also be triggered by a commercial requirement, renewal timing, or an expansion opportunity. Those are commercial progression triggers. Either way, the play is chosen because of a condition the team has inspected, not because the calendar says so.
 
-How the loop maps to the layers:
+Running the loop well is the job of management discipline. Six operating rules describe it: define the expected customer progression, inspect actual progression, trigger intentional work, verify the result, update commercial opportunities when warranted, and adapt the system through feedback and learning. The rules are how the loop is managed. They are not a second loop.
 
-- Expected Progression and Customer Progression belong to the customer.
+The loop is not a machine where each step produces the next. Plays create conditions for progression; they do not guarantee it. Progression evidence informs probability; it does not guarantee retention or expansion. And evidence does not change probability automatically. Customer progression does not automatically advance commercial opportunities. A commercial opportunity advances only when its defined exit criteria are satisfied. Those criteria may include confirmed customer outcomes, commercial commitments, or both, depending on the stage and opportunity type. The standardized probability moves only with the stage. Some evidence matters for health, some for a revenue opportunity, some for both, and some for neither. People still apply judgment. The difference is that their judgment now has something concrete to work from.
 
-- The Play is Layer 2.
+How the loop maps to the components:
 
-- The Pipeline / Probability step is Layer 1.
+- Expected vs. Actual Progression and Customer Progression belong to the customer.
 
-- Evidence is captured, trusted, and acted on because of Layer 3.
+- The Triggered Play is Component 2.
 
-- Next Action is a decision that draws on all three.
+- The Pipeline / Forecast step is Component 1.
+
+- Confirmed Evidence is captured, trusted, and acted on because of Component 3.
+
+- Next Action & Learning is a decision that draws on all three.
 
 The consequential moments in the customer journey where loyalty is built or blocked, and where meaningful progression should be designed and observed, are called [Inflection Points](https://cxology.co/journey-map.html#inflection-points). Each turn of the loop usually centers on one.
 
@@ -3792,23 +3812,23 @@ The loop is easiest to see with one customer. Take a newly signed customer at th
 
 | Step | What happens |
 |---|---|
-| Expected progression | The customer establishes the outcomes they bought for, the stakeholders who need to be involved, who is responsible for what, and the next steps. |
-| Play | The company runs its first-meeting and onboarding work: Kickoff, then Onboarding. |
+| Expected vs. actual progression | The customer establishes the outcomes they bought for, the stakeholders who need to be involved, who is responsible for what, and the next steps. |
+| Triggered play | The purchase triggers the company's first-meeting and onboarding work: Kickoff, then Onboarding. |
 | Customer progression | The customer moves from "we signed" to "we know what we are trying to achieve, who owns it on our side, and what happens next." |
-| Evidence | The customer restates the reason for purchase and the first result they expect in their own words. They name owners on their side. The stakeholders the work requires show up. Next steps are committed with names and dates, and the first ones are kept. |
-| Pipeline / probability | The revenue is now attached to a defined outcome with a customer owner. That is a real change in what the company knows, but it does not move the renewal: a first-term renewal stays in Identify until First Value. This evidence builds toward that exit criterion and shapes the next action. |
-| Next action | Focus the next work on helping the customer reach a first meaningful result. |
+| Confirmed evidence | The customer restates the reason for purchase and the first result they expect in their own words. They name owners on their side. The stakeholders the work requires show up. Next steps are committed with names and dates, and the first ones are kept. |
+| Pipeline / forecast | The revenue is now attached to a defined outcome with a customer owner. That is a real change in what the company knows, but it does not move the renewal: a first-term renewal stays in Identify until First Value. This evidence builds toward that exit criterion and shapes the next action. |
+| Next action & learning | Focus the next work on helping the customer reach a first meaningful result. |
 
 ### Turn 2: First Value
 
 | Step | What happens |
 |---|---|
-| Expected progression | The customer experiences First Value: the first meaningful result they recognize from the purchase. |
-| Play | The company runs the First Value play, designed to help the customer reach that first result. |
+| Expected vs. actual progression | The customer experiences First Value: the first meaningful result they recognize from the purchase. |
+| Triggered play | The company runs the First Value play, designed to help the customer reach that first result. |
 | Customer progression | The customer gets a result that matters to them, tied to the outcome they named in Turn 1. |
-| Evidence | The customer can point to the result, says in their own words that it is starting to work, and shares it with someone else in their organization. |
-| Pipeline / probability | The reason for purchase is beginning to be realized, and the customer recognizes it. For a first-term renewal, that is the First Value exit criterion, so the renewal moves from Identify to Align and its standardized probability moves with it. The company has better grounds to believe the revenue will be retained, though nothing is guaranteed. |
-| Next action | Build on the result toward broader adoption and the larger outcome the customer bought for. |
+| Confirmed evidence | The customer can point to the result, says in their own words that it is starting to work, and shares it with someone else in their organization. |
+| Pipeline / forecast | The reason for purchase is beginning to be realized, and the customer recognizes it. For a first-term renewal, First Value is the confirmed customer outcome designated as the exit criterion for Identify, so the criterion is met, the renewal moves to Align, and its standardized probability moves with it. The company has better grounds to believe the revenue will be retained, though nothing is guaranteed. |
+| Next action & learning | Build on the result toward broader adoption and the larger outcome the customer bought for. |
 
 Notice what the second turn depends on. The First Value target only exists because the first turn produced a customer-defined outcome. Each turn sets up the next.
 
@@ -3816,7 +3836,7 @@ Notice what the second turn depends on. The First Value target only exists becau
 
 Suppose kickoff happened, but the customer never named an owner and the executive sponsor didn't attend. The play was completed. The progression didn't occur.
 
-The loop still runs. The evidence says the expected change is missing. The renewal does not move, and the gap is worth weighing in the customer's health assessment. The next action changes: find the missing owner, re-engage the sponsor, or escalate, before moving on to First Value.
+The loop still runs. The evidence says the expected change is missing. The renewal does not move, and the gap is worth weighing in the customer's health assessment. The missed progression becomes the trigger for the next play: find the missing owner, re-engage the sponsor, or escalate, before moving on to First Value.
 
 This is where the system earns its value. A missing piece of expected progression is visible months before it would show up in usage, health, or a renewal conversation.
 
@@ -3826,7 +3846,7 @@ Neither health nor capacity is a step in the loop. Both are part of the Infrastr
 
 Health is an interpretation of accumulated evidence about the customer's state. Each turn of the loop adds evidence. Health summarizes what all of that evidence, taken together, says about the customer right now. It should change when new evidence changes what the company believes about the customer's progression, not only when usage dips or a ticket spikes.
 
-Capacity determines whether the organization has enough resources to consistently execute the work it has designed. Every play in the loop takes real time to prepare, run, and follow through on. If the work required across all customers exceeds the time available, plays get skipped or thinned out, evidence goes missing, and the loop stops turning reliably. When that happens, leaders can add capacity or deliberately change the work they have designed.
+Capacity determines whether the organization has enough resources to consistently execute the work it has designed. Every play in the loop takes real time to prepare, run, and follow through on. If the work required across all customers exceeds the time available, plays get skipped or thinned out, evidence goes missing, and the loop stops turning reliably. When that happens, leaders can add capacity or deliberately change the work they have designed. That is why capacity connects the work the journey requires to resources, cost, and investment decisions.
 
 Go deeper: [Chapter 20: Health Scoring That Actually Works](https://cxology.co/chapter-20.html) and [How Many Customers Should a CSM Manage?](https://cxology.co/customer-success-capacity.html)
 
@@ -3888,9 +3908,9 @@ You do not need every piece in place to begin. Defining progression and evidence
 
 A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting. In plain terms, it connects what the customer needs to accomplish, what the company does to help, what actually changes, and what that means for the revenue.
 
-### What are the three layers of a post-sale operating system?
+### What are the three components of a post-sale operating system?
 
-The Post-Sale Pipeline, which makes existing-customer revenue visible and shows where each retention and growth opportunity stands; Plays, the designed work intended to help customers progress; and Infrastructure, which makes execution observable, trustworthy, repeatable, and scalable through data, health, capacity, technology and AI, cross-functional alignment, and management discipline.
+The Post-Sale Pipeline, which makes existing-customer revenue visible and shows where each retention and growth opportunity stands; Plays, the designed work intended to help customers progress; and Infrastructure, which makes execution observable, trustworthy, repeatable, and scalable through data, health, capacity, technology and AI, cross-functional alignment, and management discipline. Decision rights, economics, inspection, and learning are capabilities within those six, not separate elements.
 
 ### What is a post-sale operating model?
 
@@ -4040,7 +4060,7 @@ Customers don't move through the Post-Sale Pipeline. Revenue opportunities do. A
 
 This matters because one customer can have several opportunities in different stages at the same time. The renewal may be well advanced while a new expansion idea has only just been identified. Assign one stage to the whole customer and you either overstate the expansion or understate the renewal. Either way, the forecast stops meaning anything.
 
-It also keeps the pipeline honest about the renewal. The renewal is not an event at the end of the contract. It is a revenue opportunity that has to earn its way through the same stages as any expansion.
+It also keeps the pipeline honest about the renewal. The renewal is not an event at the end of the contract. It is a revenue opportunity that has to earn its way through the same stages as any expansion. The one place the order can be skipped is a binding auto-renewal, covered in Auto-Renewing Contracts, and even there the opportunity never moves on evidence it doesn't have.
 
 ## What Stages Should a Post-Sale Pipeline Have?
 
@@ -4060,7 +4080,7 @@ The five stages of the Post-Sale Pipeline
 
 A specific retention or growth opportunity exists. For retention, that is true from the moment of purchase. For expansion, it starts when an opportunity is specific enough to name and manage. Much of the raw material shows up early: what the customer deferred during the sale, teams that were left out, capability gaps that surface during onboarding. Identify makes opportunity visible. It does not mean you have earned the right to pursue it.
 
-A first-term renewal stays in Identify until the customer reaches First Value. A customer who has never experienced a meaningful result from what they bought is a renewal at real risk, and the pipeline should say so.
+A first-term renewal stays in Identify until the customer reaches First Value. A customer who has never experienced a meaningful result from what they bought is a renewal at real risk, and the pipeline should say so. A documented delay doesn't change that: the renewal stays in Identify until First Value actually occurs.
 
 ### Align (40%): Is it relevant to something the customer is trying to accomplish?
 
@@ -4088,11 +4108,13 @@ Intent is the customer's commitment to move forward. Net Revenue Close is the co
 
 Evidence. Specifically, observable evidence that satisfies the exit criteria for the next stage.
 
+Customer progression does not automatically advance commercial opportunities. A commercial opportunity advances only when its defined exit criteria are satisfied. Those criteria may include confirmed customer outcomes, commercial commitments, or both, depending on the stage and opportunity type.
+
 The stage is not determined by what your team did. It is determined by what you can prove about the opportunity.
 
 | Move | Exit criteria | Example evidence |
 |---|---|---|
-| Identify → Align | A specific retention or growth opportunity exists and is connected to a customer need, goal, problem, reason for purchase, or meaningful business priority worth pursuing. | First-term renewal: the customer has reached First Value, a meaningful result tied to why they bought (see the exception below). Later-term renewal: the customer has confirmed the goals for the next term. Expansion: the idea is tied to a goal the customer has named. |
+| Identify → Align | A specific retention or growth opportunity exists and is connected to a customer need, goal, problem, reason for purchase, or meaningful business priority worth pursuing. | First-term renewal: the customer has reached First Value, a confirmed customer outcome tied to why they bought and designated as this stage's exit criterion. A documented delay does not satisfy it (see below). Repeat renewal: the customer has confirmed the goals or business priorities that justify continuing the relationship for the next term. Expansion: the idea is tied to a goal the customer has named. |
 | Align → Advocate | The customer understands and agrees with the value or business case, and a credible internal person is capable of carrying that case forward inside the customer organization. | A business case built on the customer's own goals and results, which your primary contact can explain to their leadership without you present. |
 | Advocate → Intent | Internal advocacy and momentum have produced an explicit customer commitment (a verbal yes or equivalent) and a credible path forward, including timing, ownership, approvals, and next steps. | The customer says they are moving forward, and the budget owner, approval sequence, procurement steps, and target date are known. |
 | Intent → Net Revenue Close | The remaining commercial process is completed and the revenue outcome is finalized. | The renewal or order is signed and the final amount is recorded. |
@@ -4113,9 +4135,9 @@ Related reading: [Why Existing-Customer Revenue Needs Evidence of Progression](h
 
 ### Why a First-Term Renewal Waits for First Value
 
-A first-term renewal is the one opportunity where the customer hasn't yet proven the purchase was worth it. Until they reach First Value, the connection between the renewal and the reason they bought is still a promise. So a first-term renewal stays in Identify until First Value, with one documented exception.
+A first-term renewal is the one opportunity where the customer hasn't yet proven the purchase was worth it. Until they reach First Value, the connection between the renewal and the reason they bought is still a promise. So a first-term renewal stays in Identify until First Value. First Value is a confirmed customer outcome, and it is the outcome deliberately designated as the exit criterion for this one transition. When it occurs, the criterion is met. No separate commercial confirmation is required.
 
-The exception: the customer has confirmed a specific reason First Value is delayed (a longer implementation, a reorganization, a postponed start), has reaffirmed the goal, and a revised First Value date is set. The record shows:
+A documented delay. Sometimes the customer confirms a specific reason First Value is delayed (a longer implementation, a reorganization, a postponed start), reaffirms the goal, and agrees to a revised First Value date. That is useful evidence, but it does not satisfy the exit criterion. The renewal stays in Identify. The record shows:
 
 - The reason for the delay
 
@@ -4123,13 +4145,15 @@ The exception: the customer has confirmed a specific reason First Value is delay
 
 - The revised First Value date
 
-- The next review date
+- The owner on your side
 
-If the revised date passes without First Value, the renewal returns to Identify and is escalated. Every exception can be explained to a CRO, CEO, or board in one sentence, with the evidence behind it.
+- The next inspection date
+
+A documented delay changes how the delay is monitored, not the stage. If the revised date passes without First Value, the renewal is escalated. Every delay can be explained to a CRO, CEO, or board in one sentence, with the evidence behind it.
 
 Stage alone won't show this risk, because a renewal 30 days into the term and one 300 days in can both sit in Identify. So every first-term renewal also carries an expected First Value date, and an overdue date is flagged. That flag is how a stalled renewal becomes visible months before the renewal date.
 
-The rule applies to the first term only. Once a customer has reached First Value, later renewals don't have to earn it again.
+The rule applies to the first term only. First Value happens once, in the initial customer journey, and later renewals don't have to earn it again. Customers keep experiencing new value in later terms; what is not repeated is the First Value play as a requirement for renewal. For a repeat renewal, the opportunity advances from Identify to Align when the customer has confirmed the goals or business priorities that justify continuing the relationship for the next term. Prior value provides context, but the opportunity must remain connected to a current customer need. That is not a requirement to rebuild the full business case or repeat onboarding.
 
 ### Can an Opportunity Move Backward?
 
@@ -4152,6 +4176,18 @@ Timing slips. If the expected close date slips but the customer confirms new tim
 Amount versus likelihood. If the customer signals a smaller renewal or a smaller expansion, change the opportunity's value, not its stage. Stage reflects how likely the opportunity is to close. Value reflects how much.
 
 Lost opportunities. Retention opportunities don't leave the pipeline early. They end at Net Revenue Close with whatever actually happened, including $0. An expansion opportunity that dies is closed as lost, not deleted, with the reason and the last stage it reached. That keeps the evidence trail and shows how often each stage actually converts.
+
+Auto-Renewing Contracts
+
+An auto-renewing contract raises three different questions, and they shouldn't be blurred:
+
+Contractual continuation. The terms say the contract rolls over unless someone cancels.
+
+Affirmative commercial intent. The customer has actually said yes to continuing.
+
+The final revenue outcome. The renewal has taken effect at a known amount.
+
+Silence, or the absence of a cancellation notice, is not a verbal yes. An auto-renewing opportunity stays at its last evidence-supported stage, with that stage's probability, unless the criteria for a different stage are met. When verified contract terms make the renewal binding and it takes effect with a final amount, the opportunity can move directly to Net Revenue Close without passing through Intent. Don't manufacture a commitment just to keep the stages in order. The forecast math doesn't change: value times the current stage's probability until the outcome is final, then the final amount.
 
 ## How Does Customer Progression Support the Pipeline?
 
@@ -4179,6 +4215,8 @@ But progression doesn't carry an opportunity all the way. Later stages need diff
 The evidence each stage relies on most
 
 A customer can be progressing well while an expansion opportunity stalls at Align because no one has confirmed it matters. A customer can be highly engaged while the renewal has no advocate who can defend it to finance. Progression informs the pipeline. It doesn't replace the exit criteria.
+
+Precision matters here. Customer signals, such as usage, sentiment, or a health score, prompt assessment. Confirmed outcomes establish customer progression. Commercial commitments establish the relevant buyer-side evidence. A stage advances only when its defined criteria are satisfied.
 
 [Diagram] How an opportunity advances: a revenue opportunity enters the pipeline, plays support the required customer and commercial progression, evidence satisfies the stage exit criteria, the stage advances, the probability updates, and the forecast updates.
 
@@ -4297,7 +4335,7 @@ The cycle after Net Revenue Close. The same cycle is written out below.
 
 - The pipeline continues
 
-When a renewal closes, the next term's retention opportunity begins. It enters at Identify like any opportunity, but it rarely starts from nothing. The customer has already reached First Value, so it doesn't have to be earned again. The customer's history, evidence, trust, value realization, relationships, and commitments carry forward, so early exit criteria are often met quickly. The reasons the customer renewed or expanded become the starting point for their next goals, and often the source of the next expansion opportunity. Meanwhile, the customer's other opportunities keep moving at their own stages.
+When a renewal closes, the next term's retention opportunity begins. It enters at Identify like any opportunity, but it rarely starts from nothing. The customer has already reached First Value, so it doesn't have to be earned again, and the customer doesn't go back to onboarding. The new renewal advances to Align when the customer confirms the goals or business priorities that justify the next term. The customer's continuing journey decides where the work starts: with an Alignment Meeting when goals, priorities, stakeholders, or expected outcomes need to be revisited, or with the next Value Block when priorities are already established. The customer's history, evidence, trust, value realization, relationships, and commitments carry forward, so early exit criteria are often met quickly. The reasons the customer renewed or expanded become the starting point for their next goals, and often the source of the next expansion opportunity. Meanwhile, the customer's other opportunities keep moving at their own stages.
 
 ## Frequently Asked Questions
 
@@ -4319,7 +4357,7 @@ Observable evidence that satisfies the exit criteria for the next stage. Complet
 
 ### When does a first-term renewal leave the Identify stage?
 
-When the customer reaches First Value. The only exception is documented: the customer has confirmed a specific reason First Value is delayed, reaffirmed the goal, and set a revised First Value date. If that date passes, the renewal returns to Identify and is escalated. Later renewals don't have to earn First Value again.
+When the customer reaches First Value, the confirmed customer outcome designated as that stage's exit criterion. A documented delay, where the customer confirms the reason, reaffirms the goal, and agrees to a revised First Value date, keeps the renewal in Identify and changes how it is monitored. It does not advance the stage. Later renewals don't have to earn First Value again. They advance when the customer confirms the goals or business priorities that justify the next term.
 
 ### Can an opportunity move backward in a post-sale pipeline?
 
@@ -4328,6 +4366,10 @@ Yes. An opportunity sits at the highest stage its current evidence supports. If 
 ### Does Intent mean the contract is signed?
 
 No. Intent means the customer has given an explicit commitment, a verbal yes or its equivalent, with a credible path forward. Contracting, legal, procurement, and approvals may remain. Net Revenue Close is when the outcome is final.
+
+How are auto-renewing contracts handled in a post-sale pipeline?
+
+Contractual continuation is not commercial intent. Silence or the absence of a cancellation notice is not a verbal yes, so an auto-renewing opportunity stays at its last evidence-supported stage. When verified contract terms make the renewal binding and it takes effect with a final amount, it can move directly to Net Revenue Close without passing through Intent.
 
 ### How do you forecast existing-customer revenue with a post-sale pipeline?
 
@@ -4656,9 +4698,9 @@ The activity occurred, but that doesn't mean the customer progressed, the health
 
 Most post-sale teams operate without a map. They have processes — onboarding checklists, QBR templates, renewal reminders — but no unified view of how a customer moves from "just signed" to "fully adopted, expanded, and renewed." That gap is where retention dies.
 
-The CXology Post-Sale Journey Map documents the entire 12-month customer lifecycle as a system: what the customer is thinking at each stage, where they're most likely to disengage, what your team needs to execute internally, and which signals tell you whether the relationship is healthy or at risk.
+The CXology Post-Sale Journey Map documents the entire 12-month customer lifecycle as a system: what the customer is thinking at each phase, where they're most likely to disengage, what your team needs to execute internally, and which signals tell you whether the relationship is healthy or at risk.
 
-Retention is not an outcome you hope for. It is a system you design, execute, and measure.
+Retention is not an outcome you hope for. It is a designed outcome, produced by a system you design, execute, and measure.
 
 Every element on this map reflects how retention actually fails — and what it takes to prevent that failure at scale.
 
@@ -4682,7 +4724,7 @@ Row 03
 
 #### Customer Journey
 
-The observable path through the broader journey: what the customer is doing in the product and with your team at each stage. Adoption curves, usage patterns, escalation moments. Much of the evidence that progression did or didn't happen shows up in this row.
+The observable path through the broader journey: what the customer is doing in the product and with your team at each phase. Adoption curves, usage patterns, escalation moments. Much of the evidence that progression did or didn't happen shows up in this row.
 
 Row 04
 
@@ -4714,33 +4756,33 @@ Row 08
 
 The interpretation layer. Health scores, feedback loops, usage signals, engagement patterns, read together with the evidence of progression to judge the customer's condition and where to act, before the renewal conversation reveals the damage.
 
-## Six stages. Eight critical moments.
+## Six phases. Eight critical moments.
 
-The lifecycle is not a flat line — it has distinct stages with different risks, different customer emotions, and different operational requirements. Understanding the shape of the journey tells you where to invest human attention and where automation can carry the load. The six stages describe the shape of the year. The eight Inflection Points sit inside them.
+The lifecycle is not a flat line — it has distinct phases with different risks, different customer emotions, and different operational requirements. Understanding the shape of the journey tells you where to invest human attention and where automation can carry the load. The six phases describe the shape of the year. The eight Inflection Points sit inside them. These are phases of the customer journey, not the five stages of the [Post-Sale Pipeline](https://cxology.co/post-sale-pipeline.html): the journey describes what is happening for the customer, while the pipeline tracks where each renewal and expansion opportunity stands.
 
-🎉Stage 01 Purchase & Welcome Month 1 · Weeks 1–2
+🎉Phase 01 Purchase & Welcome Month 1 · Weeks 1–2
 
 Highest emotional stakes. Buyer's remorse risk is real. The customer is validating their decision. Speed, personalization, and a clear path forward are non-negotiable.
 
-🚀Stage 02 Kickoff & Onboarding Month 1 · Weeks 2–4
+🚀Phase 02 Kickoff & Onboarding Month 1 · Weeks 2–4
 
 Foundation-setting. Every misaligned expectation planted here becomes a retention problem at Month 9. The Kickoff is a strategic alignment meeting, not a product tutorial.
 
-⭐Stage 03 First Value Month 2 · Weeks 4–8
+⭐Phase 03 First Value Month 2 · Weeks 4–8
 
 The inflection that determines whether the relationship has a future. First Value is a specifically scoped win that proves the product delivers. Without it, everything else is hope.
 
-🧱Stage 04 Adoption & Expansion Months 3–7
+🧱Phase 04 Adoption & Expansion Months 3–7
 
 The messy middle. This is where most CS teams lose the thread. Value Blocks, Alignment Meetings, and Sharing Insights keep the customer progressing when momentum naturally stalls.
 
-🎯Stage 05 Strategic Alignment Months 8–10
+🎯Phase 05 Strategic Alignment Months 8–10
 
 Where expansion opportunities surface and renewal positioning begins. Teams that skip regular alignment meetings arrive here with no evidence, no champion, and no leverage.
 
-🔄Stage 06 Renewal & Growth Months 11–12
+🔄Phase 06 Renewal & Growth Months 11–12
 
-If the earlier stages produced real progression, the renewal decision rests on evidence the customer already recognizes. If they didn't, this is where you pay for everything that went unaddressed.
+If the earlier phases produced real progression, the renewal decision rests on evidence the customer already recognizes. If they didn't, this is where you pay for everything that went unaddressed.
 
 ## The gaps between rows
 
@@ -4894,7 +4936,7 @@ Now repeat that thinking across the plays one customer needs in their first year
 | Purchase & Welcome, Kickoff, and Onboarding start | Month 1 | 8.5 hrs |
 | Onboarding continued | Months 2 and 3 | 2 hrs |
 | Quarterly Alignment Meetings (4 at 3.5 hrs) | Months 3, 6, 9, 12 | 14 hrs |
-| Value Blocks and insights (0.5 hr a month) | Months between alignments | 3 hrs |
+| Value Blocks and Sharing Insights (0.5 hr a month) | Months between alignments | 3 hrs |
 | Designed effort, year one |  | 27.5 hrs |
 
 Designed effort for one high-touch customer, year one

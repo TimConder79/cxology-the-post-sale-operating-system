@@ -105,7 +105,7 @@
       "inLanguage": "en",
       "image": "https://cxology.co/og-image.png",
       "datePublished": "2026-10-07",
-      "dateModified": "2026-10-20",
+      "dateModified": "2026-11-02",
       "author": {
         "@id": "https://cxology.co/#tim"
       },
@@ -141,7 +141,7 @@
           "@type": "DefinedTerm",
           "@id": "https://cxology.co/post-sale-pipeline.html#exit-criteria",
           "name": "Exit criteria",
-          "description": "The observable evidence a revenue opportunity must show to leave a Post-Sale Pipeline stage. The stage reflects what you can prove, so an opportunity also moves back when the evidence behind its stage no longer holds.",
+          "description": "The observable evidence a revenue opportunity must show to leave a Post-Sale Pipeline stage. Customer progression does not advance an opportunity automatically; the criteria may include confirmed customer outcomes, commercial commitments, or both, depending on the stage and opportunity type. The stage reflects what you can prove, so an opportunity also moves back when the evidence behind its stage no longer holds.",
           "inDefinedTermSet": "https://cxology.co/glossary.html"
         }
       ],
@@ -275,7 +275,7 @@
       "name": "When does a first-term renewal leave the Identify stage?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "When the customer reaches First Value. The only exception is documented: the customer has confirmed a specific reason First Value is delayed, reaffirmed the goal, and set a revised First Value date. If that date passes, the renewal returns to Identify and is escalated. Later renewals don't have to earn First Value again."
+        "text": "When the customer reaches First Value, the confirmed customer outcome designated as that stage's exit criterion. A documented delay, where the customer confirms the reason, reaffirms the goal, and agrees to a revised First Value date, keeps the renewal in Identify and changes how it is monitored. It does not advance the stage. Later renewals don't have to earn First Value again. They advance when the customer confirms the goals or business priorities that justify the next term."
       }
     },
     {
@@ -292,6 +292,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. Intent means the customer has given an explicit commitment, a verbal yes or its equivalent, with a credible path forward. Contracting, legal, procurement, and approvals may remain. Net Revenue Close is when the outcome is final."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are auto-renewing contracts handled in a post-sale pipeline?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contractual continuation is not commercial intent. Silence or the absence of a cancellation notice is not a verbal yes, so an auto-renewing opportunity stays at its last evidence-supported stage. When verified contract terms make the renewal binding and it takes effect with a final amount, it can move directly to Net Revenue Close without passing through Intent."
       }
     },
     {
@@ -365,7 +373,7 @@
   <h2 id="opportunities-not-customers">Customers Don't Move Through the Pipeline. Revenue Opportunities Do.</h2>
   <p><strong>Customers don't move through the Post-Sale Pipeline. Revenue opportunities do.</strong> A customer is not "in Advocate." A specific renewal or expansion opportunity is.</p>
   <p>This matters because one customer can have several opportunities in different stages at the same time. The renewal may be well advanced while a new expansion idea has only just been identified. Assign one stage to the whole customer and you either overstate the expansion or understate the renewal. Either way, the forecast stops meaning anything.</p>
-  <p>It also keeps the pipeline honest about the renewal. The renewal is not an event at the end of the contract. It is a revenue opportunity that has to earn its way through the same stages as any expansion.</p>
+  <p>It also keeps the pipeline honest about the renewal. The renewal is not an event at the end of the contract. It is a revenue opportunity that has to earn its way through the same stages as any expansion. The one place the order can be skipped is a binding auto-renewal, covered in <a href="#auto-renewing-contracts">Auto-Renewing Contracts</a>, and even there the opportunity never moves on evidence it doesn't have.</p>
 
   <h2 id="stages">What Stages Should a Post-Sale Pipeline Have?</h2>
   <p>CXology's Post-Sale Pipeline has five stages. Each stage answers one commercial question.</p>
@@ -383,7 +391,7 @@
 
   <h3 id="identify">Identify (20%): Is there a real revenue opportunity?</h3>
   <p>A specific retention or growth opportunity exists. For retention, that is true from the moment of purchase. For expansion, it starts when an opportunity is specific enough to name and manage. Much of the raw material shows up early: what the customer deferred during the sale, teams that were left out, capability gaps that surface during onboarding. Identify makes opportunity visible. It does not mean you have earned the right to pursue it.</p>
-  <p>A first-term renewal stays in Identify until the customer reaches First Value. A customer who has never experienced a meaningful result from what they bought is a renewal at real risk, and the pipeline should say so.</p>
+  <p>A first-term renewal stays in Identify until the customer reaches First Value. A customer who has never experienced a meaningful result from what they bought is a renewal at real risk, and the pipeline should say so. A documented delay doesn't change that: the renewal stays in Identify until First Value actually occurs.</p>
 
   <h3 id="align">Align (40%): Is it relevant to something the customer is trying to accomplish?</h3>
   <p>The opportunity is connected to a customer need, goal, problem, reason for purchase, or business priority worth pursuing. Alignment is what turns a vendor idea into something the customer recognizes as their own. If the customer can't see their goals, results, and use cases in the opportunity, it is still yours, not theirs.</p>
@@ -403,12 +411,13 @@
 
   <h2 id="what-moves-an-opportunity">What Moves a Revenue Opportunity From One Stage to the Next?</h2>
   <p>Evidence. Specifically, observable evidence that satisfies the exit criteria for the next stage.</p>
+  <p><strong>Customer progression does not automatically advance commercial opportunities. A commercial opportunity advances only when its defined exit criteria are satisfied. Those criteria may include confirmed customer outcomes, commercial commitments, or both, depending on the stage and opportunity type.</strong></p>
   <p class="key-statement">The stage is not determined by what your team did. It is determined by what you can prove about the opportunity.</p>
   <div class="table-wrap"><table class="cmp cmp-wide" id="exit-criteria">
   <caption>Exit criteria for each stage</caption>
   <thead><tr><th scope="col">Move</th><th scope="col">Exit criteria</th><th scope="col">Example evidence</th></tr></thead>
   <tbody>
-  <tr><td>Identify → Align</td><td>A specific retention or growth opportunity exists and is connected to a customer need, goal, problem, reason for purchase, or meaningful business priority worth pursuing.</td><td><strong>First-term renewal:</strong> the customer has reached First Value, a meaningful result tied to why they bought (see the exception below). <strong>Later-term renewal:</strong> the customer has confirmed the goals for the next term. <strong>Expansion:</strong> the idea is tied to a goal the customer has named.</td></tr>
+  <tr><td>Identify → Align</td><td>A specific retention or growth opportunity exists and is connected to a customer need, goal, problem, reason for purchase, or meaningful business priority worth pursuing.</td><td><strong>First-term renewal:</strong> the customer has reached First Value, a confirmed customer outcome tied to why they bought and designated as this stage's exit criterion. A documented delay does not satisfy it (see below). <strong>Repeat renewal:</strong> the customer has confirmed the goals or business priorities that justify continuing the relationship for the next term. <strong>Expansion:</strong> the idea is tied to a goal the customer has named.</td></tr>
   <tr><td>Align → Advocate</td><td>The customer understands and agrees with the value or business case, and a credible internal person is capable of carrying that case forward inside the customer organization.</td><td>A business case built on the customer's own goals and results, which your primary contact can explain to their leadership without you present.</td></tr>
   <tr><td>Advocate → Intent</td><td>Internal advocacy and momentum have produced an explicit customer commitment (a verbal yes or equivalent) and a credible path forward, including timing, ownership, approvals, and next steps.</td><td>The customer says they are moving forward, and the budget owner, approval sequence, procurement steps, and target date are known.</td></tr>
   <tr><td>Intent → Net Revenue Close</td><td>The remaining commercial process is completed and the revenue outcome is finalized.</td><td>The renewal or order is signed and the final amount is recorded.</td></tr>
@@ -424,17 +433,18 @@
   <p class="related-read">Related reading: <a href="blog/evidence-of-customer-progression/">Why Existing-Customer Revenue Needs Evidence of Progression</a>, on why completed CS activity can't carry a stage on its own.</p>
 
   <h3 id="first-term-renewal">Why a First-Term Renewal Waits for First Value</h3>
-  <p>A first-term renewal is the one opportunity where the customer hasn't yet proven the purchase was worth it. Until they reach First Value, the connection between the renewal and the reason they bought is still a promise. So a first-term renewal stays in Identify until First Value, with one documented exception.</p>
-  <p><strong>The exception:</strong> the customer has confirmed a specific reason First Value is delayed (a longer implementation, a reorganization, a postponed start), has reaffirmed the goal, and a revised First Value date is set. The record shows:</p>
+  <p>A first-term renewal is the one opportunity where the customer hasn't yet proven the purchase was worth it. Until they reach First Value, the connection between the renewal and the reason they bought is still a promise. So a first-term renewal stays in Identify until First Value. First Value is a confirmed customer outcome, and it is the outcome deliberately designated as the exit criterion for this one transition. When it occurs, the criterion is met. No separate commercial confirmation is required.</p>
+  <p><strong>A documented delay.</strong> Sometimes the customer confirms a specific reason First Value is delayed (a longer implementation, a reorganization, a postponed start), reaffirms the goal, and agrees to a revised First Value date. That is useful evidence, but it does not satisfy the exit criterion. <strong>The renewal stays in Identify.</strong> The record shows:</p>
   <ul>
   <li>The reason for the delay</li>
   <li>Who on the customer side confirmed it, and when</li>
   <li>The revised First Value date</li>
-  <li>The next review date</li>
+  <li>The owner on your side</li>
+  <li>The next inspection date</li>
   </ul>
-  <p>If the revised date passes without First Value, the renewal returns to Identify and is escalated. Every exception can be explained to a CRO, CEO, or board in one sentence, with the evidence behind it.</p>
+  <p>A documented delay changes how the delay is monitored, not the stage. If the revised date passes without First Value, the renewal is escalated. Every delay can be explained to a CRO, CEO, or board in one sentence, with the evidence behind it.</p>
   <p>Stage alone won't show this risk, because a renewal 30 days into the term and one 300 days in can both sit in Identify. So every first-term renewal also carries an <strong>expected First Value date</strong>, and an overdue date is flagged. That flag is how a stalled renewal becomes visible months before the renewal date.</p>
-  <p>The rule applies to the first term only. Once a customer has reached First Value, later renewals don't have to earn it again.</p>
+  <p>The rule applies to the first term only. First Value happens once, in the initial customer journey, and later renewals don't have to earn it again. Customers keep experiencing new value in later terms; what is not repeated is the First Value play as a requirement for renewal. <strong>For a repeat renewal, the opportunity advances from Identify to Align when the customer has confirmed the goals or business priorities that justify continuing the relationship for the next term.</strong> Prior value provides context, but the opportunity must remain connected to a current customer need. That is not a requirement to rebuild the full business case or repeat onboarding.</p>
 
   <h3 id="moving-backward">Can an Opportunity Move Backward?</h3>
   <p>Yes. The same standard works in both directions. <strong>An opportunity sits at the highest stage its current evidence supports.</strong> If the evidence behind its stage no longer holds, it moves back to the highest stage the remaining evidence still supports, and the probability updates right away. The owner records what changed, when, and how they know.</p>
@@ -452,6 +462,15 @@
   <p><strong>Timing slips.</strong> If the expected close date slips but the customer confirms new timing, the opportunity stays in Intent and only the date changes. If it slips without confirmed timing, the path is no longer credible, and the opportunity moves back to Advocate.</p>
   <p><strong>Amount versus likelihood.</strong> If the customer signals a smaller renewal or a smaller expansion, change the opportunity's value, not its stage. Stage reflects how likely the opportunity is to close. Value reflects how much.</p>
   <p><strong>Lost opportunities.</strong> Retention opportunities don't leave the pipeline early. They end at Net Revenue Close with whatever actually happened, including $0. An expansion opportunity that dies is closed as lost, not deleted, with the reason and the last stage it reached. That keeps the evidence trail and shows how often each stage actually converts.</p>
+
+  <h3 id="auto-renewing-contracts">Auto-Renewing Contracts</h3>
+  <p>An auto-renewing contract raises three different questions, and they shouldn't be blurred:</p>
+  <ul>
+  <li><strong>Contractual continuation.</strong> The terms say the contract rolls over unless someone cancels.</li>
+  <li><strong>Affirmative commercial intent.</strong> The customer has actually said yes to continuing.</li>
+  <li><strong>The final revenue outcome.</strong> The renewal has taken effect at a known amount.</li>
+  </ul>
+  <p>Silence, or the absence of a cancellation notice, is not a verbal yes. An auto-renewing opportunity stays at its last evidence-supported stage, with that stage's probability, unless the criteria for a different stage are met. When verified contract terms make the renewal binding and it takes effect with a final amount, the opportunity can move directly to Net Revenue Close without passing through Intent. Don't manufacture a commitment just to keep the stages in order. The forecast math doesn't change: value times the current stage's probability until the outcome is final, then the final amount.</p>
 
   <h2 id="customer-progression">How Does Customer Progression Support the Pipeline?</h2>
   <p>Customer progression and pipeline progression are related. They are not the same thing.</p>
@@ -474,6 +493,7 @@
   </tbody>
   </table></div>
   <p>A customer can be progressing well while an expansion opportunity stalls at Align because no one has confirmed it matters. A customer can be highly engaged while the renewal has no advocate who can defend it to finance. Progression informs the pipeline. It doesn't replace the exit criteria.</p>
+  <p>Precision matters here. Customer signals, such as usage, sentiment, or a health score, prompt assessment. Confirmed outcomes establish customer progression. Commercial commitments establish the relevant buyer-side evidence. A stage advances only when its defined criteria are satisfied.</p>
   <div class="diagram-wrap">
     <svg viewBox="0 0 960 230" role="img" aria-label="How an opportunity advances: a revenue opportunity enters the pipeline, plays support the required customer and commercial progression, evidence satisfies the stage exit criteria, the stage advances, the probability updates, and the forecast updates." xmlns="http://www.w3.org/2000/svg">
       <defs><marker id="arm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5B7F95"/></marker></defs>
@@ -617,7 +637,7 @@
   <li>New or continuing revenue opportunities</li>
   <li>The pipeline continues</li>
   </ol>
-  <p>When a renewal closes, the next term's retention opportunity begins. It enters at Identify like any opportunity, but it rarely starts from nothing. The customer has already reached First Value, so it doesn't have to be earned again. The customer's history, evidence, trust, value realization, relationships, and commitments carry forward, so early exit criteria are often met quickly. The reasons the customer renewed or expanded become the starting point for their next goals, and often the source of the next expansion opportunity. Meanwhile, the customer's other opportunities keep moving at their own stages.</p>
+  <p>When a renewal closes, the next term's retention opportunity begins. It enters at Identify like any opportunity, but it rarely starts from nothing. The customer has already reached First Value, so it doesn't have to be earned again, and the customer doesn't go back to onboarding. The new renewal advances to Align when the customer confirms the goals or business priorities that justify the next term. The customer's continuing journey decides where the work starts: with an Alignment Meeting when goals, priorities, stakeholders, or expected outcomes need to be revisited, or with the next Value Block when priorities are already established. The customer's history, evidence, trust, value realization, relationships, and commitments carry forward, so early exit criteria are often met quickly. The reasons the customer renewed or expanded become the starting point for their next goals, and often the source of the next expansion opportunity. Meanwhile, the customer's other opportunities keep moving at their own stages.</p>
 
   <h2 id="faq">Frequently Asked Questions</h2>
   <h3>What is a post-sale pipeline?</h3>
@@ -629,11 +649,13 @@
   <h3>What moves an opportunity from one stage to the next?</h3>
   <p>Observable evidence that satisfies the exit criteria for the next stage. Completing a play, time passing, usage alone, or a CSM&#x27;s confidence does not advance a stage.</p>
   <h3>When does a first-term renewal leave the Identify stage?</h3>
-  <p>When the customer reaches First Value. The only exception is documented: the customer has confirmed a specific reason First Value is delayed, reaffirmed the goal, and set a revised First Value date. If that date passes, the renewal returns to Identify and is escalated. Later renewals don&#x27;t have to earn First Value again.</p>
+  <p>When the customer reaches First Value, the confirmed customer outcome designated as that stage&#x27;s exit criterion. A documented delay, where the customer confirms the reason, reaffirms the goal, and agrees to a revised First Value date, keeps the renewal in Identify and changes how it is monitored. It does not advance the stage. Later renewals don&#x27;t have to earn First Value again. They advance when the customer confirms the goals or business priorities that justify the next term.</p>
   <h3>Can an opportunity move backward in a post-sale pipeline?</h3>
   <p>Yes. An opportunity sits at the highest stage its current evidence supports. If that evidence no longer holds, such as an advocate leaving or a commitment being withdrawn, it moves back to the stage the remaining evidence supports. A usage drop or a red health score doesn&#x27;t move a stage back on its own; it triggers a check of the evidence.</p>
   <h3>Does Intent mean the contract is signed?</h3>
   <p>No. Intent means the customer has given an explicit commitment, a verbal yes or its equivalent, with a credible path forward. Contracting, legal, procurement, and approvals may remain. Net Revenue Close is when the outcome is final.</p>
+  <h3>How are auto-renewing contracts handled in a post-sale pipeline?</h3>
+  <p>Contractual continuation is not commercial intent. Silence or the absence of a cancellation notice is not a verbal yes, so an auto-renewing opportunity stays at its last evidence-supported stage. When verified contract terms make the renewal binding and it takes effect with a final amount, it can move directly to Net Revenue Close without passing through Intent.</p>
   <h3>How do you forecast existing-customer revenue with a post-sale pipeline?</h3>
   <p>Multiply each opportunity&#x27;s value by its stage probability and place the result in the period of its expected close date. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail.</p>
 
