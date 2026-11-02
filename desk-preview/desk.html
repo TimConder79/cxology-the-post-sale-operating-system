@@ -12,7 +12,7 @@
 <body>
 <div class="wrap">
   <section class="home">
-    <div class="brand">CXology<span>Desk</span></div>
+    <div class="brand-row"><div class="brand">CXology<span>Desk</span></div><button class="new-q" type="button" id="new-q">New question</button></div>
     <p class="tag">Bring a customer situation. Get the play, grounded in <em>The Post-Sale Operating System</em>.</p>
     <form id="ask">
       <textarea id="input" rows="1" placeholder="Our champion just left and renewal is in 90 days..." autofocus></textarea>
@@ -62,48 +62,88 @@
     thread.appendChild(card);
   }
 
+  // FND-005: short prompts on small screens so the placeholder is never cut off.
+  const SMALL = matchMedia("(max-width: 560px)").matches;
+  const PROMPT = SMALL ? "Describe a situation..." : "Our champion just left and renewal is in 90 days...";
+  const FOLLOW = SMALL ? "Ask a follow-up..." : "Ask a follow-up, or describe another situation...";
+  input.placeholder = PROMPT;
+
+  const waiting = () => {
+    const el = document.createElement("div"); el.className = "loading";
+    el.innerHTML = "<b>Reading the book</b><small>Usually about 30 seconds</small>";
+    return el;
+  };
+  const addQuestion = (text) => {
+    const q = document.createElement("div"); q.className = "q"; q.textContent = text; thread.appendChild(q);
+  };
+
+  let busy = false; // one request at a time
   async function submit(text) {
-    text = text.trim(); if (!text) return;
+    text = text.trim();
+    if (!text || busy) return;
     if (DEMO) {
       document.body.classList.add("asked");
-      const q = document.createElement("div"); q.className = "q"; q.textContent = text; thread.appendChild(q);
+      addQuestion(text);
       input.value = "";
       const d = demoAnswer(text);
       if (d.picker) { showPicker(); return; }
-      const loading = document.createElement("div"); loading.className = "loading"; loading.textContent = "Reading the book";
+      busy = true;
+      const loading = waiting();
       thread.appendChild(loading); loading.scrollIntoView({ behavior: "smooth" });
       await new Promise((r) => setTimeout(r, 1200));
       loading.remove();
-      thread.appendChild(render(d.result, "a" + thread.children.length));
+      const card = render(d.result, "a" + thread.children.length);
+      thread.appendChild(card);
       const meta = document.createElement("div"); meta.className = "meta";
       meta.textContent = (d.result.handRun ? `Example written to the Desk's rules · ${d.result.sources.length} citations, each verified word for word against the book`
         : `Recorded answer · took ${d.seconds}s live · ${d.result.sources.length} citations`) +
         (d.result.kind === "clarify" ? " · in the live Desk you would answer these questions next" : "");
       thread.appendChild(meta);
+      card.scrollIntoView({ behavior: "smooth", block: "start" });
+      input.placeholder = FOLLOW;
+      busy = false;
       return;
     }
+    busy = true; go.disabled = true;
     document.body.classList.add("asked");
     history.push({ role: "user", text });
-    const q = document.createElement("div"); q.className = "q"; q.textContent = text; thread.appendChild(q);
-    const loading = document.createElement("div"); loading.className = "loading"; loading.textContent = "Reading the book";
+    addQuestion(text);
+    const loading = waiting();
     thread.appendChild(loading); loading.scrollIntoView({ behavior: "smooth" });
-    input.value = ""; go.disabled = true;
+    input.value = "";
     const t0 = Date.now();
+    let result;
     try {
       const r = await fetch("/api/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ history }) });
-      const result = await r.json();
-      loading.remove();
-      const card = render(result, "a" + history.length);
+      result = await r.json().catch(() => ({ error: { kind: "failed", message: "Something went wrong on our side. Try again in a moment." } }));
+    } catch {
+      result = { error: { kind: "offline", message: "You seem to be offline. Check your connection and try again." } };
+    }
+    loading.remove();
+    const card = render(result, "a" + history.length);
+    thread.appendChild(card);
+    if (result.error) {
+      // Keep the reader's question: put it back in the box and offer a retry.
+      history.pop();
+      input.value = text;
+      input.dispatchEvent(new Event("input"));
+      card.querySelector(".retry")?.addEventListener("click", () => { card.previousElementSibling?.remove(); card.remove(); submit(input.value); });
+    } else {
       const meta = document.createElement("div"); meta.className = "meta";
       meta.textContent = `${((Date.now() - t0) / 1000).toFixed(0)}s · ${result.sources?.length || 0} citations`;
-      thread.appendChild(card); thread.appendChild(meta);
-      if (result.text) history.push({ role: "assistant", text: result.text.replace(/\[\[\d+\]\]/g, "") });
-      else history.pop();
-      input.placeholder = result.kind === "clarify" ? "Answer here..." : "Ask a follow-up, or describe another situation...";
-    } catch (e) { loading.textContent = "Something went wrong: " + e.message; history.pop(); }
-    go.disabled = false; input.focus();
+      thread.appendChild(meta);
+      history.push({ role: "assistant", text: result.text.replace(/\[\[\w+\]\]/g, "") });
+      input.placeholder = result.kind === "clarify" ? "Answer here..." : FOLLOW;
+      card.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    busy = false; go.disabled = false; input.focus();
   }
 
+  document.getElementById("new-q").addEventListener("click", () => {
+    thread.innerHTML = ""; history = []; input.value = ""; input.placeholder = PROMPT;
+    document.body.classList.remove("asked");
+    window.scrollTo({ top: 0 }); input.focus();
+  });
   document.getElementById("ask").addEventListener("submit", (e) => { e.preventDefault(); submit(input.value); });
   input.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submit(input.value); } });
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; });

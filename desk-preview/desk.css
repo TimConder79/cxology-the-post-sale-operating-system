@@ -22,6 +22,15 @@
   .chip { background: #fff; color: var(--navy); border: 1px solid var(--gray-200); font-weight: 400; font-size: 14px; padding: 8px 14px; }
   .chip:hover { border-color: var(--navy); }
   .thread { padding: 16px 0 80px; }
+  /* FND-005: after the first answer the question box is pinned to the bottom, so follow-ups never need a scroll to the top. */
+  .new-q { display: none; padding: 0 16px; }
+  body.asked .new-q { display: inline-flex; align-items: center; }
+  .brand-row { display: flex; align-items: center; justify-content: center; gap: 12px; }
+  body.asked .brand-row { justify-content: space-between; }
+  body.asked form { position: fixed; left: 50%; transform: translateX(-50%); bottom: 12px; width: min(728px, calc(100% - 24px)); z-index: 10; box-shadow: 0 8px 32px rgba(26,46,66,.18); }
+  body.asked .thread { padding-bottom: 140px; }
+  .loading { color: var(--muted); padding: 20px 0; }
+  .loading small { display: block; font-size: 13px; margin-top: 2px; }
   .q { font-weight: 700; margin: 28px 0 10px; font-size: 18px; }
   .card { background: #fff; border-radius: 12px; border-top: 5px solid var(--olive); padding: 24px 28px; box-shadow: 0 4px 24px rgba(26,46,66,.08); }
   .card.clarify { border-top-color: var(--navy-mid); }
@@ -31,15 +40,26 @@
   .card p, .card li { font-size: 16.5px; margin-bottom: 8px; }
   .card ol, .card ul { padding-left: 22px; }
   .card strong { font-weight: 700; }
-  sup a { font-size: 11px; font-weight: 700; text-decoration: none; background: var(--olive-pale); color: var(--navy); border-radius: 4px; padding: 0 4px; margin-left: 2px; }
-  .deeper { margin-top: 22px; border-top: 1px solid var(--gray-200); padding-top: 16px; }
-  .deeper h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 10px; }
-  .src { display: grid; grid-template-columns: 26px 1fr; gap: 4px 8px; margin-bottom: 12px; font-size: 14px; }
+  /* FND-005: citation numbers keep their small look but get a 44 px touch area. */
+  sup a { position: relative; display: inline-block; font-size: 11px; font-weight: 700; text-decoration: none; background: var(--olive-pale); color: var(--navy); border-radius: 4px; padding: 0 4px; margin-left: 2px; line-height: 1.5; }
+  sup a::after { content: ""; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
+  .jump { display: inline-flex; align-items: center; min-height: 44px; margin: -8px 0 6px; font-size: 14px; font-weight: 700; color: var(--navy); }
+  .answer-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+  .answer-actions button, .new-q { min-height: 44px; font-size: 14px; border: 1px solid var(--navy); }
+  .answer-actions .ghost, .new-q { background: #fff; color: var(--navy); }
+  .deeper { margin-top: 18px; border-top: 1px solid var(--gray-200); padding-top: 4px; }
+  .deeper > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); }
+  .deeper[open] > summary { margin-bottom: 8px; }
+  .src-group { margin-bottom: 14px; }
+  .src-title { display: inline-flex; align-items: center; min-height: 32px; font-weight: 700; font-size: 14.5px; color: var(--navy); }
+  .src { display: grid; grid-template-columns: 26px 1fr; gap: 4px 8px; margin: 6px 0 10px; font-size: 14px; border-radius: 6px; }
   .src .n { font-weight: 700; background: var(--olive-pale); border-radius: 4px; text-align: center; height: 20px; font-size: 12px; line-height: 20px; }
-  .src a { font-weight: 700; color: var(--navy); }
   .src blockquote { grid-column: 2; color: var(--muted); font-style: italic; border-left: 2px solid var(--gray-200); padding-left: 10px; }
-  .loading { color: var(--muted); font-style: italic; padding: 20px 0; }
-  .loading::after { content: ""; animation: dots 1.2s steps(4) infinite; }
+  .passage-link { font-style: normal; font-weight: 700; font-size: 13px; color: var(--navy); white-space: nowrap; }
+  .src.flash { animation: flash 1.6s ease-out; }
+  @keyframes flash { 0% { background: var(--olive-pale); } 100% { background: transparent; } }
+  .loading b { font-weight: 400; font-style: italic; }
+  .loading b::after { content: ""; animation: dots 1.2s steps(4) infinite; }
   @keyframes dots { 0% { content: ""; } 25% { content: "."; } 50% { content: ".."; } 75% { content: "..."; } }
   .follow { margin-top: 18px; }
   .meta { font-size: 12px; color: var(--muted); margin-top: 10px; }
