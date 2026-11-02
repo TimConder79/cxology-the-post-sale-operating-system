@@ -30,7 +30,7 @@
     /* Chapter-body typography — matches the book chapters exactly */
     .chapter-body h2 { font-size: 1.5rem; font-weight: 700; color: var(--navy); margin: 2rem 0 0.75rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--gray-100); }
     .chapter-body h3 { font-size: 1.1rem; font-weight: 600; color: var(--navy-light); margin: 1.5rem 0 0.5rem; }
-    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.82; max-width: 72ch; }
+    .chapter-body p { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 1rem; line-height: 1.75; max-width: 72ch; }
     .chapter-body ul { padding-left: 1.4rem; margin-bottom: 1rem; }
     .chapter-body li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
     .chapter-body strong { color: var(--navy); }
@@ -84,7 +84,65 @@
     .chapter-body .sources-title { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: .4rem; }
     .chapter-body .sources p { font-size: .82rem; line-height: 1.6; color: var(--text-muted); }
     .chapter-body ol li { color: var(--gray-700); font-size: 0.97rem; margin-bottom: 0.6rem; line-height: 1.65; }
-</style>
+
+    /* Book chrome (matches the chapter pages) */
+    .chapter-nav-btn {
+      padding: 8px 18px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Public Sans', sans-serif;
+    }
+    .chapter-nav-btn:hover { background: var(--off-white); border-color: var(--navy); }
+    .chapter-nav-btn:disabled { opacity: 0.3; cursor: default; }
+    .chapter-nav-btn.primary { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .chapter-nav-btn.primary:hover { background: var(--navy-light); }
+    .toc-drawer {
+      position: fixed;
+      top: 60px; left: 0; bottom: 0;
+      width: 280px;
+      background: var(--navy-deep);
+      border-right: 1px solid rgba(255,255,255,.08);
+      overflow-y: auto;
+      z-index: 90;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+      padding: 1.5rem 0 2rem;
+    }
+    .toc-drawer.open { transform: translateX(0); }
+    .toc-drawer::-webkit-scrollbar { width: 3px; }
+    .toc-drawer::-webkit-scrollbar-thumb { background: rgba(255,255,255,.1); border-radius: 2px; }
+    .toc-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.3); padding: 0 1.25rem; margin-bottom: 1rem; }
+    .toc-part { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.25rem 0.25rem; color: rgba(255,255,255,.2); }
+    .toc-link { display: block; padding: 0.45rem 1.25rem; font-size: 0.82rem; color: rgba(255,255,255,.5); text-decoration: none; transition: all 0.15s; border-left: 2px solid transparent; }
+    .toc-link:hover { color: rgba(255,255,255,.9); background: rgba(255,255,255,.04); }
+    .toc-link.active { color: var(--olive); border-left-color: var(--olive); background: rgba(197,212,78,.06); }
+    .toc-btn {
+      position: fixed; top: 70px; left: 12px; z-index: 95;
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      transition: all 0.2s;
+    }
+    .toc-btn:hover { background: var(--navy-light); color: var(--white); }
+    .toc-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 89;
+      background: rgba(0,0,0,.4);
+    }
+    .toc-overlay.open { display: block; }
+
+    </style>
   <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
@@ -315,25 +373,80 @@
     <a href="/"><img class="nav-logo-img" src="assets/logo-h-bb.png" alt="CXology" width="1329" height="269"/></a>
   </div>
   <ul class="nav-links">
-    <li><a href="book.html">The Book</a></li>
+    <li><a href="book.html" class="active">The Book</a></li>
     <li><a href="calculator.html">ROI Calculator</a></li>
     <li><a href="readers.html">Reader Hub</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
-  <button class="nav-burger" onclick="var l=this.parentNode.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div style="display:flex;gap:0.6rem;align-items:center">
+    <button onclick="window.location.href='chapter-1.html'" class="chapter-nav-btn">← Prev</button>
+    <button class="chapter-nav-btn primary" onclick="window.location.href='chapter-2.html'">Next →</button>
+  </div>
 </nav>
 
-<!-- HERO -->
-<div class="chapter-hero">
-  <div class="hero-grid"></div>
-  <div class="chapter-hero-inner">
-    <span class="chapter-num">The Post-Sale Operating System · The System</span>
-    <h1 class="headline">What Is a Post-Sale Operating System?</h1>
-    <p class="chapter-hero-sub">A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly.</p>
-  </div>
+<!-- TOC BUTTON -->
+<button class="toc-btn" onclick="toggleToc()" title="Table of Contents">☰</button>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="toc-overlay" onclick="toggleToc()"></div>
+
+<!-- TOC DRAWER -->
+<div class="toc-drawer" id="toc-drawer">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-part">Preface</div>
+  <a href="preface.html" class="toc-link">Why I Wrote This Book</a>
+  <div class="toc-part">Introduction</div>
+  <a href="book.html" class="toc-link">Overview & The Book</a>
+  <div class="toc-part">Part I · From Function to System</div>
+  <a href="chapter-1.html" class="toc-link" data-ch="1">Ch 1: From Churn Insurance to Revenue Engine</a>
+  <a href="post-sale-operating-system.html" class="toc-link active" style="padding-left:2.2rem;font-size:0.78rem">Companion: What Is a Post-Sale Operating System?</a>
+  <a href="chapter-2.html" class="toc-link" data-ch="2">Ch 2: Post-Sale Unification</a>
+  <a href="chapter-3.html" class="toc-link" data-ch="3">Ch 3: The Role Evolution of the CSM</a>
+  <div class="toc-part">Part II · The Post-Sale Pipeline</div>
+  <a href="chapter-part2-intro.html" class="toc-link">Part II Introduction</a>
+  <a href="chapter-4.html" class="toc-link" data-ch="4">Ch 4: Stage 1 — Identify</a>
+  <a href="chapter-5.html" class="toc-link" data-ch="5">Ch 5: Stage 2 — Align</a>
+  <a href="chapter-6.html" class="toc-link" data-ch="6">Ch 6: Stage 3 — Advocate</a>
+  <a href="chapter-7.html" class="toc-link" data-ch="7">Ch 7: Stage 4 — Intent</a>
+  <a href="chapter-8.html" class="toc-link" data-ch="8">Ch 8: Stage 5 — Net Revenue Close</a>
+  <div class="toc-part">Part III · Lifecycle Plays</div>
+  <a href="chapter-part3-intro.html" class="toc-link">Part III Introduction</a>
+  <a href="chapter-9.html" class="toc-link" data-ch="9">Ch 9: Purchase & Welcome Play</a>
+  <a href="chapter-10.html" class="toc-link" data-ch="10">Ch 10: The Kickoff Play</a>
+  <a href="chapter-11.html" class="toc-link" data-ch="11">Ch 11: The Onboarding Play</a>
+  <a href="chapter-12.html" class="toc-link" data-ch="12">Ch 12: The First Value Play</a>
+  <a href="chapter-13.html" class="toc-link" data-ch="13">Ch 13: The Value Blocks Play</a>
+  <a href="chapter-14.html" class="toc-link" data-ch="14">Ch 14: The Sharing Insights Play</a>
+  <a href="chapter-15.html" class="toc-link" data-ch="15">Ch 15: The Alignment Meeting Play</a>
+  <a href="chapter-16.html" class="toc-link" data-ch="16">Ch 16: The Renew & Grow Play</a>
+  <a href="chapter-17.html" class="toc-link" data-ch="17">Ch 17: Supporting Plays</a>
+  <div class="toc-part">Part IV · Infrastructure That Makes the System Real</div>
+  <a href="chapter-part4-intro.html" class="toc-link">Part IV Introduction</a>
+  <a href="chapter-18.html" class="toc-link" data-ch="18">Ch 18: AI in CS — Judgment Over Templates</a>
+  <a href="chapter-19.html" class="toc-link" data-ch="19">Ch 19: Data Governance & One Data Spine</a>
+  <a href="chapter-20.html" class="toc-link" data-ch="20">Ch 20: Health Scoring That Actually Works</a>
+  <a href="chapter-21.html" class="toc-link" data-ch="21">Ch 21: Cross-Team Collaboration KPIs</a>
+  <a href="chapter-22.html" class="toc-link" data-ch="22">Ch 22: Proactive Capacity Planning</a>
+  <div class="toc-part">Conclusion</div>
+  <a href="chapter-conclusion.html" class="toc-link">Running the System</a>
+  <div class="toc-part">Glossary</div>
+  <a href="glossary.html" class="toc-link">Glossary &amp; Index</a>
 </div>
 
-<!-- CONTENT -->
+
+
+<!-- CHAPTER CONTENT -->
+<div id="chapter-content">
+  <div class="chapter-hero" style="background:var(--navy-deep);padding:90px 2rem 3rem;position:relative;overflow:hidden">
+    <div class="hero-grid"></div>
+    <div style="max-width:860px;margin:0 auto;position:relative;z-index:1">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1D9E75;margin-bottom:0.75rem">Part I: From Function to System</div>
+      <div style="font-size:0.8rem;font-weight:600;color:rgba(255,255,255,.3);margin-bottom:0.5rem">Companion page</div>
+      <h1 style="font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:1rem;line-height:1.2">What Is a Post-Sale Operating System?</h1>
+      <p style="color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;max-width:58ch;line-height:1.7">A framework explains a piece of the problem. An operating system connects the work, evidence, decisions, and resources required to run post-sale repeatedly.</p>
+    </div>
+  </div>
+
 <div class="chapter-body" style="max-width:860px;margin:0 auto;padding:3rem 2rem 1rem">
 
 <div class="def" id="definition"><div class="def-label">Definition</div><p><strong>A Post-Sale Operating System is the integrated management system a company uses to design customer progression, execute the work intended to support it, observe whether that progression occurred, and translate the evidence into decisions about customer health, capacity, retention, expansion, and revenue forecasting.</strong></p></div>
@@ -625,48 +738,35 @@
 
 </div>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-name">CXology</div>
-        <p class="footer-brand-desc">A post-sale operating system for predictable retention and scalable growth.</p>
-        <p style="margin-top:1rem;font-size:0.82rem;color:rgba(255,255,255,.3)">By <span class="footer-olive">Tim Conder</span></p>
-      </div>
-      <div>
-        <div class="footer-col-title">The Book</div>
-        <ul class="footer-links">
-          <li><a href="book.html#parts">Part I: From Function to System</a></li>
-          <li><a href="book.html#parts">Part II: The Pipeline</a></li>
-          <li><a href="book.html#parts">Part III: Lifecycle Plays</a></li>
-          <li><a href="book.html#parts">Part IV: Scale &amp; Data</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Frameworks</div>
-        <ul class="footer-links">
-          <li><a href="frameworks.html#maturity">CS Maturity Curve</a></li>
-          <li><a href="frameworks.html#five-questions">The Five Questions</a></li>
-          <li><a href="frameworks.html#value-blocks">Value Blocks</a></li>
-          <li><a href="frameworks.html#health">Health Score Matrix</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Tools</div>
-        <ul class="footer-links">
-          <li><a href="calculator.html">NRR Calculator</a></li>
-          <li><a href="frameworks.html#pipeline">Pipeline Builder</a></li>
-          <li><a href="frameworks.html#capacity">Capacity Planner</a></li>
-        </ul>
-      </div>
+
+</div>
+
+<!-- READER HUB CALLOUT -->
+<div style="background:var(--off-white);padding:0 2rem 4rem">
+  <div style="max-width:860px;margin:0 auto;background:var(--white);border:1px solid var(--gray-200);border-top:4px solid var(--olive);border-radius:var(--radius-md);box-shadow:var(--shadow);padding:2rem 2.25rem;display:flex;justify-content:space-between;align-items:center;gap:1.75rem;flex-wrap:wrap">
+    <div style="flex:1 1 320px">
+      <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive-dim);margin-bottom:0.5rem">Reader Hub</div>
+      <div style="font-size:1.4rem;color:var(--navy);font-weight:700;margin-bottom:0.45rem;line-height:1.25">Question on this chapter, or ran the play?</div>
+      <p style="color:var(--text-muted);font-size:0.95rem;margin:0;max-width:56ch;line-height:1.6">Ask me directly, or tell me what happened when you tried it. The best questions get answered in the open, and results from the field shape the next edition.</p>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2022–2026 CXology LLC. All rights reserved.</div>
-      <div class="footer-copy">The pipeline doesn't stop at Closed-Won — <span class="footer-olive">it starts there.</span></div>
+    <a href="readers.html?ch=1#participate" style="padding:13px 26px;background:var(--olive);color:var(--navy-deep);border-radius:var(--radius-sm);font-size:0.9rem;font-weight:700;white-space:nowrap;flex-shrink:0;text-decoration:none">Ask or give feedback &rarr;</a>
+  </div>
+</div>
+<!-- BOTTOM NAV -->
+<div style="background:var(--navy-deep);padding:2.5rem 2rem;border-top:1px solid rgba(255,255,255,.06)">
+  <div style="max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+    <div>
+      <div style="font-size:0.72rem;color:rgba(255,255,255,.3);margin-bottom:0.25rem;text-transform:uppercase;letter-spacing:0.06em">Next chapter</div>
+      <div style="font-size:1rem;color:var(--white);font-weight:500">Chapter 2: Post-Sale Unification</div>
+    </div>
+    <div style="display:flex;gap:0.75rem">
+      <button onclick="window.location.href='chapter-1.html'" class="chapter-nav-btn" style="border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);background:transparent">← Previous</button>
+      <button onclick="window.location.href='chapter-2.html'" style="padding:10px 22px;background:var(--olive);color:var(--navy-deep);border:none;border-radius:var(--radius-sm);font-size:0.88rem;font-weight:700;cursor:pointer;font-family:'Public Sans',sans-serif;transition:all 0.2s" onmouseenter="this.style.background='#d4e455'" onmouseleave="this.style.background='var(--olive)'">Next Chapter →</button>
     </div>
   </div>
-</footer>
+</div>
+
+
 
 <script>
 window.addEventListener('scroll', () => {
@@ -675,6 +775,18 @@ window.addEventListener('scroll', () => {
   document.getElementById('progress-bar').style.width = pct + '%';
 });
 </script>
+
+
+<script>
+function toggleToc() {
+  document.getElementById('toc-drawer').classList.toggle('open');
+  document.getElementById('toc-overlay').classList.toggle('open');
+}
+</script>
+
+<footer style="text-align:center;padding:1.5rem 1rem;font-size:0.8rem;color:var(--text-muted);background:transparent;">
+  © 2022–2026 CXology LLC. All rights reserved.
+</footer>
 
 </body>
 </html>
