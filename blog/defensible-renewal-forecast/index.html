@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Renewal Forecasting: What Makes a Forecast Defensible?</title>
+  <meta name="description" content="What makes a renewal forecast defensible? Learn how customer progression, commercial evidence, and forecast reviews connect to better revenue decisions."/>
+  <link rel="canonical" href="https://cxology.co/blog/defensible-renewal-forecast/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="CXology"/>
+  <meta property="og:title" content="Renewal Forecasting: What Makes a Forecast Defensible?"/>
+  <meta property="og:description" content="What makes a renewal forecast defensible? Learn how customer progression, commercial evidence, and forecast reviews connect to better revenue decisions."/>
+  <meta property="og:url" content="https://cxology.co/blog/defensible-renewal-forecast/"/>
+  <meta property="og:image" content="https://cxology.co/assets/defensible-renewal-forecast-customer-vs-revenue-progression.png"/>
+  <meta property="article:published_time" content="2026-11-03"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Renewal Forecasting: What Makes a Forecast Defensible?"/>
+  <meta name="twitter:description" content="What makes a renewal forecast defensible? Learn how customer progression, commercial evidence, and forecast reviews connect to better revenue decisions."/>
+  <meta name="twitter:image" content="https://cxology.co/assets/defensible-renewal-forecast-customer-vs-revenue-progression.png"/>
+  <link rel="preload" href="/fonts/PublicSans-latin.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="stylesheet" href="/fonts.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+:root{--lime:#B5BD00;--lime-deep:#9BA200;--navy:#253746;--ink:#101820;--paper:#fff;--band:#F7F8F1;--line:#E4E6CF;--text:#25313b;--muted:#5f6b57}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--text);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.nav-logo img{height:30px;width:auto;display:block}
+.nav-links{display:flex;gap:1.9rem;list-style:none}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:700;text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-cta{padding:10px 20px;background:var(--lime);color:var(--ink);border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(155,162,0,.3)}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:6px;background:none;border:none;cursor:pointer}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px}
+@media(max-width:820px){.nav-links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);padding:1rem 2rem 1.4rem;gap:1.1rem}.nav-burger{display:flex}}
+h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:900;text-wrap:balance}
+/* article */
+.article{max-width:720px;margin:0 auto;padding:56px 24px 20px}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime-deep)}
+.a-date{color:var(--muted);font-size:.85rem;font-weight:600;margin-left:10px}
+.a-head h1{font-size:clamp(1.9rem,4.4vw,2.9rem);margin:.35em 0 .1em}
+.a-feat{max-width:960px;margin:26px auto 0;padding:0 24px}
+.a-feat img{width:100%;border-radius:14px;box-shadow:0 18px 44px rgba(16,24,32,.14)}
+.a-body{max-width:720px;margin:0 auto;padding:30px 24px 20px;font-size:1.09rem;color:var(--text)}
+.a-body p{margin:0 0 1.15em}
+.a-body h2{font-size:1.5rem;margin:1.6em 0 .5em}
+.a-body h3{font-size:1.2rem;margin:1.4em 0 .4em}
+.a-body ul,.a-body ol{margin:0 0 1.2em 1.3em}
+.a-body li{margin:.4em 0}
+.a-body a{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2px}
+.a-body img{border-radius:12px;margin:1.4em 0}
+.a-body blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.4em 0;color:var(--ink);font-weight:500}
+.a-body strong{color:var(--ink)}
+.a-body .def{font-size:1.3rem;line-height:1.5;font-weight:700;color:var(--ink);border-left:4px solid var(--lime);padding:2px 0 2px 20px;margin:.2em 0 1.2em}
+.a-head .a-sub{font-size:clamp(1.05rem,2.2vw,1.25rem);color:var(--muted);font-weight:600;line-height:1.45;margin:.5em 0 0}
+.a-body .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.a-body table.cmp{width:100%;border-collapse:collapse;font-size:1rem}
+.a-body table.cmp th,.a-body table.cmp td{text-align:left;padding:11px 14px;border:1px solid var(--line);vertical-align:top}
+.a-body table.cmp thead th{background:var(--navy);color:#fff;font-weight:800}
+.a-body table.cmp tbody th{font-weight:700;color:var(--ink)}
+.a-body table.cmp tbody tr:nth-child(even){background:var(--band)}
+.a-body table.cmp td{white-space:nowrap}
+.a-body .a-end{border-top:1px solid var(--line);padding-top:1.2em;margin-top:2em;color:var(--muted)}
+/* end cta */
+.endcta{background:var(--navy);color:#EAF0F4;text-align:center;padding:64px 24px;margin-top:40px}
+.endcta h3{color:#fff;font-size:1.7rem}
+.endcta p{color:#b7c6d1;max-width:44ch;margin:12px auto 22px}
+.btn{display:inline-block;background:var(--lime);color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;padding:14px 28px;border-radius:999px;text-decoration:none}
+.backlink{display:inline-block;margin-top:18px;color:#aeb9c2;font-weight:700;font-size:.82rem;text-decoration:none}
+.footer{border-top:1px solid var(--line);padding:26px 2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--muted)}
+.footer a{color:var(--muted);font-weight:700;text-decoration:none}
+/* index */
+.blog-hero{max-width:1080px;margin:0 auto;padding:60px 24px 10px}
+.blog-hero h1{font-size:clamp(2.1rem,5vw,3.2rem)}
+.blog-hero p{color:var(--muted);font-size:1.1rem;margin-top:12px;max-width:60ch}
+.grid{max-width:1080px;margin:30px auto 60px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(16,24,32,.12)}
+.card-img{aspect-ratio:16/10;object-fit:cover;width:100%;background:var(--band)}
+.card-body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+.card-date{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lime-deep)}
+.card h2{font-size:1.14rem;margin:8px 0 8px;color:var(--ink)}
+.card p{font-size:.92rem;color:var(--muted);flex:1}
+.card .more{margin-top:12px;font-size:.8rem;font-weight:700;color:var(--navy)}
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script src="/copy-credit.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "What Makes a Renewal Forecast Defensible?",
+  "description": "What makes a renewal forecast defensible? Learn how customer progression, commercial evidence, and forecast reviews connect to better revenue decisions.",
+  "url": "https://cxology.co/blog/defensible-renewal-forecast/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cxology.co/blog/defensible-renewal-forecast/"
+  },
+  "datePublished": "2026-11-03",
+  "dateModified": "2026-11-03",
+  "author": {
+    "@type": "Person",
+    "name": "Tim Conder",
+    "@id": "https://cxology.co/#tim",
+    "url": "https://cxology.co/about.html",
+    "sameAs": [
+      "https://www.linkedin.com/in/tim-conder/"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CXology",
+    "@id": "https://cxology.co/#org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cxology.co/assets/logo-h-bb.png"
+    }
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://cxology.co/blog/",
+    "name": "CXology Blog"
+  },
+  "image": "https://cxology.co/assets/defensible-renewal-forecast-customer-vs-revenue-progression.png"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cxology.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://cxology.co/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "What Makes a Renewal Forecast Defensible?",
+      "item": "https://cxology.co/blog/defensible-renewal-forecast/"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<header class="nav">
+  <a class="nav-logo" href="/"><img src="/assets/logo-h-bb.png" alt="CXology" width="1329" height="269"/></a>
+  <nav>
+  <ul class="nav-links">
+    <li><a href="/book.html">The Book</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/calculator.html">ROI Calculator</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul></nav>
+  <button class="nav-burger" onclick="var l=this.closest('header').querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'"><span></span><span></span><span></span></button>
+</header>
+
+<article>
+  <div class="article a-head">
+    <span class="eyebrow">Blog</span><span class="a-date">November 3, 2026</span>
+    <h1>What Makes a Renewal Forecast Defensible?</h1>
+  </div>
+  <div class="a-body">
+    <p>A CRO is reviewing a $100,000 renewal expected to close in 90 days.</p>
+    <p>The account is green. Product adoption is strong. The customer has achieved meaningful business outcomes, and the Customer Success team has assigned a 90% probability of renewal.</p>
+    <p>Everything appears to be on track.</p>
+    <p>Then the CRO asks a simple question.</p>
+    <p>&ldquo;What evidence supports that 90%?&rdquo;</p>
+    <p>The CSM can explain the customer&rsquo;s success. The product is being used, the team has delivered value, and relationships with day-to-day stakeholders are strong.</p>
+    <p>But the executive who originally sponsored the purchase has left the company. The customer&rsquo;s budget is under review, and nobody has confirmed who will make the renewal decision or what that decision will require.</p>
+    <p>The customer has progressed.</p>
+    <p>Has the revenue?</p>
+    <p>This is where renewal forecasting becomes more complicated than assigning a probability to an account.</p>
+    <p class="def">A defensible renewal forecast is an evidence-supported assessment of whether an existing customer will make another commercial commitment. It connects customer outcomes, commercial progression, and current decision evidence to the opportunity&rsquo;s stage, probability, and next action.</p>
+
+    <h2>Customer Success and Revenue Progression Are Not the Same Thing</h2>
+    <p>We spend considerable time measuring whether customers are successful.</p>
+    <p>We track adoption, engagement, outcomes, satisfaction, and health. These measures help us understand whether customers are receiving the value they expected when they purchased our products.</p>
+    <p>That work matters. Customer progression creates the conditions for retention and growth.</p>
+    <p>But those conditions don&rsquo;t automatically become commercial commitment.</p>
+    <p>A customer can achieve an important business outcome without securing the budget to continue. They can have enthusiastic users without an executive willing to advocate for renewal. They can be getting tremendous value from the product while the organization is reconsidering its priorities.</p>
+    <p>These aren&rsquo;t necessarily failures of Customer Success. They&rsquo;re gaps between the value being delivered and the commercial decision the customer will eventually make.</p>
+    <p>We need visibility into both.</p>
+    <p>The first question is about the customer. What outcomes are they working toward? What should have changed by this point in the relationship? What has actually happened, and what evidence do we have?</p>
+    <p>The second is commercial. Have we established alignment with the people who influence the renewal? Is there internal advocacy? Have we identified purchase intent and understood the path to a decision?</p>
+    <p>Both questions matter to the forecast, but they tell us different things.</p>
+    <p>A <a href="/chapter-20.html">green health score</a> might give us confidence that the customer is experiencing value. It doesn&rsquo;t necessarily tell us whether the organization is prepared to make another financial commitment.</p>
+  </div>
+  <div class="a-feat"><a href="/assets/defensible-renewal-forecast-customer-vs-revenue-progression.png"><img src="/assets/defensible-renewal-forecast-customer-vs-revenue-progression.png" width="1536" height="1024" alt="Diagram showing that customers can achieve value while renewal and expansion revenue remains at risk without commercial progression." loading="lazy" decoding="async"/></a></div>
+  <div class="a-body">
+
+    <h2>What Does the Evidence Actually Tell Us?</h2>
+    <p>Return to the $100,000 renewal.</p>
+    <p>The customer has successfully adopted the product and achieved the business outcome that motivated the original purchase. Those are meaningful accomplishments, and they should strengthen our confidence in the relationship.</p>
+    <p>But the departure of the executive sponsor changes the commercial picture.</p>
+    <p>We don&rsquo;t know whether the new decision-maker recognizes the value the customer has received. We don&rsquo;t know whether the original business priorities still apply. We haven&rsquo;t confirmed the budget or established how the renewal decision will be made.</p>
+    <p>That doesn&rsquo;t mean the customer is going to churn.</p>
+    <p>It means we don&rsquo;t yet have sufficient evidence to defend the commercial assumptions behind the 90% forecast.</p>
+    <p>The distinction is important.</p>
+    <p>We shouldn&rsquo;t automatically lower the probability because a sponsor departed, just as we shouldn&rsquo;t automatically raise it because adoption improved. Neither event, by itself, establishes the likelihood of renewal.</p>
+    <p>We need to understand what those developments mean for the customer&rsquo;s progression toward a decision.</p>
+    <p>This is one reason I&rsquo;ve been advocating for a <a href="/post-sale-pipeline.html">Post-Sale Pipeline</a>.</p>
+    <p>In The Post-Sale Operating System, I describe five stages for making existing-customer revenue opportunities visible: Identify, Align, Advocate, Intent, and Net Revenue Close.</p>
+    <p>The stages represent commercial progression, <a href="/blog/evidence-of-customer-progression/">supported by evidence rather than activity</a>.</p>
+    <p>In our example, we may have strong evidence of customer value but insufficient evidence of current executive alignment, advocacy, or purchase intent.</p>
+    <p>The opportunity&rsquo;s stage and forecast probability should reflect what we can substantiate, not simply how healthy the relationship appears.</p>
+    <p>And that leads to a more important question.</p>
+    <p>What should we do about it?</p>
+
+    <h2>A Better Forecast Is Only Part of the Answer</h2>
+    <p>Imagine the CRO concludes that the renewal is less certain than the original forecast suggested.</p>
+    <p>The team updates the CRM. The probability is lowered. The account is flagged for additional attention.</p>
+    <p>The forecast may now be more realistic.</p>
+    <p>But has anything changed for the customer?</p>
+    <p>Not yet.</p>
+    <p>We can improve the accuracy of a forecast without improving the likelihood of the outcome.</p>
+    <p>That&rsquo;s an important limitation of treating forecasting as a reporting exercise.</p>
+    <p>The value of a forecast review shouldn&rsquo;t end with a more defensible number. It should help the organization determine what needs to happen next.</p>
+    <p>For our $100,000 renewal, the missing evidence points toward specific work.</p>
+    <p>The team needs to understand who now owns the business priority that motivated the original purchase. It needs to determine whether the value already delivered remains relevant to that person&rsquo;s objectives. It needs to establish whether there is someone inside the customer organization willing and able to advocate for continued investment.</p>
+    <p>An <a href="/chapter-15.html">Alignment Meeting</a> might be the right next step. Not a routine business review presenting usage statistics and accomplishments, but a conversation designed to confirm the customer&rsquo;s current goals, evaluate progress, and establish what needs to happen next.</p>
+    <p>That meeting could reveal that the original outcome is still important and the new executive is prepared to support renewal.</p>
+    <p>It could also reveal that priorities have changed, requiring the team to rethink how the product supports the customer&rsquo;s business.</p>
+    <p>Either result gives us something valuable: new evidence.</p>
+    <p>And that evidence should change how we understand the renewal opportunity.</p>
+  </div>
+  <div class="a-feat"><a href="/assets/defensible-renewal-forecast-review-loop.png"><img src="/assets/defensible-renewal-forecast-review-loop.png" width="1536" height="1024" alt="Six-step post-sale operating loop connecting expected progression, triggered plays, customer progression, confirmed evidence, revenue forecasting, and next actions." loading="lazy" decoding="async"/></a></div>
+  <div class="a-body">
+
+    <h2>Connecting Customer Progression, Execution, and the Revenue Pipeline</h2>
+    <p>This is where the pieces of a post-sale operating system need to work together.</p>
+    <p>I&rsquo;ve been refining the model around three connected components.</p>
+    <p><strong>Customer State and Progression</strong> helps us understand what should be happening for the customer, what has actually changed, and where progress is falling short of expectations.</p>
+    <p><strong>Plays and Execution</strong> define the work required to help the customer move forward. That includes the actions, ownership, preparation, and follow-through needed to produce meaningful outcomes.</p>
+    <p><strong>The Post-Sale Pipeline</strong> makes renewal and expansion opportunities visible, including the evidence supporting their current stage and what must happen before they advance.</p>
+    <p>These aren&rsquo;t independent frameworks.</p>
+    <p>Customer progression informs the work we need to perform. That work helps customers achieve outcomes and supports commercial progression. Evidence from both informs our assessment of the revenue opportunity.</p>
+    <p>The next inspection tells us what needs to happen next.</p>
+    <p>I&rsquo;ve started describing this as a continuous operating loop:</p>
+    <p><strong>Expected vs. Actual Progression → Triggered Play → Customer Progression → Confirmed Evidence → Post-Sale Pipeline / Forecast → Next Action &amp; Learning</strong></p>
+    <p>Then we inspect again.</p>
+    <p>Consider how this changes the conversation around our renewal.</p>
+    <p>Instead of asking the CSM to justify why the account is forecast at 90%, the CRO can inspect the evidence supporting its current stage, understand what&rsquo;s missing, and determine whether the planned work is likely to address the gap.</p>
+    <p>The team can explain what needs to change for the customer, which play is designed to produce that change, and what evidence will demonstrate that progress has occurred.</p>
+    <p>When the evidence changes, the opportunity assessment changes.</p>
+    <p>This is how forecasting becomes part of managing revenue rather than simply reporting on it.</p>
+
+    <h2>What Should a CRO Be Able to Inspect?</h2>
+    <p>Think about the questions we ask when reviewing a new-logo sales pipeline.</p>
+    <p>Where does each opportunity stand? What evidence supports that assessment? What&rsquo;s preventing it from advancing? What needs to happen next?</p>
+    <p>We don&rsquo;t always get those answers right, but we have an established operating discipline for asking them.</p>
+    <p><a href="/predictable-existing-customer-revenue.html">Existing-customer revenue</a> deserves the same rigor.</p>
+    <p>A CRO should be able to inspect a renewal opportunity and understand not only its value, expected decision date, and forecast probability, but also the evidence supporting those judgments.</p>
+    <p>That means understanding whether the customer is achieving the outcomes they purchased the product to accomplish, whether the organization is progressing toward a commercial decision, and whether the work being performed is addressing the gaps that could prevent renewal.</p>
+    <p>It also means knowing how current the evidence is.</p>
+    <p>An executive commitment confirmed six months ago may no longer be reliable if the executive has since departed. An outcome achieved last quarter remains important, but it may not answer whether the customer&rsquo;s current priorities support another investment.</p>
+    <p>Evidence has to remain relevant to the decision we&rsquo;re trying to forecast.</p>
+    <p>None of this requires RevOps to take ownership of customer relationships or Customer Success to become a sales organization.</p>
+    <p>It requires a shared operating model.</p>
+    <p>Customer-facing teams own the work and the relationships. Revenue leadership establishes expectations for visibility, evidence, and forecast discipline. The operating system connects them.</p>
+  </div>
+  <div class="a-feat"><a href="/assets/defensible-renewal-forecast-cro-inspection-model.png"><img src="/assets/defensible-renewal-forecast-cro-inspection-model.png" width="1778" height="889" alt="Three connected components of the post-sale operating system: customer state and progression, plays and execution, and the Post-Sale Pipeline, supported by operating infrastructure." loading="lazy" decoding="async"/></a></div>
+  <div class="a-body">
+
+    <h2>The Real Value of a Defensible Renewal Forecast</h2>
+    <p>Return one final time to the $100,000 renewal.</p>
+    <p>At the beginning of the review, the account appeared healthy and the team believed it had a 90% probability of renewal.</p>
+    <p>After inspecting the evidence, the CRO recognizes that the customer has achieved value but commercial alignment is uncertain.</p>
+    <p>The forecast assessment is reconsidered. More importantly, the team identifies the work needed to establish alignment with the new executive sponsor and confirm the path to a decision.</p>
+    <p>That work is performed. The customer confirms that the original business outcome remains a priority. The new executive acknowledges the value delivered, agrees to advocate for the investment, and helps clarify the renewal process.</p>
+    <p>Now the opportunity has progressed.</p>
+    <p>Not because someone updated the CRM or changed a health score, but because something meaningful changed in the customer&rsquo;s organization and we have evidence to support it.</p>
+    <p>That evidence can inform the pipeline stage and forecast probability.</p>
+    <p>We still can&rsquo;t guarantee the renewal. But we can explain where the opportunity stands, why we believe what we believe, and what needs to happen next.</p>
+    <p>That&rsquo;s what makes a renewal forecast defensible.</p>
+    <p>And it&rsquo;s also why forecasting accuracy, while important, isn&rsquo;t the ultimate objective.</p>
+    <p>Forecasting tells us what we believe will happen. The operating system should help us influence what happens next.</p>
+    <p>The post-sale is the growth pipeline.</p>
+    <p class="a-end"><em>Explore <a href="/book.html">The Post-Sale Operating System</a>, including the Post-Sale Pipeline, lifecycle plays, and infrastructure for making existing-customer revenue more visible and predictable.</em></p>
+  </div>
+</article>
+<section class="related" style="max-width:720px;margin:2.5rem auto 0;padding:0 1.25rem"><h3 style="font-size:1.05rem;margin:0 0 .4rem">Keep reading</h3><ul style="margin:0;padding-left:1.1rem;line-height:1.9"><li>Step by step: <a href="/blog/how-to-forecast-renewals/">How to Forecast Renewals Without Relying on Gut Feel</a></li><li>Start here: <a href="/strategic-customer-success/">What Is Strategic Customer Success?</a> · <a href="/why-your-customer-retention-strategy-matters/">What Is a Customer Retention Strategy?</a></li></ul></section>
+<section class="endcta">
+  <h3>Post-sale is a system, not a hope.</h3>
+  <p>These ideas are the foundation of <em>The Post-Sale Operating System</em>.</p>
+  <a class="btn" href="/book.html">Read the book →</a><br>
+  <a class="backlink" href="/blog/">← All posts</a>
+</section>
+<footer class="footer">
+  <a class="nav-logo" href="/"><img src="/assets/logo-h-bb.png" alt="CXology" width="1329" height="269" style="height:24px"/></a>
+  <div><a href="/book.html">The Book</a> &nbsp; <a href="/blog/">Blog</a> &nbsp; <a href="/about.html">About</a></div>
+  <small>© 2022–2026 CXology LLC. All rights reserved.</small>
+</footer>
+</body></html>
