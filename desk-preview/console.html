@@ -274,6 +274,6 @@
     ? fetch("/api/cache-events").then((r) => r.ok ? r.json() : null).then((d) => { if (d && d.length) RELOADS = d; }).catch(() => {}) : Promise.resolve();
   Promise.all([fetch("test-results.json").then((r) => r.json()).then((d) => { results = d; }), liveLog]).then(draw);
 </script>
-<p style="text-align:center;font-size:13px;margin:0 0 32px"><a href="index.html" style="color:#5A6A40">CXology Desk preview home</a></p>
+<p style="text-align:center;font-size:13px;margin:0 0 120px"><a href="index.html" style="color:#5A6A40;display:inline-block;padding:12px 8px">CXology Desk preview home</a></p>
 </body>
 </html>

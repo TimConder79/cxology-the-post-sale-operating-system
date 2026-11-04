@@ -117,6 +117,13 @@ function render(result, id) {
 
   // A citation number opens "Go deeper" and brings its passage into view.
   card.addEventListener("click", (e) => {
+    // The jump link scrolls without adding a browser history entry, so Back still leaves the page.
+    const jump = e.target.closest("a.jump");
+    if (jump) {
+      e.preventDefault();
+      card.querySelector(`[id="${id}-moves"]`)?.scrollIntoView({ block: "start" });
+      return;
+    }
     const a = e.target.closest("a[data-cite]");
     if (!a) return;
     e.preventDefault();

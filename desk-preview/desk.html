@@ -12,7 +12,7 @@
 <body>
 <div class="wrap">
   <section class="home">
-    <div class="brand-row"><div class="brand">CXology<span>Desk</span></div><button class="new-q" type="button" id="new-q">New question</button></div>
+    <div class="brand-row"><div class="brand">CXology<span>Desk</span></div><span style="display:flex;gap:8px;align-items:center"><a href="index.html" style="color:#5A6A40;font-size:14px;font-weight:700;padding:12px 4px;white-space:nowrap">Home</a><button class="new-q" type="button" id="new-q">New question</button></span></div>
     <p class="tag">Bring a customer situation. Get the play, grounded in <em>The Post-Sale Operating System</em>.</p>
     <form id="ask">
       <textarea id="input" rows="1" placeholder="Our champion just left and renewal is in 90 days..." autofocus></textarea>
@@ -149,6 +149,6 @@
   input.addEventListener("input", () => { input.style.height = "auto"; input.style.height = input.scrollHeight + "px"; });
   document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => submit(c.textContent)));
 </script>
-<p style="text-align:center;font-size:13px;margin:0 0 32px"><a href="index.html" style="color:#5A6A40">CXology Desk preview home</a></p>
+<p style="text-align:center;font-size:13px;margin:0 0 120px"><a href="index.html" style="color:#5A6A40;display:inline-block;padding:12px 8px">CXology Desk preview home</a></p>
 </body>
 </html>

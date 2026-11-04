@@ -23,7 +23,7 @@
   .chip:hover { border-color: var(--navy); }
   .thread { padding: 16px 0 80px; }
   /* FND-005: after the first answer the question box is pinned to the bottom, so follow-ups never need a scroll to the top. */
-  .new-q { display: none; padding: 0 16px; }
+  .new-q { display: none; padding: 0 16px; white-space: nowrap; }
   body.asked .new-q { display: inline-flex; align-items: center; }
   .brand-row { display: flex; align-items: center; justify-content: center; gap: 12px; }
   body.asked .brand-row { justify-content: space-between; }
@@ -65,7 +65,7 @@
   .meta { font-size: 12px; color: var(--muted); margin-top: 10px; }
   .cta { margin-top: 14px; font-size: 14px; }
   .cta a { color: var(--navy); font-weight: 700; }
-  @media (max-width: 560px) { .card { padding: 18px; } }
+  @media (max-width: 560px) { .card { padding: 18px; } body.asked .brand { font-size: 22px; letter-spacing: -1px; } .new-q { padding: 0 12px; font-size: 13px; } .brand-row { gap: 8px; } }
 
 .applied { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px; color: var(--navy-mid); background: #E4EAF0; border-radius: 4px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }
 .card .kit { margin-top: 10px; border: 1px solid var(--gray-200); border-radius: 10px; background: var(--off-white); }

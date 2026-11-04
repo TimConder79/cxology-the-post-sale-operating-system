@@ -98,6 +98,6 @@
   fetch("test-results.json").then((r) => r.ok ? r.json() : []).then((data) => { results = data; draw(); })
     .catch(() => { document.getElementById("list").textContent = "No results yet. Run: node run-tests.mjs"; });
 </script>
-<p style="text-align:center;font-size:13px;margin:0 0 32px"><a href="index.html" style="color:#5A6A40">CXology Desk preview home</a></p>
+<p style="text-align:center;font-size:13px;margin:0 0 120px"><a href="index.html" style="color:#5A6A40;display:inline-block;padding:12px 8px">CXology Desk preview home</a></p>
 </body>
 </html>
