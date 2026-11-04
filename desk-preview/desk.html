@@ -42,7 +42,7 @@
       `<p class="tag" style="font-size:14px;margin-top:-18px">Preview: this plays back real answers from testing. Pick a sample situation below.</p>`);
     fetch("test-results.json").then((r) => r.json()).then((data) => {
       samples = data.filter((r) => r.text);
-      const picks = [1, 2, 3, 45, 52].map((id) => samples.find((s) => s.id === id)).filter(Boolean);
+      const picks = [51, 1, 2, 3, 45, 52].map((id) => samples.find((s) => s.id === id)).filter(Boolean);
       document.querySelector(".chips").innerHTML = picks.map((s) => `<button class="chip">${esc(s.q)}</button>`).join("");
       document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => submit(c.textContent)));
     });
