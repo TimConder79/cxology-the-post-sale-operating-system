@@ -139,7 +139,7 @@ That's when I realized something I had never been taught.
 
 Customers don't progress primarily through activities. They progress through beliefs.
 
-Of course, we can't directly observe belief. We observe behavior. But behavior is the outward expression of belief, and only a small number of behaviors actually matter, because they signal that something has changed in how the customer thinks about the relationship. Customers who believe they're making progress act differently than customers who are quietly losing confidence. They introduce new stakeholders, invest more of their own time, champion the initiative internally when you're not in the room. They prepare for procurement before you raise it, and plan what's next instead of waiting to be told. The tell is cost. These aren't things a customer does to be polite; they spend time, capital, or internal credibility they'd only spend if something had genuinely shifted. That's what separates a signal from noise. Those behaviors aren't the progression itself. They're the evidence that progression is happening.
+Of course, we can't directly observe belief. We observe behavior. But behavior is the outward expression of belief, and only a small number of behaviors actually matter, because they signal that something has changed in how the customer thinks about the relationship. Customers who believe they're making progress act differently than customers who are quietly losing confidence. They introduce new stakeholders, invest more of their own time, champion the initiative internally when you're not in the room. They prepare for procurement before you raise it, and plan what's next instead of waiting to be told. The tell is cost. These aren't things a customer does to be polite; they spend time, capital, or internal credibility they'd only spend if something had genuinely shifted. That's what separates evidence from noise. Those behaviors aren't the progression itself. They're the evidence that progression is happening.
 
 ## Why activity is not the same as progress
 
@@ -770,7 +770,7 @@ By the end of the Advocate stage, the team should be able to see more than satis
 
 How the Pipeline Moves
 
-An opportunity enters Advocate when the customer agrees with the business case and a credible person inside their organization can carry it forward without you. It advances to Intent only when that advocacy produces an explicit commitment: a verbal yes or its equivalent, with a credible path forward that shows timing, ownership, approvals, and next steps. The Alignment Meeting and Sharing Insights plays help build that momentum by validating the business case with leadership and arming the advocate with portable evidence, but completing them does not move the stage. A capable advocate is what qualifies an opportunity for Advocate. It is not enough to leave it. If the advocate leaves or loses influence, the opportunity moves back to Align until a new carrier is in place. The pipeline moves on evidence, not on the team's sense that advocacy exists.
+An opportunity enters Advocate when the customer agrees with the business case and a credible person inside their organization can carry it forward without you. It advances to Intent only when that advocacy produces an explicit commitment: an unambiguous verbal or written yes, with a credible path forward that shows timing, ownership, approvals, and next steps. The Alignment Meeting and Sharing Insights plays help build that momentum by validating the business case with leadership and arming the advocate with portable evidence, but completing them does not move the stage. A capable advocate is what qualifies an opportunity for Advocate. It is not enough to leave it. If the advocate leaves or loses influence, the opportunity moves back to Align until a new carrier is in place. The pipeline moves on evidence, not on the team's sense that advocacy exists.
 
 Once advocacy exists, the opportunity has what it needs to move toward Intent. Intent is not just a customer saying they are open to a conversation. It is an explicit commitment to move forward, and it usually comes from enough internal belief forming around the value of the partnership and the next logical investment. Advocate is the bridge between alignment and commercial motion. It turns value into a story the customer can carry, and it turns a single relationship into organizational momentum.
 
@@ -873,7 +873,7 @@ A verbal yes without a path is not intent. It is optimism.
 
 This is also where the team has to be honest about forecast quality. A customer saying positive things is not the same as a customer moving through a buying process. Intent should be visible in behavior. The customer introduces procurement. The advocate schedules the executive conversation. Budget ownership becomes clear. Legal review is discussed. The timeline is confirmed. Stakeholders begin acting as if the decision is expected, not theoretical.
 
-Those signals matter because they show that the opportunity has crossed from preference into motion. The customer is not just saying the partnership is valuable. They are investing time and internal coordination into making the next step happen. That is the difference between a hopeful renewal and a managed renewal. It is the difference between expansion interest and expansion intent.
+That behavior matters because it shows that the opportunity has crossed from preference into motion. The customer is not just saying the partnership is valuable. They are investing time and internal coordination into making the next step happen. That is the difference between a hopeful renewal and a managed renewal. It is the difference between expansion interest and expansion intent. The behavior supports the customer’s commitment. It does not replace it.
 
 ## Sales and Customer Success Have to Move as One System
 
@@ -919,11 +919,11 @@ Most importantly, Intent keeps the post-sale pipeline honest. If the customer is
 
 How the Pipeline Moves
 
-An opportunity enters Intent when the customer has made an explicit commitment, a verbal yes or its equivalent, and the path forward is credible: the budget owner, approval sequence, procurement timeline, and executive sponsorship are known. The Renew & Grow play helps surface and document that path. Intent is not a signed agreement. The opportunity advances to Net Revenue Close only when the remaining commercial process is complete and the revenue outcome is final. The renewal is held to the same standard. It has been in the pipeline since day one, but it still needs the customer's commitment to reach Intent. If the commitment is withdrawn or the path breaks, the opportunity moves back to Advocate. If the close date slips, it stays in Intent only when the customer confirms new timing. If it slips without confirmed new timing, the path is no longer credible, and the opportunity moves back to Advocate. A contract that renews automatically is not a verbal yes either. Contractual continuation is not commercial intent, so an auto-renewing opportunity holds its last evidence-supported stage until the customer commits or the renewal takes effect. As in every stage, an opportunity moves on evidence, not on forecast optimism or friendly signals.
+An opportunity enters Intent when the customer has made an affirmative commitment to the commercial decision, an unambiguous verbal or written yes, and the path forward is credible: the budget owner, approval sequence, procurement timeline, and executive sponsorship are known. Procurement activity, stakeholder enthusiasm, budget discussions, and requests to begin paperwork can support that assessment, but none of them establishes Intent on its own. The Renew & Grow play helps surface and document that path. Intent is not a signed agreement. The opportunity advances to Net Revenue Close only when the remaining commercial process is complete and the revenue outcome is final. The renewal is held to the same standard. It has been in the pipeline since day one, but it still needs the customer's commitment to reach Intent. If the commitment is withdrawn or the path breaks, the opportunity moves back to Advocate. If the close date slips, it stays in Intent only when the customer confirms new timing. If it slips without confirmed new timing, the path is no longer credible, and the opportunity moves back to Advocate. A contract that renews automatically is not a verbal yes either. Contractual continuation is not commercial intent, so an auto-renewing opportunity holds its last evidence-supported stage until the customer commits or the renewal takes effect. As in every stage, an opportunity moves on evidence, not on forecast optimism or friendly signals.
 
 Chapter Takeaway
 
-Intent is where internal momentum becomes a managed path to commitment. It is not the close, but without it, the close depends too much on hope.
+Intent is where internal momentum becomes a commitment with a managed path to close. It is not the close, but without it, the close depends too much on hope.
 
 ## Chapter 8: Stage 5 — Net Revenue Close
 Source: https://cxology.co/chapter-8.html
@@ -1021,6 +1021,8 @@ The strongest customer stories are not generic praise. They are specific. They e
 ## The Cycle Continues
 
 Net Revenue Close is the final stage of the pipeline, but it is not the end of the relationship. In a healthy post-sale operating system, the close immediately creates the conditions for the next cycle of alignment, value, advocacy, and growth.
+
+Not every close is a win. Net Revenue Close records whatever actually happened: a full renewal, a reduced one, an expansion, or a loss at $0. A binding auto-renewal that takes effect at a final amount is recorded here too. Retention opportunities never drop out of the pipeline early, and the reasons behind a reduction or a loss are as instructive as the story behind a win.
 
 This is where many teams lose momentum. They celebrate the signature, update the systems, and then allow the account to drift until the next renewal or expansion opportunity appears. That creates a stop-start customer experience. The customer feels intense attention during the commercial moment and then less structure afterward.
 
@@ -1280,7 +1282,7 @@ That is the work this play does. It replaces anxiety with trust, silence with mo
 
 How the Pipeline Moves
 
-The renewal enters the Identify stage of the post-sale pipeline at purchase, just as a closed-won deal enters the sales pipeline. Purchase & Welcome is the first play that serves it. The execution is visible in the record: IKT transferred, CSM assigned, welcome delivered, kickoff scheduled. The intended customer outcome is what matters: a customer who feels confident in the decision they just made and is ready for kickoff. It is the first opportunity every account carries: a fixed close date at the end of the contract, a value equal to current ARR. The renewal is the floor, and the operating system protects it from this first moment forward. The plays serve the customer and help create the evidence the renewal needs. The pipeline tracks what that evidence shows about the renewal.
+The renewal enters the Identify stage of the post-sale pipeline at purchase, just as a closed-won deal enters the sales pipeline. Purchase & Welcome is the first play that serves it. The execution is visible in the record: IKT transferred, CSM assigned, welcome delivered, kickoff scheduled. The intended customer outcome is what matters: a customer who feels confident in the decision they just made and is ready for kickoff. It is the first opportunity every account carries: a fixed close date at the end of the contract, a value that starts at current ARR. The renewal is the floor, and the operating system protects it from this first moment forward. The plays serve the customer and help create the evidence the renewal needs. The pipeline tracks what that evidence shows about the renewal.
 
 ## Chapter 10: Play 2 — The Kickoff Play
 Source: https://cxology.co/chapter-10.html
@@ -2343,7 +2345,7 @@ Sharing Insights is how the CSM keeps a hand on the rudder. It is how the relati
 
 How the Pipeline Moves
 
-Sharing Insights contributes to pipeline advancement through Align toward Advocate. Delivering an insight is not, by itself, evidence of progress. An insight counts when the customer acts on it or changes what they understand, and that change is evidence of customer progression the renewal can draw on. The pipeline does not advance because the CSM believes alignment is strong. It advances when the record shows that change, together with what the other plays produce, satisfies the stage's exit criteria. Insights also surface expansion signals that can enter the pipeline at Identify as their own opportunities, advancing alongside the renewal and connecting customer progress to growth.
+Sharing Insights contributes to pipeline advancement through Align toward Advocate. Delivering an insight is not, by itself, evidence of progress. An insight counts when the customer acts on it or changes what they understand, and that change is evidence of customer progression the renewal can draw on. The pipeline does not advance because the CSM believes alignment is strong. It advances when the record shows that change, together with what the other plays produce, satisfies the stage's exit criteria. Insights also surface expansion possibilities. When one is specific enough to manage, it enters the pipeline at Identify as its own opportunity, advancing alongside the renewal and connecting customer progress to growth.
 
 ## Chapter 15: Play 7 — The Alignment Meeting Play
 Source: https://cxology.co/chapter-15.html
@@ -3049,7 +3051,7 @@ Centralizing the architecture is necessary but not sufficient. The harder ongoin
 
 The most reliable mechanism for maintaining data quality is reducing the number of decisions the team makes about how to enter data. Open text fields are the enemy of consistent data. When a CSM can write anything in a field, they will write different things, use different terminology, and leave different information incomplete. Dropdown menus, standardized field options, required fields with validation rules, and structured templates force consistency at the point of entry. The data is clean because the system makes it difficult to enter it messily.
 
-Validation rules do the same work at scale. A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play. The same logic applies throughout the lifecycle: a health score that requires specific field inputs to calculate, a renewal forecast that cannot be marked "committed" without a documented stakeholder map, an expansion opportunity that requires a recorded advocate before it can enter the Intent stage. When the system requires the data to function, the data gets captured.
+Validation rules do the same work at scale. A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play. The same logic applies throughout the lifecycle: a health score that requires specific field inputs to calculate, a renewal that cannot move to Intent without a recorded commitment and approval path, an expansion opportunity that cannot enter Advocate without a recorded advocate. When the system requires the data to function, the data gets captured.
 
 This is also where data governance becomes a management tool. If the Kickoff Play requires the Five Questions to be captured in the CRM, and a leader sees those fields are blank across a portion of the portfolio, that is not a data problem — it is a coaching conversation. The system makes the invisible visible. Leaders can see where plays are being skipped, where fields are being left incomplete, and where the gap between what the team is supposed to do and what they are actually doing is widest. Governance closes that gap.
 
@@ -3071,7 +3073,7 @@ When the data spine is in place and the team's operating discipline keeps it cur
 
 How the Pipeline Moves
 
-The Data Spine is the infrastructure on which the entire post-sale pipeline runs. Every play in Part III writes to it. Every signal in Part II reads from it. Without trusted data, stage advancement cannot be recorded with confidence, health scores cannot be relied upon, and probability weights lose their meaning. The pipeline does not break because the stages are wrong. It breaks because the data underneath it cannot be trusted. This is the layer that makes the pipeline a managed system rather than a conceptual framework.
+The Data Spine is the infrastructure on which the entire post-sale pipeline runs. Every play in Part III writes to it. Every piece of evidence the pipeline reads comes from it. Without trusted data, stage advancement cannot be recorded with confidence, health scores cannot be relied upon, and probability weights lose their meaning. The pipeline does not break because the stages are wrong. It breaks because the data underneath it cannot be trusted. This is the layer that makes the pipeline a managed system rather than a conceptual framework.
 
 The data spine is not the most visible part of a post-sale operating system. It does not appear in customer meetings or play motion diagrams. But it is the infrastructure on which every play in this system runs. Build it with the same intention you bring to the plays, and the plays will work. Neglect it, and even a well-designed system will produce inconsistent results — not because the plays are wrong, but because they are running on a foundation that cannot be trusted.
 
@@ -3293,7 +3295,7 @@ Operating Reviews
 
 In a fragmented company, cross-functional reviews are often meetings where each team brings its own version of the truth. Sales brings the deal context. CS brings the risk narrative. Product brings roadmap constraints. Marketing brings reference needs. Finance brings the forecast. The meeting becomes an exercise in reconciliation before it can become a conversation about action.
 
-In a unified system, the review starts from a different place. The company is not debating which version of reality is accurate. The company is looking at the same customer movement. Which customers have reached First Value? Which have not? Which accounts have completed meaningful Value Blocks? Which customers have stalled before an Alignment Meeting? Which accounts have strong health signals but no expansion path? Which expansion opportunities are real because the customer has shown Intent, and which are hopeful because the team wants the number?
+In a unified system, the review starts from a different place. The company is not debating which version of reality is accurate. The company is looking at the same customer movement. Which customers have reached First Value? Which have not? Which accounts have completed meaningful Value Blocks? Which customers have stalled before an Alignment Meeting? Which accounts have strong health signals but no expansion path? Which expansion opportunities are backed by a customer commitment, and which are hopeful because the team wants the number?
 
 This is the difference between reporting and operating. Reporting describes what happened. Operating reviews decide what the company will do next. The best post-sale reviews do not simply summarize churn risk, adoption, or renewal status. They examine how customers are progressing and how revenue opportunities are moving, and identify where cross-functional action is required.
 
@@ -3692,7 +3694,7 @@ The Post-Sale Operating System is made of three components. Each answers a diffe
 
 | Component | What it is | The question it answers |
 |---|---|---|
-| Post-Sale Pipeline | Makes existing-customer revenue visible and shows where each retention and growth opportunity stands | What should happen, and what does it mean for the revenue? |
+| Post-Sale Pipeline | Makes existing-customer revenue visible and shows where each retention and growth opportunity stands | Where does each revenue opportunity stand, and what does it mean for the revenue? |
 | Plays | The designed work intended to help customers progress | What are we going to do about it? |
 | Infrastructure | Makes execution observable, trustworthy, repeatable, and scalable | Can we execute and trust the system? |
 
@@ -3890,7 +3892,7 @@ A practical build path:
 
 - Build the Post-Sale Pipeline. Put existing-customer revenue into stages, from purchase onward, so evidence can change what the company believes about it.
 
-- Create health and signals. Interpret accumulated evidence into a view of each customer's state.
+- Interpret evidence as health. Turn accumulated evidence into a view of each customer's state.
 
 - Model capacity. Translate the designed work into the time and people required to run it.
 
@@ -3930,7 +3932,7 @@ No. Customer Success often orchestrates it, but Sales, Product, Services, Suppor
 
 ### How do you start building a post-sale operating model?
 
-Start by defining the progression customers should make and the evidence that would show it happened. Then map Inflection Points, design plays, build the Post-Sale Pipeline, create health and signals, model capacity, forecast revenue, and inspect and improve the loop. Treat this as a practical order, not a rigid sequence.
+Start by defining the progression customers should make and the evidence that would show it happened. Then map Inflection Points, design plays, build the Post-Sale Pipeline, interpret evidence as health, model capacity, forecast revenue, and inspect and improve the loop. Treat this as a practical order, not a rigid sequence.
 
 ## How Do You Make Existing-Customer Revenue More Predictable?
 Source: https://cxology.co/predictable-existing-customer-revenue.html
@@ -3976,7 +3978,7 @@ The forecast loop. Each revenue opportunity enters the pipeline once. The loop r
 
 - Revenue opportunity in the pipeline: it enters once. Every customer's renewal enters at purchase, not at renewal. An expansion enters when it is specific enough to manage.
 
-- Progression: plays support the progression the opportunity depends on. Early on that is mostly customer progression, such as a first meaningful result. Later it is commercial: an internal advocate, then a commitment.
+- Progression: plays support the customer progression and commercial progression the opportunity depends on. Early on that is mostly customer progression, such as a first meaningful result. Later it is commercial progression: an internal advocate, then a commitment.
 
 - Evidence: what actually changed, shown by something the customer did or said, not by the play being completed.
 
@@ -4092,7 +4094,7 @@ Renewal and expansion decisions travel through budget owners, executives, financ
 
 ### Intent (90%): Has the customer committed to moving forward?
 
-The customer has given an explicit commitment, a verbal yes or its equivalent, and there is a credible path forward: timing, ownership, approvals, and next steps. Intent is not a signed contract. Contracting, legal, procurement, finance approval, and signature may all still be ahead. That is why Intent is 90%, not 100%. A verbal yes without a path is not intent. It is optimism.
+The customer has made an affirmative commitment to the commercial decision, an unambiguous verbal or written yes, and there is a credible path forward: timing, ownership, approvals, and next steps. Procurement activity, stakeholder enthusiasm, budget discussions, and requests to begin paperwork can support that assessment, but none of them establishes Intent on its own. Intent is not a signed contract. Contracting, legal, procurement, finance approval, and signature may all still be ahead. That is why Intent is 90%, not 100%. A verbal yes without a path is not intent. It is optimism.
 
 ### Net Revenue Close (100%): Did the revenue outcome actually close?
 
@@ -4116,8 +4118,8 @@ The stage is not determined by what your team did. It is determined by what you 
 |---|---|---|
 | Identify → Align | A specific retention or growth opportunity exists and is connected to a customer need, goal, problem, reason for purchase, or meaningful business priority worth pursuing. | First-term renewal: the customer has reached First Value, a confirmed customer outcome tied to why they bought and designated as this stage's exit criterion. A documented delay does not satisfy it (see below). Repeat renewal: the customer has confirmed the goals or business priorities that justify continuing the relationship for the next term. Expansion: the idea is tied to a goal the customer has named. |
 | Align → Advocate | The customer understands and agrees with the value or business case, and a credible internal person is capable of carrying that case forward inside the customer organization. | A business case built on the customer's own goals and results, which your primary contact can explain to their leadership without you present. |
-| Advocate → Intent | Internal advocacy and momentum have produced an explicit customer commitment (a verbal yes or equivalent) and a credible path forward, including timing, ownership, approvals, and next steps. | The customer says they are moving forward, and the budget owner, approval sequence, procurement steps, and target date are known. |
-| Intent → Net Revenue Close | The remaining commercial process is completed and the revenue outcome is finalized. | The renewal or order is signed and the final amount is recorded. |
+| Advocate → Intent | Internal advocacy and momentum have produced an explicit customer commitment (an unambiguous verbal or written yes) and a credible path forward, including timing, ownership, approvals, and next steps. | The customer says they are moving forward, and the budget owner, approval sequence, procurement steps, and target date are known. |
+| Intent → Net Revenue Close | The remaining commercial process is completed and the revenue outcome is finalized. | The renewal or order is signed and the final amount is recorded, or a binding auto-renewal takes effect at a final amount. |
 
 Exit criteria for each stage
 
@@ -4173,7 +4175,7 @@ What doesn't move an opportunity back on its own: a drop in usage, a red health 
 
 Timing slips. If the expected close date slips but the customer confirms new timing, the opportunity stays in Intent and only the date changes. If it slips without confirmed timing, the path is no longer credible, and the opportunity moves back to Advocate.
 
-Amount versus likelihood. If the customer signals a smaller renewal or a smaller expansion, change the opportunity's value, not its stage. Stage reflects how likely the opportunity is to close. Value reflects how much.
+Amount versus likelihood. An opportunity's value should reflect the best customer-grounded evidence of the expected amount. If the customer requests a reduction, revises the scope, or a documented commercial discussion points to a different amount, change the opportunity's value, not its stage. Until the outcome is final, that is an indicated amount; Net Revenue Close records the final amount, whether from a signed agreement, a binding auto-renewal that has taken effect, or a loss at $0. A usage drop, a health score, or an internal concern doesn't change the value on its own. It triggers a check. Stage reflects how likely the opportunity is to close. Value reflects how much.
 
 Lost opportunities. Retention opportunities don't leave the pipeline early. They end at Net Revenue Close with whatever actually happened, including $0. An expansion opportunity that dies is closed as lost, not deleted, with the reason and the last stage it reached. That keeps the evidence trail and shows how often each stage actually converts.
 
@@ -4216,7 +4218,7 @@ The evidence each stage relies on most
 
 A customer can be progressing well while an expansion opportunity stalls at Align because no one has confirmed it matters. A customer can be highly engaged while the renewal has no advocate who can defend it to finance. Progression informs the pipeline. It doesn't replace the exit criteria.
 
-Precision matters here. Customer signals, such as usage, sentiment, or a health score, prompt assessment. Confirmed outcomes establish customer progression. Commercial commitments establish the relevant buyer-side evidence. A stage advances only when its defined criteria are satisfied.
+Precision matters here. Customer signals, such as usage or sentiment, prompt assessment, and so does a change in the health assessment that interprets them. Confirmed outcomes establish customer progression. Commercial evidence, such as agreement with the business case, internal advocacy, or an explicit commitment, establishes where a specific opportunity stands in the decision process. A stage advances only when its defined criteria are satisfied.
 
 [Diagram] How an opportunity advances: a revenue opportunity enters the pipeline, plays support the required customer and commercial progression, evidence satisfies the stage exit criteria, the stage advances, the probability updates, and the forecast updates.
 
@@ -4238,7 +4240,7 @@ How an opportunity advances. The same mechanism is written out below.
 
 Each stage carries a default forecast probability: Identify 20%, Align 40%, Advocate 60%, Intent 90%, Net Revenue Close 100%.
 
-These are standardized forecasting assumptions attached to increasing levels of commercial evidence. They are not empirically measured close rates, and they don't claim that every opportunity in Align has exactly a 40% chance of closing.
+These are standardized forecasting assumptions tied to increasing levels of evidence, from confirmed customer outcomes in the early stages to commercial commitments in the later ones. They are not empirically measured close rates, and they don't claim that every opportunity in Align has exactly a 40% chance of closing.
 
 Standard defaults are the point. The same stage means the same thing across segments, teams, and CSMs. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital-led SMB account. What differs is the work needed to produce the evidence, not the math. That is what makes the model explainable to a CRO and a CFO.
 
@@ -4365,7 +4367,7 @@ Yes. An opportunity sits at the highest stage its current evidence supports. If 
 
 ### Does Intent mean the contract is signed?
 
-No. Intent means the customer has given an explicit commitment, a verbal yes or its equivalent, with a credible path forward. Contracting, legal, procurement, and approvals may remain. Net Revenue Close is when the outcome is final.
+No. Intent means the customer has given an explicit commitment, an unambiguous verbal or written yes, with a credible path forward. Contracting, legal, procurement, and approvals may remain. Net Revenue Close is when the outcome is final.
 
 How are auto-renewing contracts handled in a post-sale pipeline?
 
