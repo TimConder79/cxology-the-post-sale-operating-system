@@ -309,7 +309,7 @@
       "name": "What are the stages of a post-sale pipeline?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "CXology's Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are default forecasting assumptions, not measured close rates."
+        "text": "CXology's Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are provisional default forecasting assumptions, not measured close rates."
       }
     },
     {
@@ -365,7 +365,15 @@
       "name": "How do you forecast existing-customer revenue with a post-sale pipeline?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Multiply each opportunity's value by its stage probability and place the result in the period of its expected close date. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail."
+        "text": "Multiply each opportunity's indicated value by its stage probability and place the result in the period of its expected close date. The result is a provisional expected-value forecast, not proven revenue. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the stage probabilities fixed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. 20%, 40%, 60%, 90%, and 100% are provisional defaults. Each estimates the expected share of an opportunity's indicated value that will be realized. A company calibrates its own weights by comparing frozen quarterly forecasts with actual outcomes. The weights are company-wide and versioned, never set per customer or per CSM. Renewals and expansions keep the same stages but can earn different weights when outcomes justify it."
       }
     }
   ]
@@ -574,7 +582,7 @@
   <p><strong>What doesn't move an opportunity back on its own:</strong> a drop in usage, a red health score, or a CSM's concern. These don't advance a stage, so they don't reverse one either. They should trigger a check of whether the evidence still holds. That keeps the forecast from swinging with every dashboard change while making sure warning signs get looked at.</p>
   <p class="related-read">Related reading: <a href="blog/defensible-renewal-forecast/">What Makes a Renewal Forecast Defensible?</a>, a CRO inspecting one renewal after the executive sponsor leaves.</p>
   <p><strong>Timing slips.</strong> If the expected close date slips but the customer confirms new timing, the opportunity stays in Intent and only the date changes. If it slips without confirmed timing, the path is no longer credible, and the opportunity moves back to Advocate.</p>
-  <p><strong>Amount versus likelihood.</strong> An opportunity's value should reflect the best customer-grounded evidence of the expected amount. If the customer requests a reduction, revises the scope, or a documented commercial discussion points to a different amount, change the opportunity's value, not its stage. Until the outcome is final, that is an indicated amount; Net Revenue Close records the final amount, whether from a signed agreement, a binding auto-renewal that has taken effect, or a loss at $0. A usage drop, a health score, or an internal concern doesn't change the value on its own. It triggers a check. Stage reflects how likely the opportunity is to close. Value reflects how much.</p>
+  <p><strong>Amount versus likelihood.</strong> An opportunity's value should reflect the best customer-grounded evidence of the expected amount. If the customer requests a reduction, revises the scope, or a documented commercial discussion points to a different amount, change the opportunity's value, not its stage. Until the outcome is final, that is an indicated amount; Net Revenue Close records the final amount, whether from a signed agreement, a binding auto-renewal that has taken effect, or a loss at $0. A usage drop, a health score, or an internal concern doesn't change the value on its own. It triggers a check. Stage reflects the evidence, and its weight reflects how much of the value is expected to be realized. Value reflects how much is at stake. Because the weight applies to the indicated value, a known reduction is counted once, in the value, not again in the weight.</p>
   <p><strong>Lost opportunities.</strong> Retention opportunities don't leave the pipeline early. They end at Net Revenue Close with whatever actually happened, including $0. An expansion opportunity that dies is closed as lost, not deleted, with the reason and the last stage it reached. That keeps the evidence trail and shows how often each stage actually converts.</p>
 
   <h3 id="auto-renewing-contracts">Auto-Renewing Contracts</h3>
@@ -584,7 +592,7 @@
   <li><strong>Affirmative commercial intent.</strong> The customer has actually said yes to continuing.</li>
   <li><strong>The final revenue outcome.</strong> The renewal has taken effect at a known amount.</li>
   </ul>
-  <p>Silence, or the absence of a cancellation notice, is not a verbal yes. An auto-renewing opportunity stays at its last evidence-supported stage, with that stage's probability, unless the criteria for a different stage are met. When verified contract terms make the renewal binding and it takes effect with a final amount, the opportunity can move directly to Net Revenue Close without passing through Intent. Don't manufacture a commitment just to keep the stages in order. The forecast math doesn't change: value times the current stage's probability until the outcome is final, then the final amount.</p>
+  <p>Silence, or the absence of a cancellation notice, is not a verbal yes. An auto-renewing opportunity stays at its last evidence-supported stage, with that stage's probability, unless the criteria for a different stage are met. When verified contract terms make the renewal binding and it takes effect with a final amount, the opportunity can move directly to Net Revenue Close without passing through Intent. Don't manufacture a commitment just to keep the stages in order. The forecast math doesn't change: value times the current stage's probability until the outcome is final, then the final amount. Tag auto-renewing contracts so calibration can show whether they realize differently from their stage weight.</p>
 
   <h2 id="customer-progression">How Does Customer Progression Support the Pipeline?</h2>
   <p>Customer progression and pipeline progression are related. They are not the same thing.</p>
@@ -657,8 +665,12 @@
   <h2 id="probabilities">How Do Post-Sale Pipeline Probabilities Work?</h2>
   <p>Each stage carries a default forecast probability: Identify 20%, Align 40%, Advocate 60%, Intent 90%, Net Revenue Close 100%.</p>
   <p>These are standardized forecasting assumptions tied to increasing levels of evidence, from confirmed customer outcomes in the early stages to commercial commitments in the later ones. They are not empirically measured close rates, and they don't claim that every opportunity in Align has exactly a 40% chance of closing.</p>
-  <p>Standard defaults are the point. The same stage means the same thing across segments, teams, and CSMs. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital-led SMB account. What differs is the work needed to produce the evidence, not the math. That is what makes the model explainable to a CRO and a CFO.</p>
+  <p>Each weight estimates the expected share of an opportunity's indicated value that will ultimately be realized. It is not the chance that some renewal happens at any price. That makes weighted value a provisional expected-value forecast. It is not proven revenue, and the unweighted remainder is not revenue you expect to churn.</p>
+  <p>Standard defaults are the point. The same stage means the same thing across segments, teams, and CSMs. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital-led SMB account. What differs is the work needed to produce the evidence, not the math. That is what makes the model explainable to a CRO and a CFO. The defaults are provisional, though. Over time a company refines them from its own outcomes, company-wide and never customer by customer or CSM by CSM.</p>
   <div class="formula" id="formula"><p><strong>Opportunity Value × Stage Probability = Weighted Forecast Value</strong></p></div>
+  <h3 id="calibration">How Are Stage Probabilities Calibrated?</h3>
+  <p>By comparing them with what actually happens. At the start of each quarter, freeze a copy of the forecast: every open opportunity's stage, indicated value, expected close date, evidence-verified date, and the weights in use. When those opportunities reach their final outcomes, measure how much of their snapshot value each stage actually realized, separately for renewals and expansions. Blend what you observe with the current weights in proportion to how much data you have, keep the weights in stage order, and adopt new weights only if they would have forecast later quarters better than the old ones. RevOps runs the analysis, the CRO and CFO approve any change, and every version is recorded.</p>
+  <p>Renewals and expansions keep the same stages and exit criteria, but they can earn different weights once outcomes show that separate weights forecast better. Until there is enough evidence, the defaults stay. <a href="chapter-21.html">Chapter 21</a> walks through the method, the measures, and worked examples.</p>
 
   <h2 id="example">One Customer, Multiple Revenue Opportunities</h2>
   <p><em>Illustration of the mechanics only. Not a recommended forecast or a statistically validated probability model.</em></p>
@@ -680,16 +692,21 @@
   <div class="direct-answer"><p>Forecast each revenue opportunity, not each customer. Multiply its value by its stage probability, place it in the period of its expected close date, and require evidence that justifies the stage. Judgment still matters. It just works inside a shared structure.</p></div>
   <p>Every opportunity should carry at least:</p>
   <ul>
-  <li>Revenue amount</li>
+  <li>Indicated value: for a renewal, the current ARR up for renewal until the customer indicates a different amount</li>
   <li>Stage</li>
   <li>Probability</li>
-  <li>Expected close date</li>
-  <li>Evidence</li>
+  <li>Expected close date, and its source: the contract, the customer, or an internal estimate</li>
+  <li>Evidence, and the date it was last verified</li>
   <li>Next action</li>
   <li>Owner</li>
   </ul>
   <p>First-term renewals also carry an expected First Value date until First Value is reached.</p>
   <p><strong>Probability without timing gives you a total, not a forecast.</strong> A useful period forecast needs both. Each opportunity's weighted value counts toward the period in which it is expected to close. In the illustration above, if the renewal is expected to close in Q3, its $60K weighted value counts toward Q3. If Expansion A is expected in Q4, its $10K counts there.</p>
+  <h3 id="dates-and-amounts">Close Dates, Unresolved Renewals, and Growth at Renewal</h3>
+  <p><strong>Expansion close dates.</strong> Use the customer's timing when they have confirmed it. When they haven't, an internal estimate is acceptable if it is labeled as one, with who set it and when. Record every change and the reason for it. Repeated slips without customer-confirmed timing call for a management review. They don't change the stage on their own.</p>
+  <p><strong>Renewals past contract end.</strong> If the contract end date passes without a final outcome, the renewal stays open and unresolved. Keep the original contract date, and record the current expected resolution date, whether the customer confirmed it or it is an internal estimate, and the reason for the delay. Never present an internal review date as a customer-confirmed commercial date. Net Revenue Close waits until the outcome is final.</p>
+  <p><strong>Growth at renewal.</strong> The renewal holds the existing ARR. Any increase, from a price change, added seats, new modules, or other growth, is a separate expansion opportunity, even when both are negotiated in one contract. When the contract closes, the renewal's final amount is the retained portion of the original base and the expansion's final amount is the incremental ARR, so the two add up to the new contract and nothing is counted twice. A customer at $100,000 who signs for $115,000, with $10,000 of new seats and a $5,000 price increase, records a $100,000 renewal and $15,000 of expansion. Renewal results then reconcile to gross revenue retention, and renewals plus expansions reconcile to net revenue retention.</p>
+  <p><strong>Measuring the forecast.</strong> Freeze the forecast at the start of each quarter. Then measure two things separately: how closely that frozen forecast matched revenue actually finalized in the quarter, and how much of each snapshot's indicated value was eventually realized, even when deals closed later. A deal that slips from Q1 to Q2 is a Q1 timing miss, even if it closes in full. <a href="chapter-21.html">Chapter 21</a> covers both measures.</p>
   <div class="table-wrap"><table class="cmp" id="judgment">
   <caption>Unstructured versus evidence-informed judgment</caption>
   <thead><tr><th scope="col">Unstructured judgment</th><th scope="col">Evidence-informed judgment</th></tr></thead>
@@ -707,10 +724,10 @@
   <li><strong>Separate distinct revenue opportunities.</strong> Add expansion opportunities only when they are specific enough to manage. One customer can have several.</li>
   <li><strong>Define the five stages.</strong> Identify, Align, Advocate, Intent, and Net Revenue Close, each with its commercial question.</li>
   <li><strong>Define evidence-based exit criteria.</strong> Write down what must be observably true for an opportunity to leave each stage.</li>
-  <li><strong>Assign stage probabilities.</strong> Start with the defaults (20%, 40%, 60%, 90%, 100%) and apply them the same way everywhere.</li>
+  <li><strong>Assign stage probabilities.</strong> Start with the defaults (20%, 40%, 60%, 90%, 100%), apply them the same way everywhere, and refine them over time against actual outcomes.</li>
   <li><strong>Capture evidence and next action.</strong> Every opportunity carries the evidence for its current stage, the next action, and an owner.</li>
   <li><strong>Forecast by amount × probability × timing.</strong> Weighted value, placed in the period of the expected close date.</li>
-  <li><strong>Review movement regularly.</strong> On a set cadence, inspect what moved forward, what moved back, what stalled, and why, the same way sales reviews its pipeline.</li>
+  <li><strong>Review movement regularly.</strong> On a set cadence, inspect what moved forward, what moved back, what stalled, and why, the same way sales reviews its pipeline. At the start of each quarter, freeze the forecast so you can later compare it with what actually closed.</li>
   </ol>
   <p>Retention enters at purchase. Expansion enters when it becomes specific enough to manage.</p>
 
@@ -757,7 +774,7 @@
   <h3>What is a post-sale pipeline?</h3>
   <p>A Post-Sale Pipeline is the structured revenue process for managing existing-customer retention and growth opportunities from identification through customer commitment and Net Revenue Close. It works like a sales pipeline for the revenue you already have: every retention and expansion opportunity sits in a stage, carries a probability, and advances only on evidence.</p>
   <h3>What are the stages of a post-sale pipeline?</h3>
-  <p>CXology&#x27;s Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are default forecasting assumptions, not measured close rates.</p>
+  <p>CXology&#x27;s Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are provisional default forecasting assumptions, not measured close rates.</p>
   <h3>Do customers move through the post-sale pipeline?</h3>
   <p>No. Revenue opportunities do. Every customer creates at least one retention opportunity at purchase, and expansion opportunities are added when they are specific enough to manage, so one customer can have opportunities in several stages at once.</p>
   <h3>What moves an opportunity from one stage to the next?</h3>
@@ -771,7 +788,9 @@
   <h3>How are auto-renewing contracts handled in a post-sale pipeline?</h3>
   <p>Contractual continuation is not commercial intent. Silence or the absence of a cancellation notice is not a verbal yes, so an auto-renewing opportunity stays at its last evidence-supported stage. When verified contract terms make the renewal binding and it takes effect with a final amount, it can move directly to Net Revenue Close without passing through Intent.</p>
   <h3>How do you forecast existing-customer revenue with a post-sale pipeline?</h3>
-  <p>Multiply each opportunity&#x27;s value by its stage probability and place the result in the period of its expected close date. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail.</p>
+  <p>Multiply each opportunity&#x27;s indicated value by its stage probability and place the result in the period of its expected close date. The result is a provisional expected-value forecast, not proven revenue. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail.</p>
+  <h3>Are the stage probabilities fixed?</h3>
+  <p>No. 20%, 40%, 60%, 90%, and 100% are provisional defaults. Each estimates the expected share of an opportunity&#x27;s indicated value that will be realized. A company calibrates its own weights by comparing frozen quarterly forecasts with actual outcomes. The weights are company-wide and versioned, never set per customer or per CSM. Renewals and expansions keep the same stages but can earn different weights when outcomes justify it.</p>
 
   <h2 id="read-next">Read Next</h2>
   <div class="tool-grid">

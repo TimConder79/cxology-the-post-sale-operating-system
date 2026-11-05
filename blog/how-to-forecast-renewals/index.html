@@ -195,7 +195,7 @@ h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:
   <p><em>(This is why I think of renewal as a case you build all year. <a href="/blog/customer-renewal-strategy/">Customer Renewal Strategy: Build the Case from Day One</a> covers that side.)</em></p>
   <h2>Step 2: Give each renewal the same fields a sales opportunity has</h2>
   <p>Every renewal should carry:</p>
-  <ul><li><strong>Amount:</strong> the current ARR up for renewal, until the customer indicates a different amount</li><li><strong>Stage:</strong> where it stands, based on evidence</li><li><strong>Probability:</strong> the default for that stage</li><li><strong>Expected close date:</strong> the contract end date, known from day one</li><li><strong>Evidence:</strong> what the customer has said or done that supports the stage</li><li><strong>Next action:</strong> what has to happen to earn the next stage</li><li><strong>Owner:</strong> who is getting it</li></ul>
+  <ul><li><strong>Amount:</strong> the current ARR up for renewal, until the customer indicates a different amount</li><li><strong>Stage:</strong> where it stands, based on evidence</li><li><strong>Probability:</strong> the default for that stage</li><li><strong>Expected close date:</strong> the contract end date, known from day one</li><li><strong>Evidence:</strong> what the customer has said or done that supports the stage, and when it was last verified</li><li><strong>Next action:</strong> what has to happen to earn the next stage</li><li><strong>Owner:</strong> who is getting it</li></ul>
   <p>First-term renewals also carry an <strong>expected First Value date</strong>. More on that in Step 4.</p>
   <p>If any of these is blank, you don&rsquo;t have a forecast. You have a guess with a dollar amount.</p>
   <h2>Step 3: Stage each renewal on evidence, not confidence</h2>
@@ -221,7 +221,7 @@ h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:
   <p>The math is simple:</p>
   <p class="def">Renewal amount × stage probability = weighted renewal value</p>
   <p>Then place that weighted value in the period of its expected close date. Probability without timing gives you a total, not a forecast.</p>
-  <p>The probabilities are standard defaults, not measured close rates. That&rsquo;s the point. The same stage means the same thing for every CSM and every segment, so the number is explainable to a CRO and a CFO.</p>
+  <p>The probabilities are provisional defaults, not measured close rates. Each one estimates how much of a renewal&rsquo;s value is expected to be realized at that stage. Using the same defaults for every CSM and every segment keeps the number consistent and explainable to a CRO and a CFO. Once you have a few quarters of outcomes, you can refine them; <a href="/chapter-21.html">Chapter 21</a> shows how.</p>
   <h2>A worked example: one quarter&rsquo;s renewals</h2>
   <p>Here&rsquo;s an illustrative renewal book for Q3. <em>(Illustration of the method only. Not a statistical model.)</em></p>
   <div class="tablewrap"><table class="cmp">
@@ -235,8 +235,8 @@ h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:
       <tr><td><strong>Total</strong></td><td><strong>$1.0M</strong></td><td></td><td></td><td><strong>$570K</strong></td><td></td></tr>
     </tbody>
   </table></div>
-  <p>$1.0M is up for renewal. $570K is supported by evidence today.</p>
-  <p>That doesn&rsquo;t mean $430K is going to churn. It means $430K isn&rsquo;t proven yet.</p>
+  <p>$1.0M is up for renewal. Using the provisional weights, the forecast is $570K.</p>
+  <p>That doesn&rsquo;t mean $430K is going to churn. The $430K is remaining unweighted exposure: renewal value the provisional weights don&rsquo;t count toward the forecast at each renewal&rsquo;s current stage. Tracking how these renewals actually close is how you learn whether the weights are right.</p>
   <p>And now you know exactly where the work is:</p>
   <ul><li><strong>Delta</strong> needs an internal advocate. Who on their side can carry the renewal to finance?</li><li><strong>Evergreen</strong> needs First Value, now. This is the renewal most likely to surprise you.</li><li><strong>Birch and Cobalt</strong> need a commitment and an approval path.</li><li><strong>Acme</strong> needs the paperwork finished.</li></ul>
   <p>Compare that to the color-coded version, where four of these five are probably green.</p>
@@ -247,13 +247,14 @@ h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:
   <h2>Step 7: Inspect the forecast, don&rsquo;t just update it</h2>
   <p>A renewal forecast is only as good as the review behind it.</p>
   <p>In each pipeline review, ask:</p>
-  <ul><li><strong>What moved?</strong> Which renewals advanced, and what evidence earned it?</li><li><strong>What moved back?</strong> Which evidence went stale?</li><li><strong>What&rsquo;s stuck?</strong> Which renewals have sat in a stage too long?</li><li><strong>What&rsquo;s overdue?</strong> Which first-term renewals have missed their First Value date?</li></ul>
+  <ul><li><strong>What moved?</strong> Which renewals advanced, and what evidence earned it?</li><li><strong>What moved back?</strong> Which evidence went stale?</li><li><strong>What&rsquo;s stuck?</strong> Which renewals have sat in a stage too long?</li><li><strong>What&rsquo;s overdue?</strong> Which first-term renewals have missed their First Value date?</li><li><strong>What&rsquo;s stale?</strong> Which Advocate or Intent evidence is older than your freshness window (for example, 90 days) and needs to be reconfirmed with the customer?</li></ul>
+  <p>At the start of each quarter, save a frozen copy of the forecast before anything changes. When the quarter ends, compare it with what actually closed, and keep two questions apart: which renewals closed for a different amount than forecast, and which simply slipped into a later quarter.</p>
   <p>When people disagree about a stage, the conversation changes from opinion to evidence: what would prove the next exit criterion, and who is going to get it?</p>
   <h2>The common mistakes</h2>
   <ul><li><strong>Forecasting by health score.</strong> A health score describes the account. It doesn&rsquo;t tell you where the renewal decision stands.</li><li><strong>Forecasting by renewal date.</strong> The date tells you when. It doesn&rsquo;t tell you whether.</li><li><strong>Treating a verbal yes as closed.</strong> Intent is a commitment. Net Revenue Close is a final result. Keep them separate.</li><li><strong>Treating auto-renewals as safe.</strong> The contract rolls over and the revenue stays in the forecast, but the customer is still deciding whether you&rsquo;re worth it. An auto-renewal nobody paid attention to can become a surprise cancellation or downgrade the following year.</li><li><strong>Starting 90 days out.</strong> Ninety days is a useful minimum, not a strategy. Work backward from how the customer buys, not forward from the contract date.</li></ul>
   <h2>Start with your next two quarters</h2>
   <p>You don&rsquo;t need a new system to start.</p>
-  <p>Take every renewal in the next two quarters. Give each one a stage, the evidence behind it, and a next action. Weight it. Then look at the gap between what&rsquo;s up for renewal and what the evidence supports.</p>
+  <p>Take every renewal in the next two quarters. Give each one a stage, the evidence behind it, and a next action. Weight it. Then look at the gap between what&rsquo;s up for renewal and the weighted forecast.</p>
   <p>That gap is your renewal plan.</p>
   <p><em>Want to see what improving retention is worth? The <a href="/calculator.html">Retention &amp; Growth ROI Calculator</a> models it. For the full pipeline, read <a href="/chapter-part2-intro.html">Part II of The Post-Sale Operating System</a>.</em></p>
   </div>
