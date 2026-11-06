@@ -495,9 +495,9 @@ Speed is not a property of the opportunity type. It is a property of how much of
 
 A single customer may have one renewal and two or three expansion opportunities moving through the pipeline at once, each in its own stage. The renewal is the floor. The expansion opportunities are the growth. The pipeline tracks both. Evidence that meets each stage's exit criteria advances both.
 
-## Probability weights are set per stage. What varies is the work required to earn them.
+## Probabilities are set per stage. What varies is the work required to earn them.
 
-Each stage carries a default probability: Identify 20%, Align 40%, Advocate 60%, Intent 90%, and Net Revenue Close 100%. These are standardized forecasting assumptions tied to increasing levels of evidence, from confirmed customer outcomes in the early stages to commercial commitments in the later ones. They are not measured close rates. They are provisional: each weight estimates how much of an opportunity's value is expected to be realized, and a company refines the weights over time by comparing them with its own outcomes. Renewals and expansions can earn different weights if the evidence shows it. The model stays simple because the math does not change by customer tier, segment, or complexity. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital SMB customer. The difference is operational, not mathematical. A high-touch customer may need a formal Alignment Meeting with executive stakeholders to produce the evidence. A low-touch customer may produce it through a self-service milestone or an automated check-in. The plays change. The stages do not. The probabilities do not change by segment.
+Each stage carries a default probability that the renewal or expansion will eventually be completed: Identify 20%, Align 40%, Advocate 60%, Intent 90%, and Net Revenue Close 100%. These are provisional starting assumptions tied to increasing levels of evidence, from confirmed customer outcomes in the early stages to commercial commitments in the later ones. They are not measured completion rates, and a company refines them over time by comparing them with what actually happens. Renewals and expansions may end up with different probabilities. The model stays simple because the math does not change by customer tier, segment, or complexity. An opportunity in Align carries the same probability whether it belongs to a high-touch enterprise customer or a digital SMB customer. The difference is operational, not mathematical. A high-touch customer may need a formal Alignment Meeting with executive stakeholders to produce the evidence. A low-touch customer may produce it through a self-service milestone or an automated check-in. The plays change. The stages do not. The probabilities do not change by segment. How probability combines with indicated value and timing into a forecast is covered in How Do You Forecast Renewal and Expansion Revenue from a Post-Sale Pipeline?
 
 This is what makes the model defensible to a CRO. The pipeline is not a custom scoring system that needs to be explained differently for every segment. It is a shared structure with consistent definitions and consistent math, delivered through segment-appropriate motions.
 
@@ -3273,7 +3273,7 @@ Shows whether the company is creating enough durable value after the sale to ret
 
 #### Forecast Accuracy
 
-Shows how closely the frozen forecast matched revenue actually finalized, and whether the evidence behind each opportunity's stage was strong enough, and current enough, to support it.
+Shows how closely the quarter's starting forecast matched the decisions that actually became final, and whether misses came from timing, outcomes, amounts, or evidence that did not hold.
 
 #### Cycle Time
 
@@ -3291,91 +3291,15 @@ You do not align teams by asking them to share metrics. You align teams by givin
 
 Forecast Discipline
 
-## Measuring and Calibrating the Forecast
+## A Forecast the Whole Company Can Inspect
 
-Of the three metrics, forecast accuracy is the one leaders argue about most and measure most loosely. The quarter ends, the number misses, and the review turns into a debate about whose optimism was to blame. That debate goes nowhere because nobody wrote down, in advance, what the forecast was assuming. Part II gave every revenue opportunity a stage, a value, a probability, and an expected close date. Each of those does a different job, and keeping them apart is what makes the forecast something you can inspect.
+When a revenue forecast misses, the discussion often turns to why the number was wrong. Was the team too optimistic? Did a renewal slip into the next quarter? Was the amount ever realistic? Those are different problems, and they are hard to separate when each function works from its own information.
 
-The Forecasting Principle
+The post-sale pipeline gives everyone the same information. Customer evidence sets each opportunity’s stage. The stage carries a provisional probability that the renewal or expansion will eventually be completed, a starting assumption rather than a measured rate. The indicated value reflects what the customer has actually indicated, including any reduction. The expected close date places it in a quarter. Probability times indicated value is the opportunity’s weighted value. The Post-Sale Pipeline page shows the math.
 
-The pipeline stage describes the evidence supporting an opportunity. The opportunity value describes the customer-grounded commercial amount. The probability estimates how much of that indicated value is expected to be realized. The close date determines when it is expected. Calibration tests those assumptions against actual outcomes.
+Save that forecast at the start of the quarter and judge the quarter against it. When the number misses, the saved version shows what kind of miss it was. A renewal that moved to the next quarter is a timing problem. A renewal that was never completed is an outcome problem. A renewal completed at a fraction of its prior value is an amount problem, and it can hurt revenue retention almost as much as a loss. Across customers, those outcomes become the retention and expansion results leadership answers for.
 
-### What a stage weight means
-
-The published weights, Identify 20%, Align 40%, Advocate 60%, Intent 90%, and Net Revenue Close 100%, are provisional defaults. They give every team the same starting point. They have not been validated against anyone’s outcomes, including yours.
-
-A stage weight estimates the expected share of an opportunity’s indicated value that will ultimately be realized. It is not the chance that some renewal happens. A $100,000 renewal at Advocate contributes $60,000 to the forecast because the model expects 60% of the indicated value to be realized across renewals with that level of evidence, not because there is a 60% chance of renewing at any price. The same reading applies to expansion opportunities.
-
-That makes weighted value a provisional expected-value forecast. It is not proven revenue. The difference between total value and weighted value is the remaining unweighted exposure: the part of the indicated value the provisional weights do not count toward the forecast. It is not revenue the company expects to churn.
-
-Two diagnostics sit beside the weight when the time comes to test it. Count conversion is the share of opportunities that closed at any amount above zero. The amount ratio is how much of the indicated value the successful ones actually realized. Together they show whether a miss came from losses or from reductions.
-
-### Freeze the forecast before you judge it
-
-You cannot measure a forecast you keep rewriting. At the start of every quarter, save a frozen copy of every open opportunity: its type, stage, indicated value, expected close date and the source of that date, the date its evidence was last verified, and the weight version in use. That quarter-start snapshot is required. A mid-quarter snapshot is recommended as a second inspection point. Past snapshots are never edited, and they keep the weights that were in force when they were taken.
-
-The quarter-start review is also when evidence freshness gets checked. Every opportunity records an evidence-verified date: when the evidence supporting its current stage was last confirmed with the customer. Advocate and Intent evidence older than the company’s freshness window, for example 90 days, must be re-verified. Age alone does not move the stage. If the evidence still holds, the date resets. If it no longer satisfies the stage’s criteria, the opportunity moves back to the highest stage the remaining evidence supports.
-
-### Two measures that should never be combined
-
-Period forecast accuracy compares the forecast frozen at the start of a quarter with revenue actually finalized in that quarter. Cohort realization follows the opportunities in a frozen snapshot to their final outcomes, whenever those outcomes happen, and tests whether the stage weights match reality. The same deal can make one look bad and the other look good.
-
-| Point | Stage | Indicated value | Weight | Expected close (source) | Weighted forecast |
-|---|---|---|---|---|---|
-| Q1 snapshot | Intent | $100,000 | 90% | Mar 15 (customer-confirmed) | $90,000 in Q1 |
-| Mar 8 | Intent | $100,000 | 90% | Apr 20 (customer-confirmed) | $90,000, moved to Q2 |
-| Apr 20 | Net Revenue Close | $100,000 final | n/a | Closed | Replaced by $100,000 actual |
-
-An expansion that slips a quarter and closes in full (illustrative)
-
-The customer’s procurement team needed more time and confirmed the new date, so the opportunity stayed in Intent. For Q1, the forecast was $90,000 and nothing closed: a $90,000 timing miss. In Q2 the deal closed at $100,000 against a $90,000 forecast. For cohort realization, the Q1 snapshot’s Intent opportunity realized 100% of its indicated value against a 90% weight. The weight was right about how much. The Q1 forecast was wrong about when. Combining the two measures would either hide the timing problem or blame the weight for it.
-
-### Reconcile the forecast to what actually closed
-
-Once the quarter is over, the gap between the frozen forecast and what actually closed can always be explained by four things. Some opportunities finalized in the quarter for more or less than their weighted forecast: that is realization. Some were expected in the quarter and did not finalize, so their weighted forecast becomes a timing miss. Some that were expected in a later quarter closed early: those are pull-ins. And some did not exist at the snapshot but were created and closed within the quarter: those are new.
-
-Actual − Forecast = Realization + Timing + Pull-ins + New
-
-Illustrative example. A quarter’s frozen renewal forecast is $1,200,000. Renewals expected in the quarter carried $1,110,000 of weighted forecast and finalized at $1,350,000, so realization is +$240,000. Two renewals weighted at $90,000 were still unresolved at quarter end, so timing is −$90,000. One renewal from the next quarter closed early at $30,000, a +$30,000 pull-in. Actual revenue finalized was $1,380,000, and the $180,000 variance is fully explained: $240,000 − $90,000 + $30,000.
-
-Between snapshots, the same discipline explains why the forecast moved: stage changes, value changes, close dates moving into or out of the period, new opportunities, and closes. A change in weight version is shown separately, so a new weight never looks like new evidence.
-
-### Putting a percentage on accuracy
-
-Report dollar variance first. For a percentage, avoid per-period percentage error, which divides by actual revenue and fails when actual revenue is zero, a real possibility for expansion in a small quarter. Use weighted absolute percentage error (WAPE) across a rolling set of quarters, with bias beside it, separately for renewals and expansions.
-
-WAPE = Σ |forecast − actual| ÷ Σ actual
-
-Bias = Σ (forecast − actual) ÷ Σ actual
-
-Illustrative example. Over four quarters, renewal forecasts of $1,200,000, $1,050,000, $900,000, and $1,300,000 met actuals of $1,380,000, $1,100,000, $820,000, and $1,420,000. The absolute errors total $430,000 against $4,720,000 of actual revenue, a WAPE of 9.1%. Forecast minus actual totals −$270,000, a bias of −5.7%: the forecast ran low in three of the four quarters.
-
-WAPE has limits. It is undefined if nothing finalized across the whole window, in which case report dollars only. Large quarters dominate it, and small or uneven quarters can swing it. Because it measures the portfolio number, offsetting errors on individual opportunities cancel out, which is why cohort realization sits beside it. For renewals, also report variance as a share of renewal ARR due. That figure is defined whenever any renewal is due, and it is easy for a CFO to read.
-
-### Count a reduction once
-
-When a customer documents a reduction, the indicated value changes and the stage does not. A $200,000 renewal reduced to an indicated $150,000 at Advocate forecasts $150,000 × 60% = $90,000. The $50,000 is known contraction, already in the value. The stage weight now covers only the uncertainty that remains.
-
-That is why calibration measures realization against the indicated value in the frozen snapshot, never against the original contract ARR. A weight fitted to original ARR would absorb the contraction teams usually knew about, and applying it to a value that already reflects the reduction would count the same contraction twice. At the snapshot, renewal ARR due reconciles cleanly: known contraction ($50,000), plus weighted forecast ($90,000), plus remaining unweighted exposure ($60,000), equals $200,000. None of those lines is a churn prediction.
-
-### Calibrate the weights from your own outcomes
-
-Calibration does not require forecasting software. A RevOps team can run it in a spreadsheet, and the logic is simple enough to explain to a board.
-
-Start with cohorts. For each quarter, take the opportunities in the quarter-start snapshot that were expected to close in that quarter, and follow them to their final outcomes, including losses at $0 and closed-lost expansions. Then, for each opportunity type and snapshot stage, divide the total final amount by the total indicated value at the snapshot. That is the stage’s dollar realization. Always use the stage the opportunity was in at the snapshot, never a stage it reached later. Otherwise hindsight leaks into the weights.
-
-Small samples should barely move the current weight. A credibility blend respects that: (n × observed + k × current weight) ÷ (n + k), where n is the number of resolved opportunities and k is a credibility constant the company chooses. A k of 20 is an illustrative starting point, not a benchmark. Illustrative example. Suppose 40 resolved renewals sat at Advocate across four quarterly cohorts and realized 75% of their snapshot value against a 60% default. With k = 20, the blended weight is (40 × 75% + 20 × 60%) ÷ 60 = 70%. With only 5 resolved renewals, the same observed 75% would produce (5 × 75% + 20 × 60%) ÷ 25 = 63%.
-
-Two checks come before anything changes. Weights should not fall from one stage to the next. If two adjacent stages come out of order, pool them into one shared weight and look at how teams are staging those opportunities, because inconsistent staging is the usual cause. And candidate weights have to earn their place: fit them on earlier quarters, test them on later quarters they never saw, and adopt them only if they lower WAPE without creating bias in the other direction. RevOps owns the analysis. The CRO and CFO approve any change to company-wide weights, and each set carries a version number and an effective date.
-
-Renewals and expansions use the same stages and exit criteria, but they may earn different weights when outcomes show that separate weights forecast better. Calibration starts with that split. Tag auto-renewing contracts from the start so their realization can be analyzed separately; a binding renewal that has not yet taken effect keeps its stage and weight until it does. First-term versus repeat renewals and segment differences come later, and only if testing proves they help. The weights are always company-wide. They are never set for an individual customer, CSM, or manager.
-
-Review calibration twice a year, or sooner when enough new outcomes justify it. Keeping the defaults is a legitimate result: when there are not yet two quarters of resolved cohorts, when a candidate does not beat the current weights on later quarters, or when one or two large deals drive the change. Record that decision too.
-
-None of these numbers belongs to Finance alone. The snapshot shows every team which opportunities are carrying the forecast, and the reconciliation shows what moved and why. That is what makes them worth bringing into the operating review.
-
-Evidence Versus Accuracy
-
-Stage definitions establish consistent evidence standards. Forecast probabilities begin as provisional assumptions and are calibrated against observed outcomes. A strong evidence trail tells you where an opportunity stands. Only outcomes tell you how good the forecast was.
+That is why the review belongs to the whole company. Sales, Customer Success, RevOps, Product, and Finance see the same opportunities, evidence, and forecast. Sales sees whether what was promised became evidence. Customer Success sees which opportunities rest on thin or stale evidence. RevOps sees whether the probabilities and amounts are holding up. Product sees where gaps slowed customers down. Finance sees how much of the number rests on early-stage renewals. Then they decide what work happens next. A review that only explains the number has not done its job.
 
 Operating Reviews
 
@@ -4074,7 +3998,7 @@ The forecast loop. Each revenue opportunity enters the pipeline once. The loop r
 
 - Stage and probability: the opportunity sits at the highest stage its evidence supports. It advances, holds, or moves back, and the stage probability follows.
 
-- Forecast: a provisional expected-value estimate, each opportunity's indicated value times its stage probability, placed in the period of its expected close date. The weights are refined over time against actual outcomes. When new evidence appears, the loop runs again.
+- Forecast: each opportunity's stage probability times its indicated value, placed in the quarter of its expected close date. The probabilities start as provisional assumptions and are refined over time against actual outcomes. When new evidence appears, the loop runs again.
 
 Progression does not guarantee renewal or expansion. It gives you better evidence for assessing the likelihood of both. Running a play is not the same as the customer progressing. A play has done its job only when the customer gets the result it was designed to produce, not when the CSM checks it off. Probability changes when confirmed evidence meets the exit criteria for the next stage, not because time passed and not because of a CSM's general impression.
 
@@ -4263,7 +4187,7 @@ What doesn't move an opportunity back on its own: a drop in usage, a red health 
 
 Timing slips. If the expected close date slips but the customer confirms new timing, the opportunity stays in Intent and only the date changes. If it slips without confirmed timing, the path is no longer credible, and the opportunity moves back to Advocate.
 
-Amount versus likelihood. An opportunity's value should reflect the best customer-grounded evidence of the expected amount. If the customer requests a reduction, revises the scope, or a documented commercial discussion points to a different amount, change the opportunity's value, not its stage. Until the outcome is final, that is an indicated amount; Net Revenue Close records the final amount, whether from a signed agreement, a binding auto-renewal that has taken effect, or a loss at $0. A usage drop, a health score, or an internal concern doesn't change the value on its own. It triggers a check. Stage reflects the evidence, and its weight reflects how much of the value is expected to be realized. Value reflects how much is at stake. Because the weight applies to the indicated value, a known reduction is counted once, in the value, not again in the weight.
+Amount versus likelihood. An opportunity's indicated value should reflect the best customer-grounded evidence of the amount. If the customer requests a reduction, revises the scope, or a documented commercial discussion points to a different amount, change the indicated value, not the stage. Until the decision is final, the amount is indicated, not final. When it becomes final, the actual amount replaces it, whether from a signed agreement, a binding auto-renewal that has taken effect, or a loss at $0. A usage drop, a health score, or an internal concern doesn't change the amount on its own. It triggers investigation. The stage sets the probability that the renewal or expansion will eventually be completed. The indicated value says how much it produces if it is. A known reduction lowers the amount and is not counted again in the probability.
 
 Lost opportunities. Retention opportunities don't leave the pipeline early. They end at Net Revenue Close with whatever actually happened, including $0. An expansion opportunity that dies is closed as lost, not deleted, with the reason and the last stage it reached. That keeps the evidence trail and shows how often each stage actually converts.
 
@@ -4277,7 +4201,7 @@ Affirmative commercial intent. The customer has actually said yes to continuing.
 
 The final revenue outcome. The renewal has taken effect at a known amount.
 
-Silence, or the absence of a cancellation notice, is not a verbal yes. An auto-renewing opportunity stays at its last evidence-supported stage, with that stage's probability, unless the criteria for a different stage are met. When verified contract terms make the renewal binding and it takes effect with a final amount, the opportunity can move directly to Net Revenue Close without passing through Intent. Don't manufacture a commitment just to keep the stages in order. The forecast math doesn't change: value times the current stage's probability until the outcome is final, then the final amount. Tag auto-renewing contracts so calibration can show whether they realize differently from their stage weight.
+Silence, or the absence of a cancellation notice, is not a verbal yes. An auto-renewing opportunity stays at its last evidence-supported stage, with that stage's probability, unless the criteria for a different stage are met. When verified contract terms make the renewal binding and it takes effect with a final amount, the opportunity can move directly to Net Revenue Close without passing through Intent. Don't manufacture a commitment just to keep the stages in order. The forecast math doesn't change: value times the current stage's probability until the outcome is final, then the final amount. Tag auto-renewing contracts so outcome reviews can show whether they behave differently from their stage probability.
 
 ## How Does Customer Progression Support the Pipeline?
 
@@ -4324,30 +4248,57 @@ How an opportunity advances. The same mechanism is written out below.
 
 - The forecast updates.
 
-## How Do Post-Sale Pipeline Probabilities Work?
+## How Do You Forecast Renewal and Expansion Revenue from a Post-Sale Pipeline?
 
-Each stage carries a default forecast probability: Identify 20%, Align 40%, Advocate 60%, Intent 90%, Net Revenue Close 100%.
+Short answer. Multiply each opportunity's stage probability by its indicated value, and count the result in the quarter of its expected close date. Save that forecast at the start of each quarter, compare it with what was actually decided, and refine the probabilities as real outcomes come in.
 
-These are standardized forecasting assumptions tied to increasing levels of evidence, from confirmed customer outcomes in the early stages to commercial commitments in the later ones. They are not empirically measured close rates, and they don't claim that every opportunity in Align has exactly a 40% chance of closing.
-  Each weight estimates the expected share of an opportunity's indicated value that will ultimately be realized. It is not the chance that some renewal happens at any price. That makes weighted value a provisional expected-value forecast. It is not proven revenue, and the unweighted remainder is not revenue you expect to churn.
+### Whether, how much, and when
 
-Standard defaults are the point. The same stage means the same thing across segments, teams, and CSMs. An opportunity in Align carries the same weight whether it belongs to a high-touch enterprise customer or a digital-led SMB account. What differs is the work needed to produce the evidence, not the math. That is what makes the model explainable to a CRO and a CFO. The defaults are provisional, though. Over time a company refines them from its own outcomes, company-wide and never customer by customer or CSM by CSM.
+Every opportunity carries three separate answers.
 
-Opportunity Value × Stage Probability = Weighted Forecast Value
+Whether is the stage probability: the provisional chance the commercial event will eventually be completed. Identify is 20%, Align 40%, Advocate 60%, Intent 90%, and Net Revenue Close 100%. For a renewal, the event is a completed renewal at any amount above zero, including a reduced renewal or a binding auto-renewal once it takes effect. For an expansion, it is a completed additional purchase.
 
-### How Are Stage Probabilities Calibrated?
+How much is the indicated value: the annual recurring revenue the customer's own commercial evidence supports. A renewal starts at the ARR being renewed and changes only when the customer indicates a different amount, through a requested reduction, a revised scope, or a documented commercial discussion. A usage drop, a health score, or an internal worry is a reason to investigate, not to change the amount.
 
-By comparing them with what actually happens. At the start of each quarter, freeze a copy of the forecast: every open opportunity's stage, indicated value, expected close date, evidence-verified date, and the weights in use. When those opportunities reach their final outcomes, measure how much of their snapshot value each stage actually realized, separately for renewals and expansions. Blend what you observe with the current weights in proportion to how much data you have, keep the weights in stage order, and adopt new weights only if they would have forecast later quarters better than the old ones. RevOps runs the analysis, the CRO and CFO approve any change, and every version is recorded.
+When is the expected close date: the contract end for a renewal, and the customer's confirmed timing, or a clearly labeled internal estimate, for an expansion.
 
-Renewals and expansions keep the same stages and exit criteria, but they can earn different weights once outcomes show that separate weights forecast better. Until there is enough evidence, the defaults stay. Chapter 21 walks through the method, the measures, and worked examples.
+Stage Probability × Indicated Value = Weighted Forecast Value
 
-## One Customer, Multiple Revenue Opportunities
+Add up the weighted values expected in a quarter and you have that quarter's forecast. Weighting a pipeline by stage is common sales practice; what CXology adds is stages defined by customer evidence. The percentages are starting assumptions, not measured completion rates. They apply the same way across segments and CSMs and don't account for how far away the close date is. Renewals, which start from a contract the customer already has, and expansions, which start from nothing, may eventually need different ones. And because each opportunity sits in one quarter, the forecast doesn't model timing uncertainty on its own. It is a disciplined, inspectable estimate, not a validated prediction.
+
+### A renewal, worked through
+
+| Current ARR up for renewal | $200,000 |
+|---|---|
+| Customer's documented request to remove seats | −$50,000 |
+| Indicated value | $150,000 |
+| Stage (an internal advocate is carrying the case) | Advocate, 60% |
+| Weighted forecast value | $150,000 × 60% = $90,000 |
+| Expected close date | June 30 (contract end), so it counts in Q2 |
+
+A renewal with indicated contraction (illustrative)
+
+The $90,000 is this renewal's contribution to the Q2 forecast, not a prediction that it will renew for $90,000. The reduction is counted once, in the indicated value. The 60% carries a different risk: that the renewal isn't completed at all.
+
+If the renewal is completed at its indicated $150,000, it lands $60,000 above its weighted value. That is the outcome effect. If it is completed at $140,000 instead, a separate $10,000 amount effect is added, for a total difference of $50,000. If it isn't completed, it lands $90,000 below. An expansion works the same way: a $30,000 module at Align contributes $12,000.
+
+Growth negotiated at renewal (a price increase, added seats, new modules) is a separate expansion opportunity, even in the same contract, so retained revenue, contraction, and expansion stay visible and nothing is counted twice. All of this is annual recurring revenue, not bookings, contract value, recognized revenue, or cash.
+
+### A completed renewal is not the same as retained revenue
+
+Keeping a customer, keeping that customer's recurring revenue, and growing it are related results, but they are not the same thing. Suppose a customer with $200,000 of ARR renews for $20,000. The renewal was completed and the customer is still a customer, but $180,000 of recurring revenue was lost to contraction. If that customer were the entire starting group and nothing expanded, gross and net revenue retention would both be 10%: a very poor outcome from a completed renewal.
+
+So probability and indicated value have to be judged together. A forecast that predicts which renewals will be completed but misses severe contraction is not an accurate revenue forecast.
+
+The pipeline doesn't calculate gross or net revenue retention. Those are measured for a defined group of customers over a defined period, as ARR changes take effect. The pipeline gives you a forward view of the decisions that move them. What Is Net Revenue Retention? explains how the two connect, with a line-by-line example. Small changes in retention compound into large differences in growth, sales burden, and company value, as the Retention & Growth ROI Calculator illustrates under the assumptions it states.
+
+### One customer, multiple revenue opportunities
 
 Illustration of the mechanics only. Not a recommended forecast or a statistically validated probability model.
 
 Customer A currently has $100K ARR.
 
-| Opportunity | Value | Stage | Default probability | Weighted value |
+| Opportunity | Indicated value | Stage | Default probability | Weighted value |
 |---|---|---|---|---|
 | Retention (renewal) | $100K | Advocate | 60% | $60K |
 | Expansion A | $25K | Align | 40% | $10K |
@@ -4360,13 +4311,59 @@ Now try to describe Customer A with one stage. Put the whole $165K at Advocate a
 
 The opportunity-level view shows the floor, the growth, and what each one needs next. The renewal needs a commitment. Expansion A needs an internal advocate. Expansion B needs to be connected to something the customer is trying to accomplish.
 
+### Timing: which quarter it counts in
+
+Probability without timing gives you a total, not a forecast. If Customer A's renewal is expected to close in Q3, its $60K counts toward Q3. If Expansion A is expected in Q4, its $10K counts there.
+
+A slip moves an opportunity's weighted value to a later quarter without changing its probability. Record every date change and its reason, and treat repeated slips without customer-confirmed timing as a reason for management review. If a renewal's contract end passes without a final outcome, keep it open with its original contract date, the current expected close date and its source, and the reason for the delay. Never present an internal review date as a customer-confirmed one.
+
+The pipeline counts a decision in the quarter it becomes final, which isn't always when the revenue change takes effect. A renewal signed in March with new terms effective in April is a Q1 decision here. Under an effective-date convention, retention reporting would record the ARR change in Q2.
+
+### Compare the quarter-start forecast with what was decided
+
+At the start of each quarter, save a copy of the forecast, with a current expected close date on every open opportunity, including renewals still unresolved from earlier quarters. At quarter end, compare it with the decisions that became final during the quarter, including losses at $0. The difference comes from four sources:
+
+- Outcome: an opportunity was completed (landing above its weighted value) or wasn't (landing below).
+
+- Amount: it was completed at a different amount than indicated.
+
+- Timing: an opportunity expected this quarter wasn't decided, or one expected later was decided early.
+
+- New: opportunities that didn't exist when the quarter started.
+
+Illustrative example. The Q2 forecast saved on April 1 holds the renewal above at $90,000, and a $100,000 expansion at Intent with a customer-confirmed date of May 15, also at $90,000. Total: $180,000.
+
+- The renewal is completed on June 25 at $140,000: +$60,000 outcome, −$10,000 amount.
+
+- The expansion's procurement slips, and it is completed July 20 at $100,000: a $90,000 timing miss for Q2.
+
+- A new $10,000 add-on is created and closed in May.
+
+Q2's decisions total $150,000: $180,000 + $60,000 − $10,000 − $90,000 + $10,000.
+
+This tests the forecast as a whole, not any one assumption. One opportunity's difference says nothing about its probability: a 60% renewal completed at its indicated value lands $60,000 above its weighted value whether 60% was right or not. Only a pattern across many comparable opportunities can show that.
+
+### Refine the probabilities over time
+
+To find that pattern, take the opportunities in each quarter-start snapshot that were expected to close that quarter, and keep the stage, probability, indicated value, and date they had then. After a fixed window you use every time, for example two quarters after that quarter ends, run three checks, separately for renewals and expansions:
+
+- Completion. By the cutoff, how many were completed, how many were lost, and how many are still unresolved? Count completions against the whole original group and report the unresolved ones beside it. Dropping them would leave a selected subset, which can make the result misleading. If many are still open, consider whether the window is long enough before drawing conclusions.
+
+- Timing. How many of those completed were completed in the quarter expected?
+
+- Amount. How did the completed amounts compare with the indicated values in the snapshot?
+
+Illustrative example. Over a year, 20 renewals were at Advocate in the snapshot for their expected quarter. At the end of the window, 18 were completed, 1 was lost, and 1 was still open: 18 of 20 completed by the cutoff, against a 60% assumption. That is what was observed by the cutoff, not necessarily the eventual rate, but the gap from 60% is wide. Fifteen of the 18 were completed on time, at close to their indicated amounts. The 60% looks low for this company's renewals at Advocate, and its renewal dates slip more than the forecast assumes. Had those 18 renewed at half their indicated amounts, the completion check would still look strong and the forecast would still have been badly wrong.
+
+Twenty renewals is a small group, so look for the same pattern across more than one period before changing a percentage. Then change it company-wide, document why, and keep earlier forecasts on the percentages they used. This isn't a validated statistical method. It is a disciplined way to learn from your own outcomes.
+
 ## How Do You Forecast Existing-Customer Revenue Without Relying on CSM Judgment?
 
-Forecast each revenue opportunity, not each customer. Multiply its value by its stage probability, place it in the period of its expected close date, and require evidence that justifies the stage. Judgment still matters. It just works inside a shared structure.
+Forecast each revenue opportunity, not each customer. Multiply its stage probability by its indicated value, place it in the quarter of its expected close date, and require evidence that justifies the stage. Judgment still matters. It just works inside a shared structure.
 
 Every opportunity should carry at least:
 
-- Indicated value: for a renewal, the current ARR up for renewal until the customer indicates a different amount
+- Indicated value: for a renewal, the ARR being renewed, less any reduction the customer has indicated
 
 - Stage
 
@@ -4382,18 +4379,6 @@ Every opportunity should carry at least:
 
 First-term renewals also carry an expected First Value date until First Value is reached.
 
-Probability without timing gives you a total, not a forecast. A useful period forecast needs both. Each opportunity's weighted value counts toward the period in which it is expected to close. In the illustration above, if the renewal is expected to close in Q3, its $60K weighted value counts toward Q3. If Expansion A is expected in Q4, its $10K counts there.
-
-### Close Dates, Unresolved Renewals, and Growth at Renewal
-
-Expansion close dates. Use the customer's timing when they have confirmed it. When they haven't, an internal estimate is acceptable if it is labeled as one, with who set it and when. Record every change and the reason for it. Repeated slips without customer-confirmed timing call for a management review. They don't change the stage on their own.
-
-Renewals past contract end. If the contract end date passes without a final outcome, the renewal stays open and unresolved. Keep the original contract date, and record the current expected resolution date, whether the customer confirmed it or it is an internal estimate, and the reason for the delay. Never present an internal review date as a customer-confirmed commercial date. Net Revenue Close waits until the outcome is final.
-
-Growth at renewal. The renewal holds the existing ARR. Any increase, from a price change, added seats, new modules, or other growth, is a separate expansion opportunity, even when both are negotiated in one contract. When the contract closes, the renewal's final amount is the retained portion of the original base and the expansion's final amount is the incremental ARR, so the two add up to the new contract and nothing is counted twice. A customer at $100,000 who signs for $115,000, with $10,000 of new seats and a $5,000 price increase, records a $100,000 renewal and $15,000 of expansion. Renewal results then reconcile to gross revenue retention, and renewals plus expansions reconcile to net revenue retention.
-
-Measuring the forecast. Freeze the forecast at the start of each quarter. Then measure two things separately: how closely that frozen forecast matched revenue actually finalized in the quarter, and how much of each snapshot's indicated value was eventually realized, even when deals closed later. A deal that slips from Q1 to Q2 is a Q1 timing miss, even if it closes in full. Chapter 21 covers both measures.
-
 | Unstructured judgment | Evidence-informed judgment |
 |---|---|
 | "I think they're green. They'll renew." | Retention, $100K, Advocate (60%), expected close September 30. Evidence: the VP of Operations presented our results to the CFO without us in the room. Next action: confirm budget timing and the approval path. Owner: assigned CSM. |
@@ -4406,7 +4391,7 @@ That changes the pipeline review. When someone disagrees about a stage, the conv
 
 ## How Do You Build a Post-Sale Pipeline?
 
-Short answer: put existing-customer revenue into the pipeline from purchase, separate it into distinct retention and expansion opportunities, define the five stages and their evidence-based exit criteria, assign default probabilities, capture the evidence and next action for every opportunity, forecast by amount × probability × timing, and review movement on a regular cadence.
+Short answer: put existing-customer revenue into the pipeline from purchase, separate it into distinct retention and expansion opportunities, define the five stages and their evidence-based exit criteria, assign default probabilities, capture the evidence and next action for every opportunity, forecast by probability × indicated value × timing, and review movement on a regular cadence.
 
 - Put the revenue in the pipeline. Create a retention opportunity for every customer at purchase. For a new customer, set an expected First Value date.
 
@@ -4420,7 +4405,7 @@ Short answer: put existing-customer revenue into the pipeline from purchase, sep
 
 - Capture evidence and next action. Every opportunity carries the evidence for its current stage, the next action, and an owner.
 
-- Forecast by amount × probability × timing. Weighted value, placed in the period of the expected close date.
+- Forecast by probability × indicated value × timing. Weighted value, placed in the quarter of the expected close date.
 
 - Review movement regularly. On a set cadence, inspect what moved forward, what moved back, what stalled, and why, the same way sales reviews its pipeline. At the start of each quarter, freeze the forecast so you can later compare it with what actually closed.
 
@@ -4452,7 +4437,7 @@ A Post-Sale Pipeline is the structured revenue process for managing existing-cus
 
 ### What are the stages of a post-sale pipeline?
 
-CXology's Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are provisional default forecasting assumptions, not measured close rates.
+CXology's Post-Sale Pipeline has five stages: Identify (20%), Align (40%), Advocate (60%), Intent (90%), and Net Revenue Close (100%). The percentages are provisional default probabilities that a renewal or expansion will eventually be completed, not measured completion rates.
 
 ### Do customers move through the post-sale pipeline?
 
@@ -4480,11 +4465,15 @@ Contractual continuation is not commercial intent. Silence or the absence of a c
 
 ### How do you forecast existing-customer revenue with a post-sale pipeline?
 
-Multiply each opportunity's indicated value by its stage probability and place the result in the period of its expected close date. The result is a provisional expected-value forecast, not proven revenue. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail.
+Multiply each opportunity's stage probability by its indicated value and place the result in the quarter of its expected close date. Each weighted value is that opportunity's contribution to the total, not a prediction of what it will close for. Each opportunity carries evidence, a next action, and an owner, so judgment has a common structure and an evidence trail.
 
 ### Are the stage probabilities fixed?
 
-No. 20%, 40%, 60%, 90%, and 100% are provisional defaults. Each estimates the expected share of an opportunity's indicated value that will be realized. A company calibrates its own weights by comparing frozen quarterly forecasts with actual outcomes. The weights are company-wide and versioned, never set per customer or per CSM. Renewals and expansions keep the same stages but can earn different weights when outcomes justify it.
+No. 20%, 40%, 60%, 90%, and 100% are provisional starting probabilities that a renewal or expansion will eventually be completed. They have not been validated. A company refines them by comparing quarter-start forecasts with what actually happened, company-wide and documented, never per customer or per CSM. Renewals and expansions keep the same stages but may end up with different probabilities.
+
+### Does a completed renewal mean the revenue was retained?
+
+Not necessarily. A customer with $200,000 of ARR who renews for $20,000 has completed a renewal but lost $180,000 of recurring revenue to contraction. The stage probability tracks whether a renewal is completed; the indicated value tracks how much revenue that means. Gross and net revenue retention measure the revenue, so the two have to be forecast and reviewed together.
 
 ## How Do You Know Whether a Customer Is Actually Progressing?
 Source: https://cxology.co/customer-progression-leading-indicators.html

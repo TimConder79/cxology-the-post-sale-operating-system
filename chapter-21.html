@@ -55,6 +55,8 @@
       line-height: 1.65;
     }
     .chapter-body strong { color: var(--navy); }
+    .chapter-body p a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--olive); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .chapter-body p a:hover { color: var(--olive-dim); text-decoration-color: var(--olive-dim); }
     .chapter-body em { font-style: italic; color: var(--text-muted); }
     .callout {
       background: var(--navy);
@@ -168,15 +170,6 @@
       margin: 0;
       color: var(--gray-700);
     }
-    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.2rem 0 1rem; max-width: 100%; }
-    table.cmp { width: 100%; border-collapse: collapse; font-size: .88rem; line-height: 1.5; }
-    table.cmp caption { caption-side: top; text-align: left; font-weight: 700; color: var(--navy); font-size: .95rem; margin-bottom: .6rem; }
-    table.cmp th, table.cmp td { text-align: left; padding: .6rem .75rem; border: 1px solid var(--gray-200); vertical-align: top; color: var(--gray-700); }
-    table.cmp thead th { background: var(--navy); color: #fff; font-weight: 700; }
-    table.cmp tbody tr:nth-child(even) td { background: var(--off-white); }
-    table.cmp td:first-child { font-weight: 700; color: var(--navy); }
-    .chapter-body .formula { background: var(--off-white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: .9rem 1.2rem; margin: .4rem 0 1.4rem; max-width: 72ch; }
-    .chapter-body .formula p { margin: .2rem 0; font-size: .92rem; color: var(--navy); }
     @media (max-width: 760px) {
       .chapter-body .alignment-grid,
       .chapter-body .metric-strip { grid-template-columns: 1fr; }
@@ -295,7 +288,7 @@
       },
       "inLanguage": "en",
       "datePublished": "2026-04-16",
-      "dateModified": "2026-11-05",
+      "dateModified": "2026-11-06",
       "mainEntityOfPage": "https://cxology.co/chapter-21.html",
       "url": "https://cxology.co/chapter-21.html",
       "image": "https://cxology.co/og-image.png"
@@ -491,7 +484,7 @@
       </div>
       <div class="metric-card">
         <h4>Forecast Accuracy</h4>
-        <p>Shows how closely the frozen forecast matched revenue actually finalized, and whether the evidence behind each opportunity's stage was strong enough, and current enough, to support it.</p>
+        <p>Shows how closely the quarter's starting forecast matched the decisions that actually became final, and whether misses came from timing, outcomes, amounts, or evidence that did not hold.</p>
       </div>
       <div class="metric-card">
         <h4>Cycle Time</h4>
@@ -511,87 +504,16 @@
     </div>
 
     <div class="section-kicker">Forecast Discipline</div>
-    <h2>Measuring and Calibrating the Forecast</h2>
 
-    <p>Of the three metrics, forecast accuracy is the one leaders argue about most and measure most loosely. The quarter ends, the number misses, and the review turns into a debate about whose optimism was to blame. That debate goes nowhere because nobody wrote down, in advance, what the forecast was assuming. Part II gave every revenue opportunity a stage, a value, a probability, and an expected close date. Each of those does a different job, and keeping them apart is what makes the forecast something you can inspect.</p>
+    <h2>A Forecast the Whole Company Can Inspect</h2>
 
-    <div class="system-callout"><span class="label">The Forecasting Principle</span><p>The pipeline stage describes the evidence supporting an opportunity. The opportunity value describes the customer-grounded commercial amount. The probability estimates how much of that indicated value is expected to be realized. The close date determines when it is expected. Calibration tests those assumptions against actual outcomes.</p></div>
+    <p>When a revenue forecast misses, the discussion often turns to why the number was wrong. Was the team too optimistic? Did a renewal slip into the next quarter? Was the amount ever realistic? Those are different problems, and they are hard to separate when each function works from its own information.</p>
 
-    <h3>What a stage weight means</h3>
+    <p>The post-sale pipeline gives everyone the same information. Customer evidence sets each opportunity’s stage. The stage carries a provisional probability that the renewal or expansion will eventually be completed, a starting assumption rather than a measured rate. The indicated value reflects what the customer has actually indicated, including any reduction. The expected close date places it in a quarter. Probability times indicated value is the opportunity’s weighted value. The <a href="post-sale-pipeline.html#forecasting">Post-Sale Pipeline page</a> shows the math.</p>
 
-    <p>The published weights, Identify 20%, Align 40%, Advocate 60%, Intent 90%, and Net Revenue Close 100%, are provisional defaults. They give every team the same starting point. They have not been validated against anyone’s outcomes, including yours.</p>
+    <p>Save that forecast at the start of the quarter and judge the quarter against it. When the number misses, the saved version shows what kind of miss it was. A renewal that moved to the next quarter is a timing problem. A renewal that was never completed is an outcome problem. A renewal completed at a fraction of its prior value is an amount problem, and it can hurt revenue retention almost as much as a loss. Across customers, those outcomes become the retention and expansion results leadership answers for.</p>
 
-    <p>A stage weight estimates the expected share of an opportunity’s indicated value that will ultimately be realized. It is not the chance that some renewal happens. A $100,000 renewal at Advocate contributes $60,000 to the forecast because the model expects 60% of the indicated value to be realized across renewals with that level of evidence, not because there is a 60% chance of renewing at any price. The same reading applies to expansion opportunities.</p>
-
-    <p>That makes weighted value a provisional expected-value forecast. It is not proven revenue. The difference between total value and weighted value is the remaining unweighted exposure: the part of the indicated value the provisional weights do not count toward the forecast. It is not revenue the company expects to churn.</p>
-
-    <p>Two diagnostics sit beside the weight when the time comes to test it. <strong>Count conversion</strong> is the share of opportunities that closed at any amount above zero. The <strong>amount ratio</strong> is how much of the indicated value the successful ones actually realized. Together they show whether a miss came from losses or from reductions.</p>
-
-    <h3>Freeze the forecast before you judge it</h3>
-
-    <p>You cannot measure a forecast you keep rewriting. At the start of every quarter, save a frozen copy of every open opportunity: its type, stage, indicated value, expected close date and the source of that date, the date its evidence was last verified, and the weight version in use. That quarter-start snapshot is required. A mid-quarter snapshot is recommended as a second inspection point. Past snapshots are never edited, and they keep the weights that were in force when they were taken.</p>
-
-    <p>The quarter-start review is also when evidence freshness gets checked. Every opportunity records an evidence-verified date: when the evidence supporting its current stage was last confirmed with the customer. Advocate and Intent evidence older than the company’s freshness window, for example 90 days, must be re-verified. Age alone does not move the stage. If the evidence still holds, the date resets. If it no longer satisfies the stage’s criteria, the opportunity moves back to the highest stage the remaining evidence supports.</p>
-
-    <h3>Two measures that should never be combined</h3>
-
-    <p><strong>Period forecast accuracy</strong> compares the forecast frozen at the start of a quarter with revenue actually finalized in that quarter. <strong>Cohort realization</strong> follows the opportunities in a frozen snapshot to their final outcomes, whenever those outcomes happen, and tests whether the stage weights match reality. The same deal can make one look bad and the other look good.</p>
-
-    <div class="table-wrap"><table class="cmp">
-    <caption>An expansion that slips a quarter and closes in full (illustrative)</caption>
-    <thead><tr><th scope="col">Point</th><th scope="col">Stage</th><th scope="col">Indicated value</th><th scope="col">Weight</th><th scope="col">Expected close (source)</th><th scope="col">Weighted forecast</th></tr></thead>
-    <tbody>
-    <tr><td>Q1 snapshot</td><td>Intent</td><td>$100,000</td><td>90%</td><td>Mar 15 (customer-confirmed)</td><td>$90,000 in Q1</td></tr>
-    <tr><td>Mar 8</td><td>Intent</td><td>$100,000</td><td>90%</td><td>Apr 20 (customer-confirmed)</td><td>$90,000, moved to Q2</td></tr>
-    <tr><td>Apr 20</td><td>Net Revenue Close</td><td>$100,000 final</td><td>n/a</td><td>Closed</td><td>Replaced by $100,000 actual</td></tr>
-    </tbody>
-    </table></div>
-
-    <p>The customer’s procurement team needed more time and confirmed the new date, so the opportunity stayed in Intent. For Q1, the forecast was $90,000 and nothing closed: a $90,000 timing miss. In Q2 the deal closed at $100,000 against a $90,000 forecast. For cohort realization, the Q1 snapshot’s Intent opportunity realized 100% of its indicated value against a 90% weight. The weight was right about how much. The Q1 forecast was wrong about when. Combining the two measures would either hide the timing problem or blame the weight for it.</p>
-
-    <h3>Reconcile the forecast to what actually closed</h3>
-
-    <p>Once the quarter is over, the gap between the frozen forecast and what actually closed can always be explained by four things. Some opportunities finalized in the quarter for more or less than their weighted forecast: that is <strong>realization</strong>. Some were expected in the quarter and did not finalize, so their weighted forecast becomes a <strong>timing</strong> miss. Some that were expected in a later quarter closed early: those are <strong>pull-ins</strong>. And some did not exist at the snapshot but were created and closed within the quarter: those are <strong>new</strong>.</p>
-
-    <div class="formula"><p><strong>Actual − Forecast = Realization + Timing + Pull-ins + New</strong></p></div>
-
-    <p><em>Illustrative example.</em> A quarter’s frozen renewal forecast is $1,200,000. Renewals expected in the quarter carried $1,110,000 of weighted forecast and finalized at $1,350,000, so realization is +$240,000. Two renewals weighted at $90,000 were still unresolved at quarter end, so timing is −$90,000. One renewal from the next quarter closed early at $30,000, a +$30,000 pull-in. Actual revenue finalized was $1,380,000, and the $180,000 variance is fully explained: $240,000 − $90,000 + $30,000.</p>
-
-    <p>Between snapshots, the same discipline explains why the forecast moved: stage changes, value changes, close dates moving into or out of the period, new opportunities, and closes. A change in weight version is shown separately, so a new weight never looks like new evidence.</p>
-
-    <h3>Putting a percentage on accuracy</h3>
-
-    <p>Report dollar variance first. For a percentage, avoid per-period percentage error, which divides by actual revenue and fails when actual revenue is zero, a real possibility for expansion in a small quarter. Use weighted absolute percentage error (WAPE) across a rolling set of quarters, with bias beside it, separately for renewals and expansions.</p>
-
-    <div class="formula"><p><strong>WAPE = Σ |forecast − actual| ÷ Σ actual</strong></p><p><strong>Bias = Σ (forecast − actual) ÷ Σ actual</strong></p></div>
-
-    <p><em>Illustrative example.</em> Over four quarters, renewal forecasts of $1,200,000, $1,050,000, $900,000, and $1,300,000 met actuals of $1,380,000, $1,100,000, $820,000, and $1,420,000. The absolute errors total $430,000 against $4,720,000 of actual revenue, a WAPE of 9.1%. Forecast minus actual totals −$270,000, a bias of −5.7%: the forecast ran low in three of the four quarters.</p>
-
-    <p>WAPE has limits. It is undefined if nothing finalized across the whole window, in which case report dollars only. Large quarters dominate it, and small or uneven quarters can swing it. Because it measures the portfolio number, offsetting errors on individual opportunities cancel out, which is why cohort realization sits beside it. For renewals, also report variance as a share of renewal ARR due. That figure is defined whenever any renewal is due, and it is easy for a CFO to read.</p>
-
-    <h3>Count a reduction once</h3>
-
-    <p>When a customer documents a reduction, the indicated value changes and the stage does not. A $200,000 renewal reduced to an indicated $150,000 at Advocate forecasts $150,000 × 60% = $90,000. The $50,000 is known contraction, already in the value. The stage weight now covers only the uncertainty that remains.</p>
-
-    <p>That is why calibration measures realization against the indicated value in the frozen snapshot, never against the original contract ARR. A weight fitted to original ARR would absorb the contraction teams usually knew about, and applying it to a value that already reflects the reduction would count the same contraction twice. At the snapshot, renewal ARR due reconciles cleanly: known contraction ($50,000), plus weighted forecast ($90,000), plus remaining unweighted exposure ($60,000), equals $200,000. None of those lines is a churn prediction.</p>
-
-    <h3>Calibrate the weights from your own outcomes</h3>
-
-    <p>Calibration does not require forecasting software. A RevOps team can run it in a spreadsheet, and the logic is simple enough to explain to a board.</p>
-
-    <p>Start with cohorts. For each quarter, take the opportunities in the quarter-start snapshot that were expected to close in that quarter, and follow them to their final outcomes, including losses at $0 and closed-lost expansions. Then, for each opportunity type and snapshot stage, divide the total final amount by the total indicated value at the snapshot. That is the stage’s dollar realization. Always use the stage the opportunity was in at the snapshot, never a stage it reached later. Otherwise hindsight leaks into the weights.</p>
-
-    <p>Small samples should barely move the current weight. A credibility blend respects that: (n × observed + k × current weight) ÷ (n + k), where n is the number of resolved opportunities and k is a credibility constant the company chooses. A k of 20 is an illustrative starting point, not a benchmark. <em>Illustrative example.</em> Suppose 40 resolved renewals sat at Advocate across four quarterly cohorts and realized 75% of their snapshot value against a 60% default. With k = 20, the blended weight is (40 × 75% + 20 × 60%) ÷ 60 = 70%. With only 5 resolved renewals, the same observed 75% would produce (5 × 75% + 20 × 60%) ÷ 25 = 63%.</p>
-
-    <p>Two checks come before anything changes. Weights should not fall from one stage to the next. If two adjacent stages come out of order, pool them into one shared weight and look at how teams are staging those opportunities, because inconsistent staging is the usual cause. And candidate weights have to earn their place: fit them on earlier quarters, test them on later quarters they never saw, and adopt them only if they lower WAPE without creating bias in the other direction. RevOps owns the analysis. The CRO and CFO approve any change to company-wide weights, and each set carries a version number and an effective date.</p>
-
-    <p>Renewals and expansions use the same stages and exit criteria, but they may earn different weights when outcomes show that separate weights forecast better. Calibration starts with that split. Tag auto-renewing contracts from the start so their realization can be analyzed separately; a binding renewal that has not yet taken effect keeps its stage and weight until it does. First-term versus repeat renewals and segment differences come later, and only if testing proves they help. The weights are always company-wide. They are never set for an individual customer, CSM, or manager.</p>
-
-    <p>Review calibration twice a year, or sooner when enough new outcomes justify it. Keeping the defaults is a legitimate result: when there are not yet two quarters of resolved cohorts, when a candidate does not beat the current weights on later quarters, or when one or two large deals drive the change. Record that decision too.</p>
-
-    <p>None of these numbers belongs to Finance alone. The snapshot shows every team which opportunities are carrying the forecast, and the reconciliation shows what moved and why. That is what makes them worth bringing into the operating review.</p>
-
-    <div class="system-callout"><span class="label">Evidence Versus Accuracy</span><p>Stage definitions establish consistent evidence standards. Forecast probabilities begin as provisional assumptions and are calibrated against observed outcomes. A strong evidence trail tells you where an opportunity stands. Only outcomes tell you how good the forecast was.</p></div>
+    <p>That is why the review belongs to the whole company. Sales, Customer Success, RevOps, Product, and Finance see the same opportunities, evidence, and forecast. Sales sees whether what was promised became evidence. Customer Success sees which opportunities rest on thin or stale evidence. RevOps sees whether the probabilities and amounts are holding up. Product sees where gaps slowed customers down. Finance sees how much of the number rests on early-stage renewals. Then they decide what work happens next. A review that only explains the number has not done its job.</p>
 
     <div class="section-kicker">Operating Reviews</div>
     <h2>The Review Changes When the System Is Shared</h2>
