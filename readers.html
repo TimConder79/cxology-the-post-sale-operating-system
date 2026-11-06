@@ -171,6 +171,8 @@
     .rh-card-title { font-size: 1.12rem; color: var(--navy); font-weight: 700; line-height: 1.3; margin-bottom: .6rem; }
     .rh-card-desc { font-size: .88rem; color: var(--text-muted); line-height: 1.6; margin: 0 0 1.1rem; }
     .rh-card-link { font-size: .78rem; font-weight: 700; color: var(--rh-accent); text-decoration: none; margin-top: auto; }
+    .rh-card-links { margin-top: auto; display: flex; flex-direction: column; gap: .35rem; }
+    .rh-card-links .rh-card-link { margin-top: 0; }
 
     .rh-band { margin-top: 2rem; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1.6rem 1.9rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; box-shadow: var(--shadow); }
     .rh-band .rh-bt { flex: 1 1 260px; }
@@ -505,6 +507,7 @@
     function card(u){
       var accent = COLOR[u.kind] || 'var(--olive)';
       var link = u.link ? '<a class="rh-card-link" href="' + esc(u.link) + '">' + esc(u.linkLabel || 'Read more') + ' →</a>' : '';
+      if (u.link && u.link2) link = '<div class="rh-card-links">' + link + '<a class="rh-card-link" href="' + esc(u.link2) + '">' + esc(u.link2Label || 'Read more') + ' →</a></div>';
       return '<article class="rh-card" style="--rh-accent: ' + accent + '">'
         + '<div class="rh-card-top"><span class="rh-kind">' + esc(u.kind) + '</span><span class="rh-date">' + fmtDate(u.date) + '</span></div>'
         + (u.chapter ? '<span class="rh-chap">' + esc(u.chapter) + '</span>' : '')

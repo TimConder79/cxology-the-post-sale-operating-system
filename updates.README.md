@@ -34,6 +34,8 @@ does not matter.
 | `blurb`     | no       | Short description shown on the card. |
 | `link`      | no       | URL or anchor the card links to. Omit to show no link. |
 | `linkLabel` | no       | Link text (default: `Read more`). |
+| `link2`     | no       | Optional second link, shown below the first (only when `link` is set). |
+| `link2Label`| no       | Second link text (default: `Read more`). |
 
 A new `kind` value still renders, just with the default (olive) color. To give it its
 own color, add it to the `COLOR` map in the render script inside `readers.html`.

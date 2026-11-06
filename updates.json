@@ -1,6 +1,17 @@
 {
   "updates": [
     {
+      "kind": "Update",
+      "chapter": "Part II · The Post-Sale Pipeline",
+      "date": "2026-11-06",
+      "title": "Connecting Pipeline Forecasts to Revenue Retention",
+      "blurb": "The Post-Sale Pipeline now shows how a forecast connects to the revenue you actually keep. Each opportunity carries three separate answers: whether the renewal or expansion will be completed (the stage probability), how much it is worth (the indicated value the customer's own evidence supports), and when the decision is expected. A completed renewal is not the same as retained revenue. A $200,000 customer who renews for $20,000 is still a customer, but gross and net revenue retention fall to 10%. A new section on the Net Revenue Retention page shows how renewal and expansion decisions connect to GRR and NRR, line by line.",
+      "link": "post-sale-pipeline.html#forecasting",
+      "linkLabel": "See how the forecast works",
+      "link2": "net-revenue-retention.html#renewal-to-retention",
+      "link2Label": "See the connection to GRR and NRR"
+    },
+    {
       "kind": "Refinement",
       "chapter": "Across the book",
       "date": "2026-10-20",
