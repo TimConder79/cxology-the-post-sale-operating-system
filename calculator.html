@@ -570,7 +570,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
       </div>
       <div class="tag">03 · CAC</div>
     </div>
-    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:14px">The same <span id="c-hole" style="color:var(--bb)">$200K</span> of ARR lost to churn each year, refilled two ways</div>
+    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:14px">The same <span id="c-hole" style="color:var(--bb)">$200K</span> net shortfall each year, refilled two ways</div>
     <div class="bc">
       <div class="br">
         <div class="bl">Replace with new logos</div>
@@ -618,7 +618,7 @@ input[type=range]::-moz-range-thumb{width:13px;height:13px;border-radius:50%;bac
         </div>
         <div class="burden-breakdown">
           <div class="burden-line"><span class="burden-line-label">Growth target</span><span class="burden-line-val" id="v-growthtgt-c">—</span></div>
-          <div class="burden-line"><span class="burden-line-label">+ Replacing churn</span><span class="burden-line-val bad" id="v-churn-c">—</span></div>
+          <div class="burden-line"><span class="burden-line-label">+ Replacing net shrinkage</span><span class="burden-line-val bad" id="v-churn-c">—</span></div>
           <div class="burden-line" style="border-top:1px solid rgba(37,55,70,.15);padding-top:5px;margin-top:2px"><span class="burden-line-label" style="font-weight:600">= Total new logo requirement</span><span class="burden-line-val" style="font-size:13px" id="v-total-c">—</span></div>
         </div>
       </div>
@@ -740,7 +740,7 @@ function compute(){
   const cGR=(cY1-arr)/arr,tGR=(tY1-arr)/arr;
   function proj(y1,ac){const r=[arr,y1];for(let y=2;y<=years;y++)r.push(Math.max(0,r[r.length-1]*(1+cagr)-r[r.length-1]*ac));return r}
   const cP=proj(cY1,1-cnrr),tP=proj(tY1,1-tnrr);
-  // Annual ARR lost to churn, and the new-logo S&M needed to backfill it (cost per $1 new ARR)
+  // Annual net shortfall below 100% NRR, and the new-logo S&M needed to backfill it (cost per $1 new ARR)
   const churnHoleC=arr*Math.max(0,1-cnrr),churnHoleT=arr*Math.max(0,1-tnrr);
   const replaceCostC=churnHoleC*newCac,replaceCostT=churnHoleT*newCac;
   const cF=cP[cP.length-1],tF=tP[tP.length-1];
