@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.googletagmanager.com https://*.analytics.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-src 'none'"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recurring vs. Predictable Revenue: The SaaS Durability Problem</title>
+  <meta name="description" content="Recurring SaaS revenue isn&#39;t always predictable. Explore why customer value, revenue durability, and post-sale execution matter for retention and growth."/>
+  <link rel="canonical" href="https://cxology.co/blog/recurring-revenue-vs-predictable-revenue/"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="CXology"/>
+  <meta property="og:title" content="Recurring vs. Predictable Revenue: The SaaS Durability Problem"/>
+  <meta property="og:description" content="Recurring SaaS revenue isn&#39;t always predictable. Explore why customer value, revenue durability, and post-sale execution matter for retention and growth."/>
+  <meta property="og:url" content="https://cxology.co/blog/recurring-revenue-vs-predictable-revenue/"/>
+  <meta property="og:image" content="https://cxology.co/assets/featured-recurring-vs-predictable-revenue.png"/>
+  <meta property="article:published_time" content="2026-11-12"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Recurring vs. Predictable Revenue: The SaaS Durability Problem"/>
+  <meta name="twitter:description" content="Recurring SaaS revenue isn&#39;t always predictable. Explore why customer value, revenue durability, and post-sale execution matter for retention and growth."/>
+  <meta name="twitter:image" content="https://cxology.co/assets/featured-recurring-vs-predictable-revenue.png"/>
+  <link rel="preload" href="/fonts/PublicSans-latin.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="stylesheet" href="/fonts.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E42'/><text y='24' x='5' font-size='20' fill='%23C5D44E'>C</text></svg>"/>
+  <style>
+:root{--lime:#B5BD00;--lime-deep:#9BA200;--navy:#253746;--ink:#101820;--paper:#fff;--band:#F7F8F1;--line:#E4E6CF;--text:#25313b;--muted:#5f6b57}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--text);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem}
+.nav-logo img{height:30px;width:auto;display:block}
+.nav-links{display:flex;gap:1.9rem;list-style:none}
+.nav-links a{color:var(--muted);font-size:.9rem;font-weight:700;text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--navy)}
+.nav-cta{padding:10px 20px;background:var(--lime);color:var(--ink);border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(155,162,0,.3)}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:6px;background:none;border:none;cursor:pointer}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px}
+@media(max-width:820px){.nav-links{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);padding:1rem 2rem 1.4rem;gap:1.1rem}.nav-burger{display:flex}}
+h1,h2,h3,h4{color:var(--ink);line-height:1.18;letter-spacing:-.02em;font-weight:900;text-wrap:balance}
+/* article */
+.article{max-width:720px;margin:0 auto;padding:56px 24px 20px}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime-deep)}
+.a-date{color:var(--muted);font-size:.85rem;font-weight:600;margin-left:10px}
+.a-head h1{font-size:clamp(1.9rem,4.4vw,2.9rem);margin:.35em 0 .1em}
+.a-feat{max-width:960px;margin:26px auto 0;padding:0 24px}
+.a-feat img{width:100%;border-radius:14px;box-shadow:0 18px 44px rgba(16,24,32,.14)}
+.a-body{max-width:720px;margin:0 auto;padding:30px 24px 20px;font-size:1.09rem;color:var(--text)}
+.a-body p{margin:0 0 1.15em}
+.a-body h2{font-size:1.5rem;margin:1.6em 0 .5em}
+.a-body h3{font-size:1.2rem;margin:1.4em 0 .4em}
+.a-body ul,.a-body ol{margin:0 0 1.2em 1.3em}
+.a-body li{margin:.4em 0}
+.a-body a{color:var(--lime-deep);text-decoration:underline;text-underline-offset:2px}
+.a-body img{border-radius:12px;margin:1.4em 0}
+.a-body blockquote{border-left:3px solid var(--lime);padding-left:18px;margin:1.4em 0;color:var(--ink);font-weight:500}
+.a-body strong{color:var(--ink)}
+.a-body .def{font-size:1.3rem;line-height:1.5;font-weight:700;color:var(--ink);border-left:4px solid var(--lime);padding:2px 0 2px 20px;margin:.2em 0 1.2em}
+.a-head .a-sub{font-size:clamp(1.05rem,2.2vw,1.25rem);color:var(--muted);font-weight:600;line-height:1.45;margin:.5em 0 0}
+.a-body .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.4em 0}
+.a-body table.cmp{width:100%;border-collapse:collapse;font-size:1rem}
+.a-body table.cmp th,.a-body table.cmp td{text-align:left;padding:11px 14px;border:1px solid var(--line);vertical-align:top}
+.a-body table.cmp thead th{background:var(--navy);color:#fff;font-weight:800}
+.a-body table.cmp tbody th{font-weight:700;color:var(--ink)}
+.a-body table.cmp tbody tr:nth-child(even){background:var(--band)}
+.a-body table.cmp td{white-space:nowrap}
+.a-body .a-end{border-top:1px solid var(--line);padding-top:1.2em;margin-top:2em;color:var(--muted)}
+/* end cta */
+.endcta{background:var(--navy);color:#EAF0F4;text-align:center;padding:64px 24px;margin-top:40px}
+.endcta h3{color:#fff;font-size:1.7rem}
+.endcta p{color:#b7c6d1;max-width:44ch;margin:12px auto 22px}
+.btn{display:inline-block;background:var(--lime);color:var(--ink);font-weight:700;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;padding:14px 28px;border-radius:999px;text-decoration:none}
+.backlink{display:inline-block;margin-top:18px;color:#aeb9c2;font-weight:700;font-size:.82rem;text-decoration:none}
+.footer{border-top:1px solid var(--line);padding:26px 2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--muted)}
+.footer a{color:var(--muted);font-weight:700;text-decoration:none}
+/* index */
+.blog-hero{max-width:1080px;margin:0 auto;padding:60px 24px 10px}
+.blog-hero h1{font-size:clamp(2.1rem,5vw,3.2rem)}
+.blog-hero p{color:var(--muted);font-size:1.1rem;margin-top:12px;max-width:60ch}
+.grid{max-width:1080px;margin:30px auto 60px;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+@media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--paper);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(16,24,32,.12)}
+.card-img{aspect-ratio:16/10;object-fit:cover;width:100%;background:var(--band)}
+.card-body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+.card-date{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--lime-deep)}
+.card h2{font-size:1.14rem;margin:8px 0 8px;color:var(--ink)}
+.card p{font-size:.92rem;color:var(--muted);flex:1}
+.card .more{margin-top:12px;font-size:.8rem;font-weight:700;color:var(--navy)}
+</style>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3N4SQ2E2V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W3N4SQ2E2V');</script>
+  <script src="/copy-credit.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Recurring Revenue Isn’t Necessarily Predictable Revenue",
+  "description": "Recurring SaaS revenue isn't always predictable. Explore why customer value, revenue durability, and post-sale execution matter for retention and growth.",
+  "url": "https://cxology.co/blog/recurring-revenue-vs-predictable-revenue/",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cxology.co/blog/recurring-revenue-vs-predictable-revenue/"
+  },
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12",
+  "author": {
+    "@type": "Person",
+    "name": "Tim Conder",
+    "@id": "https://cxology.co/#tim",
+    "url": "https://cxology.co/about.html",
+    "sameAs": [
+      "https://www.linkedin.com/in/tim-conder/"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CXology",
+    "@id": "https://cxology.co/#org",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cxology.co/assets/logo-h-bb.png"
+    }
+  },
+  "isPartOf": {
+    "@type": "Blog",
+    "@id": "https://cxology.co/blog/",
+    "name": "CXology Blog"
+  },
+  "image": "https://cxology.co/assets/featured-recurring-vs-predictable-revenue.png"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://cxology.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://cxology.co/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Recurring Revenue Isn’t Necessarily Predictable Revenue",
+      "item": "https://cxology.co/blog/recurring-revenue-vs-predictable-revenue/"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<header class="nav">
+  <a class="nav-logo" href="/"><img src="/assets/logo-h-bb.png" alt="CXology" width="1329" height="269"/></a>
+  <nav>
+  <ul class="nav-links">
+    <li><a href="/book.html">The Book</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/calculator.html">ROI Calculator</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul></nav>
+  <button class="nav-burger" onclick="var l=this.closest('header').querySelector('.nav-links');l.style.display=l.style.display==='flex'?'none':'flex'"><span></span><span></span><span></span></button>
+</header>
+
+<article>
+  <div class="article a-head">
+    <span class="eyebrow">Blog</span><span class="a-date">November 12, 2026</span>
+    <h1>Recurring Revenue Isn&rsquo;t Necessarily Predictable Revenue</h1>
+  </div>
+  <div class="a-feat"><img src="/assets/featured-recurring-vs-predictable-revenue-1200.webp" width="1200" height="630" alt="A schedule isn’t a forecast: recurring revenue vs. predictable revenue" fetchpriority="high" decoding="async"/></div>
+  <div class="a-body">
+    <p>For years, the SaaS investment thesis has been pretty compelling. Acquire customers, retain them, expand those relationships, and build a business where revenue compounds over time.</p>
+    <p>Recurring revenue became one of the defining characteristics of a valuable software company. Long-term contracts, strong retention, and predictable renewals gave investors confidence in the future.</p>
+    <p>But there&rsquo;s an important distinction we&rsquo;ve been overlooking.</p>
+    <p><strong>Recurring revenue isn&rsquo;t necessarily predictable revenue.</strong></p>
+    <p>And with AI changing how businesses think about software, that distinction is becoming harder to ignore.</p>
+    <p class="def">Recurring revenue is not necessarily predictable because a contract establishes when revenue is expected, not whether a customer will continue to find sufficient value to renew or expand. Predictability requires evidence of customer outcomes, continued relevance, and commercial progression.</p>
+
+    <h2>AI Is Changing How Investors Think About SaaS Revenue</h2>
+    <p>I recently read an interesting article from Nik Shekher at Jefferies, <a href="https://www.jefferies.com/insights/markets/from-ai-risk-to-ai-proof-the-new-underwriting-standard-for-software-private-equity/" rel="noopener">From AI Risk to AI Proof: The New Underwriting Standard for Software Private Equity</a>.</p>
+    <p>The article examines how software investors are rethinking their assumptions about the durability of SaaS businesses in the age of AI.</p>
+    <p>One line really stood out to me:</p>
+    <blockquote><p>&ldquo;Artificial intelligence disrupted that confidence.&rdquo;</p><p><cite style="font-style:normal;font-size:.9rem;color:var(--muted);font-weight:600">Nik Shekher, Jefferies</cite></p></blockquote>
+    <p>The confidence they&rsquo;re referring to is the confidence investors historically placed in recurring revenue, retention, and growth as indicators of long-term business value.</p>
+    <p>AI is introducing new questions.</p>
+    <p>Will customers continue using the same applications? Will AI agents replace some of the workflows those applications support? Will companies find it easier to build their own solutions? Will new competitors fundamentally change how work gets done?</p>
+    <p>These aren&rsquo;t hypothetical concerns from an investment perspective. They&rsquo;re questions that affect how investors evaluate the long-term value of software companies.</p>
+    <p>But I think there&rsquo;s another important question here.</p>
+    <p><strong>How well do SaaS companies understand the durability of their own existing-customer revenue?</strong></p>
+    <p>Because this isn&rsquo;t just an AI problem.</p>
+    <p>It&rsquo;s something we&rsquo;ve been wrestling with in customer success and post-sale operations for years.</p>
+
+    <h2>A Contract Tells Us When Revenue Is Due, Not Whether It&rsquo;s Durable</h2>
+    <p>Consider what we typically know about an existing customer.</p>
+    <p>We know what they&rsquo;ve purchased. We know their contract value, renewal date, and perhaps their expansion potential.</p>
+    <p>We probably have product usage data, support history, customer health scores, and some understanding of their relationship with our team.</p>
+    <p>All useful information.</p>
+    <p>But how much does it tell us about whether that customer will continue to invest in our business?</p>
+    <p>Are they achieving the outcomes they originally expected?</p>
+    <p>Has our solution become more important to their operations or less?</p>
+    <p>Are the people responsible for the investment still convinced of its value?</p>
+    <p>Have their priorities changed?</p>
+    <p>Could they accomplish the same work differently, perhaps with AI or another technology?</p>
+    <p>And perhaps most importantly, what are we doing to influence those answers?</p>
+    <p>A customer can be under contract, actively using a product, and still have decided they won&rsquo;t renew.</p>
+    <p>I&rsquo;ve experienced this from the buyer&rsquo;s side.</p>
+    <p>During my time as an enterprise SaaS customer, we sometimes made the decision to replace a solution long before the contract expired. Sometimes that decision began taking shape during onboarding, when the experience failed to live up to what we expected.</p>
+    <p>Budgeting and contractual obligations meant the revenue continued flowing to the vendor.</p>
+    <p>From their perspective, we were still a paying customer.</p>
+    <p>From ours, the relationship was already coming to an end.</p>
+    <p>That&rsquo;s a pretty significant gap between recurring revenue and predictable revenue.</p>
+
+    <h2>Why Retention Metrics Aren&rsquo;t Enough</h2>
+    <p>Gross Revenue Retention (GRR) and Net Revenue Retention (NRR) are essential measures of SaaS performance.</p>
+    <p>GRR tells us how much existing revenue we&rsquo;ve retained before expansion. NRR tells us how that revenue base has changed after accounting for expansion, contraction, and churn.</p>
+    <p>They&rsquo;re important measures of business performance.</p>
+    <p>But they&rsquo;re largely retrospective.</p>
+    <p>They tell us what happened to revenue, not necessarily why it happened or what will happen next.</p>
+    <p>Customer health scores and predictive analytics can help fill some of that gap. Product usage trends, customer engagement, and support activity can provide valuable early signals.</p>
+    <p>I wouldn&rsquo;t dismiss any of these tools.</p>
+    <p>The problem is expecting the signals themselves to produce a more predictable business.</p>
+    <p>A declining health score doesn&rsquo;t improve retention. A churn-risk flag doesn&rsquo;t change the customer&rsquo;s situation. A more sophisticated forecast doesn&rsquo;t make revenue more durable.</p>
+    <p>Something has to happen as a result.</p>
+    <p>We need to understand what is preventing the customer from progressing, determine what work will help, and execute that work.</p>
+    <p>Then we need <a href="/blog/evidence-of-customer-progression/">evidence that something actually changed</a>.</p>
+    <p>That&rsquo;s where I believe the opportunity sits.</p>
+
+    <h2>Revenue Predictability Starts With Customer Progression</h2>
+    <p>In <a href="/book.html">The Post-Sale Operating System</a>, I make the case that retention is a designed outcome.</p>
+    <p>It isn&rsquo;t simply the result of having a good product, providing responsive support, or maintaining positive customer relationships.</p>
+    <p>Those things matter, of course.</p>
+    <p>But customers need to make progress.</p>
+    <p>They need to achieve the outcomes that justified their original investment. They need to develop confidence in the solution, build new habits around it, and recognize its continuing value.</p>
+    <p>And as their business changes, we need to help them adapt.</p>
+    <p>That progression doesn&rsquo;t happen automatically.</p>
+    <p>It requires a coordinated strategy that connects customer outcomes, the work we perform, and the commercial evidence that supports future revenue.</p>
+    <p>I think about that through three connected components.</p>
+    <h3>Customer State and Progression</h3>
+    <p>First, we need to understand where the customer actually stands.</p>
+    <p>What were they trying to accomplish when they purchased? What milestones should they have achieved? What outcomes are they experiencing today?</p>
+    <p>Where are they stuck, and what has changed?</p>
+    <p>This goes beyond measuring whether someone logged into the product or attended a quarterly review.</p>
+    <p>We&rsquo;re trying to understand whether the customer is making meaningful progress toward the outcomes that justify continued investment.</p>
+    <h3>Plays and Execution</h3>
+    <p>Next, we need a defined approach for helping customers move forward.</p>
+    <p>That might involve addressing an onboarding problem, reestablishing executive alignment, helping a customer achieve an important outcome, or adapting to a change in their business.</p>
+    <p>The work should be deliberate.</p>
+    <p>What needs to happen? Who owns it? How much effort will it require? What evidence will tell us whether it worked?</p>
+    <p>A forecast review that identifies risk but doesn&rsquo;t change the work being performed hasn&rsquo;t done much to improve the situation.</p>
+    <h3>The Post-Sale Pipeline</h3>
+    <p>Finally, we need to connect that customer progression to commercial opportunities.</p>
+    <p>In a new-logo sales pipeline, we expect to understand where an opportunity stands, what evidence supports its stage, and what must happen before it advances.</p>
+    <p>Why should existing-customer revenue be any different?</p>
+    <p>I use a <a href="/post-sale-pipeline.html">post-sale pipeline</a> with five stages:</p>
+    <p><strong>Identify &rarr; Align &rarr; Advocate &rarr; Intent &rarr; Net Revenue Close</strong></p>
+    <p>These stages help make the development of renewal and expansion opportunities visible.</p>
+    <p>The important distinction is that opportunities advance based on evidence of customer and commercial progression, not simply because the renewal date is approaching.</p>
+    <p>When we connect customer progression, execution, and the post-sale pipeline, we have a much stronger foundation for understanding how existing-customer revenue is developing.</p>
+    <p>And we have a way to do something about it.</p>
+
+    <h2>AI Makes This More Urgent, but It Doesn&rsquo;t Change the Fundamentals</h2>
+    <p>One of the interesting points in Shekher&rsquo;s article is that investors aren&rsquo;t necessarily concluding that incumbent software companies will disappear.</p>
+    <p>Established vendors may have significant advantages, including deep integrations, trusted brands, and ownership of important workflows.</p>
+    <p>But investors increasingly want evidence that those advantages will translate into durable performance.</p>
+    <p>I think that same standard should apply to how we manage customers.</p>
+    <p>It&rsquo;s not enough to assume a customer will renew because switching would be difficult.</p>
+    <p>It&rsquo;s not enough to assume they&rsquo;ll continue expanding because they&rsquo;ve expanded before.</p>
+    <p>And it&rsquo;s not enough to assume we&rsquo;re indispensable because our software is embedded in their operations.</p>
+    <p>We should be able to demonstrate why the relationship is valuable, how that value is developing, and what gives us confidence in the customer&rsquo;s continued investment.</p>
+    <p>AI may change how customers accomplish their work. It may create new competitors, new expectations, and entirely new buying decisions.</p>
+    <p>But the fundamental responsibility of the post-sale organization remains the same.</p>
+    <p>Help customers achieve meaningful outcomes, maintain alignment with the people making investment decisions, and create the conditions for continued retention and growth.</p>
+    <p>The difference is that we need to manage that work with greater discipline and make the evidence visible to the rest of the business.</p>
+
+    <h2>A More Reliable Forecast Is the Result of a Better Operating System</h2>
+    <p>There&rsquo;s a tendency to approach revenue predictability as a reporting problem.</p>
+    <p>We want better dashboards, more accurate health scores, more complete CRM data, and increasingly sophisticated AI forecasting models.</p>
+    <p>Those capabilities can improve our visibility.</p>
+    <p>But <a href="/blog/predictable-existing-customer-revenue-drivers/">visibility alone doesn&rsquo;t produce predictable revenue</a>.</p>
+    <p>A reliable commercial forecast should reflect what we know about the customer&rsquo;s situation, the evidence supporting their continued investment, and the work being performed to move them forward.</p>
+    <p>That requires an operating system connecting <a href="/predictable-existing-customer-revenue.html">customer progression to commercial progression</a>.</p>
+    <p>When those components work together, we can begin answering the questions that matter:</p>
+    <ul>
+      <li>Which customers are progressing toward outcomes that support renewal and growth?</li>
+      <li>Which customers are falling behind, and what are we doing about it?</li>
+      <li>What evidence supports our confidence in each renewal or expansion opportunity?</li>
+      <li>What needs to happen next, and who is responsible for making it happen?</li>
+      <li>How much effort are we investing, and is that investment producing the expected return?</li>
+    </ul>
+    <p>These are operating questions, not just forecasting questions.</p>
+    <p>And they&rsquo;re questions that revenue leaders should be able to inspect throughout the customer lifecycle, not just in the months leading up to renewal.</p>
+
+    <h2>The Real Test of Recurring Revenue</h2>
+    <p>I think the changes taking place in software investing are bringing an important issue into focus.</p>
+    <p>The value of a recurring revenue business has never been just the fact that customers pay repeatedly.</p>
+    <p>It&rsquo;s the confidence that those customers will continue to find enough value to keep paying, and ideally increase their investment over time.</p>
+    <p>Contracts, historical retention, and financial metrics give us part of that picture.</p>
+    <p>But the rest comes from understanding the customer&rsquo;s progression, the evidence behind their commercial decisions, and the work we&rsquo;re doing to influence those decisions.</p>
+    <p>If investors are demanding more proof that SaaS revenue is durable, shouldn&rsquo;t we be demanding that same proof as we manage the business?</p>
+    <p><strong>A recurring contract gives us a revenue schedule. It doesn&rsquo;t necessarily give us a reliable revenue forecast.</strong></p>
+    <p>And building that reliability is one of the most important jobs of the post-sale operating system.</p>
+    <p class="a-end"><em>Tim Conder is the author of <a href="/book.html">The Post-Sale Operating System</a>, a framework for connecting customer progression, post-sale execution, and revenue predictability in B2B SaaS businesses.</em></p>
+    <p style="color:var(--muted);font-size:.95rem">Further reading: Nik Shekher, Jefferies, <a href="https://www.jefferies.com/insights/markets/from-ai-risk-to-ai-proof-the-new-underwriting-standard-for-software-private-equity/" rel="noopener">From AI Risk to AI Proof: The New Underwriting Standard for Software Private Equity</a>, August 31, 2026.</p>
+  </div>
+</article>
+<section class="related" style="max-width:720px;margin:2.5rem auto 0;padding:0 1.25rem"><h3 style="font-size:1.05rem;margin:0 0 .4rem">Keep reading</h3><ul style="margin:0;padding-left:1.1rem;line-height:1.9"><li>Go deeper: <a href="/predictable-existing-customer-revenue.html">Predictable Existing-Customer Revenue</a> · <a href="/blog/defensible-renewal-forecast/">What Makes a Renewal Forecast Defensible?</a></li><li>Start here: <a href="/strategic-customer-success/">What Is Strategic Customer Success?</a> · <a href="/why-your-customer-retention-strategy-matters/">What Is a Customer Retention Strategy?</a></li></ul></section>
+<section class="endcta">
+  <h3>Post-sale is a system, not a hope.</h3>
+  <p>These ideas are the foundation of <em>The Post-Sale Operating System</em>.</p>
+  <a class="btn" href="/book.html">Read the book →</a><br>
+  <a class="backlink" href="/blog/">← All posts</a>
+</section>
+<footer class="footer">
+  <a class="nav-logo" href="/"><img src="/assets/logo-h-bb.png" alt="CXology" width="1329" height="269" style="height:24px"/></a>
+  <div><a href="/book.html">The Book</a> &nbsp; <a href="/blog/">Blog</a> &nbsp; <a href="/about.html">About</a></div>
+  <small>© 2022–2026 CXology LLC. All rights reserved.</small>
+</footer>
+</body></html>
