@@ -67,19 +67,76 @@ async function copyText(text) {
   t.remove(); return ok;
 }
 
-// KIT-001: one prompt. Links that would be too long for the AI site fall back to copy-then-open.
+// KIT-001: one prompt. Revision 2: a prompt can list up to three needs (materials the reader adds first).
+// The reader's answers replace {{MATERIALS}} in their own browser; nothing they paste is sent to the server.
 const LINK_LIMIT = 6000;
+const SITES = { claude: "https://claude.ai/new", chatgpt: "https://chatgpt.com/" };
+const ASK_FIRST = "Before drafting anything, ask me for every item marked \"not provided\" in one short list, then wait for my answers.";
+
+function needField(n, kitIndex, j) {
+  const id = `kit${kitIndex}-need${j}`;
+  if (n.kind === "choice") return `<fieldset class="need"><legend>${esc(n.label)}</legend>${(n.options || []).map((o) => `<label class="need-choice"><input type="radio" name="${id}" value="${esc(o)}"> ${esc(o)}</label>`).join("")}</fieldset>`;
+  if (n.kind === "paste") return `<label class="need" for="${id}">${esc(n.label)}<textarea id="${id}" rows="3" placeholder="Paste here"></textarea></label>`;
+  return `<label class="need" for="${id}">${esc(n.label)}<input id="${id}" type="text"></label>`;
+}
+
 function kitHtml(k, index, number) {
-  const q = encodeURIComponent(k.prompt);
-  const open = (site, base, label) => (base.length + q.length <= LINK_LIMIT)
-    ? `<a class="ghost" target="_blank" href="${base}${q}">${label}</a>`
-    : `<button class="ghost" data-open="${site}" data-kit="${index}">${label}</button>`;
-  return `<div class="kit${number ? "" : " kit-inline"}"><div class="kit-head">${number ? `<div class="kit-icon">${number}</div>` : ""}<div><div class="kit-name">${esc(k.name)}</div><div class="kit-desc">${esc(k.desc || "")}</div></div></div>
+  const needs = k.needs || [];
+  return `<div class="kit${number ? "" : " kit-inline"}" data-kit="${index}"><div class="kit-head">${number ? `<div class="kit-icon">${number}</div>` : ""}<div><div class="kit-name">${esc(k.name)}</div><div class="kit-desc">${esc(k.desc || "")}</div></div></div>
+    ${needs.length ? `<div class="kit-needs"><div class="needs-intro">Add these first so the draft comes back right the first time:</div>${needs.map((n, j) => needField(n, index, j)).join("")}</div>` : ""}
     <div class="kit-actions"><button class="primary" data-copy="${index}">Copy prompt</button>
-    ${open("claude", "https://claude.ai/new?q=", "Open in Claude")}
-    ${open("chatgpt", "https://chatgpt.com/?q=", "Open in ChatGPT")}</div>
+    <a class="ghost" target="_blank" rel="noopener" data-site="claude">Open in Claude</a>
+    <a class="ghost" target="_blank" rel="noopener" data-site="chatgpt">Open in ChatGPT</a></div>
     <div class="kit-note" aria-live="polite"></div>
-    <details class="prompt"><summary>Preview the prompt</summary><pre>${esc(k.prompt)}</pre></details></div>`;
+    <details class="prompt"><summary>Preview the prompt</summary><pre></pre></details></div>`;
+}
+
+// The prompt as it will be sent: the reader's answers in place of {{MATERIALS}}; empty ones marked for the AI to ask.
+function buildPrompt(k, el) {
+  const needs = k.needs || [];
+  if (!needs.length) return { prompt: k.prompt.replace(/^.*\{\{MATERIALS\}\}.*\n?/m, ""), missing: 0 };
+  let missing = 0;
+  const lines = needs.map((n, j) => {
+    const id = `kit${el.dataset.kit}-need${j}`;
+    const v = n.kind === "choice" ? (el.querySelector(`input[name="${id}"]:checked`)?.value || "") : (el.querySelector(`[id="${id}"]`)?.value || "").trim();
+    if (!v) missing++;
+    return `- ${n.label}: ${v ? (n.kind === "paste" ? "\n" + v : v) : "not provided"}`;
+  });
+  let prompt = k.prompt.replace("{{MATERIALS}}", "\n" + lines.join("\n"));
+  if (missing) prompt += "\n\n" + ASK_FIRST;
+  return { prompt, missing };
+}
+
+function wireKit(el, k) {
+  const refresh = () => {
+    const { prompt, missing } = buildPrompt(k, el);
+    const q = encodeURIComponent(prompt);
+    el.querySelectorAll("a[data-site]").forEach((a) => {
+      const site = a.dataset.site, base = SITES[site] + (site === "claude" ? "?q=" : "?q=");
+      const long = base.length + q.length > LINK_LIMIT;
+      a.href = long ? SITES[site] : base + q;
+      a.dataset.fallback = long ? "1" : "";
+      a.textContent = `${missing ? "Open anyway in" : "Open in"} ${site === "claude" ? "Claude" : "ChatGPT"}`;
+    });
+    el.querySelector("details.prompt pre").textContent = prompt;
+    return prompt;
+  };
+  el.querySelectorAll(".kit-needs input, .kit-needs textarea").forEach((f) => f.addEventListener("input", refresh));
+  el.querySelectorAll('.kit-needs input[type="radio"]').forEach((f) => f.addEventListener("change", refresh));
+  el.querySelector("[data-copy]").onclick = async (e) => {
+    const b = e.currentTarget;
+    b.textContent = (await copyText(refresh())) ? "Copied" : "Use Preview to copy";
+    setTimeout(() => (b.textContent = "Copy prompt"), 1600);
+  };
+  // Long prompts can't ride in the link: the link opens the AI tool right away (so no pop-up blocker
+  // interferes) while the prompt is copied for pasting.
+  el.querySelectorAll("a[data-site]").forEach((a) => a.addEventListener("click", () => {
+    const prompt = refresh();
+    if (!a.dataset.fallback) return;
+    const note = el.querySelector(".kit-note");
+    copyText(prompt).then((ok) => { note.textContent = ok ? "Prompt copied. Paste it into the chat that just opened." : "Copy didn't work here. Use Preview the prompt to copy it."; });
+  }));
+  refresh();
 }
 
 function errorCard(error) {
@@ -157,16 +214,6 @@ function render(result, id) {
     b.textContent = (await copyText(answerAsText(result))) ? "Copied" : "Copy didn't work in this browser";
     setTimeout(() => (b.textContent = "Copy answer"), 1800);
   };
-  card.querySelectorAll("[data-copy]").forEach((b) => b.onclick = async () => {
-    b.textContent = (await copyText(kits[b.dataset.copy].prompt)) ? "Copied" : "Use Preview to copy";
-    setTimeout(() => (b.textContent = "Copy prompt"), 1600);
-  });
-  // Long prompts: copy first, then open the AI tool to paste (its link can't carry the whole prompt).
-  card.querySelectorAll("[data-open]").forEach((b) => b.onclick = async () => {
-    const ok = await copyText(kits[b.dataset.kit].prompt);
-    window.open(b.dataset.open === "claude" ? "https://claude.ai/new" : "https://chatgpt.com/", "_blank");
-    const note = b.closest(".kit").querySelector(".kit-note");
-    note.textContent = ok ? "Prompt copied. Paste it into the chat that just opened." : "Copy didn't work here. Use Preview the prompt to copy it.";
-  });
+  card.querySelectorAll(".kit[data-kit]").forEach((el) => wireKit(el, kits[el.dataset.kit]));
   return card;
 }

@@ -93,3 +93,11 @@
 .card .kit-inline details.prompt summary { min-height: 32px; display: flex; align-items: center; }
 .kit-note { font-size: 13px; color: var(--navy-mid); padding: 0 12px; }
 .kit-note:empty { display: none; }
+
+/* KIT-001 revision 2: what a prompt needs, asked right under it. */
+.kit-needs { padding: 0 12px 8px; display: grid; gap: 8px; }
+.needs-intro { font-size: 13px; color: var(--navy-mid); }
+.need { display: grid; gap: 4px; font-size: 13.5px; font-weight: 700; color: var(--navy); border: 0; }
+.need textarea, .need input[type="text"] { font: inherit; font-weight: 400; font-size: 15px; padding: 8px 10px; border: 1px solid var(--gray-200); border-radius: 8px; background: #fff; width: 100%; resize: vertical; }
+.need legend { font-size: 13.5px; font-weight: 700; margin-bottom: 4px; }
+.need-choice { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin-right: 16px; font-weight: 400; font-size: 15px; }
