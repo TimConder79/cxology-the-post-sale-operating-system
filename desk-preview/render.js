@@ -67,76 +67,41 @@ async function copyText(text) {
   t.remove(); return ok;
 }
 
-// KIT-001: one prompt. Revision 2: a prompt can list up to three needs (materials the reader adds first).
-// The reader's answers replace {{MATERIALS}} in their own browser; nothing they paste is sent to the server.
+// KIT-001: one prompt. Revision 3: no input boxes. A prompt that needs material tells the reader's AI to ask
+// for it first, and the page says so in one line. Links too long for the AI site fall back to copy-then-open.
 const LINK_LIMIT = 6000;
 const SITES = { claude: "https://claude.ai/new", chatgpt: "https://chatgpt.com/" };
-const ASK_FIRST = "Before drafting anything, ask me for every item marked \"not provided\" in one short list, then wait for my answers.";
 
-function needField(n, kitIndex, j) {
-  const id = `kit${kitIndex}-need${j}`;
-  if (n.kind === "choice") return `<fieldset class="need"><legend>${esc(n.label)}</legend>${(n.options || []).map((o) => `<label class="need-choice"><input type="radio" name="${id}" value="${esc(o)}"> ${esc(o)}</label>`).join("")}</fieldset>`;
-  if (n.kind === "paste") return `<label class="need" for="${id}">${esc(n.label)}<textarea id="${id}" rows="3" placeholder="Paste here"></textarea></label>`;
-  return `<label class="need" for="${id}">${esc(n.label)}<input id="${id}" type="text"></label>`;
-}
+const listItems = (xs) => xs.length === 1 ? xs[0] : xs.length === 2 ? `${xs[0]} and ${xs[1]}` : `${xs.slice(0, -1).join(", ")}, and ${xs.at(-1)}`;
 
 function kitHtml(k, index, number) {
-  const needs = k.needs || [];
+  const q = encodeURIComponent(k.prompt);
+  const link = (site, label) => {
+    const long = (SITES[site] + "?q=").length + q.length > LINK_LIMIT;
+    return `<a class="ghost" target="_blank" rel="noopener" data-site="${site}" data-fallback="${long ? 1 : ""}" href="${long ? SITES[site] : SITES[site] + "?q=" + q}">${label}</a>`;
+  };
+  const needs = (k.needs || []).filter((n) => typeof n === "string");
   return `<div class="kit${number ? "" : " kit-inline"}" data-kit="${index}"><div class="kit-head">${number ? `<div class="kit-icon">${number}</div>` : ""}<div><div class="kit-name">${esc(k.name)}</div><div class="kit-desc">${esc(k.desc || "")}</div></div></div>
-    ${needs.length ? `<div class="kit-needs"><div class="needs-intro">Add these first so the draft comes back right the first time:</div>${needs.map((n, j) => needField(n, index, j)).join("")}</div>` : ""}
+    ${needs.length ? `<div class="kit-asks">First, your AI will ask you for ${esc(listItems(needs))}.</div>` : ""}
     <div class="kit-actions"><button class="primary" data-copy="${index}">Copy prompt</button>
-    <a class="ghost" target="_blank" rel="noopener" data-site="claude">Open in Claude</a>
-    <a class="ghost" target="_blank" rel="noopener" data-site="chatgpt">Open in ChatGPT</a></div>
+    ${link("claude", "Open in Claude")}
+    ${link("chatgpt", "Open in ChatGPT")}</div>
     <div class="kit-note" aria-live="polite"></div>
-    <details class="prompt"><summary>Preview the prompt</summary><pre></pre></details></div>`;
-}
-
-// The prompt as it will be sent: the reader's answers in place of {{MATERIALS}}; empty ones marked for the AI to ask.
-function buildPrompt(k, el) {
-  const needs = k.needs || [];
-  if (!needs.length) return { prompt: k.prompt.replace(/^.*\{\{MATERIALS\}\}.*\n?/m, ""), missing: 0 };
-  let missing = 0;
-  const lines = needs.map((n, j) => {
-    const id = `kit${el.dataset.kit}-need${j}`;
-    const v = n.kind === "choice" ? (el.querySelector(`input[name="${id}"]:checked`)?.value || "") : (el.querySelector(`[id="${id}"]`)?.value || "").trim();
-    if (!v) missing++;
-    return `- ${n.label}: ${v ? (n.kind === "paste" ? "\n" + v : v) : "not provided"}`;
-  });
-  let prompt = k.prompt.replace("{{MATERIALS}}", "\n" + lines.join("\n"));
-  if (missing) prompt += "\n\n" + ASK_FIRST;
-  return { prompt, missing };
+    <details class="prompt"><summary>Preview the prompt</summary><pre>${esc(k.prompt)}</pre></details></div>`;
 }
 
 function wireKit(el, k) {
-  const refresh = () => {
-    const { prompt, missing } = buildPrompt(k, el);
-    const q = encodeURIComponent(prompt);
-    el.querySelectorAll("a[data-site]").forEach((a) => {
-      const site = a.dataset.site, base = SITES[site] + (site === "claude" ? "?q=" : "?q=");
-      const long = base.length + q.length > LINK_LIMIT;
-      a.href = long ? SITES[site] : base + q;
-      a.dataset.fallback = long ? "1" : "";
-      a.textContent = `${missing ? "Open anyway in" : "Open in"} ${site === "claude" ? "Claude" : "ChatGPT"}`;
-    });
-    el.querySelector("details.prompt pre").textContent = prompt;
-    return prompt;
-  };
-  el.querySelectorAll(".kit-needs input, .kit-needs textarea").forEach((f) => f.addEventListener("input", refresh));
-  el.querySelectorAll('.kit-needs input[type="radio"]').forEach((f) => f.addEventListener("change", refresh));
   el.querySelector("[data-copy]").onclick = async (e) => {
     const b = e.currentTarget;
-    b.textContent = (await copyText(refresh())) ? "Copied" : "Use Preview to copy";
+    b.textContent = (await copyText(k.prompt)) ? "Copied" : "Use Preview to copy";
     setTimeout(() => (b.textContent = "Copy prompt"), 1600);
   };
   // Long prompts can't ride in the link: the link opens the AI tool right away (so no pop-up blocker
   // interferes) while the prompt is copied for pasting.
-  el.querySelectorAll("a[data-site]").forEach((a) => a.addEventListener("click", () => {
-    const prompt = refresh();
-    if (!a.dataset.fallback) return;
+  el.querySelectorAll('a[data-fallback="1"]').forEach((a) => a.addEventListener("click", () => {
     const note = el.querySelector(".kit-note");
-    copyText(prompt).then((ok) => { note.textContent = ok ? "Prompt copied. Paste it into the chat that just opened." : "Copy didn't work here. Use Preview the prompt to copy it."; });
+    copyText(k.prompt).then((ok) => { note.textContent = ok ? "Prompt copied. Paste it into the chat that just opened." : "Copy didn't work here. Use Preview the prompt to copy it."; });
   }));
-  refresh();
 }
 
 function errorCard(error) {
