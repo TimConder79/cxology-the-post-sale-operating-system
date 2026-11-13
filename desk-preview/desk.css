@@ -80,3 +80,16 @@
 .card details.prompt { padding: 0 14px 12px; }
 .card details.prompt summary { cursor: pointer; font-size: 13px; font-weight: 700; color: var(--navy-mid); }
 .card details.prompt pre { white-space: pre-wrap; font: 13px/1.5 ui-monospace, Menlo, monospace; background: #fff; border: 1px solid var(--gray-200); border-radius: 8px; padding: 12px; margin-top: 8px; max-height: 320px; overflow: auto; }
+
+/* KIT-001: prompts under each move, compact. */
+.kit-privacy { font-size: 13px !important; color: var(--muted); margin: 0 0 8px; }
+.card li .kit-inline { margin: 8px 0 14px; }
+.card .kit-inline .kit-head { padding: 10px 12px 6px; }
+.card .kit-inline .kit-name { font-size: 14px; }
+.card .kit-inline .kit-desc { font-size: 13px; }
+.card .kit-inline .kit-actions { padding: 0 12px 6px; }
+.card .kit-actions button, .card .kit-actions a { min-height: 44px; display: inline-flex; align-items: center; }
+.card .kit-inline details.prompt { padding: 0 12px 10px; }
+.card .kit-inline details.prompt summary { min-height: 32px; display: flex; align-items: center; }
+.kit-note { font-size: 13px; color: var(--navy-mid); padding: 0 12px; }
+.kit-note:empty { display: none; }

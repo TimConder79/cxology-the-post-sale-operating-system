@@ -67,6 +67,21 @@ async function copyText(text) {
   t.remove(); return ok;
 }
 
+// KIT-001: one prompt. Links that would be too long for the AI site fall back to copy-then-open.
+const LINK_LIMIT = 6000;
+function kitHtml(k, index, number) {
+  const q = encodeURIComponent(k.prompt);
+  const open = (site, base, label) => (base.length + q.length <= LINK_LIMIT)
+    ? `<a class="ghost" target="_blank" href="${base}${q}">${label}</a>`
+    : `<button class="ghost" data-open="${site}" data-kit="${index}">${label}</button>`;
+  return `<div class="kit${number ? "" : " kit-inline"}"><div class="kit-head">${number ? `<div class="kit-icon">${number}</div>` : ""}<div><div class="kit-name">${esc(k.name)}</div><div class="kit-desc">${esc(k.desc || "")}</div></div></div>
+    <div class="kit-actions"><button class="primary" data-copy="${index}">Copy prompt</button>
+    ${open("claude", "https://claude.ai/new?q=", "Open in Claude")}
+    ${open("chatgpt", "https://chatgpt.com/?q=", "Open in ChatGPT")}</div>
+    <div class="kit-note" aria-live="polite"></div>
+    <details class="prompt"><summary>Preview the prompt</summary><pre>${esc(k.prompt)}</pre></details></div>`;
+}
+
 function errorCard(error) {
   const e = typeof error === "string" ? { kind: "failed", message: "Something went wrong on our side. Try again in a moment." } : error;
   const card = document.createElement("div");
@@ -92,16 +107,10 @@ function render(result, id) {
     html = html.replace(/<h2>(Your next 3 moves)/i, `<h2 id="${id}-moves">$1`);
     html = `<a class="jump" href="#${id}-moves">Jump to your next 3 moves</a>` + html;
   }
-  if (result.kits?.length) {
-    html += `<h2>Action kits</h2>` + result.kits.map((k, i) => {
-      const q = encodeURIComponent(k.prompt);
-      return `<div class="kit"><div class="kit-head"><div class="kit-icon">${i + 1}</div><div><div class="kit-name">${esc(k.name)}</div><div class="kit-desc">${esc(k.desc)}</div></div></div>
-        <div class="kit-actions"><button class="primary" data-copy="${i}">Copy prompt</button>
-        <a class="ghost" target="_blank" href="https://claude.ai/new?q=${q}">Open in Claude</a>
-        <a class="ghost" target="_blank" href="https://chatgpt.com/?q=${q}">Open in ChatGPT</a></div>
-        <details class="prompt"><summary>Preview the prompt</summary><pre>${esc(k.prompt)}</pre></details></div>`;
-    }).join("");
-  }
+  // Older answers (the hand-run RevOps example) carry prompts without a move number: shown together at the end.
+  const kits = result.kits || [];
+  const loose = kits.map((k, i) => ({ k, i })).filter(({ k }) => !k.move);
+  if (loose.length) html += `<h2>Action kits</h2>` + loose.map(({ k, i }, n) => kitHtml(k, i, n + 1)).join("");
   html += `<div class="answer-actions"><button class="ghost copy-answer">Copy answer</button></div>`;
   const sources = result.sources || [];
   if (sources.length) {
@@ -114,6 +123,15 @@ function render(result, id) {
   }
   if (result.kind === "play") html += `<p class="cta">Messy situation? <a href="https://zcal.co/timcxology/intro" target="_blank">Talk it through with Tim</a>.</p>`;
   card.innerHTML = html;
+
+  // KIT-001: each prompt sits directly under its move, with one privacy line above the first.
+  const moved = kits.map((k, i) => ({ k, i })).filter(({ k }) => k.move);
+  const movesList = card.querySelector(`[id="${id}-moves"]`)?.nextElementSibling;
+  if (moved.length && movesList?.tagName === "OL") {
+    movesList.insertAdjacentHTML("beforebegin", `<p class="kit-privacy">Each move has an AI prompt with your situation filled in. It only includes what you typed; don't paste confidential customer details into an outside AI tool.</p>`);
+    const items = movesList.querySelectorAll(":scope > li");
+    moved.forEach(({ k, i }) => items[k.move - 1]?.insertAdjacentHTML("beforeend", kitHtml(k, i, null)));
+  }
 
   // A citation number opens "Go deeper" and brings its passage into view.
   card.addEventListener("click", (e) => {
@@ -140,8 +158,15 @@ function render(result, id) {
     setTimeout(() => (b.textContent = "Copy answer"), 1800);
   };
   card.querySelectorAll("[data-copy]").forEach((b) => b.onclick = async () => {
-    b.textContent = (await copyText(result.kits[b.dataset.copy].prompt)) ? "Copied" : "Use Preview to copy";
+    b.textContent = (await copyText(kits[b.dataset.copy].prompt)) ? "Copied" : "Use Preview to copy";
     setTimeout(() => (b.textContent = "Copy prompt"), 1600);
+  });
+  // Long prompts: copy first, then open the AI tool to paste (its link can't carry the whole prompt).
+  card.querySelectorAll("[data-open]").forEach((b) => b.onclick = async () => {
+    const ok = await copyText(kits[b.dataset.kit].prompt);
+    window.open(b.dataset.open === "claude" ? "https://claude.ai/new" : "https://chatgpt.com/", "_blank");
+    const note = b.closest(".kit").querySelector(".kit-note");
+    note.textContent = ok ? "Prompt copied. Paste it into the chat that just opened." : "Copy didn't work here. Use Preview the prompt to copy it.";
   });
   return card;
 }

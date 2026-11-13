@@ -4,17 +4,17 @@
   "area": "Purchase & Welcome",
   "expect": "play",
   "q": "We just closed a $400K deal. The AE is already off to the next one and the customer hasn't heard from anyone in two weeks. What should happen right now?",
-  "text": "## What's really going on\n\nThis is the first Inflection Point, the Purchase Moment. Right after buying, the customer is asking, \"did I make the right decision?\"[[1]] Two weeks of quiet works against you here, because silence after purchase is not neutral. It is the first loyalty blocker.[[2]]\n\nThe likely root cause is the handoff. In most organizations the handoff from sales to post-sale is treated as a transition, not a transfer of intelligence.[[3]] The book also explains why this keeps happening: Sales is closing the next deal. Finance is processing the contract. Customer Success is finishing a handoff somewhere else. Internally, a lot is happening. Externally, the customer hears nothing.[[4]]\n\n## The play to run\n\nRun the **Purchase & Welcome Play** now, and move straight into the **Kickoff Play** afterward. Purchase & Welcome exists to replace that silence with momentum, and to answer the question the customer is already asking: yes, you made the right decision, and here is what happens next.[[5]] It weaves together personalization, celebration, and expectation-setting.[[6]] You are recovering a missed window here rather than running the play on schedule. [[applied]]\n\n## Your next 3 moves\n\n1. **The AE completes the Internal Knowledge Transfer this week, before anything else goes out.** The IKT covers four questions: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?[[7]] The answers should live in the CRM as a required field set — not in a sales rep's inbox.[[8]]\n\n2. **The CSM sends personalized outreach as soon as the IKT is in hand.** The book describes this step as a welcome note or short video that reflects the customer's specific goals and creates confidence before kickoff.[[9]] Because the customer has already waited two weeks, the note should acknowledge the gap briefly and then move to what happens next. [[applied]] The book also suggests telling the customer who they bought from, since that story is one of the most effective tools against buyer's remorse[[10]].\n\n3. **The CSM schedules the kickoff, and the CS leader secures the AE's attendance.** The scheduling request should clarify who should attend and why, what the customer should bring or prepare, and what to expect from the meeting.[[11]] On the seller's role, Tim writes, \"I advocate for having the seller in the kickoff meeting.\" The reason is that the seller is the one person who can answer, on the spot, the questions that come out of the sales conversation[[12]]. The CS leader should also make sure the next closed deal triggers this sequence automatically, without anyone having to remember. [[applied]]\n\n## What to hold off on\n\nDon't let the urge to make up for lost time turn kickoff into a feature tour. The book is direct on this point: Kickoff is not product training. It is the first working conversation where two companies align around outcomes, roles, expectations, and the path to First Value.[[13]]\n\n## How you'll know it's working\n\nWatch for evidence that the customer is progressing, not for completed tasks. At the Purchase Moment, the evidence is that the post-sale team can state the reason for purchase, the customer confirms it, and any gap between what was sold and what can be delivered is surfaced early[[14]]. At kickoff, the customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side[[15]].\n\nA no-show at kickoff is a warning sign, because it means the welcome sequence did not create enough clarity or urgency to make the meeting feel important.[[16]]\n\nOn the pipeline side, this $400K renewal enters the Identify stage of the post-sale pipeline at purchase[[17]]. It stays in Identify until First Value[[18]], so getting to kickoff quickly is what starts its clock toward real evidence.",
+  "text": "## What's really going on\n\nThis is the Purchase Moment, the first Inflection Point. The book is blunt that silence after purchase is not neutral. It is the first loyalty blocker.[[1]] Right now your customer is quietly asking, \"Did I make the right decision?\" The book notes that for a short window it is louder than anything Sales said during the evaluation.[[2]]\n\nThe likely root cause is a handoff that was treated as a transition, not a transfer of intelligence.[[3]] The book also points out that the renewal enters the Identify stage of the post-sale pipeline at purchase[[4]], so this $400K renewal is already exposed.\n\n## The play to run\n\nRun the Purchase & Welcome Play, which ends when the customer is ready for kickoff.[[5]] Its job is to replace that silence with momentum.[[6]] The play weaves together personalization, celebration, and expectation-setting[[7]], and it hands off directly to the Kickoff Play.\n\n## Your next 3 moves\n\n1. **AE (CS leader enforces): complete the Internal Knowledge Transfer today.** The IKT answers Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?[[8]] The book says it should live in the CRM as a required field set — not in a sales rep's inbox.[[9]] Give the AE a same-day deadline, because every further day extends the silence. [[applied]]\n\n2. **CSM: send personalized outreach this week.** The CSM sends a welcome note or short video that reflects the customer's specific goals and creates confidence before kickoff.[[10]] Briefly owning the two-week gap will likely land better than pretending it didn't happen. [[applied]]\n\n3. **CSM (with the AE attending): schedule the kickoff.** The book says the request should clarify who should attend and why, what the customer should bring or prepare, and what to expect from the meeting.[[11]] Bring the AE back in for it. Tim writes, \"I advocate for having the seller in the kickoff meeting,\" because the seller is the one person who can answer, on the spot, the questions that come out of the sales conversation[[12]].\n\n## What to hold off on\n\nDon't let the urge to catch up turn the kickoff into a demo. The book warns that too many companies waste this moment by turning kickoff into product training.[[13]]\n\n## How you'll know it's working\n\nFor this one account, the evidence of progress is that the post-sale team can state the reason for purchase, the customer confirms it, and any gap between what was sold and what can be delivered is surfaced early[[14]]. The intended outcome is a customer who feels confident in the decision they just made and is ready for kickoff.[[15]] In practice, that means the customer replies, books the kickoff, and arrives prepared with the right people in the room. [[applied]]",
   "sources": [
    {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
     "url": "https://cxology.co/chapter-9.html",
-    "quote": "Every customer asks the same question right after they buy: did I make the right decision?"
+    "quote": "Silence after purchase is not neutral. It is the first loyalty blocker."
    },
    {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
     "url": "https://cxology.co/chapter-9.html",
-    "quote": "Silence after purchase is not neutral. It is the first loyalty blocker."
+    "quote": "But the question is there, and for a short window it is louder than anything Sales said during the evaluation."
    },
    {
     "title": "Chapter 4: Stage 1 — Identify",
@@ -24,7 +24,12 @@
    {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
     "url": "https://cxology.co/chapter-9.html",
-    "quote": "Sales is closing the next deal. Finance is processing the contract. Customer Success is finishing a handoff somewhere else. Internally, a lot is happening. Externally, the customer hears nothing."
+    "quote": "How the Pipeline Moves\n\nThe renewal enters the Identify stage of the post-sale pipeline at purchase, just as a closed-won deal enters the sales pipeline."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://cxology.co/chapter-9.html",
+    "quote": "It starts the moment the customer decides to buy, often before the contract is countersigned or money changes hands, and it ends when the customer is ready for kickoff."
    },
    {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
@@ -54,11 +59,6 @@
    {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
     "url": "https://cxology.co/chapter-9.html",
-    "quote": "That story is one of the most effective tools against buyer's remorse, because remorse is an emotional reaction and a story reaches people in a way a feature list never will."
-   },
-   {
-    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
-    "url": "https://cxology.co/chapter-9.html",
     "quote": "It should clarify who should attend and why, what the customer should bring or prepare, and what to expect from the meeting."
    },
    {
@@ -69,7 +69,7 @@
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "Operating Principle\n\nKickoff is not product training. It is the first working conversation where two companies align around outcomes, roles, expectations, and the path to First Value."
+    "quote": "Too many companies waste this moment by turning kickoff into product training."
    },
    {
     "title": "How Do You Know Whether a Customer Is Actually Progressing?",
@@ -77,68 +77,73 @@
     "quote": "Purchase Moment | Purchase & Welcome | A shared understanding of the decision just made: why the customer bought and what they expect to change | Contract signed, handoff notes filed, welcome email sent | The post-sale team can state the reason for purchase, the customer confirms it, and any gap between what was sold and what can be delivered is surfaced early |\n| 2."
    },
    {
-    "title": "How Do You Know Whether a Customer Is Actually Progressing?",
-    "url": "https://cxology.co/customer-progression-leading-indicators.html",
-    "quote": "First Meeting | Kickoff | Trust transfers from Sales to the post-sale team, and the customer is confident they are understood | Kickoff held, introductions made, project plan shared | The customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side |\n| 3."
-   },
-   {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
     "url": "https://cxology.co/chapter-9.html",
-    "quote": "Customer experience follows: kickoff show rate is a meaningful proxy — a customer who does not show up is signaling that the welcome sequence did not create enough clarity or urgency to make the meeting feel important."
+    "quote": "The intended customer outcome is what matters: a customer who feels confident in the decision they just made and is ready for kickoff."
+   }
+  ],
+  "kits": [
+   {
+    "move": 1,
+    "name": "IKT Capture",
+    "desc": "A completed four-question Internal Knowledge Transfer ready for the CRM",
+    "prompt": "I'm running the Purchase & Welcome Play, starting with the Internal Knowledge Transfer. My situation: We just closed a $400K deal. The AE is already off to the next one and the customer hasn't heard from anyone in two weeks. What should happen right now?\nUsing the deal notes I paste below, draft answers to the four IKT questions: why they purchased; who they are and who matters; what was sold, what was promised, and what was left out; and what success means in their own words. Separate known facts from assumptions, and list the questions I still need the AE to answer. Stay within this method. Ask me for any missing details instead of guessing."
    },
    {
-    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
-    "url": "https://cxology.co/chapter-9.html",
-    "quote": "How the Pipeline Moves\n\nThe renewal enters the Identify stage of the post-sale pipeline at purchase, just as a closed-won deal enters the sales pipeline."
+    "move": 2,
+    "name": "Welcome Outreach",
+    "desc": "The welcome email and a 20–30 second CSM video script",
+    "prompt": "I'm running the Purchase & Welcome Play. My situation: We just closed a $400K deal. The AE is already off to the next one and the customer hasn't heard from anyone in two weeks. What should happen right now?\nDraft a warm, concise welcome email that reinforces the customer's decision, references their specific goals, and explains what happens next. Then draft a 20–30 second video script that references why they purchased and creates confidence heading into kickoff. Use only the details I provide, and do not invent goals, names, or commitments. Stay within this method. Ask me for any missing details instead of guessing."
    },
    {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "It stays in Identify until First Value, but it is no longer just a date on a calendar: it is tied to a confirmed reason for purchase and a target the customer owns."
+    "move": 3,
+    "name": "Kickoff Scheduling",
+    "desc": "The kickoff scheduling email",
+    "prompt": "I'm finishing the Purchase & Welcome Play and setting up the Kickoff Play. My situation: We just closed a $400K deal. The AE is already off to the next one and the customer hasn't heard from anyone in two weeks. What should happen right now?\nDraft a kickoff scheduling email that includes who should attend (including our seller), what the customer should prepare, what they can expect from the meeting, and a clear scheduling call to action. Keep it simple, actionable, and easy to scan. Stay within this method. Ask me for any missing details instead of guessing."
    }
   ],
   "kind": "play",
-  "rules": "v2",
+  "rules": "v3",
   "blocked": false,
   "usage": {
    "input_tokens": 53,
-   "cache_creation_input_tokens": 358784,
+   "cache_creation_input_tokens": 359115,
    "cache_read_input_tokens": 0,
    "cache_creation": {
     "ephemeral_5m_input_tokens": 0,
-    "ephemeral_1h_input_tokens": 358784
+    "ephemeral_1h_input_tokens": 359115
    },
    "iterations": [
     {
      "input_tokens": 53,
-     "output_tokens": 2313,
+     "output_tokens": 2667,
      "cache_read_input_tokens": 0,
-     "cache_creation_input_tokens": 358784,
+     "cache_creation_input_tokens": 359115,
      "cache_creation": {
       "ephemeral_5m_input_tokens": 0,
-      "ephemeral_1h_input_tokens": 358784
+      "ephemeral_1h_input_tokens": 359115
      },
      "type": "message",
      "model": null
     }
    ],
-   "output_tokens": 2313,
+   "output_tokens": 2667,
    "output_tokens_details": {
-    "thinking_tokens": 754
+    "thinking_tokens": 874
    },
    "service_tier": "standard",
    "inference_geo": "global",
    "speed": "standard"
   },
-  "cost": 2.916744,
-  "seconds": 22
+  "cost": 2.926472,
+  "seconds": 26
  },
  {
   "id": 2,
   "area": "Purchase & Welcome",
   "expect": "play",
   "q": "Sales promised the customer things during the deal that CS didn't know about. How do we stop finding out at kickoff?",
-  "text": "## What's really going on\n\nThis is a failure at the first Inflection Point, the Purchase Moment, which the Purchase & Welcome Play is designed to serve. The root cause is structural, not personal: in most organizations the handoff from sales to post-sale is treated as a transition, not a transfer of intelligence.[[1]] When that happens, Identify begins at a disadvantage because the team is forced to rediscover what the company already learned once.[[2]] The book also notes that this problem starts outside CS. If the use case was oversold or poorly qualified, Customer Success inherits a relationship that is already misaligned before it begins.[[3]]\n\n## The play to run\n\nRun the Purchase & Welcome Play, anchored on the Internal Knowledge Transfer (IKT). The IKT answers four questions that Sales must capture before the handoff is complete: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?[[4]] The third question targets your exact problem. The IKT should live in the CRM as a required field set — not in a sales rep's inbox.[[5]]\n\nBack it up in the Kickoff Play. The book recommends the kickoff should cover what the customer did not buy. If there is something they will need later and do not have, kickoff is the moment to say so.[[6]]\n\n## Your next 3 moves\n\n1. **CS leader, with the Sales leader:** Make the IKT a hard gate. A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play.[[7]]\n2. **AE:** Attend every kickoff. Tim writes, \"I advocate for having the seller in the kickoff meeting.\" The reason is that the seller is the one person who can answer, on the spot, the questions that come out of the sales conversation: what was discussed, what was promised, and what was meant.[[8]]\n3. **CS leader:** Review IKT gaps weekly with Sales. Start with the five most recent deals this week. [[applied]] The book frames blank fields as not a data problem — it is a coaching conversation.[[9]]\n\n## How you'll know it's working\n\nThese are team measures. Track IKT completion rate before CSM assignment, time from Closed-Won to first customer communication, and time from first communication to kickoff scheduled.[[10]] These metrics tell you whether the play is running consistently or only when someone remembers to run it.[[11]]\n\nOver time, customers with complete kickoff data should be compared to customers without it.[[12]] In a shared pipeline review, Sales sees whether what was promised became evidence.[[13]] The qualitative signal is that kickoff stops surfacing surprises. Customers are no longer re-explaining the deal. Instead, they are invited to refine, correct, and deepen what your team already understands.[[14]]",
+  "text": "## What's really going on\n\nThis happens at the first Inflection Point, the Purchase Moment. The root cause is the handoff itself: the handoff from sales to post-sale is treated as a transition, not a transfer of intelligence.[[1]] Notes are incomplete. Insights are fragmented. What should become the starting point for the post-sale pipeline instead becomes a reset.[[2]] This is a company-system problem, not only a CS problem. Sales affects the quality of Purchase and Welcome because the promise made during the buying process becomes the expectation carried into the relationship.[[3]] When the use case was oversold or poorly qualified, Customer Success inherits a relationship that is already misaligned before it begins.[[4]]\n\n## The play to run\n\nStart with **the Purchase & Welcome Play**, built on the Internal Knowledge Transfer (IKT). The IKT answers four questions that Sales must capture before the handoff is complete: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?[[5]]\n\nBack it up with **the Kickoff Play**. Tim writes, \"I advocate for having the seller in the kickoff meeting.\" The seller is the one person who can answer, on the spot, the questions that come out of the sales conversation: what was discussed, what was promised, and what was meant.[[6]] Kickoff should also cover what the customer did not buy[[7]], because a customer who discovers a gap six months in feels misled. A customer who hears about it at kickoff feels advised.[[8]]\n\n## Your next 3 moves\n\n1. **The CS leader, working with the Sales leader:** Make the IKT mandatory in the CRM. It should live in the CRM as a required field set — not in a sales rep's inbox.[[9]] A CRM configured to require IKT fields before a Closed-Won opportunity can progress to onboarding does not rely on the CSM remembering to ask for the handoff. The system enforces the play.[[10]]\n\n2. **The AE:** Complete the IKT before CSM assignment and attend kickoff. When a misunderstanding surfaces in kickoff and the seller is in the room, it gets resolved in a minute. When the seller is absent, it becomes a follow-up, then a doubt, and eventually a story the customer tells about the handoff.[[11]] The CS leader should agree on this expectation with the Sales leader before you roll it out. [[applied]]\n\n3. **The CSM:** Turn the IKT into a kickoff preparation brief, then confirm it with the customer at kickoff. The customer should not have to re-explain the entire sales conversation in kickoff. They should be invited to refine, correct, and deepen what your team already understands.[[12]] If a gap matters, it becomes an expansion opportunity that enters the pipeline at Identify, instead of a surprise that erodes trust.[[13]]\n\n## What to hold off on\n\nDon't accept the handoff as an email. If the IKT is captured in a handoff email that lives in someone's inbox, it does not exist as far as the operating system is concerned.[[14]]\n\n## How you'll know it's working\n\nThese are team measures. Track IKT completion rate before CSM assignment, time from Closed-Won to first customer communication, and time from first communication to kickoff scheduled.[[15]] Track the kickoff show rate too, since a customer who does not show up is signaling that the welcome sequence did not create enough clarity or urgency to make the meeting feel important.[[16]] When IKT fields are blank across part of the book, treat it the way the book does: that is not a data problem — it is a coaching conversation.[[17]]",
   "sources": [
    {
     "title": "Chapter 4: Stage 1 — Identify",
@@ -148,7 +153,12 @@
    {
     "title": "Chapter 4: Stage 1 — Identify",
     "url": "https://cxology.co/chapter-4.html",
-    "quote": "When that happens, Identify begins at a disadvantage because the team is forced to rediscover what the company already learned once."
+    "quote": "Notes are incomplete. Insights are fragmented. What should become the starting point for the post-sale pipeline instead becomes a reset."
+   },
+   {
+    "title": "Chapter 21: From Functional Silos to One Operating System",
+    "url": "https://cxology.co/chapter-21.html",
+    "quote": "Sales affects the quality of Purchase and Welcome because the promise made during the buying process becomes the expectation carried into the relationship."
    },
    {
     "title": "Chapter 21: From Functional Silos to One Operating System",
@@ -161,14 +171,24 @@
     "quote": "The IKT answers four questions that Sales must capture before the handoff is complete: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?"
    },
    {
-    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
-    "url": "https://cxology.co/chapter-9.html",
-    "quote": "It should live in the CRM as a required field set — not in a sales rep's inbox."
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "But the seller is the one person who can answer, on the spot, the questions that come out of the sales conversation: what was discussed, what was promised, and what was meant."
    },
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "The same review should cover what the customer did not buy. If there is something they will need later and do not have, kickoff is the moment to say so."
+    "quote": "The same review should cover what the customer did not buy."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "A customer who discovers a gap six months in feels misled. A customer who hears about it at kickoff feels advised."
+   },
+   {
+    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
+    "url": "https://cxology.co/chapter-9.html",
+    "quote": "It should live in the CRM as a required field set — not in a sales rep's inbox."
    },
    {
     "title": "Chapter 19: Data Governance and the One Data Spine",
@@ -178,12 +198,22 @@
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "But the seller is the one person who can answer, on the spot, the questions that come out of the sales conversation: what was discussed, what was promised, and what was meant."
+    "quote": "When a misunderstanding surfaces in kickoff and the seller is in the room, it gets resolved in a minute. When the seller is absent, it becomes a follow-up, then a doubt, and eventually a story the customer tells about the handoff."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "Trust Builder\n\nThe customer should not have to re-explain the entire sales conversation in kickoff. They should be invited to refine, correct, and deepen what your team already understands."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "And when that gap turns out to matter, it becomes an expansion opportunity that enters the pipeline at Identify, instead of a surprise that erodes trust."
    },
    {
     "title": "Chapter 19: Data Governance and the One Data Spine",
     "url": "https://cxology.co/chapter-19.html",
-    "quote": "If the Kickoff Play requires the Five Questions to be captured in the CRM, and a leader sees those fields are blank across a portion of the portfolio, that is not a data problem — it is a coaching conversation."
+    "quote": "If the IKT is captured in a handoff email that lives in someone's inbox, it does not exist as far as the operating system is concerned."
    },
    {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
@@ -193,31 +223,41 @@
    {
     "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
     "url": "https://cxology.co/chapter-9.html",
-    "quote": "These require no customer feedback to track and tell you whether the play is running consistently or only when someone remembers to run it."
+    "quote": "Customer experience follows: kickoff show rate is a meaningful proxy — a customer who does not show up is signaling that the welcome sequence did not create enough clarity or urgency to make the meeting feel important."
    },
    {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "Customers with complete kickoff data should be compared to customers without it."
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://cxology.co/chapter-19.html",
+    "quote": "If the Kickoff Play requires the Five Questions to be captured in the CRM, and a leader sees those fields are blank across a portion of the portfolio, that is not a data problem — it is a coaching conversation."
+   }
+  ],
+  "kits": [
+   {
+    "move": 1,
+    "name": "IKT Field Design",
+    "desc": "The IKT field set, the validation rule logic, and a one-page proposal for the Sales leader",
+    "prompt": "I'm building on the Purchase & Welcome Play and its Internal Knowledge Transfer from \"The Post-Sale Operating System.\" My situation: Sales promised the customer things during the deal that CS didn't know about. How do we stop finding out at kickoff?\nDraft three things. First, a CRM field set covering the four IKT questions: why they purchased; who they are and who matters; what was sold, what was promised, and what was left out; and what success means in the customer's own words. Use structured fields where possible. Second, the validation rule logic that blocks a Closed-Won deal from moving to onboarding until those fields are complete. Third, a short proposal I can send to our Sales leader explaining why this protects the customer handoff.\nStay within this method. Ask me for any missing details instead of guessing."
    },
    {
-    "title": "Chapter 21: From Functional Silos to One Operating System",
-    "url": "https://cxology.co/chapter-21.html",
-    "quote": "Sales sees whether what was promised became evidence."
+    "move": 2,
+    "name": "Seller Kickoff Brief",
+    "desc": "An AE checklist for the IKT and a short brief defining the seller's role in kickoff",
+    "prompt": "I'm building on the Purchase & Welcome Play and the Kickoff Play from \"The Post-Sale Operating System.\" My situation: Sales promised the customer things during the deal that CS didn't know about. How do we stop finding out at kickoff?\nDraft two things. First, a checklist the AE completes before handing off to the CSM, covering the four IKT questions and with a separate line for each promise made to the customer. Second, a brief that defines the seller's role in the kickoff meeting: confirm what was discussed, what was promised, and what was meant, and help review what the customer did not buy.\nStay within this method. Ask me for any missing details instead of guessing."
    },
    {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "They should be invited to refine, correct, and deepen what your team already understands."
+    "move": 3,
+    "name": "Kickoff Prep from IKT",
+    "desc": "A kickoff preparation brief and a \"what you bought, what you didn't\" talk track",
+    "prompt": "I'm building on the Kickoff Play from \"The Post-Sale Operating System.\" My situation: Sales promised the customer things during the deal that CS didn't know about. How do we stop finding out at kickoff?\nUsing the IKT notes I will paste, draft a kickoff preparation brief. Include what was purchased, why the customer bought, every promise made during the sale, the stakeholders and their possible roles, and open questions to confirm. Keep known facts separate from assumptions. Then draft a short talk track that reviews what the customer bought and what they did not buy, framed as expectation-setting rather than selling.\nStay within this method. Ask me for any missing details instead of guessing."
    }
   ],
   "kind": "play",
-  "rules": "v2",
+  "rules": "v3",
   "blocked": false,
   "usage": {
    "input_tokens": 41,
    "cache_creation_input_tokens": 0,
-   "cache_read_input_tokens": 358784,
+   "cache_read_input_tokens": 359115,
    "cache_creation": {
     "ephemeral_5m_input_tokens": 0,
     "ephemeral_1h_input_tokens": 0
@@ -225,8 +265,8 @@
    "iterations": [
     {
      "input_tokens": 41,
-     "output_tokens": 2221,
-     "cache_read_input_tokens": 358784,
+     "output_tokens": 3343,
+     "cache_read_input_tokens": 359115,
      "cache_creation_input_tokens": 0,
      "cache_creation": {
       "ephemeral_5m_input_tokens": 0,
@@ -236,28 +276,33 @@
      "model": null
     }
    ],
-   "output_tokens": 2221,
+   "output_tokens": 3343,
    "output_tokens_details": {
-    "thinking_tokens": 1047
+    "thinking_tokens": 1043
    },
    "service_tier": "standard",
    "inference_geo": "global",
    "speed": "standard"
   },
-  "cost": 0.11634080000000001,
-  "seconds": 31
+  "cost": 0.138847,
+  "seconds": 30
  },
  {
   "id": 3,
   "area": "Kickoff",
   "expect": "play",
   "q": "Our kickoff meetings are just a slide tour and a project timeline. Customers leave without knowing what success looks like. How should a kickoff actually work?",
-  "text": "## What's really going on\n\nThis is the **First Meeting** Inflection Point, served by the **Kickoff Play**. The likely root cause is that your kickoff has become a transfer of information rather than an alignment conversation. The book describes this pattern: the customer hears a lot about the product before they hear enough about the path. They are shown what the system can do before the two companies have agreed on what the customer is trying to accomplish. The meeting becomes a transfer of information instead of a foundation for trust.[[1]] The book's operating principle is that kickoff is not product training. It is the first working conversation where two companies align around outcomes, roles, expectations, and the path to First Value.[[2]]\n\n## The play to run\n\nRun the canonical Kickoff Play. The meeting should follow a standard flow: introductions, the customer's journey and a review of what was purchased, the Five Questions, expectations, First Value, and next steps.[[3]]\n\nThe Five Questions directly fix your \"no definition of success\" gap:\n1. What is the one thing we must get right to make this worth undertaking?[[4]]\n2. How does your organization define success?[[5]]\n3. What is our role in achieving that success?[[6]]\n4. What aspects of the internal culture or external environment could put this effort at risk to fail?[[7]]\n5. Assuming we mitigate that risk, what would exceed your wildest dreams?[[8]]\n\nEach participant should have an opportunity to respond, and the most senior person in the room should answer last.[[9]] The kickoff team should then help translate that outcome into the first achievable win.[[10]]\n\n## Your next 3 moves\n\n1. **The CS leader** rebuilds the kickoff deck template around the standard flow. The book's guidance is to standardize the structure and customize the conversation.[[11]]\n2. **The AE** completes the Internal Knowledge Transfer before handoff, answering Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?[[12]] The AE then attends the kickoff meeting. Tim writes, \"I advocate for having the seller in the kickoff meeting.\"\n3. **The CSM** captures the answers to the Five Questions and sends a follow-through email that should summarize decisions, action items, owners, due dates, materials, and the chosen First Value goal.[[13]] The Five Questions answers should not live only in a document. They should be captured in the CRM or customer platform.[[14]]\n\n## What to hold off on\n\nDon't replace the slide tour with heavier custom slides. The book warns that if the team believes every strong kickoff requires a heavily customized presentation, the play will become too slow and too dependent on individual effort.[[15]]\n\n## How you'll know it's working\n\n**Team measures:** At a minimum, the team should know how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded.[[16]]\n\n**Evidence across accounts:** watch for kickoffs where the customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side[[17]].\n\nOver time, customers with a clearly defined First Value goal should be compared to customers who entered onboarding without one.[[18]]",
+  "text": "## What's really going on\n\nThis is the second Inflection Point, the First Meeting, and the root cause is a common one. Too many companies waste this moment by turning kickoff into product training. They bring the customer into the room, introduce a few people, review a generic agenda, and then start walking through features.[[1]] As a result, the customer hears a lot about the product before they hear enough about the path. They are shown what the system can do before the two companies have agreed on what the customer is trying to accomplish.[[2]] The book is direct about what kickoff should be instead: Kickoff is not product training. It is the first working conversation where two companies align around outcomes, roles, expectations, and the path to First Value.[[3]]\n\n## The play to run\n\nRun the Kickoff Play as a three-part motion of Prepare, Execute, and Follow Through[[4]]. The meeting should follow a standard flow: introductions, the customer's journey and a review of what was purchased, the Five Questions, expectations, First Value, and next steps.[[5]]\n\nThe Five Questions are what fix your \"nobody knows what success looks like\" problem:\n\n1. \"What is the one thing we must get right to make this worth undertaking?\"\n2. \"How does your organization define success?\"\n3. \"What is our role in achieving that success?\"\n4. \"What aspects of the internal culture or external environment could put this effort at risk to fail?\"\n5. \"Assuming we mitigate that risk, what would exceed your wildest dreams?\"\n\nEach participant should have an opportunity to respond, and the most senior person in the room should answer last.[[6]] The meeting then translates the customer's large desired outcome into a First Value target. In many environments, a useful target is less than two weeks from kickoff[[7]], but the timeline should fit your product and the use case.\n\n## Your next 3 moves\n1. **The CS leader rebuilds the kickoff deck around the standard flow.** The template should cover introductions, purchase review, Five Questions, first-year overview, roles, First Value, and next steps[[8]]. Pair the deck with a Five Questions handout. Keep the project timeline, but move it into the first-year overview rather than making it the centerpiece. [[applied]]\n2. **The CSM prepares each kickoff from the sales handoff and invites the AE.** Before anyone sends the invitation, the internal team should understand the customer's business, the terms of the contract, what was promised during sales, who needs to attend, and what the customer is likely trying to accomplish.[[9]] Tim writes, \"I advocate for having the seller in the kickoff meeting.\" His reasoning: when a misunderstanding surfaces in kickoff and the seller is in the room, it gets resolved in a minute.[[10]]\n3. **The CSM sends a follow-through email after every kickoff and logs it in the CRM.** The email should summarize decisions, action items, owners, due dates, materials, and the chosen First Value goal.[[11]] The answers to the Five Questions should not live only in a document. They should be captured in the CRM or customer platform. First Value should become a field, milestone, or object that can be tracked.[[12]]\n\n## What to hold off on\n\nDon't respond to this by building a custom deck for every customer. The better approach is to standardize the structure and customize the conversation. The CSM should spend time learning the customer, not rebuilding slides.[[13]]\n\n## How you'll know it's working\n\nFor each customer, the evidence to look for is that the customer restates the reason for purchase and the First Value target in their own words and commits to next steps with owners on their side[[14]].\n\nAcross the team, track these team measures: how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded.[[15]]",
   "sources": [
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "The customer hears a lot about the product before they hear enough about the path. They are shown what the system can do before the two companies have agreed on what the customer is trying to accomplish. The meeting becomes a transfer of information instead of a foundation for trust."
+    "quote": "Too many companies waste this moment by turning kickoff into product training. They bring the customer into the room, introduce a few people, review a generic agenda, and then start walking through features."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "The customer hears a lot about the product before they hear enough about the path. They are shown what the system can do before the two companies have agreed on what the customer is trying to accomplish."
    },
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
@@ -267,32 +312,12 @@
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
+    "quote": "01 · Prepare\n\nResearch the customer, review the contract and IKT, confirm attendees, tailor the agenda, and send the invitation with enough context for the customer to know the meeting has purpose.\n\n02 · Execute\n\nRun the kickoff as an alignment conversation: introduce the team, demonstrate customer knowledge, ask the Five Questions, clarify expectations, define First Value, and confirm next steps.\n\n03 · Follow Through\n\nSend the recap, document decisions, assign owners and dates, schedule the next meetings, share materials, and move the customer toward the agreed First Value goal."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
     "quote": "The meeting should follow a standard flow: introductions, the customer’s journey and a review of what was purchased, the Five Questions, expectations, First Value, and next steps."
-   },
-   {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "What is the one thing we must get right to make this worth undertaking?"
-   },
-   {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "How does your organization define success?"
-   },
-   {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "What is our role in achieving that success?"
-   },
-   {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "What aspects of the internal culture or external environment could put this effort at risk to fail?"
-   },
-   {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "Assuming we mitigate that risk, what would exceed your wildest dreams?"
    },
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
@@ -302,17 +327,22 @@
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "The customer may have a large desired outcome, but the kickoff team should help translate that outcome into the first achievable win."
+    "quote": "In many environments, a useful target is less than two weeks from kickoff, but the exact timeline should fit the product, the customer, and the complexity of the use case."
    },
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "The better approach is to standardize the structure and customize the conversation."
+    "quote": "### Kickoff Deck Template\n\nThe standard meeting structure for introductions, purchase review, Five Questions, first-year overview, roles, First Value, and next steps."
    },
    {
-    "title": "Chapter 9: Play 1 — The Purchase & Welcome Play",
-    "url": "https://cxology.co/chapter-9.html",
-    "quote": "The IKT answers four questions that Sales must capture before the handoff is complete: Why did they purchase? Who are they as a company, and who matters? What was sold, what was promised, and what was left out? What does success mean in their own words?"
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "Before anyone sends the invitation, the internal team should understand the customer’s business, the terms of the contract, what was promised during sales, who needs to attend, and what the customer is likely trying to accomplish."
+   },
+   {
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "When a misunderstanding surfaces in kickoff and the seller is in the room, it gets resolved in a minute."
    },
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
@@ -322,17 +352,12 @@
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "The answers to the Five Questions should not live only in a document. They should be captured in the CRM or customer platform."
+    "quote": "The answers to the Five Questions should not live only in a document. They should be captured in the CRM or customer platform. First Value should become a field, milestone, or object that can be tracked."
    },
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "If the team believes every strong kickoff requires a heavily customized presentation, the play will become too slow and too dependent on individual effort."
-   },
-   {
-    "title": "Chapter 10: Play 2 — The Kickoff Play",
-    "url": "https://cxology.co/chapter-10.html",
-    "quote": "At a minimum, the team should know how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded."
+    "quote": "The better approach is to standardize the structure and customize the conversation. The CSM should spend time learning the customer, not rebuilding slides."
    },
    {
     "title": "How Do You Know Whether a Customer Is Actually Progressing?",
@@ -342,16 +367,36 @@
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
     "url": "https://cxology.co/chapter-10.html",
-    "quote": "Customers with a clearly defined First Value goal should be compared to customers who entered onboarding without one."
+    "quote": "At a minimum, the team should know how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded."
+   }
+  ],
+  "kits": [
+   {
+    "move": 1,
+    "name": "Kickoff Deck Rebuild",
+    "desc": "A kickoff deck outline and a Five Questions handout",
+    "prompt": "I'm redesigning our kickoff using the Kickoff Play from \"The Post-Sale Operating System.\" My situation: Our kickoff meetings are just a slide tour and a project timeline. Customers leave without knowing what success looks like. How should a kickoff actually work?\nDraft a kickoff deck outline that follows this order: introductions, the customer's journey and a review of what was purchased (including what was not purchased), the Five Questions, a first-year overview, roles and expectations, the First Value target, and next steps. Also draft a one-page Five Questions handout that captures answers in the customer's own words. Include a facilitation note that each attendee answers and the most senior person answers last. This must be an alignment conversation, not product training. Stay within this method. Ask me for any missing details instead of guessing."
+   },
+   {
+    "move": 2,
+    "name": "Kickoff Prep Brief",
+    "desc": "A kickoff preparation brief and the pre-kickoff email",
+    "prompt": "I'm preparing a kickoff using the Kickoff Play from \"The Post-Sale Operating System.\" My situation: Our kickoff meetings are just a slide tour and a project timeline. Customers leave without knowing what success looks like. How should a kickoff actually work?\nUsing the sales handoff notes I paste, draft a kickoff preparation brief. It should cover the likely business objective, what was purchased, stakeholders and possible roles, open questions, potential loyalty blockers, and likely First Value options. Keep known facts separate from assumptions. Then draft a pre-kickoff email that introduces the team (including the seller), confirms logistics and attendees, shares the agenda, and lists anything the customer should prepare. Stay within this method. Ask me for any missing details instead of guessing."
+   },
+   {
+    "move": 3,
+    "name": "Kickoff Follow-Through",
+    "desc": "The follow-through email and a structured CRM update",
+    "prompt": "I just ran a kickoff using the Kickoff Play from \"The Post-Sale Operating System.\" My situation: Our kickoff meetings are just a slide tour and a project timeline. Customers leave without knowing what success looks like. How should a kickoff actually work?\nFrom my meeting notes, draft a follow-through email. It should summarize the discussion, capture the answers to the Five Questions in the customer's words, list decisions, list action items with owners and due dates, state the agreed First Value goal, and confirm the next meeting. Then draft a CRM update with fields for success definition, risk factors, executive sponsor, customer owners, First Value target, and next steps. Stay within this method. Ask me for any missing details instead of guessing."
    }
   ],
   "kind": "play",
-  "rules": "v2",
+  "rules": "v3",
   "blocked": false,
   "usage": {
    "input_tokens": 54,
    "cache_creation_input_tokens": 0,
-   "cache_read_input_tokens": 358784,
+   "cache_read_input_tokens": 359115,
    "cache_creation": {
     "ephemeral_5m_input_tokens": 0,
     "ephemeral_1h_input_tokens": 0
@@ -359,8 +404,8 @@
    "iterations": [
     {
      "input_tokens": 54,
-     "output_tokens": 2141,
-     "cache_read_input_tokens": 358784,
+     "output_tokens": 3005,
+     "cache_read_input_tokens": 359115,
      "cache_creation_input_tokens": 0,
      "cache_creation": {
       "ephemeral_5m_input_tokens": 0,
@@ -370,23 +415,25 @@
      "model": null
     }
    ],
-   "output_tokens": 2141,
+   "output_tokens": 3005,
    "output_tokens_details": {
-    "thinking_tokens": 753
+    "thinking_tokens": 694
    },
    "service_tier": "standard",
    "inference_geo": "global",
    "speed": "standard"
   },
-  "cost": 0.1147928,
-  "seconds": 19
+  "cost": 0.132139,
+  "seconds": 33
  },
  {
   "id": 45,
   "area": "Data-poor",
   "expect": "play",
   "q": "We're a startup with 30 customers and no CS tooling at all. Is this method too heavy for us?",
-  "text": "## What's really going on\n\nThis is a sequencing question, not a sizing question. The book says the most common failure mode is enthusiasm without sequence — trying to install all twenty-two chapters at once, stalling in the complexity, and concluding the system does not work.[[1]] Your size helps you. At small scale, this is manageable. A strong team can compensate for the lack of structure.[[2]] The risk comes later: without a unifying structure, adding people does not reduce variability—it multiplies it.[[3]] At 30 customers you can lay down structure cheaply, before that strain arrives. [[applied]]\n\nHaving no tooling does not block you. The pipeline runs on evidence the team already captures in its daily work, not on usage telemetry, it works even in organizations convinced they don't have the data for it.[[4]] The Data Spine is not a product category or a specific platform.[[5]]\n\n## The play to run\n\nStart by defining progression, then run one play. Defining progression costs nothing but thinking, which is exactly why data-poor organizations can start here. The system works before the data does.[[6]]\n\nFor the play, the book says to run one play well. Not eight. One.[[7]] The Alignment Meeting is the strongest anchor for an established book of business; Kickoff is the right anchor when most customers are new.[[8]] If most of your 30 customers signed recently, choose the Kickoff Play. If they are mostly past onboarding, choose the Alignment Meeting Play. [[applied]]\n\n## Your next 3 moves\n\n1. **CS leader (or founder):** Write down what should change for customers at each inflection point and what First Value means for your top segment. Then write the pipeline stages and the exit criteria revenue opportunities must meet.[[9]] At your size, one working session should be enough to draft this. [[applied]]\n2. **CS leader:** Pick the system of record, define the fields that describe progression, and retire the local copies. If it is not in the system, it does not exist.[[10]] If you already use a CRM for sales, that can serve as the system of record. [[applied]]\n3. **CSM:** Build the chosen play's assets (brief, agenda, follow-through template[[11]]), then run the play across the book, not just with friendly accounts.[[12]]\n\n## What to hold off on\n\nDon't start with health scoring or automation. The book says to turn on health scoring once the system is producing enough evidence about progression, value, and relationships to interpret[[13]], and to never automate an undefined motion — that only accelerates inconsistency.[[14]]\n\n## How you'll know it's working\n\nThese are **team measures**, taken from the book's 90-day path:\n\n- You inspect weekly: whether the play ran, whether the expected change occurred, and what the evidence means for each opportunity and next action.[[15]]\n- If you run Kickoff, track how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded.[[16]]\n- At day 90, the win is not a retention number. It is a leadership conversation that starts with evidence: here is the motion we designed, here is how consistently it ran, and here is what the evidence tells us to do next.[[17]]\n\nIf you'd like help adapting this sequence to your specific mix of customers, an intro call with Tim is a good next step. [[applied]]",
+  "followUp": "Most of them are newly signed: about 20 of the 30 came on in the last six months. Our nearest renewals are about five months out.",
+  "clarifyText": "Short answer before the questions: the method is not built to require tooling up front, and the book's starting point fits a 30-customer team. One fact changes which play the book would have you run first, though:\n\n1. **Are most of your 30 customers newly signed, in roughly their first few months, or are most of them established and past onboarding?** The book says the Alignment Meeting is the strongest anchor for an established book of business; Kickoff is the right anchor when most customers are new.[[1]]\n\n2. **Roughly how far are your nearest renewals from today?** This tells me how urgent the first moves need to be.",
+  "text": "## What's really going on\n\nNo, the method is not too heavy for you, but it does have an order. The book names the most common failure mode as enthusiasm without sequence — trying to install all twenty-two chapters at once, stalling in the complexity, and concluding the system does not work.[[1]] Its first step needs no tooling: defining progression costs nothing but thinking, which is exactly why data-poor organizations can start here. The system works before the data does.[[2]]\n\nYour lifecycle moment is early, with two-thirds of your book of business in its first term. That matters because in the first term, the renewal stays in Identify until the customer reaches First Value[[3]]. With renewals five months out, the main risk is a first-term renewal that never had a confirmed First Value. [[applied]]\n\n## The play to run\n\nRun the Kickoff play. The book says the Alignment Meeting is the strongest anchor for an established book of business; Kickoff is the right anchor when most customers are new.[[4]] Kickoff ends by defining the path to First Value. First Value should be meaningful enough for the customer to feel progress and narrow enough to create momentum quickly.[[5]] For customers already past kickoff, the First Value play becomes the priority, because First Value is the evidence a first-term renewal needs to move from Identify to Align.[[6]] [[applied]]\n\n## Your next 3 moves\n\n1. **The CS leader** writes down what First Value means for your main segment and the pipeline stages with entry and exit criteria, following the book's Days 1–30[[7]] list. A shared spreadsheet you treat as the single record is enough to start; just remember that if it is not in the system, it does not exist.[[8]] [[applied]]\n\n2. **The CSM** creates a renewal opportunity for all 30 customers. For each one, the CSM records the stage, the evidence, the next action, and an owner. Each first-term renewal also gets an expected First Value date, because an overdue date is flagged. That flag is how a stalled renewal becomes visible months before the renewal date.[[9]] The CSM starts with the renewals that are five months out. [[applied]]\n\n3. **The CSM** runs the Kickoff play for every new signing, and **the AE** attends. Tim writes, \"I advocate for having the seller in the kickoff meeting.\" The meeting must capture the Five Questions and an agreed First Value target. [[applied]]\n\n## What to hold off on\n\nHold off on AI and automation until the play is running: Never automate an undefined motion — that only accelerates inconsistency.[[10]] Also wait on health scoring. The book says to turn on health scoring once the system is producing enough evidence about progression, value, and relationships to interpret.[[11]]\n\n## How you'll know it's working\n\nTeam measures for the Kickoff play are how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded.[[12]] The progression signal to watch is first-term renewals leaving Identify on confirmed First Value: The customer can point to the result. They say, in their own words, that it is starting to work. And they share it with someone else in their organization.[[13]]",
   "sources": [
    {
     "title": "Conclusion: Running the System",
@@ -394,34 +441,14 @@
     "quote": "It is enthusiasm without sequence — trying to install all twenty-two chapters at once, stalling in the complexity, and concluding the system does not work."
    },
    {
-    "title": "Chapter 2: Post-Sale Unification",
-    "url": "https://cxology.co/chapter-2.html",
-    "quote": "At small scale, this is manageable. A strong team can compensate for the lack of structure."
-   },
-   {
-    "title": "Chapter 2: Post-Sale Unification",
-    "url": "https://cxology.co/chapter-2.html",
-    "quote": "But without a unifying structure, adding people does not reduce variability—it multiplies it."
-   },
-   {
-    "title": "Introduction: The Post-Sale Problem",
-    "url": "https://cxology.co/chapter-intro.html",
-    "quote": "And because the pipeline runs on evidence the team already captures in its daily work, not on usage telemetry, it works even in organizations convinced they don't have the data for it."
-   },
-   {
-    "title": "Chapter 19: Data Governance and the One Data Spine",
-    "url": "https://cxology.co/chapter-19.html",
-    "quote": "It is not a product category or a specific platform."
-   },
-   {
     "title": "Conclusion: Running the System",
     "url": "https://cxology.co/chapter-conclusion.html",
     "quote": "This costs nothing but thinking, which is exactly why data-poor organizations can start here. The system works before the data does."
    },
    {
-    "title": "Conclusion: Running the System",
-    "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "Run one play well. Not eight. One."
+    "title": "Chapter 4: Stage 1 — Identify",
+    "url": "https://cxology.co/chapter-4.html",
+    "quote": "In the first term, the renewal stays in Identify until the customer reaches First Value, because a customer who has not yet experienced a meaningful result from what they bought is a renewal at real risk."
    },
    {
     "title": "Conclusion: Running the System",
@@ -429,29 +456,29 @@
     "quote": "The Alignment Meeting is the strongest anchor for an established book of business; Kickoff is the right anchor when most customers are new."
    },
    {
-    "title": "Conclusion: Running the System",
-    "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "Write down what should change for customers at each inflection point and what First Value means for your top segment. Then write the pipeline stages and the exit criteria revenue opportunities must meet."
+    "title": "Chapter 10: Play 2 — The Kickoff Play",
+    "url": "https://cxology.co/chapter-10.html",
+    "quote": "First Value should be meaningful enough for the customer to feel progress and narrow enough to create momentum quickly."
+   },
+   {
+    "title": "Chapter 12: Play 4 — The First Value Play",
+    "url": "https://cxology.co/chapter-12.html",
+    "quote": "How the Pipeline Moves\n\nFirst Value is the evidence a first-term renewal needs to move from Identify to Align."
    },
    {
     "title": "Conclusion: Running the System",
     "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "Pick the system of record, define the fields that describe progression, and retire the local copies. If it is not in the system, it does not exist."
+    "quote": "### Days 1–30\n\n#### Define\n\n- Write the pipeline stages with entry and exit criteria.\n\n- Define First Value for your most important segment."
    },
    {
     "title": "Conclusion: Running the System",
     "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "- Build the play's assets: brief, agenda, follow-through template."
+    "quote": "If it is not in the system, it does not exist."
    },
    {
-    "title": "Conclusion: Running the System",
-    "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "### Days 61–90\n\n#### Execute\n\n- Run the play across the book, not just with friendly accounts."
-   },
-   {
-    "title": "Conclusion: Running the System",
-    "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "Turn on health scoring once the system is producing enough evidence about progression, value, and relationships to interpret."
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "So every first-term renewal also carries an expected First Value date, and an overdue date is flagged. That flag is how a stalled renewal becomes visible months before the renewal date."
    },
    {
     "title": "Conclusion: Running the System",
@@ -461,7 +488,7 @@
    {
     "title": "Conclusion: Running the System",
     "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "- Inspect weekly: whether the play ran, whether the expected change occurred, and what the evidence means for each opportunity and next action."
+    "quote": "Turn on health scoring once the system is producing enough evidence about progression, value, and relationships to interpret."
    },
    {
     "title": "Chapter 10: Play 2 — The Kickoff Play",
@@ -469,27 +496,47 @@
     "quote": "At a minimum, the team should know how quickly kickoff occurs after purchase, whether the right people attended, whether the Five Questions were captured, whether First Value was defined, whether follow-through was sent within the expected timeframe, and whether the next meeting was scheduled before momentum faded."
    },
    {
-    "title": "Conclusion: Running the System",
-    "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "At day ninety the win is not a retention number. It is a leadership conversation that starts with evidence: here is the motion we designed, here is how consistently it ran, and here is what the evidence tells us to do next."
+    "title": "Chapter 12: Play 4 — The First Value Play",
+    "url": "https://cxology.co/chapter-12.html",
+    "quote": "The customer can point to the result. They say, in their own words, that it is starting to work. And they share it with someone else in their organization."
+   }
+  ],
+  "kits": [
+   {
+    "move": 1,
+    "name": "First Value and pipeline definitions",
+    "desc": "A First Value definition for our main segment and a one-page list of pipeline stages with exit criteria",
+    "prompt": "I'm working from \"Conclusion: Running the System\" and \"What Is a Post-Sale Pipeline?\" in The Post-Sale Operating System. My situation: We're a startup with 30 customers and no CS tooling at all. Is this method too heavy for us?\n\nFollow-up details: Most of them are newly signed: about 20 of the 30 came on in the last six months. Our nearest renewals are about five months out.. Help me draft (1) a First Value definition for our most important segment, written in customer terms, and (2) the five post-sale pipeline stages (Identify, Align, Advocate, Intent, Net Revenue Close) with the evidence-based exit criteria for each. Show which criteria apply to first-term renewals and which apply to expansion opportunities. Stay within this method. Ask me for any missing details instead of guessing."
+   },
+   {
+    "move": 2,
+    "name": "Renewal inventory",
+    "desc": "A renewal opportunity table for every customer, with a First Value flag",
+    "prompt": "I'm working from \"What Is a Post-Sale Pipeline?\" in The Post-Sale Operating System. My situation: We're a startup with 30 customers and no CS tooling at all. Is this method too heavy for us?\n\nFollow-up details: Most of them are newly signed: about 20 of the 30 came on in the last six months. Our nearest renewals are about five months out.. Build a table with one renewal opportunity per customer. Columns: indicated value, stage, expected close date and its source, evidence and date last verified, next action, owner, and expected First Value date for first-term renewals. Mark any customer whose First Value is unconfirmed or overdue, and list those first. Stay within this method. Ask me for any missing details instead of guessing."
+   },
+   {
+    "move": 3,
+    "name": "Kickoff kit",
+    "desc": "The pre-kickoff email, the meeting agenda with the Five Questions, and the follow-through email",
+    "prompt": "I'm working from \"Chapter 10: Play 2 — The Kickoff Play\" in The Post-Sale Operating System. My situation: We're a startup with 30 customers and no CS tooling at all. Is this method too heavy for us?\n\nFollow-up details: Most of them are newly signed: about 20 of the 30 came on in the last six months. Our nearest renewals are about five months out.. Draft three things. First, a pre-kickoff email that confirms attendees, the agenda, and what the customer should prepare. Second, a meeting agenda covering introductions, a review of what was purchased, the Five Kickoff Questions, expectations, First Value, and next steps. Third, a follow-through email that lists decisions, owners, dates, and the agreed First Value goal. Stay within this method. Ask me for any missing details instead of guessing."
    }
   ],
   "kind": "play",
-  "rules": "v2",
+  "rules": "v3",
   "blocked": false,
   "usage": {
-   "input_tokens": 37,
+   "input_tokens": 263,
    "cache_creation_input_tokens": 0,
-   "cache_read_input_tokens": 358784,
+   "cache_read_input_tokens": 359196,
    "cache_creation": {
     "ephemeral_5m_input_tokens": 0,
     "ephemeral_1h_input_tokens": 0
    },
    "iterations": [
     {
-     "input_tokens": 37,
-     "output_tokens": 2261,
-     "cache_read_input_tokens": 358784,
+     "input_tokens": 263,
+     "output_tokens": 2839,
+     "cache_read_input_tokens": 359196,
      "cache_creation_input_tokens": 0,
      "cache_creation": {
       "ephemeral_5m_input_tokens": 0,
@@ -499,16 +546,16 @@
      "model": null
     }
    ],
-   "output_tokens": 2261,
+   "output_tokens": 2839,
    "output_tokens_details": {
-    "thinking_tokens": 875
+    "thinking_tokens": 798
    },
    "service_tier": "standard",
    "inference_geo": "global",
    "speed": "standard"
   },
-  "cost": 0.1171248,
-  "seconds": 21
+  "cost": 0.1296712,
+  "seconds": 28
  },
  {
   "id": 46,
@@ -966,27 +1013,27 @@
   "area": "RevOps (live)",
   "expect": "play",
   "q": "RevOps question: when a renewal forecast doesn't line up with the account notes, customer health, or stated next steps, where do we draw the line between reporting the forecast and influencing the strategy? How does RevOps get enough context to say more than \"the data says X\" without becoming Sales Management?",
-  "text": "## What's really going on\n\nThis is a management-discipline problem in the Post-Sale Pipeline. It is not a judgment call about who gets to have an opinion. When the forecast, the notes, and the health score disagree, the usual cause is that the stage isn't tied to evidence. In the book's model, the stage is not determined by what your team did. It is determined by what you can prove about the opportunity.[[1]] Health and stage also answer different questions. Health describes the state of the customer. The pipeline shows where each revenue opportunity stands and what evidence supports that position.[[2]]\n\nThe line you're looking for is already drawn in the book's model. None of this requires RevOps to take ownership of customer relationships or Customer Success to become a sales organization. It requires a shared operating model. Customer-facing teams own the work and the relationships. Revenue leadership establishes expectations for visibility, evidence, and forecast discipline.[[3]]\n\n## The play to run\n\nRun an evidence-based pipeline review as a whole-company operating review, not as a reporting meeting. In that review, Customer Success sees which opportunities rest on thin or stale evidence. RevOps sees whether the probabilities and amounts are holding up.[[4]] The aim is action: they decide what work happens next. A review that only explains the number has not done its job.[[5]]\n\nThis is how RevOps says more than \"the data says X\" without managing the CSM. RevOps asks for the evidence and the next action. CS decides which play to run. When people disagree, the conversation moves from opinion to evidence: what would prove the next exit criterion, and who is going to get it.[[6]]\n\n## Your next 3 moves\n\n1. **RevOps and the CS leader** standardize the record so context lives in the system rather than in the CSM's head. Every opportunity should carry indicated value, stage, probability, expected close date and its source, evidence and the date it was last verified, next action, and owner. First-term renewals also carry an expected First Value date until First Value is reached.[[7]] The stage probabilities (20/40/60/90/100%) are CXology planning assumptions, not measured benchmarks.\n2. **RevOps** freezes the forecast at the start of each quarter. At quarter end, RevOps sorts each difference by its source: outcome, amount, timing, or new opportunities.[[8]] That breakdown gives you a factual basis for raising strategy questions. [[applied]]\n3. **The CS leader** chairs the weekly review, with RevOps preparing the list. The questions are: What moved? What moved back? What's stuck? What's overdue? What's stale?[[9]][[10]][[11]][[12]][[13]] For each mismatch, the **CSM** owns the next action, and RevOps tracks whether it happened. [[applied]]\n\n## What to hold off on\n\nDon't let RevOps re-stage deals or cut amounts based on dashboards. A drop in usage, a red health score, or a CSM's concern doesn't move an opportunity back on its own. These don't advance a stage, so they don't reverse one either. They should trigger a check of whether the evidence still holds.[[14]] The same applies to amounts: a usage drop, a health score, or an internal concern doesn't change the amount on its own. It triggers investigation.[[15]]\n\n## How you'll know it's working\n\nThese are team measures:\n- Forecast accuracy, defined as how closely the quarter's starting forecast matched the decisions that actually became final, and whether misses came from timing, outcomes, amounts, or evidence that did not hold.[[16]]\n- Fewer opportunities with blank evidence, missing next actions, or stale verification dates. [[applied]]\n- Reviews where teams report what the system saw, not what the team felt.[[17]]",
+  "text": "## What's really going on\n\nWhen the forecast, account notes, and health disagree, it usually means the stage isn't tied to evidence. Health and the pipeline answer different questions: health describes the state of the customer. The pipeline shows where each revenue opportunity stands and what evidence supports that position.[[1]] The book also notes that the visibility exists. It's just sitting in someone's head.[[2]]\n\nThe book draws the line you're asking about. None of this requires RevOps to take ownership of customer relationships or Customer Success to become a sales organization. It requires a shared operating model. Customer-facing teams own the work and the relationships. Revenue leadership establishes expectations for visibility, evidence, and forecast discipline. The operating system connects them.[[3]]\n\n## The play to run\n\nThe book has no lifecycle play for RevOps. The closest fit is the shared forecast review in Chapter 21, which falls under the management discipline layer of infrastructure. In that review, RevOps sees whether the probabilities and amounts are holding up.[[4]] The review is meant to produce action: then they decide what work happens next. A review that only explains the number has not done its job.[[5]]\n\nThis is how RevOps says more than \"the data says X\" without managing deals. When people disagree, the conversation moves from opinion to evidence: what would prove the next exit criterion, and who is going to get it.[[6]] RevOps asks that question, and the account team owns the answer. [[applied]]\n\n## Your next 3 moves\n\n1. **RevOps lead:** Require every renewal to carry an indicated value, stage, probability, expected close date and its source, evidence, and the date it was last verified; next action; owner[[7]]. Enforce this the way the book suggests: a renewal that cannot move to Intent without a recorded commitment and approval path[[8]].\n\n2. **RevOps lead with the CS leader:** In each review, treat a mismatch as a trigger to check the evidence, not to change the stage. Ask: What moved? Which renewals advanced, and what evidence earned it? What moved back? Which evidence went stale? What's stuck? Which renewals have sat in a stage too long?[[9]]\n\n3. **RevOps lead, reporting to the CRO:** Save that forecast at the start of the quarter and judge the quarter against it. When the number misses, the saved version shows what kind of miss it was.[[10]] Classify each miss as timing, outcome, or amount.\n\n## What to hold off on\n\nDon't adjust probabilities account by account. The book says to refine them company-wide and documented, never per customer or per CSM.[[11]] Also, don't let a red health score move a stage by itself: These don't advance a stage, so they don't reverse one either. They should trigger a check of whether the evidence still holds.[[12]]\n\n## How you'll know it's working\n\nThese are team measures:\n\n- **Complete records:** The share of renewals with evidence, a last-verified date, a next action, and an owner rises. [[applied]]\n- **Explained misses:** Forecast misses can be sorted into timing, outcome, and amount, rather than explained after the fact. [[applied]]\n- **Inspection replaces justification:** Instead of asking a CSM to defend a number, the CRO can inspect the evidence supporting its current stage, understand what's missing, and determine whether the planned work is likely to address the gap.[[13]]\n- **The review drives work:** Reviews end with assigned actions, because we can improve the accuracy of a forecast without improving the likelihood of the outcome.[[14]]",
   "sources": [
-   {
-    "title": "What Is a Post-Sale Pipeline?",
-    "url": "https://cxology.co/post-sale-pipeline.html",
-    "quote": "The stage is not determined by what your team did. It is determined by what you can prove about the opportunity."
-   },
    {
     "title": "Chapter 20: Health Scoring That Actually Works",
     "url": "https://cxology.co/chapter-20.html",
     "quote": "Health describes the state of the customer. The pipeline shows where each revenue opportunity stands and what evidence supports that position."
    },
    {
+    "title": "Blog: Why Existing-Customer Revenue Is So Hard to See",
+    "url": "https://cxology.co/blog/existing-customer-revenue-visibility/",
+    "quote": "The visibility exists."
+   },
+   {
     "title": "Blog: Renewal Forecasting: What Makes a Forecast Defensible?",
     "url": "https://cxology.co/blog/defensible-renewal-forecast/",
-    "quote": "None of this requires RevOps to take ownership of customer relationships or Customer Success to become a sales organization.\n\n It requires a shared operating model.\n\n Customer-facing teams own the work and the relationships. Revenue leadership establishes expectations for visibility, evidence, and forecast discipline."
+    "quote": "None of this requires RevOps to take ownership of customer relationships or Customer Success to become a sales organization.\n\n It requires a shared operating model.\n\n Customer-facing teams own the work and the relationships. Revenue leadership establishes expectations for visibility, evidence, and forecast discipline. The operating system connects them."
    },
    {
     "title": "Chapter 21: From Functional Silos to One Operating System",
     "url": "https://cxology.co/chapter-21.html",
-    "quote": "Customer Success sees which opportunities rest on thin or stale evidence. RevOps sees whether the probabilities and amounts are holding up."
+    "quote": "RevOps sees whether the probabilities and amounts are holding up."
    },
    {
     "title": "Chapter 21: From Functional Silos to One Operating System",
@@ -1004,90 +1051,95 @@
     "quote": "Every opportunity should carry at least:\n\n- Indicated value: for a renewal, the ARR being renewed, less any reduction the customer has indicated\n\n- Stage\n\n- Probability\n\n- Expected close date, and its source: the contract, the customer, or an internal estimate\n\n- Evidence, and the date it was last verified\n\n- Next action\n\n- Owner\n\nFirst-term renewals also carry an expected First Value date until First Value is reached."
    },
    {
-    "title": "What Is a Post-Sale Pipeline?",
-    "url": "https://cxology.co/post-sale-pipeline.html",
-    "quote": "The difference comes from four sources:\n\n- Outcome: an opportunity was completed (landing above its weighted value) or wasn't (landing below).\n\n- Amount: it was completed at a different amount than indicated.\n\n- Timing: an opportunity expected this quarter wasn't decided, or one expected later was decided early.\n\n- New: opportunities that didn't exist when the quarter started."
+    "title": "Chapter 19: Data Governance and the One Data Spine",
+    "url": "https://cxology.co/chapter-19.html",
+    "quote": "The same logic applies throughout the lifecycle: a health score that requires specific field inputs to calculate, a renewal that cannot move to Intent without a recorded commitment and approval path, an expansion opportunity that cannot enter Advocate without a recorded advocate."
    },
    {
     "title": "Blog: How to Forecast Renewals Without Relying on Gut Feel",
     "url": "https://cxology.co/blog/how-to-forecast-renewals/",
-    "quote": "In each pipeline review, ask:\n\n What moved?"
-   },
-   {
-    "title": "Blog: How to Forecast Renewals Without Relying on Gut Feel",
-    "url": "https://cxology.co/blog/how-to-forecast-renewals/",
-    "quote": "What moved back?"
-   },
-   {
-    "title": "Blog: How to Forecast Renewals Without Relying on Gut Feel",
-    "url": "https://cxology.co/blog/how-to-forecast-renewals/",
-    "quote": "What's stuck?"
-   },
-   {
-    "title": "Blog: How to Forecast Renewals Without Relying on Gut Feel",
-    "url": "https://cxology.co/blog/how-to-forecast-renewals/",
-    "quote": "What's overdue?"
-   },
-   {
-    "title": "Blog: How to Forecast Renewals Without Relying on Gut Feel",
-    "url": "https://cxology.co/blog/how-to-forecast-renewals/",
-    "quote": "What's stale?"
-   },
-   {
-    "title": "What Is a Post-Sale Pipeline?",
-    "url": "https://cxology.co/post-sale-pipeline.html",
-    "quote": "What doesn't move an opportunity back on its own: a drop in usage, a red health score, or a CSM's concern. These don't advance a stage, so they don't reverse one either. They should trigger a check of whether the evidence still holds."
-   },
-   {
-    "title": "What Is a Post-Sale Pipeline?",
-    "url": "https://cxology.co/post-sale-pipeline.html",
-    "quote": "A usage drop, a health score, or an internal concern doesn't change the amount on its own. It triggers investigation."
+    "quote": "In each pipeline review, ask:\n\n What moved? Which renewals advanced, and what evidence earned it?\n\nWhat moved back? Which evidence went stale?\n\nWhat's stuck? Which renewals have sat in a stage too long?"
    },
    {
     "title": "Chapter 21: From Functional Silos to One Operating System",
     "url": "https://cxology.co/chapter-21.html",
-    "quote": "#### Forecast Accuracy\n\nShows how closely the quarter's starting forecast matched the decisions that actually became final, and whether misses came from timing, outcomes, amounts, or evidence that did not hold."
+    "quote": "Save that forecast at the start of the quarter and judge the quarter against it. When the number misses, the saved version shows what kind of miss it was."
    },
    {
-    "title": "Conclusion: Running the System",
-    "url": "https://cxology.co/chapter-conclusion.html",
-    "quote": "- Report what the system saw, not what the team felt."
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "A company refines them by comparing quarter-start forecasts with what actually happened, company-wide and documented, never per customer or per CSM."
+   },
+   {
+    "title": "What Is a Post-Sale Pipeline?",
+    "url": "https://cxology.co/post-sale-pipeline.html",
+    "quote": "These don't advance a stage, so they don't reverse one either. They should trigger a check of whether the evidence still holds."
+   },
+   {
+    "title": "Blog: Renewal Forecasting: What Makes a Forecast Defensible?",
+    "url": "https://cxology.co/blog/defensible-renewal-forecast/",
+    "quote": "Instead of asking the CSM to justify why the account is forecast at 90%, the CRO can inspect the evidence supporting its current stage, understand what's missing, and determine whether the planned work is likely to address the gap."
+   },
+   {
+    "title": "Blog: Renewal Forecasting: What Makes a Forecast Defensible?",
+    "url": "https://cxology.co/blog/defensible-renewal-forecast/",
+    "quote": "We can improve the accuracy of a forecast without improving the likelihood of the outcome."
+   }
+  ],
+  "kits": [
+   {
+    "move": 1,
+    "name": "Renewal Evidence Field Standard",
+    "desc": "The required renewal field list, the validation rules, and a one-page explainer for CSMs",
+    "prompt": "I'm building on \"What Is a Post-Sale Pipeline?\" and \"Chapter 19: Data Governance and the One Data Spine.\" My situation: RevOps question: when a renewal forecast doesn't line up with the account notes, customer health, or stated next steps, where do we draw the line between reporting the forecast and influencing the strategy? How does RevOps get enough context to say more than \"the data says X\" without becoming Sales Management?. Draft the required fields every renewal opportunity must carry, including evidence and the date it was last verified. Then draft validation rules that block stage advancement without recorded evidence, and a short explainer for CSMs on why each field exists. Stay within this method. Ask me for any missing details instead of guessing."
+   },
+   {
+    "move": 2,
+    "name": "Evidence-Based Pipeline Review Agenda",
+    "desc": "The review agenda, the mismatch-check questions, and a follow-up action log template",
+    "prompt": "I'm building on \"Chapter 21: From Functional Silos to One Operating System\" and \"What Is a Post-Sale Pipeline?\" My situation: RevOps question: when a renewal forecast doesn't line up with the account notes, customer health, or stated next steps, where do we draw the line between reporting the forecast and influencing the strategy? How does RevOps get enough context to say more than \"the data says X\" without becoming Sales Management?. Draft a recurring renewal review agenda that inspects what moved, what moved back, what is stuck, and what evidence is stale. Include questions for when the forecast conflicts with health or notes, framed as \"what would prove the next exit criterion, and who will get it.\" Also draft an action log with an owner for each item. Stay within this method. Ask me for any missing details instead of guessing."
+   },
+   {
+    "move": 3,
+    "name": "Quarter-Start Forecast Variance Review",
+    "desc": "The snapshot procedure and the quarter-end variance report template",
+    "prompt": "I'm building on \"What Is a Post-Sale Pipeline?\" My situation: RevOps question: when a renewal forecast doesn't line up with the account notes, customer health, or stated next steps, where do we draw the line between reporting the forecast and influencing the strategy? How does RevOps get enough context to say more than \"the data says X\" without becoming Sales Management?. Draft a procedure for freezing the renewal forecast at the start of each quarter. Then draft a quarter-end report that splits the difference into outcome, amount, timing, and new opportunities, plus a note on how to refine stage probabilities company-wide over time. Stay within this method. Ask me for any missing details instead of guessing."
    }
   ],
   "kind": "play",
-  "rules": "v2",
+  "rules": "v3",
   "blocked": false,
   "usage": {
    "input_tokens": 96,
-   "cache_creation_input_tokens": 0,
-   "cache_read_input_tokens": 358784,
+   "cache_creation_input_tokens": 359196,
+   "cache_read_input_tokens": 0,
    "cache_creation": {
     "ephemeral_5m_input_tokens": 0,
-    "ephemeral_1h_input_tokens": 0
+    "ephemeral_1h_input_tokens": 359196
    },
    "iterations": [
     {
      "input_tokens": 96,
-     "output_tokens": 2290,
-     "cache_read_input_tokens": 358784,
-     "cache_creation_input_tokens": 0,
+     "output_tokens": 3687,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 359196,
      "cache_creation": {
       "ephemeral_5m_input_tokens": 0,
-      "ephemeral_1h_input_tokens": 0
+      "ephemeral_1h_input_tokens": 359196
      },
      "type": "message",
      "model": null
     }
    ],
-   "output_tokens": 2290,
+   "output_tokens": 3687,
    "output_tokens_details": {
-    "thinking_tokens": 832
+    "thinking_tokens": 1590
    },
    "service_tier": "standard",
    "inference_geo": "global",
    "speed": "standard"
   },
-  "cost": 0.1179408,
-  "seconds": 21
+  "cost": 2.947692,
+  "seconds": 37
  }
 ]
